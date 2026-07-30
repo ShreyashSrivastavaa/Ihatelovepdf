@@ -43,7 +43,7 @@ export default function NavMenu() {
     <nav className="w-full border-b border-[var(--ui)] bg-[var(--bg)]/90 backdrop-blur-sm">
       <div className="container mx-auto px-4 py-4 flex flex-wrap justify-between items-center">
         <Link href={routes.home} className="flex items-center">
-          <Image src="/favicon.ico?v=2" alt="PDFhelp logo" width={32} height={32} className="mr-2" unoptimized />
+          <Image src="/logo.png" alt="PDFhelp logo" width={36} height={36} className="mr-2 rounded-lg" unoptimized />
           <span className="text-xl font-bold">PDFhelp</span>
         </Link>
 

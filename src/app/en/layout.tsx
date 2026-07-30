@@ -4,7 +4,7 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import NavMenu from "../../components/NavMenu";
 import Footer from "../../components/Footer";
-import FotoLinceBanner from "../../components/FotoLinceBanner";
+
 import { LocaleProvider } from "../../i18n/LocaleProvider";
 import { GoogleAnalyticsScripts } from "../../components/analytics/GoogleAnalyticsScripts";
 import { GaPageViewTracker } from "../../components/analytics/GaPageViewTracker";
@@ -78,7 +78,7 @@ export default function EnLayout({ children }: { children: ReactNode }) {
           </Suspense>
           <NavMenu />
           <main>{children}</main>
-          <FotoLinceBanner />
+
           <Footer />
           <CookieBanner />
         </LocaleProvider>
