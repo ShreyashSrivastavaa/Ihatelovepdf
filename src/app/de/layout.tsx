@@ -14,6 +14,7 @@ import { SchemaOrg } from "../../components/SchemaOrg";
 import { BreadcrumbSchema } from "../../components/seo/BreadcrumbSchema";
 
 import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER } from "../../lib/metadata-shared";
+import { Analytics } from "@vercel/analytics/next";
 
 const LOCALE = "de" as const;
 
@@ -81,6 +82,7 @@ export default function DeLayout({ children }: { children: ReactNode }) {
 
           <Footer />
           <CookieBanner />
+          <Analytics />
         </LocaleProvider>
       </body>
     </html>

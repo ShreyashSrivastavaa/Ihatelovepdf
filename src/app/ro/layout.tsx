@@ -13,6 +13,7 @@ import CookieBanner from "../../components/CookieBanner";
 import { SchemaOrg } from "../../components/SchemaOrg";
 
 import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER } from "../../lib/metadata-shared";
+import { Analytics } from "@vercel/analytics/next";
 
 const LOCALE = "ro" as const;
 
@@ -79,6 +80,7 @@ export default function RoLayout({ children }: { children: ReactNode }) {
 
           <Footer />
           <CookieBanner />
+          <Analytics />
         </LocaleProvider>
       </body>
     </html>
