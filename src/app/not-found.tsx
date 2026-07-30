@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -33,7 +34,7 @@ export default function NotFound() {
         >
           <div style={{ maxWidth: "1200px", margin: "0 auto", width: "100%", display: "flex" }}>
             <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none", color: "inherit" }}>
-              <img src="/logo.png" alt="PDFhelp logo" width={36} height={36} style={{ marginRight: "0.5rem", borderRadius: "8px" }} />
+              <Image src="/logo.png" alt="PDFhelp logo" width={36} height={36} style={{ marginRight: "0.5rem", borderRadius: "8px" }} unoptimized />
               <span style={{ fontSize: "1.25rem", fontWeight: 700, fontFamily: "'Montserrat', sans-serif" }}>PDFhelp</span>
             </Link>
           </div>
@@ -56,10 +57,13 @@ export default function NotFound() {
         >
           {/* Mascot and Badge */}
           <div style={{ position: "relative", marginBottom: "1.5rem" }}>
-            <img 
+            <Image 
               src="/images/stickers/pdfhelp_logo_processed.webp" 
               alt="PDFhelp Mascot" 
+              width={120}
+              height={120}
               style={{ width: "120px", height: "auto", filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.1))" }} 
+              unoptimized
             />
             <div style={{
               position: "absolute",

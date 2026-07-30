@@ -62,7 +62,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         setStatus('error');
         setErrorMessage(result.message || 'Failed to send message. Please try again.');
       }
-    } catch (err) {
+    } catch {
       setStatus('error');
       setErrorMessage('Network error. Please check your internet connection and try again.');
     }
