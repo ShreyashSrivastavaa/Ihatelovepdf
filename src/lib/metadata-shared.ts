@@ -3,8 +3,8 @@ import { Metadata } from "next";
 export const METADATA_BASE = new URL("https://pdfhelp.com");
 
 export const SHARED_ICONS = [
-    { rel: "icon", url: "/favicon.ico?v=2" },
-    { rel: "apple-touch-icon", url: "/favicon.ico?v=2" },
+    { rel: "icon", url: "/favicon.ico" },
+    { rel: "apple-touch-icon", url: "/favicon.ico" },
 ];
 
 export const SHARED_OPEN_GRAPH: Metadata["openGraph"] = {
