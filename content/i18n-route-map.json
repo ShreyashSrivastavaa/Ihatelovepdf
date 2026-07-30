@@ -1,0 +1,136 @@
+{
+  "home": {
+    "es": "/",
+    "en": "/en",
+    "pt": "/pt",
+    "de": "/de",
+    "it": "/it",
+    "fr": "/fr",
+    "ro": "/ro",
+    "ru": "/ru",
+    "hu": "/hu"
+  },
+  "faq": {
+    "es": "/preguntas-frecuentes",
+    "en": "/en/faq",
+    "pt": "/pt/perguntas-frequentes",
+    "de": "/de/haeufige-fragen",
+    "it": "/it/faq",
+    "fr": "/fr/faq",
+    "ro": "/ro/intrebari-frecvente",
+    "ru": "/ru/chasto-zadavaemye-voprosy",
+    "hu": "/hu/gyakran-ismetelt-kerdesek"
+  },
+  "support": {
+    "es": "/apoya",
+    "en": "/en/support",
+    "pt": "/pt/apoie",
+    "de": "/de/unterstuetzen",
+    "it": "/it/supporto",
+    "fr": "/fr/soutenir",
+    "ro": "/ro/sustine",
+    "ru": "/ru/podderzhka",
+    "hu": "/hu/tamogatas"
+  },
+  "operations": {
+    "compress": {
+      "es": "/comprimir",
+      "en": "/en/compress",
+      "pt": "/pt/comprimir",
+      "de": "/de/komprimieren",
+      "it": "/it/comprimi",
+      "fr": "/fr/compresser",
+      "ro": "/ro/comprima",
+      "ru": "/ru/szhat",
+      "hu": "/hu/tomoriteni"
+    },
+    "merge": {
+      "es": "/unir",
+      "en": "/en/merge",
+      "pt": "/pt/juntar",
+      "de": "/de/zusammenfuehren",
+      "it": "/it/unisci",
+      "fr": "/fr/fusionner",
+      "ro": "/ro/uneste",
+      "ru": "/ru/obedinit",
+      "hu": "/hu/osszefuzni"
+    },
+    "split": {
+      "es": "/dividir",
+      "en": "/en/split",
+      "pt": "/pt/dividir",
+      "de": "/de/teilen",
+      "it": "/it/dividi",
+      "fr": "/fr/diviser",
+      "ro": "/ro/divide",
+      "ru": "/ru/razdelit",
+      "hu": "/hu/szetbontas"
+    },
+    "extract": {
+      "es": "/extraer",
+      "en": "/en/extract",
+      "pt": "/pt/extrair",
+      "de": "/de/seiten-extrahieren",
+      "it": "/it/estrai",
+      "fr": "/fr/extraire",
+      "ro": "/ro/extrage",
+      "ru": "/ru/izvlech",
+      "hu": "/hu/kivalasztani"
+    },
+    "crop": {
+      "es": "/recortar",
+      "en": "/en/crop",
+      "pt": "/pt/recortar",
+      "de": "/de/zuschneiden",
+      "it": "/it/ritaglia",
+      "fr": "/fr/recadrer",
+      "ro": "/ro/decupeaza",
+      "ru": "/ru/obrezat",
+      "hu": "/hu/korulvagas"
+    },
+    "rotate": {
+      "es": "/girar",
+      "en": "/en/rotate",
+      "pt": "/pt/girar",
+      "de": "/de/drehen",
+      "it": "/it/ruota",
+      "fr": "/fr/faire-pivoter",
+      "ro": "/ro/roteste",
+      "ru": "/ru/povernut",
+      "hu": "/hu/forgatas"
+    },
+    "reorder": {
+      "es": "/reordenar",
+      "en": "/en/reorder",
+      "pt": "/pt/reordenar",
+      "de": "/de/seiten-sortieren",
+      "it": "/it/riordina",
+      "fr": "/fr/reorganiser",
+      "ro": "/ro/reordoneaza",
+      "ru": "/ru/pereupordochit",
+      "hu": "/hu/atrendezni"
+    },
+    "pdfToImages": {
+      "es": "/convertir-pdf-a-imagenes",
+      "en": "/en/pdf-to-images",
+      "pt": "/pt/pdf-para-imagens",
+      "de": "/de/pdf-zu-bildern",
+      "it": "/it/da-pdf-a-immagini",
+      "fr": "/fr/pdf-en-images",
+      "ro": "/ro/pdf-in-imagini",
+      "ru": "/ru/pdf-v-izobrazheniya",
+      "hu": "/hu/pdf-kepekbe"
+    },
+    "imagesToPdf": {
+      "es": "/crear-pdf-desde-imagenes",
+      "en": "/en/images-to-pdf",
+      "pt": "/pt/imagens-para-pdf",
+      "de": "/de/bilder-zu-pdf",
+      "it": "/it/da-immagini-a-pdf",
+      "fr": "/fr/creer-pdf-depuis-images",
+      "ro": "/ro/imagini-in-pdf",
+      "ru": "/ru/izobrazheniya-v-pdf",
+      "hu": "/hu/kepek-pdf-be"
+    }
+  }
+}
