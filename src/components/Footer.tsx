@@ -50,7 +50,7 @@ export default function Footer() {
             {footer.links.contact}
           </a>
           <a
-            href="https://github.com/GSiesto/pdfhelp"
+            href="https://github.com/ShreyashSrivastavaa/PDFhelp"
             className="text-[var(--tx-2)] hover:text-[var(--accent)] font-medium flex items-center gap-1"
             target="_blank"
             rel="noopener noreferrer"
