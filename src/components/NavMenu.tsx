@@ -7,11 +7,13 @@ import { useMemo, useState, type ChangeEvent } from 'react';
 import { useDictionary, useLocale } from '../i18n/LocaleProvider';
 import { SUPPORTED_LOCALES, localeLabels, type Locale } from '../i18n/config';
 import { getLocalizedAlternateMap, getRouteIdentifierForPath, getRoutePath } from '../i18n/routing';
+import ContactModal from './ContactModal';
 
 export default function NavMenu() {
   const pathname = usePathname();
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
   const dictionary = useDictionary();
   const locale = useLocale();
   const { nav } = dictionary.components;
@@ -40,6 +42,7 @@ export default function NavMenu() {
   };
 
   return (
+    <>
     <nav className="w-full border-b border-[var(--ui)] bg-[var(--bg)]/90 backdrop-blur-sm">
       <div className="container mx-auto px-4 py-4 flex flex-wrap justify-between items-center">
         <Link href={routes.home} className="flex items-center">
@@ -79,6 +82,14 @@ export default function NavMenu() {
                 {nav.faq}
               </Link>
             </li>
+            <li>
+              <button
+                onClick={() => { setIsOpen(false); setIsContactOpen(true); }}
+                className="text-[var(--tx-2)] hover:text-[var(--accent)] transition-colors"
+              >
+                Contact
+              </button>
+            </li>
 
             <li className="md:ml-4">
               <label className="sr-only" htmlFor="nav-language-select">
@@ -101,5 +112,8 @@ export default function NavMenu() {
         </div>
       </div>
     </nav>
+    <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+    </>
   );
 }
+

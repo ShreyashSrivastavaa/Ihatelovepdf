@@ -8,6 +8,7 @@ interface ContactModalProps {
 }
 
 const WEB3FORMS_ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '44e3c9b7-e4a7-43f8-8c76-0b23246e96f9';
+const OWNER_EMAIL = 'shreyashsr2004@gmail.com';
 
 export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const [formData, setFormData] = useState({
@@ -36,11 +37,19 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         },
         body: JSON.stringify({
           access_key: WEB3FORMS_ACCESS_KEY,
+          // Route the email to the site owner
+          to_email: OWNER_EMAIL,
+          // Set reply-to as the submitter's email so hitting Reply goes back to them
+          replyto: formData.email,
           name: formData.name,
           email: formData.email,
-          subject: formData.subject || 'PDFhelp Contact Form Message',
-          message: formData.message,
+          subject: formData.subject
+            ? `[PDFhelp] ${formData.subject}`
+            : '[PDFhelp] New Contact Form Message',
+          message: `From: ${formData.name} <${formData.email}>\n\n${formData.message}`,
           from_name: 'PDFhelp Contact Form',
+          // Honeypot anti-spam field (must be empty)
+          botcheck: '',
         }),
       });
 
@@ -90,7 +99,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             </div>
             <h4 className="text-lg font-semibold text-green-600">Message Sent Successfully!</h4>
             <p className="text-sm text-[var(--tx-2)] max-w-sm mx-auto">
-              Thank you for reaching out. We have received your message and will reply to your email address shortly.
+              Thank you for reaching out! We&apos;ve received your message and will reply directly to <strong>{formData.email || 'your email'}</strong> shortly.
             </p>
             <button
               onClick={() => {
