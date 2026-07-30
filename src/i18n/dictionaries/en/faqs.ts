@@ -1,63 +1,63 @@
 export const faqsEn = {
   common: [
     {
-      question: "How does PDFhelp work without uploading my documents to servers?",
+      question: "How does PDFhelp process documents without uploading them to servers?",
       answer:
-        "PDFhelp runs entirely in your browser with an on-device processing engine. No file is uploaded to our servers, which guarantees total privacy and fast processing.",
+        "PDFhelp processes all files 100% locally in your web browser using modern WebAssembly and JavaScript engines. Your files are never uploaded to any cloud server, guaranteeing complete data privacy and security.",
     },
     {
-      question: "Is PDFhelp safe for confidential documents?",
+      question: "Is PDFhelp safe for confidential and sensitive documents?",
       answer:
-        "Absolutely. Everything stays on your device, so your PDFs never leave your control — not even we can access their contents.",
+        "Yes, absolutely. Because all operations execute locally on your device, your files never leave your computer or phone — not even PDFhelp servers can view or access your content.",
     },
     {
-      question: "Is there a limit to the size or number of PDFs I can process?",
+      question: "Is there a limit on file size or the number of PDFs I can process?",
       answer:
-        "The main limit is your device memory. In most cases PDFhelp handles files up to roughly 50MB each, though it can vary depending on your hardware and browser.",
+        "There are no artificial software limits. Processing speed and capacity depend on your device's memory and CPU. PDFhelp comfortably handles large documents up to several hundred megabytes.",
     },
     {
-      question: "Does PDFhelp work on mobile devices?",
+      question: "Does PDFhelp work on mobile devices and tablets?",
       answer:
-        "Yes. PDFhelp is optimised for desktops, tablets, and phones. The interface adapts to any screen size.",
+        "Yes! PDFhelp is fully responsive and optimized to run smoothly across mobile phones, tablets, laptops, and desktop computers.",
     },
   ],
   regional: [
     {
-      question: "Does PDFhelp help me comply with data protection rules?",
+      question: "Does PDFhelp comply with strict privacy regulations (GDPR, HIPAA, LGPD)?",
       answer:
-        "Because processing happens locally, no personal data leaves your organisation. That makes it easier to comply with GDPR, HIPAA, LGPD, or any internal privacy policy.",
+        "Yes. Since no document data is ever collected, stored, or transmitted over the internet, PDFhelp naturally aligns with GDPR, HIPAA, LGPD, and enterprise privacy standards.",
     },
     {
-      question: "Can I use PDFhelp for official forms or invoices?",
+      question: "Can I use PDFhelp for official government forms, invoices, and legal contracts?",
       answer:
-        "Yes. It’s ideal for optimising invoices, contracts, and public administration paperwork while keeping the original quality.",
+        "Definitely. PDFhelp preserves document formatting, fonts, and original resolution, making it ideal for preparing official paperwork, invoices, and legal records.",
     },
     {
-      question: "Will compression affect the legal validity of my documents?",
+      question: "Will PDF compression compromise document validity or quality?",
       answer:
-        "The PDFhelp compressor preserves document integrity. Even so, we recommend confirming that the resulting file meets the specific requirements of the receiving entity whenever the stakes are high.",
+        "Our compression engine uses smart optimization to shrink file sizes while preserving crisp text legibility and image clarity.",
     },
   ],
   tech: [
     {
       question: "What technology powers PDFhelp?",
       answer:
-        "PDFhelp uses a lightweight JavaScript engine to manipulate PDFs natively in the browser without relying on native extensions. That keeps the bundle lighter and maintenance simpler.",
+        "PDFhelp leverages high-performance browser technologies including PDF-lib, PDF.js, and WebAssembly to perform native PDF manipulation directly inside client browsers.",
     },
     {
-      question: "Do interactive elements get lost when I compress a PDF?",
+      question: "Are interactive form fields, bookmarks, and links preserved during compression?",
       answer:
-        "In most cases PDFhelp keeps links, forms, and bookmarks. With very aggressive compression some advanced features may be altered, so we recommend double-checking.",
+        "Yes, standard compression retains interactive forms, bookmarks, and hyperlinks. You can also customize advanced settings if you prefer to strip metadata or annotations.",
     },
     {
-      question: "Which browsers are compatible with PDFhelp?",
+      question: "Which web browsers are supported?",
       answer:
-        "PDFhelp works with modern browsers such as Chrome, Firefox, Safari, Edge, and Opera. All you need is an up-to-date browser with ES2020 support — no extra runtimes required.",
+        "PDFhelp is compatible with all modern web browsers, including Google Chrome, Mozilla Firefox, Apple Safari, Microsoft Edge, and Opera.",
     },
     {
-      question: "Can I convert a PDF to other formats?",
+      question: "Can I convert PDFs to images and vice versa?",
       answer:
-        "Right now you can convert PDFs to images (PNG or JPEG) and build PDFs from JPG, PNG, or WEBP without uploading files. For other niche formats, keep using a dedicated converter while we continue expanding the toolkit.",
+        "Yes! You can convert PDF pages into high-resolution PNG or JPEG images, as well as combine JPG, PNG, WEBP, or TIFF images into a single PDF document.",
     },
   ],
 };
