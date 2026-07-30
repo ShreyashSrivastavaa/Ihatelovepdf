@@ -1,10 +1,13 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { useDictionary } from '../i18n/LocaleProvider';
 import type { OperationKey } from '../types/operations';
+import ContactModal from './ContactModal';
 
 export default function Footer() {
+  const [isContactOpen, setIsContactOpen] = useState(false);
   const dictionary = useDictionary();
   const footer = dictionary.components.footer;
   const routes = dictionary.routes;
@@ -22,26 +25,26 @@ export default function Footer() {
     .filter((link): link is { operation: OperationKey; href: string; label: string } => link !== null);
 
   return (
-    <footer className="text-center py-6 relative z-10 bg-[var(--bg-2)] border-t border-[var(--ui)]">
-      <div className="container mx-auto px-4">
-        <p className="text-[var(--tx-3)] mb-2">{footer.privacy}</p>
-        <p className="text-[var(--tx-2)] text-sm">{footer.rights}</p>
+    <>
+      <footer className="text-center py-6 relative z-10 bg-[var(--bg-2)] border-t border-[var(--ui)]">
+        <div className="container mx-auto px-4">
+          <p className="text-[var(--tx-3)] mb-2">{footer.privacy}</p>
+          <p className="text-[var(--tx-2)] text-sm">{footer.rights}</p>
 
-        <div className="flex justify-center gap-4 my-3">
-          <Link href={routes.home} className="text-[var(--tx-2)] hover:text-[var(--accent)] font-medium">
-            {footer.links.home}
-          </Link>
-          <Link href={routes.faq} className="text-[var(--tx-2)] hover:text-[var(--accent)] font-medium">
-            {footer.links.faq}
-          </Link>
+          <div className="flex justify-center gap-4 my-3">
+            <Link href={routes.home} className="text-[var(--tx-2)] hover:text-[var(--accent)] font-medium">
+              {footer.links.home}
+            </Link>
+            <Link href={routes.faq} className="text-[var(--tx-2)] hover:text-[var(--accent)] font-medium">
+              {footer.links.faq}
+            </Link>
 
-
-          <a
-            href="mailto:info@pdfhelp.com"
-            className="text-[var(--tx-2)] hover:text-[var(--accent)] font-medium"
-          >
-            {footer.links.contact}
-          </a>
+            <button
+              onClick={() => setIsContactOpen(true)}
+              className="text-[var(--tx-2)] hover:text-[var(--accent)] font-medium cursor-pointer"
+            >
+              {footer.links.contact}
+            </button>
           <a
             href="https://github.com/ShreyashSrivastavaa/PDFhelp"
             className="text-[var(--tx-2)] hover:text-[var(--accent)] font-medium flex items-center gap-1"
@@ -69,5 +72,7 @@ export default function Footer() {
         )}
       </div>
     </footer>
+    <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+    </>
   );
 }
