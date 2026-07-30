@@ -1,0 +1,31 @@
+import { DEFAULT_LOCALE, Locale } from "./config";
+import { esDictionary } from "./dictionaries/es";
+import { enDictionary } from "./dictionaries/en";
+import { ptDictionary } from "./dictionaries/pt";
+import { deDictionary } from "./dictionaries/de";
+import { itDictionary } from "./dictionaries/it";
+import { frDictionary } from "./dictionaries/fr";
+import { roDictionary } from "./dictionaries/ro";
+import { ruDictionary } from "./dictionaries/ru";
+import { huDictionary } from "./dictionaries/hu";
+import type { Dictionary } from "./dictionaries/dictionary-types";
+
+const dictionaries: Record<Locale, Dictionary> = {
+  es: esDictionary,
+  en: enDictionary,
+  pt: ptDictionary,
+  de: deDictionary,
+  it: itDictionary,
+  fr: frDictionary,
+  ro: roDictionary,
+  ru: ruDictionary,
+  hu: huDictionary,
+};
+
+export function getDictionary(locale: Locale = DEFAULT_LOCALE): Dictionary {
+  return dictionaries[locale];
+}
+
+export function getDefaultDictionary(): Dictionary {
+  return dictionaries[DEFAULT_LOCALE];
+}
