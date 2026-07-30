@@ -2,14 +2,14 @@ import "../../styles/globals.css";
 import { Suspense, type ReactNode } from "react";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
-import { localeLabels, DEFAULT_LOCALE, isLocale } from "../../i18n/config";
+import { DEFAULT_LOCALE } from "../../i18n/config";
 import { GoogleAnalyticsScripts } from "../../components/analytics/GoogleAnalyticsScripts";
 import { GaPageViewTracker } from "../../components/analytics/GaPageViewTracker";
 import { WebVitalsReporter } from "../../components/analytics/WebVitalsReporter";
 import CookieBanner from "../../components/CookieBanner";
 import NavMenu from "../../components/NavMenu";
 import Footer from "../../components/Footer";
-import FotoLinceBanner from "../../components/FotoLinceBanner";
+
 import { LocaleProvider } from "../../i18n/LocaleProvider";
 import { SchemaOrg } from "../../components/SchemaOrg";
 import { BreadcrumbSchema } from "../../components/seo/BreadcrumbSchema";
@@ -18,22 +18,22 @@ import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER } from "
 
 export const metadata = {
   metadataBase: METADATA_BASE,
-  title: "PDFhelp | Comprimir, unir, dividir y convertir PDF online sin subir archivos",
+  title: "PDFhelp | Merge, Compress, Split and Convert PDFs Online",
   description:
-    "Procesa tus PDFs gratis: comprimir PDF, unir PDF, dividir PDF, extraer páginas y convertir PDF a imágenes o imágenes a PDF directamente en tu navegador. Todo es local y 100% privado.",
+    "Free PDF tools right in your browser: merge PDF, compress PDF, split PDF, extract pages, convert PDF to images or images to PDF. 100% local processing, completely private.",
   keywords:
-    "comprimir pdf, unir pdf, dividir pdf, extraer paginas pdf, convertir pdf, pdf a imagen, imagen a pdf, reorganizar pdf, herramienta pdf gratis, pdf sin subir archivos",
+    "merge pdf, compress pdf, split pdf, extract pages pdf, convert pdf, pdf to image, image to pdf, reorder pdf, free pdf tool, pdf without upload",
   icons: SHARED_ICONS,
   alternates: {
     canonical: "https://pdfhelp.com/",
     languages: {
-      'es-ES': 'https://pdfhelp.com/',
-      'es-MX': 'https://pdfhelp.com/',
-      'es-CO': 'https://pdfhelp.com/',
-      'es-AR': 'https://pdfhelp.com/',
-      'es': 'https://pdfhelp.com/',
-      'en': 'https://pdfhelp.com/en/',
-      'en-US': 'https://pdfhelp.com/en/',
+      'en': 'https://pdfhelp.com/',
+      'en-US': 'https://pdfhelp.com/',
+      'es': 'https://pdfhelp.com/es/',
+      'es-ES': 'https://pdfhelp.com/es/',
+      'es-MX': 'https://pdfhelp.com/es/',
+      'es-CO': 'https://pdfhelp.com/es/',
+      'es-AR': 'https://pdfhelp.com/es/',
       'fr': 'https://pdfhelp.com/fr/',
       'fr-FR': 'https://pdfhelp.com/fr/',
       'pt': 'https://pdfhelp.com/pt/',
@@ -54,31 +54,20 @@ export const metadata = {
   },
   openGraph: {
     ...SHARED_OPEN_GRAPH,
-    images: [{ url: "https://pdfhelp.com/og-images/og-image-es.png", width: 1409, height: 736, alt: "PDFhelp - Procesamiento de PDFs privado y gratuito" }],
-    title: "PDFhelp | Herramientas PDF privadas y gratuitas en tu navegador",
+    images: [{ url: "https://pdfhelp.com/og-images/og-image-en.png", width: 1409, height: 736, alt: "PDFhelp - Private and free PDF processing" }],
+    title: "PDFhelp | Free & Private PDF Tools in Your Browser",
     description:
-      "Une, comprime, divide, extrae y convierte PDFs sin subir archivos. Resultados al instante con procesamiento 100% local y privado.",
+      "Merge, compress, split, and convert PDFs without uploading files. Instant results with 100% local, private processing.",
     url: "https://pdfhelp.com",
-    locale: "es_ES",
+    locale: "en_US",
     type: "website",
   },
   twitter: SHARED_TWITTER,
 };
 
-export default async function RootLayout({
-  children,
-  params,
-}: {
-  children: ReactNode;
-  params: Promise<{ locale?: string }>;
-}) {
-  const resolvedParams = await params;
-  const requestedLocale = resolvedParams?.locale;
-  const locale = requestedLocale && isLocale(requestedLocale) ? requestedLocale : DEFAULT_LOCALE;
-  const htmlLang = localeLabels[locale].htmlLang;
-
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang={htmlLang}>
+    <html lang="en">
       <head>
         {/* Reserved for future head customizations */}
         <GoogleAnalyticsScripts />
@@ -86,14 +75,14 @@ export default async function RootLayout({
         <BreadcrumbSchema />
       </head>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
-        <LocaleProvider locale={locale}>
+        <LocaleProvider locale={DEFAULT_LOCALE}>
           <WebVitalsReporter />
           <Suspense fallback={null}>
             <GaPageViewTracker />
           </Suspense>
           <NavMenu />
           <main>{children}</main>
-          <FotoLinceBanner />
+
           <Footer />
           <CookieBanner />
         </LocaleProvider>

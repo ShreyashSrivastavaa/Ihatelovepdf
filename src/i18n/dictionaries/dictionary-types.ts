@@ -58,7 +58,7 @@ export interface NavStrings {
   home: string;
   faq: string;
   support: string;
-  photo: string;
+  photo?: string;
   languageLabel: string;
   menuLabel: string;
 }
@@ -70,7 +70,7 @@ export interface FooterStrings {
     home: string;
     faq: string;
     support: string;
-    photo: string;
+    photo?: string;
     contact: string;
   };
   capabilitiesLabel: string;
@@ -507,7 +507,7 @@ export interface ComponentsStrings {
   nav: NavStrings;
   footer: FooterStrings;
   notifications: NotificationStrings;
-  fotolinceBanner: FotolinceBannerStrings;
+  fotolinceBanner?: FotolinceBannerStrings;
   pdfProcessor: PdfProcessorStrings;
   fileUploader: FileUploaderStrings;
   fileList: FileListStrings;
