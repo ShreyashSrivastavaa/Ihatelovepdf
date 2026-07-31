@@ -2,11 +2,25 @@ import PDFProcessor from "./pdf-processor";
 import type { Dictionary } from "../i18n/dictionaries/dictionary-types";
 import { ShieldCheck, Zap, Laptop, Lock, CheckCircle2 } from "lucide-react";
 import FaqSection from "./faq-section";
+import QuickToolSelector, { type QuickToolLink } from "./QuickToolSelector";
 
 export function HomePageContent({ dictionary }: { dictionary: Dictionary }) {
   const {
     pages: { home },
+    routes,
   } = dictionary;
+
+  const toolQuickLinks: QuickToolLink[] = [
+    { key: "merge", label: dictionary.components.footer.operations.merge, href: routes.operations.merge },
+    { key: "compress", label: dictionary.components.footer.operations.compress, href: routes.operations.compress },
+    { key: "split", label: dictionary.components.footer.operations.split, href: routes.operations.split },
+    { key: "extract", label: dictionary.components.footer.operations.extract, href: routes.operations.extract },
+    { key: "crop", label: dictionary.components.footer.operations.crop, href: routes.operations.crop },
+    { key: "rotate", label: dictionary.components.footer.operations.rotate, href: routes.operations.rotate },
+    { key: "reorder", label: dictionary.components.footer.operations.reorder, href: routes.operations.reorder },
+    { key: "pdfToImages", label: dictionary.components.footer.operations.pdfToImages, href: routes.operations.pdfToImages },
+    { key: "imagesToPdf", label: dictionary.components.footer.operations.imagesToPdf, href: routes.operations.imagesToPdf },
+  ];
 
   return (
     <div className="min-h-screen bg-[var(--bg)] text-[var(--tx)]">
@@ -41,6 +55,9 @@ export function HomePageContent({ dictionary }: { dictionary: Dictionary }) {
             ))}
           </div>
         </section>
+
+        {/* QUICK TOOL SELECTOR COMPONENT */}
+        <QuickToolSelector links={toolQuickLinks} />
 
         {/* CENTERPIECE PDF PROCESSOR UI CONTAINER */}
         <section className="relative">

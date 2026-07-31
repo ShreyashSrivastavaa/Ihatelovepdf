@@ -1958,7 +1958,29 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
             </h2>
           </div>
 
-          <div className="p-1 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border)] flex flex-wrap gap-1">
+          {/* Mobile Tool Selector Dropdown (< 768px) */}
+          <div className="md:hidden">
+            <div className="relative flex items-center rounded-xl border border-[var(--border)] bg-[var(--bg-card)] px-3.5 py-3 shadow-xs">
+              <select
+                id="mobile-tool-select"
+                value={mode}
+                onChange={(e) => handleModeChange(e.target.value as ProcessingMode)}
+                className="w-full bg-transparent font-semibold text-sm text-[var(--tx)] focus:outline-none cursor-pointer"
+              >
+                {MODE_TABS.map((modeKey) => {
+                  const tabStrings = (modes as Record<ProcessingMode, { label: string }>)[modeKey];
+                  return (
+                    <option key={modeKey} value={modeKey} className="bg-[var(--bg-card)] text-[var(--tx)] font-medium">
+                      {tabStrings?.label ?? modeKey}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+          </div>
+
+          {/* Desktop Tool Selector Tabs (>= 768px) */}
+          <div className="hidden md:flex flex-wrap gap-1 p-1 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border)]">
             {MODE_TABS.map(modeKey => {
               const tabStrings = (modes as Record<ProcessingMode, { label: string }>)[modeKey];
               const label = tabStrings?.label ?? modeKey;
