@@ -24,6 +24,7 @@
     "preview": "npm run build && npx serve out --single",
     "start": "npx serve out --single",
     "test:e2e": "playwright test",
+    "test:checklist": "node scripts/verify-production-checklist.mjs",
     "postinstall": "node scripts/setup-pdf-worker.mjs"
   },
   "dependencies": {
