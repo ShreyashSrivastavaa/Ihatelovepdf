@@ -2,7 +2,7 @@ import routeMapJson from "../../content/i18n-route-map.json" assert { type: "jso
 import { DEFAULT_LOCALE, Locale } from "./config";
 import { OperationKey } from "../types/operations";
 
-export type StaticRouteKey = "home" | "faq" | "support";
+export type StaticRouteKey = "home" | "faq" | "support" | "privacy" | "terms" | "contact";
 
 export type RouteIdentifier =
   | { type: "static"; key: StaticRouteKey }
@@ -12,6 +12,9 @@ type RouteMap = {
   home: Record<Locale, string>;
   faq: Record<Locale, string>;
   support: Record<Locale, string>;
+  privacy: Record<Locale, string>;
+  terms: Record<Locale, string>;
+  contact: Record<Locale, string>;
   operations: Record<OperationKey, Record<Locale, string>>;
 };
 
@@ -180,6 +183,18 @@ export function getRouteIdentifierForPath(locale: Locale, pathname: string): Rou
 
   if (normalizePath(getRoutePath(locale, "support")) === normalised) {
     return { type: "static", key: "support" };
+  }
+
+  if (normalizePath(getRoutePath(locale, "privacy")) === normalised) {
+    return { type: "static", key: "privacy" };
+  }
+
+  if (normalizePath(getRoutePath(locale, "terms")) === normalised) {
+    return { type: "static", key: "terms" };
+  }
+
+  if (normalizePath(getRoutePath(locale, "contact")) === normalised) {
+    return { type: "static", key: "contact" };
   }
 
   const operationEntry = Object.entries(routeMap.operations).find(([, perLocale]) => {

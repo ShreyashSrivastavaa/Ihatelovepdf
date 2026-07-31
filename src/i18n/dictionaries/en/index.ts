@@ -32,6 +32,9 @@ export const enDictionary: Dictionary = {
     home: homePath,
     faq: getRoutePath(locale, "faq"),
     support: getRoutePath(locale, "support"),
+    privacy: getRoutePath(locale, "privacy"),
+    terms: getRoutePath(locale, "terms"),
+    contact: getRoutePath(locale, "contact"),
     operations: operationsRoutes,
   },
   metadata: {

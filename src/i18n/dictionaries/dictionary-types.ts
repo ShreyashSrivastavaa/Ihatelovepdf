@@ -528,6 +528,9 @@ export interface Dictionary {
     home: string;
     faq: string;
     support: string;
+    privacy?: string;
+    terms?: string;
+    contact?: string;
     operations: Record<OperationKey, string>;
   };
   metadata: {

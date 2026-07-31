@@ -32,6 +32,39 @@
     "ru": "/ru/podderzhka",
     "hu": "/hu/tamogatas"
   },
+  "privacy": {
+    "en": "/privacy",
+    "es": "/es/privacidad",
+    "pt": "/pt/privacidade",
+    "de": "/de/datenschutz",
+    "it": "/it/privacy",
+    "fr": "/fr/confidentialite",
+    "ro": "/ro/confidentialitate",
+    "ru": "/ru/konfidentsialnost",
+    "hu": "/hu/adatvedelem"
+  },
+  "terms": {
+    "en": "/terms",
+    "es": "/es/terminos",
+    "pt": "/pt/termos",
+    "de": "/de/nutzungsbedingungen",
+    "it": "/it/termini",
+    "fr": "/fr/conditions",
+    "ro": "/ro/termeni",
+    "ru": "/ru/usloviya",
+    "hu": "/hu/feltetelek"
+  },
+  "contact": {
+    "en": "/contact",
+    "es": "/es/contacto",
+    "pt": "/pt/contacto",
+    "de": "/de/kontakt",
+    "it": "/it/contatto",
+    "fr": "/fr/contact",
+    "ro": "/ro/contact",
+    "ru": "/ru/kontakt",
+    "hu": "/hu/kapcsolat"
+  },
   "operations": {
     "compress": {
       "en": "/compress",

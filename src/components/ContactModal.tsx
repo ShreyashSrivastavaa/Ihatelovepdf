@@ -10,6 +10,8 @@ interface ContactModalProps {
 
 const OWNER_EMAIL = 'shreyashsr2004@gmail.com';
 
+export type ContactCategory = 'General Inquiry' | 'Bug Report' | 'Feature Request' | 'Privacy Concern';
+
 export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
   const isFormAvailable = Boolean(accessKey);
@@ -17,6 +19,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    category: 'General Inquiry' as ContactCategory,
     subject: '',
     message: '',
   });
@@ -41,12 +44,12 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <div className="w-12 h-12 bg-[var(--bg-subtle)] border border-[var(--border)] rounded-2xl flex items-center justify-center mx-auto text-[var(--accent)]">
               <Mail className="h-6 w-6" />
             </div>
-            <h3 className="text-lg font-bold text-[var(--tx)]">Contact Unavailable</h3>
+            <h3 className="text-lg font-bold text-[var(--tx)]">Contact via Email</h3>
             <p className="text-xs sm:text-sm text-[var(--tx-2)] max-w-sm mx-auto leading-relaxed">
-              The contact form is temporarily unavailable. Please reach out directly at{' '}
+              Please reach out directly to our maintainer at{' '}
               <a
-                href={`mailto:${OWNER_EMAIL}`}
-                className="text-[var(--accent)] underline underline-offset-2 hover:opacity-80 transition-opacity font-medium"
+                href={`mailto:${OWNER_EMAIL}?subject=[PDFhelp]%20Inquiry`}
+                className="text-[var(--accent)] underline underline-offset-2 hover:opacity-80 transition-opacity font-semibold"
               >
                 {OWNER_EMAIL}
               </a>
@@ -66,6 +69,13 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    if (formData.message.trim().length < 20) {
+      setStatus('error');
+      setErrorMessage('Please provide a more detailed message (minimum 20 characters).');
+      return;
+    }
+
     setStatus('submitting');
     setErrorMessage('');
 
@@ -82,10 +92,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           replyto: formData.email,
           name: formData.name,
           email: formData.email,
-          subject: formData.subject
-            ? `[PDFhelp] ${formData.subject}`
-            : '[PDFhelp] New Contact Form Message',
-          message: `From: ${formData.name} <${formData.email}>\n\n${formData.message}`,
+          subject: `[PDFhelp] [${formData.category}] ${formData.subject || 'Inquiry'}`,
+          message: `Category: ${formData.category}\nFrom: ${formData.name} <${formData.email}>\n\n${formData.message}`,
           from_name: 'PDFhelp Contact Form',
           botcheck: '',
         }),
@@ -95,7 +103,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
       if (result.success) {
         setStatus('success');
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        setFormData({ name: '', email: '', category: 'General Inquiry', subject: '', message: '' });
       } else {
         setStatus('error');
         setErrorMessage(result.message || 'Failed to send message. Please try again.');
@@ -108,7 +116,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-fade-in">
-      <div className="relative w-full max-w-lg bg-[var(--bg-card)] border border-[var(--border)] rounded-2xl shadow-xl p-6 sm:p-8 text-[var(--tx)] animate-fade-in">
+      <div className="relative w-full max-w-lg bg-[var(--bg-card)] border border-[var(--border)] rounded-2xl shadow-xl p-6 sm:p-8 text-[var(--tx)] animate-fade-in max-h-[90vh] overflow-y-auto">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 p-1.5 text-[var(--tx-3)] hover:text-[var(--tx)] rounded-lg hover:bg-[var(--bg-subtle)] transition-colors"
@@ -123,7 +131,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           </div>
           <div>
             <h3 className="text-lg font-bold text-[var(--tx)]">Contact PDFhelp</h3>
-            <p className="text-xs text-[var(--tx-3)]">We respond directly to your email!</p>
+            <p className="text-xs text-[var(--tx-3)]">We respond directly to your email address!</p>
           </div>
         </div>
 
@@ -134,7 +142,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             </div>
             <h4 className="text-base font-bold text-[var(--tx)]">Message Sent Successfully!</h4>
             <p className="text-xs sm:text-sm text-[var(--tx-2)] max-w-sm mx-auto leading-relaxed">
-              Thank you for reaching out! We&apos;ve received your message and will reply directly to <strong>{formData.email || 'your email'}</strong>.
+              Thank you for reaching out! We&apos;ve received your message and will reply directly to your email.
             </p>
             <button
               onClick={() => {
@@ -155,61 +163,84 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               </div>
             )}
 
-            <div className="space-y-1">
-              <label htmlFor="contact-name" className="block text-xs font-medium text-[var(--tx-2)]">
-                Your Name <span className="text-[var(--err)]">*</span>
-              </label>
-              <input
-                id="contact-name"
-                type="text"
-                required
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                placeholder="Name"
-                className="input-modern w-full"
-              />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="space-y-1">
+                <label htmlFor="contact-name" className="block text-xs font-medium text-[var(--tx-2)]">
+                  Your Name <span className="text-[var(--err)]">*</span>
+                </label>
+                <input
+                  id="contact-name"
+                  type="text"
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  placeholder="Your Name"
+                  className="input-modern w-full"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label htmlFor="contact-email" className="block text-xs font-medium text-[var(--tx-2)]">
+                  Your Email Address <span className="text-[var(--err)]">*</span>
+                </label>
+                <input
+                  id="contact-email"
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  placeholder="you@example.com"
+                  className="input-modern w-full"
+                />
+              </div>
             </div>
 
             <div className="space-y-1">
-              <label htmlFor="contact-email" className="block text-xs font-medium text-[var(--tx-2)]">
-                Your Email Address <span className="text-[var(--err)]">*</span>
+              <label htmlFor="contact-category" className="block text-xs font-medium text-[var(--tx-2)]">
+                Category <span className="text-[var(--err)]">*</span>
               </label>
-              <input
-                id="contact-email"
-                type="email"
-                required
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                placeholder="you@example.com"
-                className="input-modern w-full"
-              />
+              <select
+                id="contact-category"
+                value={formData.category}
+                onChange={(e) => setFormData({ ...formData, category: e.target.value as ContactCategory })}
+                className="input-modern w-full cursor-pointer bg-[var(--bg-elevated)]"
+              >
+                <option value="General Inquiry">General Inquiry</option>
+                <option value="Bug Report">Bug Report</option>
+                <option value="Feature Request">Feature Request</option>
+                <option value="Privacy Concern">Privacy Concern</option>
+              </select>
             </div>
 
             <div className="space-y-1">
               <label htmlFor="contact-subject" className="block text-xs font-medium text-[var(--tx-2)]">
-                Subject
+                Subject <span className="text-[var(--err)]">*</span>
               </label>
               <input
                 id="contact-subject"
                 type="text"
+                required
                 value={formData.subject}
                 onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                placeholder="Feature suggestion / General question"
+                placeholder="Brief summary of your inquiry"
                 className="input-modern w-full"
               />
             </div>
 
             <div className="space-y-1">
-              <label htmlFor="contact-message" className="block text-xs font-medium text-[var(--tx-2)]">
-                Message <span className="text-[var(--err)]">*</span>
-              </label>
+              <div className="flex justify-between items-center">
+                <label htmlFor="contact-message" className="block text-xs font-medium text-[var(--tx-2)]">
+                  Message <span className="text-[var(--err)]">*</span>
+                </label>
+                <span className="text-[11px] text-[var(--tx-3)]">Min 20 characters</span>
+              </div>
               <textarea
                 id="contact-message"
                 required
                 rows={4}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                placeholder="How can we help you?"
+                placeholder="How can we help you today?"
                 className="input-modern w-full resize-none"
               />
             </div>
