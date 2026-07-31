@@ -2,7 +2,7 @@ import PDFProcessor from "./pdf-processor";
 import type { Dictionary } from "../i18n/dictionaries/dictionary-types";
 import { ShieldCheck, Zap, Laptop, Lock, CheckCircle2 } from "lucide-react";
 import FaqSection from "./faq-section";
-import QuickToolSelector, { type QuickToolLink } from "./QuickToolSelector";
+import ToolSwitcher, { type ToolLink } from "./ToolSwitcher";
 
 export function HomePageContent({ dictionary }: { dictionary: Dictionary }) {
   const {
@@ -10,7 +10,7 @@ export function HomePageContent({ dictionary }: { dictionary: Dictionary }) {
     routes,
   } = dictionary;
 
-  const toolQuickLinks: QuickToolLink[] = [
+  const tools: ToolLink[] = [
     { key: "merge", label: dictionary.components.footer.operations.merge, href: routes.operations.merge },
     { key: "compress", label: dictionary.components.footer.operations.compress, href: routes.operations.compress },
     { key: "split", label: dictionary.components.footer.operations.split, href: routes.operations.split },
@@ -56,8 +56,10 @@ export function HomePageContent({ dictionary }: { dictionary: Dictionary }) {
           </div>
         </section>
 
-        {/* QUICK TOOL SELECTOR COMPONENT */}
-        <QuickToolSelector links={toolQuickLinks} />
+        {/* TOOL SWITCHER */}
+        <section className="max-w-3xl mx-auto">
+          <ToolSwitcher tools={tools} activeKey={null} />
+        </section>
 
         {/* CENTERPIECE PDF PROCESSOR UI CONTAINER */}
         <section className="relative">

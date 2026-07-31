@@ -2,6 +2,8 @@ import PDFProcessor from "./pdf-processor";
 import FaqSection from "./faq-section";
 import type { OperationContent } from "../i18n/dictionaries/operation-types";
 import { CheckCircle2, ShieldCheck, HelpCircle, Sparkles } from "lucide-react";
+import OperationToolSwitcherClient from "./OperationToolSwitcherClient";
+
 
 export function OperationPageContent({
   operation,
@@ -51,6 +53,11 @@ export function OperationPageContent({
               </div>
             ))}
           </div>
+        </section>
+
+        {/* TOOL SWITCHER */}
+        <section>
+          <OperationToolSwitcherClient activeKey={operation.mode} />
         </section>
 
         {/* CENTERPIECE PROCESSOR */}
