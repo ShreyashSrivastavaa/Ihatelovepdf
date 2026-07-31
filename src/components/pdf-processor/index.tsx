@@ -86,17 +86,7 @@ const MODE_DEFAULTS: Record<ProcessingMode, PDFProcessingOptions> = {
   },
 };
 
-const MODE_TABS: ProcessingMode[] = [
-  'merge',
-  'compress',
-  'split',
-  'extract',
-  'crop',
-  'reorder',
-  'rotate',
-  'pdfToImages',
-  'imagesToPdf',
-];
+
 
 const IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp', '.tiff', '.tif'];
 const IMAGE_MIME_PREFIX = 'image/';
@@ -218,6 +208,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
     filesRef.current = files;
   }, [files]);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [mode, setMode] = useState<ProcessingMode>(initialMode);
   const [isProcessing, setIsProcessing] = useState(false);
   const [selectedPages, setSelectedPages] = useState<Record<number, boolean>>({});
@@ -682,59 +673,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
     modeOptionsRef.current[mode] = cloneOptions(processingOptions);
   }, [mode, processingOptions]);
 
-  const handleModeChange = (newMode: ProcessingMode) => {
-    if (newMode === mode) {
-      return;
-    }
 
-    modeOptionsRef.current[mode] = cloneOptions(processingOptions);
-
-    const stored = modeOptionsRef.current[newMode];
-    const nextOptions = stored ? cloneOptions(stored) : cloneOptions(MODE_DEFAULTS[newMode]);
-    const firstFile = files[0];
-    const firstFileKey = firstFile ? buildFileSignature(firstFile) : null;
-
-    setFiles(prevFiles => {
-      if (newMode === 'pdfToImages') {
-        const pdfCandidates = prevFiles.filter(candidate => isPdfFile(candidate));
-        return pdfCandidates;
-      }
-
-      if (newMode === 'imagesToPdf') {
-        return prevFiles.filter(candidate => isImageFile(candidate));
-      }
-
-      return prevFiles;
-    });
-
-    const nextSelectedPages =
-      (newMode === 'extract' || newMode === 'crop' || newMode === 'rotate') && firstFileKey
-        ? { ...(extractSelectionsByFile[firstFileKey] ?? {}) }
-        : {};
-    const nextPageOrder =
-      newMode === 'reorder' && firstFileKey && reorderOrdersByFile[firstFileKey]
-        ? [...(reorderOrdersByFile[firstFileKey] ?? [])]
-        : [];
-
-    setMode(newMode);
-    setSelectedPages(nextSelectedPages);
-    setPageOrder(nextPageOrder);
-    setCurrentFileIndex(0);
-    setCompressionSummary([]);
-    setCompressionPreviewStates({});
-    setCompressionPreviewCache({});
-    setProcessingOptions(nextOptions);
-
-    trackEvent({
-      action: 'mode_change',
-      category: 'processor',
-      label: newMode,
-      params: {
-        previous_mode: mode,
-        file_count: files.length,
-      },
-    });
-  };
 
   const triggerDownloadAction = (blob: Blob, fileName: string) => {
     const url = URL.createObjectURL(blob);
@@ -1826,7 +1765,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
     setCurrentFileIndex(index);
   };
 
-  const getModeHelpText = () => modes[mode]?.helper ?? '';
+
 
   const showProcessingOptions = files.length > 0 && !isProcessing;
 
@@ -1951,59 +1890,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
   return (
     <>
       <div className="p-6 sm:p-8 surface-card rounded-2xl shadow-sm border border-[var(--border)] space-y-6" id="pdf-processor">
-        <div className="space-y-3">
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-[var(--tx-3)] uppercase tracking-wider">
-              {processorStrings.title}
-            </h2>
-          </div>
 
-          {/* Mobile Tool Selector Dropdown (< 768px) */}
-          <div className="md:hidden">
-            <div className="relative flex items-center rounded-xl border border-[var(--border)] bg-[var(--bg-card)] px-3.5 py-3 shadow-xs">
-              <select
-                id="mobile-tool-select"
-                value={mode}
-                onChange={(e) => handleModeChange(e.target.value as ProcessingMode)}
-                className="w-full bg-transparent font-semibold text-sm text-[var(--tx)] focus:outline-none cursor-pointer"
-              >
-                {MODE_TABS.map((modeKey) => {
-                  const tabStrings = (modes as Record<ProcessingMode, { label: string }>)[modeKey];
-                  return (
-                    <option key={modeKey} value={modeKey} className="bg-[var(--bg-card)] text-[var(--tx)] font-medium">
-                      {tabStrings?.label ?? modeKey}
-                    </option>
-                  );
-                })}
-              </select>
-            </div>
-          </div>
-
-          {/* Desktop Tool Selector Tabs (>= 768px) */}
-          <div className="hidden md:flex flex-wrap gap-1 p-1 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border)]">
-            {MODE_TABS.map(modeKey => {
-              const tabStrings = (modes as Record<ProcessingMode, { label: string }>)[modeKey];
-              const label = tabStrings?.label ?? modeKey;
-              const isActive = mode === modeKey;
-              return (
-                <button
-                  key={modeKey}
-                  type="button"
-                  className={`px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all duration-150 ${
-                    isActive
-                      ? 'bg-[var(--bg-card)] text-[var(--accent)] shadow-xs border border-[var(--border)] font-semibold'
-                      : 'text-[var(--tx-2)] hover:text-[var(--tx)] hover:bg-[var(--bg-card)]/50'
-                  }`}
-                  onClick={() => handleModeChange(modeKey)}
-                >
-                  {label}
-                </button>
-              );
-            })}
-          </div>
-
-          <p className="text-xs sm:text-sm text-[var(--tx-2)] pt-1">{getModeHelpText()}</p>
-        </div>
 
         <div className="mb-6">
           <div className="flex justify-between items-center mb-4">
