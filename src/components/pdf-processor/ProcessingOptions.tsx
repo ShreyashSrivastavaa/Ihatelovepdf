@@ -187,24 +187,6 @@ export default function ProcessingOptions({ mode, options, onOptionsChangeAction
 
   if (mode === 'merge') {
     const mergeStrings = processingStrings.merge;
-    const metadataTitle = options.metadata?.title ?? '';
-    const metadataAuthor = options.metadata?.author ?? '';
-    const handleMetadataChange = (field: 'title' | 'author', value: string) => {
-      const nextMeta = {
-        ...options.metadata,
-        [field]: value,
-      };
-      const cleanedEntries = Object.entries(nextMeta)
-        .filter(([, val]) => typeof val === 'string' && val.length > 0);
-
-      onOptionsChangeAction({
-        ...options,
-        metadata: cleanedEntries.length > 0
-          ? (Object.fromEntries(cleanedEntries) as Record<string, string>)
-          : undefined,
-      });
-    };
-
     return (
       <div className="mt-6 space-y-4 pt-4 border-t border-[var(--border)]">
         <h3 className="text-xs font-semibold text-[var(--tx-3)] uppercase tracking-wider">{mergeStrings.title}</h3>
@@ -219,35 +201,6 @@ export default function ProcessingOptions({ mode, options, onOptionsChangeAction
             />
             <span className="text-xs sm:text-sm font-medium text-[var(--tx)]">{mergeStrings.pageDivider}</span>
           </label>
-        </div>
-        <div className="space-y-3 rounded-xl border border-[var(--border)] bg-[var(--bg-subtle)] p-4">
-          <p className="text-xs font-medium text-[var(--tx-2)]">{mergeStrings.metadataHint}</p>
-          <div className="grid gap-3 sm:grid-cols-2">
-            <div className="space-y-1">
-              <label className="block text-xs font-medium text-[var(--tx-2)]" htmlFor="merge-metadata-title">
-                {mergeStrings.metadataTitle}
-              </label>
-              <input
-                id="merge-metadata-title"
-                type="text"
-                value={metadataTitle}
-                onChange={event => handleMetadataChange('title', event.target.value)}
-                className="input-modern w-full"
-              />
-            </div>
-            <div className="space-y-1">
-              <label className="block text-xs font-medium text-[var(--tx-2)]" htmlFor="merge-metadata-author">
-                {mergeStrings.metadataAuthor}
-              </label>
-              <input
-                id="merge-metadata-author"
-                type="text"
-                value={metadataAuthor}
-                onChange={event => handleMetadataChange('author', event.target.value)}
-                className="input-modern w-full"
-              />
-            </div>
-          </div>
         </div>
       </div>
     );
