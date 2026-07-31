@@ -85,7 +85,7 @@ export function SupportPageContent() {
           <ul className="space-y-3">
             {transparency.items.map((item) => (
               <li key={item} className="flex items-start gap-3">
-                <span className="text-[var(--accent)] mt-1">•</span>
+                <span className="text-[var(--accent)] mt-1">â€¢</span>
                 <p className="text-sm text-[var(--tx-2)] leading-relaxed">{item}</p>
               </li>
             ))}
@@ -139,7 +139,7 @@ export function SupportPageContent() {
             </h3>
             <ul className="space-y-2">
               {legalNotice.points.map((point) => (
-                <li key={point}>• {point}</li>
+                <li key={point}>â€¢ {point}</li>
               ))}
             </ul>
           </section>

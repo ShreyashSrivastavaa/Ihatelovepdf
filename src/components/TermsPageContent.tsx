@@ -23,7 +23,7 @@ export default function TermsPageContent() {
             Terms of Service
           </h1>
           <p className="text-sm sm:text-base text-[var(--tx-2)] max-w-2xl mx-auto leading-relaxed">
-            Please read these terms carefully before using PDFhelp. By accessing or using our browser PDF toolkit, you agree to be bound by these terms.
+            Please read these terms carefully before using ihatelovepdf. By accessing or using our browser PDF toolkit, you agree to be bound by these terms.
           </p>
           <div className="text-xs text-[var(--tx-3)] pt-2">
             Last Updated: July 31, 2026
@@ -38,7 +38,7 @@ export default function TermsPageContent() {
             </div>
             <h3 className="text-sm font-bold text-[var(--tx)]">100% Free License</h3>
             <p className="text-xs text-[var(--tx-2)] leading-relaxed">
-              PDFhelp is completely free for both personal and commercial document manipulation without paywalls.
+              ihatelovepdf is completely free for both personal and commercial document manipulation without paywalls.
             </p>
           </div>
 
@@ -71,7 +71,7 @@ export default function TermsPageContent() {
               <span className="text-[var(--accent)] font-mono text-base">1.</span> Acceptance of Terms
             </h2>
             <p>
-              By accessing and using PDFhelp (accessible at <code>pdfhelp.com</code>), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by these terms, please do not use this service.
+              By accessing and using ihatelovepdf (accessible at <code>ihatelovepdf.com</code>), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by these terms, please do not use this service.
             </p>
           </section>
 
@@ -80,7 +80,7 @@ export default function TermsPageContent() {
               <span className="text-[var(--accent)] font-mono text-base">2.</span> Grant of Use License
             </h2>
             <p>
-              Permission is granted to use PDFhelp for personal, educational, non-profit, or commercial document processing purposes free of charge. Under this license you may:
+              Permission is granted to use ihatelovepdf for personal, educational, non-profit, or commercial document processing purposes free of charge. Under this license you may:
             </p>
             <ul className="list-disc list-inside space-y-1.5 pl-2">
               <li>Process, merge, compress, split, crop, rotate, and convert unlimited PDF files locally</li>
@@ -93,7 +93,7 @@ export default function TermsPageContent() {
               <span className="text-[var(--accent)] font-mono text-base">3.</span> Disclaimer of Warranties (&quot;As-Is&quot;)
             </h2>
             <p>
-              PDFhelp is provided strictly on an &quot;AS IS&quot; and &quot;AS AVAILABLE&quot; basis without warranties of any kind, whether express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement.
+              ihatelovepdf is provided strictly on an &quot;AS IS&quot; and &quot;AS AVAILABLE&quot; basis without warranties of any kind, whether express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement.
             </p>
             <div className="p-3 bg-[var(--warning-soft)] border border-[var(--warning)]/30 rounded-xl text-xs text-[var(--warning)] font-medium flex items-center gap-2">
               <AlertTriangle className="h-4 w-4 shrink-0" />
@@ -106,7 +106,7 @@ export default function TermsPageContent() {
               <span className="text-[var(--accent)] font-mono text-base">4.</span> Limitation of Liability
             </h2>
             <p>
-              In no event shall PDFhelp, its maintainers, or open-source contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including loss of data, document corruption, business interruption, or system crash) arising in any way out of the use of this software tool.
+              In no event shall ihatelovepdf, its maintainers, or open-source contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including loss of data, document corruption, business interruption, or system crash) arising in any way out of the use of this software tool.
             </p>
           </section>
 
@@ -114,7 +114,7 @@ export default function TermsPageContent() {
             <h2 className="text-lg font-bold text-[var(--tx)] flex items-center gap-2">
               <span className="text-[var(--accent)] font-mono text-base">5.</span> Prohibited Uses
             </h2>
-            <p>You agree not to use PDFhelp to:</p>
+            <p>You agree not to use ihatelovepdf to:</p>
             <ul className="list-disc list-inside space-y-1.5 pl-2">
               <li>Process content that violates applicable local, national, or international laws</li>
               <li>Infringe upon the intellectual property rights or copyright of third parties</li>
@@ -128,7 +128,7 @@ export default function TermsPageContent() {
               <span className="text-[var(--accent)] font-mono text-base">6.</span> Intellectual Property & Open Source
             </h2>
             <p>
-              PDFhelp is built upon established open-source software libraries, including PDF-lib (MIT License), PDF.js (Apache License 2.0), and Next.js (MIT License). All trademarks, service marks, and brand names are the property of their respective owners.
+              ihatelovepdf is built upon established open-source software libraries, including PDF-lib (MIT License), PDF.js (Apache License 2.0), and Next.js (MIT License). All trademarks, service marks, and brand names are the property of their respective owners.
             </p>
           </section>
 

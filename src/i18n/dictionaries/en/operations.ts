@@ -7,7 +7,7 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
     slug: "compress",
     mode: "compress",
     meta: {
-      title: "Compress PDF Online for Free | Reduce Size | PDFhelp",
+      title: "Compress PDF Online for Free | Reduce Size | ihatelovepdf",
       description:
         "Shrink PDF file size efficiently without quality loss. Private, free compression directly in your browser.",
       keywords: [
@@ -17,23 +17,23 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
         "pdf compressor",
         "lightweight pdf",
       ],
-      ogTitle: "Compress PDFs without losing quality | PDFhelp",
+      ogTitle: "Compress PDFs without losing quality | ihatelovepdf",
       ogDescription:
-        "Drop your file, choose the optimal compression level, and download a significantly smaller PDF in seconds — completely secure with no server uploads.",
-      ogImageAlt: "PDFhelp compression tool interface",
+        "Drop your file, choose the optimal compression level, and download a significantly smaller PDF in seconds â€” completely secure with no server uploads.",
+      ogImageAlt: "ihatelovepdf compression tool interface",
     },
     hero: {
       title: "Compress PDF online with clear results",
       description:
         "Reduce document size so it meets email limits, LMS platforms, or public procedures while keeping every page readable.",
       bulletPoints: [
-        "100% local processing — your files never leave the browser",
+        "100% local processing â€” your files never leave the browser",
         "Choose basic, medium, or aggressive compression depending on your goals",
         "Preserve metadata and document structure when you need it",
       ],
-      imageAlt: "PDF compression workflow in PDFhelp",
+      imageAlt: "PDF compression workflow in ihatelovepdf",
     },
-    benefitsTitle: "Why compress PDFs with PDFhelp",
+    benefitsTitle: "Why compress PDFs with ihatelovepdf",
     benefits: [
       {
         title: "Balanced quality",
@@ -52,11 +52,11 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
       },
     ],
     howTo: {
-      title: "How to compress a PDF with PDFhelp",
+      title: "How to compress a PDF with ihatelovepdf",
       steps: [
-        "Click “Upload your files” and pick the PDF you want to optimize.",
+        "Click â€œUpload your filesâ€ and pick the PDF you want to optimize.",
         "Choose the compression level and tweak advanced options like keeping metadata.",
-        "Press “Process” and download the compressed document within seconds.",
+        "Press â€œProcessâ€ and download the compressed document within seconds.",
       ],
       note:
         "Working with multiple reports? Compress them one by one with no daily limits or watermarks.",
@@ -74,7 +74,7 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
     slug: "images-to-pdf",
     mode: "imagesToPdf",
     meta: {
-      title: "Create PDF from Images | JPG, PNG to PDF | PDFhelp",
+      title: "Create PDF from Images | JPG, PNG to PDF | ihatelovepdf",
       description:
         "Create a professional PDF from your images. Arrange photos, customize layout and margins, and generate your document locally in your browser.",
       keywords: [
@@ -84,10 +84,10 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
         "webp to pdf",
         "create pdf from images",
       ],
-      ogTitle: "Build a clean PDF from your images | PDFhelp",
+      ogTitle: "Build a clean PDF from your images | ihatelovepdf",
       ogDescription:
-        "Drag your images into place, define the layout settings, and export a print-ready PDF file — with no uploads or watermarks attached.",
-      ogImageAlt: "Creating a PDF from images in PDFhelp",
+        "Drag your images into place, define the layout settings, and export a print-ready PDF file â€” with no uploads or watermarks attached.",
+      ogImageAlt: "Creating a PDF from images in ihatelovepdf",
     },
     hero: {
       title: "Create a polished PDF from images",
@@ -100,7 +100,7 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
       ],
       imageAlt: "Images to PDF workflow",
     },
-    benefitsTitle: "Why assemble PDFs from images with PDFhelp",
+    benefitsTitle: "Why assemble PDFs from images with ihatelovepdf",
     benefits: [
       {
         title: "Consistent layout",
@@ -123,7 +123,7 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
       steps: [
         "Add the images you want to include. Reorder them so the sequence matches your final document.",
         "Adjust fit mode, page size, orientation, and margins to match your output needs.",
-        "Click “Create PDF” to download a compiled document ready to share or archive.",
+        "Click â€œCreate PDFâ€ to download a compiled document ready to share or archive.",
       ],
       note:
         "Large batches? Compress the resulting PDF or split it afterwards without re-uploading your images.",
@@ -141,7 +141,7 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
     slug: "merge",
     mode: "merge",
     meta: {
-      title: "Merge PDF Online | Combine Multiple PDFs Free | PDFhelp",
+      title: "Merge PDF Online | Combine Multiple PDFs Free | ihatelovepdf",
       description:
         "Combine multiple PDF files into a single, organized document with no page limits. Drag, reorder, and download your merged file instantly and privately.",
       keywords: [
@@ -151,23 +151,23 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
         "pdf merger",
         "merge documents",
       ],
-      ogTitle: "Merge multiple PDFs in seconds | PDFhelp",
+      ogTitle: "Merge multiple PDFs in seconds | ihatelovepdf",
       ogDescription:
         "Arrange your documents in the perfect order, adjust settings, and download a unified PDF file without ever uploading your data to the cloud.",
-      ogImageAlt: "Combining multiple PDFs inside PDFhelp",
+      ogImageAlt: "Combining multiple PDFs inside ihatelovepdf",
     },
     hero: {
-      title: "Merge PDFs online — fast and secure",
+      title: "Merge PDFs online â€” fast and secure",
       description:
         "Build one polished file with contracts, class notes, or policy documents ready to send, sign, or archive.",
       bulletPoints: [
         "Drag and drop to control the final order",
-        "No hidden limits — merge long documents for free",
+        "No hidden limits â€” merge long documents for free",
         "Keep bookmarks and metadata when you need them",
       ],
       imageAlt: "Merging PDF documents",
     },
-    benefitsTitle: "Benefits of merging with PDFhelp",
+    benefitsTitle: "Benefits of merging with ihatelovepdf",
     benefits: [
       {
         title: "Consistent delivery",
@@ -186,11 +186,11 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
       },
     ],
     howTo: {
-      title: "How to merge PDFs with PDFhelp",
+      title: "How to merge PDFs with ihatelovepdf",
       steps: [
-        "Click “Upload your files” and select at least two PDFs.",
+        "Click â€œUpload your filesâ€ and select at least two PDFs.",
         "Use the arrows or drag each file to define the final sequence.",
-        "Pick your bookmark preferences and hit “Process” to download the merged PDF.",
+        "Pick your bookmark preferences and hit â€œProcessâ€ to download the merged PDF.",
       ],
       note:
         "Need to add more files later? Drop them in at any point without restarting.",
@@ -208,7 +208,7 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
     slug: "split",
     mode: "split",
     meta: {
-      title: "Split PDF by Pages or Chapters | Free Tool | PDFhelp",
+      title: "Split PDF by Pages or Chapters | Free Tool | ihatelovepdf",
       description:
         "Separate your PDF into multiple files by page ranges or specific chapters. Enjoy full control over your document structure with zero server uploads.",
       keywords: [
@@ -218,10 +218,10 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
         "pdf splitter",
         "slice pdf",
       ],
-      ogTitle: "Split your PDFs with precision | PDFhelp",
+      ogTitle: "Split your PDFs with precision | ihatelovepdf",
       ogDescription:
         "Choose exactly how to split your document, generate as many individual files as you need, and download them instantly to your device.",
-      ogImageAlt: "Splitting a PDF inside PDFhelp",
+      ogImageAlt: "Splitting a PDF inside ihatelovepdf",
     },
     hero: {
       title: "Split PDFs by pages or segments",
@@ -234,7 +234,7 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
       ],
       imageAlt: "PDF splitting workflow",
     },
-    benefitsTitle: "What splitting with PDFhelp gives you",
+    benefitsTitle: "What splitting with ihatelovepdf gives you",
     benefits: [
       {
         title: "Control over shared information",
@@ -253,14 +253,14 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
       },
     ],
     howTo: {
-      title: "How to split a PDF with PDFhelp",
+      title: "How to split a PDF with ihatelovepdf",
       steps: [
         "Upload the PDF you want to segment from your device.",
-        "Pick whether you’ll split by a fixed number of pages or by file size.",
-        "Press “Process” and download the newly generated documents automatically.",
+        "Pick whether youâ€™ll split by a fixed number of pages or by file size.",
+        "Press â€œProcessâ€ and download the newly generated documents automatically.",
       ],
       note:
-        "PDFhelp downloads the first file immediately and saves the rest to your device without extra steps.",
+        "ihatelovepdf downloads the first file immediately and saves the rest to your device without extra steps.",
     },
     useCasesTitle: "Typical scenarios for splitting PDFs",
     useCases: [
@@ -275,7 +275,7 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
     slug: "extract",
     mode: "extract",
     meta: {
-      title: "Extract PDF Pages | Save Selected Pages | PDFhelp",
+      title: "Extract PDF Pages | Save Selected Pages | ihatelovepdf",
       description:
         "Select specific pages from any PDF and create a new, tailored document instantly. Experience private, unlimited processing directly in your web browser.",
       keywords: [
@@ -285,10 +285,10 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
         "pdf page extractor",
         "create new pdf",
       ],
-      ogTitle: "Extract only the pages you need | PDFhelp",
+      ogTitle: "Extract only the pages you need | ihatelovepdf",
       ogDescription:
         "Mark the relevant pages you want to keep, generate a new PDF file in seconds, and ensure your data stays secure on your own device.",
-      ogImageAlt: "Selecting PDF pages in PDFhelp",
+      ogImageAlt: "Selecting PDF pages in ihatelovepdf",
     },
     hero: {
       title: "Extract specific PDF pages",
@@ -301,7 +301,7 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
       ],
       imageAlt: "Extracting pages from a PDF",
     },
-    benefitsTitle: "Benefits of extracting pages with PDFhelp",
+    benefitsTitle: "Benefits of extracting pages with ihatelovepdf",
     benefits: [
       {
         title: "More relevant documents",
@@ -320,11 +320,11 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
       },
     ],
     howTo: {
-      title: "How to extract pages with PDFhelp",
+      title: "How to extract pages with ihatelovepdf",
       steps: [
         "Upload the PDF and choose the file you want to work with.",
         "Select the pages you need from the thumbnail grid.",
-        "Click “Process” to download a PDF with the selected pages.",
+        "Click â€œProcessâ€ to download a PDF with the selected pages.",
       ],
       note:
         "You can combine extraction with other operations like merging or compressing in separate sessions.",
@@ -342,7 +342,7 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
     slug: "crop",
     mode: "crop",
     meta: {
-      title: "Crop PDF Pages Online | Trim PDF Margins | PDFhelp",
+      title: "Crop PDF Pages Online | Trim PDF Margins | ihatelovepdf",
       description:
         "Crop PDF pages and trim excess margins directly in your browser. Select the pages, define the crop area, and download the result privately.",
       keywords: [
@@ -354,10 +354,10 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
         "free pdf cropper",
         "remove white space pdf",
       ],
-      ogTitle: "Crop PDF pages locally in your browser | PDFhelp",
+      ogTitle: "Crop PDF pages locally in your browser | ihatelovepdf",
       ogDescription:
         "Trim white margins and focus each page on the content you need, all with private on-device processing and no server uploads.",
-      ogImageAlt: "Cropping PDF pages in PDFhelp",
+      ogImageAlt: "Cropping PDF pages in ihatelovepdf",
     },
     hero: {
       title: "Crop PDF pages and trim margins",
@@ -370,7 +370,7 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
       ],
       imageAlt: "PDF crop workflow",
     },
-    benefitsTitle: "Why crop PDFs with PDFhelp",
+    benefitsTitle: "Why crop PDFs with ihatelovepdf",
     benefits: [
       {
         title: "Cleaner pages",
@@ -389,7 +389,7 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
       },
     ],
     howTo: {
-      title: "How to crop PDF pages with PDFhelp",
+      title: "How to crop PDF pages with ihatelovepdf",
       steps: [
         "Upload the PDF and choose the file whose pages you want to crop.",
         "Select the pages to edit and set the top, right, bottom, and left crop margins.",
@@ -411,7 +411,7 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
     slug: "rotate",
     mode: "rotate",
     meta: {
-      title: "Rotate PDF Pages Online | Turn Selected Pages | PDFhelp",
+      title: "Rotate PDF Pages Online | Turn Selected Pages | ihatelovepdf",
       description:
         "Rotate selected PDF pages by 90 or 180 degrees directly in your browser. Private, free, and fully local.",
       keywords: [
@@ -421,10 +421,10 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
         "fix sideways pdf",
         "pdf page rotation",
       ],
-      ogTitle: "Rotate PDF pages in seconds | PDFhelp",
+      ogTitle: "Rotate PDF pages in seconds | ihatelovepdf",
       ogDescription:
         "Select the pages that need a new orientation, choose 90 or 180 degrees, and download the corrected PDF without uploading anything.",
-      ogImageAlt: "Rotating PDF pages in PDFhelp",
+      ogImageAlt: "Rotating PDF pages in ihatelovepdf",
     },
     hero: {
       title: "Rotate PDF pages without losing quality",
@@ -437,7 +437,7 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
       ],
       imageAlt: "PDF page rotation workflow",
     },
-    benefitsTitle: "Why rotate pages with PDFhelp",
+    benefitsTitle: "Why rotate pages with ihatelovepdf",
     benefits: [
       {
         title: "Precise corrections",
@@ -478,7 +478,7 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
     slug: "reorder",
     mode: "reorder",
     meta: {
-      title: "Reorder PDF Pages | Change Page Order Fast | PDFhelp",
+      title: "Reorder PDF Pages | Change Page Order Fast | ihatelovepdf",
       description:
         "Easily reorganize your PDF pages with a simple drag and drop interface. Fix document order and save the result instantly, all happening locally.",
       keywords: [
@@ -488,7 +488,7 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
         "rearrange pdf",
         "sort pdf pages",
       ],
-      ogTitle: "Organise PDF pages without reinstalling software | PDFhelp",
+      ogTitle: "Organise PDF pages without reinstalling software | ihatelovepdf",
       ogDescription:
         "Move pages to their correct position, fix sorting errors, and download your perfectly organized PDF document in just a few moments.",
       ogImageAlt: "Reordering PDF pages",
@@ -504,7 +504,7 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
       ],
       imageAlt: "Page ordering interface",
     },
-    benefitsTitle: "Why reorder with PDFhelp",
+    benefitsTitle: "Why reorder with ihatelovepdf",
     benefits: [
       {
         title: "Faster workflows",
@@ -523,11 +523,11 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
       },
     ],
     howTo: {
-      title: "How to reorder pages with PDFhelp",
+      title: "How to reorder pages with ihatelovepdf",
       steps: [
         "Upload the PDF and choose the file you want to edit.",
         "Drag each thumbnail until the order is correct.",
-        "Hit “Process” to download the document with its new sequence.",
+        "Hit â€œProcessâ€ to download the document with its new sequence.",
       ],
       note:
         "Keep adjusting the order even after an export without re-uploading the file.",
@@ -545,9 +545,9 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
     slug: "pdf-to-images",
     mode: "pdfToImages",
     meta: {
-      title: "Convert PDF pages to images | PNG or JPEG export | PDFhelp",
+      title: "Convert PDF pages to images | PNG or JPEG export | ihatelovepdf",
       description:
-        "Convert every page of your PDF into high-quality PNG or JPEG images. Choose your resolution and download as a ZIP file — 100% private and secure.",
+        "Convert every page of your PDF into high-quality PNG or JPEG images. Choose your resolution and download as a ZIP file â€” 100% private and secure.",
       keywords: [
         "pdf to images",
         "export pdf pages",
@@ -555,10 +555,10 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
         "pdf to jpeg",
         "download pdf as images",
       ],
-      ogTitle: "Export PDF pages as clean images | PDFhelp",
+      ogTitle: "Export PDF pages as clean images | ihatelovepdf",
       ogDescription:
         "Render each page as a crisp image directly in your browser. Adjust quality, set filenames, and get a tidy ZIP archive instantly.",
-      ogImageAlt: "PDFhelp exporting PDF pages to images",
+      ogImageAlt: "ihatelovepdf exporting PDF pages to images",
     },
     hero: {
       title: "Convert PDF pages to PNG or JPEG",
@@ -567,11 +567,11 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
       bulletPoints: [
         "Select PNG or JPEG and control the export DPI",
         "Bundle everything in a single ZIP or download page by page",
-        "Local rendering only — no uploads, no trace",
+        "Local rendering only â€” no uploads, no trace",
       ],
       imageAlt: "PDF to images workflow",
     },
-    benefitsTitle: "Why export PDFs with PDFhelp",
+    benefitsTitle: "Why export PDFs with ihatelovepdf",
     benefits: [
       {
         title: "Presentation-ready quality",
@@ -594,7 +594,7 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
       steps: [
         "Upload the PDF you want to convert. We render one file at a time for accuracy.",
         "Pick PNG or JPEG, adjust the DPI, and decide whether to bundle results inside a ZIP.",
-        "Click “Export images” to download the archive or individual files instantly.",
+        "Click â€œExport imagesâ€ to download the archive or individual files instantly.",
       ],
       note:
         "Need only a few pages? Split or extract first, then export to images to keep downloads focused.",

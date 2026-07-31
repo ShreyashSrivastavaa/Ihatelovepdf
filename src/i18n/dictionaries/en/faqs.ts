@@ -1,36 +1,36 @@
 export const faqsEn = {
   common: [
     {
-      question: "How does PDFhelp process documents without uploading them to servers?",
+      question: "How does ihatelovepdf process documents without uploading them to servers?",
       answer:
-        "PDFhelp processes all files 100% locally in your web browser using modern WebAssembly and JavaScript engines. Your files are never uploaded to any cloud server, guaranteeing complete data privacy and security.",
+        "ihatelovepdf processes all files 100% locally in your web browser using modern WebAssembly and JavaScript engines. Your files are never uploaded to any cloud server, guaranteeing complete data privacy and security.",
     },
     {
-      question: "Is PDFhelp safe for confidential and sensitive documents?",
+      question: "Is ihatelovepdf safe for confidential and sensitive documents?",
       answer:
-        "Yes, absolutely. Because all operations execute locally on your device, your files never leave your computer or phone — not even PDFhelp servers can view or access your content.",
+        "Yes, absolutely. Because all operations execute locally on your device, your files never leave your computer or phone â€” not even ihatelovepdf servers can view or access your content.",
     },
     {
       question: "Is there a limit on file size or the number of PDFs I can process?",
       answer:
-        "There are no artificial software limits. Processing speed and capacity depend on your device's memory and CPU. PDFhelp comfortably handles large documents up to several hundred megabytes.",
+        "There are no artificial software limits. Processing speed and capacity depend on your device's memory and CPU. ihatelovepdf comfortably handles large documents up to several hundred megabytes.",
     },
     {
-      question: "Does PDFhelp work on mobile devices and tablets?",
+      question: "Does ihatelovepdf work on mobile devices and tablets?",
       answer:
-        "Yes! PDFhelp is fully responsive and optimized to run smoothly across mobile phones, tablets, laptops, and desktop computers.",
+        "Yes! ihatelovepdf is fully responsive and optimized to run smoothly across mobile phones, tablets, laptops, and desktop computers.",
     },
   ],
   regional: [
     {
-      question: "Does PDFhelp comply with strict privacy regulations (GDPR, HIPAA, LGPD)?",
+      question: "Does ihatelovepdf comply with strict privacy regulations (GDPR, HIPAA, LGPD)?",
       answer:
-        "Yes. Since no document data is ever collected, stored, or transmitted over the internet, PDFhelp naturally aligns with GDPR, HIPAA, LGPD, and enterprise privacy standards.",
+        "Yes. Since no document data is ever collected, stored, or transmitted over the internet, ihatelovepdf naturally aligns with GDPR, HIPAA, LGPD, and enterprise privacy standards.",
     },
     {
-      question: "Can I use PDFhelp for official government forms, invoices, and legal contracts?",
+      question: "Can I use ihatelovepdf for official government forms, invoices, and legal contracts?",
       answer:
-        "Definitely. PDFhelp preserves document formatting, fonts, and original resolution, making it ideal for preparing official paperwork, invoices, and legal records.",
+        "Definitely. ihatelovepdf preserves document formatting, fonts, and original resolution, making it ideal for preparing official paperwork, invoices, and legal records.",
     },
     {
       question: "Will PDF compression compromise document validity or quality?",
@@ -40,9 +40,9 @@ export const faqsEn = {
   ],
   tech: [
     {
-      question: "What technology powers PDFhelp?",
+      question: "What technology powers ihatelovepdf?",
       answer:
-        "PDFhelp leverages high-performance browser technologies including PDF-lib, PDF.js, and WebAssembly to perform native PDF manipulation directly inside client browsers.",
+        "ihatelovepdf leverages high-performance browser technologies including PDF-lib, PDF.js, and WebAssembly to perform native PDF manipulation directly inside client browsers.",
     },
     {
       question: "Are interactive form fields, bookmarks, and links preserved during compression?",
@@ -52,7 +52,7 @@ export const faqsEn = {
     {
       question: "Which web browsers are supported?",
       answer:
-        "PDFhelp is compatible with all modern web browsers, including Google Chrome, Mozilla Firefox, Apple Safari, Microsoft Edge, and Opera.",
+        "ihatelovepdf is compatible with all modern web browsers, including Google Chrome, Mozilla Firefox, Apple Safari, Microsoft Edge, and Opera.",
     },
     {
       question: "Can I convert PDFs to images and vice versa?",

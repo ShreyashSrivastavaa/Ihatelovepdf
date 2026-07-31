@@ -19,7 +19,7 @@ export default function Footer() {
           
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-6 border-b border-[var(--border)]">
             <div className="flex items-center gap-2">
-              <span className="text-lg font-bold text-[var(--tx)]">PDFhelp</span>
+              <span className="text-lg font-bold text-[var(--tx)]">ihatelovepdf</span>
               <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full border border-[var(--success-border)] bg-[var(--success-soft)] text-xs font-medium text-[var(--tx)]">
                 <ShieldCheck className="h-3.5 w-3.5 text-[var(--success)]" />
                 100% Private

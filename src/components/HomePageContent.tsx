@@ -66,7 +66,7 @@ export function HomePageContent({ dictionary }: { dictionary: Dictionary }) {
           <PDFProcessor />
         </section>
 
-        {/* WHY PDFHELP / VALUE PROPOSITION */}
+        {/* WHY ihatelovepdf / VALUE PROPOSITION */}
         <section className="py-8 border-t border-[var(--border)]">
           <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--tx)]">

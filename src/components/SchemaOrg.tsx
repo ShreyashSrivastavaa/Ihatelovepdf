@@ -4,7 +4,7 @@ export function SchemaOrg() {
     const schema = {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": "PDFhelp",
+        "name": "ihatelovepdf",
         "applicationCategory": "UtilitiesApplication",
         "operatingSystem": "Any",
         "offers": {
@@ -25,7 +25,7 @@ export function SchemaOrg() {
         "softwareRequirements": "Modern Web Browser",
         "author": {
             "@type": "Organization",
-            "name": "PDFhelp"
+            "name": "ihatelovepdf"
         }
     };
 

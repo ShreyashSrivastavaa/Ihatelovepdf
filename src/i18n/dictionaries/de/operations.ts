@@ -1,4 +1,4 @@
-﻿import { OperationContent } from "../operation-types";
+import { OperationContent } from "../operation-types";
 import { OperationKey } from "../../../types/operations";
 
 const operationsDeContent: Record<OperationKey, OperationContent> = {
@@ -7,7 +7,7 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
     slug: "komprimieren",
     mode: "compress",
     meta: {
-      title: "PDF online komprimieren | GrÃ¶ÃŸe reduzieren | PDFhelp",
+      title: "PDF online komprimieren | GrÃ¶ÃŸe reduzieren | ihatelovepdf",
       description:
         "Reduziere PDF-GrÃ¶ÃŸe effizient ohne QualitÃ¤tsverlust. 100% privat und kostenlos direkt im Browser.",
       keywords: [
@@ -17,10 +17,10 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
         "pdf kompressor",
         "leichtes pdf",
       ],
-      ogTitle: "PDFs komprimieren ohne QualitÃ¤tsverlust | PDFhelp",
+      ogTitle: "PDFs komprimieren ohne QualitÃ¤tsverlust | ihatelovepdf",
       ogDescription:
         "Ziehe deine Datei in das Feld, wÃ¤hle die optimale Kompressionsstufe und lade das verkleinerte PDF in Sekunden herunter â€“ sicher und ohne Server-Upload.",
-      ogImageAlt: "PDFhelp OberflÃ¤che beim Komprimieren",
+      ogImageAlt: "ihatelovepdf OberflÃ¤che beim Komprimieren",
     },
     hero: {
       title: "PDF online komprimieren â€“ mit klaren Ergebnissen",
@@ -31,9 +31,9 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
         "Zwischen leichter, mittlerer oder starker Kompression wÃ¤hlen",
         "Metadaten und Struktur bei Bedarf beibehalten",
       ],
-      imageAlt: "PDF Komprimierungsablauf in PDFhelp",
+      imageAlt: "PDF Komprimierungsablauf in ihatelovepdf",
     },
-    benefitsTitle: "Warum PDFs mit PDFhelp komprimieren",
+    benefitsTitle: "Warum PDFs mit ihatelovepdf komprimieren",
     benefits: [
       {
         title: "Ausgewogenes Ergebnis",
@@ -52,7 +52,7 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
       },
     ],
     howTo: {
-      title: "So komprimierst du ein PDF mit PDFhelp",
+      title: "So komprimierst du ein PDF mit ihatelovepdf",
       steps: [
         "Auf \"Dateien hochladen\" klicken und das gewÃ¼nschte PDF auswÃ¤hlen.",
         "Kompressionsstufe wÃ¤hlen und optional Metadaten erhalten.",
@@ -74,7 +74,7 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
     slug: "zusammenfuehren",
     mode: "merge",
     meta: {
-      title: "PDFs online zusammenfÃ¼hren | Kombinieren | PDFhelp",
+      title: "PDFs online zusammenfÃ¼hren | Kombinieren | ihatelovepdf",
       description:
         "FÃ¼ge mehrere PDF-Dateien zu einem einzigen, geordneten Dokument zusammen. Einfach per Drag & Drop sortieren und sofort sicher herunterladen â€“ ohne Seitenlimit.",
       keywords: [
@@ -84,10 +84,10 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
         "pdf merger",
         "dokumente vereinen",
       ],
-      ogTitle: "Mehrere PDFs in Sekunden kombinieren | PDFhelp",
+      ogTitle: "Mehrere PDFs in Sekunden kombinieren | ihatelovepdf",
       ogDescription:
         "Ordne deine Dokumente beliebig an, passe die Einstellungen an und erhalte ein perfekt zusammengefÃ¼gtes PDF, ohne dass Daten in die Cloud gelangen.",
-      ogImageAlt: "ZusammenfÃ¼hren von PDFs mit PDFhelp",
+      ogImageAlt: "ZusammenfÃ¼hren von PDFs mit ihatelovepdf",
     },
     hero: {
       title: "PDFs online zusammenfÃ¼hren â€“ schnell und sicher",
@@ -100,7 +100,7 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
       ],
       imageAlt: "PDF ZusammenfÃ¼hrung",
     },
-    benefitsTitle: "Vorteile der ZusammenfÃ¼hrung mit PDFhelp",
+    benefitsTitle: "Vorteile der ZusammenfÃ¼hrung mit ihatelovepdf",
     benefits: [
       {
         title: "Konsistente Ãœbergabe",
@@ -119,7 +119,7 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
       },
     ],
     howTo: {
-      title: "So fÃ¼hrst du PDFs mit PDFhelp zusammen",
+      title: "So fÃ¼hrst du PDFs mit ihatelovepdf zusammen",
       steps: [
         "Auf \"Dateien hochladen\" klicken und mindestens zwei PDFs auswÃ¤hlen.",
         "Mit Pfeilen oder Drag & Drop die gewÃ¼nschte Reihenfolge festlegen.",
@@ -141,7 +141,7 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
     slug: "teilen",
     mode: "split",
     meta: {
-      title: "PDF nach Seiten oder Kapiteln teilen | Kostenlos | PDFhelp",
+      title: "PDF nach Seiten oder Kapiteln teilen | Kostenlos | ihatelovepdf",
       description:
         "Teile groÃŸe PDFs in handliche Dateien auf. Volle Kontrolle Ã¼ber deine Daten mit lokaler Verarbeitung.",
       keywords: [
@@ -151,10 +151,10 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
         "pdf splitter",
         "pdf zerlegen",
       ],
-      ogTitle: "PDFs prÃ¤zise aufteilen | PDFhelp",
+      ogTitle: "PDFs prÃ¤zise aufteilen | ihatelovepdf",
       ogDescription:
         "WÃ¤hle deinen bevorzugten Teilungsmodus, generiere so viele Einzeldateien wie nÃ¶tig und speichere sie direkt ab â€“ schnell, einfach und sicher.",
-      ogImageAlt: "PDF aufteilen mit PDFhelp",
+      ogImageAlt: "PDF aufteilen mit ihatelovepdf",
     },
     hero: {
       title: "PDFs nach Seiten oder Segmenten teilen",
@@ -167,7 +167,7 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
       ],
       imageAlt: "PDF-Teilung",
     },
-    benefitsTitle: "Vorteile des Teilens mit PDFhelp",
+    benefitsTitle: "Vorteile des Teilens mit ihatelovepdf",
     benefits: [
       {
         title: "Sharing mit Kontrolle",
@@ -186,14 +186,14 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
       },
     ],
     howTo: {
-      title: "So teilst du ein PDF mit PDFhelp",
+      title: "So teilst du ein PDF mit ihatelovepdf",
       steps: [
         "Das gewÃ¼nschte PDF vom GerÃ¤t hochladen.",
         "Festlegen, ob nach Seitenanzahl oder DateigrÃ¶ÃŸe geteilt wird.",
         "\"Verarbeiten\" drÃ¼cken und die erzeugten Dateien automatisch herunterladen.",
       ],
       note:
-        "PDFhelp lÃ¤dt die erste Datei sofort und speichert weitere ohne zusÃ¤tzliche Schritte.",
+        "ihatelovepdf lÃ¤dt die erste Datei sofort und speichert weitere ohne zusÃ¤tzliche Schritte.",
     },
     useCasesTitle: "Typische AnwendungsfÃ¤lle",
     useCases: [
@@ -208,7 +208,7 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
     slug: "seiten-extrahieren",
     mode: "extract",
     meta: {
-      title: "PDF-Seiten extrahieren | Seiten speichern | PDFhelp",
+      title: "PDF-Seiten extrahieren | Seiten speichern | ihatelovepdf",
       description:
         "WÃ¤hle einzelne Seiten aus und speichere sie als neues Dokument. Private Verarbeitung direkt im Browser.",
       keywords: [
@@ -218,10 +218,10 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
         "pdf page extractor",
         "neues pdf erstellen",
       ],
-      ogTitle: "Nur die benÃ¶tigten Seiten extrahieren | PDFhelp",
+      ogTitle: "Nur die benÃ¶tigten Seiten extrahieren | ihatelovepdf",
       ogDescription:
         "Markiere einfach die relevanten Seiten, erstelle in Sekunden ein neues PDF und behalte deine Daten sicher auf deinem eigenen GerÃ¤t.",
-      ogImageAlt: "Seiten in PDFhelp auswÃ¤hlen",
+      ogImageAlt: "Seiten in ihatelovepdf auswÃ¤hlen",
     },
     hero: {
       title: "Gezielte PDF-Seiten extrahieren",
@@ -253,7 +253,7 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
       },
     ],
     howTo: {
-      title: "So extrahierst du Seiten mit PDFhelp",
+      title: "So extrahierst du Seiten mit ihatelovepdf",
       steps: [
         "PDF hochladen und die gewÃ¼nschte Datei auswÃ¤hlen.",
         "BenÃ¶tigte Seiten im Miniaturbereich markieren.",
@@ -275,7 +275,7 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
     slug: "zuschneiden",
     mode: "crop",
     meta: {
-      title: "PDF-Seiten zuschneiden | Ränder entfernen | PDFhelp",
+      title: "PDF-Seiten zuschneiden | Ränder entfernen | ihatelovepdf",
       description:
         "Schneide PDF-Seiten direkt im Browser zu und entferne überflüssige Ränder. Alles läuft lokal und ohne Uploads.",
       keywords: [
@@ -285,10 +285,10 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
         "pdf ränder abschneiden",
         "pdf format ändern",
       ],
-      ogTitle: "PDF-Seiten lokal zuschneiden | PDFhelp",
+      ogTitle: "PDF-Seiten lokal zuschneiden | ihatelovepdf",
       ogDescription:
         "Wähle die Seiten aus, definiere die Ränder und lade ein sauber zugeschnittenes PDF herunter, ohne Dateien hochzuladen.",
-      ogImageAlt: "PDF-Seiten in PDFhelp zuschneiden",
+      ogImageAlt: "PDF-Seiten in ihatelovepdf zuschneiden",
     },
     hero: {
       title: "PDF-Seiten zuschneiden und Ränder verkleinern",
@@ -301,7 +301,7 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
       ],
       imageAlt: "PDF-Zuschneide-Workflow",
     },
-    benefitsTitle: "Warum PDFs mit PDFhelp zuschneiden",
+    benefitsTitle: "Warum PDFs mit ihatelovepdf zuschneiden",
     benefits: [
       {
         title: "Saubere Seiten",
@@ -320,7 +320,7 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
       },
     ],
     howTo: {
-      title: "So schneidest du PDF-Seiten mit PDFhelp zu",
+      title: "So schneidest du PDF-Seiten mit ihatelovepdf zu",
       steps: [
         "Lade das PDF hoch und wähle die Datei aus, die du anpassen möchtest.",
         "Markiere die Seiten und lege die oberen, rechten, unteren und linken Ränder fest.",
@@ -342,7 +342,7 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
     slug: "drehen",
     mode: "rotate",
     meta: {
-      title: "PDF-Seiten drehen | Ausrichtung korrigieren | PDFhelp",
+      title: "PDF-Seiten drehen | Ausrichtung korrigieren | ihatelovepdf",
       description:
         "Drehe ausgewahlte PDF-Seiten um 90 oder 180 Grad direkt im Browser. Kostenlos, privat und ohne Upload.",
       keywords: [
@@ -352,10 +352,10 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
         "gedrehte pdf seiten",
         "seitenrotation pdf",
       ],
-      ogTitle: "PDF-Seiten in Sekunden drehen | PDFhelp",
+      ogTitle: "PDF-Seiten in Sekunden drehen | ihatelovepdf",
       ogDescription:
         "Wahle die Seiten mit falscher Ausrichtung, stelle 90 oder 180 Grad ein und lade das korrigierte PDF ohne Upload herunter.",
-      ogImageAlt: "PDF-Seiten in PDFhelp drehen",
+      ogImageAlt: "PDF-Seiten in ihatelovepdf drehen",
     },
     hero: {
       title: "PDF-Seiten ohne Qualitatsverlust drehen",
@@ -368,7 +368,7 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
       ],
       imageAlt: "Workflow zum Drehen von PDF-Seiten",
     },
-    benefitsTitle: "Warum Seiten mit PDFhelp drehen",
+    benefitsTitle: "Warum Seiten mit ihatelovepdf drehen",
     benefits: [
       {
         title: "Gezielte Korrekturen",
@@ -409,7 +409,7 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
     slug: "seiten-sortieren",
     mode: "reorder",
     meta: {
-      title: "PDF-Seiten neu sortieren | Ordnung Ã¤ndern | PDFhelp",
+      title: "PDF-Seiten neu sortieren | Ordnung Ã¤ndern | ihatelovepdf",
       description:
         "Bringe deine PDF-Seiten per Drag & Drop ganz einfach in die richtige Reihenfolge. Organisiere Dokumente neu und speichere das Ergebnis sofort und sicher ab.",
       keywords: [
@@ -419,10 +419,10 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
         "pdf reorganisieren",
         "pdf seiten ordnen",
       ],
-      ogTitle: "PDFs organisieren ohne Zusatzsoftware | PDFhelp",
+      ogTitle: "PDFs organisieren ohne Zusatzsoftware | ihatelovepdf",
       ogDescription:
         "Verschiebe Seiten an die richtige Stelle, korrigiere die Reihenfolge und lade dein perfekt sortiertes PDF im Handumdrehen herunter.",
-      ogImageAlt: "Seiten neu anordnen in PDFhelp",
+      ogImageAlt: "Seiten neu anordnen in ihatelovepdf",
     },
     hero: {
       title: "PDF-Seiten mit Drag & Drop neu anordnen",
@@ -433,9 +433,9 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
         "Seiten ziehen und neue Reihenfolge sofort sehen",
         "Neu sortiertes PDF ohne Verlust von Lesezeichen oder Verlinkungen speichern",
       ],
-      imageAlt: "Seitenanordnung in PDFhelp",
+      imageAlt: "Seitenanordnung in ihatelovepdf",
     },
-    benefitsTitle: "Warum mit PDFhelp neu sortieren",
+    benefitsTitle: "Warum mit ihatelovepdf neu sortieren",
     benefits: [
       {
         title: "Schnellere Workflows",
@@ -454,7 +454,7 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
       },
     ],
     howTo: {
-      title: "So sortierst du Seiten mit PDFhelp neu",
+      title: "So sortierst du Seiten mit ihatelovepdf neu",
       steps: [
         "PDF hochladen und gewÃ¼nschte Datei wÃ¤hlen.",
         "Miniaturen per Drag & Drop in die richtige Reihenfolge bringen.",
@@ -476,7 +476,7 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
     slug: "pdf-zu-bildern",
     mode: "pdfToImages",
     meta: {
-      title: "PDF in Bilder umwandeln | PNG/JPEG Export | PDFhelp",
+      title: "PDF in Bilder umwandeln | PNG/JPEG Export | ihatelovepdf",
       description:
         "Wandle jede Seite deines PDFs in hochwertige PNG- oder JPEG-Bilder um. Bestimme die AuflÃ¶sung selbst und lade alles als ZIP-Datei herunter â€“ 100% privat.",
       keywords: [
@@ -486,10 +486,10 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
         "pdf seiten exportieren",
         "pdf als bilder herunterladen",
       ],
-      ogTitle: "PDF-Seiten als saubere Bilder exportieren | PDFhelp",
+      ogTitle: "PDF-Seiten als saubere Bilder exportieren | ihatelovepdf",
       ogDescription:
         "Render jede Seite direkt im Browser als scharfes Bild. WÃ¤hle Format und QualitÃ¤t und erhalte sofort ein strukturiertes ZIP-Archiv.",
-      ogImageAlt: "PDFhelp konvertiert PDF-Seiten in Bilder",
+      ogImageAlt: "ihatelovepdf konvertiert PDF-Seiten in Bilder",
     },
     hero: {
       title: "PDF-Seiten als PNG oder JPEG speichern",
@@ -500,9 +500,9 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
         "Alles als einzelnes ZIP bÃ¼ndeln oder Seiten einzeln herunterladen",
         "Rendering lÃ¤uft direkt im Browser â€“ keine Uploads, keine Spuren",
       ],
-      imageAlt: "Workflow von PDF zu Bildern in PDFhelp",
+      imageAlt: "Workflow von PDF zu Bildern in ihatelovepdf",
     },
-    benefitsTitle: "Warum PDFs mit PDFhelp exportieren",
+    benefitsTitle: "Warum PDFs mit ihatelovepdf exportieren",
     benefits: [
       {
         title: "QualitÃ¤t nach Bedarf",
@@ -543,7 +543,7 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
     slug: "bilder-zu-pdf",
     mode: "imagesToPdf",
     meta: {
-      title: "PDF aus Bildern erstellen | JPG, PNG zu PDF | PDFhelp",
+      title: "PDF aus Bildern erstellen | JPG, PNG zu PDF | ihatelovepdf",
       description:
         "Erstelle aus deinen Bildern ein professionelles PDF. Passe Layout, RÃ¤nder und Ausrichtung an und generiere dein Dokument sicher und lokal im Browser.",
       keywords: [
@@ -553,10 +553,10 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
         "webp zu pdf",
         "pdf aus bildern erstellen",
       ],
-      ogTitle: "Ein ordentliches PDF aus Bildern bauen | PDFhelp",
+      ogTitle: "Ein ordentliches PDF aus Bildern bauen | ihatelovepdf",
       ogDescription:
         "Ziehe deine Bilder in die Liste, lege die Reihenfolge fest und exportiere ein druckfertiges PDF â€“ ganz ohne Uploads oder Wasserzeichen.",
-      ogImageAlt: "PDFhelp erstellt ein PDF aus Bildern",
+      ogImageAlt: "ihatelovepdf erstellt ein PDF aus Bildern",
     },
     hero: {
       title: "Ein aufgerÃ¤umtes PDF aus Bildern erstellen",
@@ -567,9 +567,9 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
         "SeitengrÃ¶ÃŸe, Ausrichtung und RÃ¤nder fÃ¼r Print oder Bildschirm anpassen",
         "Eine Hintergrundfarbe setzen, um Transparenzen zu vermeiden",
       ],
-      imageAlt: "Bilder-zu-PDF-Workflow in PDFhelp",
+      imageAlt: "Bilder-zu-PDF-Workflow in ihatelovepdf",
     },
-    benefitsTitle: "Warum Bilder mit PDFhelp bÃ¼ndeln",
+    benefitsTitle: "Warum Bilder mit ihatelovepdf bÃ¼ndeln",
     benefits: [
       {
         title: "Konsequentes Layout",

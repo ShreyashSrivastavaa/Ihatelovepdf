@@ -35,7 +35,7 @@ const cloneOptions = (options: PDFProcessingOptions): PDFProcessingOptions => ({
   cropMargins: options.cropMargins ? { ...options.cropMargins } : undefined,
 });
 
-const DEFAULT_IMAGE_BASE_NAME = 'pdfhelp_pages';
+const DEFAULT_IMAGE_BASE_NAME = 'ihatelovepdf_pages';
 
 const MODE_DEFAULTS: Record<ProcessingMode, PDFProcessingOptions> = {
   merge: {
@@ -310,7 +310,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
         }
       }
 
-      const base = downloadNames[operation] ?? `pdfhelp_${operation}`;
+      const base = downloadNames[operation] ?? `ihatelovepdf_${operation}`;
 
       if (!originalName) {
         if (operation === 'split' && typeof index === 'number') {
@@ -1013,7 +1013,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           if (reductionPercentTotal) {
             highlightEntries.push({
               label: statusDialogStrings.resultsLabel,
-              value: `${compressionSummaryStrings.ratio(reductionPercentTotal)} Â· ${savingsLabel}`,
+              value: `${compressionSummaryStrings.ratio(reductionPercentTotal)} Ã‚Â· ${savingsLabel}`,
             });
           } else {
             highlightEntries.push({
@@ -1969,7 +1969,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
                           </p>
                           <p className="text-xs text-[var(--tx-3)]">
                             {selectedCount > 0
-                              ? `${fileListStrings.pagesLabel(selectedCount)} â€¢ ${fileListStrings.selected}`
+                              ? `${fileListStrings.pagesLabel(selectedCount)} Ã¢â‚¬Â¢ ${fileListStrings.selected}`
                               : errorStrings.noPagesSelected}
                           </p>
                         </div>
@@ -2085,7 +2085,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
                           </p>
                           <p className="text-xs text-[var(--tx-3)]">
                             {selectedCount > 0
-                              ? `${fileListStrings.pagesLabel(selectedCount)} • ${fileListStrings.selected}`
+                              ? `${fileListStrings.pagesLabel(selectedCount)} â€¢ ${fileListStrings.selected}`
                               : errorStrings.noPagesSelected}
                           </p>
                         </div>
@@ -2146,7 +2146,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
                           </p>
                           <p className="text-xs text-[var(--tx-3)]">
                             {selectedCount > 0
-                              ? `${fileListStrings.pagesLabel(selectedCount)} • ${fileListStrings.selected}`
+                              ? `${fileListStrings.pagesLabel(selectedCount)} â€¢ ${fileListStrings.selected}`
                               : errorStrings.noPagesSelected}
                           </p>
                         </div>
@@ -2291,7 +2291,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
                       )}
                     </p>
                     <p className="text-xs font-medium text-[var(--tx-3)]">
-                      {formatFileSize(previewItems.reduce((acc, i) => acc + (i.result?.originalSize ?? 0), 0))} â†’{' '}
+                      {formatFileSize(previewItems.reduce((acc, i) => acc + (i.result?.originalSize ?? 0), 0))} Ã¢â€ â€™{' '}
                       <span className="text-[var(--tx)]">
                         {formatFileSize(previewItems.reduce((acc, i) => acc + (i.result?.processedSize ?? 0), 0))}
                       </span>

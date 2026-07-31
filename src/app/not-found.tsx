@@ -3,8 +3,8 @@ import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "404 – Page Not Found | PDFhelp",
-  description: "The page you were looking for doesn't exist. Go back to PDFhelp and continue working with your PDFs.",
+  title: "404 â€“ Page Not Found | ihatelovepdf",
+  description: "The page you were looking for doesn't exist. Go back to ihatelovepdf and continue working with your PDFs.",
 };
 
 export default function NotFound() {
@@ -34,8 +34,8 @@ export default function NotFound() {
         >
           <div style={{ maxWidth: "1200px", margin: "0 auto", width: "100%", display: "flex" }}>
             <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none", color: "inherit" }}>
-              <Image src="/logo.png" alt="PDFhelp logo" width={36} height={36} style={{ marginRight: "0.5rem", borderRadius: "8px" }} unoptimized />
-              <span style={{ fontSize: "1.25rem", fontWeight: 700, fontFamily: "'Montserrat', sans-serif" }}>PDFhelp</span>
+              <Image src="/logo.png" alt="ihatelovepdf logo" width={36} height={36} style={{ marginRight: "0.5rem", borderRadius: "8px" }} unoptimized />
+              <span style={{ fontSize: "1.25rem", fontWeight: 700, fontFamily: "'Montserrat', sans-serif" }}>ihatelovepdf</span>
             </Link>
           </div>
         </header>
@@ -58,8 +58,8 @@ export default function NotFound() {
           {/* Mascot and Badge */}
           <div style={{ position: "relative", marginBottom: "1.5rem" }}>
             <Image 
-              src="/images/stickers/pdfhelp_logo_processed.webp" 
-              alt="PDFhelp Mascot" 
+              src="/images/stickers/ihatelovepdf_logo_processed.webp" 
+              alt="ihatelovepdf Mascot" 
               width={120}
               height={120}
               style={{ width: "120px", height: "auto", filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.1))" }} 
@@ -117,7 +117,7 @@ export default function NotFound() {
           >
 
             {/* English tools */}
-            <p style={{ color: "#4e2525", fontSize: "0.75rem", marginBottom: "0.5rem", opacity: 0.7 }}>🇬🇧 English</p>
+            <p style={{ color: "#4e2525", fontSize: "0.75rem", marginBottom: "0.5rem", opacity: 0.7 }}>ðŸ‡¬ðŸ‡§ English</p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem", justifyContent: "center", marginBottom: "1rem" }}>
               {[
                 { label: "Merge PDF", href: "/en/merge" },
@@ -135,14 +135,14 @@ export default function NotFound() {
             </div>
 
             {/* Spanish tools */}
-            <p style={{ color: "#4e2525", fontSize: "0.75rem", marginBottom: "0.5rem", opacity: 0.7 }}>🇪🇸 Español</p>
+            <p style={{ color: "#4e2525", fontSize: "0.75rem", marginBottom: "0.5rem", opacity: 0.7 }}>ðŸ‡ªðŸ‡¸ EspaÃ±ol</p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", justifyContent: "center", marginBottom: "1.5rem" }}>
               {[
                 { label: "Unir PDF", href: "/unir" },
                 { label: "Comprimir PDF", href: "/comprimir" },
                 { label: "Dividir PDF", href: "/dividir" },
-                { label: "Extraer páginas", href: "/extraer" },
-                { label: "Reordenar páginas", href: "/reordenar" },
+                { label: "Extraer pÃ¡ginas", href: "/extraer" },
+                { label: "Reordenar pÃ¡ginas", href: "/reordenar" },
                 { label: "Girar PDF", href: "/girar" },
                 { label: "Recortar PDF", href: "/recortar" },
               ].map((tool) => (
@@ -155,10 +155,10 @@ export default function NotFound() {
             <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem", justifyContent: "center" }}>
               {[
                 { label: "Deutsch", href: "/de" },
-                { label: "Français", href: "/fr" },
+                { label: "FranÃ§ais", href: "/fr" },
                 { label: "Italiano", href: "/it" },
-                { label: "Português", href: "/pt" },
-                { label: "Română", href: "/ro" },
+                { label: "PortuguÃªs", href: "/pt" },
+                { label: "RomÃ¢nÄƒ", href: "/ro" },
               ].map((lang) => (
                 <a key={lang.href} href={lang.href} style={langChipStyle}>{lang.label}</a>
               ))}

@@ -7,7 +7,7 @@ import { OperationKey } from "../../../types/operations";
 
 const locale = "en" as const;
 const { label, nativeName, htmlLang, hrefLang } = localeLabels[locale];
-const siteUrl = "https://pdfhelp.com";
+const siteUrl = "https://ihatelovepdf.com";
 const homePath = getRoutePath(locale, "home");
 
 const operationsRoutes: Record<OperationKey, string> = {
@@ -39,9 +39,9 @@ export const enDictionary: Dictionary = {
   },
   metadata: {
     site: {
-      title: "PDFhelp — Powerful, Private & Free PDF Tools in Your Browser",
+      title: "ihatelovepdf â€” Powerful, Private & Free PDF Tools in Your Browser",
       description:
-        "PDFhelp is a privacy-first web toolkit to merge, compress, split, extract, rotate, reorder, crop, and convert PDFs locally in your browser. No file uploads, no tracking, 100% private and free.",
+        "ihatelovepdf is a privacy-first web toolkit to merge, compress, split, extract, rotate, reorder, crop, and convert PDFs locally in your browser. No file uploads, no tracking, 100% private and free.",
       keywords: [
         "merge pdf",
         "compress pdf",
@@ -61,22 +61,22 @@ export const enDictionary: Dictionary = {
       ],
       canonical: `${siteUrl}${homePath}`,
       openGraph: {
-        title: "PDFhelp — Merge, Compress, Split & Convert PDFs Privately",
+        title: "ihatelovepdf â€” Merge, Compress, Split & Convert PDFs Privately",
         description:
-          "Manipulate PDFs with total privacy. Process files directly inside your browser without server uploads — fast, free, and secure.",
+          "Manipulate PDFs with total privacy. Process files directly inside your browser without server uploads â€” fast, free, and secure.",
         url: `${siteUrl}${homePath}`,
         locale: "en_US",
         type: "website",
-        imageUrl: "https://pdfhelp.com/og-images/og-image-en.png",
-        imageAlt: "PDFhelp - Private and free PDF processing toolkit",
+        imageUrl: "https://ihatelovepdf.com/og-images/og-image-en.png",
+        imageAlt: "ihatelovepdf - Private and free PDF processing toolkit",
       },
     },
     faq: {
-      title: "Frequently Asked Questions | PDFhelp Toolkit",
+      title: "Frequently Asked Questions | ihatelovepdf Toolkit",
       description:
-        "Find answers to common questions about PDFhelp. Learn how to merge, compress, split, extract, rotate, crop, and convert PDFs securely without uploading files.",
+        "Find answers to common questions about ihatelovepdf. Learn how to merge, compress, split, extract, rotate, crop, and convert PDFs securely without uploading files.",
       keywords: [
-        "pdfhelp faq",
+        "ihatelovepdf faq",
         "pdf questions",
         "pdf help",
         "merge pdf help",
@@ -88,23 +88,23 @@ export const enDictionary: Dictionary = {
       canonical: `${siteUrl}${getRoutePath(locale, "faq")}`,
     },
     support: {
-      title: "Support PDFhelp | Keep the Toolkit Free and Private",
+      title: "Support ihatelovepdf | Keep the Toolkit Free and Private",
       description:
-        "Your support keeps PDFhelp independent, ad-free, and privacy-focused. Help us cover hosting and ongoing enhancements.",
+        "Your support keeps ihatelovepdf independent, ad-free, and privacy-focused. Help us cover hosting and ongoing enhancements.",
       keywords: [
-        "donate to pdfhelp",
+        "donate to ihatelovepdf",
         "support pdf toolkit",
         "fund privacy projects",
-        "pdfhelp stripe donations",
-        "keep pdfhelp free",
+        "ihatelovepdf stripe donations",
+        "keep ihatelovepdf free",
       ],
       canonical: `${siteUrl}${getRoutePath(locale, "support")}`,
     },
     operations: operationsEn,
   },
   brand: {
-    name: "PDFhelp",
-    tagline: "Local Processing • 100% Private",
+    name: "ihatelovepdf",
+    tagline: "Local Processing â€¢ 100% Private",
   },
   components: {
     nav: {
@@ -115,8 +115,8 @@ export const enDictionary: Dictionary = {
       menuLabel: "Toggle navigation menu",
     },
     footer: {
-      privacy: "Local Processing • 100% Private • Open Licenses",
-      rights: "© 2026 PDFhelp — Fast, private PDF utilities with zero compromise on privacy",
+      privacy: "Local Processing â€¢ 100% Private â€¢ Open Licenses",
+      rights: "Â© 2026 ihatelovepdf â€” Fast, private PDF utilities with zero compromise on privacy",
       links: {
         home: "Home",
         faq: "FAQ",
@@ -135,7 +135,7 @@ export const enDictionary: Dictionary = {
         pdfToImages: "PDF to Images",
         imagesToPdf: "Images to PDF",
       },
-      license: "PDF Processing: PDF-lib (MIT), PDF.js (Apache 2.0) • Font: Geist (MIT)",
+      license: "PDF Processing: PDF-lib (MIT), PDF.js (Apache 2.0) â€¢ Font: Geist (MIT)",
       disclaimer: "This service is provided 'as is' without warranty of any kind. The user accepts full responsibility for using generated files.",
     },
     notifications: {
@@ -159,7 +159,7 @@ export const enDictionary: Dictionary = {
       question: "Was this helpful?",
       thanks: "Thank you for your feedback!",
       whatWrong: "Tell us how we can improve",
-      emailSubject: "Feedback for PDFhelp",
+      emailSubject: "Feedback for ihatelovepdf",
     },
     pdfProcessor: {
       title: "Choose an Operation",
@@ -186,7 +186,7 @@ export const enDictionary: Dictionary = {
         },
         rotate: {
           label: "Rotate Pages",
-          helper: "Reorient upside-down or sideways pages by 90° or 180°.",
+          helper: "Reorient upside-down or sideways pages by 90Â° or 180Â°.",
         },
         reorder: {
           label: "Reorder Pages",
@@ -223,15 +223,15 @@ export const enDictionary: Dictionary = {
         },
       },
       downloadNames: {
-        compress: "compressed_PDFhelp",
-        merge: "merged_PDFhelp",
-        split: "part_PDFhelp",
-        extract: "extracted_PDFhelp",
-        crop: "cropped_PDFhelp",
-        rotate: "rotated_PDFhelp",
-        reorder: "reordered_PDFhelp",
-        pdfToImages: "images_PDFhelp",
-        imagesToPdf: "images_to_pdf_PDFhelp",
+        compress: "compressed_ihatelovepdf",
+        merge: "merged_ihatelovepdf",
+        split: "part_ihatelovepdf",
+        extract: "extracted_ihatelovepdf",
+        crop: "cropped_ihatelovepdf",
+        rotate: "rotated_ihatelovepdf",
+        reorder: "reordered_ihatelovepdf",
+        pdfToImages: "images_ihatelovepdf",
+        imagesToPdf: "images_to_pdf_ihatelovepdf",
       },
       processButton: {
         idleSingle: "Process 1 File",
@@ -255,7 +255,7 @@ export const enDictionary: Dictionary = {
       statusMessages: {
         info: (mode: string) => `Processing (${mode})...`,
         compressed: (reduction: string, original: string, next: string, seconds: string) =>
-          `Compressed! Reduction: ${reduction}% (${original} → ${next}) in ${seconds}s`,
+          `Compressed! Reduction: ${reduction}% (${original} â†’ ${next}) in ${seconds}s`,
         merged: "Merging complete!",
         split: (count: number) =>
           count > 1
@@ -297,11 +297,11 @@ export const enDictionary: Dictionary = {
         title: "Compression Estimate Preview",
         description:
           "Adjust settings to preview estimated output size prior to running compression.",
-        running: "Calculating preview estimate…",
+        running: "Calculating preview estimateâ€¦",
         readyLabel: "Estimated Output Size",
         ratio: (percent: string) => `${percent}% smaller`,
         saved: (size: string) => `${size} saved`,
-        time: (seconds: string) => `≈ ${seconds}s`,
+        time: (seconds: string) => `â‰ˆ ${seconds}s`,
         original: "Original Size",
         result: "Estimated Size",
         notice:
@@ -321,10 +321,10 @@ export const enDictionary: Dictionary = {
         clear: "Clear Summary",
       },
       donationReminder: {
-        message: "Did PDFhelp save you time today? Your support keeps this tool 100% free and private.",
-        actionLabel: "Support PDFhelp",
+        message: "Did ihatelovepdf save you time today? Your support keeps this tool 100% free and private.",
+        actionLabel: "Support ihatelovepdf",
         withSavings: (percent: string, saved: string) =>
-          `Saved ${saved} (${percent}% reduction)? Help us keep PDFhelp private, ad-free, and open.`,
+          `Saved ${saved} (${percent}% reduction)? Help us keep ihatelovepdf private, ad-free, and open.`,
       },
       statusDialog: {
         processingTitle: "Processing Locally",
@@ -340,9 +340,9 @@ export const enDictionary: Dictionary = {
         retryLabel: "Retry",
         closeLabel: "Close",
         sharePrompt: {
-          dialogMessage: "PDFhelp is completely free and privacy-focused. Help others discover it by sharing with friends or colleagues!",
-          shareText: "I just used PDFhelp to process my PDFs! It's a fast, free, and 100% private browser toolkit to compress, merge, split, and convert PDFs without server uploads.",
-          actionLabel: "Share PDFhelp",
+          dialogMessage: "ihatelovepdf is completely free and privacy-focused. Help others discover it by sharing with friends or colleagues!",
+          shareText: "I just used ihatelovepdf to process my PDFs! It's a fast, free, and 100% private browser toolkit to compress, merge, split, and convert PDFs without server uploads.",
+          actionLabel: "Share ihatelovepdf",
           copiedLabel: "Link Copied!",
         },
       },
@@ -380,13 +380,13 @@ export const enDictionary: Dictionary = {
       pdfLabel: "PDF",
       deselect: "Deselect",
       pagesLabel: (count: number) => `${count} ${count === 1 ? "page" : "pages"}`,
-      previewLoading: "Generating thumbnail preview…",
+      previewLoading: "Generating thumbnail previewâ€¦",
     },
     pageSelector: {
       loading: "Loading PDF pages...",
       error: "Unable to parse PDF page metadata",
       summary: (total: number, selected: number) =>
-        `${total} total pages — ${selected} selected`,
+        `${total} total pages â€” ${selected} selected`,
       selectAll: "Select All",
       deselectAll: "Deselect All",
       pageLabel: (pageNumber: number) => `Page ${pageNumber}`,
@@ -461,7 +461,7 @@ export const enDictionary: Dictionary = {
           bottom: "Bottom Margin (pt)",
           left: "Left Margin (pt)",
         },
-        marginHint: "72 points ≈ 1 inch. Start with small values to prevent accidental content trimming.",
+        marginHint: "72 points â‰ˆ 1 inch. Start with small values to prevent accidental content trimming.",
         preserveMetadata: "Preserve original document metadata",
         preserveMetadataHint: "Retains original document metadata in cropped file output.",
         manual: {
@@ -476,9 +476,9 @@ export const enDictionary: Dictionary = {
       rotate: {
         title: "Rotation Settings",
         hint: "Choose rotation angle and select the target pages.",
-        rotateRight90: "Rotate Right 90°",
-        rotate180: "Rotate 180°",
-        rotateLeft90: "Rotate Left 90°",
+        rotateRight90: "Rotate Right 90Â°",
+        rotate180: "Rotate 180Â°",
+        rotateLeft90: "Rotate Left 90Â°",
       },
       reorder: {
         title: "Reorder Settings",
@@ -495,14 +495,14 @@ export const enDictionary: Dictionary = {
         dpiLabel: "Render Resolution (DPI)",
         dpiHint: "Higher DPI enhances clarity. 144 DPI is ideal for digital screens; 300 DPI for printing.",
         dpiPresets: {
-          screen: "72 DPI · Web & Mobile",
-          balanced: "144 DPI · High Definition",
-          print: "300 DPI · Professional Print",
+          screen: "72 DPI Â· Web & Mobile",
+          balanced: "144 DPI Â· High Definition",
+          print: "300 DPI Â· Professional Print",
         },
         zipLabel: "Bundle images into a ZIP file",
         zipHint: "Download all exported images in a single compressed archive.",
         baseNameLabel: "Output File Prefix",
-        baseNamePlaceholder: "pdfhelp_export",
+        baseNamePlaceholder: "ihatelovepdf_export",
         baseNameHint: "Filename prefix for exported images. Leave blank to default to original document name.",
       },
       imagesToPdf: {
@@ -526,13 +526,13 @@ export const enDictionary: Dictionary = {
           landscape: "Landscape",
         },
         marginLabel: "Page Margins (pt)",
-        marginHint: "Adds uniform white margins around images (72 pt ≈ 1 inch).",
+        marginHint: "Adds uniform white margins around images (72 pt â‰ˆ 1 inch).",
         backgroundLabel: "Canvas Background Color",
         backgroundHint: "Fills empty background space around fitted images.",
       },
     },
     cookieBanner: {
-      message: "We use essential privacy-friendly analytics to improve PDFhelp. We never sell or track personal data.",
+      message: "We use essential privacy-friendly analytics to improve ihatelovepdf. We never sell or track personal data.",
       accept: "Accept",
       decline: "Decline",
     },
@@ -540,16 +540,16 @@ export const enDictionary: Dictionary = {
   pages: {
     home: {
       hero: {
-        title: "PDFhelp — Powerful, Private & Free PDF Tools in Your Browser",
+        title: "ihatelovepdf â€” Powerful, Private & Free PDF Tools in Your Browser",
         subtitle:
-          "Merge, split, compress, crop, rotate, and convert PDFs directly inside your browser. Your files stay on your device — 100% private, lightning-fast, and completely free.",
+          "Merge, split, compress, crop, rotate, and convert PDFs directly inside your browser. Your files stay on your device â€” 100% private, lightning-fast, and completely free.",
         badges: [
           "Fast PDF Compression",
           "Unlimited PDF Merging",
           "100% Local Privacy",
           "Zero Server Uploads",
         ],
-        imageAlt: "PDFhelp mascot icon illustration",
+        imageAlt: "ihatelovepdf mascot icon illustration",
         ctaLinks: [
           {
             label: "PDF to Images",
@@ -564,32 +564,32 @@ export const enDictionary: Dictionary = {
         ],
       },
       why: {
-        title: "Why Professionals Choose PDFhelp",
+        title: "Why Professionals Choose ihatelovepdf",
         cards: [
           {
             title: "Private by Default",
             description:
               "Your files never leave your device. All processing is executed locally right inside your browser.",
-            icon: "🔒",
+            icon: "ðŸ”’",
           },
           {
             title: "Fast & Efficient",
             description:
-              "Instant performance powered by client-side WebAssembly and modern JavaScript engines — zero waiting in cloud server queues.",
-            icon: "⚡",
+              "Instant performance powered by client-side WebAssembly and modern JavaScript engines â€” zero waiting in cloud server queues.",
+            icon: "âš¡",
           },
           {
             title: "Cross-Platform Simplicity",
             description:
               "Works seamlessly across desktop, tablet, and mobile browsers with zero software installation required.",
-            icon: "📱",
+            icon: "ðŸ“±",
           },
         ],
       },
       callout: {
         title: "Support Independent Privacy-First Tools",
         description:
-          "Every contribution covers server infrastructure, maintenance, and ensures PDFhelp remains 100% free, private, and ad-free.",
+          "Every contribution covers server infrastructure, maintenance, and ensures ihatelovepdf remains 100% free, private, and ad-free.",
         ctaLabel: "Support the Project",
         ctaUrl: getRoutePath(locale, "support"),
         secondaryLabel: "Learn How Funds Are Used",
@@ -598,42 +598,42 @@ export const enDictionary: Dictionary = {
     },
     faq: {
       title: "Frequently Asked Questions",
-      intro: "Everything you need to know about PDFhelp's privacy-first PDF toolkit.",
+      intro: "Everything you need to know about ihatelovepdf's privacy-first PDF toolkit.",
       cta: {
         title: "Ready to process your PDFs?",
         description:
           "Merge, compress, split, extract, rotate, and convert PDFs with guaranteed local privacy. No sign-ups or server uploads required.",
-        ctaLabel: "Open PDFhelp Toolkit",
+        ctaLabel: "Open ihatelovepdf Toolkit",
       },
     },
     support: {
       hero: {
-        eyebrow: "🌱 Independent Open Source Project",
-        title: "Help Keep PDFhelp Free and Privacy-First",
+        eyebrow: "ðŸŒ± Independent Open Source Project",
+        title: "Help Keep ihatelovepdf Free and Privacy-First",
         subtitle:
-          "PDFhelp is an independent project dedicated to user privacy. Your support covers infrastructure costs and fuels continuous improvements.",
+          "ihatelovepdf is an independent project dedicated to user privacy. Your support covers infrastructure costs and fuels continuous improvements.",
         highlight: "Simple, powerful tools designed to respect your data privacy.",
       },
       reasons: {
-        title: "Why Support PDFhelp?",
+        title: "Why Support ihatelovepdf?",
         cards: [
           {
             title: "Keep It Free for Everyone",
             description:
-              "Your contributions ensure PDFhelp remains 100% free with no paywalls, premium tiers, or hidden limits.",
-            icon: "💚",
+              "Your contributions ensure ihatelovepdf remains 100% free with no paywalls, premium tiers, or hidden limits.",
+            icon: "ðŸ’š",
           },
           {
             title: "Accelerate Development",
             description:
               "Directly fund new PDF utilities, performance optimizations, and continuous feature updates.",
-            icon: "✨",
+            icon: "âœ¨",
           },
           {
             title: "Champion Digital Privacy",
             description:
               "Support local, on-device document processing and help build a web free from intrusive data tracking.",
-            icon: "🔒",
+            icon: "ðŸ”’",
           },
         ],
       },
@@ -644,19 +644,19 @@ export const enDictionary: Dictionary = {
           {
             id: "coffee",
             title: "Buy us a coffee",
-            amount: "€3",
+            amount: "â‚¬3",
             description: "Covers hosting and infrastructure for a few weeks.",
-            ctaLabel: "Donate €3",
+            ctaLabel: "Donate â‚¬3",
             ctaHref: "#stripe-checkout-coffee",
           },
           {
             id: "monthly",
             title: "Monthly Supporter",
-            amount: "€10/mo",
-            description: "Provides steady backing to dedicate time weekly to PDFhelp.",
-            ctaLabel: "Give €10/mo",
+            amount: "â‚¬10/mo",
+            description: "Provides steady backing to dedicate time weekly to ihatelovepdf.",
+            ctaLabel: "Give â‚¬10/mo",
             ctaHref: "#stripe-checkout-monthly",
-            badge: "💙 Recommended",
+            badge: "ðŸ’™ Recommended",
           },
           {
             id: "custom",
@@ -684,7 +684,7 @@ export const enDictionary: Dictionary = {
           {
             question: "What if I'm unable to contribute financially?",
             answer:
-              "No problem at all! PDFhelp will always remain 100% free. Sharing PDFhelp with friends, colleagues, or social media is incredible support.",
+              "No problem at all! ihatelovepdf will always remain 100% free. Sharing ihatelovepdf with friends, colleagues, or social media is incredible support.",
           },
           {
             question: "Will I receive a payment receipt?",
@@ -694,7 +694,7 @@ export const enDictionary: Dictionary = {
           {
             question: "How can I cancel a monthly recurring contribution?",
             answer:
-              "You can manage or cancel your recurring contribution anytime via your Stripe portal or by emailing info@pdfhelp.com.",
+              "You can manage or cancel your recurring contribution anytime via your Stripe portal or by emailing info@ihatelovepdf.com.",
           },
         ],
       },
@@ -703,15 +703,15 @@ export const enDictionary: Dictionary = {
         description:
           "Every supporter helps keep a fast, reliable, and privacy-respecting PDF toolkit accessible to everyone around the world.",
         ctaLabel: "Get in Touch",
-        ctaHref: "mailto:info@pdfhelp.com?subject=Hello%20PDFhelp%20team",
+        ctaHref: "mailto:info@ihatelovepdf.com?subject=Hello%20ihatelovepdf%20team",
       },
       legalNotice: {
         title: "Legal & Financial Transparency Notes",
         points: [
-          "PDFhelp is an independent project maintained by open-source contributors.",
+          "ihatelovepdf is an independent project maintained by open-source contributors.",
           "Contributions are voluntary and help support hosting, maintenance, and software development.",
           "Payments are not tax-deductible charitable donations. Stripe will issue an automated transaction receipt.",
-          "The service is provided 'as is' without warranties. For inquiries, contact info@pdfhelp.com.",
+          "The service is provided 'as is' without warranties. For inquiries, contact info@ihatelovepdf.com.",
         ],
       },
     },

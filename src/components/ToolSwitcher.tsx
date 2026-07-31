@@ -82,7 +82,7 @@ export default function ToolSwitcher({ tools, activeKey = null }: ToolSwitcherPr
               Current Tool
             </span>
             <span className="truncate text-sm font-semibold text-[var(--tx)]">
-              {activeTool ? activeTool.label : 'Choose a PDF tool…'}
+              {activeTool ? activeTool.label : 'Choose a PDF toolâ€¦'}
             </span>
           </div>
         </div>

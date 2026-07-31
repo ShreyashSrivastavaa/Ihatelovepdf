@@ -48,7 +48,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <p className="text-xs sm:text-sm text-[var(--tx-2)] max-w-sm mx-auto leading-relaxed">
               Please reach out directly to our maintainer at{' '}
               <a
-                href={`mailto:${OWNER_EMAIL}?subject=[PDFhelp]%20Inquiry`}
+                href={`mailto:${OWNER_EMAIL}?subject=[ihatelovepdf]%20Inquiry`}
                 className="text-[var(--accent)] underline underline-offset-2 hover:opacity-80 transition-opacity font-semibold"
               >
                 {OWNER_EMAIL}
@@ -92,9 +92,9 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           replyto: formData.email,
           name: formData.name,
           email: formData.email,
-          subject: `[PDFhelp] [${formData.category}] ${formData.subject || 'Inquiry'}`,
+          subject: `[ihatelovepdf] [${formData.category}] ${formData.subject || 'Inquiry'}`,
           message: `Category: ${formData.category}\nFrom: ${formData.name} <${formData.email}>\n\n${formData.message}`,
-          from_name: 'PDFhelp Contact Form',
+          from_name: 'ihatelovepdf Contact Form',
           botcheck: '',
         }),
       });
@@ -130,7 +130,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <Mail className="h-5 w-5 stroke-[1.75]" />
           </div>
           <div>
-            <h3 className="text-lg font-bold text-[var(--tx)]">Contact PDFhelp</h3>
+            <h3 className="text-lg font-bold text-[var(--tx)]">Contact ihatelovepdf</h3>
             <p className="text-xs text-[var(--tx-3)]">We respond directly to your email address!</p>
           </div>
         </div>

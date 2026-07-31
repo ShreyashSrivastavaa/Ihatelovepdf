@@ -506,7 +506,7 @@ export default function FileList({
                 </div>
                 <div className="pdf-preview-size">
                   {isPdf
-                    ? `${fileListStrings.pdfLabel} - ${formatFileSize(file.size)}${pageCountLabel ? ` • ${pageCountLabel}` : ''}`
+                    ? `${fileListStrings.pdfLabel} - ${formatFileSize(file.size)}${pageCountLabel ? ` â€¢ ${pageCountLabel}` : ''}`
                     : isImage
                       ? `${fileListStrings.imageLabel} - ${formatFileSize(file.size)}`
                       : `${fileListStrings.fileLabel} - ${formatFileSize(file.size)}`}

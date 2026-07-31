@@ -965,7 +965,7 @@ async function getCachedPdfDocument(fileOrData: File | ArrayBuffer | Uint8Array)
         cMapUrl: `${baseUrl}/cmaps/`,
         cMapPacked: true,
         standardFontDataUrl: `${baseUrl}/standard_fonts/`,
-        // In worker: disable @font-face (CSS not available) → forces path-based glyph rendering
+        // In worker: disable @font-face (CSS not available) â†’ forces path-based glyph rendering
         disableFontFace: isInWorker,
         // In worker: fetch CMaps/fonts from our context (has polyfills), not pdf.js's nested worker
         useWorkerFetch: !isInWorker,
@@ -989,7 +989,7 @@ function getThumbnailCache(file: File): Map<string, string> {
 function sanitizeFileBaseName(raw: string): string {
   const normalised = raw.trim().replace(/[^\p{L}\p{N}\-_. ]/gu, '-').replace(/\s+/g, '-');
   const cleaned = normalised.replace(/-+/g, '-').replace(/^-|-$/g, '');
-  return cleaned.length > 0 ? cleaned.toLowerCase() : 'pdfhelp';
+  return cleaned.length > 0 ? cleaned.toLowerCase() : 'ihatelovepdf';
 }
 
 function stripExtension(fileName: string): string {
@@ -1114,7 +1114,7 @@ export async function convertPdfToImages(fileOrData: File | ArrayBuffer | Uint8A
   const scale = (options.imageRenderDpi ?? 144) / 72;
   const extension = (options.imageOutputFormat ?? 'png') === 'png' ? 'png' : 'jpg';
   const entries: Array<{ name: string; blob: Blob }> = [];
-  const base = sanitizeFileBaseName(options.imageBaseName ?? (fileOrData instanceof File ? stripExtension(fileOrData.name) : 'pdfhelp'));
+  const base = sanitizeFileBaseName(options.imageBaseName ?? (fileOrData instanceof File ? stripExtension(fileOrData.name) : 'ihatelovepdf'));
   for (let i = 1; i <= doc.numPages; i++) {
     await yieldToMain();
     const page = await doc.getPage(i);

@@ -75,9 +75,9 @@ export default function NavMenu() {
             {/* Brand Logo & Name */}
             <Link href={routes.home} onClick={() => setIsOpen(false)} className="flex items-center gap-2 group">
               <div className="relative flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--accent)] text-white shadow-xs transition-transform duration-200 group-hover:scale-105">
-                <Image src="/logo.png" alt="PDFhelp logo" width={28} height={28} className="rounded-md object-contain" unoptimized />
+                <Image src="/logo.png" alt="ihatelovepdf logo" width={28} height={28} className="rounded-md object-contain" unoptimized />
               </div>
-              <span className="text-lg font-bold tracking-tight text-[var(--tx)]">PDFhelp</span>
+              <span className="text-lg font-bold tracking-tight text-[var(--tx)]">ihatelovepdf</span>
             </Link>
 
             <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-[var(--border)] bg-[var(--bg-subtle)] px-2.5 py-0.5 text-xs font-medium text-[var(--tx-2)]">

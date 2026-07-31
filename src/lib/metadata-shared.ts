@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-export const METADATA_BASE = new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://pdfhelp.vercel.app");
+export const METADATA_BASE = new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://ihatelovepdf.vercel.app");
 
 export const SHARED_ICONS = [
     { rel: "icon", url: "/favicon.ico" },
@@ -10,10 +10,10 @@ export const SHARED_ICONS = [
 export const SHARED_OPEN_GRAPH: Metadata["openGraph"] = {
     images: [
         {
-            url: "https://pdfhelp.com/og-images/og-image-es.png",
+            url: "https://ihatelovepdf.com/og-images/og-image-es.png",
             width: 1409,
             height: 736,
-            alt: "PDFhelp - Procesamiento de PDFs privado y gratuito"
+            alt: "ihatelovepdf - Procesamiento de PDFs privado y gratuito"
         }
     ],
 };

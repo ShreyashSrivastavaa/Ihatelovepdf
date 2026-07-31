@@ -7,7 +7,7 @@ import { useDictionary } from "../../i18n/LocaleProvider";
 import { SUPPORTED_LOCALES } from "../../i18n/config";
 import { buildGlobalSlugToOperationMap, buildFaqSegmentSet } from "../../i18n/routing";
 
-// Dynamically built from i18n-route-map.json — never goes stale when slugs change or languages are added.
+// Dynamically built from i18n-route-map.json â€” never goes stale when slugs change or languages are added.
 const SLUG_TO_OPERATION = buildGlobalSlugToOperationMap();
 const FAQ_SEGMENTS = buildFaqSegmentSet();
 
@@ -18,7 +18,7 @@ export function BreadcrumbSchema() {
     const breadcrumbJson = useMemo(() => {
         if (!pathname) return null;
 
-        const domain = "https://pdfhelp.com";
+        const domain = "https://ihatelovepdf.com";
         const fullUrl = `${domain}${pathname}`;
 
         const segments = pathname.split('/').filter(Boolean);
@@ -37,7 +37,7 @@ export function BreadcrumbSchema() {
         itemListElement.push({
             "@type": "ListItem",
             "position": 1,
-            "name": "PDFhelp",
+            "name": "ihatelovepdf",
             "item": domain
         });
 

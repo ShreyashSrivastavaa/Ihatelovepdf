@@ -223,7 +223,7 @@ export function getRouteMap() {
 }
 
 /**
- * Flat lookup: URL slug segment → OperationKey across ALL locales.
+ * Flat lookup: URL slug segment â†’ OperationKey across ALL locales.
  * Built dynamically from the route map so it never goes stale.
  * Used by BreadcrumbSchema to resolve the last path segment
  * into an operation key for structured data labels.

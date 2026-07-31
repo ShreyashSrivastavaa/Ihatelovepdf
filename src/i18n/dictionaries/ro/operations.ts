@@ -7,9 +7,9 @@ const operationsRoContent: Record<OperationKey, OperationContent> = {
     slug: "comprima",
     mode: "compress",
     meta: {
-      title: "Comprimă PDF online gratuit | Redu dimensiunea | PDFhelp | Compress PDF",
+      title: "ComprimÄƒ PDF online gratuit | Redu dimensiunea | ihatelovepdf | Compress PDF",
       description:
-        "Redu eficient dimensiunea fișierului PDF fără pierderi de calitate. Compresie gratuită și privată direct în browserul tău.",
+        "Redu eficient dimensiunea fiÈ™ierului PDF fÄƒrÄƒ pierderi de calitate. Compresie gratuitÄƒ È™i privatÄƒ direct Ã®n browserul tÄƒu.",
       keywords: [
         "comprimare pdf",
         "redu dimensiune pdf",
@@ -18,56 +18,56 @@ const operationsRoContent: Record<OperationKey, OperationContent> = {
         "pdf mai mic",
         "compress pdf",
       ],
-      ogTitle: "Comprimă PDF-uri fără a pierde din calitate | PDFhelp",
+      ogTitle: "ComprimÄƒ PDF-uri fÄƒrÄƒ a pierde din calitate | ihatelovepdf",
       ogDescription:
-        "Adaugă fișierul, alege nivelul optim de compresie și descarcă un PDF mult mai mic în câteva secunde — în siguranță, fără încărcare pe vreun server.",
-      ogImageAlt: "Interfața instrumentului de compresie PDFhelp",
+        "AdaugÄƒ fiÈ™ierul, alege nivelul optim de compresie È™i descarcÄƒ un PDF mult mai mic Ã®n cÃ¢teva secunde â€” Ã®n siguranÈ›Äƒ, fÄƒrÄƒ Ã®ncÄƒrcare pe vreun server.",
+      ogImageAlt: "InterfaÈ›a instrumentului de compresie ihatelovepdf",
     },
     hero: {
-      title: "Comprimă PDF online cu rezultate clare",
+      title: "ComprimÄƒ PDF online cu rezultate clare",
       description:
-        "Redu dimensiunea documentului pentru a respecta limitele de e-mail, de pe platformele educaționale sau procedurile administrative, menținând în același timp lizibilitatea fiecărei pagini.",
+        "Redu dimensiunea documentului pentru a respecta limitele de e-mail, de pe platformele educaÈ›ionale sau procedurile administrative, menÈ›inÃ¢nd Ã®n acelaÈ™i timp lizibilitatea fiecÄƒrei pagini.",
       bulletPoints: [
-        "Procesare 100% locală — fișierele tale nu părăsesc niciodată browserul",
-        "Alege o compresie de bază, medie sau agresivă în funcție de obiectivele tale",
-        "Păstrează metadatele și structura documentului atunci când ai nevoie",
+        "Procesare 100% localÄƒ â€” fiÈ™ierele tale nu pÄƒrÄƒsesc niciodatÄƒ browserul",
+        "Alege o compresie de bazÄƒ, medie sau agresivÄƒ Ã®n funcÈ›ie de obiectivele tale",
+        "PÄƒstreazÄƒ metadatele È™i structura documentului atunci cÃ¢nd ai nevoie",
       ],
-      imageAlt: "Fluxul de lucru pentru compresia PDF în PDFhelp",
+      imageAlt: "Fluxul de lucru pentru compresia PDF Ã®n ihatelovepdf",
     },
-    benefitsTitle: "De ce să comprimi PDF-uri cu PDFhelp",
+    benefitsTitle: "De ce sÄƒ comprimi PDF-uri cu ihatelovepdf",
     benefits: [
       {
-        title: "Calitate echilibrată",
+        title: "Calitate echilibratÄƒ",
         description:
-          "Motorul nostru de compresie evaluează fiecare resursă pentru a oferi cea mai mare reducere fără a estompa textul sau elementele grafice.",
+          "Motorul nostru de compresie evalueazÄƒ fiecare resursÄƒ pentru a oferi cea mai mare reducere fÄƒrÄƒ a estompa textul sau elementele grafice.",
       },
       {
-        title: "Pregătit pentru trimiteri",
+        title: "PregÄƒtit pentru trimiteri",
         description:
-          "Generează fișiere care respectă limitele stricte de încărcare de pe portalurile guvernamentale, universitare sau fluxurile de lucru corporative.",
+          "GenereazÄƒ fiÈ™iere care respectÄƒ limitele stricte de Ã®ncÄƒrcare de pe portalurile guvernamentale, universitare sau fluxurile de lucru corporative.",
       },
       {
-        title: "Confidențialitate prin design",
+        title: "ConfidenÈ›ialitate prin design",
         description:
-          "Evită încărcarea pe servere și scurgerile de date pentru a respecta politicile interne de confidențialitate fără niciun efort.",
+          "EvitÄƒ Ã®ncÄƒrcarea pe servere È™i scurgerile de date pentru a respecta politicile interne de confidenÈ›ialitate fÄƒrÄƒ niciun efort.",
       },
     ],
     howTo: {
-      title: "Cum să comprimi un PDF cu PDFhelp",
+      title: "Cum sÄƒ comprimi un PDF cu ihatelovepdf",
       steps: [
-        "Fă clic pe „Încarcă fișierele tale” și selectează PDF-ul pe care dorești să-l optimizezi.",
-        "Alege nivelul de compresie și ajustează opțiunile avansate precum păstrarea metadatelor.",
-        "Apasă pe „Procesează” și descarcă documentul comprimat în câteva secunde.",
+        "FÄƒ clic pe â€žÃŽncarcÄƒ fiÈ™ierele taleâ€ È™i selecteazÄƒ PDF-ul pe care doreÈ™ti sÄƒ-l optimizezi.",
+        "Alege nivelul de compresie È™i ajusteazÄƒ opÈ›iunile avansate precum pÄƒstrarea metadatelor.",
+        "ApasÄƒ pe â€žProceseazÄƒâ€ È™i descarcÄƒ documentul comprimat Ã®n cÃ¢teva secunde.",
       ],
       note:
-        "Lucrezi cu mai multe rapoarte? Comprimă-le unul câte unul, fără limite zilnice și fără filigrane.",
+        "Lucrezi cu mai multe rapoarte? ComprimÄƒ-le unul cÃ¢te unul, fÄƒrÄƒ limite zilnice È™i fÄƒrÄƒ filigrane.",
     },
-    useCasesTitle: "Când este utilă compresia",
+    useCasesTitle: "CÃ¢nd este utilÄƒ compresia",
     useCases: [
-      "Trimite contracte, facturi sau manuale prin e-mail fără a atinge limita de atașamente.",
-      "Încarcă teme sau proiecte pe Moodle, Canvas sau orice altă platformă educațională care impune o limită strictă pentru dimensiunea fișierelor.",
-      "Redu dimensiunea tezelor, cataloagelor sau documentelor de cercetare pentru a îmbunătăți viteza de descărcare.",
-      "Arhivează dosare în cloud economisind spațiu de stocare fără a pierde detalii importante.",
+      "Trimite contracte, facturi sau manuale prin e-mail fÄƒrÄƒ a atinge limita de ataÈ™amente.",
+      "ÃŽncarcÄƒ teme sau proiecte pe Moodle, Canvas sau orice altÄƒ platformÄƒ educaÈ›ionalÄƒ care impune o limitÄƒ strictÄƒ pentru dimensiunea fiÈ™ierelor.",
+      "Redu dimensiunea tezelor, cataloagelor sau documentelor de cercetare pentru a Ã®mbunÄƒtÄƒÈ›i viteza de descÄƒrcare.",
+      "ArhiveazÄƒ dosare Ã®n cloud economisind spaÈ›iu de stocare fÄƒrÄƒ a pierde detalii importante.",
     ],
   },
   imagesToPdf: {
@@ -75,9 +75,9 @@ const operationsRoContent: Record<OperationKey, OperationContent> = {
     slug: "imagini-in-pdf",
     mode: "imagesToPdf",
     meta: {
-      title: "Creează PDF din imagini | JPG, PNG în PDF | PDFhelp | Images to PDF",
+      title: "CreeazÄƒ PDF din imagini | JPG, PNG Ã®n PDF | ihatelovepdf | Images to PDF",
       description:
-        "Creează un PDF profesional din imaginile tale. Organizează fotografiile, personalizează aspectul paginii și generează documentul local în browser.",
+        "CreeazÄƒ un PDF profesional din imaginile tale. OrganizeazÄƒ fotografiile, personalizeazÄƒ aspectul paginii È™i genereazÄƒ documentul local Ã®n browser.",
       keywords: [
         "imagini in pdf",
         "jpg in pdf",
@@ -86,56 +86,56 @@ const operationsRoContent: Record<OperationKey, OperationContent> = {
         "creeaza pdf din imagini",
         "images to pdf",
       ],
-      ogTitle: "Creează un PDF clar din imaginile tale | PDFhelp",
+      ogTitle: "CreeazÄƒ un PDF clar din imaginile tale | ihatelovepdf",
       ogDescription:
-        "Trage imaginile la locul lor, configurează setările de pagină și exportă un fișier PDF gata de imprimat — fără încărcări și fără filigrane.",
-      ogImageAlt: "Crearea unui PDF din imagini în PDFhelp",
+        "Trage imaginile la locul lor, configureazÄƒ setÄƒrile de paginÄƒ È™i exportÄƒ un fiÈ™ier PDF gata de imprimat â€” fÄƒrÄƒ Ã®ncÄƒrcÄƒri È™i fÄƒrÄƒ filigrane.",
+      ogImageAlt: "Crearea unui PDF din imagini Ã®n ihatelovepdf",
     },
     hero: {
-      title: "Creează un PDF îngrijit din imagini",
+      title: "CreeazÄƒ un PDF Ã®ngrijit din imagini",
       description:
-        "Grupează scanări, fotografii sau elemente grafice într-un singur PDF gata de partajat cu echipa, studenții sau clienții.",
+        "GrupeazÄƒ scanÄƒri, fotografii sau elemente grafice Ã®ntr-un singur PDF gata de partajat cu echipa, studenÈ›ii sau clienÈ›ii.",
       bulletPoints: [
-        "Trage și plasează pentru a stabili ordinea fiecărei pagini",
-        "Alege dimensiunea paginii, orientarea și marginile potrivite pentru imprimare sau vizualizare pe ecran",
-        "Setează o culoare de fundal solidă pentru a evita transparența neașteptată",
+        "Trage È™i plaseazÄƒ pentru a stabili ordinea fiecÄƒrei pagini",
+        "Alege dimensiunea paginii, orientarea È™i marginile potrivite pentru imprimare sau vizualizare pe ecran",
+        "SeteazÄƒ o culoare de fundal solidÄƒ pentru a evita transparenÈ›a neaÈ™teptatÄƒ",
       ],
-      imageAlt: "Fluxul de lucru pentru imagini în PDF",
+      imageAlt: "Fluxul de lucru pentru imagini Ã®n PDF",
     },
-    benefitsTitle: "De ce să asamblezi PDF-uri din imagini cu PDFhelp",
+    benefitsTitle: "De ce sÄƒ asamblezi PDF-uri din imagini cu ihatelovepdf",
     benefits: [
       {
         title: "Aspect consistent",
         description:
-          "Aliniezi formate diferite de imagine într-un PDF unificat fără surprize de întindere sau decupare.",
+          "Aliniezi formate diferite de imagine Ã®ntr-un PDF unificat fÄƒrÄƒ surprize de Ã®ntindere sau decupare.",
       },
       {
-        title: "Pregătit pentru imprimare și vizualizare",
+        title: "PregÄƒtit pentru imprimare È™i vizualizare",
         description:
-          "Ajustează marginile, orientarea și culoarea de fundal pentru ca PDF-ul exportat să arate impecabil pe hârtie și pe ecrane.",
+          "AjusteazÄƒ marginile, orientarea È™i culoarea de fundal pentru ca PDF-ul exportat sÄƒ arate impecabil pe hÃ¢rtie È™i pe ecrane.",
       },
       {
-        title: "Procesare securizată",
+        title: "Procesare securizatÄƒ",
         description:
-          "Toate conversiile se fac local în browser, fiind sigure pentru scanări de buletine, chitanțe sau materiale școlare.",
+          "Toate conversiile se fac local Ã®n browser, fiind sigure pentru scanÄƒri de buletine, chitanÈ›e sau materiale È™colare.",
       },
     ],
     howTo: {
-      title: "Cum să convertești imagini în PDF",
+      title: "Cum sÄƒ converteÈ™ti imagini Ã®n PDF",
       steps: [
-        "Adaugă imaginile pe care dorești să le incluzi. Reorganizează-le astfel încât secvența să corespundă documentului final.",
-        "Ajustează modul de potrivire, dimensiunea paginii, orientarea și marginile în funcție de nevoile tale.",
-        "Fă clic pe „Creează PDF” pentru a descărca documentul compilat, gata de a fi partajat sau arhivat.",
+        "AdaugÄƒ imaginile pe care doreÈ™ti sÄƒ le incluzi. ReorganizeazÄƒ-le astfel Ã®ncÃ¢t secvenÈ›a sÄƒ corespundÄƒ documentului final.",
+        "AjusteazÄƒ modul de potrivire, dimensiunea paginii, orientarea È™i marginile Ã®n funcÈ›ie de nevoile tale.",
+        "FÄƒ clic pe â€žCreeazÄƒ PDFâ€ pentru a descÄƒrca documentul compilat, gata de a fi partajat sau arhivat.",
       ],
       note:
-        "Loturi mari de imagini? Comprimă PDF-ul rezultat sau împarte-l ulterior fără a fi nevoie să încarci din nou imaginile.",
+        "Loturi mari de imagini? ComprimÄƒ PDF-ul rezultat sau Ã®mparte-l ulterior fÄƒrÄƒ a fi nevoie sÄƒ Ã®ncarci din nou imaginile.",
     },
-    useCasesTitle: "Utilizări excelente pentru conversia imaginilor în PDF",
+    useCasesTitle: "UtilizÄƒri excelente pentru conversia imaginilor Ã®n PDF",
     useCases: [
-      "Combină fișe de lucru scanate sau lucrări de examen înainte de a le trimite studenților.",
-      "Grupează chitanțele de cheltuieli într-un singur PDF în loc de zeci de atașamente individuale.",
-      "Creează portofolii sau cataloage din exporturile de design în câteva secunde.",
-      "Reunește dovezi fotografice sau imagini de la inspecții într-un singur document pentru părțile interesate.",
+      "CombinÄƒ fiÈ™e de lucru scanate sau lucrÄƒri de examen Ã®nainte de a le trimite studenÈ›ilor.",
+      "GrupeazÄƒ chitanÈ›ele de cheltuieli Ã®ntr-un singur PDF Ã®n loc de zeci de ataÈ™amente individuale.",
+      "CreeazÄƒ portofolii sau cataloage din exporturile de design Ã®n cÃ¢teva secunde.",
+      "ReuneÈ™te dovezi fotografice sau imagini de la inspecÈ›ii Ã®ntr-un singur document pentru pÄƒrÈ›ile interesate.",
     ],
   },
   merge: {
@@ -143,9 +143,9 @@ const operationsRoContent: Record<OperationKey, OperationContent> = {
     slug: "uneste",
     mode: "merge",
     meta: {
-      title: "Unește PDF | Combină mai multe PDF-uri gratuit | PDFhelp | Merge PDF",
+      title: "UneÈ™te PDF | CombinÄƒ mai multe PDF-uri gratuit | ihatelovepdf | Merge PDF",
       description:
-        "Combină mai multe fișiere PDF într-un singur document organizat, fără limită de pagini. Trage, reordonează și descarcă fișierul unit instant.",
+        "CombinÄƒ mai multe fiÈ™iere PDF Ã®ntr-un singur document organizat, fÄƒrÄƒ limitÄƒ de pagini. Trage, reordoneazÄƒ È™i descarcÄƒ fiÈ™ierul unit instant.",
       keywords: [
         "uneste pdf",
         "combina pdf",
@@ -154,56 +154,56 @@ const operationsRoContent: Record<OperationKey, OperationContent> = {
         "fuziune pdf",
         "merge pdf",
       ],
-      ogTitle: "Unește mai multe PDF-uri în câteva secunde | PDFhelp",
+      ogTitle: "UneÈ™te mai multe PDF-uri Ã®n cÃ¢teva secunde | ihatelovepdf",
       ogDescription:
-        "Organizează documentele în ordinea perfectă, ajustează setările și descarcă un fișier PDF unificat fără a încărca vreodată datele tale.",
-      ogImageAlt: "Combinarea mai multor PDF-uri în PDFhelp",
+        "OrganizeazÄƒ documentele Ã®n ordinea perfectÄƒ, ajusteazÄƒ setÄƒrile È™i descarcÄƒ un fiÈ™ier PDF unificat fÄƒrÄƒ a Ã®ncÄƒrca vreodatÄƒ datele tale.",
+      ogImageAlt: "Combinarea mai multor PDF-uri Ã®n ihatelovepdf",
     },
     hero: {
-      title: "Unește PDF-uri online — rapid și sigur",
+      title: "UneÈ™te PDF-uri online â€” rapid È™i sigur",
       description:
-        "Creează un singur fișier îngrijit cu contracte, note de curs sau politici interne, gata de trimis, semnat sau arhivat.",
+        "CreeazÄƒ un singur fiÈ™ier Ã®ngrijit cu contracte, note de curs sau politici interne, gata de trimis, semnat sau arhivat.",
       bulletPoints: [
-        "Trage și plasează pentru a controla ordinea finală a paginilor",
-        "Fără limite ascunse — unește documente lungi în mod complet gratuit",
-        "Păstrează semnele de carte (bookmarks) și metadatele atunci când ai nevoie",
+        "Trage È™i plaseazÄƒ pentru a controla ordinea finalÄƒ a paginilor",
+        "FÄƒrÄƒ limite ascunse â€” uneÈ™te documente lungi Ã®n mod complet gratuit",
+        "PÄƒstreazÄƒ semnele de carte (bookmarks) È™i metadatele atunci cÃ¢nd ai nevoie",
       ],
       imageAlt: "Fuziunea documentelor PDF",
     },
-    benefitsTitle: "Avantajele unirii cu PDFhelp",
+    benefitsTitle: "Avantajele unirii cu ihatelovepdf",
     benefits: [
       {
-        title: "Livrare consistentă",
+        title: "Livrare consistentÄƒ",
         description:
-          "Livrează materiale într-un singur fișier, cu paginare continuă și formatare unificată.",
+          "LivreazÄƒ materiale Ã®ntr-un singur fiÈ™ier, cu paginare continuÄƒ È™i formatare unificatÄƒ.",
       },
       {
-        title: "Economisește timp",
+        title: "EconomiseÈ™te timp",
         description:
-          "Evită editoarele desktop greoaie. Trage fișierele, organizează-le și descarcă un document gata de partajat.",
+          "EvitÄƒ editoarele desktop greoaie. Trage fiÈ™ierele, organizeazÄƒ-le È™i descarcÄƒ un document gata de partajat.",
       },
       {
-        title: "Privat și anonim",
+        title: "Privat È™i anonim",
         description:
-          "Nu stocăm nicio copie și nu solicităm date personale, fiind perfect pentru informații confidențiale.",
+          "Nu stocÄƒm nicio copie È™i nu solicitÄƒm date personale, fiind perfect pentru informaÈ›ii confidenÈ›iale.",
       },
     ],
     howTo: {
-      title: "Cum să unești PDF-uri cu PDFhelp",
+      title: "Cum sÄƒ uneÈ™ti PDF-uri cu ihatelovepdf",
       steps: [
-        "Fă clic pe „Încarcă fișierele tale” și selectează cel puțin două PDF-uri.",
-        "Folosește săgețile sau trage fiecare fișier pentru a stabili secvența finală.",
-        "Alege preferințele pentru semnele de carte și apasă pe „Procesează” pentru a descărca PDF-ul unit.",
+        "FÄƒ clic pe â€žÃŽncarcÄƒ fiÈ™ierele taleâ€ È™i selecteazÄƒ cel puÈ›in douÄƒ PDF-uri.",
+        "FoloseÈ™te sÄƒgeÈ›ile sau trage fiecare fiÈ™ier pentru a stabili secvenÈ›a finalÄƒ.",
+        "Alege preferinÈ›ele pentru semnele de carte È™i apasÄƒ pe â€žProceseazÄƒâ€ pentru a descÄƒrca PDF-ul unit.",
       ],
       note:
-        "Ai nevoie să adaugi mai multe fișiere mai târziu? Adaugă-le în listă în orice moment fără a relua procesul.",
+        "Ai nevoie sÄƒ adaugi mai multe fiÈ™iere mai tÃ¢rziu? AdaugÄƒ-le Ã®n listÄƒ Ã®n orice moment fÄƒrÄƒ a relua procesul.",
     },
-    useCasesTitle: "Când este util să unești PDF-uri",
+    useCasesTitle: "CÃ¢nd este util sÄƒ uneÈ™ti PDF-uri",
     useCases: [
-      "Pregătește o propunere comercială alături de anexe, devize și termeni contractuali.",
-      "Trimite facturile lunare grupate într-un singur fișier către departamentul financiar.",
-      "Reunește notițele scanate și prezentările într-un singur PDF pentru studenți.",
-      "Creează pachete juridice complete pregătite pentru semnătura electronică.",
+      "PregÄƒteÈ™te o propunere comercialÄƒ alÄƒturi de anexe, devize È™i termeni contractuali.",
+      "Trimite facturile lunare grupate Ã®ntr-un singur fiÈ™ier cÄƒtre departamentul financiar.",
+      "ReuneÈ™te notiÈ›ele scanate È™i prezentÄƒrile Ã®ntr-un singur PDF pentru studenÈ›i.",
+      "CreeazÄƒ pachete juridice complete pregÄƒtite pentru semnÄƒtura electronicÄƒ.",
     ],
   },
   split: {
@@ -211,9 +211,9 @@ const operationsRoContent: Record<OperationKey, OperationContent> = {
     slug: "divide",
     mode: "split",
     meta: {
-      title: "Divide un PDF pe pagini sau capitole | Gratuit | PDFhelp | Split PDF",
+      title: "Divide un PDF pe pagini sau capitole | Gratuit | ihatelovepdf | Split PDF",
       description:
-        "Separă PDF-ul tău în mai multe fișiere după intervale de pagini sau capitole specifice. Bucură-te de control deplin asupra structurii documentului tău.",
+        "SeparÄƒ PDF-ul tÄƒu Ã®n mai multe fiÈ™iere dupÄƒ intervale de pagini sau capitole specifice. BucurÄƒ-te de control deplin asupra structurii documentului tÄƒu.",
       keywords: [
         "divide pdf",
         "separa pdf",
@@ -222,56 +222,56 @@ const operationsRoContent: Record<OperationKey, OperationContent> = {
         "taie pdf",
         "split pdf",
       ],
-      ogTitle: "Divide PDF-urile tale cu precizie | PDFhelp",
+      ogTitle: "Divide PDF-urile tale cu precizie | ihatelovepdf",
       ogDescription:
-        "Alege exact cum dorești să împarți documentul, generează oricâte fișiere individuale ai nevoie și descarcă-le instantaneu.",
-      ogImageAlt: "Divizarea unui PDF în PDFhelp",
+        "Alege exact cum doreÈ™ti sÄƒ Ã®mparÈ›i documentul, genereazÄƒ oricÃ¢te fiÈ™iere individuale ai nevoie È™i descarcÄƒ-le instantaneu.",
+      ogImageAlt: "Divizarea unui PDF Ã®n ihatelovepdf",
     },
     hero: {
       title: "Divide PDF-uri pe pagini sau segmente",
       description:
-        "Extrage capitole, anexe sau secțiuni specifice în fișiere de sine stătătoare, gata de partajat.",
+        "Extrage capitole, anexe sau secÈ›iuni specifice Ã®n fiÈ™iere de sine stÄƒtÄƒtoare, gata de partajat.",
       bulletPoints: [
-        "Configurează divizarea după un număr fix de pagini sau intervale precise",
-        "Generează mai multe PDF-uri într-o singură etapă de procesare",
-        "Lucrează fără limite de pagini și fără filigrane",
+        "ConfigureazÄƒ divizarea dupÄƒ un numÄƒr fix de pagini sau intervale precise",
+        "GenereazÄƒ mai multe PDF-uri Ã®ntr-o singurÄƒ etapÄƒ de procesare",
+        "LucreazÄƒ fÄƒrÄƒ limite de pagini È™i fÄƒrÄƒ filigrane",
       ],
       imageAlt: "Fluxul de lucru pentru divizarea PDF",
     },
-    benefitsTitle: "Ce îți oferă divizarea cu PDFhelp",
+    benefitsTitle: "Ce Ã®È›i oferÄƒ divizarea cu ihatelovepdf",
     benefits: [
       {
-        title: "Control asupra informațiilor partajate",
+        title: "Control asupra informaÈ›iilor partajate",
         description:
-          "Livrează doar partea relevantă a unui document fără a expune secțiuni confidențiale sau irelevante.",
+          "LivreazÄƒ doar partea relevantÄƒ a unui document fÄƒrÄƒ a expune secÈ›iuni confidenÈ›iale sau irelevante.",
       },
       {
-        title: "Generare eficientă",
+        title: "Generare eficientÄƒ",
         description:
-          "Generează mai multe fișiere simultan și descarcă-le automat pentru arhivare sau transfer.",
+          "GenereazÄƒ mai multe fiÈ™iere simultan È™i descarcÄƒ-le automat pentru arhivare sau transfer.",
       },
       {
-        title: "Configurări avansate",
+        title: "ConfigurÄƒri avansate",
         description:
-          "Creează loturi, inserează separatori sau definește formate de ieșire care se potrivesc fluxului tău de lucru.",
+          "CreeazÄƒ loturi, insereazÄƒ separatori sau defineÈ™te formate de ieÈ™ire care se potrivesc fluxului tÄƒu de lucru.",
       },
     ],
     howTo: {
-      title: "Cum să divizezi un PDF cu PDFhelp",
+      title: "Cum sÄƒ divizezi un PDF cu ihatelovepdf",
       steps: [
-        "Încarcă PDF-ul pe care dorești să-l fragmentezi de pe dispozitivul tău.",
-        "Alege dacă dorești să divizezi după un număr fix de pagini sau prin intervale personalizate.",
-        "Apasă pe „Procesează” și descarcă automat documentele nou generate.",
+        "ÃŽncarcÄƒ PDF-ul pe care doreÈ™ti sÄƒ-l fragmentezi de pe dispozitivul tÄƒu.",
+        "Alege dacÄƒ doreÈ™ti sÄƒ divizezi dupÄƒ un numÄƒr fix de pagini sau prin intervale personalizate.",
+        "ApasÄƒ pe â€žProceseazÄƒâ€ È™i descarcÄƒ automat documentele nou generate.",
       ],
       note:
-        "PDFhelp descarcă primul fișier imediat și le salvează pe restul pe dispozitivul tău fără pași suplimentari.",
+        "ihatelovepdf descarcÄƒ primul fiÈ™ier imediat È™i le salveazÄƒ pe restul pe dispozitivul tÄƒu fÄƒrÄƒ paÈ™i suplimentari.",
     },
     useCasesTitle: "Scenarii tipice pentru divizarea PDF-urilor",
     useCases: [
-      "Publică fiecare capitol al unei cărți electronice ca resursă separată pentru un curs online.",
-      "Separă anexele care trebuie trimise prin canale de comunicare diferite.",
+      "PublicÄƒ fiecare capitol al unei cÄƒrÈ›i electronice ca resursÄƒ separatÄƒ pentru un curs online.",
+      "SeparÄƒ anexele care trebuie trimise prin canale de comunicare diferite.",
       "Extrage rapoartele trimestriale din documente financiare anuale voluminoase.",
-      "Pregătește loturi compacte pentru clienți fără a expune documentația tehnică internă.",
+      "PregÄƒteÈ™te loturi compacte pentru clienÈ›i fÄƒrÄƒ a expune documentaÈ›ia tehnicÄƒ internÄƒ.",
     ],
   },
   extract: {
@@ -279,9 +279,9 @@ const operationsRoContent: Record<OperationKey, OperationContent> = {
     slug: "extrage",
     mode: "extract",
     meta: {
-      title: "Extrage pagini PDF | Salvează paginile selectate | PDFhelp | Extract PDF pages",
+      title: "Extrage pagini PDF | SalveazÄƒ paginile selectate | ihatelovepdf | Extract PDF pages",
       description:
-        "Selectează pagini specifice din orice PDF și creează instantaneu un nou document personalizat. Procesare privată și nelimitată.",
+        "SelecteazÄƒ pagini specifice din orice PDF È™i creeazÄƒ instantaneu un nou document personalizat. Procesare privatÄƒ È™i nelimitatÄƒ.",
       keywords: [
         "extrage pagini pdf",
         "salveaza pagini pdf",
@@ -290,56 +290,56 @@ const operationsRoContent: Record<OperationKey, OperationContent> = {
         "creeaza pdf nou",
         "extract pdf pages",
       ],
-      ogTitle: "Extrage doar paginile de care ai nevoie | PDFhelp",
+      ogTitle: "Extrage doar paginile de care ai nevoie | ihatelovepdf",
       ogDescription:
-        "Bifează paginile relevante pe care dorești să le păstrezi, generează un nou fișier PDF în câteva secunde și menține siguranța datelor tale.",
-      ogImageAlt: "Selectarea paginilor PDF în PDFhelp",
+        "BifeazÄƒ paginile relevante pe care doreÈ™ti sÄƒ le pÄƒstrezi, genereazÄƒ un nou fiÈ™ier PDF Ã®n cÃ¢teva secunde È™i menÈ›ine siguranÈ›a datelor tale.",
+      ogImageAlt: "Selectarea paginilor PDF Ã®n ihatelovepdf",
     },
     hero: {
       title: "Extrage pagini PDF specifice",
       description:
-        "Asamblează documente personalizate păstrând doar paginile pe care trebuie să le partajezi sau să le arhivezi.",
+        "AsambleazÄƒ documente personalizate pÄƒstrÃ¢nd doar paginile pe care trebuie sÄƒ le partajezi sau sÄƒ le arhivezi.",
       bulletPoints: [
-        "Vizualizează miniaturile și bifează paginile individuale",
-        "Păstrează numerele paginilor originale sau generează o numerotare nouă",
-        "Descarcă instantaneu PDF-ul rezultat fără timp de așteptare",
+        "VizualizeazÄƒ miniaturile È™i bifeazÄƒ paginile individuale",
+        "PÄƒstreazÄƒ numerele paginilor originale sau genereazÄƒ o numerotare nouÄƒ",
+        "DescarcÄƒ instantaneu PDF-ul rezultat fÄƒrÄƒ timp de aÈ™teptare",
       ],
       imageAlt: "Extragerea paginilor dintr-un PDF",
     },
-    benefitsTitle: "Avantajele extragerii paginilor cu PDFhelp",
+    benefitsTitle: "Avantajele extragerii paginilor cu ihatelovepdf",
     benefits: [
       {
         title: "Documente mai relevante",
         description:
-          "Partajează doar informațiile utile cu echipa sau clienții tăi, eliminând datele redundante.",
+          "PartajeazÄƒ doar informaÈ›iile utile cu echipa sau clienÈ›ii tÄƒi, eliminÃ¢nd datele redundante.",
       },
       {
-        title: "Control total în browser",
+        title: "Control total Ã®n browser",
         description:
-          "Selectează, previzualizează și verifică fiecare pagină fără software-uri greoaie sau conexiune la internet.",
+          "SelecteazÄƒ, previzualizeazÄƒ È™i verificÄƒ fiecare paginÄƒ fÄƒrÄƒ software-uri greoaie sau conexiune la internet.",
       },
       {
         title: "Rezultate curate",
         description:
-          "Noul PDF își păstrează calitatea originală și metadatele în funcție de opțiunile stabilite de tine.",
+          "Noul PDF Ã®È™i pÄƒstreazÄƒ calitatea originalÄƒ È™i metadatele Ã®n funcÈ›ie de opÈ›iunile stabilite de tine.",
       },
     ],
     howTo: {
-      title: "Cum să extragi pagini cu PDFhelp",
+      title: "Cum sÄƒ extragi pagini cu ihatelovepdf",
       steps: [
-        "Încarcă PDF-ul și alege documentul cu care dorești să lucrezi.",
-        "Selectează paginile de care ai nevoie din grila de miniaturi.",
-        "Fă clic pe „Procesează” pentru a descărca noul PDF cu paginile selectate.",
+        "ÃŽncarcÄƒ PDF-ul È™i alege documentul cu care doreÈ™ti sÄƒ lucrezi.",
+        "SelecteazÄƒ paginile de care ai nevoie din grila de miniaturi.",
+        "FÄƒ clic pe â€žProceseazÄƒâ€ pentru a descÄƒrca noul PDF cu paginile selectate.",
       ],
       note:
-        "Poți combina extragerea cu alte operațiuni precum unirea sau compresia în sesiuni separate.",
+        "PoÈ›i combina extragerea cu alte operaÈ›iuni precum unirea sau compresia Ã®n sesiuni separate.",
     },
     useCasesTitle: "Idei pentru extragerea paginilor",
     useCases: [
-      "Partajează doar capitolul alocat dintr-un manual cu colegii de proiect.",
-      "Trimite doar paginile specifice dintr-un contract de credit pentru o verificare juridică.",
-      "Asamblează dosare personalizate conținând doar informațiile relevante pentru fiecare client.",
-      "Salvează copii ale paginilor de formular sau chitanțelor pe care trebuie să le arhivezi.",
+      "PartajeazÄƒ doar capitolul alocat dintr-un manual cu colegii de proiect.",
+      "Trimite doar paginile specifice dintr-un contract de credit pentru o verificare juridicÄƒ.",
+      "AsambleazÄƒ dosare personalizate conÈ›inÃ¢nd doar informaÈ›iile relevante pentru fiecare client.",
+      "SalveazÄƒ copii ale paginilor de formular sau chitanÈ›elor pe care trebuie sÄƒ le arhivezi.",
     ],
   },
   crop: {
@@ -347,9 +347,9 @@ const operationsRoContent: Record<OperationKey, OperationContent> = {
     slug: "decupeaza",
     mode: "crop",
     meta: {
-      title: "Decupează pagini PDF | Ajustează marginile | PDFhelp | Crop PDF",
+      title: "DecupeazÄƒ pagini PDF | AjusteazÄƒ marginile | ihatelovepdf | Crop PDF",
       description:
-        "Decupează pagini PDF și elimină marginile inutile direct în browser. Selectează paginile și definește zona de decupare.",
+        "DecupeazÄƒ pagini PDF È™i eliminÄƒ marginile inutile direct Ã®n browser. SelecteazÄƒ paginile È™i defineÈ™te zona de decupare.",
       keywords: [
         "decupeaza pdf",
         "decupare pdf online",
@@ -359,56 +359,56 @@ const operationsRoContent: Record<OperationKey, OperationContent> = {
         "elimina spatiu alb pdf",
         "crop pdf",
       ],
-      ogTitle: "Decupează pagini PDF local în browserul tău | PDFhelp",
+      ogTitle: "DecupeazÄƒ pagini PDF local Ã®n browserul tÄƒu | ihatelovepdf",
       ogDescription:
-        "Redu marginile albe și concentrează fiecare pagină doar pe conținutul esențial, cu o procesare complet privată pe dispozitivul tău.",
-      ogImageAlt: "Decuparea paginilor PDF în PDFhelp",
+        "Redu marginile albe È™i concentreazÄƒ fiecare paginÄƒ doar pe conÈ›inutul esenÈ›ial, cu o procesare complet privatÄƒ pe dispozitivul tÄƒu.",
+      ogImageAlt: "Decuparea paginilor PDF Ã®n ihatelovepdf",
     },
     hero: {
-      title: "Decupează pagini PDF și elimină marginile",
+      title: "DecupeazÄƒ pagini PDF È™i eliminÄƒ marginile",
       description:
-        "Elimină spațiul alb suplimentar sau restrânge zona vizibilă a paginilor selectate fără a trimite documentul pe vreun server.",
+        "EliminÄƒ spaÈ›iul alb suplimentar sau restrÃ¢nge zona vizibilÄƒ a paginilor selectate fÄƒrÄƒ a trimite documentul pe vreun server.",
       bulletPoints: [
-        "Selectează doar paginile pe care dorești să le decupezi",
-        "Redu marginile superioară, dreaptă, inferioară și stângă cu valori precise în puncte",
-        "Păstrează fluxul de lucru complet local, cu procesare direct pe dispozitivul tău",
+        "SelecteazÄƒ doar paginile pe care doreÈ™ti sÄƒ le decupezi",
+        "Redu marginile superioarÄƒ, dreaptÄƒ, inferioarÄƒ È™i stÃ¢ngÄƒ cu valori precise Ã®n puncte",
+        "PÄƒstreazÄƒ fluxul de lucru complet local, cu procesare direct pe dispozitivul tÄƒu",
       ],
       imageAlt: "Fluxul de lucru pentru decuparea PDF",
     },
-    benefitsTitle: "De ce să decupezi PDF-uri cu PDFhelp",
+    benefitsTitle: "De ce sÄƒ decupezi PDF-uri cu ihatelovepdf",
     benefits: [
       {
         title: "Pagini mai curate",
         description:
-          "Elimină marginile albe care distrag atenția și concentrează fiecare pagină pe conținutul important.",
+          "EliminÄƒ marginile albe care distrag atenÈ›ia È™i concentreazÄƒ fiecare paginÄƒ pe conÈ›inutul important.",
       },
       {
-        title: "Editare selectivă",
+        title: "Editare selectivÄƒ",
         description:
-          "Decupează doar paginile care necesită ajustare, în loc să modifici întregul document.",
+          "DecupeazÄƒ doar paginile care necesitÄƒ ajustare, Ã®n loc sÄƒ modifici Ã®ntregul document.",
       },
       {
-        title: "Privat prin definiție",
+        title: "Privat prin definiÈ›ie",
         description:
-          "Fiecare decupare rulează direct în browserul tău, fiind sigură pentru facturi, scanări și rapoarte interne.",
+          "Fiecare decupare ruleazÄƒ direct Ã®n browserul tÄƒu, fiind sigurÄƒ pentru facturi, scanÄƒri È™i rapoarte interne.",
       },
     ],
     howTo: {
-      title: "Cum să decupezi pagini PDF cu PDFhelp",
+      title: "Cum sÄƒ decupezi pagini PDF cu ihatelovepdf",
       steps: [
-        "Încarcă PDF-ul și alege fișierul ale cărui pagini dorești să le decupezi.",
-        "Selectează paginile de modificat și configurează marginile de decupare.",
-        "Fă clic pe „Procesează” pentru a descărca noul PDF cu noile limite ale paginilor.",
+        "ÃŽncarcÄƒ PDF-ul È™i alege fiÈ™ierul ale cÄƒrui pagini doreÈ™ti sÄƒ le decupezi.",
+        "SelecteazÄƒ paginile de modificat È™i configureazÄƒ marginile de decupare.",
+        "FÄƒ clic pe â€žProceseazÄƒâ€ pentru a descÄƒrca noul PDF cu noile limite ale paginilor.",
       ],
       note:
-        "Dacă diferite grupuri de pagini necesită decupări diferite, poți rula decuparea de mai multe ori.",
+        "DacÄƒ diferite grupuri de pagini necesitÄƒ decupÄƒri diferite, poÈ›i rula decuparea de mai multe ori.",
     },
-    useCasesTitle: "Când este utilă decuparea unui PDF",
+    useCasesTitle: "CÃ¢nd este utilÄƒ decuparea unui PDF",
     useCases: [
-      "Ajustează marginile scanate ale formularelor, chitanțelor sau documentelor semnate.",
-      "Elimină marginile albe suplimentare înainte de a imprima sau de a combina fișierele.",
-      "Standardizează paginile exportate din instrumente diferite care au borduri neuniforme.",
-      "Pregătește cadre mai strânse înainte de a partaja manuale, rapoarte sau materiale de studiu.",
+      "AjusteazÄƒ marginile scanate ale formularelor, chitanÈ›elor sau documentelor semnate.",
+      "EliminÄƒ marginile albe suplimentare Ã®nainte de a imprima sau de a combina fiÈ™ierele.",
+      "StandardizeazÄƒ paginile exportate din instrumente diferite care au borduri neuniforme.",
+      "PregÄƒteÈ™te cadre mai strÃ¢nse Ã®nainte de a partaja manuale, rapoarte sau materiale de studiu.",
     ],
   },
   rotate: {
@@ -416,9 +416,9 @@ const operationsRoContent: Record<OperationKey, OperationContent> = {
     slug: "roteste",
     mode: "rotate",
     meta: {
-      title: "Rotește pagini PDF | Întoarce paginile online | PDFhelp | Rotate PDF",
+      title: "RoteÈ™te pagini PDF | ÃŽntoarce paginile online | ihatelovepdf | Rotate PDF",
       description:
-        "Rotește paginile selectate din PDF cu 90 sau 180 de grade direct în browser. Privat, gratuit și complet local.",
+        "RoteÈ™te paginile selectate din PDF cu 90 sau 180 de grade direct Ã®n browser. Privat, gratuit È™i complet local.",
       keywords: [
         "roteste pdf",
         "intoarce pagini pdf",
@@ -427,56 +427,56 @@ const operationsRoContent: Record<OperationKey, OperationContent> = {
         "roteste pagina pdf",
         "rotate pdf",
       ],
-      ogTitle: "Rotește pagini PDF în câteva secunde | PDFhelp",
+      ogTitle: "RoteÈ™te pagini PDF Ã®n cÃ¢teva secunde | ihatelovepdf",
       ogDescription:
-        "Selectează paginile care au nevoie de o altă orientare, alege 90 sau 180 de grade și descarcă PDF-ul corectat fără a încărca nimic.",
-      ogImageAlt: "Rotirea paginilor PDF în PDFhelp",
+        "SelecteazÄƒ paginile care au nevoie de o altÄƒ orientare, alege 90 sau 180 de grade È™i descarcÄƒ PDF-ul corectat fÄƒrÄƒ a Ã®ncÄƒrca nimic.",
+      ogImageAlt: "Rotirea paginilor PDF Ã®n ihatelovepdf",
     },
     hero: {
-      title: "Rotește paginile PDF fără pierdere de calitate",
+      title: "RoteÈ™te paginile PDF fÄƒrÄƒ pierdere de calitate",
       description:
-        "Corectează scanările înclinate, exporturile inversate sau paginile cu orientări mixte în doar câteva clicuri.",
+        "CorecteazÄƒ scanÄƒrile Ã®nclinate, exporturile inversate sau paginile cu orientÄƒri mixte Ã®n doar cÃ¢teva clicuri.",
       bulletPoints: [
-        "Rotește doar paginile pe care le selectezi manual",
-        "Alege 90 de grade la dreapta, 180 de grade sau 90 de grade la stânga",
-        "Totul rulează în browserul tău, fără încărcări sau timpi de așteptare",
+        "RoteÈ™te doar paginile pe care le selectezi manual",
+        "Alege 90 de grade la dreapta, 180 de grade sau 90 de grade la stÃ¢nga",
+        "Totul ruleazÄƒ Ã®n browserul tÄƒu, fÄƒrÄƒ Ã®ncÄƒrcÄƒri sau timpi de aÈ™teptare",
       ],
       imageAlt: "Fluxul de lucru pentru rotirea paginilor PDF",
     },
-    benefitsTitle: "De ce să rotești pagini cu PDFhelp",
+    benefitsTitle: "De ce sÄƒ roteÈ™ti pagini cu ihatelovepdf",
     benefits: [
       {
-        title: "Corecții precise",
+        title: "CorecÈ›ii precise",
         description:
-          "Ajustează doar paginile care au orientare greșită, excelent pentru loturi de scanare mixte.",
+          "AjusteazÄƒ doar paginile care au orientare greÈ™itÄƒ, excelent pentru loturi de scanare mixte.",
       },
       {
-        title: "Corectare rapidă",
+        title: "Corectare rapidÄƒ",
         description:
-          "Schimbă orientarea paginilor în câteva secunde fără a deschide un editor desktop greoi.",
+          "SchimbÄƒ orientarea paginilor Ã®n cÃ¢teva secunde fÄƒrÄƒ a deschide un editor desktop greoi.",
       },
       {
         title: "Privat implicit",
         description:
-          "Documentele confidențiale rămân pe dispozitivul tău, deoarece fiecare rotire se execută local.",
+          "Documentele confidenÈ›iale rÄƒmÃ¢n pe dispozitivul tÄƒu, deoarece fiecare rotire se executÄƒ local.",
       },
     ],
     howTo: {
-      title: "Cum să rotești pagini PDF",
+      title: "Cum sÄƒ roteÈ™ti pagini PDF",
       steps: [
-        "Încarcă PDF-ul și alege documentul ale cărui pagini dorești să le corectezi.",
-        "Selectează paginile de rotit și alege 90° dreapta, 180° sau 90° stânga.",
-        "Fă clic pe „Procesează” pentru a descărca noul PDF cu orientarea actualizată.",
+        "ÃŽncarcÄƒ PDF-ul È™i alege documentul ale cÄƒrui pagini doreÈ™ti sÄƒ le corectezi.",
+        "SelecteazÄƒ paginile de rotit È™i alege 90Â° dreapta, 180Â° sau 90Â° stÃ¢nga.",
+        "FÄƒ clic pe â€žProceseazÄƒâ€ pentru a descÄƒrca noul PDF cu orientarea actualizatÄƒ.",
       ],
       note:
-        "Mai ai nevoie de ajustări? Poți oricând să reordonezi, să extragi sau să comprimi ulterior PDF-ul rotit.",
+        "Mai ai nevoie de ajustÄƒri? PoÈ›i oricÃ¢nd sÄƒ reordonezi, sÄƒ extragi sau sÄƒ comprimi ulterior PDF-ul rotit.",
     },
-    useCasesTitle: "Când ajută rotirea paginilor",
+    useCasesTitle: "CÃ¢nd ajutÄƒ rotirea paginilor",
     useCases: [
-      "Corectează contractele sau formularele scanate care au fost introduse lateral în scanner.",
-      "Întoarce paginile inversate din rapoartele asamblate din surse diferite.",
-      "Corectează notițele de curs sau manualele înainte de a le partaja cu studenții.",
-      "Curăță PDF-urile de arhivă pentru ca fiecare pagină să fie confortabil de citit pe ecran.",
+      "CorecteazÄƒ contractele sau formularele scanate care au fost introduse lateral Ã®n scanner.",
+      "ÃŽntoarce paginile inversate din rapoartele asamblate din surse diferite.",
+      "CorecteazÄƒ notiÈ›ele de curs sau manualele Ã®nainte de a le partaja cu studenÈ›ii.",
+      "CurÄƒÈ›Äƒ PDF-urile de arhivÄƒ pentru ca fiecare paginÄƒ sÄƒ fie confortabil de citit pe ecran.",
     ],
   },
   reorder: {
@@ -484,9 +484,9 @@ const operationsRoContent: Record<OperationKey, OperationContent> = {
     slug: "reordoneaza",
     mode: "reorder",
     meta: {
-      title: "Reordonează paginile PDF | Schimbă ordinea | PDFhelp | Reorder PDF",
+      title: "ReordoneazÄƒ paginile PDF | SchimbÄƒ ordinea | ihatelovepdf | Reorder PDF",
       description:
-        "Reordonează cu ușurință paginile PDF-ului tău printr-o interfață simplă de tip drag-and-drop. Corectează ordinea documentelor și salvează instant.",
+        "ReordoneazÄƒ cu uÈ™urinÈ›Äƒ paginile PDF-ului tÄƒu printr-o interfaÈ›Äƒ simplÄƒ de tip drag-and-drop. CorecteazÄƒ ordinea documentelor È™i salveazÄƒ instant.",
       keywords: [
         "reordoneaza pdf",
         "schimba ordine pagini pdf",
@@ -494,56 +494,56 @@ const operationsRoContent: Record<OperationKey, OperationContent> = {
         "sorteaza pagini pdf",
         "reorder pdf",
       ],
-      ogTitle: "Organizează paginile PDF fără a instala programe | PDFhelp",
+      ogTitle: "OrganizeazÄƒ paginile PDF fÄƒrÄƒ a instala programe | ihatelovepdf",
       ogDescription:
-        "Mută paginile la locul lor, corectează erorile de sortare și descarcă documentul PDF perfect organizat.",
+        "MutÄƒ paginile la locul lor, corecteazÄƒ erorile de sortare È™i descarcÄƒ documentul PDF perfect organizat.",
       ogImageAlt: "Reorganizarea paginilor PDF",
     },
     hero: {
-      title: "Reordonează paginile PDF prin drag-and-drop",
+      title: "ReordoneazÄƒ paginile PDF prin drag-and-drop",
       description:
-        "Corectează secvența facturilor scanate, prezentărilor sau rapoartelor lungi în câteva secunde.",
+        "CorecteazÄƒ secvenÈ›a facturilor scanate, prezentÄƒrilor sau rapoartelor lungi Ã®n cÃ¢teva secunde.",
       bulletPoints: [
-        "Miniaturile mari te ajută să eviți erorile de sortare",
-        "Trage paginile și confirmă noua ordine în mod instantaneu",
-        "Exportă PDF-ul reordonat fără a pierde semnele de carte sau legăturile interne",
+        "Miniaturile mari te ajutÄƒ sÄƒ eviÈ›i erorile de sortare",
+        "Trage paginile È™i confirmÄƒ noua ordine Ã®n mod instantaneu",
+        "ExportÄƒ PDF-ul reordonat fÄƒrÄƒ a pierde semnele de carte sau legÄƒturile interne",
       ],
-      imageAlt: "Interfața pentru ordonarea paginilor",
+      imageAlt: "InterfaÈ›a pentru ordonarea paginilor",
     },
-    benefitsTitle: "De ce să reordonezi pagini cu PDFhelp",
+    benefitsTitle: "De ce sÄƒ reordonezi pagini cu ihatelovepdf",
     benefits: [
       {
         title: "Fluxuri de lucru rapide",
         description:
-          "Corectează scanările dezordonate fără a rescană și fără a instala editoare complexe.",
+          "CorecteazÄƒ scanÄƒrile dezordonate fÄƒrÄƒ a rescanÄƒ È™i fÄƒrÄƒ a instala editoare complexe.",
       },
       {
-        title: "Precizie vizuală",
+        title: "Precizie vizualÄƒ",
         description:
-          "Miniaturile îți permit să validezi fiecare pagină înainte de a exporta noua structură.",
+          "Miniaturile Ã®È›i permit sÄƒ validezi fiecare paginÄƒ Ã®nainte de a exporta noua structurÄƒ.",
       },
       {
-        title: "Fără urme lăsate",
+        title: "FÄƒrÄƒ urme lÄƒsate",
         description:
-          "Totul se întâmplă pe dispozitivul tău, fiind soluția ideală pentru documente sensibile.",
+          "Totul se Ã®ntÃ¢mplÄƒ pe dispozitivul tÄƒu, fiind soluÈ›ia idealÄƒ pentru documente sensibile.",
       },
     ],
     howTo: {
-      title: "Cum să reordonezi paginile cu PDFhelp",
+      title: "Cum sÄƒ reordonezi paginile cu ihatelovepdf",
       steps: [
-        "Încarcă PDF-ul și alege documentul pe care dorești să-l modifici.",
-        "Trage fiecare miniatură până când ordinea paginilor este cea corectă.",
-        "Apasă pe „Procesează” pentru a descărca documentul cu noua sa secvență.",
+        "ÃŽncarcÄƒ PDF-ul È™i alege documentul pe care doreÈ™ti sÄƒ-l modifici.",
+        "Trage fiecare miniaturÄƒ pÃ¢nÄƒ cÃ¢nd ordinea paginilor este cea corectÄƒ.",
+        "ApasÄƒ pe â€žProceseazÄƒâ€ pentru a descÄƒrca documentul cu noua sa secvenÈ›Äƒ.",
       ],
       note:
-        "Poți continua să ajustezi ordinea chiar și după un export, fără a reîncărca fișierul.",
+        "PoÈ›i continua sÄƒ ajustezi ordinea chiar È™i dupÄƒ un export, fÄƒrÄƒ a reÃ®ncÄƒrca fiÈ™ierul.",
     },
-    useCasesTitle: "Când este util să reordonezi un PDF",
+    useCasesTitle: "CÃ¢nd este util sÄƒ reordonezi un PDF",
     useCases: [
-      "Aliniează propunerile financiare, anexele și semnăturile în ordinea corectă înainte de trimitere.",
-      "Pregătește prezentări tipărite respectând secvența exactă a diapozitivelor.",
-      "Corectează paginile duplicat sau inversate după scanarea unui lot mare de documente.",
-      "Actualizează manualele prin reorganizarea conținutului existent fără a le reproiecta complet.",
+      "AlinieazÄƒ propunerile financiare, anexele È™i semnÄƒturile Ã®n ordinea corectÄƒ Ã®nainte de trimitere.",
+      "PregÄƒteÈ™te prezentÄƒri tipÄƒrite respectÃ¢nd secvenÈ›a exactÄƒ a diapozitivelor.",
+      "CorecteazÄƒ paginile duplicat sau inversate dupÄƒ scanarea unui lot mare de documente.",
+      "ActualizeazÄƒ manualele prin reorganizarea conÈ›inutului existent fÄƒrÄƒ a le reproiecta complet.",
     ],
   },
   pdfToImages: {
@@ -551,9 +551,9 @@ const operationsRoContent: Record<OperationKey, OperationContent> = {
     slug: "pdf-in-imagini",
     mode: "pdfToImages",
     meta: {
-      title: "Convertește PDF în imagini | Export PNG sau JPEG | PDFhelp | PDF to Images",
+      title: "ConverteÈ™te PDF Ã®n imagini | Export PNG sau JPEG | ihatelovepdf | PDF to Images",
       description:
-        "Convertește fiecare pagină a PDF-ului tău în imagini PNG sau JPEG de înaltă calitate. Alege rezoluția și descarcă-le ca arhivă ZIP.",
+        "ConverteÈ™te fiecare paginÄƒ a PDF-ului tÄƒu Ã®n imagini PNG sau JPEG de Ã®naltÄƒ calitate. Alege rezoluÈ›ia È™i descarcÄƒ-le ca arhivÄƒ ZIP.",
       keywords: [
         "pdf in imagini",
         "exporta pagini pdf",
@@ -562,56 +562,56 @@ const operationsRoContent: Record<OperationKey, OperationContent> = {
         "descarca pdf ca imagini",
         "pdf to images",
       ],
-      ogTitle: "Exportă paginile PDF ca imagini clare | PDFhelp",
+      ogTitle: "ExportÄƒ paginile PDF ca imagini clare | ihatelovepdf",
       ogDescription:
-        "Redă fiecare pagină ca o imagine clară direct în browserul tău. Ajustează calitatea și obține instant o arhivă ZIP.",
-      ogImageAlt: "PDFhelp exportând pagini PDF în imagini",
+        "RedÄƒ fiecare paginÄƒ ca o imagine clarÄƒ direct Ã®n browserul tÄƒu. AjusteazÄƒ calitatea È™i obÈ›ine instant o arhivÄƒ ZIP.",
+      ogImageAlt: "ihatelovepdf exportÃ¢nd pagini PDF Ã®n imagini",
     },
     hero: {
-      title: "Convertește paginile PDF în PNG sau JPEG",
+      title: "ConverteÈ™te paginile PDF Ã®n PNG sau JPEG",
       description:
-        "Generează imagini clare din fiecare pagină pentru prezentări, revizuiri sau integrare în proiecte de design.",
+        "GenereazÄƒ imagini clare din fiecare paginÄƒ pentru prezentÄƒri, revizuiri sau integrare Ã®n proiecte de design.",
       bulletPoints: [
-        "Selectează PNG sau JPEG și controlează rezoluția de export (DPI)",
-        "Descarcă totul grupate într-un ZIP sau descarcă paginile individual",
-        "Redare exclusiv locală — fără încărcări, fără urme pe servere",
+        "SelecteazÄƒ PNG sau JPEG È™i controleazÄƒ rezoluÈ›ia de export (DPI)",
+        "DescarcÄƒ totul grupate Ã®ntr-un ZIP sau descarcÄƒ paginile individual",
+        "Redare exclusiv localÄƒ â€” fÄƒrÄƒ Ã®ncÄƒrcÄƒri, fÄƒrÄƒ urme pe servere",
       ],
-      imageAlt: "Fluxul de lucru pentru conversia PDF în imagini",
+      imageAlt: "Fluxul de lucru pentru conversia PDF Ã®n imagini",
     },
-    benefitsTitle: "De ce să exporți PDF-uri ca imagini cu PDFhelp",
+    benefitsTitle: "De ce sÄƒ exporÈ›i PDF-uri ca imagini cu ihatelovepdf",
     benefits: [
       {
-        title: "Calitate pregătită de prezentare",
+        title: "Calitate pregÄƒtitÄƒ de prezentare",
         description:
-          "Alege rezoluția potrivită pentru diapozitivele tale fără a ghici dacă paginile vor fi suficient de clare.",
+          "Alege rezoluÈ›ia potrivitÄƒ pentru diapozitivele tale fÄƒrÄƒ a ghici dacÄƒ paginile vor fi suficient de clare.",
       },
       {
-        title: "Descărcări flexibile",
+        title: "DescÄƒrcÄƒri flexibile",
         description:
-          "Obține o arhivă ZIP ordonată pentru documente lungi sau descarcă doar paginile dorite.",
+          "ObÈ›ine o arhivÄƒ ZIP ordonatÄƒ pentru documente lungi sau descarcÄƒ doar paginile dorite.",
       },
       {
         title: "Privat prin design",
         description:
-          "Redarea se face direct în browser, astfel încât documentele confidențiale nu ajung niciodată pe servere terțe.",
+          "Redarea se face direct Ã®n browser, astfel Ã®ncÃ¢t documentele confidenÈ›iale nu ajung niciodatÄƒ pe servere terÈ›e.",
       },
     ],
     howTo: {
-      title: "Cum să convertești un PDF în imagini",
+      title: "Cum sÄƒ converteÈ™ti un PDF Ã®n imagini",
       steps: [
-        "Încarcă PDF-ul pe care dorești să-l convertești în imagini.",
-        "Alege PNG sau JPEG, ajustează DPI-ul și decide dacă dorești rezultatele într-o arhivă ZIP.",
-        "Fă clic pe „Exportă imagini” pentru a descărca arhiva.",
+        "ÃŽncarcÄƒ PDF-ul pe care doreÈ™ti sÄƒ-l converteÈ™ti Ã®n imagini.",
+        "Alege PNG sau JPEG, ajusteazÄƒ DPI-ul È™i decide dacÄƒ doreÈ™ti rezultatele Ã®ntr-o arhivÄƒ ZIP.",
+        "FÄƒ clic pe â€žExportÄƒ imaginiâ€ pentru a descÄƒrca arhiva.",
       ],
       note:
-        "Ai nevoie doar de câteva pagini? Divide sau extrage mai întâi, apoi exportă-le ca imagini.",
+        "Ai nevoie doar de cÃ¢teva pagini? Divide sau extrage mai Ã®ntÃ¢i, apoi exportÄƒ-le ca imagini.",
     },
-    useCasesTitle: "Când ajută conversia din PDF în imagine",
+    useCasesTitle: "CÃ¢nd ajutÄƒ conversia din PDF Ã®n imagine",
     useCases: [
-      "Partajează previzualizări statice ale propunerilor de design aprobate.",
-      "Integrează pagini PDF unice în platforme web (CMS) sau prezentări PowerPoint.",
-      "Creează imagini compatibile cu tablete sau e-readere care citesc mai greu PDF-uri mari.",
-      "Documenteză fluxurile de lucru pentru revizuiri care necesită capturi de ecran ale paginilor.",
+      "PartajeazÄƒ previzualizÄƒri statice ale propunerilor de design aprobate.",
+      "IntegreazÄƒ pagini PDF unice Ã®n platforme web (CMS) sau prezentÄƒri PowerPoint.",
+      "CreeazÄƒ imagini compatibile cu tablete sau e-readere care citesc mai greu PDF-uri mari.",
+      "DocumentezÄƒ fluxurile de lucru pentru revizuiri care necesitÄƒ capturi de ecran ale paginilor.",
     ],
   },
 };

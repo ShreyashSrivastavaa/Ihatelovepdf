@@ -146,7 +146,7 @@ export default function ProcessingOptions({ mode, options, onOptionsChangeAction
             <p className="text-xs sm:text-sm font-bold text-[var(--tx)]">{compressStrings.advancedTitle}</p>
             {activeEnhancements.length > 0 ? (
               <p className="text-xs font-medium text-[var(--accent)]">
-                {compressStrings.activeLabel} {activeEnhancements.join(' • ')}
+                {compressStrings.activeLabel} {activeEnhancements.join(' â€¢ ')}
               </p>
             ) : (
               <p className="text-xs text-[var(--tx-3)]">{compressStrings.advancedDescription}</p>

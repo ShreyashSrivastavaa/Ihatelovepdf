@@ -23,7 +23,7 @@ export default function PrivacyPageContent() {
             Privacy Policy
           </h1>
           <p className="text-sm sm:text-base text-[var(--tx-2)] max-w-2xl mx-auto leading-relaxed">
-            Your privacy is our absolute core promise. PDFhelp operates completely inside your browser — your documents never touch a remote server.
+            Your privacy is our absolute core promise. ihatelovepdf operates completely inside your browser â€” your documents never touch a remote server.
           </p>
           <div className="text-xs text-[var(--tx-3)] pt-2">
             Last Updated: July 31, 2026
@@ -38,7 +38,7 @@ export default function PrivacyPageContent() {
             </div>
             <h3 className="text-sm font-bold text-[var(--tx)]">Zero Server Uploads</h3>
             <p className="text-xs text-[var(--tx-2)] leading-relaxed">
-              Files uploaded to PDFhelp stay in your browser RAM and local disk storage. We operate zero cloud processing pipelines.
+              Files uploaded to ihatelovepdf stay in your browser RAM and local disk storage. We operate zero cloud processing pipelines.
             </p>
           </div>
 
@@ -71,7 +71,7 @@ export default function PrivacyPageContent() {
               <span className="text-[var(--accent)] font-mono text-base">1.</span> Introduction
             </h2>
             <p>
-              PDFhelp (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) provides a browser-based document utility toolkit designed to compress, merge, split, crop, rotate, reorder, and convert PDF files. This Privacy Policy governs your access to and use of our web application.
+              ihatelovepdf (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) provides a browser-based document utility toolkit designed to compress, merge, split, crop, rotate, reorder, and convert PDF files. This Privacy Policy governs your access to and use of our web application.
             </p>
           </section>
 
@@ -93,10 +93,10 @@ export default function PrivacyPageContent() {
               <span className="text-[var(--accent)] font-mono text-base">3.</span> Local Browser Processing Architecture
             </h2>
             <p>
-              Traditional PDF tools send files over HTTP requests to cloud servers to be processed and returned. PDFhelp is built differently:
+              Traditional PDF tools send files over HTTP requests to cloud servers to be processed and returned. ihatelovepdf is built differently:
             </p>
             <p>
-              We leverage modern client-side technologies — Web Workers, WebAssembly (WASM), PDF-lib, and Mozilla PDF.js — to run all document algorithms right inside your web browser. File bytes never traverse the internet.
+              We leverage modern client-side technologies â€” Web Workers, WebAssembly (WASM), PDF-lib, and Mozilla PDF.js â€” to run all document algorithms right inside your web browser. File bytes never traverse the internet.
             </p>
           </section>
 
@@ -111,7 +111,7 @@ export default function PrivacyPageContent() {
               <div className="flex items-start gap-2.5">
                 <CheckCircle2 className="h-4 w-4 text-[var(--success)] shrink-0 mt-0.5" />
                 <div>
-                  <strong className="text-[var(--tx)]">Theme Preference (`pdfhelp-theme`):</strong> Stores your choice of Light or Dark mode in your browser&apos;s <code>localStorage</code>.
+                  <strong className="text-[var(--tx)]">Theme Preference (`ihatelovepdf-theme`):</strong> Stores your choice of Light or Dark mode in your browser&apos;s <code>localStorage</code>.
                 </div>
               </div>
               <div className="flex items-start gap-2.5">
@@ -127,12 +127,12 @@ export default function PrivacyPageContent() {
             <h2 className="text-lg font-bold text-[var(--tx)] flex items-center gap-2">
               <span className="text-[var(--accent)] font-mono text-base">5.</span> Third-Party Libraries & Licenses
             </h2>
-            <p>PDFhelp relies on trusted open-source technology frameworks:</p>
+            <p>ihatelovepdf relies on trusted open-source technology frameworks:</p>
             <ul className="list-disc list-inside space-y-1.5 pl-2 font-mono text-xs">
-              <li>PDF-lib — MIT License (PDF manipulation and compilation)</li>
-              <li>PDF.js — Apache License 2.0 (Client-side rendering and page previews)</li>
-              <li>Lucide Icons — ISC License (UI icons)</li>
-              <li>Next.js / React — MIT License (Frontend framework)</li>
+              <li>PDF-lib â€” MIT License (PDF manipulation and compilation)</li>
+              <li>PDF.js â€” Apache License 2.0 (Client-side rendering and page previews)</li>
+              <li>Lucide Icons â€” ISC License (UI icons)</li>
+              <li>Next.js / React â€” MIT License (Frontend framework)</li>
             </ul>
           </section>
 
@@ -144,19 +144,19 @@ export default function PrivacyPageContent() {
               <div>
                 <h3 className="font-semibold text-[var(--tx)]">General Data Protection Regulation (GDPR)</h3>
                 <p className="text-xs text-[var(--tx-2)]">
-                  Because no personal data or document content leaves your browser, PDFhelp complies with GDPR requirements for data minimization, storage limitation, and confidentiality by default.
+                  Because no personal data or document content leaves your browser, ihatelovepdf complies with GDPR requirements for data minimization, storage limitation, and confidentiality by default.
                 </p>
               </div>
 
               <div>
                 <h3 className="font-semibold text-[var(--tx)]">Health Insurance Portability & Accountability Act (HIPAA)</h3>
                 <p className="text-xs text-[var(--tx-2)]">
-                  Since Protected Health Information (PHI) is never uploaded, transmitted, or stored on third-party servers, PDFhelp can safely be utilized for document manipulation without risk of cloud PHI breaches.
+                  Since Protected Health Information (PHI) is never uploaded, transmitted, or stored on third-party servers, ihatelovepdf can safely be utilized for document manipulation without risk of cloud PHI breaches.
                 </p>
               </div>
 
               <div>
-                <h3 className="font-semibold text-[var(--tx)]">Lei Geral de Proteção de Dados (LGPD)</h3>
+                <h3 className="font-semibold text-[var(--tx)]">Lei Geral de ProteÃ§Ã£o de Dados (LGPD)</h3>
                 <p className="text-xs text-[var(--tx-2)]">
                   In compliance with Brazil&apos;s LGPD, we collect no personal data profiles and process zero personal information on remote database systems.
                 </p>

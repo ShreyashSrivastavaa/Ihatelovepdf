@@ -124,10 +124,10 @@ export function ProcessingStatusDialog({
 
   const handleShareClick = async () => {
     const currentLocale = window.location.pathname.split('/')[1] || 'en';
-    const shareUrl = `https://pdfhelp.com/${currentLocale}?utm_source=app&utm_medium=share&utm_campaign=user_referral_success`;
+    const shareUrl = `https://ihatelovepdf.com/${currentLocale}?utm_source=app&utm_medium=share&utm_campaign=user_referral_success`;
 
     const shareData = {
-      title: 'PDFhelp - Free Private PDF Toolkit',
+      title: 'ihatelovepdf - Free Private PDF Toolkit',
       text: sharePrompt ? `${sharePrompt.shareText}\n` : undefined,
       url: shareUrl
     };

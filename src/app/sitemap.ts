@@ -5,7 +5,7 @@ import { getRouteMap } from "../i18n/routing";
 export const dynamic = "force-static";
 export const revalidate = false;
 
-const siteUrl = "https://pdfhelp.vercel.app";
+const siteUrl = "https://ihatelovepdf.vercel.app";
 
 type ChangeFrequency = NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>;
 

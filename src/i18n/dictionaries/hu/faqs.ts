@@ -1,68 +1,68 @@
 export const faqsHu = {
   common: [
     {
-      question: "Hogyan csökkenthetem a PDF fájl méretét ingyenesen, online?",
+      question: "Hogyan csÃ¶kkenthetem a PDF fÃ¡jl mÃ©retÃ©t ingyenesen, online?",
       answer:
-        "Nyisd meg a PDFhelp-t, válaszd a 'PDF tömörítése' funkciót, töltsd fel a fájlt, és válaszd ki a tömörítési szintet. Minden a böngésződben zajlik, szerverre való feltöltés nélkül – a fájl másodpercek alatt letölthető, teljesen ingyen és regisztráció nélkül.",
+        "Nyisd meg a ihatelovepdf-t, vÃ¡laszd a 'PDF tÃ¶mÃ¶rÃ­tÃ©se' funkciÃ³t, tÃ¶ltsd fel a fÃ¡jlt, Ã©s vÃ¡laszd ki a tÃ¶mÃ¶rÃ­tÃ©si szintet. Minden a bÃ¶ngÃ©szÅ‘dben zajlik, szerverre valÃ³ feltÃ¶ltÃ©s nÃ©lkÃ¼l â€“ a fÃ¡jl mÃ¡sodpercek alatt letÃ¶lthetÅ‘, teljesen ingyen Ã©s regisztrÃ¡ciÃ³ nÃ©lkÃ¼l.",
     },
     {
-      question: "Hogyan lehet több PDF-et egyetlen dokumentumba egyesíteni?",
+      question: "Hogyan lehet tÃ¶bb PDF-et egyetlen dokumentumba egyesÃ­teni?",
       answer:
-        "Lépj a PDFhelp 'PDF egyesítése' menüpontjára, add hozzá a kívánt fájlokat, húzd át őket a megfelelő sorrendbe, majd kattints a 'Feldolgozás' gombra. Az egyesített PDF azonnal letölthető – regisztráció, reklám és felhőre mentés nélkül.",
+        "LÃ©pj a ihatelovepdf 'PDF egyesÃ­tÃ©se' menÃ¼pontjÃ¡ra, add hozzÃ¡ a kÃ­vÃ¡nt fÃ¡jlokat, hÃºzd Ã¡t Å‘ket a megfelelÅ‘ sorrendbe, majd kattints a 'FeldolgozÃ¡s' gombra. Az egyesÃ­tett PDF azonnal letÃ¶lthetÅ‘ â€“ regisztrÃ¡ciÃ³, reklÃ¡m Ã©s felhÅ‘re mentÃ©s nÃ©lkÃ¼l.",
     },
     {
-      question: "Valóban nem tölt fel fájlokat a PDFhelp a szerverre?",
+      question: "ValÃ³ban nem tÃ¶lt fel fÃ¡jlokat a ihatelovepdf a szerverre?",
       answer:
-        "Igen, így van. A PDFhelp teljes egészében a böngésződben fut, helyi JavaScript-motor segítségével. A dokumentumaid egyetlen bájtja sem kerül a szervereinkre – ezt magad is ellenőrizheted a böngésző fejlesztői eszközeinek 'Hálózat' lapján.",
+        "Igen, Ã­gy van. A ihatelovepdf teljes egÃ©szÃ©ben a bÃ¶ngÃ©szÅ‘dben fut, helyi JavaScript-motor segÃ­tsÃ©gÃ©vel. A dokumentumaid egyetlen bÃ¡jtja sem kerÃ¼l a szervereinkre â€“ ezt magad is ellenÅ‘rizheted a bÃ¶ngÃ©szÅ‘ fejlesztÅ‘i eszkÃ¶zeinek 'HÃ¡lÃ³zat' lapjÃ¡n.",
     },
     {
-      question: "Van méret- vagy darabszám-korlát a PDF-fájloknál?",
+      question: "Van mÃ©ret- vagy darabszÃ¡m-korlÃ¡t a PDF-fÃ¡jloknÃ¡l?",
       answer:
-        "A korlátot az eszközöd memóriája szabja meg, nem a szolgáltatásunk. Általában a PDFhelp gond nélkül kezeli az egyenként akár 50 MB-os fájlokat. Egy munkameneten belül nincs darabszám-limit – annyi fájlt dolgozhatsz fel, amennyit szeretnél.",
+        "A korlÃ¡tot az eszkÃ¶zÃ¶d memÃ³riÃ¡ja szabja meg, nem a szolgÃ¡ltatÃ¡sunk. ÃltalÃ¡ban a ihatelovepdf gond nÃ©lkÃ¼l kezeli az egyenkÃ©nt akÃ¡r 50 MB-os fÃ¡jlokat. Egy munkameneten belÃ¼l nincs darabszÃ¡m-limit â€“ annyi fÃ¡jlt dolgozhatsz fel, amennyit szeretnÃ©l.",
     },
     {
-      question: "Működik a PDFhelp telefonon és tableten is?",
+      question: "MÅ±kÃ¶dik a ihatelovepdf telefonon Ã©s tableten is?",
       answer:
-        "Igen. A felület teljesen reszponzív és kényelmes Android és iPhone okostelefonokon, valamint tableteken is. Egy modern böngésző elegendő – Chrome, Firefox, Safari vagy Edge. Semmilyen alkalmazást nem kell telepíteni.",
+        "Igen. A felÃ¼let teljesen reszponzÃ­v Ã©s kÃ©nyelmes Android Ã©s iPhone okostelefonokon, valamint tableteken is. Egy modern bÃ¶ngÃ©szÅ‘ elegendÅ‘ â€“ Chrome, Firefox, Safari vagy Edge. Semmilyen alkalmazÃ¡st nem kell telepÃ­teni.",
     },
   ],
   regional: [
     {
-      question: "Segít a PDFhelp megfelelni a GDPR adatvédelmi előírásoknak?",
+      question: "SegÃ­t a ihatelovepdf megfelelni a GDPR adatvÃ©delmi elÅ‘Ã­rÃ¡soknak?",
       answer:
-        "Mivel a feldolgozás helyben történik, egyetlen személyes dokumentum sem hagyja el az eszközödet vagy a szervezetedet. Ez megkönnyíti a GDPR, az egészségügyi adatvédelmi szabályok, illetve a belső adatbiztonsági irányelveknek való megfelelést.",
+        "Mivel a feldolgozÃ¡s helyben tÃ¶rtÃ©nik, egyetlen szemÃ©lyes dokumentum sem hagyja el az eszkÃ¶zÃ¶det vagy a szervezetedet. Ez megkÃ¶nnyÃ­ti a GDPR, az egÃ©szsÃ©gÃ¼gyi adatvÃ©delmi szabÃ¡lyok, illetve a belsÅ‘ adatbiztonsÃ¡gi irÃ¡nyelveknek valÃ³ megfelelÃ©st.",
     },
     {
-      question: "Használhatom a PDFhelp-t hivatalos dokumentumokhoz és számlákhoz?",
+      question: "HasznÃ¡lhatom a ihatelovepdf-t hivatalos dokumentumokhoz Ã©s szÃ¡mlÃ¡khoz?",
       answer:
-        "Igen. A PDFhelp kiválóan alkalmas számlák, szerződések, adóbevallások és hatósági nyomtatványok optimalizálására – az eredeti minőség és formázás teljes megőrzésével.",
+        "Igen. A ihatelovepdf kivÃ¡lÃ³an alkalmas szÃ¡mlÃ¡k, szerzÅ‘dÃ©sek, adÃ³bevallÃ¡sok Ã©s hatÃ³sÃ¡gi nyomtatvÃ¡nyok optimalizÃ¡lÃ¡sÃ¡ra â€“ az eredeti minÅ‘sÃ©g Ã©s formÃ¡zÃ¡s teljes megÅ‘rzÃ©sÃ©vel.",
     },
     {
-      question: "Befolyásolja a tömörítés a dokumentum jogi érvényességét?",
+      question: "BefolyÃ¡solja a tÃ¶mÃ¶rÃ­tÃ©s a dokumentum jogi Ã©rvÃ©nyessÃ©gÃ©t?",
       answer:
-        "A PDFhelp eszközei megőrzik a dokumentum integritását. Ennek ellenére jogi szempontból fontos iratoknál javasoljuk az eredményfájl ellenőrzését annak megfelelően, hogy a fogadó szervezet milyen követelményeket támaszt.",
+        "A ihatelovepdf eszkÃ¶zei megÅ‘rzik a dokumentum integritÃ¡sÃ¡t. Ennek ellenÃ©re jogi szempontbÃ³l fontos iratoknÃ¡l javasoljuk az eredmÃ©nyfÃ¡jl ellenÅ‘rzÃ©sÃ©t annak megfelelÅ‘en, hogy a fogadÃ³ szervezet milyen kÃ¶vetelmÃ©nyeket tÃ¡maszt.",
     },
   ],
   tech: [
     {
-      question: "Milyen technológiára épül a PDFhelp?",
+      question: "Milyen technolÃ³giÃ¡ra Ã©pÃ¼l a ihatelovepdf?",
       answer:
-        "A PDFhelp pdf-lib és PDF.js könyvtárakat használ – könnyűsúlyú, nyílt forráskódú JavaScript-könyvtárakat –, amelyek közvetlenül a böngészőben végzik el a teljes PDF-feldolgozást, szerveres függőség nélkül.",
+        "A ihatelovepdf pdf-lib Ã©s PDF.js kÃ¶nyvtÃ¡rakat hasznÃ¡l â€“ kÃ¶nnyÅ±sÃºlyÃº, nyÃ­lt forrÃ¡skÃ³dÃº JavaScript-kÃ¶nyvtÃ¡rakat â€“, amelyek kÃ¶zvetlenÃ¼l a bÃ¶ngÃ©szÅ‘ben vÃ©gzik el a teljes PDF-feldolgozÃ¡st, szerveres fÃ¼ggÅ‘sÃ©g nÃ©lkÃ¼l.",
     },
     {
-      question: "Megmaradnak az interaktív elemek PDF tömörítés után?",
+      question: "Megmaradnak az interaktÃ­v elemek PDF tÃ¶mÃ¶rÃ­tÃ©s utÃ¡n?",
       answer:
-        "A legtöbb esetben a PDFhelp megőrzi a linkeket, az űrlapokat és a könyvjelzőket. Nagyon agresszív tömörítés esetén egyes speciális funkciók módosulhatnak – javasolt az eredmény ellenőrzése.",
+        "A legtÃ¶bb esetben a ihatelovepdf megÅ‘rzi a linkeket, az Å±rlapokat Ã©s a kÃ¶nyvjelzÅ‘ket. Nagyon agresszÃ­v tÃ¶mÃ¶rÃ­tÃ©s esetÃ©n egyes speciÃ¡lis funkciÃ³k mÃ³dosulhatnak â€“ javasolt az eredmÃ©ny ellenÅ‘rzÃ©se.",
     },
     {
-      question: "Mely böngészőkkel kompatibilis a PDFhelp?",
+      question: "Mely bÃ¶ngÃ©szÅ‘kkel kompatibilis a ihatelovepdf?",
       answer:
-        "A PDFhelp minden modern böngészővel működik: Chrome, Firefox, Safari, Edge és Opera. Mindössze egy naprakész, ES2020 támogatással rendelkező böngésző szükséges. Semmilyen bővítmény vagy plugin nem kell.",
+        "A ihatelovepdf minden modern bÃ¶ngÃ©szÅ‘vel mÅ±kÃ¶dik: Chrome, Firefox, Safari, Edge Ã©s Opera. MindÃ¶ssze egy naprakÃ©sz, ES2020 tÃ¡mogatÃ¡ssal rendelkezÅ‘ bÃ¶ngÃ©szÅ‘ szÃ¼ksÃ©ges. Semmilyen bÅ‘vÃ­tmÃ©ny vagy plugin nem kell.",
     },
     {
-      question: "Lehet PDF-et más formátumba konvertálni?",
+      question: "Lehet PDF-et mÃ¡s formÃ¡tumba konvertÃ¡lni?",
       answer:
-        "Jelenleg a PDF oldalait PNG vagy JPEG képekké alakíthatod, illetve PDF-et hozhatsz létre JPG, PNG vagy WEBP képekből – mindezt feltöltés nélkül. További formátumok támogatása a jövőbeni frissítésekben várható.",
+        "Jelenleg a PDF oldalait PNG vagy JPEG kÃ©pekkÃ© alakÃ­thatod, illetve PDF-et hozhatsz lÃ©tre JPG, PNG vagy WEBP kÃ©pekbÅ‘l â€“ mindezt feltÃ¶ltÃ©s nÃ©lkÃ¼l. TovÃ¡bbi formÃ¡tumok tÃ¡mogatÃ¡sa a jÃ¶vÅ‘beni frissÃ­tÃ©sekben vÃ¡rhatÃ³.",
     },
   ],
 };

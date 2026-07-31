@@ -18,7 +18,7 @@ export function FeedbackWidget({ operation }: { operation?: string }) {
         question: "Was this helpful?",
         thanks: "Thanks for your feedback!",
         whatWrong: "Tell us what went wrong",
-        emailSubject: "Feedback for PDFhelp"
+        emailSubject: "Feedback for ihatelovepdf"
     };
 
     const [status, setStatus] = useState<'idle' | 'positive' | 'negative'>('idle');
@@ -40,7 +40,7 @@ export function FeedbackWidget({ operation }: { operation?: string }) {
         return (
             <div className="mt-4 p-3 bg-green-500/10 border border-green-500/20 rounded-lg text-center animate-in fade-in">
                 <p className="text-sm text-green-600 font-medium">
-                    {t.thanks} ❤️
+                    {t.thanks} â¤ï¸
                 </p>
             </div>
         );
@@ -50,7 +50,7 @@ export function FeedbackWidget({ operation }: { operation?: string }) {
         return (
             <div className="mt-4 p-3 bg-red-500/10 border border-red-500/20 rounded-lg text-center animate-in fade-in">
                 <a
-                    href={`mailto:contact@pdfhelp.com?subject=${encodeURIComponent(t.emailSubject)}`}
+                    href={`mailto:contact@ihatelovepdf.com?subject=${encodeURIComponent(t.emailSubject)}`}
                     className="text-sm text-red-600 font-medium hover:underline flex items-center justify-center gap-2"
                 >
                     <span>{t.whatWrong}</span>

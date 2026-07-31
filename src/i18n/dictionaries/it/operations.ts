@@ -7,9 +7,9 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
     slug: "compress",
     mode: "compress",
     meta: {
-      title: "Comprimi PDF online gratis | Riduci dimensione | PDFhelp",
+      title: "Comprimi PDF online gratis | Riduci dimensione | ihatelovepdf",
       description:
-        "Riduci la dimensione dei file PDF in modo efficiente senza perdita di qualità. Compressione gratuita e privata direttamente nel tuo browser.",
+        "Riduci la dimensione dei file PDF in modo efficiente senza perdita di qualitÃ . Compressione gratuita e privata direttamente nel tuo browser.",
       keywords: [
         "comprimi pdf",
         "riduci dimensione pdf",
@@ -17,33 +17,33 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
         "compressore pdf",
         "pdf leggero",
       ],
-      ogTitle: "Comprimi PDF senza perdere qualità | PDFhelp",
+      ogTitle: "Comprimi PDF senza perdere qualitÃ  | ihatelovepdf",
       ogDescription:
-        "Carica il tuo file, scegli il livello di compressione ottimale e scarica un PDF molto più leggero in pochi secondi — completamente sicuro senza caricamenti su server.",
-      ogImageAlt: "Interfaccia dello strumento di compressione PDFhelp",
+        "Carica il tuo file, scegli il livello di compressione ottimale e scarica un PDF molto piÃ¹ leggero in pochi secondi â€” completamente sicuro senza caricamenti su server.",
+      ogImageAlt: "Interfaccia dello strumento di compressione ihatelovepdf",
     },
     hero: {
       title: "Comprimi PDF online con risultati chiari",
       description:
         "Riduci la dimensione del documento per rispettare i limiti di email, piattaforme o procedure pubbliche mantenendo ogni pagina leggibile.",
       bulletPoints: [
-        "Elaborazione 100% locale — i tuoi file non lasciano mai il browser",
+        "Elaborazione 100% locale â€” i tuoi file non lasciano mai il browser",
         "Scegli compressione base, media o aggressiva in base alle tue esigenze",
         "Mantieni metadati e struttura del documento quando necessario",
       ],
-      imageAlt: "Flusso di compressione PDF in PDFhelp",
+      imageAlt: "Flusso di compressione PDF in ihatelovepdf",
     },
-    benefitsTitle: "Perché comprimere PDF con PDFhelp",
+    benefitsTitle: "PerchÃ© comprimere PDF con ihatelovepdf",
     benefits: [
       {
-        title: "Qualità bilanciata",
+        title: "QualitÃ  bilanciata",
         description:
           "Il nostro motore di compressione analizza ogni elemento per ottenere la massima riduzione senza sfocare testo o grafica.",
       },
       {
-        title: "Pronto per l’invio",
+        title: "Pronto per lâ€™invio",
         description:
-          "Crea file che rispettano i limiti di caricamento su portali pubblici, università o workflow aziendali.",
+          "Crea file che rispettano i limiti di caricamento su portali pubblici, universitÃ  o workflow aziendali.",
       },
       {
         title: "Privacy by design",
@@ -52,20 +52,20 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
       },
     ],
     howTo: {
-      title: "Come comprimere un PDF con PDFhelp",
+      title: "Come comprimere un PDF con ihatelovepdf",
       steps: [
-        "Clicca su “Carica i tuoi file” e seleziona il PDF da ottimizzare.",
+        "Clicca su â€œCarica i tuoi fileâ€ e seleziona il PDF da ottimizzare.",
         "Scegli il livello di compressione e regola le opzioni avanzate come il mantenimento dei metadati.",
-        "Premi “Processa” e scarica il documento compresso in pochi secondi.",
+        "Premi â€œProcessaâ€ e scarica il documento compresso in pochi secondi.",
       ],
       note:
-        "Hai più documenti? Comprimili uno alla volta senza limiti giornalieri o filigrane.",
+        "Hai piÃ¹ documenti? Comprimili uno alla volta senza limiti giornalieri o filigrane.",
     },
     useCasesTitle: "Quando ha senso comprimere",
     useCases: [
       "Invia contratti, fatture o manuali via email senza superare i limiti degli allegati.",
       "Carica compiti su Moodle, Canvas o qualsiasi LMS con limiti rigorosi.",
-      "Riduci tesi, cataloghi o articoli per migliorare la velocità di download.",
+      "Riduci tesi, cataloghi o articoli per migliorare la velocitÃ  di download.",
       "Archivia documenti nel cloud risparmiando spazio senza perdere dettagli importanti.",
     ],
   },
@@ -75,7 +75,7 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
     slug: "images-to-pdf",
     mode: "imagesToPdf",
     meta: {
-      title: "Crea PDF da immagini | JPG, PNG in PDF | PDFhelp",
+      title: "Crea PDF da immagini | JPG, PNG in PDF | ihatelovepdf",
       description:
         "Crea un PDF professionale dalle tue immagini. Ordina le foto, personalizza layout e margini e genera il documento localmente nel browser.",
       keywords: [
@@ -85,23 +85,23 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
         "webp in pdf",
         "crea pdf da immagini",
       ],
-      ogTitle: "Crea un PDF pulito dalle tue immagini | PDFhelp",
+      ogTitle: "Crea un PDF pulito dalle tue immagini | ihatelovepdf",
       ogDescription:
-        "Trascina le immagini, definisci il layout ed esporta un PDF pronto per la stampa — senza caricamenti o filigrane.",
-      ogImageAlt: "Creazione di un PDF da immagini in PDFhelp",
+        "Trascina le immagini, definisci il layout ed esporta un PDF pronto per la stampa â€” senza caricamenti o filigrane.",
+      ogImageAlt: "Creazione di un PDF da immagini in ihatelovepdf",
     },
     hero: {
       title: "Crea un PDF ordinato dalle immagini",
       description:
         "Raggruppa scansioni, foto o grafiche in un unico PDF pronto da condividere.",
       bulletPoints: [
-        "Trascina per definire l’ordine delle pagine",
+        "Trascina per definire lâ€™ordine delle pagine",
         "Scegli dimensione pagina, orientamento e margini",
         "Imposta uno sfondo solido per evitare trasparenze indesiderate",
       ],
       imageAlt: "Flusso immagini a PDF",
     },
-    benefitsTitle: "Perché creare PDF da immagini con PDFhelp",
+    benefitsTitle: "PerchÃ© creare PDF da immagini con ihatelovepdf",
     benefits: [
       {
         title: "Layout coerente",
@@ -124,7 +124,7 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
       steps: [
         "Aggiungi le immagini e riordinalle.",
         "Configura layout, dimensioni e margini.",
-        "Clicca su “Crea PDF” per scaricare il file.",
+        "Clicca su â€œCrea PDFâ€ per scaricare il file.",
       ],
       note:
         "Hai molti file? Puoi comprimere o dividere il PDF dopo senza ricaricare le immagini.",
@@ -143,9 +143,9 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
     slug: "merge",
     mode: "merge",
     meta: {
-      title: "Unisci PDF online | Combina più PDF gratis | PDFhelp",
+      title: "Unisci PDF online | Combina piÃ¹ PDF gratis | ihatelovepdf",
       description:
-        "Combina più file PDF in un unico documento organizzato senza limiti di pagine.",
+        "Combina piÃ¹ file PDF in un unico documento organizzato senza limiti di pagine.",
       keywords: [
         "unisci pdf",
         "combina pdf",
@@ -153,23 +153,23 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
         "pdf merger",
         "unire documenti",
       ],
-      ogTitle: "Unisci PDF in pochi secondi | PDFhelp",
+      ogTitle: "Unisci PDF in pochi secondi | ihatelovepdf",
       ogDescription:
         "Organizza i documenti e scarica un unico PDF senza caricare dati nel cloud.",
       ogImageAlt: "Unione PDF",
     },
     hero: {
-      title: "Unisci PDF online — veloce e sicuro",
+      title: "Unisci PDF online â€” veloce e sicuro",
       description:
         "Crea un unico file pronto da inviare o archiviare.",
       bulletPoints: [
-        "Drag and drop per l’ordine",
+        "Drag and drop per lâ€™ordine",
         "Nessun limite nascosto",
         "Mantieni segnalibri e metadati",
       ],
       imageAlt: "Unione documenti PDF",
     },
-    benefitsTitle: "Vantaggi dell’unione PDF",
+    benefitsTitle: "Vantaggi dellâ€™unione PDF",
     benefits: [
       {
         title: "Consegna coerente",
@@ -207,15 +207,15 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
     slug: "split",
     mode: "split",
     meta: {
-      title: "Dividi PDF per pagine | Tool gratuito | PDFhelp",
+      title: "Dividi PDF per pagine | Tool gratuito | ihatelovepdf",
       description:
-        "Dividi PDF in più file senza caricamenti su server.",
+        "Dividi PDF in piÃ¹ file senza caricamenti su server.",
       keywords: [
         "dividi pdf",
         "separa pdf",
         "pdf splitter",
       ],
-      ogTitle: "Dividi PDF con precisione | PDFhelp",
+      ogTitle: "Dividi PDF con precisione | ihatelovepdf",
       ogDescription:
         "Scegli come dividere il documento e scaricalo subito.",
       ogImageAlt: "Divisione PDF",
@@ -226,7 +226,7 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
         "Estrai sezioni specifiche.",
       bulletPoints: [
         "Configura divisioni",
-        "Più file in una volta",
+        "PiÃ¹ file in una volta",
         "Nessun limite",
       ],
       imageAlt: "Divisione PDF",
@@ -235,14 +235,14 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
     benefits: [
       {
         title: "Controllo",
-        description: "Condividi solo ciò che serve.",
+        description: "Condividi solo ciÃ² che serve.",
       },
       {
-        title: "Scalabilità",
-        description: "Più file insieme.",
+        title: "ScalabilitÃ ",
+        description: "PiÃ¹ file insieme.",
       },
       {
-        title: "Flessibilità",
+        title: "FlessibilitÃ ",
         description: "Adatta al workflow.",
       },
     ],
@@ -250,7 +250,7 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
       title: "Come dividere PDF",
       steps: [
         "Carica il file.",
-        "Scegli modalità.",
+        "Scegli modalitÃ .",
         "Scarica i file.",
       ],
       note: "Download automatico.",
@@ -269,13 +269,13 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
     slug: "extract",
     mode: "extract",
     meta: {
-      title: "Estrai pagine PDF | PDFhelp",
+      title: "Estrai pagine PDF | ihatelovepdf",
       description:
         "Seleziona pagine specifiche e crea un nuovo PDF.",
       keywords: [
         "estrai pagine pdf",
       ],
-      ogTitle: "Estrai pagine | PDFhelp",
+      ogTitle: "Estrai pagine | ihatelovepdf",
       ogDescription:
         "Crea PDF personalizzati.",
       ogImageAlt: "Estrazione PDF",
@@ -302,7 +302,7 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
         description: "Tutto nel browser.",
       },
       {
-        title: "Qualità",
+        title: "QualitÃ ",
         description: "PDF puliti.",
       },
     ],
@@ -329,7 +329,7 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
     slug: "ritaglia",
     mode: "crop",
     meta: {
-      title: "Ritaglia pagine PDF online | Riduci margini | PDFhelp",
+      title: "Ritaglia pagine PDF online | Riduci margini | ihatelovepdf",
       description:
         "Ritaglia pagine PDF e rimuovi i margini in eccesso direttamente nel browser. Tutto resta locale e privato.",
       keywords: [
@@ -339,10 +339,10 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
         "riduci margini pdf",
         "eliminare bordi pdf",
       ],
-      ogTitle: "Ritaglia pagine PDF in locale | PDFhelp",
+      ogTitle: "Ritaglia pagine PDF in locale | ihatelovepdf",
       ogDescription:
         "Seleziona le pagine, imposta i margini e scarica un PDF piu pulito senza caricare file.",
-      ogImageAlt: "Ritaglio di pagine PDF in PDFhelp",
+      ogImageAlt: "Ritaglio di pagine PDF in ihatelovepdf",
     },
     hero: {
       title: "Ritaglia pagine PDF e pulisci i margini",
@@ -355,7 +355,7 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
       ],
       imageAlt: "Flusso di ritaglio PDF",
     },
-    benefitsTitle: "Perche ritagliare PDF con PDFhelp",
+    benefitsTitle: "Perche ritagliare PDF con ihatelovepdf",
     benefits: [
       {
         title: "Pagine piu pulite",
@@ -394,7 +394,7 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
     slug: "ruota",
     mode: "rotate",
     meta: {
-      title: "Ruota pagine PDF online | Correggi orientamento | PDFhelp",
+      title: "Ruota pagine PDF online | Correggi orientamento | ihatelovepdf",
       description:
         "Ruota pagine PDF selezionate di 90 o 180 gradi direttamente nel browser. Gratis, privato e senza upload.",
       keywords: [
@@ -404,10 +404,10 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
         "pdf storto",
         "rotazione pagine pdf",
       ],
-      ogTitle: "Ruota pagine PDF in pochi secondi | PDFhelp",
+      ogTitle: "Ruota pagine PDF in pochi secondi | ihatelovepdf",
       ogDescription:
         "Seleziona le pagine con orientamento errato, scegli 90 o 180 gradi e scarica il PDF corretto senza caricare nulla.",
-      ogImageAlt: "Rotazione di pagine PDF in PDFhelp",
+      ogImageAlt: "Rotazione di pagine PDF in ihatelovepdf",
     },
     hero: {
       title: "Ruota pagine PDF senza perdere qualita",
@@ -420,7 +420,7 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
       ],
       imageAlt: "Flusso di rotazione PDF",
     },
-    benefitsTitle: "Perche ruotare pagine con PDFhelp",
+    benefitsTitle: "Perche ruotare pagine con ihatelovepdf",
     benefits: [
       {
         title: "Correzioni precise",
@@ -459,7 +459,7 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
     slug: "reorder",
     mode: "reorder",
     meta: {
-      title: "Riordina pagine PDF | PDFhelp",
+      title: "Riordina pagine PDF | ihatelovepdf",
       description:
         "Organizza le pagine facilmente.",
       keywords: [
@@ -467,13 +467,13 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
       ],
       ogTitle: "Riordina PDF",
       ogDescription:
-        "Sistema l’ordine delle pagine.",
+        "Sistema lâ€™ordine delle pagine.",
       ogImageAlt: "Riordino PDF",
     },
     hero: {
       title: "Riordina pagine PDF",
       description:
-        "Sistema l’ordine velocemente.",
+        "Sistema lâ€™ordine velocemente.",
       bulletPoints: [
         "Anteprime grandi",
         "Drag and drop",
@@ -484,7 +484,7 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
     benefitsTitle: "Vantaggi",
     benefits: [
       {
-        title: "Velocità",
+        title: "VelocitÃ ",
         description: "Correzioni rapide.",
       },
       {
@@ -520,9 +520,9 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
     slug: "pdf-to-images",
     mode: "pdfToImages",
     meta: {
-      title: "PDF in immagini | PNG o JPEG | PDFhelp",
+      title: "PDF in immagini | PNG o JPEG | ihatelovepdf",
       description:
-        "Converti PDF in immagini di alta qualità.",
+        "Converti PDF in immagini di alta qualitÃ .",
       keywords: [
         "pdf in immagini",
       ],
@@ -545,11 +545,11 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
     benefitsTitle: "Vantaggi",
     benefits: [
       {
-        title: "Qualità",
+        title: "QualitÃ ",
         description: "Alta risoluzione.",
       },
       {
-        title: "Flessibilità",
+        title: "FlessibilitÃ ",
         description: "Download vari.",
       },
       {
