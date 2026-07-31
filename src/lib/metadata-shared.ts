@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-export const METADATA_BASE = new URL("https://pdfhelp.com");
+export const METADATA_BASE = new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://pdfhelp.vercel.app");
 
 export const SHARED_ICONS = [
     { rel: "icon", url: "/favicon.ico" },

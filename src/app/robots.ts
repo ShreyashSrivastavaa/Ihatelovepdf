@@ -4,7 +4,7 @@ export const dynamic = "force-static";
 export const revalidate = false;
 
 export default function robots(): MetadataRoute.Robots {
-    const baseUrl = "https://pdfhelp.com";
+    const baseUrl = "https://pdfhelp.vercel.app";
 
     return {
         rules: {

@@ -64,6 +64,9 @@ export const metadata = {
     type: "website",
   },
   twitter: SHARED_TWITTER,
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+  },
 };
 
 import { ThemeScript } from "../../components/ThemeScript";
