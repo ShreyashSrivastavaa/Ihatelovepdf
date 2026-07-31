@@ -66,11 +66,13 @@ export const metadata = {
   twitter: SHARED_TWITTER,
 };
 
+import { ThemeScript } from "../../components/ThemeScript";
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
-        {/* Reserved for future head customizations */}
+        <ThemeScript />
         <GoogleAnalyticsScripts />
         <SchemaOrg />
         <BreadcrumbSchema />

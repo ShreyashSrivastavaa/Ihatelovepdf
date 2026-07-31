@@ -61,10 +61,13 @@ export const metadata = {
   twitter: SHARED_TWITTER,
 };
 
+import { ThemeScript } from "../../components/ThemeScript";
+
 export default function RoLayout({ children }: { children: ReactNode }) {
   return (
     <html lang={LOCALE}>
       <head>
+        <ThemeScript />
         <GoogleAnalyticsScripts />
         <SchemaOrg />
       </head>

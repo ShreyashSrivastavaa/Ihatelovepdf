@@ -8,7 +8,8 @@ import { useDictionary, useLocale } from '../i18n/LocaleProvider';
 import { SUPPORTED_LOCALES, localeLabels, type Locale } from '../i18n/config';
 import { getLocalizedAlternateMap, getRouteIdentifierForPath, getRoutePath } from '../i18n/routing';
 import ContactModal from './ContactModal';
-import { ShieldCheck, Globe, Menu, X } from 'lucide-react';
+import { ShieldCheck, Globe, Menu, X, Sun, Moon } from 'lucide-react';
+import { useTheme } from './ThemeProvider';
 
 export default function NavMenu() {
   const pathname = usePathname();
@@ -17,6 +18,7 @@ export default function NavMenu() {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const dictionary = useDictionary();
   const locale = useLocale();
+  const { theme, toggleTheme } = useTheme();
   const { nav } = dictionary.components;
   const routes = dictionary.routes;
 
@@ -104,7 +106,23 @@ export default function NavMenu() {
               </li>
             </ul>
 
-            <div className="mt-3 md:mt-0 pt-3 md:pt-0 border-t md:border-t-0 border-[var(--border)] flex items-center">
+            <div className="mt-3 md:mt-0 pt-3 md:pt-0 border-t md:border-t-0 border-[var(--border)] flex items-center gap-2">
+              {/* Theme Toggle Button (before language selector) */}
+              <button
+                type="button"
+                onClick={toggleTheme}
+                className="p-1.5 rounded-lg border border-[var(--border)] bg-[var(--bg-card)] text-[var(--tx-2)] hover:text-[var(--tx)] hover:border-[var(--border-hover)] transition-all cursor-pointer shadow-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+                title={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+              >
+                {theme === 'dark' ? (
+                  <Sun className="h-4 w-4 text-amber-400 stroke-[2] transition-transform duration-200 hover:rotate-45" />
+                ) : (
+                  <Moon className="h-4 w-4 text-slate-600 stroke-[2] transition-transform duration-200 hover:-rotate-12" />
+                )}
+              </button>
+
+              {/* Language Selector */}
               <div className="relative inline-flex items-center gap-1.5 rounded-lg border border-[var(--border)] bg-[var(--bg-card)] px-2.5 py-1 text-xs text-[var(--tx-2)] shadow-xs transition-colors hover:border-[var(--border-hover)]">
                 <Globe className="h-3.5 w-3.5 text-[var(--tx-3)]" />
                 <label className="sr-only" htmlFor="nav-language-select">
