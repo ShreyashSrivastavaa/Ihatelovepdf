@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useDictionary } from '../i18n/LocaleProvider';
-import type { OperationKey } from '../types/operations';
 import ContactModal from './ContactModal';
 import { ShieldCheck } from 'lucide-react';
 
@@ -12,18 +11,6 @@ export default function Footer() {
   const dictionary = useDictionary();
   const footer = dictionary.components.footer;
   const routes = dictionary.routes;
-  const footerOperationLinks = (Object.keys(routes.operations) as OperationKey[])
-    .map((operation) => {
-      const href = routes.operations[operation];
-      const label = footer.operations[operation];
-
-      if (!href || !label) {
-        return null;
-      }
-
-      return { operation, href, label };
-    })
-    .filter((link): link is { operation: OperationKey; href: string; label: string } => link !== null);
 
   return (
     <>
@@ -61,22 +48,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="space-y-3">
-            <h4 className="text-xs font-semibold text-[var(--tx-3)] uppercase tracking-wider">
-              {footer.capabilitiesLabel}
-            </h4>
-            <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-[var(--tx-2)]">
-              {footerOperationLinks.map(({ operation, href, label }) => (
-                <Link 
-                  key={operation} 
-                  href={href} 
-                  className="hover:text-[var(--accent)] transition-colors"
-                >
-                  {label}
-                </Link>
-              ))}
-            </div>
-          </div>
+
 
           <div className="pt-4 text-xs text-[var(--tx-3)] space-y-1.5 border-t border-[var(--border)]">
             <p>{footer.rights}</p>

@@ -191,7 +191,7 @@ export default function NavMenu() {
 
       {/* Mobile Slide-In Left Drawer Navigation Menu */}
       <div
-        className={`fixed top-[56px] left-0 bottom-0 z-50 w-[280px] bg-[var(--bg-card)] border-r border-[var(--border)] shadow-2xl transition-transform duration-300 ease-in-out md:hidden flex flex-col justify-between overflow-y-auto ${
+        className={`fixed top-[56px] left-0 bottom-0 z-50 w-[80vw] max-w-[260px] bg-[var(--bg-card)] border-r border-[var(--border)] shadow-2xl transition-transform duration-300 ease-in-out md:hidden flex flex-col justify-between overflow-y-auto ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
@@ -207,55 +207,59 @@ export default function NavMenu() {
             </button>
           </div>
 
-          <nav className="space-y-1">
+          <nav className="space-y-1.5">
             <Link
               href={routes.home}
               onClick={() => setIsOpen(false)}
-              className={`flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-semibold transition-colors min-h-[44px] ${
+              className={`flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-semibold transition-colors min-h-[44px] w-full ${
                 isActive(routes.home)
                   ? 'text-[var(--accent)] bg-[var(--accent-soft)]'
                   : 'text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
               }`}
             >
-              {nav.home}
+              <span>{nav.home}</span>
             </Link>
 
             <Link
               href={routes.faq}
               onClick={() => setIsOpen(false)}
-              className={`flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-semibold transition-colors min-h-[44px] ${
+              className={`flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-semibold transition-colors min-h-[44px] w-full ${
                 isActive(routes.faq)
                   ? 'text-[var(--accent)] bg-[var(--accent-soft)]'
                   : 'text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
               }`}
             >
-              {nav.faq}
+              <span>{nav.faq}</span>
             </Link>
 
             <Link
               href={routes.privacy || '/privacy'}
               onClick={() => setIsOpen(false)}
-              className={`flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-semibold transition-colors min-h-[44px] ${
+              className={`flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold transition-colors min-h-[44px] w-full ${
                 isActive(routes.privacy || '/privacy')
                   ? 'text-[var(--accent)] bg-[var(--accent-soft)]'
                   : 'text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
               }`}
             >
-              <Shield className="h-4 w-4 text-[var(--tx-3)]" />
-              <span>Privacy Policy</span>
+              <div className="flex items-center gap-2.5">
+                <Shield className="h-4 w-4 text-[var(--tx-3)] shrink-0" />
+                <span>Privacy Policy</span>
+              </div>
             </Link>
 
             <Link
               href={routes.terms || '/terms'}
               onClick={() => setIsOpen(false)}
-              className={`flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-semibold transition-colors min-h-[44px] ${
+              className={`flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold transition-colors min-h-[44px] w-full ${
                 isActive(routes.terms || '/terms')
                   ? 'text-[var(--accent)] bg-[var(--accent-soft)]'
                   : 'text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
               }`}
             >
-              <FileText className="h-4 w-4 text-[var(--tx-3)]" />
-              <span>Terms of Service</span>
+              <div className="flex items-center gap-2.5">
+                <FileText className="h-4 w-4 text-[var(--tx-3)] shrink-0" />
+                <span>Terms of Service</span>
+              </div>
             </Link>
 
             <button
@@ -263,10 +267,12 @@ export default function NavMenu() {
                 setIsOpen(false);
                 setIsContactOpen(true);
               }}
-              className="flex items-center gap-3 w-full text-left px-3 py-3 rounded-lg text-sm font-semibold text-[var(--tx)] hover:bg-[var(--bg-subtle)] transition-colors min-h-[44px]"
+              className="flex items-center gap-3 w-full text-left px-3.5 py-3 rounded-xl text-sm font-semibold text-[var(--tx)] hover:bg-[var(--bg-subtle)] transition-colors min-h-[44px]"
             >
-              <Mail className="h-4 w-4 text-[var(--tx-3)]" />
-              <span>Contact Us</span>
+              <div className="flex items-center gap-2.5">
+                <Mail className="h-4 w-4 text-[var(--tx-3)] shrink-0" />
+                <span>Contact Us</span>
+              </div>
             </button>
           </nav>
         </div>
