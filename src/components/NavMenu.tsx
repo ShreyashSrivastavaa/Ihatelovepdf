@@ -191,7 +191,7 @@ export default function NavMenu() {
 
       {/* Mobile Slide-In Left Drawer Navigation Menu */}
       <div
-        className={`fixed top-[56px] left-0 bottom-0 z-50 w-[80vw] max-w-[260px] bg-[var(--bg-card)] border-r border-[var(--border)] shadow-2xl transition-transform duration-300 ease-in-out md:hidden flex flex-col justify-between overflow-y-auto ${
+        className={`fixed top-[56px] left-0 bottom-0 z-50 w-full bg-[var(--bg-card)] border-b border-[var(--border)] shadow-2xl transition-transform duration-300 ease-in-out md:hidden flex flex-col justify-between overflow-y-auto ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
