@@ -436,6 +436,147 @@ export default function ProcessingOptions({ mode, options, onOptionsChangeAction
             <p className="text-xs text-[var(--tx-3)]">{exportStrings.baseNameHint}</p>
           </div>
         </div>
+
+        {/* BORDER OPTIONS PANEL */}
+        <div className="space-y-4 rounded-xl border border-[var(--border)] bg-[var(--bg-subtle)] p-4">
+          <div>
+            <h4 className="text-xs sm:text-sm font-bold text-[var(--tx)]">Border Options</h4>
+            <p className="text-xs text-[var(--tx-2)]">Customize border frame around each converted image page</p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+            {[
+              { id: 'none', label: 'No Border', width: 0, color: 'transparent' },
+              { id: 'thin', label: 'Thin Border (1px)', width: 1, color: '#000000' },
+              { id: 'standard', label: 'Standard Border (3px)', width: 3, color: '#000000' },
+              { id: 'thick', label: 'Thick Border (5px)', width: 5, color: '#000000' },
+              { id: 'custom', label: 'Custom Border', width: options.imageBorderWidth ?? 3, color: options.imageBorderColor ?? '#000000' },
+            ].map((preset) => {
+              const borderType = options.imageBorderType ?? 'none';
+              const selected = borderType === preset.id;
+              return (
+                <label
+                  key={preset.id}
+                  className={`flex items-center justify-between cursor-pointer rounded-xl border p-3 text-xs sm:text-sm transition-all shadow-xs ${
+                    selected
+                      ? 'border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--accent)] font-semibold'
+                      : 'border-[var(--border)] bg-[var(--bg-card)] text-[var(--tx-2)] hover:border-[var(--border-hover)]'
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="radio"
+                      name="border-option"
+                      className="sr-only"
+                      checked={selected}
+                      onChange={() => {
+                        onOptionsChangeAction({
+                          ...options,
+                          imageBorderType: preset.id as NonNullable<PDFProcessingOptions['imageBorderType']>,
+                          imageBorderWidth: preset.id === 'custom' ? (options.imageBorderWidth ?? 3) : preset.width,
+                          imageBorderColor: preset.id === 'custom' ? (options.imageBorderColor ?? '#000000') : preset.color,
+                        });
+                      }}
+                    />
+                    <span>{preset.label}</span>
+                  </div>
+
+                  {/* Mini Border Preview */}
+                  <div
+                    className="h-5 w-7 rounded bg-white shadow-xs shrink-0"
+                    style={{
+                      border: preset.width > 0 ? `${preset.width}px solid ${preset.color}` : '1px dashed #cccccc',
+                    }}
+                  />
+                </label>
+              );
+            })}
+          </div>
+
+          {/* CUSTOM BORDER CONTROLS & LIVE PREVIEW */}
+          {(options.imageBorderType === 'custom') && (
+            <div className="space-y-4 pt-3 border-t border-[var(--border)] animate-fade-in">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                
+                {/* Border Width Slider */}
+                <div className="space-y-1.5">
+                  <div className="flex items-center justify-between text-xs font-medium text-[var(--tx-2)]">
+                    <label htmlFor="custom-border-width">Border Width (px)</label>
+                    <span className="rounded-md bg-[var(--accent-soft)] px-2 py-0.5 text-xs font-bold text-[var(--accent)] border border-[var(--accent-border)]">
+                      {options.imageBorderWidth ?? 3}px
+                    </span>
+                  </div>
+                  <input
+                    id="custom-border-width"
+                    type="range"
+                    min={1}
+                    max={20}
+                    step={1}
+                    value={options.imageBorderWidth ?? 3}
+                    onChange={(e) => update('imageBorderWidth', Number(e.target.value))}
+                    className="w-full cursor-pointer"
+                  />
+                </div>
+
+                {/* Border Color Picker & Presets */}
+                <div className="space-y-1.5">
+                  <label htmlFor="custom-border-color" className="block text-xs font-medium text-[var(--tx-2)]">
+                    Border Color
+                  </label>
+                  <div className="flex items-center gap-2">
+                    <input
+                      id="custom-border-color"
+                      type="color"
+                      value={options.imageBorderColor ?? '#000000'}
+                      onChange={(e) => update('imageBorderColor', e.target.value)}
+                      className="h-9 w-10 cursor-pointer rounded-lg border border-[var(--border)] bg-transparent p-0.5"
+                    />
+                    <input
+                      type="text"
+                      value={options.imageBorderColor ?? '#000000'}
+                      onChange={(e) => update('imageBorderColor', e.target.value)}
+                      className="input-modern flex-1 uppercase font-mono text-xs"
+                      placeholder="#000000"
+                    />
+                  </div>
+
+                  {/* Preset Colors Palette */}
+                  <div className="flex items-center gap-1.5 pt-1">
+                    {['#000000', '#FFFFFF', '#FF0000', '#00A8FF', '#333333', '#CCCCCC'].map((color) => (
+                      <button
+                        key={color}
+                        type="button"
+                        onClick={() => update('imageBorderColor', color)}
+                        className={`h-6 w-6 rounded-md border transition-transform cursor-pointer shadow-xs ${
+                          (options.imageBorderColor ?? '#000000').toLowerCase() === color.toLowerCase()
+                            ? 'scale-110 border-[var(--accent)] ring-2 ring-[var(--accent-soft)]'
+                            : 'border-[var(--border)] hover:scale-105'
+                        }`}
+                        style={{ backgroundColor: color }}
+                        title={color}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Live Preview Box */}
+              <div className="rounded-xl border border-[var(--border)] bg-[var(--bg-card)] p-4 text-center space-y-2">
+                <span className="text-xs font-semibold text-[var(--tx-3)] uppercase tracking-wider">Live Preview</span>
+                <div className="flex items-center justify-center p-2">
+                  <div
+                    className="flex h-20 w-32 items-center justify-center rounded-sm bg-slate-100 text-slate-500 font-sans text-xs font-semibold shadow-xs"
+                    style={{
+                      border: `${options.imageBorderWidth ?? 3}px solid ${options.imageBorderColor ?? '#000000'}`,
+                    }}
+                  >
+                    Sample Image
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     );
   }

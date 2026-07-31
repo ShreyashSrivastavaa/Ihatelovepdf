@@ -76,7 +76,9 @@ export type PDFProcessingOptions = {
   pageOrientation?: 'auto' | 'portrait' | 'landscape';
   pageMarginPoints?: number;
   backgroundColor?: string;
-  
+  imageBorderType?: 'none' | 'thin' | 'standard' | 'thick' | 'custom';
+  imageBorderWidth?: number;
+  imageBorderColor?: string;
 };
 
 export type ProcessingResult = {
@@ -1137,6 +1139,15 @@ export async function convertPdfToImages(fileOrData: File | ArrayBuffer | Uint8A
       canvasFactory: workerCanvasFactory,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } as any).promise;
+
+    const borderWidth = options.imageBorderWidth ?? 0;
+    const borderColor = options.imageBorderColor ?? '#000000';
+    if (borderWidth > 0 && borderColor !== 'transparent') {
+      const scaledWidth = Math.max(1, Math.round(borderWidth * (scale / 2)));
+      ctx.strokeStyle = borderColor;
+      ctx.lineWidth = scaledWidth;
+      ctx.strokeRect(scaledWidth / 2, scaledWidth / 2, w - scaledWidth, h - scaledWidth);
+    }
     const blob = (canvas instanceof OffscreenCanvas) ? await canvas.convertToBlob({ type: `image/${extension === 'jpg' ? 'jpeg' : 'png'}`, quality: options.imageOutputQuality }) : await new Promise<Blob>(r => (canvas as HTMLCanvasElement).toBlob(b => r(b!), `image/${extension === 'jpg' ? 'jpeg' : 'png'}`, options.imageOutputQuality));
     entries.push({ name: `${base}_${String(i).padStart(String(doc.numPages).length, '0')}.${extension}`, blob });
     page.cleanup();
