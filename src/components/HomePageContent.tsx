@@ -1,8 +1,8 @@
 import PDFProcessor from "./pdf-processor";
 import type { Dictionary } from "../i18n/dictionaries/dictionary-types";
-import { ShieldCheck, Zap, Laptop, Lock, Layers, FileDown, Scissors, RotateCw, ArrowDownUp, Image as ImageIcon, Sparkles, CheckCircle2 } from "lucide-react";
+import { ShieldCheck, Zap, Laptop, Lock, CheckCircle2 } from "lucide-react";
 import FaqSection from "./faq-section";
-import Link from "next/link";
+import QuickToolSelector, { type QuickToolLink } from "./QuickToolSelector";
 
 export function HomePageContent({ dictionary }: { dictionary: Dictionary }) {
   const {
@@ -10,16 +10,16 @@ export function HomePageContent({ dictionary }: { dictionary: Dictionary }) {
     routes,
   } = dictionary;
 
-  const toolQuickLinks = [
-    { key: "merge", label: dictionary.components.footer.operations.merge, icon: Layers, href: routes.operations.merge },
-    { key: "compress", label: dictionary.components.footer.operations.compress, icon: FileDown, href: routes.operations.compress },
-    { key: "split", label: dictionary.components.footer.operations.split, icon: Scissors, href: routes.operations.split },
-    { key: "extract", label: dictionary.components.footer.operations.extract, icon: Sparkles, href: routes.operations.extract },
-    { key: "crop", label: dictionary.components.footer.operations.crop, icon: Scissors, href: routes.operations.crop },
-    { key: "rotate", label: dictionary.components.footer.operations.rotate, icon: RotateCw, href: routes.operations.rotate },
-    { key: "reorder", label: dictionary.components.footer.operations.reorder, icon: ArrowDownUp, href: routes.operations.reorder },
-    { key: "pdfToImages", label: dictionary.components.footer.operations.pdfToImages, icon: ImageIcon, href: routes.operations.pdfToImages },
-    { key: "imagesToPdf", label: dictionary.components.footer.operations.imagesToPdf, icon: ImageIcon, href: routes.operations.imagesToPdf },
+  const toolQuickLinks: QuickToolLink[] = [
+    { key: "merge", label: dictionary.components.footer.operations.merge, href: routes.operations.merge },
+    { key: "compress", label: dictionary.components.footer.operations.compress, href: routes.operations.compress },
+    { key: "split", label: dictionary.components.footer.operations.split, href: routes.operations.split },
+    { key: "extract", label: dictionary.components.footer.operations.extract, href: routes.operations.extract },
+    { key: "crop", label: dictionary.components.footer.operations.crop, href: routes.operations.crop },
+    { key: "rotate", label: dictionary.components.footer.operations.rotate, href: routes.operations.rotate },
+    { key: "reorder", label: dictionary.components.footer.operations.reorder, href: routes.operations.reorder },
+    { key: "pdfToImages", label: dictionary.components.footer.operations.pdfToImages, href: routes.operations.pdfToImages },
+    { key: "imagesToPdf", label: dictionary.components.footer.operations.imagesToPdf, href: routes.operations.imagesToPdf },
   ];
 
   return (
@@ -56,33 +56,8 @@ export function HomePageContent({ dictionary }: { dictionary: Dictionary }) {
           </div>
         </section>
 
-        {/* QUICK TOOL SELECTOR CHIPS */}
-        <section className="space-y-3">
-          <div className="flex items-center justify-between px-1">
-            <h2 className="text-xs font-semibold text-[var(--tx-3)] uppercase tracking-wider">
-              Quick Tool Selector
-            </h2>
-            <span className="text-xs text-[var(--tx-3)]">Select tool to start</span>
-          </div>
-
-          <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-9 gap-2">
-            {toolQuickLinks.map((tool) => {
-              const Icon = tool.icon;
-              return (
-                <Link
-                  key={tool.key}
-                  href={tool.href}
-                  className="flex flex-col items-center justify-center p-3 rounded-xl border border-[var(--border)] bg-[var(--bg-card)] hover:border-[var(--accent-border)] hover:bg-[var(--accent-soft)] hover:text-[var(--accent)] transition-all duration-150 group text-center shadow-xs"
-                >
-                  <Icon className="h-5 w-5 mb-1.5 text-[var(--tx-2)] group-hover:text-[var(--accent)] group-hover:scale-110 transition-transform shrink-0" />
-                  <span className="text-xs font-medium text-[var(--tx)] group-hover:text-[var(--accent)] truncate w-full">
-                    {tool.label}
-                  </span>
-                </Link>
-              );
-            })}
-          </div>
-        </section>
+        {/* QUICK TOOL SELECTOR COMPONENT */}
+        <QuickToolSelector links={toolQuickLinks} />
 
         {/* CENTERPIECE PDF PROCESSOR UI CONTAINER */}
         <section className="relative">

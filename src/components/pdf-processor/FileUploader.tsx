@@ -175,7 +175,7 @@ export default function FileUploader({
           <div className="space-y-1.5 max-w-md mx-auto">
             <p className="text-base font-semibold text-[var(--tx)] group-hover:text-[var(--accent)] transition-colors">
               <span>{uploaderStrings.clickToSelect}</span>{' '}
-              <span className="font-normal text-[var(--tx-2)]">
+              <span className="font-normal text-[var(--tx-2)] hidden sm:inline">
                 {uploaderStrings.orDrop(acceptImages ? 'images' : 'pdf')}
               </span>
             </p>
@@ -183,6 +183,16 @@ export default function FileUploader({
             <p className="text-xs text-[var(--tx-3)] font-medium tracking-wide">
               {acceptImages ? uploaderStrings.accepted.images : uploaderStrings.accepted.pdf} &bull; Max {maxFileSizeMB}MB
             </p>
+          </div>
+
+          <div className="pt-2 w-full max-w-[260px] sm:hidden">
+            <button
+              type="button"
+              className="btn-primary w-full py-3 text-sm font-semibold min-h-[44px] shadow-sm flex items-center justify-center gap-2"
+            >
+              <Upload className="h-4 w-4" />
+              <span>{uploaderStrings.clickToSelect}</span>
+            </button>
           </div>
 
           <div className="pt-2 flex items-center justify-center gap-2">

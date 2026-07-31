@@ -3,12 +3,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { useMemo, useState, type ChangeEvent } from 'react';
+import { useMemo, useState, useEffect, type ChangeEvent } from 'react';
 import { useDictionary, useLocale } from '../i18n/LocaleProvider';
 import { SUPPORTED_LOCALES, localeLabels, type Locale } from '../i18n/config';
 import { getLocalizedAlternateMap, getRouteIdentifierForPath, getRoutePath } from '../i18n/routing';
 import ContactModal from './ContactModal';
-import { ShieldCheck, Globe, Menu, X, Sun, Moon } from 'lucide-react';
+import { ShieldCheck, Globe, Menu, X, Sun, Moon, FileText, Shield, Mail } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 
 export default function NavMenu() {
@@ -23,6 +23,18 @@ export default function NavMenu() {
   const routes = dictionary.routes;
 
   const isActive = (path: string) => pathname === path;
+
+  // Lock body scroll when mobile drawer is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
 
   const routeIdentifier = useMemo(() => getRouteIdentifierForPath(locale, pathname), [locale, pathname]);
 
@@ -46,11 +58,23 @@ export default function NavMenu() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full border-b border-[var(--border)] bg-[var(--bg)]/80 backdrop-blur-md transition-colors duration-200">
-        <div className="mx-auto flex max-w-[1200px] items-center justify-between px-4 sm:px-6 py-3.5">
-          <div className="flex items-center gap-3">
-            <Link href={routes.home} className="flex items-center gap-2.5 group">
-              <div className="relative flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--accent)] text-white shadow-sm transition-transform duration-200 group-hover:scale-105">
+      <header className="sticky top-0 z-40 w-full border-b border-[var(--border)] bg-[var(--bg)]/80 backdrop-blur-md transition-colors duration-200 header-safe-area">
+        <div className="mx-auto flex h-[56px] md:h-auto max-w-[1200px] items-center justify-between px-3 sm:px-6 py-2 sm:py-3.5">
+          
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Mobile Hamburger Button (top-left on < 768px) */}
+            <button
+              type="button"
+              className="md:hidden flex h-11 w-11 items-center justify-center rounded-lg text-[var(--tx-2)] hover:bg-[var(--bg-subtle)] transition-colors focus:outline-none"
+              onClick={() => setIsOpen((open) => !open)}
+              aria-label={nav.menuLabel}
+            >
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+
+            {/* Brand Logo & Name */}
+            <Link href={routes.home} onClick={() => setIsOpen(false)} className="flex items-center gap-2 group">
+              <div className="relative flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--accent)] text-white shadow-xs transition-transform duration-200 group-hover:scale-105">
                 <Image src="/logo.png" alt="PDFhelp logo" width={28} height={28} className="rounded-md object-contain" unoptimized />
               </div>
               <span className="text-lg font-bold tracking-tight text-[var(--tx)]">PDFhelp</span>
@@ -62,16 +86,9 @@ export default function NavMenu() {
             </span>
           </div>
 
-          <button
-            className="md:hidden p-2 rounded-md text-[var(--tx-2)] hover:bg-[var(--bg-subtle)] transition-colors"
-            onClick={() => setIsOpen((open) => !open)}
-            aria-label={nav.menuLabel}
-          >
-            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
-
-          <nav className={`${isOpen ? 'flex flex-col absolute top-full left-0 right-0 p-4 border-b border-[var(--border)] bg-[var(--bg-card)] shadow-lg' : 'hidden'} md:flex md:flex-row md:items-center md:static md:p-0 md:bg-transparent md:border-0 md:shadow-none md:gap-6`}>
-            <ul className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6 text-sm font-medium">
+          {/* Desktop Navigation Links (>= 768px) */}
+          <nav className="hidden md:flex md:flex-row md:items-center md:gap-6">
+            <ul className="flex flex-row items-center gap-6 text-sm font-medium">
               <li>
                 <Link
                   href={routes.home}
@@ -98,38 +115,38 @@ export default function NavMenu() {
               </li>
               <li>
                 <button
-                  onClick={() => { setIsOpen(false); setIsContactOpen(true); }}
-                  className="px-2.5 py-1.5 rounded-md text-[var(--tx-2)] hover:text-[var(--tx)] hover:bg-[var(--bg-subtle)] transition-colors text-left w-full md:w-auto"
+                  onClick={() => setIsContactOpen(true)}
+                  className="px-2.5 py-1.5 rounded-md text-[var(--tx-2)] hover:text-[var(--tx)] hover:bg-[var(--bg-subtle)] transition-colors text-left cursor-pointer"
                 >
                   Contact
                 </button>
               </li>
             </ul>
 
-            <div className="mt-3 md:mt-0 pt-3 md:pt-0 border-t md:border-t-0 border-[var(--border)] flex items-center gap-2">
-              {/* Theme Toggle Button (before language selector) */}
+            <div className="flex items-center gap-2">
+              {/* Theme Toggle Button */}
               <button
                 type="button"
                 onClick={toggleTheme}
-                className="p-1.5 rounded-lg border border-[var(--border)] bg-[var(--bg-card)] text-[var(--tx-2)] hover:text-[var(--tx)] hover:border-[var(--border-hover)] transition-all cursor-pointer shadow-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                className="flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--bg-card)] text-[var(--tx-2)] hover:text-[var(--tx)] hover:border-[var(--border-hover)] transition-all cursor-pointer shadow-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
                 aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
                 title={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
               >
                 {theme === 'dark' ? (
-                  <Sun className="h-4 w-4 text-amber-400 stroke-[2] transition-transform duration-200 hover:rotate-45" />
+                  <Sun className="h-5 w-5 text-amber-400 stroke-[2] transition-transform duration-200 hover:rotate-45" />
                 ) : (
-                  <Moon className="h-4 w-4 text-slate-600 stroke-[2] transition-transform duration-200 hover:-rotate-12" />
+                  <Moon className="h-5 w-5 text-slate-600 stroke-[2] transition-transform duration-200 hover:-rotate-12" />
                 )}
               </button>
 
-              {/* Language Selector */}
-              <div className="relative inline-flex items-center gap-1.5 rounded-lg border border-[var(--border)] bg-[var(--bg-card)] px-2.5 py-1 text-xs text-[var(--tx-2)] shadow-xs transition-colors hover:border-[var(--border-hover)]">
+              {/* Desktop Language Selector */}
+              <div className="relative inline-flex items-center gap-1.5 rounded-lg border border-[var(--border)] bg-[var(--bg-card)] px-2.5 py-1.5 text-xs text-[var(--tx-2)] shadow-xs transition-colors hover:border-[var(--border-hover)]">
                 <Globe className="h-3.5 w-3.5 text-[var(--tx-3)]" />
-                <label className="sr-only" htmlFor="nav-language-select">
+                <label className="sr-only" htmlFor="nav-language-select-desktop">
                   {nav.languageLabel}
                 </label>
                 <select
-                  id="nav-language-select"
+                  id="nav-language-select-desktop"
                   className="bg-transparent font-medium text-[var(--tx)] focus:outline-none cursor-pointer pr-1"
                   value={locale}
                   onChange={handleLocaleChange}
@@ -143,8 +160,140 @@ export default function NavMenu() {
               </div>
             </div>
           </nav>
+
+          {/* Mobile Right Controls: Theme Toggle Button (always visible on mobile header) */}
+          <div className="flex md:hidden items-center gap-2">
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="flex h-11 w-11 items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--bg-card)] text-[var(--tx-2)] hover:text-[var(--tx)] transition-all cursor-pointer shadow-xs"
+              aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+            >
+              {theme === 'dark' ? (
+                <Sun className="h-5 w-5 text-amber-400 stroke-[2]" />
+              ) : (
+                <Moon className="h-5 w-5 text-slate-600 stroke-[2]" />
+              )}
+            </button>
+          </div>
+
         </div>
       </header>
+
+      {/* Mobile Backdrop Overlay */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 top-[56px] z-40 bg-black/60 backdrop-blur-xs md:hidden animate-fade-in"
+          onClick={() => setIsOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Mobile Slide-In Left Drawer Navigation Menu */}
+      <div
+        className={`fixed top-[56px] left-0 bottom-0 z-50 w-[280px] bg-[var(--bg-card)] border-r border-[var(--border)] shadow-2xl transition-transform duration-300 ease-in-out md:hidden flex flex-col justify-between overflow-y-auto ${
+          isOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
+      >
+        <div className="p-4 space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-[var(--border)]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[var(--tx-3)]">Navigation Menu</span>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="p-1 rounded-md text-[var(--tx-3)] hover:text-[var(--tx)] hover:bg-[var(--bg-subtle)]"
+              aria-label="Close menu"
+            >
+              <X className="h-5 w-5" />
+            </button>
+          </div>
+
+          <nav className="space-y-1">
+            <Link
+              href={routes.home}
+              onClick={() => setIsOpen(false)}
+              className={`flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-semibold transition-colors min-h-[44px] ${
+                isActive(routes.home)
+                  ? 'text-[var(--accent)] bg-[var(--accent-soft)]'
+                  : 'text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
+              }`}
+            >
+              {nav.home}
+            </Link>
+
+            <Link
+              href={routes.faq}
+              onClick={() => setIsOpen(false)}
+              className={`flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-semibold transition-colors min-h-[44px] ${
+                isActive(routes.faq)
+                  ? 'text-[var(--accent)] bg-[var(--accent-soft)]'
+                  : 'text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
+              }`}
+            >
+              {nav.faq}
+            </Link>
+
+            <Link
+              href={routes.privacy || '/privacy'}
+              onClick={() => setIsOpen(false)}
+              className={`flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-semibold transition-colors min-h-[44px] ${
+                isActive(routes.privacy || '/privacy')
+                  ? 'text-[var(--accent)] bg-[var(--accent-soft)]'
+                  : 'text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
+              }`}
+            >
+              <Shield className="h-4 w-4 text-[var(--tx-3)]" />
+              <span>Privacy Policy</span>
+            </Link>
+
+            <Link
+              href={routes.terms || '/terms'}
+              onClick={() => setIsOpen(false)}
+              className={`flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-semibold transition-colors min-h-[44px] ${
+                isActive(routes.terms || '/terms')
+                  ? 'text-[var(--accent)] bg-[var(--accent-soft)]'
+                  : 'text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
+              }`}
+            >
+              <FileText className="h-4 w-4 text-[var(--tx-3)]" />
+              <span>Terms of Service</span>
+            </Link>
+
+            <button
+              onClick={() => {
+                setIsOpen(false);
+                setIsContactOpen(true);
+              }}
+              className="flex items-center gap-3 w-full text-left px-3 py-3 rounded-lg text-sm font-semibold text-[var(--tx)] hover:bg-[var(--bg-subtle)] transition-colors min-h-[44px]"
+            >
+              <Mail className="h-4 w-4 text-[var(--tx-3)]" />
+              <span>Contact Us</span>
+            </button>
+          </nav>
+        </div>
+
+        {/* Mobile Drawer Bottom: Language Selector */}
+        <div className="p-4 border-t border-[var(--border)] bg-[var(--bg-subtle)] space-y-2">
+          <label htmlFor="nav-language-select-mobile" className="block text-xs font-semibold text-[var(--tx-3)]">
+            {nav.languageLabel}
+          </label>
+          <div className="relative flex items-center rounded-lg border border-[var(--border)] bg-[var(--bg-card)] px-3 py-2.5 text-sm text-[var(--tx)] shadow-xs">
+            <Globe className="h-4 w-4 text-[var(--tx-3)] shrink-0 mr-2" />
+            <select
+              id="nav-language-select-mobile"
+              className="w-full bg-transparent font-medium text-[var(--tx)] focus:outline-none cursor-pointer text-sm"
+              value={locale}
+              onChange={handleLocaleChange}
+            >
+              {languageOptions.map(option => (
+                <option key={option.locale} value={option.locale} className="bg-[var(--bg-card)] text-[var(--tx)]">
+                  {localeLabels[option.locale].nativeName}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+      </div>
+
       <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
     </>
   );
