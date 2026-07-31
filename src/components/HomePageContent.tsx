@@ -1,4 +1,3 @@
-import Image from "next/image";
 import PDFProcessor from "./pdf-processor";
 import type { Dictionary } from "../i18n/dictionaries/dictionary-types";
 import { ShieldCheck, Zap, Laptop, Lock, Layers, FileDown, Scissors, RotateCw, ArrowDownUp, Image as ImageIcon, Sparkles, CheckCircle2 } from "lucide-react";

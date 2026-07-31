@@ -3,7 +3,7 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { useDictionary } from '../../i18n/LocaleProvider';
 import { trackEvent } from '../../lib/analytics';
-import { Upload, FileText, Image as ImageIcon, ShieldCheck, AlertCircle, Sparkles } from 'lucide-react';
+import { Upload, Image as ImageIcon, ShieldCheck, AlertCircle, Sparkles } from 'lucide-react';
 
 type FileUploaderProps = {
   onFilesSelectedAction: (files: File[]) => void;
