@@ -18,31 +18,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>('light');
 
   useEffect(() => {
-    // Read persisted theme or default to system prefers-color-scheme
+    // Read persisted theme or default to constant light mode
     const stored = localStorage.getItem(THEME_STORAGE_KEY) as Theme | null;
-    let initialTheme: Theme = 'light';
-
-    if (stored === 'light' || stored === 'dark') {
-      initialTheme = stored;
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      initialTheme = 'dark';
-    }
+    const initialTheme: Theme = stored === 'dark' ? 'dark' : 'light';
 
     setThemeState(initialTheme);
     applyTheme(initialTheme);
-
-    // Listen for system theme changes if user hasn't explicitly set a preference
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleSystemChange = (e: MediaQueryListEvent) => {
-      if (!localStorage.getItem(THEME_STORAGE_KEY)) {
-        const systemTheme = e.matches ? 'dark' : 'light';
-        setThemeState(systemTheme);
-        applyTheme(systemTheme);
-      }
-    };
-
-    mediaQuery.addEventListener('change', handleSystemChange);
-    return () => mediaQuery.removeEventListener('change', handleSystemChange);
   }, []);
 
   const applyTheme = (targetTheme: Theme) => {
