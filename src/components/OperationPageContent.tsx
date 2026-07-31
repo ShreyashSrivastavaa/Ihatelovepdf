@@ -1,7 +1,7 @@
-import Image from "next/image";
 import PDFProcessor from "./pdf-processor";
 import FaqSection from "./faq-section";
 import type { OperationContent } from "../i18n/dictionaries/operation-types";
+import { CheckCircle2, ShieldCheck, HelpCircle, Sparkles } from "lucide-react";
 
 export function OperationPageContent({
   operation,
@@ -22,73 +22,95 @@ export function OperationPageContent({
   };
 
   return (
-    <div className="min-h-screen bg-gradient-soft relative">
-      <div className="container mx-auto px-4 py-8" style={{ maxWidth: "var(--max-width-wide-page)" }}>
-        <section className="mb-10 relative">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="text-center md:text-left md:max-w-[70%]">
-              <h1 className="text-3xl md:text-4xl font-bold mb-4">{operation.hero.title}</h1>
-              <p className="text-xl text-[var(--tx-2)] max-w-3xl">{operation.hero.description}</p>
-
-              <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
-                {operation.hero.bulletPoints.map((point) => (
-                  <span
-                    key={point}
-                    className="inline-flex items-start gap-2 px-3 py-2 rounded-lg bg-[var(--ui)] text-sm text-left"
-                  >
-                    <span className="text-[var(--accent)]">✓</span>
-                    {point}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="hidden md:block md:w-[30%] mt-8 md:mt-0">
-              <Image
-                src="/images/stickers/pdfhelp_logo_processed.webp"
-                alt={operation.hero.imageAlt}
-                width={240}
-                height={240}
-                className="w-full h-auto max-w-[240px] ml-auto opacity-85"
-                priority
-                unoptimized
-              />
-            </div>
+    <div className="min-h-screen bg-[var(--bg)] text-[var(--tx)]">
+      <div className="mx-auto max-w-[1140px] px-4 sm:px-6 py-10 sm:py-14 space-y-12 sm:space-y-16">
+        
+        {/* HERO HEADER */}
+        <section className="space-y-6 max-w-4xl">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--success-border)] bg-[var(--success-soft)] text-xs font-medium text-[var(--tx)] shadow-xs">
+            <ShieldCheck className="h-3.5 w-3.5 text-[var(--success)] shrink-0" />
+            <span>100% Client-Side Local Processing &bull; Zero Cloud Uploads</span>
           </div>
-        </section>
 
-        <PDFProcessor initialMode={operation.mode} />
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--tx)] leading-[1.15]">
+            {operation.hero.title}
+          </h1>
 
-        <section className="my-12">
-          <h2 className="text-2xl font-bold mb-6 text-center">{operation.benefitsTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {operation.benefits.map((benefit) => (
-              <div key={benefit.title} className="surface-card p-6 h-full">
-                <h3 className="text-lg font-semibold mb-2">{benefit.title}</h3>
-                <p className="text-[var(--tx-2)]">{benefit.description}</p>
+          <p className="text-base sm:text-lg text-[var(--tx-2)] max-w-3xl leading-relaxed">
+            {operation.hero.description}
+          </p>
+
+          <div className="pt-2 grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+            {operation.hero.bulletPoints.map((point) => (
+              <div
+                key={point}
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-[var(--border)] bg-[var(--bg-card)] text-xs font-medium text-[var(--tx)] shadow-xs"
+              >
+                <CheckCircle2 className="h-4 w-4 text-[var(--accent)] shrink-0" />
+                <span>{point}</span>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="surface-card bg-[var(--bg-2)]/80 p-8 my-12">
-          <h2 className="text-2xl font-bold mb-4">{operation.howTo.title}</h2>
-          <ol className="list-decimal list-inside space-y-3 text-[var(--tx-2)]">
+        {/* CENTERPIECE PROCESSOR */}
+        <section className="relative">
+          <PDFProcessor initialMode={operation.mode} />
+        </section>
+
+        {/* BENEFITS SECTION */}
+        <section className="pt-6 border-t border-[var(--border)] space-y-8">
+          <h2 className="text-2xl font-bold tracking-tight text-center text-[var(--tx)]">
+            {operation.benefitsTitle}
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {operation.benefits.map((benefit) => (
+              <div key={benefit.title} className="surface-card p-6 space-y-2 hover:border-[var(--accent-border)] transition-colors">
+                <h3 className="text-base font-bold text-[var(--tx)] flex items-center gap-2">
+                  <Sparkles className="h-4 w-4 text-[var(--accent)] shrink-0" />
+                  {benefit.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-[var(--tx-2)] leading-relaxed">{benefit.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* HOW TO SECTION */}
+        <section className="surface-card p-6 sm:p-8 space-y-6">
+          <h2 className="text-xl font-bold tracking-tight text-[var(--tx)] flex items-center gap-2">
+            <HelpCircle className="h-5 w-5 text-[var(--accent)]" />
+            {operation.howTo.title}
+          </h2>
+          <ol className="space-y-4">
             {operation.howTo.steps.map((step, index) => (
-              <li key={`${operation.slug}-step-${index}`}>{step}</li>
+              <li key={`${operation.slug}-step-${index}`} className="flex items-start gap-3 text-sm text-[var(--tx-2)]">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[var(--accent-soft)] text-xs font-bold text-[var(--accent)] border border-[var(--accent-border)]">
+                  {index + 1}
+                </span>
+                <span className="pt-0.5 leading-relaxed">{step}</span>
+              </li>
             ))}
           </ol>
           {operation.howTo.note && (
-            <p className="mt-4 text-sm text-[var(--tx-3)]">{operation.howTo.note}</p>
+            <p className="mt-4 text-xs text-[var(--tx-3)] italic border-t border-[var(--border)] pt-4">
+              {operation.howTo.note}
+            </p>
           )}
         </section>
 
-        <section className="my-12">
-          <h2 className="text-2xl font-bold mb-4 text-center">{operation.useCasesTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* USE CASES SECTION */}
+        <section className="pt-6 border-t border-[var(--border)] space-y-6">
+          <h2 className="text-2xl font-bold tracking-tight text-center text-[var(--tx)]">
+            {operation.useCasesTitle}
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {operation.useCases.map((useCase) => (
-              <div key={useCase} className="surface-card p-5">
-                <p className="text-[var(--tx-2)]">{useCase}</p>
+              <div key={useCase} className="surface-card p-5 hover:border-[var(--border-hover)] transition-colors">
+                <p className="text-xs sm:text-sm text-[var(--tx-2)] leading-relaxed flex items-start gap-2">
+                  <span className="text-[var(--accent)] font-bold">&bull;</span>
+                  {useCase}
+                </p>
               </div>
             ))}
           </div>

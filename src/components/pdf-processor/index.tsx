@@ -1950,10 +1950,15 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
 
   return (
     <>
-      <div className="p-6 surface-card" id="pdf-processor">
-        <div className="mb-6">
-          <h2 className="text-xl font-bold mb-4">{processorStrings.title}</h2>
-          <div className="flex flex-wrap gap-2">
+      <div className="p-6 sm:p-8 surface-card rounded-2xl shadow-sm border border-[var(--border)] space-y-6" id="pdf-processor">
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
+            <h2 className="text-sm font-semibold text-[var(--tx-3)] uppercase tracking-wider">
+              {processorStrings.title}
+            </h2>
+          </div>
+
+          <div className="p-1 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border)] flex flex-wrap gap-1">
             {MODE_TABS.map(modeKey => {
               const tabStrings = (modes as Record<ProcessingMode, { label: string }>)[modeKey];
               const label = tabStrings?.label ?? modeKey;
@@ -1961,10 +1966,12 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
               return (
                 <button
                   key={modeKey}
-                  className={`px-4 py-2 rounded-lg ${isActive
-                    ? 'bg-[var(--accent)] text-white'
-                    : 'bg-[var(--ui-2)] text-[var(--tx-2)]'
-                    }`}
+                  type="button"
+                  className={`px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all duration-150 ${
+                    isActive
+                      ? 'bg-[var(--bg-card)] text-[var(--accent)] shadow-xs border border-[var(--border)] font-semibold'
+                      : 'text-[var(--tx-2)] hover:text-[var(--tx)] hover:bg-[var(--bg-card)]/50'
+                  }`}
                   onClick={() => handleModeChange(modeKey)}
                 >
                   {label}
@@ -1973,7 +1980,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
             })}
           </div>
 
-          <p className="mt-2 text-sm text-[var(--tx-2)]">{getModeHelpText()}</p>
+          <p className="text-xs sm:text-sm text-[var(--tx-2)] pt-1">{getModeHelpText()}</p>
         </div>
 
         <div className="mb-6">
@@ -2409,9 +2416,9 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           </div>
         )}
 
-        <div className="flex justify-center">
+        <div className="flex justify-center pt-2">
           <button
-            className="btn-primary px-6 py-3 rounded-lg font-medium text-white disabled:opacity-50 disabled:cursor-not-allowed"
+            className="btn-primary w-full sm:w-auto px-8 py-3.5 rounded-xl font-semibold text-white shadow-md text-sm sm:text-base tracking-tight disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={
               files.length === 0 ||
               isProcessing ||
@@ -2420,9 +2427,9 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
             onClick={handleProcess}
           >
             {isProcessing ? (
-              <span className="flex items-center">
+              <span className="flex items-center gap-2">
                 <svg
-                  className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                  className="animate-spin h-4 w-4 text-white"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -2441,7 +2448,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                   ></path>
                 </svg>
-                {processButton.processing}
+                <span>{processButton.processing}</span>
               </span>
             ) : (
               resolveIdleButtonLabel()

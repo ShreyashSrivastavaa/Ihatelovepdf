@@ -3,6 +3,7 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { useDictionary } from '../../i18n/LocaleProvider';
 import { trackEvent } from '../../lib/analytics';
+import { Upload, FileText, Image as ImageIcon, ShieldCheck, AlertCircle, Sparkles } from 'lucide-react';
 
 type FileUploaderProps = {
   onFilesSelectedAction: (files: File[]) => void;
@@ -26,31 +27,26 @@ export default function FileUploader({
   const [error, setError] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // If acceptedFileTypes is not explicitly provided, determine based on acceptImages
   const fileTypes = acceptedFileTypes || (acceptImages
     ? ".jpg,.jpeg,.png,.webp,.tiff,.tif"
     : "application/pdf");
 
-  // Create a label for display purposes
   const fileTypesLabel = acceptImages
     ? uploaderStrings.accepted.images
     : uploaderStrings.accepted.pdf;
 
-  const maxFileSize = maxFileSizeMB * 1024 * 1024; // Convert MB to bytes
+  const maxFileSize = maxFileSizeMB * 1024 * 1024;
 
   const validateFiles = useCallback((files: File[]) => {
     if (files.length === 0) return null;
 
-    // Check file types - this needs a more complex validation because we may accept multiple types
     const invalidType = files.find(file => {
       if (acceptImages) {
-        // Check image file extensions
         const validExts = ['.jpg', '.jpeg', '.png', '.webp', '.tiff', '.tif'];
         const fileName = file.name.toLowerCase();
         return !validExts.some(ext => fileName.endsWith(ext)) &&
           !file.type.startsWith('image/');
       } else {
-        // Check for PDF
         return file.type !== 'application/pdf' &&
           !file.name.toLowerCase().endsWith('.pdf');
       }
@@ -66,7 +62,6 @@ export default function FileUploader({
       return errors.invalidType(invalidType.name, fileTypesLabel);
     }
 
-    // Check file sizes
     const oversizedFile = files.find(file => file.size > maxFileSize);
     if (oversizedFile) {
       trackEvent({
@@ -144,10 +139,9 @@ export default function FileUploader({
   return (
     <div className="w-full">
       <div
-        className={`border-2 border-dashed rounded-lg p-6 text-center cursor-pointer transition-colors
-          ${dragActive ? 'border-[var(--accent)] bg-[var(--accent)]/10' : 'border-[var(--ui-2)]'}
-          ${error ? 'border-[var(--err)] bg-[var(--err)]/5' : ''}
-        `}
+        className={`upload-area-container relative group cursor-pointer p-8 sm:p-12 text-center border-2 transition-all duration-200 ${
+          dragActive ? 'upload-area-active' : 'border-[var(--border)] hover:border-[var(--accent)] hover:shadow-lg'
+        } ${error ? 'border-[var(--err)] bg-[var(--err-soft)]' : ''}`}
         onDragEnter={handleDrag}
         onDragLeave={handleDrag}
         onDragOver={handleDrag}
@@ -163,45 +157,47 @@ export default function FileUploader({
           onChange={handleChange}
         />
 
-        <div className="flex flex-col items-center justify-center py-6">
-          <svg
-            className={`w-12 h-12 mb-3 ${dragActive ? 'text-[var(--accent)]' : 'text-[var(--tx-3)]'}`}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+        <div className="flex flex-col items-center justify-center space-y-4">
+          <div className={`flex h-16 w-16 items-center justify-center rounded-2xl border transition-all duration-300 ${
+            dragActive 
+              ? 'border-[var(--accent)] bg-[var(--accent)] text-white scale-110 shadow-md' 
+              : 'border-[var(--border)] bg-[var(--bg-subtle)] text-[var(--tx-2)] group-hover:scale-105 group-hover:border-[var(--accent-border)] group-hover:text-[var(--accent)] group-hover:bg-[var(--accent-soft)]'
+          }`}>
             {acceptImages ? (
-              // Image icon when accepting images
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-              />
+              <ImageIcon className="h-8 w-8 stroke-[1.5]" />
+            ) : dragActive ? (
+              <Sparkles className="h-8 w-8 stroke-[1.5] animate-spin-slow" />
             ) : (
-              // Document upload icon for PDFs
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-              />
+              <Upload className="h-8 w-8 stroke-[1.5]" />
             )}
-          </svg>
+          </div>
 
-          <p className="mb-2 text-sm text-[var(--tx-2)]">
-            <span className="font-semibold">{uploaderStrings.clickToSelect}</span> {uploaderStrings.orDrop(acceptImages ? 'images' : 'pdf')}
-          </p>
-          <p className="text-xs text-[var(--tx-3)]">
-            {acceptImages ? uploaderStrings.accepted.images : uploaderStrings.accepted.pdf} ({uploaderStrings.maxSize(maxFileSizeMB)})
-          </p>
+          <div className="space-y-1.5 max-w-md mx-auto">
+            <p className="text-base font-semibold text-[var(--tx)] group-hover:text-[var(--accent)] transition-colors">
+              <span>{uploaderStrings.clickToSelect}</span>{' '}
+              <span className="font-normal text-[var(--tx-2)]">
+                {uploaderStrings.orDrop(acceptImages ? 'images' : 'pdf')}
+              </span>
+            </p>
+
+            <p className="text-xs text-[var(--tx-3)] font-medium tracking-wide">
+              {acceptImages ? uploaderStrings.accepted.images : uploaderStrings.accepted.pdf} &bull; Max {maxFileSizeMB}MB
+            </p>
+          </div>
+
+          <div className="pt-2 flex items-center justify-center gap-2">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--bg-subtle)] text-xs text-[var(--tx-2)] font-medium group-hover:border-[var(--accent-border)] transition-colors">
+              <ShieldCheck className="h-3.5 w-3.5 text-[var(--success)]" />
+              End-to-End Local Execution
+            </span>
+          </div>
         </div>
       </div>
 
       {error && (
-        <div className="mt-2 text-sm text-[var(--err)]">
-          {error}
+        <div className="mt-3 flex items-center gap-2 text-sm text-[var(--err)] bg-[var(--err-soft)] px-4 py-2.5 rounded-lg border border-[var(--err)]/20 animate-fade-in">
+          <AlertCircle className="h-4 w-4 shrink-0" />
+          <span>{error}</span>
         </div>
       )}
     </div>

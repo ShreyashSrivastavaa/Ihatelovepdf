@@ -1,16 +1,19 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
+import { Mail, X, CheckCircle2, AlertCircle, Send } from 'lucide-react';
 
 interface ContactModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const WEB3FORMS_ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '44e3c9b7-e4a7-43f8-8c76-0b23246e96f9';
 const OWNER_EMAIL = 'shreyashsr2004@gmail.com';
 
 export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
+  const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+  const isFormAvailable = Boolean(accessKey);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -22,6 +25,44 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const [errorMessage, setErrorMessage] = useState('');
 
   if (!isOpen) return null;
+
+  if (!isFormAvailable) {
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-fade-in">
+        <div className="relative w-full max-w-md bg-[var(--bg-card)] border border-[var(--border)] rounded-2xl shadow-xl p-6 sm:p-8 text-[var(--tx)] animate-fade-in">
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 p-1.5 text-[var(--tx-3)] hover:text-[var(--tx)] rounded-lg hover:bg-[var(--bg-subtle)] transition-colors"
+            aria-label="Close contact modal"
+          >
+            <X className="h-5 w-5" />
+          </button>
+          <div className="py-6 text-center space-y-3">
+            <div className="w-12 h-12 bg-[var(--bg-subtle)] border border-[var(--border)] rounded-2xl flex items-center justify-center mx-auto text-[var(--accent)]">
+              <Mail className="h-6 w-6" />
+            </div>
+            <h3 className="text-lg font-bold text-[var(--tx)]">Contact Unavailable</h3>
+            <p className="text-xs sm:text-sm text-[var(--tx-2)] max-w-sm mx-auto leading-relaxed">
+              The contact form is temporarily unavailable. Please reach out directly at{' '}
+              <a
+                href={`mailto:${OWNER_EMAIL}`}
+                className="text-[var(--accent)] underline underline-offset-2 hover:opacity-80 transition-opacity font-medium"
+              >
+                {OWNER_EMAIL}
+              </a>
+              .
+            </p>
+            <button
+              onClick={onClose}
+              className="mt-2 btn-secondary px-5 py-2 text-xs sm:text-sm font-medium"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -36,10 +77,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           Accept: 'application/json',
         },
         body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
-          // Route the email to the site owner
+          access_key: accessKey,
           to_email: OWNER_EMAIL,
-          // Set reply-to as the submitter's email so hitting Reply goes back to them
           replyto: formData.email,
           name: formData.name,
           email: formData.email,
@@ -48,7 +87,6 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             : '[PDFhelp] New Contact Form Message',
           message: `From: ${formData.name} <${formData.email}>\n\n${formData.message}`,
           from_name: 'PDFhelp Contact Form',
-          // Honeypot anti-spam field (must be empty)
           botcheck: '',
         }),
       });
@@ -69,44 +107,41 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in">
-      <div className="relative w-full max-w-lg bg-[var(--bg)] border border-[var(--ui)] rounded-2xl shadow-2xl p-6 sm:p-8 text-[var(--tx)] animate-in zoom-in-95">
-        {/* Close button */}
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-fade-in">
+      <div className="relative w-full max-w-lg bg-[var(--bg-card)] border border-[var(--border)] rounded-2xl shadow-xl p-6 sm:p-8 text-[var(--tx)] animate-fade-in">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 text-[var(--tx-2)] hover:text-[var(--tx)] rounded-full hover:bg-[var(--bg-2)] transition-colors"
+          className="absolute top-4 right-4 p-1.5 text-[var(--tx-3)] hover:text-[var(--tx)] rounded-lg hover:bg-[var(--bg-subtle)] transition-colors"
           aria-label="Close contact modal"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
+          <X className="h-5 w-5" />
         </button>
 
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center text-[var(--accent)] font-bold">
-            ✉️
+          <div className="w-10 h-10 rounded-xl bg-[var(--accent-soft)] border border-[var(--accent-border)] flex items-center justify-center text-[var(--accent)]">
+            <Mail className="h-5 w-5 stroke-[1.75]" />
           </div>
           <div>
-            <h3 className="text-xl font-bold">Contact PDFhelp</h3>
+            <h3 className="text-lg font-bold text-[var(--tx)]">Contact PDFhelp</h3>
             <p className="text-xs text-[var(--tx-3)]">We respond directly to your email!</p>
           </div>
         </div>
 
         {status === 'success' ? (
-          <div className="py-8 text-center space-y-4">
-            <div className="w-14 h-14 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center mx-auto text-2xl">
-              ✓
+          <div className="py-6 text-center space-y-4">
+            <div className="w-12 h-12 bg-[var(--success-soft)] border border-[var(--success-border)] text-[var(--success)] rounded-2xl flex items-center justify-center mx-auto">
+              <CheckCircle2 className="h-6 w-6" />
             </div>
-            <h4 className="text-lg font-semibold text-green-600">Message Sent Successfully!</h4>
-            <p className="text-sm text-[var(--tx-2)] max-w-sm mx-auto">
-              Thank you for reaching out! We&apos;ve received your message and will reply directly to <strong>{formData.email || 'your email'}</strong> shortly.
+            <h4 className="text-base font-bold text-[var(--tx)]">Message Sent Successfully!</h4>
+            <p className="text-xs sm:text-sm text-[var(--tx-2)] max-w-sm mx-auto leading-relaxed">
+              Thank you for reaching out! We&apos;ve received your message and will reply directly to <strong>{formData.email || 'your email'}</strong>.
             </p>
             <button
               onClick={() => {
                 setStatus('idle');
                 onClose();
               }}
-              className="mt-4 px-6 py-2 bg.accent bg-[var(--accent)] text-white text-sm font-medium rounded-lg hover:opacity-90 transition-opacity"
+              className="btn-primary px-6 py-2 text-xs sm:text-sm font-semibold"
             >
               Close
             </button>
@@ -114,14 +149,15 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
             {status === 'error' && (
-              <div className="p-3 bg-red-500/10 border border-red-500/20 text-red-500 rounded-lg text-xs font-medium">
-                {errorMessage}
+              <div className="p-3 bg-[var(--err-soft)] border border-[var(--err)]/20 text-[var(--err)] rounded-xl text-xs font-medium flex items-center gap-2">
+                <AlertCircle className="h-4 w-4 shrink-0" />
+                <span>{errorMessage}</span>
               </div>
             )}
 
-            <div>
-              <label htmlFor="contact-name" className="block text-xs font-medium text-[var(--tx-2)] mb-1">
-                Your Name <span className="text-red-500">*</span>
+            <div className="space-y-1">
+              <label htmlFor="contact-name" className="block text-xs font-medium text-[var(--tx-2)]">
+                Your Name <span className="text-[var(--err)]">*</span>
               </label>
               <input
                 id="contact-name"
@@ -129,14 +165,14 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                placeholder="Shreyash"
-                className="w-full px-3 py-2 bg-[var(--bg-2)] border border-[var(--ui)] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
+                placeholder="Name"
+                className="input-modern w-full"
               />
             </div>
 
-            <div>
-              <label htmlFor="contact-email" className="block text-xs font-medium text-[var(--tx-2)] mb-1">
-                Your Email Address <span className="text-red-500">*</span>
+            <div className="space-y-1">
+              <label htmlFor="contact-email" className="block text-xs font-medium text-[var(--tx-2)]">
+                Your Email Address <span className="text-[var(--err)]">*</span>
               </label>
               <input
                 id="contact-email"
@@ -145,12 +181,12 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 placeholder="you@example.com"
-                className="w-full px-3 py-2 bg-[var(--bg-2)] border border-[var(--ui)] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
+                className="input-modern w-full"
               />
             </div>
 
-            <div>
-              <label htmlFor="contact-subject" className="block text-xs font-medium text-[var(--tx-2)] mb-1">
+            <div className="space-y-1">
+              <label htmlFor="contact-subject" className="block text-xs font-medium text-[var(--tx-2)]">
                 Subject
               </label>
               <input
@@ -159,13 +195,13 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 value={formData.subject}
                 onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                 placeholder="Feature suggestion / General question"
-                className="w-full px-3 py-2 bg-[var(--bg-2)] border border-[var(--ui)] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
+                className="input-modern w-full"
               />
             </div>
 
-            <div>
-              <label htmlFor="contact-message" className="block text-xs font-medium text-[var(--tx-2)] mb-1">
-                Message <span className="text-red-500">*</span>
+            <div className="space-y-1">
+              <label htmlFor="contact-message" className="block text-xs font-medium text-[var(--tx-2)]">
+                Message <span className="text-[var(--err)]">*</span>
               </label>
               <textarea
                 id="contact-message"
@@ -174,33 +210,30 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 placeholder="How can we help you?"
-                className="w-full px-3 py-2 bg-[var(--bg-2)] border border-[var(--ui)] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[var(--accent)] resize-none"
+                className="input-modern w-full resize-none"
               />
             </div>
 
-            <div className="flex justify-end gap-3 pt-2">
+            <div className="flex justify-end gap-3 pt-3 border-t border-[var(--border)]">
               <button
                 type="button"
                 onClick={onClose}
-                className="px-4 py-2 text-sm text-[var(--tx-2)] hover:bg-[var(--bg-2)] rounded-lg transition-colors"
+                className="btn-secondary px-4 py-2 text-xs sm:text-sm font-medium"
               >
                 Cancel
               </button>
               <button
                 type="submit"
                 disabled={status === 'submitting'}
-                className="px-6 py-2 bg-[var(--accent)] text-white text-sm font-medium rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center gap-2"
+                className="btn-primary px-5 py-2 text-xs sm:text-sm font-semibold flex items-center gap-2"
               >
                 {status === 'submitting' ? (
-                  <>
-                    <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                    </svg>
-                    <span>Sending...</span>
-                  </>
+                  <span>Sending...</span>
                 ) : (
-                  <span>Send Message</span>
+                  <>
+                    <Send className="h-3.5 w-3.5" />
+                    <span>Send Message</span>
+                  </>
                 )}
               </button>
             </div>

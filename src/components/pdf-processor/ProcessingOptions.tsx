@@ -4,9 +4,6 @@ import React from 'react';
 import { PDFProcessingMode, PDFProcessingOptions } from '../../lib/pdf-processor';
 import { useDictionary } from '../../i18n/LocaleProvider';
 
-// Simplified processing options component (core modes only)
-// Removed: convert, createfromimages, rotate, watermark, stamp, optimize
-
 type ProcessingOptionsProps = {
   mode: PDFProcessingMode;
   options: PDFProcessingOptions;
@@ -19,7 +16,6 @@ type OptionToggleProps = {
   checked: boolean;
   onChange: (value: boolean) => void;
 };
-
 
 type CompressionLevel = NonNullable<PDFProcessingOptions['compressionLevel']>;
 
@@ -46,18 +42,18 @@ const COMPRESSION_PRESETS: Record<CompressionLevel, Partial<PDFProcessingOptions
 
 function OptionToggle({ label, description, checked, onChange }: OptionToggleProps) {
   return (
-    <label className="flex items-start gap-3 rounded-md border border-transparent px-2 py-2 transition hover:border-[var(--ui-2)] hover:bg-[var(--bg-1)] cursor-pointer">
+    <label className="flex items-start gap-3 rounded-xl border border-[var(--border)] bg-[var(--bg-card)] p-3.5 transition-all duration-150 hover:border-[var(--border-hover)] cursor-pointer shadow-xs">
       <input
         type="checkbox"
-        className="mt-1 h-4 w-4 shrink-0 rounded border-[var(--ui-3)] text-[var(--accent)] focus:ring-[var(--accent)] cursor-pointer"
+        className="mt-0.5 h-4 w-4 shrink-0 rounded border-[var(--border)] text-[var(--accent)] focus:ring-[var(--accent)] cursor-pointer"
         style={{ accentColor: 'var(--accent)' }}
         checked={checked}
         onChange={event => onChange(event.target.checked)}
       />
       <span className="flex flex-col">
-        <span className="text-sm font-medium text-[var(--tx)]">{label}</span>
+        <span className="text-xs sm:text-sm font-semibold text-[var(--tx)]">{label}</span>
         {description ? (
-          <span className="mt-1 text-xs text-[var(--tx-3)]">{description}</span>
+          <span className="mt-0.5 text-xs text-[var(--tx-2)] leading-relaxed">{description}</span>
         ) : null}
       </span>
     </label>
@@ -102,12 +98,13 @@ export default function ProcessingOptions({ mode, options, onOptionsChangeAction
       stripAnnotationsSelected ? compressStrings.stripAnnotations : null,
       downscaleSelected ? downscaleLabel : null,
     ].filter(Boolean) as string[];
+
     return (
-      <div className="mt-4 space-y-6">
-        <div className="space-y-2">
-          <h3 className="text-sm font-semibold text-[var(--tx)]">{compressStrings.title}</h3>
+      <div className="mt-6 space-y-6 pt-4 border-t border-[var(--border)]">
+        <div className="space-y-3">
+          <h3 className="text-xs font-semibold text-[var(--tx-3)] uppercase tracking-wider">{compressStrings.title}</h3>
           <div
-            className="grid gap-2 sm:grid-cols-3"
+            className="grid gap-2.5 sm:grid-cols-3"
             role="radiogroup"
             aria-label={compressStrings.level}
           >
@@ -116,10 +113,11 @@ export default function ProcessingOptions({ mode, options, onOptionsChangeAction
               return (
                 <label
                   key={level}
-                  className={`cursor-pointer rounded-lg border px-4 py-3 text-sm transition focus-within:ring-2 focus-within:ring-[var(--accent)] ${selected
-                    ? 'border-[var(--accent)] bg-[var(--bg-1)] text-[var(--tx)]'
-                    : 'border-[var(--ui-2)] bg-[var(--bg-2)] text-[var(--tx-2)] hover:border-[var(--accent)]/60'
-                    }`}
+                  className={`cursor-pointer rounded-xl border p-3.5 text-xs sm:text-sm transition-all duration-150 shadow-xs ${
+                    selected
+                      ? 'border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--accent)] font-semibold shadow-xs'
+                      : 'border-[var(--border)] bg-[var(--bg-card)] text-[var(--tx-2)] hover:border-[var(--border-hover)] hover:text-[var(--tx)]'
+                  }`}
                 >
                   <span className="flex items-center justify-between gap-2">
                     <span className="font-medium">{compressStrings.levels[level]}</span>
@@ -132,8 +130,9 @@ export default function ProcessingOptions({ mode, options, onOptionsChangeAction
                     />
                     <span
                       aria-hidden
-                      className={`h-2 w-2 rounded-full ${selected ? 'bg-[var(--accent)]' : 'bg-transparent border border-[var(--ui-3)]'
-                        }`}
+                      className={`h-2.5 w-2.5 rounded-full transition-colors ${
+                        selected ? 'bg-[var(--accent)]' : 'border border-[var(--border)] bg-transparent'
+                      }`}
                     />
                   </span>
                 </label>
@@ -142,18 +141,18 @@ export default function ProcessingOptions({ mode, options, onOptionsChangeAction
           </div>
         </div>
 
-        <div className="rounded-lg border border-[var(--ui-2)] bg-[var(--bg-2)] p-4">
-          <div className="mb-4 space-y-1">
-            <p className="text-sm font-semibold text-[var(--tx)]">{compressStrings.advancedTitle}</p>
+        <div className="rounded-xl border border-[var(--border)] bg-[var(--bg-subtle)] p-4 space-y-4">
+          <div className="space-y-1">
+            <p className="text-xs sm:text-sm font-bold text-[var(--tx)]">{compressStrings.advancedTitle}</p>
             {activeEnhancements.length > 0 ? (
-              <p className="text-xs text-[var(--accent)]">
+              <p className="text-xs font-medium text-[var(--accent)]">
                 {compressStrings.activeLabel} {activeEnhancements.join(' • ')}
               </p>
             ) : (
               <p className="text-xs text-[var(--tx-3)]">{compressStrings.advancedDescription}</p>
             )}
           </div>
-          <div className="space-y-3">
+          <div className="grid grid-cols-1 gap-2.5">
             <OptionToggle
               checked={removeMetadataSelected}
               label={compressStrings.removeMetadata}
@@ -207,22 +206,22 @@ export default function ProcessingOptions({ mode, options, onOptionsChangeAction
     };
 
     return (
-      <div className="mt-4 space-y-4">
-        <h3 className="font-medium text-[var(--tx)]">{mergeStrings.title}</h3>
+      <div className="mt-6 space-y-4 pt-4 border-t border-[var(--border)]">
+        <h3 className="text-xs font-semibold text-[var(--tx-3)] uppercase tracking-wider">{mergeStrings.title}</h3>
         <div>
-          <label className="flex items-center gap-2 cursor-pointer">
+          <label className="flex items-center gap-2.5 cursor-pointer">
             <input
               type="checkbox"
-              className="form-checkbox text-[var(--accent)]"
+              className="h-4 w-4 rounded border-[var(--border)] text-[var(--accent)] focus:ring-[var(--accent)]"
               style={{ accentColor: 'var(--accent)' }}
               checked={options.addPageDividers ?? false}
               onChange={e => update('addPageDividers', e.target.checked)}
             />
-            <span className="text-sm text-[var(--tx-2)]">{mergeStrings.pageDivider}</span>
+            <span className="text-xs sm:text-sm font-medium text-[var(--tx)]">{mergeStrings.pageDivider}</span>
           </label>
         </div>
-        <div className="space-y-3 rounded-lg border border-[var(--ui-2)] bg-[var(--bg-2)] p-4">
-          <p className="text-xs text-[var(--tx-3)]">{mergeStrings.metadataHint}</p>
+        <div className="space-y-3 rounded-xl border border-[var(--border)] bg-[var(--bg-subtle)] p-4">
+          <p className="text-xs font-medium text-[var(--tx-2)]">{mergeStrings.metadataHint}</p>
           <div className="grid gap-3 sm:grid-cols-2">
             <div className="space-y-1">
               <label className="block text-xs font-medium text-[var(--tx-2)]" htmlFor="merge-metadata-title">
@@ -233,7 +232,7 @@ export default function ProcessingOptions({ mode, options, onOptionsChangeAction
                 type="text"
                 value={metadataTitle}
                 onChange={event => handleMetadataChange('title', event.target.value)}
-                className="w-full rounded-md border border-[var(--ui-2)] bg-white px-2 py-2 text-sm"
+                className="input-modern w-full"
               />
             </div>
             <div className="space-y-1">
@@ -245,7 +244,7 @@ export default function ProcessingOptions({ mode, options, onOptionsChangeAction
                 type="text"
                 value={metadataAuthor}
                 onChange={event => handleMetadataChange('author', event.target.value)}
-                className="w-full rounded-md border border-[var(--ui-2)] bg-white px-2 py-2 text-sm"
+                className="input-modern w-full"
               />
             </div>
           </div>
@@ -257,17 +256,17 @@ export default function ProcessingOptions({ mode, options, onOptionsChangeAction
   if (mode === 'split') {
     const splitStrings = processingStrings.split;
     return (
-      <div className="mt-4 space-y-4">
-        <h3 className="font-medium text-[var(--tx)]">{splitStrings.title}</h3>
-        <div className="space-y-1">
-          <label className="block text-sm font-medium text-[var(--tx-2)]" htmlFor="split-pages-per-file">
+      <div className="mt-6 space-y-4 pt-4 border-t border-[var(--border)]">
+        <h3 className="text-xs font-semibold text-[var(--tx-3)] uppercase tracking-wider">{splitStrings.title}</h3>
+        <div className="space-y-1.5 max-w-xs">
+          <label className="block text-xs sm:text-sm font-medium text-[var(--tx)]" htmlFor="split-pages-per-file">
             {splitStrings.pagesPerFile}
           </label>
           <input
             id="split-pages-per-file"
             type="number"
             min={1}
-            className="w-full rounded-md border border-[var(--ui-2)] bg-white p-2"
+            className="input-modern w-full"
             value={options.pagesPerFile ?? 1}
             onChange={event => update('pagesPerFile', Math.max(1, Number(event.target.value) || 1))}
           />
@@ -280,8 +279,8 @@ export default function ProcessingOptions({ mode, options, onOptionsChangeAction
   if (mode === 'extract') {
     const extractStrings = processingStrings.extract;
     return (
-      <div className="mt-4 space-y-4">
-        <h3 className="font-medium text-[var(--tx)]">{extractStrings.title}</h3>
+      <div className="mt-6 space-y-4 pt-4 border-t border-[var(--border)]">
+        <h3 className="text-xs font-semibold text-[var(--tx-3)] uppercase tracking-wider">{extractStrings.title}</h3>
         <OptionToggle
           checked={options.preserveMetadata !== false}
           label={extractStrings.preserveMetadata}
@@ -294,9 +293,8 @@ export default function ProcessingOptions({ mode, options, onOptionsChangeAction
 
   if (mode === 'crop') {
     const cropStrings = processingStrings.crop;
-
     return (
-      <div className="mt-4 space-y-4">
+      <div className="mt-6 space-y-4 pt-4 border-t border-[var(--border)]">
         <OptionToggle
           checked={options.preserveMetadata !== false}
           label={cropStrings.preserveMetadata}
@@ -310,9 +308,9 @@ export default function ProcessingOptions({ mode, options, onOptionsChangeAction
   if (mode === 'reorder') {
     const reorderStrings = processingStrings.reorder;
     return (
-      <div className="mt-4 space-y-2">
-        <h3 className="font-medium text-[var(--tx)]">{reorderStrings.title}</h3>
-        <p className="text-xs text-[var(--tx-3)]">{reorderStrings.hint}</p>
+      <div className="mt-6 space-y-1 pt-4 border-t border-[var(--border)]">
+        <h3 className="text-xs font-semibold text-[var(--tx-3)] uppercase tracking-wider">{reorderStrings.title}</h3>
+        <p className="text-xs text-[var(--tx-2)]">{reorderStrings.hint}</p>
       </div>
     );
   }
@@ -326,20 +324,21 @@ export default function ProcessingOptions({ mode, options, onOptionsChangeAction
     const baseName = options.imageBaseName ?? '';
 
     return (
-      <div className="mt-4 space-y-6">
-        <div>
-          <h3 className="text-sm font-semibold text-[var(--tx)]">{exportStrings.title}</h3>
-          <p className="mt-1 text-xs text-[var(--tx-3)]">{exportStrings.formatHint}</p>
-          <div className="mt-3 flex flex-wrap gap-2" role="radiogroup" aria-label={exportStrings.formatLabel}>
+      <div className="mt-6 space-y-6 pt-4 border-t border-[var(--border)]">
+        <div className="space-y-2">
+          <h3 className="text-xs font-semibold text-[var(--tx-3)] uppercase tracking-wider">{exportStrings.title}</h3>
+          <p className="text-xs text-[var(--tx-2)]">{exportStrings.formatHint}</p>
+          <div className="flex flex-wrap gap-2.5 pt-1" role="radiogroup" aria-label={exportStrings.formatLabel}>
             {(['png', 'jpeg'] as const).map(format => {
               const selected = currentFormat === format;
               return (
                 <label
                   key={format}
-                  className={`cursor-pointer rounded-lg border px-4 py-2 text-sm transition focus-within:ring-2 focus-within:ring-[var(--accent)] ${selected
-                    ? 'border-[var(--accent)] bg-[var(--bg-1)] text-[var(--tx)]'
-                    : 'border-[var(--ui-2)] bg-[var(--bg-2)] text-[var(--tx-2)] hover:border-[var(--accent)]/60'
-                    }`}
+                  className={`cursor-pointer rounded-xl border px-4 py-2.5 text-xs sm:text-sm font-medium transition-all shadow-xs ${
+                    selected
+                      ? 'border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--accent)] font-semibold'
+                      : 'border-[var(--border)] bg-[var(--bg-card)] text-[var(--tx-2)] hover:border-[var(--border-hover)]'
+                  }`}
                 >
                   <input
                     type="radio"
@@ -362,10 +361,10 @@ export default function ProcessingOptions({ mode, options, onOptionsChangeAction
         </div>
 
         {currentFormat === 'jpeg' && (
-          <div>
-            <label className="flex items-center justify-between text-sm font-medium text-[var(--tx-2)]" htmlFor="jpeg-quality">
+          <div className="space-y-2 max-w-sm">
+            <label className="flex items-center justify-between text-xs font-medium text-[var(--tx-2)]" htmlFor="jpeg-quality">
               <span>{exportStrings.qualityLabel}</span>
-              <span className="rounded-full bg-[var(--accent)] px-2 py-0.5 text-xs font-semibold text-white">
+              <span className="rounded-md bg-[var(--accent-soft)] px-2 py-0.5 text-xs font-bold text-[var(--accent)] border border-[var(--accent-border)]">
                 {Math.round((quality ?? 0.9) * 100)}%
               </span>
             </label>
@@ -377,17 +376,15 @@ export default function ProcessingOptions({ mode, options, onOptionsChangeAction
               step={0.05}
               value={quality}
               onChange={event => update('imageOutputQuality', Number(event.target.value))}
-              className="mt-2 w-full"
+              className="w-full cursor-pointer"
             />
-            <p className="text-xs text-[var(--tx-3)]">
-              {exportStrings.qualityHint}
-            </p>
+            <p className="text-xs text-[var(--tx-3)]">{exportStrings.qualityHint}</p>
           </div>
         )}
 
-        <div>
-          <p className="text-sm font-medium text-[var(--tx-2)]">{exportStrings.dpiLabel}</p>
-          <div className="mt-2 flex flex-wrap gap-2" role="radiogroup" aria-label={exportStrings.dpiLabel}>
+        <div className="space-y-2">
+          <p className="text-xs font-medium text-[var(--tx-2)]">{exportStrings.dpiLabel}</p>
+          <div className="flex flex-wrap gap-2" role="radiogroup" aria-label={exportStrings.dpiLabel}>
             {([72, 144, 300] as const).map(preset => {
               const selected = dpi === preset;
               const presetLabel = preset === 72 ? exportStrings.dpiPresets.screen
@@ -396,10 +393,11 @@ export default function ProcessingOptions({ mode, options, onOptionsChangeAction
               return (
                 <label
                   key={preset}
-                  className={`cursor-pointer rounded-lg border px-4 py-2 text-sm transition focus-within:ring-2 focus-within:ring-[var(--accent)] ${selected
-                    ? 'border-[var(--accent)] bg-[var(--bg-1)] text-[var(--tx)]'
-                    : 'border-[var(--ui-2)] bg-[var(--bg-2)] text-[var(--tx-2)] hover:border-[var(--accent)]/60'
-                    }`}
+                  className={`cursor-pointer rounded-xl border px-3.5 py-2 text-xs font-medium transition-all shadow-xs ${
+                    selected
+                      ? 'border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--accent)] font-semibold'
+                      : 'border-[var(--border)] bg-[var(--bg-card)] text-[var(--tx-2)] hover:border-[var(--border-hover)]'
+                  }`}
                 >
                   <input
                     type="radio"
@@ -413,17 +411,17 @@ export default function ProcessingOptions({ mode, options, onOptionsChangeAction
               );
             })}
           </div>
-          <p className="mt-1 text-xs text-[var(--tx-3)]">{exportStrings.dpiHint}</p>
+          <p className="text-xs text-[var(--tx-3)]">{exportStrings.dpiHint}</p>
         </div>
 
-        <div className="space-y-3 rounded-lg border border-[var(--ui-2)] bg-[var(--bg-2)] p-4">
+        <div className="space-y-3 rounded-xl border border-[var(--border)] bg-[var(--bg-subtle)] p-4">
           <OptionToggle
             checked={zipSelected}
             label={exportStrings.zipLabel}
             description={exportStrings.zipHint}
             onChange={value => update('bundleAsZip', value ? true : false)}
           />
-          <div>
+          <div className="space-y-1">
             <label className="block text-xs font-medium text-[var(--tx-2)]" htmlFor="base-name">
               {exportStrings.baseNameLabel}
             </label>
@@ -433,9 +431,9 @@ export default function ProcessingOptions({ mode, options, onOptionsChangeAction
               placeholder={exportStrings.baseNamePlaceholder}
               value={baseName}
               onChange={event => update('imageBaseName', event.target.value)}
-              className="mt-1 w-full rounded-md border border-[var(--ui-2)] bg-white px-2 py-2 text-sm"
+              className="input-modern w-full"
             />
-            <p className="mt-1 text-xs text-[var(--tx-3)]">{exportStrings.baseNameHint}</p>
+            <p className="text-xs text-[var(--tx-3)]">{exportStrings.baseNameHint}</p>
           </div>
         </div>
       </div>
@@ -451,24 +449,25 @@ export default function ProcessingOptions({ mode, options, onOptionsChangeAction
     const backgroundColor = options.backgroundColor ?? '#ffffff';
 
     return (
-      <div className="mt-4 space-y-6">
+      <div className="mt-6 space-y-6 pt-4 border-t border-[var(--border)]">
         <div>
-          <h3 className="text-sm font-semibold text-[var(--tx)]">{layoutStrings.title}</h3>
-          <p className="mt-1 text-xs text-[var(--tx-3)]">{layoutStrings.layoutTitle}</p>
+          <h3 className="text-xs font-semibold text-[var(--tx-3)] uppercase tracking-wider">{layoutStrings.title}</h3>
+          <p className="mt-1 text-xs text-[var(--tx-2)]">{layoutStrings.layoutTitle}</p>
         </div>
 
-        <div>
+        <div className="space-y-2">
           <p className="text-xs font-medium text-[var(--tx-2)]">{layoutStrings.fitLabel}</p>
-          <div className="mt-2 flex flex-wrap gap-2" role="radiogroup" aria-label={layoutStrings.fitLabel}>
+          <div className="flex flex-wrap gap-2" role="radiogroup" aria-label={layoutStrings.fitLabel}>
             {(['contain', 'cover'] as const).map(fit => {
               const selected = currentFit === fit;
               return (
                 <label
                   key={fit}
-                  className={`cursor-pointer rounded-lg border px-4 py-2 text-sm transition focus-within:ring-2 focus-within:ring-[var(--accent)] ${selected
-                    ? 'border-[var(--accent)] bg-[var(--bg-1)] text-[var(--tx)]'
-                    : 'border-[var(--ui-2)] bg-[var(--bg-2)] text-[var(--tx-2)] hover:border-[var(--accent)]/60'
-                    }`}
+                  className={`cursor-pointer rounded-xl border px-3.5 py-2 text-xs font-medium transition-all shadow-xs ${
+                    selected
+                      ? 'border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--accent)] font-semibold'
+                      : 'border-[var(--border)] bg-[var(--bg-card)] text-[var(--tx-2)] hover:border-[var(--border-hover)]'
+                  }`}
                 >
                   <input
                     type="radio"
@@ -484,81 +483,85 @@ export default function ProcessingOptions({ mode, options, onOptionsChangeAction
           </div>
         </div>
 
-        <div>
-          <label className="block text-xs font-medium text-[var(--tx-2)]" htmlFor="page-size">
-            {layoutStrings.sizeLabel}
-          </label>
-          <select
-            id="page-size"
-            className="mt-1 w-full rounded-md border border-[var(--ui-2)] bg-white px-2 py-2 text-sm"
-            value={currentSize}
-            onChange={event => update('pageSize', event.target.value as PDFProcessingOptions['pageSize'])}
-          >
-            {(Object.keys(layoutStrings.sizeOptions) as Array<'auto' | 'a4' | 'letter'>).map(key => (
-              <option key={key} value={key}>
-                {layoutStrings.sizeOptions[key]}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div>
-          <label className="block text-xs font-medium text-[var(--tx-2)]" htmlFor="page-orientation">
-            {layoutStrings.orientationLabel}
-          </label>
-          <select
-            id="page-orientation"
-            className="mt-1 w-full rounded-md border border-[var(--ui-2)] bg-white px-2 py-2 text-sm"
-            value={currentOrientation}
-            onChange={event =>
-              update('pageOrientation', event.target.value as PDFProcessingOptions['pageOrientation'])
-            }
-          >
-            {(Object.keys(layoutStrings.orientationOptions) as Array<'auto' | 'portrait' | 'landscape'>).map(key => (
-              <option key={key} value={key}>
-                {layoutStrings.orientationOptions[key]}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div>
-          <label className="block text-xs font-medium text-[var(--tx-2)]" htmlFor="page-margin">
-            {layoutStrings.marginLabel}
-          </label>
-          <input
-            id="page-margin"
-            type="number"
-            min={0}
-            max={144}
-            step={6}
-            value={margin}
-            onChange={event => update('pageMarginPoints', Math.max(0, Number(event.target.value) || 0))}
-            className="mt-1 w-full rounded-md border border-[var(--ui-2)] bg-white px-2 py-2 text-sm"
-          />
-          <p className="text-xs text-[var(--tx-3)]">{layoutStrings.marginHint}</p>
-        </div>
-
-        <div>
-          <label className="block text-xs font-medium text-[var(--tx-2)]" htmlFor="background-color">
-            {layoutStrings.backgroundLabel}
-          </label>
-          <div className="mt-1 flex items-center gap-3">
-            <input
-              id="background-color"
-              type="color"
-              value={backgroundColor}
-              onChange={event => update('backgroundColor', event.target.value)}
-              className="h-9 w-12 cursor-pointer rounded border border-[var(--ui-2)] bg-transparent"
-            />
-            <input
-              type="text"
-              value={backgroundColor}
-              onChange={event => update('backgroundColor', event.target.value)}
-              className="flex-1 rounded-md border border-[var(--ui-2)] bg-white px-2 py-2 text-sm"
-            />
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="space-y-1">
+            <label className="block text-xs font-medium text-[var(--tx-2)]" htmlFor="page-size">
+              {layoutStrings.sizeLabel}
+            </label>
+            <select
+              id="page-size"
+              className="input-modern w-full cursor-pointer"
+              value={currentSize}
+              onChange={event => update('pageSize', event.target.value as PDFProcessingOptions['pageSize'])}
+            >
+              {(Object.keys(layoutStrings.sizeOptions) as Array<'auto' | 'a4' | 'letter'>).map(key => (
+                <option key={key} value={key}>
+                  {layoutStrings.sizeOptions[key]}
+                </option>
+              ))}
+            </select>
           </div>
-          <p className="text-xs text-[var(--tx-3)]">{layoutStrings.backgroundHint}</p>
+
+          <div className="space-y-1">
+            <label className="block text-xs font-medium text-[var(--tx-2)]" htmlFor="page-orientation">
+              {layoutStrings.orientationLabel}
+            </label>
+            <select
+              id="page-orientation"
+              className="input-modern w-full cursor-pointer"
+              value={currentOrientation}
+              onChange={event =>
+                update('pageOrientation', event.target.value as PDFProcessingOptions['pageOrientation'])
+              }
+            >
+              {(Object.keys(layoutStrings.orientationOptions) as Array<'auto' | 'portrait' | 'landscape'>).map(key => (
+                <option key={key} value={key}>
+                  {layoutStrings.orientationOptions[key]}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="space-y-1">
+            <label className="block text-xs font-medium text-[var(--tx-2)]" htmlFor="page-margin">
+              {layoutStrings.marginLabel}
+            </label>
+            <input
+              id="page-margin"
+              type="number"
+              min={0}
+              max={144}
+              step={6}
+              value={margin}
+              onChange={event => update('pageMarginPoints', Math.max(0, Number(event.target.value) || 0))}
+              className="input-modern w-full"
+            />
+            <p className="text-xs text-[var(--tx-3)]">{layoutStrings.marginHint}</p>
+          </div>
+
+          <div className="space-y-1">
+            <label className="block text-xs font-medium text-[var(--tx-2)]" htmlFor="background-color">
+              {layoutStrings.backgroundLabel}
+            </label>
+            <div className="flex items-center gap-2">
+              <input
+                id="background-color"
+                type="color"
+                value={backgroundColor}
+                onChange={event => update('backgroundColor', event.target.value)}
+                className="h-9 w-10 cursor-pointer rounded-lg border border-[var(--border)] bg-transparent p-0.5"
+              />
+              <input
+                type="text"
+                value={backgroundColor}
+                onChange={event => update('backgroundColor', event.target.value)}
+                className="input-modern flex-1"
+              />
+            </div>
+            <p className="text-xs text-[var(--tx-3)]">{layoutStrings.backgroundHint}</p>
+          </div>
         </div>
       </div>
     );
