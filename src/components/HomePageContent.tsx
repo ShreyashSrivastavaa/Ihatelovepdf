@@ -43,11 +43,11 @@ export function HomePageContent({ dictionary }: { dictionary: Dictionary }) {
           </p>
 
           {/* Badges Pill Bar */}
-          <div className="pt-2 flex flex-col sm:flex-row sm:flex-wrap justify-center gap-2">
+          <div className="pt-2 grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-2">
             {home.hero.badges.map((badge) => (
               <span 
                 key={badge} 
-                className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-md border border-[var(--border)] bg-[var(--bg-card)] text-xs font-medium text-[var(--tx-2)] shadow-xs w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-md border border-[var(--border)] bg-[var(--bg-card)] text-xs font-medium text-[var(--tx-2)] shadow-xs"
               >
                 <CheckCircle2 className="h-3.5 w-3.5 text-[var(--accent)]" />
                 {badge}
