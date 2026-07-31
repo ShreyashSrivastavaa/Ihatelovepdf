@@ -65,7 +65,7 @@ export const metadata = {
   },
   twitter: SHARED_TWITTER,
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    google: "m8KoSeRzU9slpYn6QHT5ZBRMnb_wkcU00sdc_B-ZPvg",
   },
 };
 
