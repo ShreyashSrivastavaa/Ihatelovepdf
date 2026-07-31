@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useDictionary } from '../i18n/LocaleProvider';
 import type { OperationKey } from '../types/operations';
 import ContactModal from './ContactModal';
-import { ShieldCheck, Github } from 'lucide-react';
+import { ShieldCheck } from 'lucide-react';
 
 export default function Footer() {
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -58,15 +58,6 @@ export default function Footer() {
               >
                 {footer.links.contact}
               </button>
-              <a
-                href="https://github.com/ShreyashSrivastavaa/PDFhelp"
-                className="inline-flex items-center gap-1.5 hover:text-[var(--tx)] transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Github className="h-4 w-4" />
-                <span>GitHub</span>
-              </a>
             </div>
           </div>
 
