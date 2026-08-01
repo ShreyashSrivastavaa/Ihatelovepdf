@@ -5,6 +5,7 @@ import { getDictionary } from "../../i18n/get-dictionary";
 import { getLocalizedAlternateMap, getOperationSlug, matchOperationKeyBySlug } from "../../i18n/routing";
 import type { OperationKey } from "../../types/operations";
 import { OperationPageContent } from "../../components/OperationPageContent";
+import { SITE_URL, GOOGLE_SITE_VERIFICATION } from "../../lib/site";
 
 function buildLanguagesMap(operationKey: OperationKey, baseUrl: string) {
   const alternatesMap = getLocalizedAlternateMap({ type: "operation", key: operationKey });
@@ -24,7 +25,7 @@ export function buildOperationMetadata(locale: Locale, operationKey: OperationKe
   return (): Metadata => {
     const dictionary = getDictionary(locale);
     const operationMeta = dictionary.metadata.operations[operationKey];
-    const baseUrl = dictionary.metadata.site.openGraph.url;
+    const baseUrl = SITE_URL;
     const canonicalPath = dictionary.routes.operations[operationKey];
     const canonicalPathWithSlash = canonicalPath.endsWith("/") ? canonicalPath : `${canonicalPath}/`;
     const canonicalUrl = new URL(canonicalPathWithSlash, baseUrl).toString();
@@ -34,6 +35,7 @@ export function buildOperationMetadata(locale: Locale, operationKey: OperationKe
       title: operationMeta.meta.title,
       description: operationMeta.meta.description,
       keywords: operationMeta.meta.keywords,
+      verification: GOOGLE_SITE_VERIFICATION ? { google: GOOGLE_SITE_VERIFICATION } : undefined,
       alternates: {
         canonical: canonicalUrl,
         languages,
@@ -45,7 +47,7 @@ export function buildOperationMetadata(locale: Locale, operationKey: OperationKe
         locale: dictionary.metadata.site.openGraph.locale,
         images: [
           {
-            url: dictionary.metadata.site.openGraph.imageUrl,
+            url: `${baseUrl}/og-images/og-image-${locale}.png`,
             width: 1409,
             height: 736,
             alt: operationMeta.meta.ogImageAlt ?? operationMeta.hero.imageAlt,
@@ -55,6 +57,7 @@ export function buildOperationMetadata(locale: Locale, operationKey: OperationKe
     };
   };
 }
+
 
 export function buildOperationPage(locale: Locale, operationKey: OperationKey) {
   return function OperationPage() {

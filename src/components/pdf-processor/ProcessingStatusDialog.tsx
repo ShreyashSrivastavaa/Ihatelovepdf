@@ -45,24 +45,24 @@ interface ProcessingStatusDialogProps {
 }
 
 const statusAccent: Record<DialogStatus, string> = {
-  processing: "bg-blue-100 text-blue-700 border-blue-200",
-  success: "bg-green-100 text-green-700 border-green-200",
-  error: "bg-red-100 text-red-700 border-red-200",
+  processing: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
+  success: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
+  error: "bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/20",
 };
 
 const actionStyles: Record<NonNullable<DialogAction["variant"]>, string> = {
   primary:
-    "bg-[var(--accent)] text-white hover:opacity-90 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--accent)]",
+    "bg-[var(--accent)] text-white hover:bg-[var(--accent-hover)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--accent)]",
   secondary:
-    "border border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)]/10 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--accent)]",
-  ghost: "text-[var(--tx-3)] hover:text-[var(--tx)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--accent)]",
+    "border border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent-soft)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--accent)]",
+  ghost: "text-[var(--tx-3)] hover:text-[var(--tx)] hover:bg-[var(--bg-subtle)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--accent)]",
 };
 
 const statusIcon = (status: DialogStatus) => {
   switch (status) {
     case "success":
       return (
-        <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <circle cx="12" cy="12" r="11" className="fill-current opacity-20" />
           <path
             className="stroke-current"
@@ -75,7 +75,7 @@ const statusIcon = (status: DialogStatus) => {
       );
     case "error":
       return (
-        <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <circle cx="12" cy="12" r="11" className="fill-current opacity-20" />
           <path
             className="stroke-current"
@@ -87,7 +87,7 @@ const statusIcon = (status: DialogStatus) => {
       );
     default:
       return (
-        <svg className="h-6 w-6 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <svg className="h-5 w-5 shrink-0 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <circle
             className="opacity-25 stroke-current"
             cx="12"
@@ -231,17 +231,17 @@ export function ProcessingStatusDialog({
   return createPortal(
     <div className="fixed inset-0 z-[10000] flex items-center justify-center px-4 py-6">
       <div
-        className="absolute inset-0 bg-black/40"
+        className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"
         aria-hidden="true"
         onClick={onClose}
       ></div>
       <div
         role="dialog"
         aria-modal="true"
-        className="relative w-full max-w-xl rounded-lg bg-white shadow-xl"
+        className="relative w-full max-w-xl rounded-xl bg-[var(--bg-elevated)] border border-[var(--border)] text-[var(--tx)] shadow-2xl overflow-hidden transition-colors"
       >
-        <div className="flex items-start justify-between border-b border-[var(--ui-2)] px-6 py-4">
-          <div className={`flex items-center gap-3 rounded-md border px-3 py-2 text-sm font-medium ${statusAccent[status]}`}>
+        <div className="flex items-center justify-between border-b border-[var(--border)] px-6 py-4">
+          <div className={`flex items-center gap-2.5 rounded-lg border px-3 py-1.5 text-sm font-medium ${statusAccent[status]}`}>
             {statusIcon(status)}
             <span>{title}</span>
           </div>
@@ -249,7 +249,7 @@ export function ProcessingStatusDialog({
             ref={closeButtonRef}
             type="button"
             onClick={onClose}
-            className="ml-4 inline-flex h-8 w-8 items-center justify-center rounded-full text-[var(--tx-3)] transition hover:bg-[var(--bg-2)] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--accent)]"
+            className="ml-4 inline-flex h-8 w-8 items-center justify-center rounded-full text-[var(--tx-3)] transition hover:text-[var(--tx)] hover:bg-[var(--bg-subtle)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
           >
             <span className="sr-only">{closeLabel}</span>
             <svg className="h-4 w-4" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -262,7 +262,7 @@ export function ProcessingStatusDialog({
             </svg>
           </button>
         </div>
-        <div className="space-y-4 px-6 py-5 text-[var(--tx)]">
+        <div className="space-y-4 px-6 py-5">
           {description ? <p className="text-sm leading-relaxed text-[var(--tx-2)]">{description}</p> : null}
 
           {highlights && highlights.length > 0 ? (
@@ -270,12 +270,12 @@ export function ProcessingStatusDialog({
               {highlights.map(item => (
                 <li
                   key={`${item.label}-${item.value ?? "single"}`}
-                  className="rounded-md bg-[var(--bg-2)] px-3 py-2"
+                  className="rounded-lg bg-[var(--bg-subtle)] border border-[var(--border)] px-4 py-3"
                 >
                   <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
                     <span className="font-medium text-[var(--tx)]">{item.label}</span>
                     {item.value ? (
-                      <span className="text-sm text-[var(--tx-2)] sm:text-right">{item.value}</span>
+                      <span className="text-sm text-[var(--tx-2)] sm:text-right font-mono break-all">{item.value}</span>
                     ) : null}
                   </div>
                 </li>
@@ -284,13 +284,13 @@ export function ProcessingStatusDialog({
           ) : null}
 
           {donationPrompt ? (
-            <div className="rounded-md border border-[var(--accent)]/30 bg-[var(--accent)]/10 p-4">
+            <div className="rounded-lg border border-[var(--accent)]/30 bg-[var(--accent-soft)] p-4">
               <p className="text-sm text-[var(--tx)]">{donationPrompt.message}</p>
               <a
                 href={donationPrompt.href}
                 target={donationPrompt.target ?? "_self"}
                 rel={donationPrompt.target === "_blank" ? "noopener noreferrer" : undefined}
-                className="mt-3 inline-flex items-center justify-center rounded-md bg-[var(--accent)] px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--accent)]"
+                className="mt-3 inline-flex items-center justify-center rounded-md bg-[var(--accent)] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[var(--accent-hover)] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--accent)]"
                 onClick={() => {
                   trackEvent({
                     action: "donation_prompt_clicked",
@@ -309,14 +309,14 @@ export function ProcessingStatusDialog({
           ) : null}
 
           {status === 'success' && (
-            <div className="border-t border-[var(--ui-2)] pt-4 space-y-4">
+            <div className="border-t border-[var(--border)] pt-4 space-y-4">
               {sharePrompt && (
-                <div className="rounded-md border border-[var(--ui-3)] bg-[var(--bg-2)] p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="rounded-lg border border-[var(--border)] bg-[var(--bg-subtle)] p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <p className="text-sm text-[var(--tx-2)] flex-1">{sharePrompt.dialogMessage}</p>
                   <button
                     type="button"
                     onClick={handleShareClick}
-                    className="inline-flex shrink-0 items-center justify-center rounded-md border border-[var(--ui-3)] bg-white px-3 py-1.5 text-sm font-medium text-[var(--tx)] shadow-sm transition hover:bg-[var(--bg-2)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                    className="inline-flex shrink-0 items-center justify-center rounded-md border border-[var(--border)] bg-[var(--bg-elevated)] px-3 py-1.5 text-sm font-medium text-[var(--tx)] shadow-sm transition hover:bg-[var(--bg-card)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
                   >
                     <svg className="mr-2 h-4 w-4 text-[var(--tx-3)]" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
@@ -329,11 +329,11 @@ export function ProcessingStatusDialog({
             </div>
           )}
         </div>
-        <div className="flex flex-wrap items-center justify-end gap-3 border-t border-[var(--ui-2)] px-6 py-4">
+        <div className="flex flex-wrap items-center justify-end gap-3 border-t border-[var(--border)] bg-[var(--bg-card)]/50 px-6 py-4">
           {actions?.map(renderAction)}
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium text-[var(--tx-3)] transition hover:text-[var(--tx)] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--accent)]"
+            className="inline-flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium text-[var(--tx-2)] transition hover:text-[var(--tx)] hover:bg-[var(--bg-subtle)] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--accent)]"
             onClick={onClose}
           >
             {closeLabel}
@@ -344,3 +344,4 @@ export function ProcessingStatusDialog({
     document.body
   );
 }
+

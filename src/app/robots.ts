@@ -1,11 +1,10 @@
 import { MetadataRoute } from "next";
+import { SITE_URL } from "../lib/site";
 
 export const dynamic = "force-static";
 export const revalidate = false;
 
 export default function robots(): MetadataRoute.Robots {
-    const baseUrl = "https://ihatelovepdf.vercel.app";
-
     return {
         rules: {
             userAgent: "*",
@@ -14,6 +13,7 @@ export default function robots(): MetadataRoute.Robots {
                 "/api/",
             ],
         },
-        sitemap: `${baseUrl}/sitemap.xml`,
+        sitemap: `${SITE_URL}/sitemap.xml`,
     };
 }
+

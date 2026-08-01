@@ -2,9 +2,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const SITEMAP_PATH = process.argv[2] || './out/sitemap.xml';
-const HOST = 'pdfhelp.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://ihatelovepdf.vercel.app';
+const HOST = new URL(SITE_URL).hostname;
 const KEY = '7a258aaa2a9b472bb6e97935fe5e82ca';
 const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
+
 
 async function pingIndexNow() {
   try {

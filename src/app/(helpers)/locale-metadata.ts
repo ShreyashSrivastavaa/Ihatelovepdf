@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Locale, DEFAULT_LOCALE, localeLabels } from "../../i18n/config";
 import { getDictionary } from "../../i18n/get-dictionary";
 import { getLocalizedAlternateMap } from "../../i18n/routing";
+import { SITE_URL, GOOGLE_SITE_VERIFICATION } from "../../lib/site";
 
 type StaticRouteKey = "home" | "faq" | "support";
 
@@ -24,25 +25,29 @@ export function createHomeMetadata(locale: Locale) {
   return (): Metadata => {
     const dictionary = getDictionary(locale);
     const siteMeta = dictionary.metadata.site;
-    const baseUrl = siteMeta.openGraph.url;
+    const baseUrl = SITE_URL;
+    const homePath = dictionary.routes.home;
+    const homePathWithSlash = homePath.endsWith("/") ? homePath : `${homePath}/`;
+    const canonicalUrl = new URL(homePathWithSlash, baseUrl).toString();
     const languages = buildLanguagesMap({ type: "static", key: "home" }, baseUrl);
 
     return {
       title: siteMeta.title,
       description: siteMeta.description,
       keywords: siteMeta.keywords,
+      verification: GOOGLE_SITE_VERIFICATION ? { google: GOOGLE_SITE_VERIFICATION } : undefined,
       alternates: {
-        canonical: siteMeta.canonical.endsWith("/") ? siteMeta.canonical : `${siteMeta.canonical}/`,
+        canonical: canonicalUrl,
         languages,
       },
       openGraph: {
         title: siteMeta.openGraph.title,
         description: siteMeta.openGraph.description,
-        url: siteMeta.openGraph.url,
+        url: canonicalUrl,
         locale: siteMeta.openGraph.locale,
         images: [
           {
-            url: siteMeta.openGraph.imageUrl,
+            url: `${baseUrl}/og-images/og-image-${locale}.png`,
             width: 1409,
             height: 736,
             alt: siteMeta.openGraph.imageAlt,
@@ -57,16 +62,34 @@ export function createFaqMetadata(locale: Locale) {
   return (): Metadata => {
     const dictionary = getDictionary(locale);
     const faqMeta = dictionary.metadata.faq;
-    const baseUrl = dictionary.metadata.site.openGraph.url;
+    const baseUrl = SITE_URL;
+    const faqPath = dictionary.routes.faq;
+    const faqPathWithSlash = faqPath.endsWith("/") ? faqPath : `${faqPath}/`;
+    const canonicalUrl = new URL(faqPathWithSlash, baseUrl).toString();
     const languages = buildLanguagesMap({ type: "static", key: "faq" }, baseUrl);
 
     return {
       title: faqMeta.title,
       description: faqMeta.description,
       keywords: faqMeta.keywords,
+      verification: GOOGLE_SITE_VERIFICATION ? { google: GOOGLE_SITE_VERIFICATION } : undefined,
       alternates: {
-        canonical: faqMeta.canonical.endsWith("/") ? faqMeta.canonical : `${faqMeta.canonical}/`,
+        canonical: canonicalUrl,
         languages,
+      },
+      openGraph: {
+        title: faqMeta.title,
+        description: faqMeta.description,
+        url: canonicalUrl,
+        locale: dictionary.metadata.site.openGraph.locale,
+        images: [
+          {
+            url: `${baseUrl}/og-images/og-image-${locale}.png`,
+            width: 1409,
+            height: 736,
+            alt: faqMeta.title,
+          },
+        ],
       },
     };
   };
@@ -76,21 +99,26 @@ export function createSupportMetadata(locale: Locale) {
   return (): Metadata => {
     const dictionary = getDictionary(locale);
     const supportMeta = dictionary.metadata.support;
-    const baseUrl = dictionary.metadata.site.openGraph.url;
+    const baseUrl = SITE_URL;
+    const supportPath = dictionary.routes.support;
+    const supportPathWithSlash = supportPath.endsWith("/") ? supportPath : `${supportPath}/`;
+    const canonicalUrl = new URL(supportPathWithSlash, baseUrl).toString();
     const languages = buildLanguagesMap({ type: "static", key: "support" }, baseUrl);
 
     return {
       title: supportMeta.title,
       description: supportMeta.description,
       keywords: supportMeta.keywords,
+      verification: GOOGLE_SITE_VERIFICATION ? { google: GOOGLE_SITE_VERIFICATION } : undefined,
       robots: {
         index: false,
         follow: false,
       },
       alternates: {
-        canonical: supportMeta.canonical.endsWith("/") ? supportMeta.canonical : `${supportMeta.canonical}/`,
+        canonical: canonicalUrl,
         languages,
       },
     };
   };
 }
+
