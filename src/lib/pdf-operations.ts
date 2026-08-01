@@ -1054,19 +1054,7 @@ async function normalizeImageForPdf(fileOrData: File | ArrayBuffer | Uint8Array)
 
 function resolvePageLayout(imageWidth: number, imageHeight: number, options: PDFProcessingOptions, fallbackMargin: number): PageLayout {
   const sizeOption = options.pageSize ?? 'auto';
-  if (sizeOption === 'auto') {
-    const MAX_AUTO_DIMENSION = 1000;
-    const maxDim = Math.max(imageWidth, imageHeight);
-    if (maxDim > MAX_AUTO_DIMENSION) {
-      const scale = MAX_AUTO_DIMENSION / maxDim;
-      return {
-        pageWidth: Math.round(imageWidth * scale),
-        pageHeight: Math.round(imageHeight * scale),
-        margin: 0,
-      };
-    }
-    return { pageWidth: imageWidth, pageHeight: imageHeight, margin: 0 };
-  }
+  if (sizeOption === 'auto') return { pageWidth: imageWidth, pageHeight: imageHeight, margin: 0 };
   const base = PAGE_SIZE_MAP[sizeOption];
   if (!base) return { pageWidth: imageWidth, pageHeight: imageHeight, margin: 0 };
   const useLandscape = (options.pageOrientation ?? 'auto') === 'landscape' || ((options.pageOrientation ?? 'auto') === 'auto' && imageWidth > imageHeight);
