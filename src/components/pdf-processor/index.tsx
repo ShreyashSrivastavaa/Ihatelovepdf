@@ -26,7 +26,6 @@ import CompressionPreviewCard, { PreviewStatus } from './CompressionPreviewCard'
 import CompressionSummaryCard from './CompressionSummaryCard';
 import type { OperationKey } from '../../types/operations';
 import { trackEvent } from '../../lib/analytics';
-import { ChevronDown } from 'lucide-react';
 
 type ProcessingMode = OperationKey;
 
@@ -86,18 +85,6 @@ const MODE_DEFAULTS: Record<ProcessingMode, PDFProcessingOptions> = {
     backgroundColor: '#ffffff',
   },
 };
-
-const MODE_TABS: ProcessingMode[] = [
-  'merge',
-  'compress',
-  'split',
-  'extract',
-  'crop',
-  'rotate',
-  'reorder',
-  'pdfToImages',
-  'imagesToPdf',
-];
 
 
 
@@ -686,62 +673,6 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
   useEffect(() => {
     modeOptionsRef.current[mode] = cloneOptions(processingOptions);
   }, [mode, processingOptions]);
-
-  const handleModeChange = (newMode: ProcessingMode) => {
-    if (newMode === mode) {
-      return;
-    }
-
-    modeOptionsRef.current[mode] = cloneOptions(processingOptions);
-
-    const stored = modeOptionsRef.current[newMode];
-    const nextOptions = stored ? cloneOptions(stored) : cloneOptions(MODE_DEFAULTS[newMode]);
-    const firstFile = files[0];
-    const firstFileKey = firstFile ? buildFileSignature(firstFile) : null;
-
-    setFiles(prevFiles => {
-      if (newMode === 'pdfToImages') {
-        const pdfCandidates = prevFiles.filter(candidate => isPdfFile(candidate));
-        return pdfCandidates;
-      }
-
-      if (newMode === 'imagesToPdf') {
-        return prevFiles.filter(candidate => isImageFile(candidate));
-      }
-
-      return prevFiles;
-    });
-
-    const nextSelectedPages =
-      (newMode === 'extract' || newMode === 'crop' || newMode === 'rotate') && firstFileKey
-        ? { ...(extractSelectionsByFile[firstFileKey] ?? {}) }
-        : {};
-    const nextPageOrder =
-      newMode === 'reorder' && firstFileKey && reorderOrdersByFile[firstFileKey]
-        ? [...(reorderOrdersByFile[firstFileKey] ?? [])]
-        : [];
-
-    setMode(newMode);
-    setSelectedPages(nextSelectedPages);
-    setPageOrder(nextPageOrder);
-    setCurrentFileIndex(0);
-    setCompressionSummary([]);
-    setCompressionPreviewStates({});
-    setCompressionPreviewCache({});
-    setProcessingOptions(nextOptions);
-
-    trackEvent({
-      action: 'mode_change',
-      category: 'processor',
-      label: newMode,
-      params: {
-        previous_mode: mode,
-        file_count: files.length,
-      },
-    });
-  };
-
-  const getModeHelpText = () => modes[mode]?.helper ?? '';
 
 
 
