@@ -1,10 +1,10 @@
-# PDFhelp 🚀
+# ihatelovepdf 🚀
 
 > Fast, secure, and privacy-first PDF utility suite running 100% in your browser.
 
-## 📖 About PDFhelp
+## 📖 About ihatelovepdf
 
-**PDFhelp** is an open-source web application designed to help users merge, split, compress, convert, and edit PDF documents effortlessly. Your files never leave your browser, ensuring maximum data security and privacy.
+**ihatelovepdf** is an open-source web application designed to help users merge, split, compress, convert, and edit PDF documents effortlessly. Your files never leave your browser, ensuring maximum data security and privacy.
 
 ## ✨ Key Features
 
@@ -25,10 +25,10 @@ Ensure you have Node.js (v18+) and Bun / npm installed on your system.
 
 ```bash
 # Clone the repository
-git clone https://github.com/ShreyashSrivastavaa/PDFhelp.git
+git clone https://github.com/ShreyashSrivastavaa/ihatelovepdf.git
 
 # Navigate to project directory
-cd PDFhelp
+cd ihatelovepdf
 
 # Install dependencies
 bun install   # or npm install

@@ -1962,42 +1962,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
     <>
       <div className="p-6 sm:p-8 surface-card rounded-2xl shadow-sm border border-[var(--border)] space-y-6" id="pdf-processor">
 
-        <div className="space-y-3 mb-6">
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-[var(--tx-3)] uppercase tracking-wider">
-              {processorStrings.title}
-            </h2>
-          </div>
 
-          {/* Unified Tool Selector Dropdown */}
-          <div className="relative flex items-center rounded-xl border border-[var(--border)] bg-[var(--bg-card)] px-4 py-3 shadow-xs hover:border-[var(--accent-border)] transition-all duration-200 focus-within:ring-2 focus-within:ring-[var(--accent)]">
-            <select
-              id="tool-operation-select"
-              value={mode}
-              onChange={(e) => handleModeChange(e.target.value as ProcessingMode)}
-              className="w-full appearance-none bg-transparent pr-8 font-semibold text-sm sm:text-base text-[var(--tx)] focus:outline-none cursor-pointer"
-              aria-label={processorStrings.title}
-            >
-              {MODE_TABS.map((modeKey) => {
-                const tabStrings = (modes as Record<ProcessingMode, { label: string }>)[modeKey];
-                return (
-                  <option
-                    key={modeKey}
-                    value={modeKey}
-                    className="bg-[var(--bg-card)] text-[var(--tx)] font-medium py-1"
-                  >
-                    {tabStrings?.label ?? modeKey}
-                  </option>
-                );
-              })}
-            </select>
-            <div className="pointer-events-none absolute right-4 flex items-center text-[var(--tx-2)]">
-              <ChevronDown className="h-5 w-5" />
-            </div>
-          </div>
-
-          <p className="text-xs sm:text-sm text-[var(--tx-2)] pt-1">{getModeHelpText()}</p>
-        </div>
 
 
 
