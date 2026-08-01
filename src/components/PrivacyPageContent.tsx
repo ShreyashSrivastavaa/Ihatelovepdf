@@ -23,7 +23,7 @@ export default function PrivacyPageContent() {
             Privacy Policy
           </h1>
           <p className="text-sm sm:text-base text-[var(--tx-2)] max-w-2xl mx-auto leading-relaxed">
-            Your privacy is our absolute core promise. ihatelovepdf operates completely inside your browser â€” your documents never touch a remote server.
+            Your privacy is our absolute core promise. ihatelovepdf operates completely inside your browser — your documents never touch a remote server.
           </p>
           <div className="text-xs text-[var(--tx-3)] pt-2">
             Last Updated: July 31, 2026
@@ -96,7 +96,7 @@ export default function PrivacyPageContent() {
               Traditional PDF tools send files over HTTP requests to cloud servers to be processed and returned. ihatelovepdf is built differently:
             </p>
             <p>
-              We leverage modern client-side technologies â€” Web Workers, WebAssembly (WASM), PDF-lib, and Mozilla PDF.js â€” to run all document algorithms right inside your web browser. File bytes never traverse the internet.
+              We leverage modern client-side technologies — Web Workers, WebAssembly (WASM), PDF-lib, and Mozilla PDF.js — to run all document algorithms right inside your web browser. File bytes never traverse the internet.
             </p>
           </section>
 
@@ -129,10 +129,10 @@ export default function PrivacyPageContent() {
             </h2>
             <p>ihatelovepdf relies on trusted open-source technology frameworks:</p>
             <ul className="list-disc list-inside space-y-1.5 pl-2 font-mono text-xs">
-              <li>PDF-lib â€” MIT License (PDF manipulation and compilation)</li>
-              <li>PDF.js â€” Apache License 2.0 (Client-side rendering and page previews)</li>
-              <li>Lucide Icons â€” ISC License (UI icons)</li>
-              <li>Next.js / React â€” MIT License (Frontend framework)</li>
+              <li>PDF-lib — MIT License (PDF manipulation and compilation)</li>
+              <li>PDF.js — Apache License 2.0 (Client-side rendering and page previews)</li>
+              <li>Lucide Icons — ISC License (UI icons)</li>
+              <li>Next.js / React — MIT License (Frontend framework)</li>
             </ul>
           </section>
 
@@ -156,7 +156,7 @@ export default function PrivacyPageContent() {
               </div>
 
               <div>
-                <h3 className="font-semibold text-[var(--tx)]">Lei Geral de ProteÃ§Ã£o de Dados (LGPD)</h3>
+                <h3 className="font-semibold text-[var(--tx)]">Lei Geral de Proteção de Dados (LGPD)</h3>
                 <p className="text-xs text-[var(--tx-2)]">
                   In compliance with Brazil&apos;s LGPD, we collect no personal data profiles and process zero personal information on remote database systems.
                 </p>

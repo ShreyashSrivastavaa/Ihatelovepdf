@@ -19,8 +19,8 @@ const LOCALE = "de" as const;
 
 export const metadata = {
   metadataBase: METADATA_BASE,
-  title: "ihatelovepdf - PDFs zusammenfÃ¼hren, komprimieren, teilen und konvertieren",
-  description: "Kostenlose Online-PDF-Tools zum ZusammenfÃ¼hren, Komprimieren, Teilen, Extrahieren und Konvertieren von PDFs. 100% privat, lokale Verarbeitung in Ihrem Browser.",
+  title: "ihatelovepdf - PDFs zusammenführen, komprimieren, teilen und konvertieren",
+  description: "Kostenlose Online-PDF-Tools zum Zusammenführen, Komprimieren, Teilen, Extrahieren und Konvertieren von PDFs. 100% privat, lokale Verarbeitung in Ihrem Browser.",
   icons: SHARED_ICONS,
   alternates: {
     canonical: "https://ihatelovepdf.com/de/",
@@ -52,9 +52,9 @@ export const metadata = {
   },
   openGraph: {
     ...SHARED_OPEN_GRAPH,
-    images: [{ url: "https://ihatelovepdf.com/og-images/og-image-de.png", width: 1409, height: 736, alt: "ihatelovepdf â€“ Private und kostenlose PDF-Bearbeitung" }],
+    images: [{ url: "https://ihatelovepdf.com/og-images/og-image-de.png", width: 1409, height: 736, alt: "ihatelovepdf – Private und kostenlose PDF-Bearbeitung" }],
     title: "ihatelovepdf - Kostenlose und private PDF-Tools in Ihrem Browser",
-    description: "PDFs zusammenfÃ¼hren, komprimieren, teilen und konvertieren, ohne Dateien hochzuladen. Sichere und 100% private Verarbeitung.",
+    description: "PDFs zusammenführen, komprimieren, teilen und konvertieren, ohne Dateien hochzuladen. Sichere und 100% private Verarbeitung.",
     url: "https://ihatelovepdf.com/de",
     locale: "de_DE",
     type: "website",
@@ -68,6 +68,7 @@ export default function DeLayout({ children }: { children: ReactNode }) {
   return (
     <html lang={LOCALE}>
       <head>
+        <meta charSet="UTF-8" />
         <ThemeScript />
         <GoogleAnalyticsScripts />
         <SchemaOrg />

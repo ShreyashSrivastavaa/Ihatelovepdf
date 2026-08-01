@@ -3,7 +3,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "404 â€“ Page Not Found | ihatelovepdf",
+  title: "404 – Page Not Found | ihatelovepdf",
   description: "The page you were looking for doesn't exist. Go back to ihatelovepdf and continue working with your PDFs.",
 };
 
@@ -135,14 +135,14 @@ export default function NotFound() {
             </div>
 
             {/* Spanish tools */}
-            <p style={{ color: "#4e2525", fontSize: "0.75rem", marginBottom: "0.5rem", opacity: 0.7 }}>ðŸ‡ªðŸ‡¸ EspaÃ±ol</p>
+            <p style={{ color: "#4e2525", fontSize: "0.75rem", marginBottom: "0.5rem", opacity: 0.7 }}>ðŸ‡ªðŸ‡¸ Español</p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", justifyContent: "center", marginBottom: "1.5rem" }}>
               {[
                 { label: "Unir PDF", href: "/unir" },
                 { label: "Comprimir PDF", href: "/comprimir" },
                 { label: "Dividir PDF", href: "/dividir" },
-                { label: "Extraer pÃ¡ginas", href: "/extraer" },
-                { label: "Reordenar pÃ¡ginas", href: "/reordenar" },
+                { label: "Extraer páginas", href: "/extraer" },
+                { label: "Reordenar páginas", href: "/reordenar" },
                 { label: "Girar PDF", href: "/girar" },
                 { label: "Recortar PDF", href: "/recortar" },
               ].map((tool) => (
@@ -155,10 +155,10 @@ export default function NotFound() {
             <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem", justifyContent: "center" }}>
               {[
                 { label: "Deutsch", href: "/de" },
-                { label: "FranÃ§ais", href: "/fr" },
+                { label: "Français", href: "/fr" },
                 { label: "Italiano", href: "/it" },
-                { label: "PortuguÃªs", href: "/pt" },
-                { label: "RomÃ¢nÄƒ", href: "/ro" },
+                { label: "Português", href: "/pt" },
+                { label: "RomânÄƒ", href: "/ro" },
               ].map((lang) => (
                 <a key={lang.href} href={lang.href} style={langChipStyle}>{lang.label}</a>
               ))}

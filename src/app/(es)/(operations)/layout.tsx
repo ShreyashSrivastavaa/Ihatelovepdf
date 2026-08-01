@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 /**
- * Operations layout â€” passthrough only.
+ * Operations layout — passthrough only.
  * NavMenu, Footer, and LocaleProvider are
  * already rendered in the parent (es)/layout.tsx.
  */

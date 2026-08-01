@@ -39,7 +39,7 @@ export const enDictionary: Dictionary = {
   },
   metadata: {
     site: {
-      title: "ihatelovepdf â€” Powerful, Private & Free PDF Tools in Your Browser",
+      title: "ihatelovepdf — Powerful, Private & Free PDF Tools in Your Browser",
       description:
         "ihatelovepdf is a privacy-first web toolkit to merge, compress, split, extract, rotate, reorder, crop, and convert PDFs locally in your browser. No file uploads, no tracking, 100% private and free.",
       keywords: [
@@ -61,9 +61,9 @@ export const enDictionary: Dictionary = {
       ],
       canonical: `${siteUrl}${homePath}`,
       openGraph: {
-        title: "ihatelovepdf â€” Merge, Compress, Split & Convert PDFs Privately",
+        title: "ihatelovepdf — Merge, Compress, Split & Convert PDFs Privately",
         description:
-          "Manipulate PDFs with total privacy. Process files directly inside your browser without server uploads â€” fast, free, and secure.",
+          "Manipulate PDFs with total privacy. Process files directly inside your browser without server uploads — fast, free, and secure.",
         url: `${siteUrl}${homePath}`,
         locale: "en_US",
         type: "website",
@@ -104,7 +104,7 @@ export const enDictionary: Dictionary = {
   },
   brand: {
     name: "ihatelovepdf",
-    tagline: "Local Processing â€¢ 100% Private",
+    tagline: "Local Processing • 100% Private",
   },
   components: {
     nav: {
@@ -115,8 +115,8 @@ export const enDictionary: Dictionary = {
       menuLabel: "Toggle navigation menu",
     },
     footer: {
-      privacy: "Local Processing â€¢ 100% Private â€¢ Open Licenses",
-      rights: "Â© 2026 ihatelovepdf â€” Fast, private PDF utilities with zero compromise on privacy",
+      privacy: "Local Processing • 100% Private • Open Licenses",
+      rights: "© 2026 ihatelovepdf — Fast, private PDF utilities with zero compromise on privacy",
       links: {
         home: "Home",
         faq: "FAQ",
@@ -135,7 +135,7 @@ export const enDictionary: Dictionary = {
         pdfToImages: "PDF to Images",
         imagesToPdf: "Images to PDF",
       },
-      license: "PDF Processing: PDF-lib (MIT), PDF.js (Apache 2.0) â€¢ Font: Geist (MIT)",
+      license: "PDF Processing: PDF-lib (MIT), PDF.js (Apache 2.0) • Font: Geist (MIT)",
       disclaimer: "This service is provided 'as is' without warranty of any kind. The user accepts full responsibility for using generated files.",
     },
     notifications: {
@@ -186,7 +186,7 @@ export const enDictionary: Dictionary = {
         },
         rotate: {
           label: "Rotate Pages",
-          helper: "Reorient upside-down or sideways pages by 90Â° or 180Â°.",
+          helper: "Reorient upside-down or sideways pages by 90° or 180°.",
         },
         reorder: {
           label: "Reorder Pages",
@@ -255,7 +255,7 @@ export const enDictionary: Dictionary = {
       statusMessages: {
         info: (mode: string) => `Processing (${mode})...`,
         compressed: (reduction: string, original: string, next: string, seconds: string) =>
-          `Compressed! Reduction: ${reduction}% (${original} â†’ ${next}) in ${seconds}s`,
+          `Compressed! Reduction: ${reduction}% (${original} → ${next}) in ${seconds}s`,
         merged: "Merging complete!",
         split: (count: number) =>
           count > 1
@@ -297,11 +297,11 @@ export const enDictionary: Dictionary = {
         title: "Compression Estimate Preview",
         description:
           "Adjust settings to preview estimated output size prior to running compression.",
-        running: "Calculating preview estimateâ€¦",
+        running: "Calculating preview estimate…",
         readyLabel: "Estimated Output Size",
         ratio: (percent: string) => `${percent}% smaller`,
         saved: (size: string) => `${size} saved`,
-        time: (seconds: string) => `â‰ˆ ${seconds}s`,
+        time: (seconds: string) => `≈ ${seconds}s`,
         original: "Original Size",
         result: "Estimated Size",
         notice:
@@ -380,13 +380,13 @@ export const enDictionary: Dictionary = {
       pdfLabel: "PDF",
       deselect: "Deselect",
       pagesLabel: (count: number) => `${count} ${count === 1 ? "page" : "pages"}`,
-      previewLoading: "Generating thumbnail previewâ€¦",
+      previewLoading: "Generating thumbnail preview…",
     },
     pageSelector: {
       loading: "Loading PDF pages...",
       error: "Unable to parse PDF page metadata",
       summary: (total: number, selected: number) =>
-        `${total} total pages â€” ${selected} selected`,
+        `${total} total pages — ${selected} selected`,
       selectAll: "Select All",
       deselectAll: "Deselect All",
       pageLabel: (pageNumber: number) => `Page ${pageNumber}`,
@@ -461,7 +461,7 @@ export const enDictionary: Dictionary = {
           bottom: "Bottom Margin (pt)",
           left: "Left Margin (pt)",
         },
-        marginHint: "72 points â‰ˆ 1 inch. Start with small values to prevent accidental content trimming.",
+        marginHint: "72 points ≈ 1 inch. Start with small values to prevent accidental content trimming.",
         preserveMetadata: "Preserve original document metadata",
         preserveMetadataHint: "Retains original document metadata in cropped file output.",
         manual: {
@@ -476,9 +476,9 @@ export const enDictionary: Dictionary = {
       rotate: {
         title: "Rotation Settings",
         hint: "Choose rotation angle and select the target pages.",
-        rotateRight90: "Rotate Right 90Â°",
-        rotate180: "Rotate 180Â°",
-        rotateLeft90: "Rotate Left 90Â°",
+        rotateRight90: "Rotate Right 90°",
+        rotate180: "Rotate 180°",
+        rotateLeft90: "Rotate Left 90°",
       },
       reorder: {
         title: "Reorder Settings",
@@ -495,9 +495,9 @@ export const enDictionary: Dictionary = {
         dpiLabel: "Render Resolution (DPI)",
         dpiHint: "Higher DPI enhances clarity. 144 DPI is ideal for digital screens; 300 DPI for printing.",
         dpiPresets: {
-          screen: "72 DPI Â· Web & Mobile",
-          balanced: "144 DPI Â· High Definition",
-          print: "300 DPI Â· Professional Print",
+          screen: "72 DPI · Web & Mobile",
+          balanced: "144 DPI · High Definition",
+          print: "300 DPI · Professional Print",
         },
         zipLabel: "Bundle images into a ZIP file",
         zipHint: "Download all exported images in a single compressed archive.",
@@ -526,7 +526,7 @@ export const enDictionary: Dictionary = {
           landscape: "Landscape",
         },
         marginLabel: "Page Margins (pt)",
-        marginHint: "Adds uniform white margins around images (72 pt â‰ˆ 1 inch).",
+        marginHint: "Adds uniform white margins around images (72 pt ≈ 1 inch).",
         backgroundLabel: "Canvas Background Color",
         backgroundHint: "Fills empty background space around fitted images.",
       },
@@ -540,9 +540,9 @@ export const enDictionary: Dictionary = {
   pages: {
     home: {
       hero: {
-        title: "ihatelovepdf â€” Powerful, Private & Free PDF Tools in Your Browser",
+        title: "ihatelovepdf — Powerful, Private & Free PDF Tools in Your Browser",
         subtitle:
-          "Merge, split, compress, crop, rotate, and convert PDFs directly inside your browser. Your files stay on your device â€” 100% private, lightning-fast, and completely free.",
+          "Merge, split, compress, crop, rotate, and convert PDFs directly inside your browser. Your files stay on your device — 100% private, lightning-fast, and completely free.",
         badges: [
           "Fast PDF Compression",
           "Unlimited PDF Merging",
@@ -575,8 +575,8 @@ export const enDictionary: Dictionary = {
           {
             title: "Fast & Efficient",
             description:
-              "Instant performance powered by client-side WebAssembly and modern JavaScript engines â€” zero waiting in cloud server queues.",
-            icon: "âš¡",
+              "Instant performance powered by client-side WebAssembly and modern JavaScript engines — zero waiting in cloud server queues.",
+            icon: "⚡",
           },
           {
             title: "Cross-Platform Simplicity",
@@ -627,7 +627,7 @@ export const enDictionary: Dictionary = {
             title: "Accelerate Development",
             description:
               "Directly fund new PDF utilities, performance optimizations, and continuous feature updates.",
-            icon: "âœ¨",
+            icon: "✨",
           },
           {
             title: "Champion Digital Privacy",
@@ -644,17 +644,17 @@ export const enDictionary: Dictionary = {
           {
             id: "coffee",
             title: "Buy us a coffee",
-            amount: "â‚¬3",
+            amount: "€3",
             description: "Covers hosting and infrastructure for a few weeks.",
-            ctaLabel: "Donate â‚¬3",
+            ctaLabel: "Donate €3",
             ctaHref: "#stripe-checkout-coffee",
           },
           {
             id: "monthly",
             title: "Monthly Supporter",
-            amount: "â‚¬10/mo",
+            amount: "€10/mo",
             description: "Provides steady backing to dedicate time weekly to ihatelovepdf.",
-            ctaLabel: "Give â‚¬10/mo",
+            ctaLabel: "Give €10/mo",
             ctaHref: "#stripe-checkout-monthly",
             badge: "ðŸ’™ Recommended",
           },

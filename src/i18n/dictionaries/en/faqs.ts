@@ -8,7 +8,7 @@ export const faqsEn = {
     {
       question: "Is ihatelovepdf safe for confidential and sensitive documents?",
       answer:
-        "Yes, absolutely. Because all operations execute locally on your device, your files never leave your computer or phone â€” not even ihatelovepdf servers can view or access your content.",
+        "Yes, absolutely. Because all operations execute locally on your device, your files never leave your computer or phone — not even ihatelovepdf servers can view or access your content.",
     },
     {
       question: "Is there a limit on file size or the number of PDFs I can process?",

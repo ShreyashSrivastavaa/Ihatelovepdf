@@ -1,68 +1,68 @@
 export const faqsHu = {
   common: [
     {
-      question: "Hogyan csÃ¶kkenthetem a PDF fÃ¡jl mÃ©retÃ©t ingyenesen, online?",
+      question: "Hogyan csökkenthetem a PDF fájl méretét ingyenesen, online?",
       answer:
-        "Nyisd meg a ihatelovepdf-t, vÃ¡laszd a 'PDF tÃ¶mÃ¶rÃ­tÃ©se' funkciÃ³t, tÃ¶ltsd fel a fÃ¡jlt, Ã©s vÃ¡laszd ki a tÃ¶mÃ¶rÃ­tÃ©si szintet. Minden a bÃ¶ngÃ©szÅ‘dben zajlik, szerverre valÃ³ feltÃ¶ltÃ©s nÃ©lkÃ¼l â€“ a fÃ¡jl mÃ¡sodpercek alatt letÃ¶lthetÅ‘, teljesen ingyen Ã©s regisztrÃ¡ciÃ³ nÃ©lkÃ¼l.",
+        "Nyisd meg a ihatelovepdf-t, válaszd a 'PDF tömörítése' funkciót, töltsd fel a fájlt, és válaszd ki a tömörítési szintet. Minden a böngészÅ‘dben zajlik, szerverre való feltöltés nélkül – a fájl másodpercek alatt letölthetÅ‘, teljesen ingyen és regisztráció nélkül.",
     },
     {
-      question: "Hogyan lehet tÃ¶bb PDF-et egyetlen dokumentumba egyesÃ­teni?",
+      question: "Hogyan lehet több PDF-et egyetlen dokumentumba egyesíteni?",
       answer:
-        "LÃ©pj a ihatelovepdf 'PDF egyesÃ­tÃ©se' menÃ¼pontjÃ¡ra, add hozzÃ¡ a kÃ­vÃ¡nt fÃ¡jlokat, hÃºzd Ã¡t Å‘ket a megfelelÅ‘ sorrendbe, majd kattints a 'FeldolgozÃ¡s' gombra. Az egyesÃ­tett PDF azonnal letÃ¶lthetÅ‘ â€“ regisztrÃ¡ciÃ³, reklÃ¡m Ã©s felhÅ‘re mentÃ©s nÃ©lkÃ¼l.",
+        "Lépj a ihatelovepdf 'PDF egyesítése' menüpontjára, add hozzá a kívánt fájlokat, húzd át Å‘ket a megfelelÅ‘ sorrendbe, majd kattints a 'Feldolgozás' gombra. Az egyesített PDF azonnal letölthetÅ‘ – regisztráció, reklám és felhÅ‘re mentés nélkül.",
     },
     {
-      question: "ValÃ³ban nem tÃ¶lt fel fÃ¡jlokat a ihatelovepdf a szerverre?",
+      question: "Valóban nem tölt fel fájlokat a ihatelovepdf a szerverre?",
       answer:
-        "Igen, Ã­gy van. A ihatelovepdf teljes egÃ©szÃ©ben a bÃ¶ngÃ©szÅ‘dben fut, helyi JavaScript-motor segÃ­tsÃ©gÃ©vel. A dokumentumaid egyetlen bÃ¡jtja sem kerÃ¼l a szervereinkre â€“ ezt magad is ellenÅ‘rizheted a bÃ¶ngÃ©szÅ‘ fejlesztÅ‘i eszkÃ¶zeinek 'HÃ¡lÃ³zat' lapjÃ¡n.",
+        "Igen, így van. A ihatelovepdf teljes egészében a böngészÅ‘dben fut, helyi JavaScript-motor segítségével. A dokumentumaid egyetlen bájtja sem kerül a szervereinkre – ezt magad is ellenÅ‘rizheted a böngészÅ‘ fejlesztÅ‘i eszközeinek 'Hálózat' lapján.",
     },
     {
-      question: "Van mÃ©ret- vagy darabszÃ¡m-korlÃ¡t a PDF-fÃ¡jloknÃ¡l?",
+      question: "Van méret- vagy darabszám-korlát a PDF-fájloknál?",
       answer:
-        "A korlÃ¡tot az eszkÃ¶zÃ¶d memÃ³riÃ¡ja szabja meg, nem a szolgÃ¡ltatÃ¡sunk. ÃltalÃ¡ban a ihatelovepdf gond nÃ©lkÃ¼l kezeli az egyenkÃ©nt akÃ¡r 50 MB-os fÃ¡jlokat. Egy munkameneten belÃ¼l nincs darabszÃ¡m-limit â€“ annyi fÃ¡jlt dolgozhatsz fel, amennyit szeretnÃ©l.",
+        "A korlátot az eszközöd memóriája szabja meg, nem a szolgáltatásunk. Általában a ihatelovepdf gond nélkül kezeli az egyenként akár 50 MB-os fájlokat. Egy munkameneten belül nincs darabszám-limit – annyi fájlt dolgozhatsz fel, amennyit szeretnél.",
     },
     {
-      question: "MÅ±kÃ¶dik a ihatelovepdf telefonon Ã©s tableten is?",
+      question: "MÅ±ködik a ihatelovepdf telefonon és tableten is?",
       answer:
-        "Igen. A felÃ¼let teljesen reszponzÃ­v Ã©s kÃ©nyelmes Android Ã©s iPhone okostelefonokon, valamint tableteken is. Egy modern bÃ¶ngÃ©szÅ‘ elegendÅ‘ â€“ Chrome, Firefox, Safari vagy Edge. Semmilyen alkalmazÃ¡st nem kell telepÃ­teni.",
+        "Igen. A felület teljesen reszponzív és kényelmes Android és iPhone okostelefonokon, valamint tableteken is. Egy modern böngészÅ‘ elegendÅ‘ – Chrome, Firefox, Safari vagy Edge. Semmilyen alkalmazást nem kell telepíteni.",
     },
   ],
   regional: [
     {
-      question: "SegÃ­t a ihatelovepdf megfelelni a GDPR adatvÃ©delmi elÅ‘Ã­rÃ¡soknak?",
+      question: "Segít a ihatelovepdf megfelelni a GDPR adatvédelmi elÅ‘írásoknak?",
       answer:
-        "Mivel a feldolgozÃ¡s helyben tÃ¶rtÃ©nik, egyetlen szemÃ©lyes dokumentum sem hagyja el az eszkÃ¶zÃ¶det vagy a szervezetedet. Ez megkÃ¶nnyÃ­ti a GDPR, az egÃ©szsÃ©gÃ¼gyi adatvÃ©delmi szabÃ¡lyok, illetve a belsÅ‘ adatbiztonsÃ¡gi irÃ¡nyelveknek valÃ³ megfelelÃ©st.",
+        "Mivel a feldolgozás helyben történik, egyetlen személyes dokumentum sem hagyja el az eszközödet vagy a szervezetedet. Ez megkönnyíti a GDPR, az egészségügyi adatvédelmi szabályok, illetve a belsÅ‘ adatbiztonsági irányelveknek való megfelelést.",
     },
     {
-      question: "HasznÃ¡lhatom a ihatelovepdf-t hivatalos dokumentumokhoz Ã©s szÃ¡mlÃ¡khoz?",
+      question: "Használhatom a ihatelovepdf-t hivatalos dokumentumokhoz és számlákhoz?",
       answer:
-        "Igen. A ihatelovepdf kivÃ¡lÃ³an alkalmas szÃ¡mlÃ¡k, szerzÅ‘dÃ©sek, adÃ³bevallÃ¡sok Ã©s hatÃ³sÃ¡gi nyomtatvÃ¡nyok optimalizÃ¡lÃ¡sÃ¡ra â€“ az eredeti minÅ‘sÃ©g Ã©s formÃ¡zÃ¡s teljes megÅ‘rzÃ©sÃ©vel.",
+        "Igen. A ihatelovepdf kiválóan alkalmas számlák, szerzÅ‘dések, adóbevallások és hatósági nyomtatványok optimalizálására – az eredeti minÅ‘ség és formázás teljes megÅ‘rzésével.",
     },
     {
-      question: "BefolyÃ¡solja a tÃ¶mÃ¶rÃ­tÃ©s a dokumentum jogi Ã©rvÃ©nyessÃ©gÃ©t?",
+      question: "Befolyásolja a tömörítés a dokumentum jogi érvényességét?",
       answer:
-        "A ihatelovepdf eszkÃ¶zei megÅ‘rzik a dokumentum integritÃ¡sÃ¡t. Ennek ellenÃ©re jogi szempontbÃ³l fontos iratoknÃ¡l javasoljuk az eredmÃ©nyfÃ¡jl ellenÅ‘rzÃ©sÃ©t annak megfelelÅ‘en, hogy a fogadÃ³ szervezet milyen kÃ¶vetelmÃ©nyeket tÃ¡maszt.",
+        "A ihatelovepdf eszközei megÅ‘rzik a dokumentum integritását. Ennek ellenére jogi szempontból fontos iratoknál javasoljuk az eredményfájl ellenÅ‘rzését annak megfelelÅ‘en, hogy a fogadó szervezet milyen követelményeket támaszt.",
     },
   ],
   tech: [
     {
-      question: "Milyen technolÃ³giÃ¡ra Ã©pÃ¼l a ihatelovepdf?",
+      question: "Milyen technológiára épül a ihatelovepdf?",
       answer:
-        "A ihatelovepdf pdf-lib Ã©s PDF.js kÃ¶nyvtÃ¡rakat hasznÃ¡l â€“ kÃ¶nnyÅ±sÃºlyÃº, nyÃ­lt forrÃ¡skÃ³dÃº JavaScript-kÃ¶nyvtÃ¡rakat â€“, amelyek kÃ¶zvetlenÃ¼l a bÃ¶ngÃ©szÅ‘ben vÃ©gzik el a teljes PDF-feldolgozÃ¡st, szerveres fÃ¼ggÅ‘sÃ©g nÃ©lkÃ¼l.",
+        "A ihatelovepdf pdf-lib és PDF.js könyvtárakat használ – könnyÅ±súlyú, nyílt forráskódú JavaScript-könyvtárakat –, amelyek közvetlenül a böngészÅ‘ben végzik el a teljes PDF-feldolgozást, szerveres függÅ‘ség nélkül.",
     },
     {
-      question: "Megmaradnak az interaktÃ­v elemek PDF tÃ¶mÃ¶rÃ­tÃ©s utÃ¡n?",
+      question: "Megmaradnak az interaktív elemek PDF tömörítés után?",
       answer:
-        "A legtÃ¶bb esetben a ihatelovepdf megÅ‘rzi a linkeket, az Å±rlapokat Ã©s a kÃ¶nyvjelzÅ‘ket. Nagyon agresszÃ­v tÃ¶mÃ¶rÃ­tÃ©s esetÃ©n egyes speciÃ¡lis funkciÃ³k mÃ³dosulhatnak â€“ javasolt az eredmÃ©ny ellenÅ‘rzÃ©se.",
+        "A legtöbb esetben a ihatelovepdf megÅ‘rzi a linkeket, az Å±rlapokat és a könyvjelzÅ‘ket. Nagyon agresszív tömörítés esetén egyes speciális funkciók módosulhatnak – javasolt az eredmény ellenÅ‘rzése.",
     },
     {
-      question: "Mely bÃ¶ngÃ©szÅ‘kkel kompatibilis a ihatelovepdf?",
+      question: "Mely böngészÅ‘kkel kompatibilis a ihatelovepdf?",
       answer:
-        "A ihatelovepdf minden modern bÃ¶ngÃ©szÅ‘vel mÅ±kÃ¶dik: Chrome, Firefox, Safari, Edge Ã©s Opera. MindÃ¶ssze egy naprakÃ©sz, ES2020 tÃ¡mogatÃ¡ssal rendelkezÅ‘ bÃ¶ngÃ©szÅ‘ szÃ¼ksÃ©ges. Semmilyen bÅ‘vÃ­tmÃ©ny vagy plugin nem kell.",
+        "A ihatelovepdf minden modern böngészÅ‘vel mÅ±ködik: Chrome, Firefox, Safari, Edge és Opera. Mindössze egy naprakész, ES2020 támogatással rendelkezÅ‘ böngészÅ‘ szükséges. Semmilyen bÅ‘vítmény vagy plugin nem kell.",
     },
     {
-      question: "Lehet PDF-et mÃ¡s formÃ¡tumba konvertÃ¡lni?",
+      question: "Lehet PDF-et más formátumba konvertálni?",
       answer:
-        "Jelenleg a PDF oldalait PNG vagy JPEG kÃ©pekkÃ© alakÃ­thatod, illetve PDF-et hozhatsz lÃ©tre JPG, PNG vagy WEBP kÃ©pekbÅ‘l â€“ mindezt feltÃ¶ltÃ©s nÃ©lkÃ¼l. TovÃ¡bbi formÃ¡tumok tÃ¡mogatÃ¡sa a jÃ¶vÅ‘beni frissÃ­tÃ©sekben vÃ¡rhatÃ³.",
+        "Jelenleg a PDF oldalait PNG vagy JPEG képekké alakíthatod, illetve PDF-et hozhatsz létre JPG, PNG vagy WEBP képekbÅ‘l – mindezt feltöltés nélkül. További formátumok támogatása a jövÅ‘beni frissítésekben várható.",
     },
   ],
 };

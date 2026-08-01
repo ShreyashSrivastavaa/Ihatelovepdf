@@ -40,7 +40,7 @@ export function FeedbackWidget({ operation }: { operation?: string }) {
         return (
             <div className="mt-4 p-3 bg-green-500/10 border border-green-500/20 rounded-lg text-center animate-in fade-in">
                 <p className="text-sm text-green-600 font-medium">
-                    {t.thanks} â¤ï¸
+                    {t.thanks} ❤ï¸
                 </p>
             </div>
         );

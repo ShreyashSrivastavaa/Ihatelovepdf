@@ -36,11 +36,11 @@ export const deDictionary: Dictionary = {
   },
   metadata: {
     site: {
-      title: "ihatelovepdf â€“ PDFs zusammenfÃ¼hren, komprimieren und konvertieren | Keine Uploads",
+      title: "ihatelovepdf – PDFs zusammenführen, komprimieren und konvertieren | Keine Uploads",
       description:
-        "ihatelovepdf ist ein datenschutzfreundliches PDF-Toolkit zum ZusammenfÃ¼hren, Komprimieren, Teilen, Extrahieren, Neuordnen und Konvertieren von PDFs in Bilder oder wieder zurÃ¼ck â€“ alles direkt im Browser auf deinem GerÃ¤t, ganz ohne Uploads.",
+        "ihatelovepdf ist ein datenschutzfreundliches PDF-Toolkit zum Zusammenführen, Komprimieren, Teilen, Extrahieren, Neuordnen und Konvertieren von PDFs in Bilder oder wieder zurück – alles direkt im Browser auf deinem Gerät, ganz ohne Uploads.",
       keywords: [
-        "pdf zusammenfÃ¼hren",
+        "pdf zusammenführen",
         "pdf komprimieren",
         "pdf teilen",
         "pdf seiten extrahieren",
@@ -57,25 +57,25 @@ export const deDictionary: Dictionary = {
       ],
       canonical: `${siteUrl}${homePath}`,
       openGraph: {
-        title: "ihatelovepdf â€“ ZusammenfÃ¼hren, Komprimieren, Teilen, PDF zu Bild & Bild zu PDF",
+        title: "ihatelovepdf – Zusammenführen, Komprimieren, Teilen, PDF zu Bild & Bild zu PDF",
         description:
-          "ZusammenfÃ¼hren, komprimieren, teilen, extrahieren, neu ordnen und in Bilder konvertieren â€“ alles ohne Upload. Kostenlos, privat und mit vollstÃ¤ndig lokaler Verarbeitung.",
+          "Zusammenführen, komprimieren, teilen, extrahieren, neu ordnen und in Bilder konvertieren – alles ohne Upload. Kostenlos, privat und mit vollständig lokaler Verarbeitung.",
         url: `${siteUrl}${homePath}`,
         locale: "de_DE",
         type: "website",
         imageUrl: "https://ihatelovepdf.com/og-images/og-image-de.png",
-        imageAlt: "ihatelovepdf â€“ Private und kostenlose PDF-Bearbeitung",
+        imageAlt: "ihatelovepdf – Private und kostenlose PDF-Bearbeitung",
       },
     },
     faq: {
-      title: "HÃ¤ufige Fragen | ihatelovepdf â€“ Kostenloses PDF-Toolkit",
+      title: "Häufige Fragen | ihatelovepdf – Kostenloses PDF-Toolkit",
       description:
-        "Antworten auf die wichtigsten Fragen zu ihatelovepdf. Erfahre, wie du PDFs zusammenfÃ¼hrst, komprimierst, teilst, Seiten extrahierst, neu ordnest und in Bilder oder PDFs umwandelst â€“ ganz ohne Upload.",
+        "Antworten auf die wichtigsten Fragen zu ihatelovepdf. Erfahre, wie du PDFs zusammenführst, komprimierst, teilst, Seiten extrahierst, neu ordnest und in Bilder oder PDFs umwandelst – ganz ohne Upload.",
       keywords: [
         "ihatelovepdf faq",
         "pdf fragen",
         "pdf hilfe",
-        "pdf zusammenfÃ¼hren tipps",
+        "pdf zusammenführen tipps",
         "pdf komprimieren tipps",
         "pdf teilen hilfe",
         "seiten neu ordnen",
@@ -85,12 +85,12 @@ export const deDictionary: Dictionary = {
       canonical: `${siteUrl}${getRoutePath(locale, "faq")}`,
     },
     support: {
-      title: "ihatelovepdf unterstÃ¼tzen | Halte das Tool privat und kostenlos",
+      title: "ihatelovepdf unterstützen | Halte das Tool privat und kostenlos",
       description:
-        "Deine Spende hÃ¤lt ihatelovepdf klein, unabhÃ¤ngig und datenschutzfreundlich. Hilf mit, Hosting und Weiterentwicklung zu finanzieren.",
+        "Deine Spende hält ihatelovepdf klein, unabhängig und datenschutzfreundlich. Hilf mit, Hosting und Weiterentwicklung zu finanzieren.",
       keywords: [
         "ihatelovepdf spende",
-        "pdf toolkit unterstÃ¼tzen",
+        "pdf toolkit unterstützen",
         "projekt datenschutz finanzieren",
         "ihatelovepdf stripe",
         "ihatelovepdf kostenlos halten",
@@ -101,30 +101,30 @@ export const deDictionary: Dictionary = {
   },
   brand: {
     name: "ihatelovepdf",
-    tagline: "Lokale Verarbeitung â€¢ 100Â % privat",
+    tagline: "Lokale Verarbeitung • 100 % privat",
   },
   components: {
     nav: {
       home: "Startseite",
       faq: "FAQ",
-      support: "UnterstÃ¼tzen",
+      support: "Unterstützen",
       photo: "FotoLince",
       languageLabel: "Sprache",
-      menuLabel: "NavigationsmenÃ¼ Ã¶ffnen",
+      menuLabel: "Navigationsmenü öffnen",
     },
     footer: {
-      privacy: "Lokale Verarbeitung â€¢ 100Â % privat â€¢ Offene Lizenzen",
-      rights: `Â© ${new Date().getFullYear()} ihatelovepdf â€” Werkzeuge zur PDF-Bearbeitung ohne Datenschutzkompromisse`,
+      privacy: "Lokale Verarbeitung • 100 % privat • Offene Lizenzen",
+      rights: `© ${new Date().getFullYear()} ihatelovepdf — Werkzeuge zur PDF-Bearbeitung ohne Datenschutzkompromisse`,
       links: {
         home: "Startseite",
         faq: "FAQ",
-        support: "UnterstÃ¼tzen",
+        support: "Unterstützen",
         photo: "FotoLince",
         contact: "Kontakt",
       },
       capabilitiesLabel: "Beliebte Aktionen",
       operations: {
-        merge: "PDFs zusammenfÃ¼hren",
+        merge: "PDFs zusammenführen",
         compress: "PDF komprimieren",
         split: "PDF teilen",
         extract: "Seiten extrahieren",
@@ -134,8 +134,8 @@ export const deDictionary: Dictionary = {
         pdfToImages: "PDF in Bilder",
         imagesToPdf: "Bilder zu PDF",
       },
-      license: "PDF-Verarbeitung: PDF-lib (MIT), PDF.js (Apache 2.0) â€¢ Schriftart: Geist (MIT)",
-      disclaimer: "Der Dienst wird 'wie besehen' ohne jegliche GewÃ¤hrleistung bereitgestellt. Der Benutzer ist fÃ¼r die Verwendung der generierten Dateien verantwortlich.",
+      license: "PDF-Verarbeitung: PDF-lib (MIT), PDF.js (Apache 2.0) • Schriftart: Geist (MIT)",
+      disclaimer: "Der Dienst wird 'wie besehen' ohne jegliche Gewährleistung bereitgestellt. Der Benutzer ist für die Verwendung der generierten Dateien verantwortlich.",
     },
     notifications: {
       labels: {
@@ -144,41 +144,41 @@ export const deDictionary: Dictionary = {
         info: "Hinweis",
         warning: "Warnung",
       },
-      closeLabel: "SchlieÃŸen",
+      closeLabel: "Schließen",
     },
     fotolinceBanner: {
       eyebrow: "Bilder schnell optimieren?",
       title: "Komprimiere, skaliere oder konvertiere Fotos mit FotoLince",
       description:
-        "Unser Schwester-Tool verarbeitet JPG, PNG und WEBP direkt im Browser â€“ ideal, bevor du sie in ein PDF einfÃ¼gst.",
+        "Unser Schwester-Tool verarbeitet JPG, PNG und WEBP direkt im Browser – ideal, bevor du sie in ein PDF einfügst.",
       ctaLabel: "Zu FotoLince",
       ctaHref: "https://fotolince.com",
       imageAlt: "FotoLince Logo",
     },
     feedback: {
       question: "War das hilfreich?",
-      thanks: "Danke fÃ¼r dein Feedback!",
+      thanks: "Danke für dein Feedback!",
       whatWrong: "Sag uns, was schiefgelaufen ist",
       emailSubject: "Feedback zu ihatelovepdf",
     },
     pdfProcessor: {
-      title: "WÃ¤hle eine Operation",
+      title: "Wähle eine Operation",
       modes: {
         merge: {
-          label: "PDFs zusammenfÃ¼hren",
+          label: "PDFs zusammenführen",
           helper: "Ordne PDFs, um sie zu einem Dokument zu kombinieren.",
         },
         compress: {
           label: "PDF komprimieren",
-          helper: "Reduziere die DateigrÃ¶ÃŸe eines PDFs. Verarbeite pro Durchlauf eine Datei, um die QualitÃ¤t zu sichern.",
+          helper: "Reduziere die Dateigröße eines PDFs. Verarbeite pro Durchlauf eine Datei, um die Qualität zu sichern.",
         },
         split: {
           label: "PDF teilen",
-          helper: "WÃ¤hle PDFs aus und trenne sie in mehrere Dateien.",
+          helper: "Wähle PDFs aus und trenne sie in mehrere Dateien.",
         },
         extract: {
           label: "Seiten extrahieren",
-          helper: "Markiere spezifische Seiten fÃ¼r ein neues Dokument.",
+          helper: "Markiere spezifische Seiten für ein neues Dokument.",
         },
         crop: {
           label: "Seiten zuschneiden",
@@ -186,15 +186,15 @@ export const deDictionary: Dictionary = {
         },
         rotate: {
           label: "Seiten drehen",
-          helper: "WÃ¤hle die Seiten mit falscher Ausrichtung und drehe nur diese Seiten.",
+          helper: "Wähle die Seiten mit falscher Ausrichtung und drehe nur diese Seiten.",
         },
         reorder: {
           label: "Seiten neu ordnen",
-          helper: "Ã„ndere die Reihenfolge der Seiten innerhalb eines PDFs.",
+          helper: "Ändere die Reihenfolge der Seiten innerhalb eines PDFs.",
         },
         pdfToImages: {
           label: "PDF in Bilder",
-          helper: "Exportiere jede PDF-Seite als PNG oder JPEG â€“ komplett ohne Upload.",
+          helper: "Exportiere jede PDF-Seite als PNG oder JPEG – komplett ohne Upload.",
         },
         imagesToPdf: {
           label: "Bilder zu PDF",
@@ -202,24 +202,24 @@ export const deDictionary: Dictionary = {
         },
       },
       upload: {
-        title: "Dateien auswÃ¤hlen",
-        clearAll: "Alles lÃ¶schen",
+        title: "Dateien auswählen",
+        clearAll: "Alles löschen",
         listHeadings: {
-          merge: "Dateien zum ZusammenfÃ¼hren (Reihenfolge festlegen):",
-          extract: "Datei auswÃ¤hlen, um mit den Seiten zu arbeiten:",
+          merge: "Dateien zum Zusammenführen (Reihenfolge festlegen):",
+          extract: "Datei auswählen, um mit den Seiten zu arbeiten:",
           crop: "Datei auswahlen, um mit den Seiten zu arbeiten:",
-          rotate: "Datei auswÃ¤hlen, um mit den Seiten zu arbeiten:",
-          reorder: "Datei auswÃ¤hlen, um mit den Seiten zu arbeiten:",
+          rotate: "Datei auswählen, um mit den Seiten zu arbeiten:",
+          reorder: "Datei auswählen, um mit den Seiten zu arbeiten:",
           pdfToImages: "PDFs zum Konvertieren (werden nacheinander verarbeitet):",
           imagesToPdf: "Bilder zum Kombinieren (Reihenfolge festlegen):",
-          default: "AusgewÃ¤hlte Dateien (neu anordnen oder entfernen):",
+          default: "Ausgewählte Dateien (neu anordnen oder entfernen):",
         },
         hints: {
-          compress: "Jede Datei wird einzeln komprimiert und balanciert QualitÃ¤t und GrÃ¶ÃŸe.",
-          split: "Jedes PDF wird entsprechend der Optionen im nÃ¤chsten Schritt geteilt.",
+          compress: "Jede Datei wird einzeln komprimiert und balanciert Qualität und Größe.",
+          split: "Jedes PDF wird entsprechend der Optionen im nächsten Schritt geteilt.",
           crop: "Wahle die zuzuschneidenden Seiten und lege im Optionsbereich fest, wie viele Punkte pro Seite entfernt werden.",
           pdfToImages: "Wir rendern ein PDF nach dem einen. Stelle Format und DPI im Optionsbereich vor dem Export ein.",
-          imagesToPdf: "Ziehe JPG, PNG, WEBP oder TIFF hinein. WÃ¤hle Seitenformat, Ausrichtung und RÃ¤nder im Optionspanel.",
+          imagesToPdf: "Ziehe JPG, PNG, WEBP oder TIFF hinein. Wähle Seitenformat, Ausrichtung und Ränder im Optionspanel.",
         },
       },
       downloadNames: {
@@ -236,7 +236,7 @@ export const deDictionary: Dictionary = {
       processButton: {
         idleSingle: "1 Datei verarbeiten",
         idleMultiple: (count: number) => `${count} Dateien verarbeiten`,
-        processing: "Verarbeitung lÃ¤uft...",
+        processing: "Verarbeitung läuft...",
         extract: (count: number) =>
           `${count} ${count === 1 ? "Seite" : "Seiten"} extrahieren`,
         crop: (count: number) =>
@@ -256,8 +256,8 @@ export const deDictionary: Dictionary = {
       statusMessages: {
         info: (mode: string) => `Verarbeite (${mode})...`,
         compressed: (reduction: string, original: string, next: string, seconds: string) =>
-          `Komprimiert. Reduktion: ${reduction}% (${original} â†’ ${next}) in ${seconds}s`,
-        merged: "ZusammenfÃ¼hren abgeschlossen",
+          `Komprimiert. Reduktion: ${reduction}% (${original} → ${next}) in ${seconds}s`,
+        merged: "Zusammenführen abgeschlossen",
         split: (count: number) =>
           count > 1
             ? `${count} Dateien erzeugt. Erste Datei wird heruntergeladen...`
@@ -281,32 +281,32 @@ export const deDictionary: Dictionary = {
       },
       errors: {
         noFiles: "Kein Ergebnis erzeugt",
-        mergeRequiresTwo: "Mindestens zwei Dateien zum ZusammenfÃ¼hren auswÃ¤hlen",
-        noPagesSelected: "WÃ¤hle mindestens eine Seite",
-        invalidFile: "GÃ¼ltige Datei auswÃ¤hlen",
+        mergeRequiresTwo: "Mindestens zwei Dateien zum Zusammenführen auswählen",
+        noPagesSelected: "Wähle mindestens eine Seite",
+        invalidFile: "Gültige Datei auswählen",
         reorderEmpty: "Keine neue Reihenfolge erkannt",
         unknown: "Unbekannter Fehler",
-        modeNotSupported: "Modus nicht unterstÃ¼tzt",
+        modeNotSupported: "Modus nicht unterstützt",
       },
       labels: {
-        pagesToExtract: "Seiten zum Extrahieren auswÃ¤hlen:",
+        pagesToExtract: "Seiten zum Extrahieren auswählen:",
         pagesToCrop: "Wahle die zuzuschneidenden Seiten:",
-        pagesToRotate: "Seiten zum Drehen auswÃ¤hlen:",
+        pagesToRotate: "Seiten zum Drehen auswählen:",
         reorderPages: "Seiten ziehen, um sie neu zu ordnen:",
       },
       compressionPreview: {
         title: "Komprimierungs-Vorschau",
         description:
-          "Passe die Optionen an, um die ZielgrÃ¶ÃŸe zu schÃ¤tzen, bevor du die Komprimierung startest.",
-        running: "Vorschau wird berechnetâ€¦",
-        readyLabel: "GeschÃ¤tztes Ergebnis",
+          "Passe die Optionen an, um die Zielgröße zu schätzen, bevor du die Komprimierung startest.",
+        running: "Vorschau wird berechnet…",
+        readyLabel: "Geschätztes Ergebnis",
         ratio: (percent: string) => `${percent}% kleiner`,
         saved: (size: string) => `${size} eingespart`,
-        time: (seconds: string) => `â‰ˆ ${seconds}s`,
+        time: (seconds: string) => `≈ ${seconds}s`,
         original: "Original",
-        result: "GeschÃ¤tzt",
+        result: "Geschätzt",
         notice:
-          "Die Vorschau lÃ¤uft lokal. Beim Klick auf Verarbeiten nutzen wir dieses Ergebnis erneut â€“ kein Upload nÃ¶tig.",
+          "Die Vorschau läuft lokal. Beim Klick auf Verarbeiten nutzen wir dieses Ergebnis erneut – kein Upload nötig.",
         error: "Die Vorschau konnte nicht erstellt werden.",
         retry: "Vorschau erneut versuchen",
         universalBadge: "Universelle Optimierung",
@@ -319,16 +319,16 @@ export const deDictionary: Dictionary = {
         result: "Komprimiert",
         duration: (seconds: string) => `Abgeschlossen in ${seconds}s`,
         download: "Erneut herunterladen",
-        clear: "Zusammenfassung lÃ¶schen",
+        clear: "Zusammenfassung löschen",
       },
       donationReminder: {
-        message: "ihatelovepdf hat dir heute Zeit gespart? Deine UnterstÃ¼tzung hÃ¤lt das Projekt privat und kostenlos.",
-        actionLabel: "ihatelovepdf unterstÃ¼tzen",
+        message: "ihatelovepdf hat dir heute Zeit gespart? Deine Unterstützung hält das Projekt privat und kostenlos.",
+        actionLabel: "ihatelovepdf unterstützen",
         withSavings: (percent: string, saved: string) =>
           `Gerade ${saved} gespart (${percent}% kleiner)? Hilf mit, ihatelovepdf privat und kostenlos zu halten.`,
       },
       statusDialog: {
-        processingTitle: "Verarbeitung lÃ¤uft lokal",
+        processingTitle: "Verarbeitung läuft lokal",
         successTitle: "Deine Dateien sind bereit",
         successDescription:
           "Die Downloads starten automatisch. Hier kannst du sie erneut herunterladen.",
@@ -337,12 +337,12 @@ export const deDictionary: Dictionary = {
           `${count} ${count === 1 ? "Datei verarbeitet" : "Dateien verarbeitet"}`,
         downloadAgainLabel: "Erneut herunterladen",
         errorTitle: "Verarbeitung fehlgeschlagen",
-        errorDescription: "Die Operation konnte nicht abgeschlossen werden. PrÃ¼fe die Dateien und versuche es erneut.",
+        errorDescription: "Die Operation konnte nicht abgeschlossen werden. Prüfe die Dateien und versuche es erneut.",
         retryLabel: "Erneut versuchen",
-        closeLabel: "SchlieÃŸen",
+        closeLabel: "Schließen",
         sharePrompt: {
-          dialogMessage: "ihatelovepdf ist vÃ¶llig kostenlos und respektiert Ihre PrivatsphÃ¤re. Helfen Sie uns, dass es so bleibt, indem Sie es mit einem Kollegen teilen.",
-          shareText: "Ich habe gerade ihatelovepdf genutzt, um meine PDFs zu bearbeiten. Es ist ein kostenloses, schnelles und 100% privates Toolkit, um PDFs direkt im Browser zu teilen, zu komprimieren, zusammenzufÃ¼hren und zu konvertieren. Perfekt fÃ¼r sensible Dokumente!",
+          dialogMessage: "ihatelovepdf ist völlig kostenlos und respektiert Ihre Privatsphäre. Helfen Sie uns, dass es so bleibt, indem Sie es mit einem Kollegen teilen.",
+          shareText: "Ich habe gerade ihatelovepdf genutzt, um meine PDFs zu bearbeiten. Es ist ein kostenloses, schnelles und 100% privates Toolkit, um PDFs direkt im Browser zu teilen, zu komprimieren, zusammenzuführen und zu konvertieren. Perfekt für sensible Dokumente!",
           actionLabel: "Teilen",
           copiedLabel: "Kopiert!",
         },
@@ -354,19 +354,19 @@ export const deDictionary: Dictionary = {
       },
     },
     fileUploader: {
-      clickToSelect: "Zum AuswÃ¤hlen klicken",
+      clickToSelect: "Zum Auswählen klicken",
       orDrop: (type: "pdf" | "images") =>
         type === "images" ? "oder Bilder ziehen und ablegen" : "oder PDF-Dateien ziehen und ablegen",
       accepted: {
         pdf: "PDF-Dateien",
-        images: "UnterstÃ¼tzte Formate: JPG, PNG, WEBP, TIFF",
+        images: "Unterstützte Formate: JPG, PNG, WEBP, TIFF",
       },
-      maxSize: (sizeMb: number) => `Empfohlene GrÃ¶ÃŸe: < ${sizeMb}MB`,
+      maxSize: (sizeMb: number) => `Empfohlene Größe: < ${sizeMb}MB`,
       errors: {
         invalidType: (fileName: string, label: string) =>
-          `Dateityp nicht unterstÃ¼tzt: ${fileName}. Zugelassen sind nur ${label}.`,
+          `Dateityp nicht unterstützt: ${fileName}. Zugelassen sind nur ${label}.`,
         tooLarge: (fileName: string, sizeMb: number) =>
-          `Datei zu groÃŸ: ${fileName}. Maximal sind ${sizeMb}Â MB erlaubt.`,
+          `Datei zu groß: ${fileName}. Maximal sind ${sizeMb} MB erlaubt.`,
       },
       dropImagesAlt: "PDF Platzhaltergrafik",
     },
@@ -377,35 +377,35 @@ export const deDictionary: Dictionary = {
       removeAll: "Alle entfernen",
       imageLabel: "Bild",
       fileLabel: "Datei",
-      selected: "AusgewÃ¤hlt",
+      selected: "Ausgewählt",
       pdfLabel: "PDF",
-      deselect: "AbwÃ¤hlen",
+      deselect: "Abwählen",
       pagesLabel: (count: number) => `${count} ${count === 1 ? "Seite" : "Seiten"}`,
-      previewLoading: "Vorschau wird geladenâ€¦",
+      previewLoading: "Vorschau wird geladen…",
     },
     pageSelector: {
       loading: "Lade Seiten...",
       error: "Fehler beim Laden",
-      summary: (total: number, selected: number) => `${selected} von ${total} ${total === 1 ? "Seite" : "Seiten"} ausgewÃ¤hlt`,
-      selectAll: "Alle auswÃ¤hlen",
-      deselectAll: "Alle abwÃ¤hlen",
+      summary: (total: number, selected: number) => `${selected} von ${total} ${total === 1 ? "Seite" : "Seiten"} ausgewählt`,
+      selectAll: "Alle auswählen",
+      deselectAll: "Alle abwählen",
       pageLabel: (pageNumber: number) => `Seite ${pageNumber}`,
       extraPages: (shown: number, total: number) => `${shown} von ${total} Seiten sichtbar`,
-      manualLabel: "Seiten manuell wÃ¤hlen",
-      manualPlaceholder: "z.Â B. 1-3, 6, 9",
+      manualLabel: "Seiten manuell wählen",
+      manualPlaceholder: "z. B. 1-3, 6, 9",
     },
     pageOrderer: {
       loading: "Seiten werden geladen...",
       error: "Seiten konnten nicht geladen werden",
-      limitReached: (count: number) => `Limit von ${count} Seiten erreicht. Aus Performance-GrÃ¼nden lassen sich bis zu 120 Seiten gleichzeitig neu anordnen.`,
-      limitHint: "FÃ¼r grÃ¶ÃŸere Dateien bitte am Desktop Ã¶ffnen.",
+      limitReached: (count: number) => `Limit von ${count} Seiten erreicht. Aus Performance-Gründen lassen sich bis zu 120 Seiten gleichzeitig neu anordnen.`,
+      limitHint: "Für größere Dateien bitte am Desktop öffnen.",
       summary: (count: number) => `${count} Seiten bereit`,
-      reset: "ZurÃ¼cksetzen",
-      dragHint: "Seiten ziehen, um die Reihenfolge zu Ã¤ndern",
+      reset: "Zurücksetzen",
+      dragHint: "Seiten ziehen, um die Reihenfolge zu ändern",
       pageLabel: (pageNumber: number) => `Seite ${pageNumber}`,
       originalLabel: (pageNumber: number) => `Original: Seite ${pageNumber}`,
       instructions:
-        'Ziehe die Seiten oder nutze die Pfeiltasten. Klicke anschlieÃŸend auf "Neue Reihenfolge speichern", um die Ã„nderungen zu Ã¼bernehmen.',
+        'Ziehe die Seiten oder nutze die Pfeiltasten. Klicke anschließend auf "Neue Reihenfolge speichern", um die Änderungen zu übernehmen.',
     },
     processingOptions: {
       compress: {
@@ -419,19 +419,19 @@ export const deDictionary: Dictionary = {
         removeMetadata: "Metadaten entfernen",
         removeMetadataHint: "Entfernt versteckte Angaben wie Autor, Betreff und Bearbeitungshistorie.",
         stripAnnotations: "Annotationen und Kommentare entfernen",
-        stripAnnotationsHint: "LÃ¶scht Notizen, Formularfelder, Signaturen und Dokumentaktionen.",
+        stripAnnotationsHint: "Löscht Notizen, Formularfelder, Signaturen und Dokumentaktionen.",
         downscaleImages: "Eingebettete Bilder verkleinern",
-        downscaleHint: "Ideal fÃ¼r gescannte Dokumente oder fotolastige PDFs. HÃ¤lt Text scharf und reduziert Fotos.",
+        downscaleHint: "Ideal für gescannte Dokumente oder fotolastige PDFs. Hält Text scharf und reduziert Fotos.",
         advancedTitle: "Erweiterte Bereinigung",
         advancedDescription: "Belasse es einfach oder aktiviere nur die Extras, die du brauchst.",
         activeLabel: "Aktiv:",
       },
       merge: {
-        title: "ZusammenfÃ¼hren",
+        title: "Zusammenführen",
         pageDivider: "Leerseite zwischen Dokumenten",
-        metadataTitle: "Titel fÃ¼r das Ergebnis (optional)",
-        metadataAuthor: "Autor fÃ¼r das Ergebnis (optional)",
-        metadataHint: "Lege eigene Metadaten fÃ¼r das zusammengefÃ¼hrte PDF fest. Leer lassen, um Standardwerte zu verwenden.",
+        metadataTitle: "Titel für das Ergebnis (optional)",
+        metadataAuthor: "Autor für das Ergebnis (optional)",
+        metadataHint: "Lege eigene Metadaten für das zusammengeführte PDF fest. Leer lassen, um Standardwerte zu verwenden.",
       },
       split: {
         title: "Teilen",
@@ -441,17 +441,17 @@ export const deDictionary: Dictionary = {
       extract: {
         title: "Extrahieren",
         preserveMetadata: "Metadaten beibehalten",
-        preserveMetadataHint: "BehÃ¤lt Titel, Autor und weitere Details in der extrahierten Datei.",
+        preserveMetadataHint: "Behält Titel, Autor und weitere Details in der extrahierten Datei.",
       },
       crop: {
         title: "Zuschneiden",
         hint: "Wahle die Seiten aus und lege fest, wie viele Punkte oben, rechts, unten und links entfernt werden.",
         inputModeLabel: "Zuschneidemethode",
         inputModes: {
-          margins: "RÃ¤nder festlegen",
+          margins: "Ränder festlegen",
           manual: "Manuelle Auswahl",
         },
-        marginsTitle: "RÃ¤nder",
+        marginsTitle: "Ränder",
         marginLabels: {
           top: "Oberer Rand (pt)",
           right: "Rechter Rand (pt)",
@@ -472,35 +472,35 @@ export const deDictionary: Dictionary = {
       },
       rotate: {
         title: "Drehen",
-        hint: "WÃ¤hle zuerst die Richtung und markiere dann die Seiten, die gedreht werden sollen.",
+        hint: "Wähle zuerst die Richtung und markiere dann die Seiten, die gedreht werden sollen.",
         rotateRight90: "90 Grad nach rechts drehen",
         rotate180: "180 Grad drehen",
         rotateLeft90: "90 Grad nach links drehen",
       },
       reorder: {
         title: "Neu ordnen",
-        hint: "Seiten ziehen, um die gewÃ¼nschte Reihenfolge zu erhalten",
+        hint: "Seiten ziehen, um die gewünschte Reihenfolge zu erhalten",
       },
       pdfToImages: {
         title: "Bildexport",
         formatLabel: "Bildformat",
-        formatHint: "PNG liefert verlustfreie QualitÃ¤t, JPEG erzeugt kleinere Dateien.",
+        formatHint: "PNG liefert verlustfreie Qualität, JPEG erzeugt kleinere Dateien.",
         pngLabel: "PNG (verlustfrei)",
         jpegLabel: "JPEG (kleinere Datei)",
-        qualityLabel: "JPEG-QualitÃ¤t",
-        qualityHint: "HÃ¶here Werte bewahren mehr Details, vergrÃ¶ÃŸern aber die Ausgabedateien.",
+        qualityLabel: "JPEG-Qualität",
+        qualityHint: "Höhere Werte bewahren mehr Details, vergrößern aber die Ausgabedateien.",
         dpiLabel: "Render-DPI",
-        dpiHint: "Mehr DPI bedeuten mehr SchÃ¤rfe und grÃ¶ÃŸere Dateien. 144 DPI eignen sich gut fÃ¼r PrÃ¤sentationen.",
+        dpiHint: "Mehr DPI bedeuten mehr Schärfe und größere Dateien. 144 DPI eignen sich gut für Präsentationen.",
         dpiPresets: {
-          screen: "72 DPI Â· Bildschirm",
-          balanced: "144 DPI Â· Ausgewogen",
-          print: "300 DPI Â· Druck",
+          screen: "72 DPI · Bildschirm",
+          balanced: "144 DPI · Ausgewogen",
+          print: "300 DPI · Druck",
         },
-        zipLabel: "Als ZIP bÃ¼ndeln",
+        zipLabel: "Als ZIP bündeln",
         zipHint: "Ein Archiv herunterladen statt einer Datei pro Seite.",
         baseNameLabel: "Basisdateiname",
         baseNamePlaceholder: "ihatelovepdf_seiten",
-        baseNameHint: "Wir verwenden diesen Text als PrÃ¤fix. Leer lassen, um den PDF-Namen zu Ã¼bernehmen.",
+        baseNameHint: "Wir verwenden diesen Text als Präfix. Leer lassen, um den PDF-Namen zu übernehmen.",
       },
       imagesToPdf: {
         title: "Layout",
@@ -508,11 +508,11 @@ export const deDictionary: Dictionary = {
         fitLabel: "Bildanpassung",
         fitOptions: {
           contain: "Einpassen (gesamtes Bild anzeigen)",
-          cover: "AusfÃ¼llen (Seite vollstÃ¤ndig fÃ¼llen)",
+          cover: "Ausfüllen (Seite vollständig füllen)",
         },
-        sizeLabel: "SeitengrÃ¶ÃŸe",
+        sizeLabel: "Seitengröße",
         sizeOptions: {
-          auto: "Auto (BildgrÃ¶ÃŸe verwenden)",
+          auto: "Auto (Bildgröße verwenden)",
           a4: "A4",
           letter: "Letter",
         },
@@ -522,14 +522,14 @@ export const deDictionary: Dictionary = {
           portrait: "Hochformat",
           landscape: "Querformat",
         },
-        marginLabel: "RÃ¤nder (pt)",
-        marginHint: "FÃ¼gt weiÃŸen Rand um das Bild hinzu. 72 pt â‰ˆ 1 Zoll.",
+        marginLabel: "Ränder (pt)",
+        marginHint: "Fügt weißen Rand um das Bild hinzu. 72 pt ≈ 1 Zoll.",
         backgroundLabel: "Hintergrundfarbe",
         backgroundHint: "Wird hinter Bildern sowie an freien Stellen der Seite angezeigt.",
       },
     },
     cookieBanner: {
-      message: "Wir verwenden Cookies, um den Verkehr zu analysieren und Ihre Erfahrung zu verbessern. Wir geben Ihre persÃ¶nlichen Daten nicht weiter.",
+      message: "Wir verwenden Cookies, um den Verkehr zu analysieren und Ihre Erfahrung zu verbessern. Wir geben Ihre persönlichen Daten nicht weiter.",
       accept: "Akzeptieren",
       decline: "Ablehnen",
     },
@@ -537,14 +537,14 @@ export const deDictionary: Dictionary = {
   pages: {
     home: {
       hero: {
-        title: "ihatelovepdf: PDF zusammenfÃ¼hren, komprimieren und konvertieren online",
+        title: "ihatelovepdf: PDF zusammenführen, komprimieren und konvertieren online",
         subtitle:
-          "PDF komprimieren, PDFs zusammenfÃ¼hren, Dokumente teilen, Seiten extrahieren und PDF in Bilder oder Bilder in PDF umwandeln â€“ direkt im Browser ohne Uploads.",
+          "PDF komprimieren, PDFs zusammenführen, Dokumente teilen, Seiten extrahieren und PDF in Bilder oder Bilder in PDF umwandeln – direkt im Browser ohne Uploads.",
         badges: [
           "PDF schnell komprimieren",
-          "PDFs ohne Limit zusammenfÃ¼hren",
+          "PDFs ohne Limit zusammenführen",
           "Lokale Verarbeitung",
-          "ihatelovepdf unterstÃ¼tzen",
+          "ihatelovepdf unterstützen",
         ],
         imageAlt: "ihatelovepdf Illustration",
         ctaLinks: [
@@ -565,16 +565,16 @@ export const deDictionary: Dictionary = {
         cards: [
           {
             title: "Datenschutz garantiert",
-            description: "Deine PDFs verlassen dein GerÃ¤t nicht. Alles passiert lokal im Browser.",
+            description: "Deine PDFs verlassen dein Gerät nicht. Alles passiert lokal im Browser.",
             icon: "ðŸ”’",
           },
           {
             title: "Schnell & effizient",
             description: "Die lokale Engine verarbeitet PDFs ohne Upload-Wartezeiten.",
-            icon: "âš¡",
+            icon: "⚡",
           },
           {
-            title: "Auf jedem GerÃ¤t",
+            title: "Auf jedem Gerät",
             description: "Funktioniert auf Desktop, Tablet und Smartphone mit modernen Browsern.",
             icon: "ðŸ“±",
           },
@@ -583,20 +583,20 @@ export const deDictionary: Dictionary = {
       callout: {
         title: "Hilf, ihatelovepdf kostenlos zu halten",
         description:
-          "Jede Spende deckt Hosting, Entwicklungszeit und sorgt fÃ¼r ein 100Â % privates Erlebnis ohne Werbung oder Tracker.",
-        ctaLabel: "Projekt unterstÃ¼tzen",
+          "Jede Spende deckt Hosting, Entwicklungszeit und sorgt für ein 100 % privates Erlebnis ohne Werbung oder Tracker.",
+        ctaLabel: "Projekt unterstützen",
         ctaUrl: getRoutePath(locale, "support"),
         secondaryLabel: "So setzen wir die Mittel ein",
         secondaryUrl: getRoutePath(locale, "support") + "#support-transparency",
       },
     },
     faq: {
-      title: "HÃ¤ufig gestellte Fragen",
-      intro: "Antworten auf die hÃ¤ufigsten Fragen zu ihatelovepdf",
+      title: "Häufig gestellte Fragen",
+      intro: "Antworten auf die häufigsten Fragen zu ihatelovepdf",
       cta: {
         title: "ihatelovepdf jetzt ausprobieren",
         description:
-          "PDFs zusammenfÃ¼gen, komprimieren, teilen, extrahieren und neu ordnen â€“ mit voller PrivatsphÃ¤re. Keine Anmeldung, kein Hochladen.",
+          "PDFs zusammenfügen, komprimieren, teilen, extrahieren und neu ordnen – mit voller Privatsphäre. Keine Anmeldung, kein Hochladen.",
         ctaLabel: "Zum Toolkit",
       },
     },
@@ -605,8 +605,8 @@ export const deDictionary: Dictionary = {
         eyebrow: "ðŸŒ± Kleines Indie-Projekt",
         title: "Hilf, ihatelovepdf kostenlos und privat zu halten",
         subtitle:
-          "ihatelovepdf ist ein kleines Herzensprojekt. Deine UnterstÃ¼tzung finanziert die Server und schafft Zeit fÃ¼r neue Funktionen.",
-        highlight: "Ein kleines Tool, das deine PrivatsphÃ¤re respektiert.",
+          "ihatelovepdf ist ein kleines Herzensprojekt. Deine Unterstützung finanziert die Server und schafft Zeit für neue Funktionen.",
+        highlight: "Ein kleines Tool, das deine Privatsphäre respektiert.",
       },
       reasons: {
         title: "Warum spenden?",
@@ -614,41 +614,41 @@ export const deDictionary: Dictionary = {
           {
             title: "Kostenlos erhalten",
             description:
-              "Spenden ermÃ¶glichen es, ihatelovepdf fÃ¼r alle kostenlos zu lassen â€“ ohne Premium-Stufen oder gesperrte Funktionen.",
+              "Spenden ermöglichen es, ihatelovepdf für alle kostenlos zu lassen – ohne Premium-Stufen oder gesperrte Funktionen.",
             icon: "ðŸ’š",
           },
           {
             title: "Weiterentwickeln",
             description:
-              "Deine Hilfe bezahlt Fehlerbehebungen, neue Werkzeuge und den Feinschliff fÃ¼r schnelle AblÃ¤ufe.",
-            icon: "âœ¨",
+              "Deine Hilfe bezahlt Fehlerbehebungen, neue Werkzeuge und den Feinschliff für schnelle Abläufe.",
+            icon: "✨",
           },
           {
-            title: "PrivatsphÃ¤re schÃ¼tzen",
+            title: "Privatsphäre schützen",
             description:
-              "Wir verarbeiten alles lokal, damit deine PDFs auf deinem GerÃ¤t bleiben. Spenden sichern dieses Konzept.",
+              "Wir verarbeiten alles lokal, damit deine PDFs auf deinem Gerät bleiben. Spenden sichern dieses Konzept.",
             icon: "ðŸ”’",
           },
         ],
       },
       tiers: {
-        title: "Gib, was mÃ¶glich ist",
-        description: "Jeder Betrag hilft. Sichere Zahlung Ã¼ber Stripe.",
+        title: "Gib, was möglich ist",
+        description: "Jeder Betrag hilft. Sichere Zahlung über Stripe.",
         cards: [
           {
             id: "coffee",
             title: "Ein Kaffee",
-            amount: "â‚¬3",
-            description: "Deckt das Hosting fÃ¼r ein paar Wochen.",
-            ctaLabel: "â‚¬3 spenden",
+            amount: "€3",
+            description: "Deckt das Hosting für ein paar Wochen.",
+            ctaLabel: "€3 spenden",
             ctaHref: "#stripe-checkout-coffee",
           },
           {
             id: "monthly",
-            title: "Monatliche UnterstÃ¼tzung",
-            amount: "â‚¬10/Monat",
+            title: "Monatliche Unterstützung",
+            amount: "€10/Monat",
             description: "Schenkt uns jede Woche Zeit, um ihatelovepdf besser zu machen.",
-            ctaLabel: "â‚¬10/Monat spenden",
+            ctaLabel: "€10/Monat spenden",
             ctaHref: "#stripe-checkout-monthly",
             badge: "ðŸ’™ Danke",
           },
@@ -656,20 +656,20 @@ export const deDictionary: Dictionary = {
             id: "custom",
             title: "Eigener Betrag",
             amount: "Beliebig",
-            description: "Jeder Euro zÃ¤hlt. WÃ¤hle den Betrag, der fÃ¼r dich passt.",
-            ctaLabel: "Betrag wÃ¤hlen",
+            description: "Jeder Euro zählt. Wähle den Betrag, der für dich passt.",
+            ctaLabel: "Betrag wählen",
             ctaHref: "#stripe-checkout-custom",
           },
         ],
         note: "Stripe-Zahlungen sind sicher. Wiederkehrende Spenden kannst du jederzeit stoppen.",
       },
       transparency: {
-        title: "WofÃ¼r wir es ausgeben",
+        title: "Wofür wir es ausgeben",
         items: [
-          "Hosting und CDN, damit die Seite Ã¼berall schnell bleibt",
-          "Entwicklungszeit fÃ¼r Fehlerbehebungen und neue Features",
+          "Hosting und CDN, damit die Seite überall schnell bleibt",
+          "Entwicklungszeit für Fehlerbehebungen und neue Features",
           "Design- und UX-Verbesserungen, damit alles leicht zu bedienen ist",
-          "Ãœbersetzungen und Dokumentation fÃ¼r alle unterstÃ¼tzten Sprachen",
+          "Übersetzungen und Dokumentation für alle unterstützten Sprachen",
         ],
       },
       faq: {
@@ -681,31 +681,31 @@ export const deDictionary: Dictionary = {
               "Kein Problem. ihatelovepdf bleibt kostenlos. Wenn du das Tool teilst oder uns Feedback schickst, hilfst du uns genauso.",
           },
           {
-            question: "Bekomme ich eine BestÃ¤tigung?",
+            question: "Bekomme ich eine Bestätigung?",
             answer:
-              "Ja. Stripe sendet dir automatisch eine E-Mail mit der ZahlungsbestÃ¤tigung.",
+              "Ja. Stripe sendet dir automatisch eine E-Mail mit der Zahlungsbestätigung.",
           },
           {
-            question: "Wie kÃ¼ndige ich eine wiederkehrende Spende?",
+            question: "Wie kündige ich eine wiederkehrende Spende?",
             answer:
-              "Du kannst das im Stripe-Portal erledigen oder uns schreiben â€“ wir beenden sie sofort und ohne Nachfragen.",
+              "Du kannst das im Stripe-Portal erledigen oder uns schreiben – wir beenden sie sofort und ohne Nachfragen.",
           },
         ],
       },
       closing: {
         title: "Danke, dass du da bist",
         description:
-          "Jede Person, die ihatelovepdf unterstÃ¼tzt, hilft dabei, ein nÃ¼tzliches, datenschutzfreundliches PDF-Toolkit fÃ¼r alle zu erhalten.",
+          "Jede Person, die ihatelovepdf unterstützt, hilft dabei, ein nützliches, datenschutzfreundliches PDF-Toolkit für alle zu erhalten.",
         ctaLabel: "Team kontaktieren",
         ctaHref: "mailto:info@ihatelovepdf.com?subject=Hallo%20ihatelovepdf-Team",
       },
       legalNotice: {
         title: "Rechtlicher Hinweis & Transparenz",
         points: [
-          "ihatelovepdf ist ein unabhÃ¤ngiges persÃ¶nliches Projekt eines kleinen ehrenamtlichen Teams.",
-          "BeitrÃ¤ge sind freiwillig und finanzieren Hosting, Werkzeuge sowie Entwicklungszeit.",
-          "Zahlungen sind keine Spenden im steuerlichen Sinne und berechtigen nicht zu AbzÃ¼gen; Stripe verschickt automatisch eine Quittung.",
-          "Der Dienst wird ohne GewÃ¤hr bereitgestellt. Fragen? Schreib an info@ihatelovepdf.com.",
+          "ihatelovepdf ist ein unabhängiges persönliches Projekt eines kleinen ehrenamtlichen Teams.",
+          "Beiträge sind freiwillig und finanzieren Hosting, Werkzeuge sowie Entwicklungszeit.",
+          "Zahlungen sind keine Spenden im steuerlichen Sinne und berechtigen nicht zu Abzügen; Stripe verschickt automatisch eine Quittung.",
+          "Der Dienst wird ohne Gewähr bereitgestellt. Fragen? Schreib an info@ihatelovepdf.com.",
         ],
       },
     },

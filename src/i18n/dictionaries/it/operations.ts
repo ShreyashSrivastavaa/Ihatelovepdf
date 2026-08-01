@@ -9,7 +9,7 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
     meta: {
       title: "Comprimi PDF online gratis | Riduci dimensione | ihatelovepdf",
       description:
-        "Riduci la dimensione dei file PDF in modo efficiente senza perdita di qualitÃ . Compressione gratuita e privata direttamente nel tuo browser.",
+        "Riduci la dimensione dei file PDF in modo efficiente senza perdita di qualità. Compressione gratuita e privata direttamente nel tuo browser.",
       keywords: [
         "comprimi pdf",
         "riduci dimensione pdf",
@@ -17,9 +17,9 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
         "compressore pdf",
         "pdf leggero",
       ],
-      ogTitle: "Comprimi PDF senza perdere qualitÃ  | ihatelovepdf",
+      ogTitle: "Comprimi PDF senza perdere qualità | ihatelovepdf",
       ogDescription:
-        "Carica il tuo file, scegli il livello di compressione ottimale e scarica un PDF molto piÃ¹ leggero in pochi secondi â€” completamente sicuro senza caricamenti su server.",
+        "Carica il tuo file, scegli il livello di compressione ottimale e scarica un PDF molto più leggero in pochi secondi — completamente sicuro senza caricamenti su server.",
       ogImageAlt: "Interfaccia dello strumento di compressione ihatelovepdf",
     },
     hero: {
@@ -27,23 +27,23 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
       description:
         "Riduci la dimensione del documento per rispettare i limiti di email, piattaforme o procedure pubbliche mantenendo ogni pagina leggibile.",
       bulletPoints: [
-        "Elaborazione 100% locale â€” i tuoi file non lasciano mai il browser",
+        "Elaborazione 100% locale — i tuoi file non lasciano mai il browser",
         "Scegli compressione base, media o aggressiva in base alle tue esigenze",
         "Mantieni metadati e struttura del documento quando necessario",
       ],
       imageAlt: "Flusso di compressione PDF in ihatelovepdf",
     },
-    benefitsTitle: "PerchÃ© comprimere PDF con ihatelovepdf",
+    benefitsTitle: "Perché comprimere PDF con ihatelovepdf",
     benefits: [
       {
-        title: "QualitÃ  bilanciata",
+        title: "Qualità bilanciata",
         description:
           "Il nostro motore di compressione analizza ogni elemento per ottenere la massima riduzione senza sfocare testo o grafica.",
       },
       {
-        title: "Pronto per lâ€™invio",
+        title: "Pronto per l’invio",
         description:
-          "Crea file che rispettano i limiti di caricamento su portali pubblici, universitÃ  o workflow aziendali.",
+          "Crea file che rispettano i limiti di caricamento su portali pubblici, università o workflow aziendali.",
       },
       {
         title: "Privacy by design",
@@ -54,18 +54,18 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
     howTo: {
       title: "Come comprimere un PDF con ihatelovepdf",
       steps: [
-        "Clicca su â€œCarica i tuoi fileâ€ e seleziona il PDF da ottimizzare.",
+        "Clicca su “Carica i tuoi file” e seleziona il PDF da ottimizzare.",
         "Scegli il livello di compressione e regola le opzioni avanzate come il mantenimento dei metadati.",
-        "Premi â€œProcessaâ€ e scarica il documento compresso in pochi secondi.",
+        "Premi “Processa” e scarica il documento compresso in pochi secondi.",
       ],
       note:
-        "Hai piÃ¹ documenti? Comprimili uno alla volta senza limiti giornalieri o filigrane.",
+        "Hai più documenti? Comprimili uno alla volta senza limiti giornalieri o filigrane.",
     },
     useCasesTitle: "Quando ha senso comprimere",
     useCases: [
       "Invia contratti, fatture o manuali via email senza superare i limiti degli allegati.",
       "Carica compiti su Moodle, Canvas o qualsiasi LMS con limiti rigorosi.",
-      "Riduci tesi, cataloghi o articoli per migliorare la velocitÃ  di download.",
+      "Riduci tesi, cataloghi o articoli per migliorare la velocità di download.",
       "Archivia documenti nel cloud risparmiando spazio senza perdere dettagli importanti.",
     ],
   },
@@ -87,7 +87,7 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
       ],
       ogTitle: "Crea un PDF pulito dalle tue immagini | ihatelovepdf",
       ogDescription:
-        "Trascina le immagini, definisci il layout ed esporta un PDF pronto per la stampa â€” senza caricamenti o filigrane.",
+        "Trascina le immagini, definisci il layout ed esporta un PDF pronto per la stampa — senza caricamenti o filigrane.",
       ogImageAlt: "Creazione di un PDF da immagini in ihatelovepdf",
     },
     hero: {
@@ -95,13 +95,13 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
       description:
         "Raggruppa scansioni, foto o grafiche in un unico PDF pronto da condividere.",
       bulletPoints: [
-        "Trascina per definire lâ€™ordine delle pagine",
+        "Trascina per definire l’ordine delle pagine",
         "Scegli dimensione pagina, orientamento e margini",
         "Imposta uno sfondo solido per evitare trasparenze indesiderate",
       ],
       imageAlt: "Flusso immagini a PDF",
     },
-    benefitsTitle: "PerchÃ© creare PDF da immagini con ihatelovepdf",
+    benefitsTitle: "Perché creare PDF da immagini con ihatelovepdf",
     benefits: [
       {
         title: "Layout coerente",
@@ -124,7 +124,7 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
       steps: [
         "Aggiungi le immagini e riordinalle.",
         "Configura layout, dimensioni e margini.",
-        "Clicca su â€œCrea PDFâ€ per scaricare il file.",
+        "Clicca su “Crea PDF” per scaricare il file.",
       ],
       note:
         "Hai molti file? Puoi comprimere o dividere il PDF dopo senza ricaricare le immagini.",
@@ -143,9 +143,9 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
     slug: "merge",
     mode: "merge",
     meta: {
-      title: "Unisci PDF online | Combina piÃ¹ PDF gratis | ihatelovepdf",
+      title: "Unisci PDF online | Combina più PDF gratis | ihatelovepdf",
       description:
-        "Combina piÃ¹ file PDF in un unico documento organizzato senza limiti di pagine.",
+        "Combina più file PDF in un unico documento organizzato senza limiti di pagine.",
       keywords: [
         "unisci pdf",
         "combina pdf",
@@ -159,17 +159,17 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
       ogImageAlt: "Unione PDF",
     },
     hero: {
-      title: "Unisci PDF online â€” veloce e sicuro",
+      title: "Unisci PDF online — veloce e sicuro",
       description:
         "Crea un unico file pronto da inviare o archiviare.",
       bulletPoints: [
-        "Drag and drop per lâ€™ordine",
+        "Drag and drop per l’ordine",
         "Nessun limite nascosto",
         "Mantieni segnalibri e metadati",
       ],
       imageAlt: "Unione documenti PDF",
     },
-    benefitsTitle: "Vantaggi dellâ€™unione PDF",
+    benefitsTitle: "Vantaggi dell’unione PDF",
     benefits: [
       {
         title: "Consegna coerente",
@@ -209,7 +209,7 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
     meta: {
       title: "Dividi PDF per pagine | Tool gratuito | ihatelovepdf",
       description:
-        "Dividi PDF in piÃ¹ file senza caricamenti su server.",
+        "Dividi PDF in più file senza caricamenti su server.",
       keywords: [
         "dividi pdf",
         "separa pdf",
@@ -226,7 +226,7 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
         "Estrai sezioni specifiche.",
       bulletPoints: [
         "Configura divisioni",
-        "PiÃ¹ file in una volta",
+        "Più file in una volta",
         "Nessun limite",
       ],
       imageAlt: "Divisione PDF",
@@ -235,14 +235,14 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
     benefits: [
       {
         title: "Controllo",
-        description: "Condividi solo ciÃ² che serve.",
+        description: "Condividi solo ciò che serve.",
       },
       {
-        title: "ScalabilitÃ ",
-        description: "PiÃ¹ file insieme.",
+        title: "Scalabilità",
+        description: "Più file insieme.",
       },
       {
-        title: "FlessibilitÃ ",
+        title: "Flessibilità",
         description: "Adatta al workflow.",
       },
     ],
@@ -250,7 +250,7 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
       title: "Come dividere PDF",
       steps: [
         "Carica il file.",
-        "Scegli modalitÃ .",
+        "Scegli modalità.",
         "Scarica i file.",
       ],
       note: "Download automatico.",
@@ -302,7 +302,7 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
         description: "Tutto nel browser.",
       },
       {
-        title: "QualitÃ ",
+        title: "Qualità",
         description: "PDF puliti.",
       },
     ],
@@ -467,13 +467,13 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
       ],
       ogTitle: "Riordina PDF",
       ogDescription:
-        "Sistema lâ€™ordine delle pagine.",
+        "Sistema l’ordine delle pagine.",
       ogImageAlt: "Riordino PDF",
     },
     hero: {
       title: "Riordina pagine PDF",
       description:
-        "Sistema lâ€™ordine velocemente.",
+        "Sistema l’ordine velocemente.",
       bulletPoints: [
         "Anteprime grandi",
         "Drag and drop",
@@ -484,7 +484,7 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
     benefitsTitle: "Vantaggi",
     benefits: [
       {
-        title: "VelocitÃ ",
+        title: "Velocità",
         description: "Correzioni rapide.",
       },
       {
@@ -522,7 +522,7 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
     meta: {
       title: "PDF in immagini | PNG o JPEG | ihatelovepdf",
       description:
-        "Converti PDF in immagini di alta qualitÃ .",
+        "Converti PDF in immagini di alta qualità.",
       keywords: [
         "pdf in immagini",
       ],
@@ -545,11 +545,11 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
     benefitsTitle: "Vantaggi",
     benefits: [
       {
-        title: "QualitÃ ",
+        title: "Qualità",
         description: "Alta risoluzione.",
       },
       {
-        title: "FlessibilitÃ ",
+        title: "Flessibilità",
         description: "Download vari.",
       },
       {

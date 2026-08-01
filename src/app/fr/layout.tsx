@@ -20,7 +20,7 @@ const LOCALE = "fr" as const;
 export const metadata = {
   metadataBase: METADATA_BASE,
   title: "ihatelovepdf - Fusionner, Compresser, Diviser et Convertir des PDF",
-  description: "Outils PDF gratuits en ligne pour fusionner, compresser, diviser, extraire et convertir. 100% privÃ©, traitement local dans votre navigateur.",
+  description: "Outils PDF gratuits en ligne pour fusionner, compresser, diviser, extraire et convertir. 100% privé, traitement local dans votre navigateur.",
   icons: SHARED_ICONS,
   alternates: {
     canonical: "https://ihatelovepdf.com/fr/",
@@ -52,9 +52,9 @@ export const metadata = {
   },
   openGraph: {
     ...SHARED_OPEN_GRAPH,
-    images: [{ url: "https://ihatelovepdf.com/og-images/og-image-fr.png", width: 1409, height: 736, alt: "ihatelovepdf - Traitement PDF privÃ© et gratuit" }],
-    title: "ihatelovepdf - Outils PDF gratuits et privÃ©s dans votre navigateur",
-    description: "Fusionnez, compressez, divisez et convertissez des PDF sans tÃ©lÃ©charger de fichiers. SÃ©curisÃ© et 100% privÃ©.",
+    images: [{ url: "https://ihatelovepdf.com/og-images/og-image-fr.png", width: 1409, height: 736, alt: "ihatelovepdf - Traitement PDF privé et gratuit" }],
+    title: "ihatelovepdf - Outils PDF gratuits et privés dans votre navigateur",
+    description: "Fusionnez, compressez, divisez et convertissez des PDF sans télécharger de fichiers. Sécurisé et 100% privé.",
     url: "https://ihatelovepdf.com/fr",
     locale: "fr_FR",
     type: "website",
@@ -68,6 +68,7 @@ export default function FrLayout({ children }: { children: ReactNode }) {
   return (
     <html lang={LOCALE}>
       <head>
+        <meta charSet="UTF-8" />
         <ThemeScript />
         <GoogleAnalyticsScripts />
         <SchemaOrg />

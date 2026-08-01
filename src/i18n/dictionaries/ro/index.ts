@@ -36,9 +36,9 @@ export const roDictionary: Dictionary = {
   },
   metadata: {
     site: {
-      title: "ihatelovepdf â€“ UneÈ™te, comprimÄƒ È™i converteÈ™te PDF-uri gratuit",
+      title: "ihatelovepdf – UneÈ™te, comprimÄƒ È™i converteÈ™te PDF-uri gratuit",
       description:
-        "ihatelovepdf este un set de instrumente axat pe confidenÈ›ialitate care uneÈ™te, comprimÄƒ, divide, extrage, roteÈ™te È™i converteÈ™te PDF-uri direct Ã®n browser. ToatÄƒ procesarea rÄƒmÃ¢ne pe dispozitivul tÄƒu.",
+        "ihatelovepdf este un set de instrumente axat pe confidenÈ›ialitate care uneÈ™te, comprimÄƒ, divide, extrage, roteÈ™te È™i converteÈ™te PDF-uri direct în browser. ToatÄƒ procesarea rÄƒmâne pe dispozitivul tÄƒu.",
       keywords: [
         "uneste pdf",
         "merge pdf",
@@ -66,9 +66,9 @@ export const roDictionary: Dictionary = {
       ],
       canonical: `${siteUrl}${homePath}`,
       openGraph: {
-        title: "ihatelovepdf â€“ UneÈ™te, ComprimÄƒ, Divide, PDF Ã®n Imagine",
+        title: "ihatelovepdf – UneÈ™te, ComprimÄƒ, Divide, PDF în Imagine",
         description:
-          "UneÈ™te, comprimÄƒ, divide, extrage, reordoneazÄƒ È™i converteÈ™te PDF-uri fÄƒrÄƒ a Ã®ncÄƒrca fiÈ™ierele pe server. Gratuit, privat È™i susÈ›inut de o procesare localÄƒ.",
+          "UneÈ™te, comprimÄƒ, divide, extrage, reordoneazÄƒ È™i converteÈ™te PDF-uri fÄƒrÄƒ a încÄƒrca fiÈ™ierele pe server. Gratuit, privat È™i susÈ›inut de o procesare localÄƒ.",
         url: `${siteUrl}${homePath}`,
         locale: "ro_RO",
         type: "website",
@@ -77,9 +77,9 @@ export const roDictionary: Dictionary = {
       },
     },
     faq: {
-      title: "FAQ | ihatelovepdf â€“ Set de instrumente gratuit pentru procesare PDF",
+      title: "FAQ | ihatelovepdf – Set de instrumente gratuit pentru procesare PDF",
       description:
-        "RÄƒspunsuri la Ã®ntrebÄƒri frecvente despre ihatelovepdf. AflÄƒ cum sÄƒ uneÈ™ti, comprimi, divizezi, extragi È™i reordonezi PDF-uri fÄƒrÄƒ a-È›i Ã®ncÄƒrca fiÈ™ierele.",
+        "RÄƒspunsuri la întrebÄƒri frecvente despre ihatelovepdf. AflÄƒ cum sÄƒ uneÈ™ti, comprimi, divizezi, extragi È™i reordonezi PDF-uri fÄƒrÄƒ a-È›i încÄƒrca fiÈ™ierele.",
       keywords: [
         "ihatelovepdf faq",
         "intrebari pdf",
@@ -95,7 +95,7 @@ export const roDictionary: Dictionary = {
     support: {
       title: "SusÈ›ine ihatelovepdf | MenÈ›ine instrumentele gratuite È™i private",
       description:
-        "DonaÈ›ia ta permite ca ihatelovepdf sÄƒ rÄƒmÃ¢nÄƒ un proiect mic, independent È™i axat pe confidenÈ›ialitate. AjutÄƒ la acoperirea costurilor de gÄƒzduire È™i a Ã®mbunÄƒtÄƒÈ›irilor.",
+        "DonaÈ›ia ta permite ca ihatelovepdf sÄƒ rÄƒmânÄƒ un proiect mic, independent È™i axat pe confidenÈ›ialitate. AjutÄƒ la acoperirea costurilor de gÄƒzduire È™i a îmbunÄƒtÄƒÈ›irilor.",
       keywords: [
         "doneaza ihatelovepdf",
         "sustine set instrumente pdf",
@@ -109,23 +109,23 @@ export const roDictionary: Dictionary = {
   },
   brand: {
     name: "ihatelovepdf",
-    tagline: "Procesare localÄƒ â€¢ 100% privatÄƒ",
+    tagline: "Procesare localÄƒ • 100% privatÄƒ",
   },
   components: {
     nav: {
       home: "AcasÄƒ",
-      faq: "ÃŽntrebÄƒri frecvente",
+      faq: "ÎntrebÄƒri frecvente",
       support: "SusÈ›ine",
       photo: "FotoLince",
       languageLabel: "LimbÄƒ",
       menuLabel: "ComutÄƒ meniul de navigare",
     },
     footer: {
-      privacy: "Procesare localÄƒ â€¢ 100% privatÄƒ â€¢ LicenÈ›e deschise",
-      rights: `Â© ${new Date().getFullYear()} ihatelovepdf â€” Instrumente pentru manipularea PDF-urilor fÄƒrÄƒ a compromite confidenÈ›ialitatea`,
+      privacy: "Procesare localÄƒ • 100% privatÄƒ • LicenÈ›e deschise",
+      rights: `© ${new Date().getFullYear()} ihatelovepdf — Instrumente pentru manipularea PDF-urilor fÄƒrÄƒ a compromite confidenÈ›ialitatea`,
       links: {
         home: "AcasÄƒ",
-        faq: "ÃŽntrebÄƒri frecvente",
+        faq: "ÎntrebÄƒri frecvente",
         support: "SusÈ›ine",
         photo: "FotoLince",
         contact: "Contact",
@@ -139,11 +139,11 @@ export const roDictionary: Dictionary = {
         crop: "DecupeazÄƒ pagini",
         rotate: "RoteÈ™te",
         reorder: "ReordoneazÄƒ",
-        pdfToImages: "PDF Ã®n Imagini",
-        imagesToPdf: "Imagini Ã®n PDF",
+        pdfToImages: "PDF în Imagini",
+        imagesToPdf: "Imagini în PDF",
       },
-      license: "Procesare PDF: PDF-lib (MIT), PDF.js (Apache 2.0) â€¢ Font: Geist (MIT)",
-      disclaimer: "Serviciul este furnizat â€žca atareâ€, fÄƒrÄƒ garanÈ›ii de niciun fel. Utilizatorul este singurul responsabil pentru utilizarea fiÈ™ierelor.",
+      license: "Procesare PDF: PDF-lib (MIT), PDF.js (Apache 2.0) • Font: Geist (MIT)",
+      disclaimer: "Serviciul este furnizat „ca atare”, fÄƒrÄƒ garanÈ›ii de niciun fel. Utilizatorul este singurul responsabil pentru utilizarea fiÈ™ierelor.",
     },
     notifications: {
       labels: {
@@ -152,20 +152,20 @@ export const roDictionary: Dictionary = {
         info: "Notificare",
         warning: "Avertisment",
       },
-      closeLabel: "ÃŽnchide",
+      closeLabel: "Închide",
     },
     fotolinceBanner: {
       eyebrow: "Ai nevoie sÄƒ optimizezi imagini?",
       title: "ComprimÄƒ, redimensioneazÄƒ sau converteÈ™te cu FotoLince",
       description:
-        "Setul nostru de instrumente proceseazÄƒ fiÈ™iere JPG, PNG È™i WEBP la nivel local â€” ideal pentru a reduce dimensiunea imaginilor Ã®nainte de a le transforma Ã®n PDF.",
+        "Setul nostru de instrumente proceseazÄƒ fiÈ™iere JPG, PNG È™i WEBP la nivel local — ideal pentru a reduce dimensiunea imaginilor înainte de a le transforma în PDF.",
       ctaLabel: "Deschide FotoLince",
       ctaHref: "https://fotolince.com",
       imageAlt: "Logo FotoLince",
     },
     feedback: {
       question: "A fost util?",
-      thanks: "ÃŽÈ›i mulÈ›umim pentru feedback!",
+      thanks: "ÎÈ›i mulÈ›umim pentru feedback!",
       whatWrong: "Spune-ne ce nu a funcÈ›ionat bine",
       emailSubject: "Feedback pentru ihatelovepdf",
     },
@@ -174,15 +174,15 @@ export const roDictionary: Dictionary = {
       modes: {
         merge: {
           label: "UneÈ™te PDF",
-          helper: "OrganizeazÄƒ fiÈ™ierele PDF pentru a le uni Ã®ntr-un singur document.",
+          helper: "OrganizeazÄƒ fiÈ™ierele PDF pentru a le uni într-un singur document.",
         },
         compress: {
           label: "ComprimÄƒ PDF",
-          helper: "Redu dimensiunea unui PDF. ProceseazÄƒ cÃ¢te un singur fiÈ™ier pentru cel mai bun echilibru Ã®ntre calitate È™i vitezÄƒ.",
+          helper: "Redu dimensiunea unui PDF. ProceseazÄƒ câte un singur fiÈ™ier pentru cel mai bun echilibru între calitate È™i vitezÄƒ.",
         },
         split: {
           label: "Divide PDF",
-          helper: "SelecteazÄƒ fiÈ™ierele PDF pentru a le diviza Ã®n documente separate.",
+          helper: "SelecteazÄƒ fiÈ™ierele PDF pentru a le diviza în documente separate.",
         },
         extract: {
           label: "Extrage Pagini",
@@ -201,12 +201,12 @@ export const roDictionary: Dictionary = {
           helper: "ModificÄƒ ordinea paginilor din interiorul unui PDF.",
         },
         pdfToImages: {
-          label: "PDF Ã®n Imagini",
-          helper: "ExportÄƒ fiecare paginÄƒ PDF ca PNG sau JPEG fÄƒrÄƒ Ã®ncÄƒrcare pe server.",
+          label: "PDF în Imagini",
+          helper: "ExportÄƒ fiecare paginÄƒ PDF ca PNG sau JPEG fÄƒrÄƒ încÄƒrcare pe server.",
         },
         imagesToPdf: {
-          label: "Imagini Ã®n PDF",
-          helper: "CombinÄƒ imagini JPG, PNG sau WEBP Ã®ntr-un PDF cu un aspect personalizat.",
+          label: "Imagini în PDF",
+          helper: "CombinÄƒ imagini JPG, PNG sau WEBP într-un PDF cu un aspect personalizat.",
         },
       },
       upload: {
@@ -218,15 +218,15 @@ export const roDictionary: Dictionary = {
           crop: "SelecteazÄƒ un fiÈ™ier pentru a lucra cu paginile sale:",
           rotate: "SelecteazÄƒ un fiÈ™ier pentru a lucra cu paginile sale:",
           reorder: "SelecteazÄƒ un fiÈ™ier pentru a lucra cu paginile sale:",
-          pdfToImages: "PDF de convertit (procesate pe rÃ¢nd):",
+          pdfToImages: "PDF de convertit (procesate pe rând):",
           imagesToPdf: "Imagini de combinat (reordoneazÄƒ pentru secvenÈ›a finalÄƒ):",
           default: "FiÈ™iere selectate (reordoneazÄƒ sau eliminÄƒ):",
         },
         hints: {
-          compress: "Fiecare fiÈ™ier este comprimat individual utilizÃ¢nd cel mai bun raport Ã®ntre calitate È™i dimensiune.",
+          compress: "Fiecare fiÈ™ier este comprimat individual utilizând cel mai bun raport între calitate È™i dimensiune.",
           split: "Fiecare PDF va fi divizat pe baza opÈ›iunilor selectate la pasul urmÄƒtor.",
-          crop: "Alege paginile de decupat, apoi defineÈ™te cÃ¢te puncte sÄƒ elimini de pe fiecare parte.",
-          pdfToImages: "ProcesÄƒm cÃ¢te un PDF pe rÃ¢nd. AjusteazÄƒ formatul È™i DPI-ul Ã®nainte de export.",
+          crop: "Alege paginile de decupat, apoi defineÈ™te câte puncte sÄƒ elimini de pe fiecare parte.",
+          pdfToImages: "ProcesÄƒm câte un PDF pe rând. AjusteazÄƒ formatul È™i DPI-ul înainte de export.",
           imagesToPdf: "AdaugÄƒ imagini JPG, PNG, WEBP sau TIFF. FoloseÈ™te panoul de opÈ›iuni pentru a alege dimensiunea, marginile È™i culoarea.",
         },
       },
@@ -263,7 +263,7 @@ export const roDictionary: Dictionary = {
       statusMessages: {
         info: (mode: string) => `Se proceseazÄƒ (${mode})...`,
         compressed: (reduction: string, original: string, next: string, seconds: string) =>
-          `Comprimat. Reducere: ${reduction}% (${original} â†’ ${next}) Ã®n ${seconds}s`,
+          `Comprimat. Reducere: ${reduction}% (${original} → ${next}) în ${seconds}s`,
         merged: "Unirea s-a finalizat",
         split: (count: number) =>
           count > 1
@@ -276,7 +276,7 @@ export const roDictionary: Dictionary = {
         pdfToImages: (count: number, format: "png" | "jpeg", zipped: boolean) => {
           const label = format === "png" ? "PNG" : "JPEG";
           return zipped
-            ? `S-au exportat ${count} imagini ${label} Ã®ntr-o arhivÄƒ ZIP`
+            ? `S-au exportat ${count} imagini ${label} într-o arhivÄƒ ZIP`
             : `S-au descÄƒrcat ${count} imagini ${label}`;
         },
         imagesToPdf: (count: number) =>
@@ -304,18 +304,18 @@ export const roDictionary: Dictionary = {
       compressionPreview: {
         title: "Previzualizare compresie",
         description:
-          "AjusteazÄƒ setÄƒrile pentru a estima dimensiunea de ieÈ™ire Ã®nainte de a Ã®ncepe compresia.",
-        running: "Se calculeazÄƒ previzualizareaâ€¦",
+          "AjusteazÄƒ setÄƒrile pentru a estima dimensiunea de ieÈ™ire înainte de a începe compresia.",
+        running: "Se calculeazÄƒ previzualizarea…",
         readyLabel: "Dimensiune estimatÄƒ",
         ratio: (percent: string) => `cu ${percent}% mai mic`,
         saved: (size: string) => `economiseÈ™ti ${size}`,
-        time: (seconds: string) => `â‰ˆ ${seconds}s`,
+        time: (seconds: string) => `≈ ${seconds}s`,
         original: "Original",
         result: "Estimat",
         notice:
-          "Previzualizarea ruleazÄƒ local. Nimic nu se Ã®ncarcÄƒ pe serverele noastre.",
+          "Previzualizarea ruleazÄƒ local. Nimic nu se încarcÄƒ pe serverele noastre.",
         error: "Previzualizarea nu a putut fi generatÄƒ.",
-        retry: "ReÃ®ncearcÄƒ previzualizarea",
+        retry: "ReîncearcÄƒ previzualizarea",
         universalBadge: "Optimizare universalÄƒ",
       },
       compressionSummary: {
@@ -324,12 +324,12 @@ export const roDictionary: Dictionary = {
         saved: (size: string) => `economisit ${size}`,
         original: "Original",
         result: "Comprimat",
-        duration: (seconds: string) => `Finalizat Ã®n ${seconds}s`,
+        duration: (seconds: string) => `Finalizat în ${seconds}s`,
         download: "DescarcÄƒ din nou",
         clear: "È˜terge rezumatul",
       },
       donationReminder: {
-        message: "Te-a ajutat ihatelovepdf sÄƒ economiseÈ™ti timp? SusÈ›inerea ta Ã®l menÈ›ine gratuit.",
+        message: "Te-a ajutat ihatelovepdf sÄƒ economiseÈ™ti timp? SusÈ›inerea ta îl menÈ›ine gratuit.",
         actionLabel: "SusÈ›ine ihatelovepdf",
         withSavings: (percent: string, saved: string) =>
           `Ai economisit ${saved} (${percent}%)? AjutÄƒ-ne sÄƒ menÈ›inem ihatelovepdf fÄƒrÄƒ reclame.`,
@@ -338,25 +338,25 @@ export const roDictionary: Dictionary = {
         processingTitle: "Procesare localÄƒ",
         successTitle: "FiÈ™ierele tale sunt gata",
         successDescription:
-          "DescÄƒrcarea va Ã®ncepe Ã®n mod automat.",
+          "DescÄƒrcarea va începe în mod automat.",
         resultsLabel: "Ultimul rezultat",
         filesProcessedLabel: (count: number) =>
           `${count} fiÈ™ier${count > 1 ? "e" : ""} procesat${count > 1 ? "e" : ""}`,
         downloadAgainLabel: "DescarcÄƒ",
         errorTitle: "Procesarea a eÈ™uat",
         errorDescription: "Nu am putut finaliza aceastÄƒ operaÈ›iune. VerificÄƒ fiÈ™ierele.",
-        retryLabel: "ReÃ®ncearcÄƒ",
-        closeLabel: "ÃŽnchide",
+        retryLabel: "ReîncearcÄƒ",
+        closeLabel: "Închide",
         sharePrompt: {
-          dialogMessage: "ihatelovepdf este complet gratuit È™i Ã®È›i respectÄƒ confidenÈ›ialitatea. AjutÄƒ-ne sÄƒ-l pÄƒstrÄƒm aÈ™a recomandÃ¢ndu-l unui coleg.",
-          shareText: "Tocmai am folosit ihatelovepdf pentru a-mi gestiona PDF-urile. Este un set de instrumente gratuit, rapid È™i complet privat pentru a diviza, comprima, uni È™i converti PDF-uri direct Ã®n browser. Excelent pentru documente sensibile!",
+          dialogMessage: "ihatelovepdf este complet gratuit È™i îÈ›i respectÄƒ confidenÈ›ialitatea. AjutÄƒ-ne sÄƒ-l pÄƒstrÄƒm aÈ™a recomandându-l unui coleg.",
+          shareText: "Tocmai am folosit ihatelovepdf pentru a-mi gestiona PDF-urile. Este un set de instrumente gratuit, rapid È™i complet privat pentru a diviza, comprima, uni È™i converti PDF-uri direct în browser. Excelent pentru documente sensibile!",
           actionLabel: "PartajeazÄƒ",
           copiedLabel: "Copiat!",
         },
       },
       compressionTotal: {
         title: "Total economisit",
-        savings: (size: string) => `Ã®n total ${size} economisiÈ›i`,
+        savings: (size: string) => `în total ${size} economisiÈ›i`,
         count: (count: number) => `${count} fiÈ™iere optimizate`,
       },
     },
@@ -388,13 +388,13 @@ export const roDictionary: Dictionary = {
       pdfLabel: "PDF",
       deselect: "DeselecteazÄƒ",
       pagesLabel: (count: number) => `${count} pagin${count > 1 ? "i" : "Äƒ"}`,
-      previewLoading: "Se Ã®ncarcÄƒ previzualizareaâ€¦",
+      previewLoading: "Se încarcÄƒ previzualizarea…",
     },
     pageSelector: {
-      loading: "Se Ã®ncarcÄƒ paginile...",
-      error: "Nu s-au putut Ã®ncÄƒrca informaÈ›iile PDF-ului",
+      loading: "Se încarcÄƒ paginile...",
+      error: "Nu s-au putut încÄƒrca informaÈ›iile PDF-ului",
       summary: (total: number, selected: number) =>
-        `${total} pagini detectate â€” ${selected} selectate`,
+        `${total} pagini detectate — ${selected} selectate`,
       selectAll: "SelecteazÄƒ tot",
       deselectAll: "DeselecteazÄƒ tot",
       pageLabel: (pageNumber: number) => `Pagina ${pageNumber}`,
@@ -404,19 +404,19 @@ export const roDictionary: Dictionary = {
       manualPlaceholder: "21, 25-30, 42",
     },
     pageOrderer: {
-      loading: "Se Ã®ncarcÄƒ paginile...",
-      error: "Nu s-au putut Ã®ncÄƒrca informaÈ›iile PDF-ului",
+      loading: "Se încarcÄƒ paginile...",
+      error: "Nu s-au putut încÄƒrca informaÈ›iile PDF-ului",
       limitReached: (count: number) =>
         `Acest PDF are ${count} pagini. Din motive de performanÈ›Äƒ, poÈ›i reordona maximum 120 de pagini.`,
       limitHint:
-        "ÃŽmparte mai Ã®ntÃ¢i PDF-ul Ã®n fragmente mai mici.",
+        "Împarte mai întâi PDF-ul în fragmente mai mici.",
       summary: (count: number) => `${count} pagini pregÄƒtite pentru reordonare`,
       reset: "RestabileÈ™te ordinea",
       dragHint: "Trage de pagini pentru a le modifica ordinea",
       pageLabel: (pageNumber: number) => `Pagina ${pageNumber}`,
       originalLabel: (pageNumber: number) => `Original: Pagina ${pageNumber}`,
       instructions:
-        "Trage de pagini Ã®n ordinea doritÄƒ. CÃ¢nd ai terminat, fÄƒ clic pe â€žSalveazÄƒ ordineaâ€.",
+        "Trage de pagini în ordinea doritÄƒ. Când ai terminat, fÄƒ clic pe „SalveazÄƒ ordinea”.",
     },
     processingOptions: {
       compress: {
@@ -439,7 +439,7 @@ export const roDictionary: Dictionary = {
       },
       merge: {
         title: "Unire",
-        pageDivider: "PaginÄƒ goalÄƒ Ã®ntre documente",
+        pageDivider: "PaginÄƒ goalÄƒ între documente",
         metadataTitle: "Titlul documentului unit (opÈ›ional)",
         metadataAuthor: "Autorul documentului (opÈ›ional)",
         metadataHint: "SeteazÄƒ metadate personalizate.",
@@ -467,7 +467,7 @@ export const roDictionary: Dictionary = {
           top: "Margine superioarÄƒ (pts)",
           right: "Margine dreaptÄƒ (pts)",
           bottom: "Margine inferioarÄƒ (pts)",
-          left: "Margine stÃ¢ngÄƒ (pts)",
+          left: "Margine stângÄƒ (pts)",
         },
         marginHint: "72 de puncte echivaleazÄƒ cu aproximativ 1 inch.",
         preserveMetadata: "PÄƒstreazÄƒ metadatele",
@@ -475,8 +475,8 @@ export const roDictionary: Dictionary = {
         manual: {
           title: "SelecÈ›ie manualÄƒ",
           hint: "Trage de chenar pe previzualizare pentru a defini zona vizibilÄƒ.",
-          loading: "Se Ã®ncarcÄƒ...",
-          error: "Previzualizarea nu a putut fi Ã®ncÄƒrcatÄƒ.",
+          loading: "Se încarcÄƒ...",
+          error: "Previzualizarea nu a putut fi încÄƒrcatÄƒ.",
           reset: "ReseteazÄƒ",
           pagePreview: (pageNumber: number) => `Previzualizare pagina ${pageNumber}`,
         },
@@ -484,9 +484,9 @@ export const roDictionary: Dictionary = {
       rotate: {
         title: "Rotire",
         hint: "Alege direcÈ›ia È™i selecteazÄƒ paginile.",
-        rotateRight90: "RoteÈ™te la dreapta (90Â°)",
-        rotate180: "RoteÈ™te (180Â°)",
-        rotateLeft90: "RoteÈ™te la stÃ¢nga (90Â°)",
+        rotateRight90: "RoteÈ™te la dreapta (90°)",
+        rotate180: "RoteÈ™te (180°)",
+        rotateLeft90: "RoteÈ™te la stânga (90°)",
       },
       reorder: {
         title: "Reordonare",
@@ -503,22 +503,22 @@ export const roDictionary: Dictionary = {
         dpiLabel: "RezoluÈ›ie DPI",
         dpiHint: "Un DPI mai mare creÈ™te claritatea, dar È™i dimensiunea fiÈ™ierului.",
         dpiPresets: {
-          screen: "72 DPI Â· Ecran",
-          balanced: "144 DPI Â· Echilibrat",
-          print: "300 DPI Â· Imprimare",
+          screen: "72 DPI · Ecran",
+          balanced: "144 DPI · Echilibrat",
+          print: "300 DPI · Imprimare",
         },
-        zipLabel: "GrupeazÄƒ imaginile Ã®ntr-un ZIP",
+        zipLabel: "GrupeazÄƒ imaginile într-un ZIP",
         zipHint: "DescarcÄƒ o singurÄƒ arhivÄƒ.",
         baseNameLabel: "Nume de bazÄƒ al fiÈ™ierului",
         baseNamePlaceholder: "ihatelovepdf_pagini",
         baseNameHint: "LasÄƒ gol pentru a reutiliza numele PDF-ului original.",
       },
       imagesToPdf: {
-        title: "AÈ™ezare Ã®n paginÄƒ",
-        layoutTitle: "AÈ™ezare Ã®n paginÄƒ",
+        title: "AÈ™ezare în paginÄƒ",
+        layoutTitle: "AÈ™ezare în paginÄƒ",
         fitLabel: "Potrivire image",
         fitOptions: {
-          contain: "ÃŽncadrare (aratÄƒ imaginea completÄƒ)",
+          contain: "Încadrare (aratÄƒ imaginea completÄƒ)",
           cover: "Umplere (acoperÄƒ pagina)",
         },
         sizeLabel: "Dimensiune paginÄƒ",
@@ -534,9 +534,9 @@ export const roDictionary: Dictionary = {
           landscape: "Pe lat",
         },
         marginLabel: "Margini (pts)",
-        marginHint: "AdaugÄƒ spaÈ›iu alb. 72 pts â‰ˆ 1 inch.",
+        marginHint: "AdaugÄƒ spaÈ›iu alb. 72 pts ≈ 1 inch.",
         backgroundLabel: "Culoare fundal",
-        backgroundHint: "AplicatÄƒ Ã®n spatele imaginilor.",
+        backgroundHint: "AplicatÄƒ în spatele imaginilor.",
       },
     },
     cookieBanner: {
@@ -550,7 +550,7 @@ export const roDictionary: Dictionary = {
       hero: {
         title: "ihatelovepdf: ComprimÄƒ, uneÈ™te È™i converteÈ™te PDF gratuit",
         subtitle:
-          "ComprimÄƒ, uneÈ™te, divide, extrage, roteÈ™te È™i converteÈ™te PDF-uri direct Ã®n browser. FÄƒrÄƒ Ã®ncÄƒrcare pe server, complet privat.",
+          "ComprimÄƒ, uneÈ™te, divide, extrage, roteÈ™te È™i converteÈ™te PDF-uri direct în browser. FÄƒrÄƒ încÄƒrcare pe server, complet privat.",
         badges: [
           "ComprimÄƒ PDF",
           "UneÈ™te PDF",
@@ -560,12 +560,12 @@ export const roDictionary: Dictionary = {
         imageAlt: "IlustraÈ›ie a unui document PDF",
         ctaLinks: [
           {
-            label: "PDF Ã®n Imagini",
+            label: "PDF în Imagini",
             href: operationsRoutes.pdfToImages,
-            description: "ExportÄƒ Ã®n format PNG sau JPEG",
+            description: "ExportÄƒ în format PNG sau JPEG",
           },
           {
-            label: "Images Ã®n PDF",
+            label: "Images în PDF",
             href: operationsRoutes.imagesToPdf,
             description: "CombinÄƒ JPG, PNG sau WEBP",
           },
@@ -577,19 +577,19 @@ export const roDictionary: Dictionary = {
           {
             title: "Privat implicit",
             description:
-              "PDF-urile tale nu pÄƒrÄƒsesc niciodatÄƒ dispozitivul. Totul se Ã®ntÃ¢mplÄƒ Ã®n browser.",
+              "PDF-urile tale nu pÄƒrÄƒsesc niciodatÄƒ dispozitivul. Totul se întâmplÄƒ în browser.",
             icon: "ðŸ”’",
           },
           {
             title: "Rapid È™i eficient",
             description:
-              "Motorul nostru local oferÄƒ o vitezÄƒ optimÄƒ, fÄƒrÄƒ a depinde de stocarea Ã®n cloud.",
-            icon: "âš¡",
+              "Motorul nostru local oferÄƒ o vitezÄƒ optimÄƒ, fÄƒrÄƒ a depinde de stocarea în cloud.",
+            icon: "⚡",
           },
           {
             title: "FuncÈ›ioneazÄƒ oriunde",
             description:
-              "Pe computer, tabletÄƒ sau telefon â€” este suficient un browser modern.",
+              "Pe computer, tabletÄƒ sau telefon — este suficient un browser modern.",
             icon: "ðŸ“±",
           },
         ],
@@ -605,12 +605,12 @@ export const roDictionary: Dictionary = {
       },
     },
     faq: {
-      title: "ÃŽntrebÄƒri Frecvente",
-      intro: "RÄƒspunsuri la cele mai comune Ã®ntrebÄƒri despre ihatelovepdf",
+      title: "ÎntrebÄƒri Frecvente",
+      intro: "RÄƒspunsuri la cele mai comune întrebÄƒri despre ihatelovepdf",
       cta: {
-        title: "ÃŽncearcÄƒ ihatelovepdf acum",
+        title: "ÎncearcÄƒ ihatelovepdf acum",
         description:
-          "UneÈ™te, comprimÄƒ, divide, extrage, roteÈ™te È™i reordoneazÄƒ PDF-uri Ã®n deplinÄƒ confidenÈ›ialitate.",
+          "UneÈ™te, comprimÄƒ, divide, extrage, roteÈ™te È™i reordoneazÄƒ PDF-uri în deplinÄƒ confidenÈ›ialitate.",
         ctaLabel: "Mergi la instrumente",
       },
     },
@@ -620,7 +620,7 @@ export const roDictionary: Dictionary = {
         title: "AjutÄƒ-ne sÄƒ pÄƒstrÄƒm ihatelovepdf gratuit È™i privat",
         subtitle:
           "ihatelovepdf este un proiect mic, dezvoltat din pasiune. SusÈ›inerea ta acoperÄƒ costurile serverelor.",
-        highlight: "Doar un instrument simplu care Ã®È›i respectÄƒ confidenÈ›ialitatea.",
+        highlight: "Doar un instrument simplu care îÈ›i respectÄƒ confidenÈ›ialitatea.",
       },
       reasons: {
         title: "De ce sÄƒ donezi ?",
@@ -632,37 +632,37 @@ export const roDictionary: Dictionary = {
             icon: "ðŸ’š",
           },
           {
-            title: "ÃŽmbunÄƒtÄƒÈ›iri continue",
+            title: "ÎmbunÄƒtÄƒÈ›iri continue",
             description:
               "SusÈ›inerea ta finanÈ›eazÄƒ corectarea erorilor È™i dezvoltarea de noi instrumente.",
-            icon: "âœ¨",
+            icon: "✨",
           },
           {
             title: "Protejarea confidenÈ›ialitÄƒÈ›ii",
             description:
-              "ProcesÄƒm totul local. DonaÈ›iile ne permit sÄƒ continuÄƒm Ã®n acest mod.",
+              "ProcesÄƒm totul local. DonaÈ›iile ne permit sÄƒ continuÄƒm în acest mod.",
             icon: "ðŸ”’",
           },
         ],
       },
       tiers: {
-        title: "DoneazÄƒ cÃ¢t poÈ›i",
+        title: "DoneazÄƒ cât poÈ›i",
         description: "Orice sumÄƒ ne ajutÄƒ. PlatÄƒ securizatÄƒ prin Stripe.",
         cards: [
           {
             id: "coffee",
             title: "CumpÄƒrÄƒ o cafea",
-            amount: "3 â‚¬",
-            description: "AcoperÄƒ gÄƒzduirea pentru cÃ¢teva sÄƒptÄƒmÃ¢ni.",
-            ctaLabel: "DoneazÄƒ 3 â‚¬",
+            amount: "3 €",
+            description: "AcoperÄƒ gÄƒzduirea pentru câteva sÄƒptÄƒmâni.",
+            ctaLabel: "DoneazÄƒ 3 €",
             ctaHref: "#stripe-checkout-coffee",
           },
           {
             id: "monthly",
             title: "SusÈ›inere lunarÄƒ",
-            amount: "10 â‚¬/lunÄƒ",
-            description: "Ne oferÄƒ timp dedicat Ã®n fiecare sÄƒptÄƒmÃ¢nÄƒ pentru a Ã®mbunÄƒtÄƒÈ›i ihatelovepdf.",
-            ctaLabel: "DoneazÄƒ 10 â‚¬/lunÄƒ",
+            amount: "10 €/lunÄƒ",
+            description: "Ne oferÄƒ timp dedicat în fiecare sÄƒptÄƒmânÄƒ pentru a îmbunÄƒtÄƒÈ›i ihatelovepdf.",
+            ctaLabel: "DoneazÄƒ 10 €/lunÄƒ",
             ctaHref: "#stripe-checkout-monthly",
             badge: "ðŸ’™ MulÈ›umim",
           },
@@ -675,29 +675,29 @@ export const roDictionary: Dictionary = {
             ctaHref: "#stripe-checkout-custom",
           },
         ],
-        note: "PlÄƒÈ›i securizate prin Stripe. PoÈ›i anula donaÈ›ia recurentÄƒ Ã®n orice moment.",
+        note: "PlÄƒÈ›i securizate prin Stripe. PoÈ›i anula donaÈ›ia recurentÄƒ în orice moment.",
       },
       transparency: {
         title: "Unde merg banii",
         items: [
           "GÄƒzduire È™i reÈ›ea de livrare de conÈ›inut (CDN) pentru ca site-ul sÄƒ fie rapid la nivel global",
           "Timp de dezvoltare pentru rezolvarea erorilor È™i adÄƒugarea de noi funcÈ›ionalitÄƒÈ›i",
-          "AjustÄƒri de design È™i UX pentru o experienÈ›Äƒ de utilizare cÃ¢t mai fluidÄƒ",
+          "AjustÄƒri de design È™i UX pentru o experienÈ›Äƒ de utilizare cât mai fluidÄƒ",
           "Traduceri È™i documentaÈ›ie pentru fiecare limbÄƒ acceptatÄƒ",
         ],
       },
       faq: {
-        title: "ÃŽntrebÄƒri",
+        title: "ÎntrebÄƒri",
         entries: [
           {
-            question: "Ce se Ã®ntÃ¢mplÄƒ dacÄƒ nu pot dona ?",
+            question: "Ce se întâmplÄƒ dacÄƒ nu pot dona ?",
             answer:
-              "Nicio problemÄƒ. ihatelovepdf va rÄƒmÃ¢ne gratuit. Partajarea site-ului cu alÈ›ii este deja un ajutor extraordinar.",
+              "Nicio problemÄƒ. ihatelovepdf va rÄƒmâne gratuit. Partajarea site-ului cu alÈ›ii este deja un ajutor extraordinar.",
           },
           {
             question: "Voi primi o chitanÈ›Äƒ ?",
             answer:
-              "Da. Stripe Ã®È›i trimite automat pe e-mail o chitanÈ›Äƒ cu toate detaliile plÄƒÈ›ii.",
+              "Da. Stripe îÈ›i trimite automat pe e-mail o chitanÈ›Äƒ cu toate detaliile plÄƒÈ›ii.",
           },
           {
             question: "Cum pot anula o donaÈ›ie recurentÄƒ ?",
@@ -707,9 +707,9 @@ export const roDictionary: Dictionary = {
         ],
       },
       closing: {
-        title: "ÃŽÈ›i mulÈ›umim cÄƒ eÈ™ti aici",
+        title: "ÎÈ›i mulÈ›umim cÄƒ eÈ™ti aici",
         description:
-          "Fiecare persoanÄƒ care susÈ›ine ihatelovepdf ajutÄƒ la menÈ›inerea Ã®n viaÈ›Äƒ a unui set util de instrumente PDF.",
+          "Fiecare persoanÄƒ care susÈ›ine ihatelovepdf ajutÄƒ la menÈ›inerea în viaÈ›Äƒ a unui set util de instrumente PDF.",
         ctaLabel: "Trimite un e-mail echipei",
         ctaHref: "mailto:info@ihatelovepdf.com?subject=Salut%20echipa%20ihatelovepdf",
       },
@@ -719,7 +719,7 @@ export const roDictionary: Dictionary = {
           "ihatelovepdf este un proiect personal independent gestionat de o echipÄƒ micÄƒ de voluntari.",
           "ContribuÈ›iile sunt voluntare È™i ajutÄƒ exclusiv la acoperirea gÄƒzduirii È™i a timpului de dezvoltare.",
           "PlÄƒÈ›ile nu sunt donaÈ›ii deductibile fiscal; Stripe va emite o chitanÈ›Äƒ automatÄƒ.",
-          "Serviciul este furnizat ca atare, fÄƒrÄƒ garanÈ›ii. ÃŽntrebÄƒri? info@ihatelovepdf.com.",
+          "Serviciul este furnizat ca atare, fÄƒrÄƒ garanÈ›ii. ÎntrebÄƒri? info@ihatelovepdf.com.",
         ],
       },
     },

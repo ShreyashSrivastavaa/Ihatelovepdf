@@ -75,6 +75,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
+        <meta charSet="UTF-8" />
         <ThemeScript />
         <GoogleAnalyticsScripts />
         <SchemaOrg />

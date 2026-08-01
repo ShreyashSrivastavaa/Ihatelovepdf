@@ -134,7 +134,7 @@ export default function CompressionPreviewCard({
           </div>
           <div className="flex flex-wrap gap-3 text-sm text-[var(--tx-2)]">
             <span>{savedLabel}</span>
-            <span>â€¢</span>
+            <span>•</span>
             <span>{strings.time(timeSeconds)}</span>
           </div>
           <p className="text-xs text-[var(--tx-3)]">{strings.notice}</p>

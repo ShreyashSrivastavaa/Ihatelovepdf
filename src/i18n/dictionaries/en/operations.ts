@@ -19,7 +19,7 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
       ],
       ogTitle: "Compress PDFs without losing quality | ihatelovepdf",
       ogDescription:
-        "Drop your file, choose the optimal compression level, and download a significantly smaller PDF in seconds â€” completely secure with no server uploads.",
+        "Drop your file, choose the optimal compression level, and download a significantly smaller PDF in seconds — completely secure with no server uploads.",
       ogImageAlt: "ihatelovepdf compression tool interface",
     },
     hero: {
@@ -27,7 +27,7 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
       description:
         "Reduce document size so it meets email limits, LMS platforms, or public procedures while keeping every page readable.",
       bulletPoints: [
-        "100% local processing â€” your files never leave the browser",
+        "100% local processing — your files never leave the browser",
         "Choose basic, medium, or aggressive compression depending on your goals",
         "Preserve metadata and document structure when you need it",
       ],
@@ -54,9 +54,9 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
     howTo: {
       title: "How to compress a PDF with ihatelovepdf",
       steps: [
-        "Click â€œUpload your filesâ€ and pick the PDF you want to optimize.",
+        "Click “Upload your files” and pick the PDF you want to optimize.",
         "Choose the compression level and tweak advanced options like keeping metadata.",
-        "Press â€œProcessâ€ and download the compressed document within seconds.",
+        "Press “Process” and download the compressed document within seconds.",
       ],
       note:
         "Working with multiple reports? Compress them one by one with no daily limits or watermarks.",
@@ -86,7 +86,7 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
       ],
       ogTitle: "Build a clean PDF from your images | ihatelovepdf",
       ogDescription:
-        "Drag your images into place, define the layout settings, and export a print-ready PDF file â€” with no uploads or watermarks attached.",
+        "Drag your images into place, define the layout settings, and export a print-ready PDF file — with no uploads or watermarks attached.",
       ogImageAlt: "Creating a PDF from images in ihatelovepdf",
     },
     hero: {
@@ -123,7 +123,7 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
       steps: [
         "Add the images you want to include. Reorder them so the sequence matches your final document.",
         "Adjust fit mode, page size, orientation, and margins to match your output needs.",
-        "Click â€œCreate PDFâ€ to download a compiled document ready to share or archive.",
+        "Click “Create PDF” to download a compiled document ready to share or archive.",
       ],
       note:
         "Large batches? Compress the resulting PDF or split it afterwards without re-uploading your images.",
@@ -157,12 +157,12 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
       ogImageAlt: "Combining multiple PDFs inside ihatelovepdf",
     },
     hero: {
-      title: "Merge PDFs online â€” fast and secure",
+      title: "Merge PDFs online — fast and secure",
       description:
         "Build one polished file with contracts, class notes, or policy documents ready to send, sign, or archive.",
       bulletPoints: [
         "Drag and drop to control the final order",
-        "No hidden limits â€” merge long documents for free",
+        "No hidden limits — merge long documents for free",
         "Keep bookmarks and metadata when you need them",
       ],
       imageAlt: "Merging PDF documents",
@@ -188,9 +188,9 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
     howTo: {
       title: "How to merge PDFs with ihatelovepdf",
       steps: [
-        "Click â€œUpload your filesâ€ and select at least two PDFs.",
+        "Click “Upload your files” and select at least two PDFs.",
         "Use the arrows or drag each file to define the final sequence.",
-        "Pick your bookmark preferences and hit â€œProcessâ€ to download the merged PDF.",
+        "Pick your bookmark preferences and hit “Process” to download the merged PDF.",
       ],
       note:
         "Need to add more files later? Drop them in at any point without restarting.",
@@ -256,8 +256,8 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
       title: "How to split a PDF with ihatelovepdf",
       steps: [
         "Upload the PDF you want to segment from your device.",
-        "Pick whether youâ€™ll split by a fixed number of pages or by file size.",
-        "Press â€œProcessâ€ and download the newly generated documents automatically.",
+        "Pick whether you’ll split by a fixed number of pages or by file size.",
+        "Press “Process” and download the newly generated documents automatically.",
       ],
       note:
         "ihatelovepdf downloads the first file immediately and saves the rest to your device without extra steps.",
@@ -324,7 +324,7 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
       steps: [
         "Upload the PDF and choose the file you want to work with.",
         "Select the pages you need from the thumbnail grid.",
-        "Click â€œProcessâ€ to download a PDF with the selected pages.",
+        "Click “Process” to download a PDF with the selected pages.",
       ],
       note:
         "You can combine extraction with other operations like merging or compressing in separate sessions.",
@@ -527,7 +527,7 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
       steps: [
         "Upload the PDF and choose the file you want to edit.",
         "Drag each thumbnail until the order is correct.",
-        "Hit â€œProcessâ€ to download the document with its new sequence.",
+        "Hit “Process” to download the document with its new sequence.",
       ],
       note:
         "Keep adjusting the order even after an export without re-uploading the file.",
@@ -547,7 +547,7 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
     meta: {
       title: "Convert PDF pages to images | PNG or JPEG export | ihatelovepdf",
       description:
-        "Convert every page of your PDF into high-quality PNG or JPEG images. Choose your resolution and download as a ZIP file â€” 100% private and secure.",
+        "Convert every page of your PDF into high-quality PNG or JPEG images. Choose your resolution and download as a ZIP file — 100% private and secure.",
       keywords: [
         "pdf to images",
         "export pdf pages",
@@ -567,7 +567,7 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
       bulletPoints: [
         "Select PNG or JPEG and control the export DPI",
         "Bundle everything in a single ZIP or download page by page",
-        "Local rendering only â€” no uploads, no trace",
+        "Local rendering only — no uploads, no trace",
       ],
       imageAlt: "PDF to images workflow",
     },
@@ -594,7 +594,7 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
       steps: [
         "Upload the PDF you want to convert. We render one file at a time for accuracy.",
         "Pick PNG or JPEG, adjust the DPI, and decide whether to bundle results inside a ZIP.",
-        "Click â€œExport imagesâ€ to download the archive or individual files instantly.",
+        "Click “Export images” to download the archive or individual files instantly.",
       ],
       note:
         "Need only a few pages? Split or extract first, then export to images to keep downloads focused.",

@@ -68,6 +68,7 @@ export default function ItLayout({ children }: { children: ReactNode }) {
   return (
     <html lang={LOCALE}>
       <head>
+        <meta charSet="UTF-8" />
         <ThemeScript />
         <GoogleAnalyticsScripts />
         <SchemaOrg />

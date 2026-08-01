@@ -61,7 +61,7 @@ export default function FaqSection() {
               onClick={() => toggleQuestion(index)}
             >
               <span>{faq.question}</span>
-              <span className="text-xl">{openIndex === index ? "âˆ’" : "+"}</span>
+              <span className="text-xl">{openIndex === index ? "−" : "+"}</span>
             </button>
 
             {openIndex === index && (

@@ -965,7 +965,7 @@ async function getCachedPdfDocument(fileOrData: File | ArrayBuffer | Uint8Array)
         cMapUrl: `${baseUrl}/cmaps/`,
         cMapPacked: true,
         standardFontDataUrl: `${baseUrl}/standard_fonts/`,
-        // In worker: disable @font-face (CSS not available) â†’ forces path-based glyph rendering
+        // In worker: disable @font-face (CSS not available) → forces path-based glyph rendering
         disableFontFace: isInWorker,
         // In worker: fetch CMaps/fonts from our context (has polyfills), not pdf.js's nested worker
         useWorkerFetch: !isInWorker,

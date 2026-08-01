@@ -18,8 +18,8 @@ const LOCALE = "ru" as const;
 
 export const metadata = {
   metadataBase: METADATA_BASE,
-  title: "ihatelovepdf - Ð¡Ð¶Ð°Ñ‚ÑŒ, Ð¾Ð±ÑŠÐµÐ´Ð¸Ð½Ð¸Ñ‚ÑŒ, Ñ€Ð°Ð·Ð´ÐµÐ»Ð¸Ñ‚ÑŒ Ð¸ ÐºÐ¾Ð½Ð²ÐµÑ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ PDF",
-  description: "Ð‘ÐµÑÐ¿Ð»Ð°Ñ‚Ð½Ñ‹Ðµ Ð¾Ð½Ð»Ð°Ð¹Ð½-Ð¸Ð½ÑÑ‚Ñ€ÑƒÐ¼ÐµÐ½Ñ‚Ñ‹ Ð´Ð»Ñ PDF: ÑÐ¶Ð°Ñ‚Ð¸Ðµ, Ð¾Ð±ÑŠÐµÐ´Ð¸Ð½ÐµÐ½Ð¸Ðµ, Ñ€Ð°Ð·Ð´ÐµÐ»ÐµÐ½Ð¸Ðµ, Ð¸Ð·Ð²Ð»ÐµÑ‡ÐµÐ½Ð¸Ðµ Ð¸ ÐºÐ¾Ð½Ð²ÐµÑ€Ñ‚Ð°Ñ†Ð¸Ñ. 100% ÐºÐ¾Ð½Ñ„Ð¸Ð´ÐµÐ½Ñ†Ð¸Ð°Ð»ÑŒÐ½Ð¾, Ð»Ð¾ÐºÐ°Ð»ÑŒÐ½Ð°Ñ Ð¾Ð±Ñ€Ð°Ð±Ð¾Ñ‚ÐºÐ° Ð² Ð±Ñ€Ð°ÑƒÐ·ÐµÑ€Ðµ.",
+  title: "ihatelovepdf - Сжать, объединить, разделить и конвертировать PDF",
+  description: "Бесплатные онлайн-инструменты для PDF: сжатие, объединение, разделение, извлечение и конвертация. 100% конфиденциально, локальная обработка в браузере.",
   icons: SHARED_ICONS,
   alternates: {
     canonical: "https://ihatelovepdf.com/ru/",
@@ -51,9 +51,9 @@ export const metadata = {
   },
   openGraph: {
     ...SHARED_OPEN_GRAPH,
-    images: [{ url: "https://ihatelovepdf.com/og-images/og-image-ru.png", width: 1409, height: 736, alt: "ihatelovepdf - ÐšÐ¾Ð½Ñ„Ð¸Ð´ÐµÐ½Ñ†Ð¸Ð°Ð»ÑŒÐ½Ð°Ñ Ð¸ Ð±ÐµÑÐ¿Ð»Ð°Ñ‚Ð½Ð°Ñ Ð¾Ð±Ñ€Ð°Ð±Ð¾Ñ‚ÐºÐ° PDF" }],
-    title: "ihatelovepdf - Ð‘ÐµÑÐ¿Ð»Ð°Ñ‚Ð½Ñ‹Ðµ Ð¸ ÐºÐ¾Ð½Ñ„Ð¸Ð´ÐµÐ½Ñ†Ð¸Ð°Ð»ÑŒÐ½Ñ‹Ðµ Ð¸Ð½ÑÑ‚Ñ€ÑƒÐ¼ÐµÐ½Ñ‚Ñ‹ Ð´Ð»Ñ PDF Ð² Ð±Ñ€Ð°ÑƒÐ·ÐµÑ€Ðµ",
-    description: "ÐžÐ±ÑŠÐµÐ´Ð¸Ð½ÑÐ¹Ñ‚Ðµ, ÑÐ¶Ð¸Ð¼Ð°Ð¹Ñ‚Ðµ, Ð´ÐµÐ»Ð¸Ñ‚Ðµ Ð¸ ÐºÐ¾Ð½Ð²ÐµÑ€Ñ‚Ð¸Ñ€ÑƒÐ¹Ñ‚Ðµ PDF Ð±ÐµÐ· Ð·Ð°Ð³Ñ€ÑƒÐ·ÐºÐ¸ Ð½Ð° ÑÐµÑ€Ð²ÐµÑ€. Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð¸ 100% ÐºÐ¾Ð½Ñ„Ð¸Ð´ÐµÐ½Ñ†Ð¸Ð°Ð»ÑŒÐ½Ð¾.",
+    images: [{ url: "https://ihatelovepdf.com/og-images/og-image-ru.png", width: 1409, height: 736, alt: "ihatelovepdf - Конфиденциальная и бесплатная обработка PDF" }],
+    title: "ihatelovepdf - Бесплатные и конфиденциальные инструменты для PDF в браузере",
+    description: "Объединяйте, сжимайте, делите и конвертируйте PDF без загрузки на сервер. Безопасно и 100% конфиденциально.",
     url: "https://ihatelovepdf.com/ru/",
     locale: "ru_RU",
     type: "website",
@@ -67,6 +67,7 @@ export default function RuLayout({ children }: { children: ReactNode }) {
   return (
     <html lang={LOCALE}>
       <head>
+        <meta charSet="UTF-8" />
         <ThemeScript />
         <GoogleAnalyticsScripts />
         <SchemaOrg />

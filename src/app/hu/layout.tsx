@@ -18,8 +18,8 @@ const LOCALE = "hu" as const;
 
 export const metadata = {
   metadataBase: METADATA_BASE,
-  title: "ihatelovepdf - PDF tÃ¶mÃ¶rÃ­tÃ©se, egyesÃ­tÃ©se, felosztÃ¡sa Ã©s konvertÃ¡lÃ¡sa",
-  description: "Ingyenes online PDF-eszkÃ¶zÃ¶k: tÃ¶mÃ¶rÃ­tÃ©s, egyesÃ­tÃ©s, felosztÃ¡s, kinyerÃ©s Ã©s konvertÃ¡lÃ¡s. 100% privÃ¡t, helyi feldolgozÃ¡s a bÃ¶ngÃ©szÅ‘dben.",
+  title: "ihatelovepdf - PDF tömörítése, egyesítése, felosztása és konvertálása",
+  description: "Ingyenes online PDF-eszközök: tömörítés, egyesítés, felosztás, kinyerés és konvertálás. 100% privát, helyi feldolgozás a böngészÅ‘dben.",
   icons: SHARED_ICONS,
   alternates: {
     canonical: "https://ihatelovepdf.com/hu/",
@@ -51,9 +51,9 @@ export const metadata = {
   },
   openGraph: {
     ...SHARED_OPEN_GRAPH,
-    images: [{ url: "https://ihatelovepdf.com/og-images/og-image-hu.png", width: 1409, height: 736, alt: "ihatelovepdf - PrivÃ¡t Ã©s ingyenes PDF-feldolgozÃ¡s" }],
-    title: "ihatelovepdf - Ingyenes Ã©s privÃ¡t PDF-eszkÃ¶zÃ¶k a bÃ¶ngÃ©szÅ‘dben",
-    description: "EgyesÃ­tsd, tÃ¶mÃ¶rÃ­tsd, oszd fel Ã©s konvertÃ¡ld a PDF-eket szerverre feltÃ¶ltÃ©s nÃ©lkÃ¼l. BiztonsÃ¡gos Ã©s 100% privÃ¡t.",
+    images: [{ url: "https://ihatelovepdf.com/og-images/og-image-hu.png", width: 1409, height: 736, alt: "ihatelovepdf - Privát és ingyenes PDF-feldolgozás" }],
+    title: "ihatelovepdf - Ingyenes és privát PDF-eszközök a böngészÅ‘dben",
+    description: "Egyesítsd, tömörítsd, oszd fel és konvertáld a PDF-eket szerverre feltöltés nélkül. Biztonságos és 100% privát.",
     url: "https://ihatelovepdf.com/hu/",
     locale: "hu_HU",
     type: "website",
@@ -67,6 +67,7 @@ export default function HuLayout({ children }: { children: ReactNode }) {
   return (
     <html lang={LOCALE}>
       <head>
+        <meta charSet="UTF-8" />
         <ThemeScript />
         <GoogleAnalyticsScripts />
         <SchemaOrg />

@@ -1,63 +1,63 @@
 export const faqsFr = {
   common: [
     {
-      question: "Comment fonctionne ihatelovepdf sans tÃ©lÃ©charger mes documents sur des serveurs ?",
+      question: "Comment fonctionne ihatelovepdf sans télécharger mes documents sur des serveurs ?",
       answer:
-        "ihatelovepdf fonctionne entiÃ¨rement dans votre navigateur avec un moteur de traitement sur l'appareil. Aucun fichier n'est tÃ©lÃ©chargÃ© sur nos serveurs, ce qui garantit une confidentialitÃ© totale et un traitement rapide.",
+        "ihatelovepdf fonctionne entièrement dans votre navigateur avec un moteur de traitement sur l'appareil. Aucun fichier n'est téléchargé sur nos serveurs, ce qui garantit une confidentialité totale et un traitement rapide.",
     },
     {
-      question: "ihatelovepdf est-il sÃ»r pour les documents confidentiels ?",
+      question: "ihatelovepdf est-il sûr pour les documents confidentiels ?",
       answer:
-        "Absolument. Tout reste sur votre appareil, de sorte que vos PDF ne quittent jamais votre contrÃ´le â€” nous ne pouvons mÃªme pas accÃ©der Ã  leur contenu.",
+        "Absolument. Tout reste sur votre appareil, de sorte que vos PDF ne quittent jamais votre contrôle — nous ne pouvons même pas accéder à leur contenu.",
     },
     {
-      question: "Y a-t-il une limite Ã  la taille ou au nombre de PDF que je peux traiter ?",
+      question: "Y a-t-il une limite à la taille ou au nombre de PDF que je peux traiter ?",
       answer:
-        "La principale limite est la mÃ©moire de votre appareil. Dans la plupart des cas, ihatelovepdf traite des fichiers allant jusqu'Ã  50 Mo chacun, bien que cela puisse varier en fonction de votre matÃ©riel et de votre navigateur.",
+        "La principale limite est la mémoire de votre appareil. Dans la plupart des cas, ihatelovepdf traite des fichiers allant jusqu'à 50 Mo chacun, bien que cela puisse varier en fonction de votre matériel et de votre navigateur.",
     },
     {
       question: "ihatelovepdf fonctionne-t-il sur les appareils mobiles ?",
       answer:
-        "Oui. ihatelovepdf est optimisÃ© pour les ordinateurs de bureau, les tablettes et les tÃ©lÃ©phones. L'interface s'adapte Ã  toutes les tailles d'Ã©cran.",
+        "Oui. ihatelovepdf est optimisé pour les ordinateurs de bureau, les tablettes et les téléphones. L'interface s'adapte à toutes les tailles d'écran.",
     },
   ],
   regional: [
     {
-      question: "ihatelovepdf m'aide-t-il Ã  respecter les rÃ¨gles de protection des donnÃ©es ?",
+      question: "ihatelovepdf m'aide-t-il à respecter les règles de protection des données ?",
       answer:
-        "Parce que le traitement se fait localement, aucune donnÃ©e personnelle ne quitte votre organisation. Cela facilite le respect du RGPD, du HIPAA, du LGPD ou de toute politique de confidentialitÃ© interne.",
+        "Parce que le traitement se fait localement, aucune donnée personnelle ne quitte votre organisation. Cela facilite le respect du RGPD, du HIPAA, du LGPD ou de toute politique de confidentialité interne.",
     },
     {
       question: "Puis-je utiliser ihatelovepdf pour des formulaires officiels ou des factures ?",
       answer:
-        "Oui. Il est idÃ©al pour optimiser les factures, les contrats et les documents de l'administration publique tout en conservant la qualitÃ© d'origine.",
+        "Oui. Il est idéal pour optimiser les factures, les contrats et les documents de l'administration publique tout en conservant la qualité d'origine.",
     },
     {
-      question: "La compression affectera-t-elle la validitÃ© lÃ©gale de mes documents ?",
+      question: "La compression affectera-t-elle la validité légale de mes documents ?",
       answer:
-        "Le compresseur ihatelovepdf prÃ©serve l'intÃ©gritÃ© du document. MÃªme ainsi, nous vous recommandons de confirmer que le fichier rÃ©sultant rÃ©pond aux exigences spÃ©cifiques de l'entitÃ© rÃ©ceptrice lorsque les enjeux sont Ã©levÃ©s.",
+        "Le compresseur ihatelovepdf préserve l'intégrité du document. Même ainsi, nous vous recommandons de confirmer que le fichier résultant répond aux exigences spécifiques de l'entité réceptrice lorsque les enjeux sont élevés.",
     },
   ],
   tech: [
     {
       question: "Quelle technologie propulse ihatelovepdf ?",
       answer:
-        "ihatelovepdf utilise un moteur JavaScript lÃ©ger pour manipuler nativement les PDF dans le navigateur sans dÃ©pendre d'extensions natives. Cela permet de garder l'application plus lÃ©gÃ¨re et la maintenance plus simple.",
+        "ihatelovepdf utilise un moteur JavaScript léger pour manipuler nativement les PDF dans le navigateur sans dépendre d'extensions natives. Cela permet de garder l'application plus légère et la maintenance plus simple.",
     },
     {
-      question: "Les Ã©lÃ©ments interactifs sont-ils perdus lorsque je compresse un PDF ?",
+      question: "Les éléments interactifs sont-ils perdus lorsque je compresse un PDF ?",
       answer:
-        "Dans la plupart des cas, ihatelovepdf conserve les liens, les formulaires et les signets. Avec une compression trÃ¨s agressive, certaines fonctionnalitÃ©s avancÃ©es peuvent Ãªtre modifiÃ©es, nous vous recommandons donc de vÃ©rifier.",
+        "Dans la plupart des cas, ihatelovepdf conserve les liens, les formulaires et les signets. Avec une compression très agressive, certaines fonctionnalités avancées peuvent être modifiées, nous vous recommandons donc de vérifier.",
     },
     {
       question: "Quels navigateurs sont compatibles avec ihatelovepdf ?",
       answer:
-        "ihatelovepdf fonctionne avec les navigateurs modernes tels que Chrome, Firefox, Safari, Edge et Opera. Tout ce dont vous avez besoin est un navigateur Ã  jour prenant en charge ES2020 â€” aucun runtime supplÃ©mentaire n'est requis.",
+        "ihatelovepdf fonctionne avec les navigateurs modernes tels que Chrome, Firefox, Safari, Edge et Opera. Tout ce dont vous avez besoin est un navigateur à jour prenant en charge ES2020 — aucun runtime supplémentaire n'est requis.",
     },
     {
       question: "Puis-je convertir un PDF vers d'autres formats ?",
       answer:
-        "Actuellement, vous pouvez convertir des PDF en images (PNG ou JPEG) et crÃ©er des PDF Ã  partir de JPG, PNG ou WEBP sans tÃ©lÃ©charger de fichiers. Pour d'autres formats de niche, continuez Ã  utiliser un convertisseur dÃ©diÃ© pendant que nous continuons Ã  dÃ©velopper la boÃ®te Ã  outils.",
+        "Actuellement, vous pouvez convertir des PDF en images (PNG ou JPEG) et créer des PDF à partir de JPG, PNG ou WEBP sans télécharger de fichiers. Pour d'autres formats de niche, continuez à utiliser un convertisseur dédié pendant que nous continuons à développer la boîte à outils.",
     },
   ],
 };
