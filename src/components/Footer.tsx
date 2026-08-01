@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useDictionary } from '../i18n/LocaleProvider';
 import ContactModal from './ContactModal';
 import { ShieldCheck } from 'lucide-react';
@@ -18,8 +19,9 @@ export default function Footer() {
         <div className="mx-auto max-w-[1140px] px-4 sm:px-6 space-y-8">
           
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-6 border-b border-[var(--border)]">
-            <div className="flex items-center gap-2">
-              <span className="text-lg font-bold text-[var(--tx)]">ihatelovepdf</span>
+            <div className="flex items-center gap-2.5">
+              <Image src="/logo.svg" alt="ihatelovepdf logo" width={28} height={28} className="object-contain" unoptimized />
+              <span className="text-lg font-extrabold text-[var(--tx)]">ihatelovepdf</span>
               <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full border border-[var(--success-border)] bg-[var(--success-soft)] text-xs font-medium text-[var(--tx)]">
                 <ShieldCheck className="h-3.5 w-3.5 text-[var(--success)]" />
                 100% Private
