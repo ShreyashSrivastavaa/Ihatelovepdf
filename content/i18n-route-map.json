@@ -11,7 +11,7 @@
     "hu": "/hu"
   },
   "faq": {
-    "en": "/faq",
+    "en": "/en/faq",
     "es": "/es/preguntas-frecuentes",
     "pt": "/pt/perguntas-frequentes",
     "de": "/de/haeufige-fragen",
@@ -22,7 +22,7 @@
     "hu": "/hu/gyakran-ismetelt-kerdesek"
   },
   "support": {
-    "en": "/support",
+    "en": "/en/support",
     "es": "/es/apoya",
     "pt": "/pt/apoie",
     "de": "/de/unterstuetzen",
