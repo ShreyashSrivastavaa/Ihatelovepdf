@@ -26,6 +26,7 @@ import CompressionPreviewCard, { PreviewStatus } from './CompressionPreviewCard'
 import CompressionSummaryCard from './CompressionSummaryCard';
 import type { OperationKey } from '../../types/operations';
 import { trackEvent } from '../../lib/analytics';
+import { ChevronDown } from 'lucide-react';
 
 type ProcessingMode = OperationKey;
 
@@ -1968,48 +1969,31 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
             </h2>
           </div>
 
-          {/* Mobile Tool Selector Dropdown (< 768px) */}
-          <div className="md:hidden">
-            <div className="relative flex items-center rounded-xl border border-[var(--border)] bg-[var(--bg-card)] px-3.5 py-3 shadow-xs">
-              <select
-                id="mobile-tool-select"
-                value={mode}
-                onChange={(e) => handleModeChange(e.target.value as ProcessingMode)}
-                className="w-full bg-transparent font-semibold text-sm text-[var(--tx)] focus:outline-none cursor-pointer"
-              >
-                {MODE_TABS.map((modeKey) => {
-                  const tabStrings = (modes as Record<ProcessingMode, { label: string }>)[modeKey];
-                  return (
-                    <option key={modeKey} value={modeKey} className="bg-[var(--bg-card)] text-[var(--tx)] font-medium">
-                      {tabStrings?.label ?? modeKey}
-                    </option>
-                  );
-                })}
-              </select>
+          {/* Unified Tool Selector Dropdown */}
+          <div className="relative flex items-center rounded-xl border border-[var(--border)] bg-[var(--bg-card)] px-4 py-3 shadow-xs hover:border-[var(--accent-border)] transition-all duration-200 focus-within:ring-2 focus-within:ring-[var(--accent)]">
+            <select
+              id="tool-operation-select"
+              value={mode}
+              onChange={(e) => handleModeChange(e.target.value as ProcessingMode)}
+              className="w-full appearance-none bg-transparent pr-8 font-semibold text-sm sm:text-base text-[var(--tx)] focus:outline-none cursor-pointer"
+              aria-label={processorStrings.title}
+            >
+              {MODE_TABS.map((modeKey) => {
+                const tabStrings = (modes as Record<ProcessingMode, { label: string }>)[modeKey];
+                return (
+                  <option
+                    key={modeKey}
+                    value={modeKey}
+                    className="bg-[var(--bg-card)] text-[var(--tx)] font-medium py-1"
+                  >
+                    {tabStrings?.label ?? modeKey}
+                  </option>
+                );
+              })}
+            </select>
+            <div className="pointer-events-none absolute right-4 flex items-center text-[var(--tx-2)]">
+              <ChevronDown className="h-5 w-5" />
             </div>
-          </div>
-
-          {/* Desktop Tool Selector Tabs (>= 768px) */}
-          <div className="hidden md:flex flex-wrap gap-1 p-1 rounded-xl bg-[var(--bg-subtle)] border border-[var(--border)]">
-            {MODE_TABS.map(modeKey => {
-              const tabStrings = (modes as Record<ProcessingMode, { label: string }>)[modeKey];
-              const label = tabStrings?.label ?? modeKey;
-              const isActive = mode === modeKey;
-              return (
-                <button
-                  key={modeKey}
-                  type="button"
-                  className={`px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all duration-150 ${
-                    isActive
-                      ? 'bg-[var(--bg-card)] text-[var(--accent)] shadow-xs border border-[var(--border)] font-semibold'
-                      : 'text-[var(--tx-2)] hover:text-[var(--tx)] hover:bg-[var(--bg-card)]/50'
-                  }`}
-                  onClick={() => handleModeChange(modeKey)}
-                >
-                  {label}
-                </button>
-              );
-            })}
           </div>
 
           <p className="text-xs sm:text-sm text-[var(--tx-2)] pt-1">{getModeHelpText()}</p>
