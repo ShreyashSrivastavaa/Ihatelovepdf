@@ -7,7 +7,7 @@ import Image from 'next/image';
 import {
   Layers,
   FileDown,
-  Scissors,
+  ScissorsLineDashed,
   RotateCw,
   ArrowDownUp,
   Image as ImageIcon,
@@ -22,7 +22,7 @@ import {
 const ICON_MAP: Record<string, React.ElementType> = {
   merge: Layers,
   compress: FileDown,
-  split: Scissors,
+  split: ScissorsLineDashed,
   extract: Sparkles,
   crop: Crop,
   rotate: RotateCw,

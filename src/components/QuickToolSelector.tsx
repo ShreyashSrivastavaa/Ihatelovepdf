@@ -2,14 +2,14 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Layers, FileDown, Scissors, RotateCw, ArrowDownUp, Image as ImageIcon, Sparkles, ChevronDown, Check, Wrench } from 'lucide-react';
+import { Layers, FileDown, ScissorsLineDashed, RotateCw, ArrowDownUp, Image as ImageIcon, Sparkles, ChevronDown, Check, Wrench, Crop } from 'lucide-react';
 
 const ICON_MAP = {
   merge: Layers,
   compress: FileDown,
-  split: Scissors,
+  split: ScissorsLineDashed,
   extract: Sparkles,
-  crop: Scissors,
+  crop: Crop,
   rotate: RotateCw,
   reorder: ArrowDownUp,
   pdfToImages: ImageIcon,
