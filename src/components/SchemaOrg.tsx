@@ -24,8 +24,18 @@ export function SchemaOrg() {
         ],
         "softwareRequirements": "Modern Web Browser",
         "author": {
-            "@type": "Organization",
-            "name": "ihatelovepdf"
+            "@type": "Person",
+            "name": "Shreyash Srivastava",
+            "jobTitle": "Creator & Lead Developer",
+            "url": "https://www.ihatelovepdf.com"
+        },
+        "creator": {
+            "@type": "Person",
+            "name": "Shreyash Srivastava"
+        },
+        "publisher": {
+            "@type": "Person",
+            "name": "Shreyash Srivastava"
         }
     };
 

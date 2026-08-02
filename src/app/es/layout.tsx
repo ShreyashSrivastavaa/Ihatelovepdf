@@ -13,7 +13,7 @@ import CookieBanner from "../../components/CookieBanner";
 import { SchemaOrg } from "../../components/SchemaOrg";
 import { BreadcrumbSchema } from "../../components/seo/BreadcrumbSchema";
 
-import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER } from "../../lib/metadata-shared";
+import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER, SHARED_AUTHORS, SHARED_CREATOR, SHARED_PUBLISHER } from "../../lib/metadata-shared";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -21,6 +21,9 @@ const LOCALE = "es" as const;
 
 export const metadata = {
   metadataBase: METADATA_BASE,
+  authors: SHARED_AUTHORS,
+  creator: SHARED_CREATOR,
+  publisher: SHARED_PUBLISHER,
   title: "ihatelovepdf | Herramientas PDF Privadas y Gratuitas en tu Navegador",
   description:
     "Herramientas PDF gratuitas en tu navegador: unir PDF, comprimir PDF, dividir PDF, extraer páginas, convertir PDF a imágenes o imágenes a PDF. 100% privado.",

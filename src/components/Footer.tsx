@@ -53,6 +53,7 @@ export default function Footer() {
 
 
           <div className="pt-4 text-xs text-[var(--tx-3)] space-y-1.5 border-t border-[var(--border)]">
+            <p className="font-medium text-[var(--tx-2)]">Created & Maintained by <span className="font-semibold text-[var(--tx)]">Shreyash Srivastava</span></p>
             <p>{footer.rights}</p>
             <p className="opacity-75">{footer.license}</p>
             {footer.disclaimer && (

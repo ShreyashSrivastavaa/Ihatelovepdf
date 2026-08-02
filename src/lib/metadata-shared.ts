@@ -23,3 +23,8 @@ export const SHARED_TWITTER: Metadata["twitter"] = {
     card: "summary_large_image",
 };
 
+export const SHARED_AUTHORS = [{ name: "Shreyash Srivastava", url: SITE_URL }];
+export const SHARED_CREATOR = "Shreyash Srivastava";
+export const SHARED_PUBLISHER = "Shreyash Srivastava";
+
+

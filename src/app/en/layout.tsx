@@ -13,7 +13,7 @@ import CookieBanner from "../../components/CookieBanner";
 import { SchemaOrg } from "../../components/SchemaOrg";
 import { BreadcrumbSchema } from "../../components/seo/BreadcrumbSchema";
 
-import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER } from "../../lib/metadata-shared";
+import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER, SHARED_AUTHORS, SHARED_CREATOR, SHARED_PUBLISHER } from "../../lib/metadata-shared";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -21,6 +21,9 @@ const LOCALE = "en" as const;
 
 export const metadata = {
   metadataBase: METADATA_BASE,
+  authors: SHARED_AUTHORS,
+  creator: SHARED_CREATOR,
+  publisher: SHARED_PUBLISHER,
   title: "ihatelovepdf - Merge, Compress, Split, and Convert PDFs Online",
   description: "Free online PDF tools to merge, compress, split, extract, and convert PDFs. 100% private, local processing in your browser.",
   icons: SHARED_ICONS,
