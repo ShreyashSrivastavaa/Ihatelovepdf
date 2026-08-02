@@ -2,7 +2,7 @@
 
 import { useReportWebVitals } from 'next/web-vitals';
 
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-ZHEM8GFQYG";
 const DEBUG = process.env.NEXT_PUBLIC_ANALYTICS_DEBUG === 'true';
 
 export function WebVitalsReporter() {
