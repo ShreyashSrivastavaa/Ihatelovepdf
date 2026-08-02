@@ -75,7 +75,7 @@ export default function ToolSwitcher({ tools, activeKey = null }: ToolSwitcherPr
         title="Go to Home"
       >
         <Image
-          src="/logo-icon.png"
+          src="/images/stickers/ihatelove.png"
           alt="ihatelovepdf logo"
           width={28}
           height={28}
