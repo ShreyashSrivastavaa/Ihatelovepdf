@@ -64,7 +64,12 @@ export const metadata = {
     locale: "en_US",
     type: "website",
   },
-  twitter: SHARED_TWITTER,
+  twitter: {
+    ...SHARED_TWITTER,
+    title: "ihatelovepdf - Free and Private PDF Tools in Your Browser",
+    description: "Merge, compress, split, and convert PDFs without uploading files. Secure and 100% private processing.",
+    images: ["https://ihatelovepdf.com/og-images/og-image-en.png"],
+  },
 };
 
 import { ThemeScript } from "../../components/ThemeScript";

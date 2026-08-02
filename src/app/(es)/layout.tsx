@@ -67,7 +67,12 @@ export const metadata = {
     locale: "en_US",
     type: "website",
   },
-  twitter: SHARED_TWITTER,
+  twitter: {
+    ...SHARED_TWITTER,
+    title: "ihatelovepdf | Free & Private PDF Tools in Your Browser",
+    description: "Merge, compress, split, and convert PDFs without uploading files. Instant results with 100% local, private processing.",
+    images: ["https://ihatelovepdf.com/og-images/og-image-en.png"],
+  },
   verification: {
     google: "m8KoSeRzU9slpYn6QHT5ZBRMnb_wkcU00sdc_B-ZPvg",
   },
