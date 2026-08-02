@@ -5,7 +5,8 @@ export const METADATA_BASE = new URL(SITE_URL);
 
 export const SHARED_ICONS = [
     { rel: "icon", url: "/favicon.ico" },
-    { rel: "apple-touch-icon", url: "/favicon.ico" },
+    { rel: "icon", type: "image/png", url: "/favicon.png" },
+    { rel: "apple-touch-icon", url: "/apple-icon.png" },
 ];
 
 export const SHARED_OPEN_GRAPH: Metadata["openGraph"] = {
