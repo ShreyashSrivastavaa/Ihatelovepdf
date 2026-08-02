@@ -23,14 +23,14 @@ const COMPRESSION_PRESETS: Record<CompressionLevel, Partial<PDFProcessingOptions
   low: {
     preserveMetadata: true,
     stripAnnotations: false,
-    downscaleImages: false,
-    downscaleImagesDpi: 150,
+    downscaleImages: true,
+    downscaleImagesDpi: 200,
   },
   medium: {
-    preserveMetadata: true,
+    preserveMetadata: false,
     stripAnnotations: false,
     downscaleImages: true,
-    downscaleImagesDpi: 150,
+    downscaleImagesDpi: 120,
   },
   high: {
     preserveMetadata: false,

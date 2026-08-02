@@ -134,11 +134,15 @@ export async function compressPDF(
     // Get compression level
     const compressionLevel = options.compressionLevel || 'medium';
 
-    const shouldRemoveMetadata = options.preserveMetadata === false;
-    const shouldStripAnnotations = options.stripAnnotations === true;
-    const shouldDownscaleImages = options.downscaleImages === true;
-    const targetDpi = options.downscaleImagesDpi ?? 150;
-    const imageQuality = options.imageQuality ?? 0.82; // Default JPEG quality
+    const shouldRemoveMetadata = options.preserveMetadata === false || compressionLevel === 'high' || compressionLevel === 'medium';
+    const shouldStripAnnotations = options.stripAnnotations === true || compressionLevel === 'high';
+    const shouldDownscaleImages = options.downscaleImages !== false;
+    const targetDpi = options.downscaleImagesDpi ?? (
+      compressionLevel === 'high' ? 72 : compressionLevel === 'low' ? 200 : 120
+    );
+    const imageQuality = options.imageQuality ?? (
+      compressionLevel === 'high' ? 0.45 : compressionLevel === 'low' ? 0.75 : 0.60
+    );
 
     let optimizationStats = { universalOptimizedCount: 0 };
 
@@ -159,13 +163,19 @@ export async function compressPDF(
       objectsPerTick: compressionLevel === 'high' ? 500 : 50,
     });
 
+    // If PDF didn't shrink and no images were optimized, keep original bytes so file is never LARGER
+    let finalBytes = pdfBytes;
+    if (finalBytes.length >= arrayBuffer.byteLength && optimizationStats.universalOptimizedCount === 0) {
+      finalBytes = new Uint8Array(arrayBuffer);
+    }
+
     const endTime = performance.now();
 
     return {
-      data: pdfBytes,
+      data: finalBytes,
       originalSize: arrayBuffer.byteLength,
-      processedSize: pdfBytes.length,
-      compressionRatio: pdfBytes.length / arrayBuffer.byteLength,
+      processedSize: finalBytes.length,
+      compressionRatio: finalBytes.length / arrayBuffer.byteLength,
       processingTimeMs: endTime - startTime,
       universalOptimizedCount: optimizationStats.universalOptimizedCount,
     };
@@ -367,12 +377,6 @@ async function downscaleImage(
   const maxDimension = Math.max(width, height);
   const targetPixels = Math.round(targetDpi * 8.27);
 
-  // High-res FlateDecode images should ALWAYS be converted to JPEG regardless of DPI
-  if (!rawParams && (maxDimension <= targetPixels * 1.05 || targetPixels <= 0)) {
-    if (source instanceof ImageBitmap) source.close();
-    return null;
-  }
-
   const scale = targetPixels <= 0 ? 1 : Math.min(1, targetPixels / maxDimension);
   const targetWidth = Math.max(1, Math.round(width * scale));
   const targetHeight = Math.max(1, Math.round(height * scale));
@@ -490,7 +494,7 @@ async function downscaleDocumentImages(pdfDoc: PDFDocument, targetDpi: number, q
     const hash = hashBytes(imageBytes);
     const cached = processedImages.get(hash);
 
-    if (cached) {
+    if (cached && (cached.bytes.length < object.contents.length || !isDCT)) {
       // PDFRawStream.contents is readonly, so we must replace the object in the context
       const newStream = PDFRawStream.of(object.dict, cached.bytes);
       newStream.dict.set(PDFName.of("Length"), pdfDoc.context.obj(cached.bytes.length));
@@ -501,16 +505,12 @@ async function downscaleDocumentImages(pdfDoc: PDFDocument, targetDpi: number, q
 
       // Assign the new stream to the existing reference
       pdfDoc.context.assign(ref, newStream);
-
-      // If the original was not DCT (JPEG), we count this as a universal optimization (format conversion)
-      if (!isDCT) {
-        universalOptimizedCount++;
-      }
+      universalOptimizedCount++;
       continue;
     }
 
     const result = await downscaleImage(imageBytes, targetDpi, quality, rawParams);
-    if (result) {
+    if (result && (result.bytes.length < object.contents.length || !isDCT)) {
       // PDFRawStream.contents is readonly, so we must replace the object in the context
       const newStream = PDFRawStream.of(object.dict, result.bytes);
       newStream.dict.set(PDFName.of("Length"), pdfDoc.context.obj(result.bytes.length));
@@ -522,11 +522,7 @@ async function downscaleDocumentImages(pdfDoc: PDFDocument, targetDpi: number, q
       // Assign the new stream to the existing reference
       pdfDoc.context.assign(ref, newStream);
       processedImages.set(hash, result);
-
-      // If the original was not DCT (JPEG), we count this as a universal optimization (format conversion)
-      if (!isDCT) {
-        universalOptimizedCount++;
-      }
+      universalOptimizedCount++;
     }
   }
 
