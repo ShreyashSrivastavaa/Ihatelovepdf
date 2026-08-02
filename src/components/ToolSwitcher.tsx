@@ -75,11 +75,11 @@ export default function ToolSwitcher({ tools, activeKey = null }: ToolSwitcherPr
         title="Go to Home"
       >
         <Image
-          src="/logo.png"
+          src="/logo-icon.png"
           alt="ihatelovepdf logo"
-          width={22}
-          height={22}
-          className="object-contain transition-transform group-hover:scale-110"
+          width={28}
+          height={28}
+          className="object-contain h-7 w-7 transition-transform group-hover:scale-110"
           unoptimized
         />
         <span className="hidden sm:inline text-xs font-bold text-[var(--tx)]">Home</span>

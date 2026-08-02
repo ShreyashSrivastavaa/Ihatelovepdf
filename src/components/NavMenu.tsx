@@ -72,10 +72,9 @@ export default function NavMenu() {
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
 
-            {/* Brand Logo & Name */}
             <Link href={routes.home} onClick={() => setIsOpen(false)} className="flex items-center gap-2.5 group">
-              <div className="relative flex h-9 w-9 items-center justify-center rounded-xl transition-transform duration-200 group-hover:scale-105">
-                <Image src="/logo.png" alt="ihatelovepdf logo" width={34} height={34} className="object-contain" unoptimized />
+              <div className="relative flex h-10 w-10 items-center justify-center rounded-xl transition-transform duration-200 group-hover:scale-105">
+                <Image src="/logo-icon.png" alt="ihatelovepdf logo" width={40} height={40} className="object-contain h-10 w-10" unoptimized />
               </div>
               <span className="text-lg font-extrabold tracking-tight text-[var(--tx)]">ihatelovepdf</span>
             </Link>
