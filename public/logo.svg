@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
   <defs>
     <!-- Red Facet Gradients for Left Heart -->
     <linearGradient id="facet1" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -19,65 +19,35 @@
     </linearGradient>
   </defs>
 
-  <!-- Split Heart Container (centered) -->
-  <g transform="translate(50, 20)">
+  <!-- Split Heart Mark Only (Icon Only) -->
+  <g transform="translate(0, 15)">
     <!-- LEFT HALF: Faceted Red Heart -->
-    <!-- Top-left lobe polygon 1 -->
     <polygon points="200,80 150,30 90,35 60,75 80,140 200,80" fill="url(#facet4)" />
-    <!-- Top-left outer curve polygon 2 -->
     <polygon points="60,75 90,35 150,30 200,80 200,160 130,220 80,140" fill="url(#facet1)" />
-    <!-- Mid-left facet polygon 3 -->
     <polygon points="200,80 200,160 130,220 170,270 200,320 200,160" fill="url(#facet2)" />
-    <!-- Lower tip left polygon 4 -->
     <polygon points="130,220 80,140 60,75 50,130 90,230 200,320 170,270" fill="url(#facet3)" />
-    <!-- Main Left Heart Solid Silhouette (Clean Boundary Overlay) -->
+    
     <path d="M 200,320 C 130,270 50,190 50,110 C 50,60 90,30 140,30 C 170,30 190,50 200,80 Z" fill="url(#facet1)" opacity="0.95" />
     <path d="M 200,80 L 140,30 C 100,30 65,65 65,115 L 110,180 Z" fill="url(#facet4)" opacity="0.85" />
     <path d="M 200,320 L 110,180 L 200,160 Z" fill="url(#facet2)" opacity="0.9" />
     <path d="M 200,320 L 160,260 L 200,190 Z" fill="#800A13" opacity="0.95" />
 
     <!-- CENTER DIVIDER LINE -->
-    <line x1="200" y1="20" x2="200" y2="340" stroke="#1A1A1A" stroke-width="7" stroke-linecap="round" />
+    <line x1="200" y1="10" x2="200" y2="360" stroke="#1A1A1A" stroke-width="8" stroke-linecap="round" />
 
     <!-- RIGHT HALF: Black Outline Heart with PDF Icon -->
     <path d="M 200,80 C 210,50 230,30 260,30 C 310,30 350,60 350,110 C 350,190 270,270 200,320" 
-          fill="none" stroke="#1A1A1A" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+          fill="none" stroke="#1A1A1A" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
 
     <!-- PDF Document Page Icon inside Right Heart -->
     <g transform="translate(225, 75)">
       <!-- Page body outline -->
-      <path d="M 10,10 L 60,10 L 85,35 L 85,100 L 10,100 Z" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="7" stroke-linejoin="round" />
+      <path d="M 10,10 L 60,10 L 85,35 L 85,100 L 10,100 Z" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="8" stroke-linejoin="round" />
       <!-- Folded Corner -->
-      <path d="M 60,10 L 60,35 L 85,35" fill="none" stroke="#1A1A1A" stroke-width="6" stroke-linejoin="round" />
+      <path d="M 60,10 L 60,35 L 85,35" fill="none" stroke="#1A1A1A" stroke-width="7" stroke-linejoin="round" />
       <!-- PDF Red Badge -->
       <rect x="25" y="60" width="70" height="32" rx="4" fill="#C81E2B" />
       <text x="60" y="83" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="20" fill="#FFFFFF" text-anchor="middle">PDF</text>
     </g>
   </g>
-
-  <!-- TEXT LOGO SECTION -->
-  <!-- "I HATE" -->
-  <text x="250" y="405" font-family="'Inter', 'Arial Black', sans-serif" font-weight="900" font-size="52" fill="#C81E2B" text-anchor="middle" letter-spacing="2">
-    I HATE
-  </text>
-  <!-- Red underline accent below "I HATE" -->
-  <rect x="90" y="415" width="320" height="6" fill="#C81E2B" rx="3" />
-
-  <!-- "LOVE" & "PDF" Badge -->
-  <g transform="translate(250, 462)">
-    <!-- "LOVE" text centered left -->
-    <text x="-45" y="0" font-family="'Inter', 'Arial Black', sans-serif" font-weight="900" font-size="46" fill="#1A1A1A" text-anchor="middle" letter-spacing="1">
-      LOVE
-    </text>
-    <!-- "PDF" Black filled badge -->
-    <rect x="40" y="-38" width="95" height="46" rx="6" fill="#1A1A1A" />
-    <text x="87.5" y="-6" font-family="'Inter', 'Arial Black', sans-serif" font-weight="900" font-size="34" fill="#FFFFFF" text-anchor="middle">
-      PDF
-    </text>
-  </g>
-
-  <!-- Tagline: "i love hate PDF it." -->
-  <text x="250" y="492" font-family="'Inter', system-ui, sans-serif" font-weight="500" font-size="22" fill="#333333" text-anchor="middle" letter-spacing="0.5">
-    i love hate PDF it.
-  </text>
 </svg>

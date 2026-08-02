@@ -14,6 +14,8 @@ import { SchemaOrg } from "../../components/SchemaOrg";
 import { BreadcrumbSchema } from "../../components/seo/BreadcrumbSchema";
 
 import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER } from "../../lib/metadata-shared";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const LOCALE = "pt" as const;
 
@@ -85,6 +87,8 @@ export default function PtLayout({ children }: { children: ReactNode }) {
 
           <Footer />
           <CookieBanner />
+          <Analytics />
+          <SpeedInsights />
         </LocaleProvider>
       </body>
     </html>

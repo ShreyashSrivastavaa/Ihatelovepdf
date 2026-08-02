@@ -13,6 +13,8 @@ import CookieBanner from "../../components/CookieBanner";
 import { SchemaOrg } from "../../components/SchemaOrg";
 
 import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER } from "../../lib/metadata-shared";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const LOCALE = "hu" as const;
 
@@ -83,6 +85,8 @@ export default function HuLayout({ children }: { children: ReactNode }) {
 
           <Footer />
           <CookieBanner />
+          <Analytics />
+          <SpeedInsights />
         </LocaleProvider>
       </body>
     </html>
