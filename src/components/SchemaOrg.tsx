@@ -27,15 +27,24 @@ export function SchemaOrg() {
             "@type": "Person",
             "name": "Shreyash Srivastava",
             "jobTitle": "Creator & Lead Developer",
-            "url": "https://www.ihatelovepdf.com"
+            "url": "https://shreyashsrivastava.vercel.app/",
+            "sameAs": [
+                "https://github.com/ShreyashSrivastavaa",
+                "https://shreyashsrivastava.vercel.app/"
+            ]
         },
         "creator": {
             "@type": "Person",
-            "name": "Shreyash Srivastava"
+            "name": "Shreyash Srivastava",
+            "url": "https://shreyashsrivastava.vercel.app/",
+            "sameAs": [
+                "https://github.com/ShreyashSrivastavaa"
+            ]
         },
         "publisher": {
             "@type": "Person",
-            "name": "Shreyash Srivastava"
+            "name": "Shreyash Srivastava",
+            "url": "https://shreyashsrivastava.vercel.app/"
         }
     };
 
