@@ -59,7 +59,7 @@ export const metadata = {
   },
   openGraph: {
     ...SHARED_OPEN_GRAPH,
-    images: [{ url: "https://ihatelovepdf.com/og-images/og-image-en.png", width: 1409, height: 736, alt: "ihatelovepdf - Private and free PDF processing" }],
+    images: [{ url: "https://ihatelovepdf.com/og-image.png", width: 1200, height: 630, alt: "ihatelovepdf - Private and free PDF processing" }],
     title: "ihatelovepdf | Free & Private PDF Tools in Your Browser",
     description:
       "Merge, compress, split, and convert PDFs without uploading files. Instant results with 100% local, private processing.",
@@ -71,7 +71,7 @@ export const metadata = {
     ...SHARED_TWITTER,
     title: "ihatelovepdf | Free & Private PDF Tools in Your Browser",
     description: "Merge, compress, split, and convert PDFs without uploading files. Instant results with 100% local, private processing.",
-    images: ["https://ihatelovepdf.com/og-images/og-image-en.png"],
+    images: ["https://ihatelovepdf.com/og-image.png"],
   },
   verification: {
     google: "m8KoSeRzU9slpYn6QHT5ZBRMnb_wkcU00sdc_B-ZPvg",
