@@ -6,9 +6,7 @@ import { useDictionary } from "../i18n/LocaleProvider";
 import DonationWidget from "./DonationWidget";
 
 export function SupportPageContent() {
-  if (process.env.NODE_ENV === "production") {
-    notFound();
-  }
+
   const dictionary = useDictionary();
   const {
     pages: { support },
