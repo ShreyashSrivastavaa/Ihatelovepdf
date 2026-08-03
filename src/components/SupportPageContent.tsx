@@ -13,7 +13,7 @@ export function SupportPageContent() {
   const {
     pages: { support },
   } = dictionary;
-  const { hero, reasons, tiers, transparency, faq, closing, legalNotice } = support;
+  const { hero, reasons, transparency, faq, closing, legalNotice } = support;
 
   return (
     <div className="min-h-screen bg-gradient-soft relative">
