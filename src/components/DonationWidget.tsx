@@ -1,63 +1,11 @@
 'use client';
 
-import React, { useState, KeyboardEvent } from 'react';
 import Image from 'next/image';
 import styles from './DonationWidget.module.css';
 
-const UPI_CONFIG = {
-  UPI_ID: 'shreyashsr2004-1@oksbi',
-  PAYEE_NAME: 'Shreyash Srivastava',
-  PROJECT_NAME: 'ihatelovepdf',
-};
+const UPI_ID = 'shreyashsr2004-1@oksbi';
 
 export default function DonationWidget() {
-  const [activeTab, setActiveTab] = useState<'upi' | 'qr'>('upi');
-  const [customAmount, setCustomAmount] = useState<string>('');
-  const [showSuccess, setShowSuccess] = useState<boolean>(false);
-
-  const buildUPIString = (amount: number) => {
-    const params = new URLSearchParams({
-      pa: UPI_CONFIG.UPI_ID,
-      pn: UPI_CONFIG.PAYEE_NAME,
-      am: amount.toString(),
-      tn: `Support ${UPI_CONFIG.PROJECT_NAME}`,
-      tr: `DONATION_${Date.now()}`,
-    });
-
-    return `upi://pay?${params.toString()}`;
-  };
-
-  const donateViaUPI = (amount: number) => {
-    const upiURL = buildUPIString(amount);
-    window.location.href = upiURL;
-    showSuccessMessage();
-  };
-
-  const donateCustom = () => {
-    const amount = parseInt(customAmount);
-
-    if (!amount || amount < 1) {
-      alert('❌ Please enter a valid amount');
-      return;
-    }
-
-    donateViaUPI(amount);
-    setCustomAmount('');
-  };
-
-  const showSuccessMessage = () => {
-    setShowSuccess(true);
-    setTimeout(() => {
-      setShowSuccess(false);
-    }, 3000);
-  };
-
-  const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      donateCustom();
-    }
-  };
-
   return (
     <div className={styles.donationWidgetContainer}>
       <div className={styles.donationHeader}>
@@ -65,83 +13,26 @@ export default function DonationWidget() {
         <p>Keep this project thriving 💪</p>
       </div>
 
-      <div className={styles.donationTabs}>
-        <button
-          className={`${styles.tabBtn} ${activeTab === 'upi' ? styles.activeTab : ''}`}
-          onClick={() => setActiveTab('upi')}
-        >
-          🇮🇳 Pay via App
-        </button>
-        <button
-          className={`${styles.tabBtn} ${activeTab === 'qr' ? styles.activeTab : ''}`}
-          onClick={() => setActiveTab('qr')}
-        >
-          📱 Scan QR
-        </button>
+      <div className={styles.qrContainer}>
+        <p className="text-sm opacity-90 mb-4">Scan with Google Pay, PhonePe, Paytm, or any UPI app</p>
+        <div className={styles.qrImageWrapper}>
+          <Image
+            src="/images/upi-qr.jpeg"
+            alt="UPI QR Code"
+            width={250}
+            height={250}
+            className="rounded-xl mx-auto"
+            unoptimized
+          />
+        </div>
+        <p className="text-xs font-mono mt-4 opacity-75">{UPI_ID}</p>
       </div>
-
-      {activeTab === 'upi' && (
-        <div className={styles.tabContent}>
-          <div className={styles.donationAmounts}>
-            <button className={styles.donationBtn} onClick={() => donateViaUPI(100)}>
-              ☕ ₹100
-            </button>
-            <button className={styles.donationBtn} onClick={() => donateViaUPI(500)}>
-              🎯 ₹500
-            </button>
-            <button className={styles.donationBtn} onClick={() => donateViaUPI(1000)}>
-              🚀 ₹1000
-            </button>
-            <button className={styles.donationBtn} onClick={() => donateViaUPI(2000)}>
-              💎 ₹2000
-            </button>
-          </div>
-
-          <div className={styles.customDonationGroup}>
-            <input
-              type="number"
-              className={styles.customAmountInput}
-              placeholder="Custom amount (₹)"
-              min="1"
-              value={customAmount}
-              onChange={(e) => setCustomAmount(e.target.value)}
-              onKeyDown={handleKeyPress}
-            />
-            <button className={styles.donationBtn} onClick={donateCustom} style={{ flex: 0.8 }}>
-              💰 Donate
-            </button>
-          </div>
-        </div>
-      )}
-
-      {activeTab === 'qr' && (
-        <div className={styles.qrContainer}>
-          <p className="text-sm opacity-90 mb-4">Scan with Google Pay, PhonePe, Paytm, or any UPI app</p>
-          <div className={styles.qrImageWrapper}>
-            <Image
-              src="/images/upi-qr.jpeg"
-              alt="UPI QR Code"
-              width={250}
-              height={250}
-              className="rounded-xl mx-auto"
-              unoptimized
-            />
-          </div>
-          <p className="text-xs font-mono mt-4 opacity-75">{UPI_CONFIG.UPI_ID}</p>
-        </div>
-      )}
 
       <div className={styles.donationMessage}>
         ✨ 100% of your donation goes directly to support development & maintenance.
         <br />
         No processing fees. Direct UPI transfer. 🙏
       </div>
-
-      {showSuccess && (
-        <div className={styles.donationSuccess}>
-          ✅ Thank you for your generous support! 🎉
-        </div>
-      )}
 
       <div className={styles.donationFooter}>
         <svg fill="currentColor" viewBox="0 0 20 20">
