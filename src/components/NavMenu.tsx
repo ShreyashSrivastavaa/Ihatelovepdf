@@ -113,6 +113,18 @@ export default function NavMenu() {
                 </Link>
               </li>
               <li>
+                <Link
+                  href={routes.support || '/support'}
+                  className={`px-2.5 py-1.5 rounded-md transition-colors ${
+                    isActive(routes.support || '/support')
+                      ? 'text-[var(--accent)] bg-[var(--accent-soft)] font-semibold text-[var(--accent)]'
+                      : 'text-[var(--tx-2)] hover:text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
+                  }`}
+                >
+                  ❤️ Support
+                </Link>
+              </li>
+              <li>
                 <button
                   onClick={() => setIsContactOpen(true)}
                   className="px-2.5 py-1.5 rounded-md text-[var(--tx-2)] hover:text-[var(--tx)] hover:bg-[var(--bg-subtle)] transition-colors text-left cursor-pointer"
@@ -229,6 +241,21 @@ export default function NavMenu() {
               }`}
             >
               <span>{nav.faq}</span>
+            </Link>
+
+            <Link
+              href={routes.support || '/support'}
+              onClick={() => setIsOpen(false)}
+              className={`flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold transition-colors min-h-[44px] w-full ${
+                isActive(routes.support || '/support')
+                  ? 'text-[var(--accent)] bg-[var(--accent-soft)]'
+                  : 'text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
+              }`}
+            >
+              <div className="flex items-center gap-2.5">
+                <span className="shrink-0">❤️</span>
+                <span>Support / Donate</span>
+              </div>
             </Link>
 
             <Link
