@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { notFound } from "next/navigation";
+
 import { useDictionary } from "../i18n/LocaleProvider";
 import DonationWidget from "./DonationWidget";
 
