@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { useDictionary } from "../i18n/LocaleProvider";
+import DonationWidget from "./DonationWidget";
 
 export function SupportPageContent() {
   if (process.env.NODE_ENV === "production") {
@@ -47,36 +48,9 @@ export function SupportPageContent() {
           </div>
         </section>
 
-        {/* Donation tiers - simpler cards */}
+        {/* Donation Widget section */}
         <section className="my-20">
-          <div className="text-center mb-10">
-            <h2 className="text-2xl font-semibold mb-3">{tiers.title}</h2>
-            <p className="text-[var(--tx-2)] text-sm max-w-xl mx-auto">{tiers.description}</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-            {tiers.cards.map((card) => (
-              <div key={card.id} className="surface-card p-6 flex flex-col text-center relative">
-                {card.badge ? (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-sm">
-                    {card.badge}
-                  </span>
-                ) : null}
-                <h3 className="text-lg font-semibold mb-2">{card.title}</h3>
-                <p className="text-2xl font-bold text-[var(--accent)] mb-3">{card.amount}</p>
-                <p className="text-sm text-[var(--tx-2)] flex-1 mb-6 leading-relaxed">{card.description}</p>
-                <button
-                  onClick={() => {
-                    // Stripe checkout will be wired here
-                    console.log('Stripe checkout:', card.id);
-                  }}
-                  className="inline-flex justify-center rounded-md bg-[var(--accent)] px-4 py-2 text-sm font-medium text-white transition hover:opacity-90"
-                >
-                  {card.ctaLabel}
-                </button>
-              </div>
-            ))}
-          </div>
-          <p className="text-xs text-center text-[var(--tx-3)]">{tiers.note}</p>
+          <DonationWidget />
         </section>
 
         {/* Transparency - simple list */}
