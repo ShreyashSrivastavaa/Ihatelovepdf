@@ -168,6 +168,61 @@
   height: 16px;
 }
 
+.donationTabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 5px;
+}
+
+.tabBtn {
+  padding: 8px 16px;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+  margin-bottom: -7px;
+}
+
+.tabBtn:hover {
+  color: white;
+}
+
+.activeTab {
+  color: white;
+  border-bottom-color: white;
+}
+
+.tabContent {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.qrContainer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  animation: fadeIn 0.3s ease;
+}
+
+.qrImageWrapper {
+  display: inline-block;
+  padding: 15px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
 @media (max-width: 480px) {
   .donationWidgetContainer {
     margin: 20px 15px;
