@@ -667,7 +667,7 @@ export const enDictionary: Dictionary = {
             ctaHref: "#stripe-checkout-custom",
           },
         ],
-        note: "Secure payment processing powered by Stripe. Cancel recurring contributions anytime.",
+        note: "Secure payment processing powered by UPI.",
       },
       transparency: {
         title: "How Contributions Are Allocated",
@@ -686,16 +686,6 @@ export const enDictionary: Dictionary = {
             answer:
               "No problem at all! ihatelovepdf will always remain 100% free. Sharing ihatelovepdf with friends, colleagues, or social media is incredible support.",
           },
-          {
-            question: "Will I receive a payment receipt?",
-            answer:
-              "Yes! Stripe automatically generates and emails a detailed receipt upon successful payment.",
-          },
-          {
-            question: "How can I cancel a monthly recurring contribution?",
-            answer:
-              "You can manage or cancel your recurring contribution anytime via your Stripe portal or by emailing info@ihatelovepdf.com.",
-          },
         ],
       },
       closing: {
@@ -710,7 +700,6 @@ export const enDictionary: Dictionary = {
         points: [
           "ihatelovepdf is an independent project maintained by open-source contributors.",
           "Contributions are voluntary and help support hosting, maintenance, and software development.",
-          "Payments are not tax-deductible charitable donations. Stripe will issue an automated transaction receipt.",
           "The service is provided 'as is' without warranties. For inquiries, contact info@ihatelovepdf.com.",
         ],
       },
