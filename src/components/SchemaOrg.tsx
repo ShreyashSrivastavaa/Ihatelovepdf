@@ -13,16 +13,22 @@ export function SchemaOrg() {
             "priceCurrency": "EUR"
         },
         "description": "Free and private PDF tools: Merge, Compress, Split, Extract, Reorder, PDF to Image, and Image to PDF. 100% local processing.",
+        "url": "https://ihatelovepdf.com",
+        "softwareVersion": "1.0.0",
+        "applicationSubCategory": "PDF Tools & Utilities",
+        "browserRequirements": "Requires JavaScript and a modern web browser",
+        "keywords": "merge pdf, compress pdf, split pdf, extract pdf pages, rotate pdf, crop pdf, pdf to jpg, jpg to pdf, free online pdf tools",
         "featureList": [
             "Merge PDF",
             "Compress PDF",
             "Split PDF",
             "Extract Pages",
+            "Crop Pages",
+            "Rotate Pages",
             "Reorder Pages",
             "PDF to Image",
             "Image to PDF"
         ],
-        "softwareRequirements": "Modern Web Browser",
         "author": {
             "@type": "Person",
             "name": "Shreyash Srivastava",
