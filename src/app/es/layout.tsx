@@ -78,6 +78,7 @@ export default function EsLayout({ children }: { children: ReactNode }) {
     <html lang={LOCALE}>
       <head>
         <meta charSet="UTF-8" />
+        <meta name="websitelaunches-verification" content="714e3c091b00f4a86f93e6be17c060fc" />
         <ThemeScript />
         <GoogleAnalyticsScripts />
         <SchemaOrg />

@@ -35,7 +35,12 @@ export function buildOperationMetadata(locale: Locale, operationKey: OperationKe
       title: operationMeta.meta.title,
       description: operationMeta.meta.description,
       keywords: operationMeta.meta.keywords,
-      verification: GOOGLE_SITE_VERIFICATION ? { google: GOOGLE_SITE_VERIFICATION } : undefined,
+      verification: {
+        ...(GOOGLE_SITE_VERIFICATION ? { google: GOOGLE_SITE_VERIFICATION } : {}),
+        other: {
+          "websitelaunches-verification": ["714e3c091b00f4a86f93e6be17c060fc"],
+        },
+      },
       alternates: {
         canonical: canonicalUrl,
         languages,

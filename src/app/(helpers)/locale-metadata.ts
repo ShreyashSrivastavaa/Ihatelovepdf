@@ -35,7 +35,12 @@ export function createHomeMetadata(locale: Locale) {
       title: siteMeta.title,
       description: siteMeta.description,
       keywords: siteMeta.keywords,
-      verification: GOOGLE_SITE_VERIFICATION ? { google: GOOGLE_SITE_VERIFICATION } : undefined,
+      verification: {
+        ...(GOOGLE_SITE_VERIFICATION ? { google: GOOGLE_SITE_VERIFICATION } : {}),
+        other: {
+          "websitelaunches-verification": ["714e3c091b00f4a86f93e6be17c060fc"],
+        },
+      },
       alternates: {
         canonical: canonicalUrl,
         languages,
@@ -72,7 +77,12 @@ export function createFaqMetadata(locale: Locale) {
       title: faqMeta.title,
       description: faqMeta.description,
       keywords: faqMeta.keywords,
-      verification: GOOGLE_SITE_VERIFICATION ? { google: GOOGLE_SITE_VERIFICATION } : undefined,
+      verification: {
+        ...(GOOGLE_SITE_VERIFICATION ? { google: GOOGLE_SITE_VERIFICATION } : {}),
+        other: {
+          "websitelaunches-verification": ["714e3c091b00f4a86f93e6be17c060fc"],
+        },
+      },
       alternates: {
         canonical: canonicalUrl,
         languages,
@@ -109,7 +119,12 @@ export function createSupportMetadata(locale: Locale) {
       title: supportMeta.title,
       description: supportMeta.description,
       keywords: supportMeta.keywords,
-      verification: GOOGLE_SITE_VERIFICATION ? { google: GOOGLE_SITE_VERIFICATION } : undefined,
+      verification: {
+        ...(GOOGLE_SITE_VERIFICATION ? { google: GOOGLE_SITE_VERIFICATION } : {}),
+        other: {
+          "websitelaunches-verification": ["714e3c091b00f4a86f93e6be17c060fc"],
+        },
+      },
       robots: {
         index: false,
         follow: false,

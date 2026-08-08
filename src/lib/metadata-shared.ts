@@ -28,5 +28,7 @@ export const SHARED_TWITTER: Metadata["twitter"] = {
 export const SHARED_AUTHORS = [{ name: "Shreyash Srivastava", url: SITE_URL }];
 export const SHARED_CREATOR = "Shreyash Srivastava";
 export const SHARED_PUBLISHER = "Shreyash Srivastava";
+export const WEBSITE_LAUNCHES_VERIFICATION = "714e3c091b00f4a86f93e6be17c060fc";
+
 
 
