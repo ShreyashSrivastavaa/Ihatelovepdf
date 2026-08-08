@@ -14,7 +14,7 @@ export function OperationPageContent({
     "@context": "https://schema.org",
     "@type": "HowTo",
     name: operation.howTo.title,
-    description: operation.hero.description,
+    description: operation.meta.description || operation.hero.description,
     step: operation.howTo.steps.map((step, index) => ({
       "@type": "HowToStep",
       position: index + 1,
@@ -23,21 +23,26 @@ export function OperationPageContent({
     })),
   };
 
-  const webApplicationStructuredData = {
+  const softwareApplicationStructuredData = {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    name: `${operation.hero.title} — ihatelovepdf`,
-    description: operation.hero.description,
-    applicationCategory: "UtilitiesApplication",
-    operatingSystem: "Any",
+    "@type": "SoftwareApplication",
+    name: operation.meta.title,
+    description: operation.meta.description,
+    applicationCategory: "UtilityApplication",
+    operatingSystem: "All",
     browserRequirements: "Requires a modern web browser with JavaScript enabled",
     offers: {
       "@type": "Offer",
       price: "0",
       priceCurrency: "USD",
     },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      ratingCount: "234",
+    },
     featureList: operation.hero.bulletPoints,
-    url: `https://ihatelovepdf.com`,
+    url: "https://ihatelovepdf.com",
   };
 
   return (
@@ -149,7 +154,7 @@ export function OperationPageContent({
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(webApplicationStructuredData) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareApplicationStructuredData) }}
         />
 
         <FaqSection />

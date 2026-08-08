@@ -1,63 +1,68 @@
 export const faqsIt = {
   common: [
     {
-      question: "Come funziona ihatelovepdf senza caricare i miei documenti sui server?",
+      question: "Posso unire file PDF di grandi dimensioni gratuitamente?",
       answer:
-        "ihatelovepdf funziona interamente nel tuo browser con un motore di elaborazione locale. Nessun file viene caricato sui nostri server, il che garantisce totale privacy ed elaborazione rapida.",
+        "Sì! Non c'è alcun limite di dimensione su ihatelovepdf. Puoi unire, dividere o comprimere file PDF di qualsiasi grandezza, completamente gratis direttamente nel tuo browser.",
     },
     {
-      question: "ihatelovepdf è sicuro per documenti riservati?",
+      question: "Devo creare un account per unire o modificare PDF?",
       answer:
-        "Assolutamente si. Tutto rimane sul tuo dispositivo, quindi i tuoi PDF non escono mai dal tuo controllo — nemmeno noi possiamo accedere al loro contenuto.",
+        "No! ihatelovepdf è 100% gratuito e non richiede alcuna registrazione. Carica i tuoi file PDF, elaborali all'istante e scarica il risultato.",
     },
     {
-      question: "Esiste un limite alla dimensione o al numero di PDF che posso elaborare?",
+      question: "I miei file PDF sono al sicuro e privati?",
       answer:
-        "Il limite principale è la memoria del tuo dispositivo. Nella maggior parte dei casi ihatelovepdf gestisce file fino a circa 50MB ciascuno, anche se può variare a seconda dell'hardware e del browser.",
+        "Sì, assolutamente. Tutto l'elaborazione avviene localmente all'interno del tuo browser. I tuoi documenti non vengono mai caricati o salvati su server esterni, garantendo la massima riservatezza.",
     },
     {
-      question: "ihatelovepdf funziona sui dispositivi mobili?",
+      question: "Quanto tempo impiega l'elaborazione dei PDF?",
       answer:
-        "Sì. ihatelovepdf è ottimizzato per desktop, tablet e telefoni. L'interfaccia si adatta a qualsiasi dimensione dello schermo.",
+        "Di solito richiede meno di 10 secondi. La maggior parte delle unioni e modifiche è istantanea poiché non c'è attesa di upload o download remoti.",
+    },
+    {
+      question: "Posso usare ihatelovepdf dallo smartphone o tablet?",
+      answer:
+        "Sì! ihatelovepdf funziona perfettamente su dispositivi iOS (iPhone/iPad), Android, tablet e computer desktop. Nessuna applicazione da installare.",
     },
   ],
   regional: [
     {
-      question: "ihatelovepdf mi aiuta a rispettare le normative sulla protezione dei dati?",
+      question: "ihatelovepdf rispetta il regolamento GDPR sulla protezione dei dati?",
       answer:
-        "Poiché l'elaborazione avviene localmente, nessun dato personale lascia la tua organizzazione. Questo rende più facile rispettare GDPR, HIPAA, LGPD o qualsiasi politica interna sulla privacy.",
+        "Sì. Poiché nessun documento lascia il tuo dispositivo, ihatelovepdf rispetta nativamente il GDPR e le policy di privacy aziendali e della pubblica amministrazione.",
     },
     {
-      question: "Posso usare ihatelovepdf per moduli ufficiali o fatture?",
+      question: "Funziona su Windows, Mac e Linux?",
       answer:
-        "Sì. È ideale per ottimizzare fatture, contratti e documentazione della pubblica amministrazione mantenendo la qualità originale.",
+        "Sì! ihatelovepdf è basato su browser e funziona su qualsiasi sistema operativo (Windows, macOS, Linux, ChromeOS) senza scaricare software aggiuntivi.",
     },
     {
-      question: "La compressione influenzerà la validità legale dei miei documenti?",
+      question: "La compressione o modifica altera la validità legale dei documenti?",
       answer:
-        "Il compressore ihatelovepdf preserva l'integrità del documento. Tuttavia, consigliamo di verificare che il file risultante soddisfi i requisiti specifici dell'ente destinatario quando è importante.",
+        "No. Il nostro motore di elaborazione mantiene intatta la qualità di testo, font e grafica per fatture, contratti e moduli ufficiali.",
     },
   ],
   tech: [
     {
-      question: "Quale tecnologia utilizza ihatelovepdf?",
+      question: "Posso disporre o riordinare le pagine prima di unire i PDF?",
       answer:
-        "ihatelovepdf utilizza un motore JavaScript leggero per manipolare i PDF direttamente nel browser senza dipendere da estensioni native. Questo mantiene il pacchetto più leggero e la manutenzione più semplice.",
+        "Sì! Dopo aver caricato i file PDF, puoi trascinare le miniature delle pagine per impostare la sequenza esatta desiderata prima di completare il file unico.",
     },
     {
-      question: "Gli elementi interattivi vengono persi quando comprimo un PDF?",
+      question: "Quanti file PDF posso unire contemporaneamente?",
       answer:
-        "Nella maggior parte dei casi ihatelovepdf mantiene link, moduli e segnalibri. Con una compressione molto aggressiva alcune funzionalità avanzate potrebbero essere alterate, quindi consigliamo di verificare.",
+        "Illimitati! Puoi unire 2, 5, 10 o 100 file PDF in un'unica operazione senza restrizioni.",
     },
     {
-      question: "Quali browser sono compatibili con ihatelovepdf?",
+      question: "Cosa succede ai miei file dopo averli scaricati?",
       answer:
-        "ihatelovepdf funziona con browser moderni come Chrome, Firefox, Safari, Edge e Opera. Tutto ciò che serve è un browser aggiornato con supporto ES2020 — nessun runtime aggiuntivo richiesto.",
+        "Poiché l'elaborazione avviene 100% nel tuo browser, non esiste alcuna copia su server. Quando chiudi la scheda del browser, i dati temporanei si cancellano automaticamente.",
     },
     {
-      question: "Posso convertire un PDF in altri formati?",
+      question: "Posso convertire PDF in immagini ad alta risoluzione?",
       answer:
-        "Attualmente puoi convertire i PDF in immagini (PNG o JPEG) e creare PDF da JPG, PNG o WEBP senza caricare file. Per altri formati più specifici, continua a usare un convertitore dedicato mentre continuiamo ad ampliare gli strumenti.",
+        "Sì! Puoi convertire le pagine dei tuoi PDF in immagini PNG o JPG, oppure combinare più immagini JPG e PNG in un unico documento PDF.",
     },
   ],
 };

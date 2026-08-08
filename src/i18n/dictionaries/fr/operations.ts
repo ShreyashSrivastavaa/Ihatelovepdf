@@ -7,9 +7,9 @@ const operationsFrContent: Record<OperationKey, OperationContent> = {
     slug: "compresser",
     mode: "compress",
     meta: {
-      title: "Compresser un PDF en ligne gratuitement | Réduire la taille | ihatelovepdf",
+      title: "Compresser PDF en Ligne Gratuit - Réduire la Taille",
       description:
-        "Réduisez efficacement la taille du fichier PDF sans perte de qualité. Compression gratuite et privée directement dans votre navigateur.",
+        "Compressez les fichiers PDF en ligne sans perdre de qualité. Réduisez la taille PDF pour l'email.",
       keywords: [
         "compresser pdf",
         "réduire taille pdf",
@@ -17,19 +17,21 @@ const operationsFrContent: Record<OperationKey, OperationContent> = {
         "compresseur pdf",
         "pdf léger",
       ],
-      ogTitle: "Compresser des PDF sans perdre en qualité | ihatelovepdf",
+      ogTitle: "Compresser PDF en Ligne Gratuit - Réduire la Taille | ihatelovepdf",
       ogDescription:
         "Déposez votre fichier, choisissez le niveau de compression optimal et téléchargez un PDF beaucoup plus petit en quelques secondes — en toute sécurité, sans téléchargement sur un serveur.",
       ogImageAlt: "Interface de l'outil de compression ihatelovepdf",
     },
     hero: {
-      title: "Compresser un PDF en ligne avec des résultats clairs",
+      title: "Compresser PDF en Ligne Gratuit - Réduire la Taille du Fichier",
       description:
         "Réduisez la taille du document pour respecter les limites des e-mails, des plateformes LMS ou des procédures publiques tout en gardant chaque page lisible.",
       bulletPoints: [
-        "Traitement 100 % local — vos fichiers ne quittent jamais le navigateur",
-        "Choisissez une compression basique, moyenne ou agressive selon vos objectifs",
-        "Préservez les métadonnées et la structure du document lorsque vous en avez besoin",
+        "✅ Entièrement Gratuit",
+        "✅ Sans Inscription",
+        "✅ Très Rapide",
+        "✅ Sécurisé et Privé",
+        "✅ Fonctionne sur Tous les Appareils",
       ],
       imageAlt: "Flux de travail de compression PDF dans ihatelovepdf",
     },
@@ -94,9 +96,11 @@ const operationsFrContent: Record<OperationKey, OperationContent> = {
       description:
         "Regroupez des numérisations, des photos ou des graphiques dans un seul PDF prêt à être partagé avec des équipes, des étudiants ou des clients.",
       bulletPoints: [
-        "Faites glisser pour définir l'ordre de chaque page",
-        "Choisissez la taille de page, l'orientation et les marges qui conviennent à l'impression ou à la révision à l'écran",
-        "Définissez une couleur d'arrière-plan unie pour éviter une transparence inattendue",
+        "✅ Entièrement Gratuit",
+        "✅ Sans Inscription",
+        "✅ Très Rapide",
+        "✅ Sécurisé et Privé",
+        "✅ Fonctionne sur Tous les Appareils",
       ],
       imageAlt: "Flux de travail des images en PDF",
     },
@@ -141,9 +145,9 @@ const operationsFrContent: Record<OperationKey, OperationContent> = {
     slug: "fusionner",
     mode: "merge",
     meta: {
-      title: "Fusionner PDF | Combiner plusieurs PDF gratuitement | ihatelovepdf",
+      title: "Fusionner PDF en Ligne Gratuitement - Sans Inscription",
       description:
-        "Combinez plusieurs fichiers PDF en un seul document organisé sans limite de page. Glissez, réorganisez et téléchargez votre fichier fusionné instantanément.",
+        "Fusionnez plusieurs fichiers PDF en un seul en ligne, gratuitement. Aucune inscription requise, aucune limite.",
       keywords: [
         "fusionner pdf",
         "combiner pdf",
@@ -151,19 +155,21 @@ const operationsFrContent: Record<OperationKey, OperationContent> = {
         "fusion de pdf",
         "fusionner documents",
       ],
-      ogTitle: "Fusionnez plusieurs PDF en quelques secondes | ihatelovepdf",
+      ogTitle: "Fusionner PDF en Ligne Gratuitement - Sans Inscription | ihatelovepdf",
       ogDescription:
         "Organisez vos documents dans l'ordre parfait, ajustez les paramètres et téléchargez un fichier PDF unifié sans jamais télécharger vos données.",
       ogImageAlt: "Combinaison de plusieurs PDF dans ihatelovepdf",
     },
     hero: {
-      title: "Fusionner des PDF en ligne — rapide et sécurisé",
+      title: "Fusionner des PDF en Ligne - Gratuit et Sans Inscription",
       description:
         "Créez un fichier soigné avec des contrats, des notes de cours ou des documents de politique prêts à être envoyés, signés ou archivés.",
       bulletPoints: [
-        "Glissez et déposez pour contrôler l'ordre final",
-        "Pas de limites cachées — fusionnez de longs documents gratuitement",
-        "Conservez les signets et les métadonnées lorsque vous en avez besoin",
+        "✅ Entièrement Gratuit",
+        "✅ Sans Inscription",
+        "✅ Très Rapide",
+        "✅ Sécurisé et Privé",
+        "✅ Fonctionne sur Tous les Appareils",
       ],
       imageAlt: "Fusion de documents PDF",
     },
@@ -208,9 +214,9 @@ const operationsFrContent: Record<OperationKey, OperationContent> = {
     slug: "diviser",
     mode: "split",
     meta: {
-      title: "Diviser un PDF par pages ou chapitres | Outil gratuit | ihatelovepdf",
+      title: "Diviser PDF en Ligne Gratuit - Extraire les Pages",
       description:
-        "Séparez votre PDF en plusieurs fichiers par plages de pages ou chapitres spécifiques. Profitez d'un contrôle total sur la structure de votre document.",
+        "Divisez les fichiers PDF en ligne gratuitement. Extrayez et séparez les pages facilement, sans inscription.",
       keywords: [
         "diviser pdf",
         "séparer pdf",
@@ -218,13 +224,13 @@ const operationsFrContent: Record<OperationKey, OperationContent> = {
         "diviseur pdf",
         "couper pdf",
       ],
-      ogTitle: "Divisez vos PDF avec précision | ihatelovepdf",
+      ogTitle: "Diviser PDF en Ligne Gratuit - Extraire les Pages | ihatelovepdf",
       ogDescription:
         "Choisissez exactement comment diviser votre document, générez autant de fichiers individuels que nécessaire et téléchargez-les instantanément.",
       ogImageAlt: "Division d'un PDF dans ihatelovepdf",
     },
     hero: {
-      title: "Diviser des PDF par pages ou segments",
+      title: "Diviser PDF en Ligne Gratuit - Extraire et Séparer les Pages",
       description:
         "Extrayez des chapitres, des annexes ou des sections spécifiques dans des fichiers autonomes prêts à être partagés.",
       bulletPoints: [

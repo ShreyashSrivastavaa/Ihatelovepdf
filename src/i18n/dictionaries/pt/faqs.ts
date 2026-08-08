@@ -1,63 +1,69 @@
 export const faqsPt = {
   common: [
     {
-      question: "Como o ihatelovepdf funciona sem enviar meus documentos para servidores?",
+      question: "Posso mesclar arquivos PDF grandes gratuitamente?",
       answer:
-        "O ihatelovepdf processa cada PDF diretamente no navegador com um motor local otimizado. Nenhum arquivo é enviado aos nossos servidores, garantindo privacidade total e rapidez.",
+        "Sim! Não há limite de tamanho de arquivo no ihatelovepdf. Você pode mesclar, dividir ou comprimir arquivos PDF do tamanho que precisar, completamente grátis e diretamente no seu navegador.",
     },
     {
-      question: "É seguro usar o ihatelovepdf com documentos confidenciais?",
+      question: "Preciso criar uma conta ou me cadastrar?",
       answer:
-        "Sim. Todo o processamento acontece no seu dispositivo, então os PDFs nunca saem do seu controle — nem nós temos acesso ao conteúdo.",
+        "Não! O ihatelovepdf é 100% gratuito sem cadastro obrigatório. Apenas envie seus arquivos PDF, processe-os instantaneamente e faça o download.",
     },
     {
-      question: "Existe limite de tamanho ou quantidade de PDFs que posso processar?",
+      question: "Meus arquivos PDF são seguros e privados?",
       answer:
-        "O principal limite é a memória do dispositivo. Geralmente o ihatelovepdf lida com arquivos de até cerca de 50 MB, mas isso pode variar conforme o navegador e o hardware.",
+        "Sim, com certeza. Todo o processamento ocorre localmente no seu navegador web. Seus documentos nunca são enviados ou armazenados em servidores externos, garantindo privacidade total.",
     },
     {
-      question: "O ihatelovepdf funciona em dispositivos móveis?",
+      question: "Quanto tempo leva o processamento?",
       answer:
-        "Funciona sim. O ihatelovepdf é otimizado para desktop, tablet e celular, adaptando-se a qualquer tamanho de tela.",
+        "Geralmente menos de 10 segundos. A maioria das mesclagens e edições é concluída instantaneamente, pois não há tempo de envio ou download remoto.",
+    },
+    {
+      question: "O ihatelovepdf funciona no meu celular ou tablet?",
+      answer:
+        "Sim! Nossa ferramenta funciona perfeitamente em dispositivos iOS (iPhone/iPad), Android, tablets e computadores desktop. Sem necessidade de instalar nenhum aplicativo.",
     },
   ],
   regional: [
     {
-      question: "O ihatelovepdf ajuda a cumprir normas de privacidade como LGPD ou GDPR?",
+      question: "O ihatelovepdf cumpre com as normas de privacidade como a LGPD e o GDPR?",
       answer:
-        "Como tudo ocorre localmente, nenhum dado pessoal é enviado para terceiros. Isso facilita cumprir LGPD, GDPR, HIPAA ou políticas internas de privacidade.",
+        "Sim. Como nenhum dado de documento é coletado, armazenado ou enviado para servidores remotos, o ihatelovepdf atende nativamente à LGPD, GDPR e políticas corporativas de privacidade.",
     },
     {
-      question: "Posso usar o ihatelovepdf para notas fiscais ou formulários oficiais?",
+      question: "Funciona em Windows, Mac e Linux?",
       answer:
-        "Sim. Ele é ideal para otimizar notas fiscais, contratos e documentos de órgãos públicos mantendo a qualidade original.",
+        "Sim! Como o ihatelovepdf roda totalmente no navegador, ele funciona em Windows, macOS, Linux e ChromeOS sem instalar nenhum software.",
     },
     {
-      question: "A compressão altera a validade jurídica do documento?",
+      question: "A compressão ou edição altera a validade jurídica dos documentos?",
       answer:
-        "A compressão do ihatelovepdf preserva a integridade do arquivo. Ainda assim, recomendamos verificar se o resultado atende aos requisitos específicos do órgão ou cliente quando for algo crítico.",
+        "Não. Nosso motor preserva a qualidade de texto, fontes e gráficos para notas fiscais, contratos e formulários oficiais.",
     },
   ],
   tech: [
     {
-      question: "Qual tecnologia o ihatelovepdf utiliza?",
+      question: "Posso reorganizar páginas antes de mesclar os PDFs?",
       answer:
-        "O ihatelovepdf utiliza um motor leve escrito em JavaScript moderno para manipular PDFs nativamente no navegador sem depender de extensões nativas. Isso reduz o tamanho do pacote e simplifica a manutenção.",
+        "Sim! Após enviar seus arquivos PDF, você pode arrastar e soltar as miniaturas para definir a ordem exata desejada antes de concluir a mesclagem.",
     },
     {
-      question: "Recursos interativos do PDF se perdem ao comprimir?",
+      question: "Quantos arquivos PDF posso mesclar por vez?",
       answer:
-        "Na maioria dos casos mantemos links, formulários e marcadores. Em compressões muito agressivas, algum recurso avançado pode sofrer alterações, então vale conferir o resultado.",
+        "Ilimitado! Você pode mesclar 2, 5, 10 ou 100 arquivos PDF em uma única operação sem nenhuma restrição.",
     },
     {
-      question: "Quais navegadores são compatíveis?",
+      question: "O que acontece com meus arquivos após o download?",
       answer:
-        "Chrome, Firefox, Safari, Edge e Opera — qualquer navegador moderno com suporte a ES2020. Não exigimos ambientes adicionais.",
+        "Como o processamento é feito 100% no seu navegador, não existe nenhuma cópia em servidor. Ao fechar a aba do navegador, a memória é apagada automaticamente.",
     },
     {
-      question: "Consigo converter PDF para outros formatos?",
+      question: "Posso converter PDF em imagens de alta resolução?",
       answer:
-        "Hoje você pode converter PDFs em imagens (PNG ou JPEG) e criar PDFs a partir de JPG, PNG ou WEBP sem enviar arquivos. Para outros formatos específicos, continue usando um conversor dedicado enquanto ampliamos o kit.",
+        "Sim! Você pode converter as páginas de seus PDFs em imagens PNG ou JPEG de alta qualidade, ou combinar várias imagens JPG e PNG em um único arquivo PDF.",
     },
   ],
 };
+

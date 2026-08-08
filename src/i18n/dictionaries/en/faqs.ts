@@ -1,63 +1,69 @@
 export const faqsEn = {
   common: [
     {
-      question: "How does ihatelovepdf process documents without uploading them to servers?",
+      question: "Can I merge large PDF files for free?",
       answer:
-        "ihatelovepdf processes all files 100% locally in your web browser using modern WebAssembly and JavaScript engines. Your files are never uploaded to any cloud server, guaranteeing complete data privacy and security.",
+        "Yes! There is no file size limit on ihatelovepdf. You can merge, split, or compress PDFs as large as you need completely free, directly in your browser without uploading to any server.",
     },
     {
-      question: "Is ihatelovepdf safe for confidential and sensitive documents?",
+      question: "Do I need to create an account or sign up?",
       answer:
-        "Yes, absolutely. Because all operations execute locally on your device, your files never leave your computer or phone — not even ihatelovepdf servers can view or access your content.",
+        "No! ihatelovepdf is 100% free with zero signup required. Just drag and drop your PDF files, process them instantly, and download your result.",
     },
     {
-      question: "Is there a limit on file size or the number of PDFs I can process?",
+      question: "Is my PDF data safe and secure?",
       answer:
-        "There are no artificial software limits. Processing speed and capacity depend on your device's memory and CPU. ihatelovepdf comfortably handles large documents up to several hundred megabytes.",
+        "Yes, absolutely. All PDF files are processed locally inside your web browser using modern client-side technologies. Your documents are never uploaded to or stored on any server, guaranteeing complete privacy.",
     },
     {
-      question: "Does ihatelovepdf work on mobile devices and tablets?",
+      question: "How long does it take to process PDFs?",
       answer:
-        "Yes! ihatelovepdf is fully responsive and optimized to run smoothly across mobile phones, tablets, laptops, and desktop computers.",
+        "Processing is lightning-fast and usually completes in less than 10 seconds. Most operations finish instantly because files do not need to upload or download over the internet.",
+    },
+    {
+      question: "Can I use ihatelovepdf on my phone or mobile device?",
+      answer:
+        "Yes! Our tool works seamlessly across iOS (iPhone/iPad), Android mobile devices, tablets, and all desktop operating systems. No app installation required.",
     },
   ],
   regional: [
     {
-      question: "Does ihatelovepdf comply with strict privacy regulations (GDPR, HIPAA, LGPD)?",
+      question: "Does ihatelovepdf comply with privacy regulations (GDPR, HIPAA, LGPD)?",
       answer:
-        "Yes. Since no document data is ever collected, stored, or transmitted over the internet, ihatelovepdf naturally aligns with GDPR, HIPAA, LGPD, and enterprise privacy standards.",
+        "Yes. Because no document data is ever collected, stored, or transmitted to external cloud servers, ihatelovepdf natively complies with strict GDPR, HIPAA, LGPD, and corporate privacy policies.",
     },
     {
-      question: "Can I use ihatelovepdf for official government forms, invoices, and legal contracts?",
+      question: "Can I use ihatelovepdf on Windows, Mac, or Linux?",
       answer:
-        "Definitely. ihatelovepdf preserves document formatting, fonts, and original resolution, making it ideal for preparing official paperwork, invoices, and legal records.",
+        "Yes! Since ihatelovepdf is completely browser-based, it runs on Windows, macOS, Linux, and ChromeOS without installing any software or plugins.",
     },
     {
       question: "Will PDF compression compromise document validity or quality?",
       answer:
-        "Our compression engine uses smart optimization to shrink file sizes while preserving crisp text legibility and image clarity.",
+        "Our intelligent compression engine optimizes PDF file size while preserving crisp text legibility, vector graphics, and image quality for official forms, invoices, and legal contracts.",
     },
   ],
   tech: [
     {
-      question: "What technology powers ihatelovepdf?",
+      question: "Can I rearrange or reorder PDF pages before merging?",
       answer:
-        "ihatelovepdf leverages high-performance browser technologies including PDF-lib, PDF.js, and WebAssembly to perform native PDF manipulation directly inside client browsers.",
+        "Yes! After uploading your PDF files, you can visually drag and drop thumbnails to arrange pages in any exact sequence before finalizing your document.",
     },
     {
-      question: "Are interactive form fields, bookmarks, and links preserved during compression?",
+      question: "Is there a limit on how many PDF files I can upload?",
       answer:
-        "Yes, standard compression retains interactive forms, bookmarks, and hyperlinks. You can also customize advanced settings if you prefer to strip metadata or annotations.",
+        "No! You can upload as many files as you want. Merge 2, 5, 10, or 100 PDFs in a single batch with zero restrictions.",
     },
     {
-      question: "Which web browsers are supported?",
+      question: "What happens to my files after I process and download them?",
       answer:
-        "ihatelovepdf is compatible with all modern web browsers, including Google Chrome, Mozilla Firefox, Apple Safari, Microsoft Edge, and Opera.",
+        "Since processing happens 100% inside your web browser, no server copies exist. The moment you close or refresh your browser tab, memory is cleared automatically.",
     },
     {
-      question: "Can I convert PDFs to images and vice versa?",
+      question: "Can I convert PDFs to high-resolution images?",
       answer:
-        "Yes! You can convert PDF pages into high-resolution PNG or JPEG images, as well as combine JPG, PNG, WEBP, or TIFF images into a single PDF document.",
+        "Yes! You can convert PDF pages into high-quality PNG or JPEG images with custom DPI settings, or combine multiple JPG, PNG, or WEBP photos into a single PDF document.",
     },
   ],
 };
+

@@ -1,63 +1,69 @@
 export const faqsDe = {
   common: [
     {
-      question: "Wie funktioniert ihatelovepdf ohne meine Dokumente hochzuladen?",
+      question: "Kann ich große PDF-Dateien kostenlos zusammenfügen?",
       answer:
-        "ihatelovepdf verarbeitet jedes PDF direkt in deinem Browser mit einer lokalen Engine. Keine Datei landet auf unseren Servern – so bleiben deine Daten privat und der Ablauf schnell.",
+        "Ja! Es gibt keine Größenbeschränkung auf ihatelovepdf. Sie können PDFs jeder Größe kostenlos zusammenfügen, teilen oder komprimieren – direkt in Ihrem Browser ohne Upload auf Server.",
     },
     {
-      question: "Ist ihatelovepdf für vertrauliche Unterlagen sicher?",
+      question: "Benötige ich ein Konto zur Verwendung?",
       answer:
-        "Ja. Alles geschieht lokal auf deinem Gerät, daher verlassen deine PDFs nie deine Kontrolle. Selbst wir haben keinen Einblick in den Inhalt deiner Dokumente.",
+        "Nein! ihatelovepdf ist völlig kostenlos und ohne Registrierung nutzbar. Einfach PDF-Dateien hochladen, sofort verarbeiten und das Ergebnis herunterladen.",
     },
     {
-      question: "Gibt es Grenzen bei Dateigröße oder Anzahl der PDFs?",
+      question: "Sind meine Dateien und Daten sicher?",
       answer:
-        "Die wichtigste Grenze ist der verfügbare Arbeitsspeicher deines Geräts. In der Praxis verarbeitet ihatelovepdf Dateien bis rund 50 MB pro Dokument, abhängig von Browser und Hardware.",
+        "Ja. Alle Dateien werden lokal in Ihrem Browser verarbeitet und niemals auf unseren Servern gespeichert. Ihre Privatsphäre und Datenschutz sind vollständig geschützt.",
     },
     {
-      question: "Funktioniert ihatelovepdf auch auf Smartphones und Tablets?",
+      question: "Wie lange dauert die Verarbeitung?",
       answer:
-        "Ja. Die Oberfläche passt sich an Desktops, Tablets und Mobilgeräte an, sodass du überall effizient arbeiten kannst.",
+        "Normalerweise nur wenige Sekunden. Die meisten Vorgänge sind sofort abgeschlossen, da keine Dateien im Internet hoch- oder heruntergeladen werden müssen.",
+    },
+    {
+      question: "Funktioniert das auf meinem Handy oder Tablet?",
+      answer:
+        "Ja! Funktioniert perfekt auf iOS (iPhone/iPad), Android-Mobilgeräten, Tablets und allen Desktop-Betriebssystemen. Keine App-Installation erforderlich.",
     },
   ],
   regional: [
     {
       question: "Erfüllt ihatelovepdf die Anforderungen der DSGVO?",
       answer:
-        "Da die Verarbeitung ausschließlich in deinem Browser stattfindet, verlassen keine personenbezogenen Daten dein Unternehmen. Damit fällt die DSGVO-Konformität deutlich leichter.",
+        "Ja. Da keine Dokumentendaten gesammelt, gespeichert oder an externe Server übertragen werden, entspricht ihatelovepdf von Natur aus den strengen Vorgaben der DSGVO.",
     },
     {
-      question: "Kann ich ihatelovepdf für amtliche Formulare oder Rechnungen einsetzen?",
+      question: "Funktioniert es auf Windows, Mac und Linux?",
       answer:
-        "Natürlich. ihatelovepdf eignet sich bestens, um Rechnungen, Verträge oder Unterlagen für Behörden zu optimieren, ohne die Lesbarkeit zu verlieren.",
+        "Ja! Da ihatelovepdf rein browserbasiert ist, läuft es auf Windows, macOS, Linux und ChromeOS ohne Softwareinstallation.",
     },
     {
       question: "Beeinträchtigt die Komprimierung die rechtliche Gültigkeit?",
       answer:
-        "Der Kompressionsmodus von ihatelovepdf erhält Struktur und Inhalte. Bei besonders kritischen Dokumenten empfiehlt es sich dennoch, das Ergebnis kurz zu prüfen, damit alle Vorgaben der empfangenden Stelle erfüllt bleiben.",
+        "Nein. Unsere Verarbeitungs-Engine erhält die Qualität von Text, Schriftarten und Grafiken für Rechnungen, Verträge und amtliche Formulare.",
     },
   ],
   tech: [
     {
-      question: "Welche Technologie steckt hinter ihatelovepdf?",
+      question: "Kann ich Seiten vor dem Zusammenfügen neu anordnen?",
       answer:
-        "ihatelovepdf nutzt eine schlanke JavaScript-Engine, die PDFs nativ im Browser bearbeitet – ganz ohne zusätzliche native Module. Das sorgt für kleine Bundles und eine einfache Wartung.",
+        "Ja! Nach dem Hochladen der PDFs können Sie die Seitenvorschaubilder einfach per Drag & Drop in die gewünschte Reihenfolge ziehen.",
     },
     {
-      question: "Gehen beim Komprimieren interaktive Elemente verloren?",
+      question: "Wie viele PDFs kann ich gleichzeitig zusammenfügen?",
       answer:
-        "In den meisten Fällen bleiben Links, Formularfelder und Lesezeichen erhalten. Bei sehr starker Kompression können einzelne Funktionen beeinträchtigt werden, daher lohnt sich ein kurzer Check.",
+        "Unbegrenzt! Sie können 2, 5, 10 oder 100 PDFs in einem einzigen Durchgang kostenlos zusammenfügen.",
     },
     {
-      question: "Welche Browser werden unterstützt?",
+      question: "Was passiert mit meinen Dateien nach dem Download?",
       answer:
-        "ihatelovepdf funktioniert in aktuellen Versionen von Chrome, Firefox, Safari, Edge, Opera und anderen modernen Browsern mit ES2020-Unterstützung – zusätzliche Laufzeitumgebungen sind nicht erforderlich.",
+        "Da die Verarbeitung zu 100 % in Ihrem Browser stattfindet, existiert keine Kopie auf einem Server. Sobald Sie den Tab schließen, wird der Speicher gelöscht.",
     },
     {
-      question: "Kann ich PDFs in andere Formate umwandeln?",
+      question: "Kann ich PDFs in hochauflösende Bilder umwandeln?",
       answer:
-        "Aktuell kannst du PDFs in Bilder (PNG oder JPEG) umwandeln und aus JPG, PNG oder WEBP neue PDFs erstellen – alles lokal im Browser. Für andere Spezialformate empfehlen wir vorerst einen dedizierten Konverter, während wir das Toolkit erweitern.",
+        "Ja! Sie können PDF-Seiten in hochwertige PNG- oder JPEG-Bilder umwandeln oder mehrere Bilder (JPG, PNG, WEBP) in ein einzelnes PDF-Dokument zusammenfügen.",
     },
   ],
 };
+

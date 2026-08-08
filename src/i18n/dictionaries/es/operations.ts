@@ -7,9 +7,9 @@ const operationsEsContent: Record<OperationKey, OperationContent> = {
     slug: "comprimir",
     mode: "compress",
     meta: {
-      title: "Comprimir PDF Online Gratis | Reducir Tamaño | ihatelovepdf",
+      title: "Comprimir PDF Online Gratis - Reduce Tamaño de Archivo",
       description:
-        "Reduce el tamaño de tus PDF eficientemente sin perder calidad. Compresión privada y gratuita directamente en tu navegador.",
+        "Comprime archivos PDF online sin perder calidad. Reduce el tamaño para email y almacenamiento.",
       keywords: [
         "comprimir pdf",
         "reducir tamaño pdf",
@@ -17,19 +17,21 @@ const operationsEsContent: Record<OperationKey, OperationContent> = {
         "compresor pdf online",
         "pdf ligero",
       ],
-      ogTitle: "Comprime PDFs sin perder calidad | ihatelovepdf",
+      ogTitle: "Comprimir PDF Online Gratis - Reduce Tamaño de Archivo | ihatelovepdf",
       ogDescription:
         "Arrastra tu archivo, selecciona el nivel de compresión ideal y descarga un PDF optimizado en segundos. Todo seguro y sin subir documentos a servidores.",
       ogImageAlt: "Herramienta para comprimir PDF con ihatelovepdf",
     },
     hero: {
-      title: "Comprimir PDF online sin perder calidad",
+      title: "Comprimir PDF Online Gratis - Reduce Tamaño del Archivo",
       description:
         "Optimiza el tamaño de tus documentos para enviarlos por correo, plataformas educativas o trámites oficiales sin sacrificar legibilidad.",
       bulletPoints: [
-        "Procesamiento 100% local, tus archivos nunca salen del navegador",
-        "Elige entre compresión básica, media o agresiva según tu prioridad",
-        "Preserva metadatos y estructura del documento si lo necesitas",
+        "✅ Completamente Gratis",
+        "✅ Sin Registro",
+        "✅ Rápido y Fácil",
+        "✅ Seguro y Privado",
+        "✅ Funciona en Todos los Dispositivos",
       ],
       imageAlt: "Compresión de un documento PDF con ihatelovepdf",
     },
@@ -74,9 +76,9 @@ const operationsEsContent: Record<OperationKey, OperationContent> = {
     slug: "unir",
     mode: "merge",
     meta: {
-      title: "Unir PDF Online | Combinar Varios PDFs Gratis | ihatelovepdf",
+      title: "Unir PDF Online Gratis - Sin Registro Ni Límites",
       description:
-        "Combina múltiples PDF en un único documento sin límites. Arrastra, ordena y descarga tu archivo fusionado al instante con total privacidad.",
+        "Combina archivos PDF online gratis. Sin registro, sin límites. Carga, une y descarga tus PDFs en segundos.",
       keywords: [
         "unir pdf",
         "combinar pdf",
@@ -84,19 +86,21 @@ const operationsEsContent: Record<OperationKey, OperationContent> = {
         "fusionar pdf online",
         "merge pdf",
       ],
-      ogTitle: "Une varios PDFs en segundos | ihatelovepdf",
+      ogTitle: "Unir PDF Online Gratis - Sin Registro Ni Límites | ihatelovepdf",
       ogDescription:
         "Organiza tus documentos en el orden perfecto, ajusta las opciones y descarga un PDF unificado sin subir nada a la nube.",
       ogImageAlt: "Unión de múltiples PDFs en la plataforma ihatelovepdf",
     },
     hero: {
-      title: "Unir PDF online rápido y seguro",
+      title: "Unir PDF Online Gratis - Combina Múltiples Archivos PDF",
       description:
         "Combina contratos, notas de clase o pólizas en un único archivo listo para enviar, firmar o archivar.",
       bulletPoints: [
-        "Ordena los PDFs con arrastrar y soltar para controlar el resultado",
-        "Sin límites ocultos: une documentos extensos sin coste",
-        "Preserva marcadores y metadatos si así lo prefieres",
+        "✅ Completamente Gratis",
+        "✅ Sin Registro",
+        "✅ Rápido y Fácil",
+        "✅ Seguro y Privado",
+        "✅ Funciona en Todos los Dispositivos",
       ],
       imageAlt: "Fusión de archivos PDF en ihatelovepdf",
     },
@@ -141,9 +145,9 @@ const operationsEsContent: Record<OperationKey, OperationContent> = {
     slug: "dividir",
     mode: "split",
     meta: {
-      title: "Dividir PDF por Páginas o Capítulos | Gratis | ihatelovepdf",
+      title: "Dividir PDF Online Gratis - Extrae Páginas",
       description:
-        "Separa tu PDF en varios archivos por rangos o capítulos. Control total sobre la estructura de tu documento sin subir nada al servidor.",
+        "Divide archivos PDF online gratis. Extrae, separa y elimina páginas fácilmente, sin registro.",
       keywords: [
         "dividir pdf",
         "separar pdf",
@@ -151,13 +155,13 @@ const operationsEsContent: Record<OperationKey, OperationContent> = {
         "split pdf",
         "partir pdf",
       ],
-      ogTitle: "Divide tus PDFs con precisión | ihatelovepdf",
+      ogTitle: "Dividir PDF Online Gratis - Extrae Páginas | ihatelovepdf",
       ogDescription:
         "Elige exactamente cómo dividir tu documento, genera tantos archivos individuales como necesites y descárgalos al instante en tu dispositivo.",
       ogImageAlt: "Proceso de división de un PDF en ihatelovepdf",
     },
     hero: {
-      title: "Dividir PDF por páginas o segmentos",
+      title: "Dividir PDF Online Gratis - Extrae y Separa Páginas",
       description:
         "Extrae capítulos, anexos o secciones concretas en archivos independientes listos para compartir.",
       bulletPoints: [

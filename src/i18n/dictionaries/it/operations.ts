@@ -7,9 +7,9 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
     slug: "compress",
     mode: "compress",
     meta: {
-      title: "Comprimi PDF online gratis | Riduci dimensione | ihatelovepdf",
+      title: "Comprimi PDF Online Gratis - Riduci Dimensione File",
       description:
-        "Riduci la dimensione dei file PDF in modo efficiente senza perdita di qualità. Compressione gratuita e privata direttamente nel tuo browser.",
+        "Comprimi file PDF online senza perdere qualità. Riduci dimensioni per email o storage. Gratuito, veloce, sicuro.",
       keywords: [
         "comprimi pdf",
         "riduci dimensione pdf",
@@ -17,19 +17,21 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
         "compressore pdf",
         "pdf leggero",
       ],
-      ogTitle: "Comprimi PDF senza perdere qualità | ihatelovepdf",
+      ogTitle: "Comprimi PDF Online Gratis - Riduci Dimensione File | ihatelovepdf",
       ogDescription:
         "Carica il tuo file, scegli il livello di compressione ottimale e scarica un PDF molto più leggero in pochi secondi — completamente sicuro senza caricamenti su server.",
       ogImageAlt: "Interfaccia dello strumento di compressione ihatelovepdf",
     },
     hero: {
-      title: "Comprimi PDF online con risultati chiari",
+      title: "Comprimi PDF Online Gratis - Riduci Dimensione PDF",
       description:
         "Riduci la dimensione del documento per rispettare i limiti di email, piattaforme o procedure pubbliche mantenendo ogni pagina leggibile.",
       bulletPoints: [
-        "Elaborazione 100% locale — i tuoi file non lasciano mai il browser",
-        "Scegli compressione base, media o aggressiva in base alle tue esigenze",
-        "Mantieni metadati e struttura del documento quando necessario",
+        "✅ Completamente Gratuito",
+        "✅ Senza Registrazione",
+        "✅ Velocissimo",
+        "✅ Sicuro e Privato",
+        "✅ Funziona su Tutti i Dispositivi",
       ],
       imageAlt: "Flusso di compressione PDF in ihatelovepdf",
     },
@@ -95,9 +97,11 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
       description:
         "Raggruppa scansioni, foto o grafiche in un unico PDF pronto da condividere.",
       bulletPoints: [
-        "Trascina per definire l’ordine delle pagine",
-        "Scegli dimensione pagina, orientamento e margini",
-        "Imposta uno sfondo solido per evitare trasparenze indesiderate",
+        "✅ Completamente Gratuito",
+        "✅ Senza Registrazione",
+        "✅ Velocissimo",
+        "✅ Sicuro e Privato",
+        "✅ Funziona su Tutti i Dispositivi",
       ],
       imageAlt: "Flusso immagini a PDF",
     },
@@ -143,9 +147,9 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
     slug: "merge",
     mode: "merge",
     meta: {
-      title: "Unisci PDF online | Combina più PDF gratis | ihatelovepdf",
+      title: "Unisci PDF Online Gratis - Combina File PDF Senza Registrazione",
       description:
-        "Combina più file PDF in un unico documento organizzato senza limiti di pagine.",
+        "Unisci file PDF online gratuitamente in pochi secondi. Nessuna registrazione, nessun limite di file. Carica, combina e scarica.",
       keywords: [
         "unisci pdf",
         "combina pdf",
@@ -153,19 +157,21 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
         "pdf merger",
         "unire documenti",
       ],
-      ogTitle: "Unisci PDF in pochi secondi | ihatelovepdf",
+      ogTitle: "Unisci PDF Online Gratis - Combina File PDF Senza Registrazione | ihatelovepdf",
       ogDescription:
         "Organizza i documenti e scarica un unico PDF senza caricare dati nel cloud.",
       ogImageAlt: "Unione PDF",
     },
     hero: {
-      title: "Unisci PDF online — veloce e sicuro",
+      title: "Unisci PDF Online Gratis - Combina Più File PDF",
       description:
         "Crea un unico file pronto da inviare o archiviare.",
       bulletPoints: [
-        "Drag and drop per l’ordine",
-        "Nessun limite nascosto",
-        "Mantieni segnalibri e metadati",
+        "✅ Completamente Gratuito",
+        "✅ Senza Registrazione",
+        "✅ Velocissimo",
+        "✅ Sicuro e Privato",
+        "✅ Funziona su Tutti i Dispositivi",
       ],
       imageAlt: "Unione documenti PDF",
     },
@@ -207,21 +213,22 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
     slug: "split",
     mode: "split",
     meta: {
-      title: "Dividi PDF per pagine | Tool gratuito | ihatelovepdf",
+      title: "Dividi PDF Online Gratis - Estrai e Separa Pagine",
       description:
-        "Dividi PDF in più file senza caricamenti su server.",
+        "Dividi file PDF online gratuitamente. Estrai pagine singole o separa PDF in secondi. Nessun account richiesto.",
       keywords: [
         "dividi pdf",
         "separa pdf",
         "pdf splitter",
+        "estrai pagine pdf",
       ],
-      ogTitle: "Dividi PDF con precisione | ihatelovepdf",
+      ogTitle: "Dividi PDF Online Gratis - Estrai e Separa Pagine | ihatelovepdf",
       ogDescription:
         "Scegli come dividere il documento e scaricalo subito.",
       ogImageAlt: "Divisione PDF",
     },
     hero: {
-      title: "Dividi PDF per pagine",
+      title: "Dividi PDF Online Gratis - Estrai e Separa Pagine PDF",
       description:
         "Estrai sezioni specifiche.",
       bulletPoints: [
@@ -520,19 +527,21 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
     slug: "pdf-to-images",
     mode: "pdfToImages",
     meta: {
-      title: "PDF in immagini | PNG o JPEG | ihatelovepdf",
+      title: "Convertire PDF in JPG Online Gratis - Estrai Immagini",
       description:
-        "Converti PDF in immagini di alta qualità.",
+        "Converti PDF a JPG gratuitamente. Estrai pagine come immagini ad alta qualità. Nessuna registrazione necessaria.",
       keywords: [
         "pdf in immagini",
+        "convertire pdf in jpg",
+        "estrai immagini da pdf",
       ],
-      ogTitle: "PDF in immagini",
+      ogTitle: "Convertire PDF in JPG Online Gratis - Estrai Immagini | ihatelovepdf",
       ogDescription:
         "Esporta pagine.",
       ogImageAlt: "PDF immagini",
     },
     hero: {
-      title: "Converti PDF in immagini",
+      title: "Converti PDF in JPG Online Gratis - Estrai Pagine come Immagini",
       description:
         "Ottieni immagini di ogni pagina.",
       bulletPoints: [

@@ -7,9 +7,9 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
     slug: "compress",
     mode: "compress",
     meta: {
-      title: "Compress PDF Free Online — No Sign-Up | ihatelovepdf",
+      title: "Compress PDF Online Free - Reduce PDF File Size",
       description:
-        "Compress PDF files without losing quality — free, private, and instant in your browser. Reduce PDF size for email, WhatsApp, or submissions. No sign-up, no uploads.",
+        "Compress PDF files online without losing quality. Make PDFs smaller, faster to send. Free, no signup, instant download.",
       keywords: [
         "compress pdf",
         "compress pdf without losing quality free",
@@ -20,19 +20,21 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
         "compress pdf for email free",
         "shrink pdf size online free",
       ],
-      ogTitle: "Compress PDF Without Losing Quality — Free & Private | ihatelovepdf",
+      ogTitle: "Compress PDF Online Free - Reduce PDF File Size | ihatelovepdf",
       ogDescription:
         "Drop your file, choose the optimal compression level, and download a significantly smaller PDF in seconds — completely secure with no server uploads.",
       ogImageAlt: "ihatelovepdf PDF compression tool interface",
     },
     hero: {
-      title: "Compress PDF online with clear results",
+      title: "Compress PDF Online Free - Reduce PDF File Size",
       description:
         "Reduce document size so it meets email limits, LMS platforms, or public procedures while keeping every page readable.",
       bulletPoints: [
-        "100% local processing — your files never leave the browser",
-        "Choose basic, medium, or aggressive compression depending on your goals",
-        "Preserve metadata and document structure when you need it",
+        "✅ Completely Free",
+        "✅ No Account Required",
+        "✅ Lightning Fast",
+        "✅ Secure & Private",
+        "✅ Works on All Devices",
       ],
       imageAlt: "PDF compression workflow in ihatelovepdf",
     },
@@ -77,9 +79,9 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
     slug: "images-to-pdf",
     mode: "imagesToPdf",
     meta: {
-      title: "JPG to PDF Free Online — Convert Images to PDF | ihatelovepdf",
+      title: "JPG to PDF Converter Online Free - Create PDF from Images",
       description:
-        "Convert JPG, PNG, WEBP, or TIFF images to PDF free online. No sign-up, no watermarks — arrange photos, set layout, and download a print-ready PDF instantly in your browser.",
+        "Convert JPG, PNG, and other images to PDF online for free. Combine images into one PDF. Fast and easy.",
       keywords: [
         "jpg to pdf free online",
         "images to pdf free",
@@ -90,19 +92,21 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
         "jpeg to pdf no watermark",
         "tiff to pdf online",
       ],
-      ogTitle: "JPG to PDF Free Online — No Watermark | ihatelovepdf",
+      ogTitle: "JPG to PDF Converter Online Free - Create PDF from Images | ihatelovepdf",
       ogDescription:
         "Drag your images into place, define the layout settings, and export a print-ready PDF file — with no uploads or watermarks attached.",
       ogImageAlt: "Converting JPG, PNG images to PDF in ihatelovepdf",
     },
     hero: {
-      title: "Create a polished PDF from images",
+      title: "Convert JPG to PDF Online Free - Combine Images into PDF",
       description:
         "Group scans, photos, or graphics into a single PDF ready to share with teams, students, or clients.",
       bulletPoints: [
-        "Drag to define the order of every page",
-        "Choose page size, orientation, and margins that suit print or on-screen review",
-        "Set a solid background colour to avoid unexpected transparency",
+        "✅ Completely Free",
+        "✅ No Account Required",
+        "✅ Lightning Fast",
+        "✅ Secure & Private",
+        "✅ Works on All Devices",
       ],
       imageAlt: "Images to PDF workflow",
     },
@@ -147,9 +151,9 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
     slug: "merge",
     mode: "merge",
     meta: {
-      title: "Merge PDF Free Online — No Sign-Up | ihatelovepdf",
+      title: "Merge PDF Online Free - Combine PDF Files Without Signup",
       description:
-        "Merge PDF files free online without sign-up. Combine multiple PDFs into one document in seconds — drag to reorder, download instantly. 100% private, no file uploads.",
+        "Merge multiple PDF files online for free. No signup required, no file limits. Upload, combine, and download in seconds.",
       keywords: [
         "merge pdf free online",
         "merge pdf files no sign up",
@@ -160,19 +164,21 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
         "combine pdf pages online",
         "merge pdfs no watermark",
       ],
-      ogTitle: "Merge PDF Files Free Online — No Sign-Up | ihatelovepdf",
+      ogTitle: "Merge PDF Online Free - Combine PDF Files Without Signup | ihatelovepdf",
       ogDescription:
         "Arrange your documents in the perfect order, adjust settings, and download a unified PDF file without ever uploading your data to the cloud.",
       ogImageAlt: "Merging multiple PDF files inside ihatelovepdf",
     },
     hero: {
-      title: "Merge PDFs online — fast and secure",
+      title: "Merge PDF Online Free - Combine Multiple PDF Files",
       description:
         "Build one polished file with contracts, class notes, or policy documents ready to send, sign, or archive.",
       bulletPoints: [
-        "Drag and drop to control the final order",
-        "No hidden limits — merge long documents for free",
-        "Keep bookmarks and metadata when you need them",
+        "✅ Completely Free",
+        "✅ No Account Required",
+        "✅ Lightning Fast",
+        "✅ Secure & Private",
+        "✅ Works on All Devices",
       ],
       imageAlt: "Merging PDF documents",
     },
@@ -217,9 +223,9 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
     slug: "split",
     mode: "split",
     meta: {
-      title: "Split PDF Free Online — By Page Range | ihatelovepdf",
+      title: "Split PDF Online Free - Separate PDF Pages",
       description:
-        "Split PDF files free online by page range or fixed page count. No sign-up, no watermarks — separate a PDF into multiple files instantly in your browser.",
+        "Split PDF files online for free. Extract, separate, or remove pages easily. No signup, no limits. Fast and secure.",
       keywords: [
         "split pdf free online",
         "split pdf by page range",
@@ -230,13 +236,13 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
         "split large pdf online",
         "pdf page separator online",
       ],
-      ogTitle: "Split PDF Free Online — By Page Range, No Sign-Up | ihatelovepdf",
+      ogTitle: "Split PDF Online Free - Separate PDF Pages | ihatelovepdf",
       ogDescription:
         "Choose exactly how to split your document, generate as many individual files as you need, and download them instantly to your device.",
       ogImageAlt: "Splitting a PDF by page range inside ihatelovepdf",
     },
     hero: {
-      title: "Split PDFs by pages or segments",
+      title: "Split PDF Online Free - Extract & Separate PDF Pages",
       description:
         "Extract chapters, appendices, or specific sections into standalone files ready to share.",
       bulletPoints: [
@@ -567,9 +573,9 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
     slug: "pdf-to-images",
     mode: "pdfToImages",
     meta: {
-      title: "PDF to JPG Free Online — Convert PDF Pages to Images | ihatelovepdf",
+      title: "PDF to JPG Converter Online Free - Convert PDF Pages to Images",
       description:
-        "Convert PDF pages to JPG or PNG images free online. High-quality export at custom DPI, ZIP download, no sign-up, 100% private browser processing — no file uploads.",
+        "Convert PDF to JPG images online for free. Extract pages as high-quality images. No signup, no limits.",
       keywords: [
         "pdf to jpg free online",
         "convert pdf to images no sign up",
@@ -582,13 +588,13 @@ const operationsEnContent: Record<OperationKey, OperationContent> = {
         "batch pdf to image converter",
         "convert pdf page to high res image",
       ],
-      ogTitle: "PDF to JPG/PNG Free Online — High Quality, No Sign-Up | ihatelovepdf",
+      ogTitle: "PDF to JPG Converter Online Free - Convert PDF Pages to Images | ihatelovepdf",
       ogDescription:
         "Render each page as a crisp image directly in your browser. Adjust quality, set filenames, and get a tidy ZIP archive instantly.",
       ogImageAlt: "Converting PDF pages to JPG and PNG images in ihatelovepdf",
     },
     hero: {
-      title: "Convert PDF pages to PNG or JPEG",
+      title: "Convert PDF to JPG Online Free - Extract PDF Pages as Images",
       description:
         "Produce crisp images of every page for slide decks, reviews, or design handoffs without opening heavy desktop tools.",
       bulletPoints: [

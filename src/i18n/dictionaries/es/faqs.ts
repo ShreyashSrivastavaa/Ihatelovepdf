@@ -1,80 +1,81 @@
 export const faqsEs = {
   common: [
     {
-      question: "¿Cómo funciona ihatelovepdf sin subir mis documentos a servidores?",
+      question: "¿Puedo unir archivos PDF grandes gratis?",
       answer:
-        "ihatelovepdf procesa todos tus PDFs directamente en tu navegador con un motor local optimizado. Ningún archivo se sube a nuestros servidores, garantizando privacidad total y rapidez en el procesamiento.",
+        "¡Sí! No hay límite de tamaño de archivo en ihatelovepdf. Puedes unir, dividir o comprimir archivos PDF tan grandes como necesites, completamente gratis y directamente en tu navegador.",
     },
     {
-      question: "¿Es seguro usar ihatelovepdf con documentos confidenciales?",
+      question: "¿Necesito crear una cuenta o registrarme?",
       answer:
-        "Sí, es completamente seguro ya que todos tus documentos se procesan localmente en tu dispositivo y nunca salen de él. Ni siquiera nosotros podemos ver el contenido de tus PDFs.",
+        "¡No! ihatelovepdf es 100% gratuito sin registro requerido. Solo carga tus archivos PDF, procésalos al instante y descarga el resultado.",
     },
     {
-      question: "¿Hay algún límite en el tamaño o número de PDFs que puedo procesar?",
+      question: "¿Mis archivos PDF están seguros y privados?",
       answer:
-        "El límite principal es la memoria de tu dispositivo. En general, ihatelovepdf puede manejar archivos de hasta 50MB por documento, pero esto puede variar según tu dispositivo y navegador.",
+        "Sí, absolutamente. Todo el procesamiento se realiza localmente dentro de tu navegador web. Tus documentos nunca se suben ni se almacenan en servidores externos, garantizando privacidad total.",
     },
     {
-      question: "¿ihatelovepdf funciona en dispositivos móviles?",
+      question: "¿Cuánto tiempo tarda el procesamiento?",
       answer:
-        "Sí, ihatelovepdf está optimizado tanto para ordenadores como para dispositivos móviles. La interfaz se adapta a cualquier tamaño de pantalla.",
+        "Generalmente menos de 10 segundos. La mayoría de las uniones y ediciones son instantáneas porque no hay espera de subida o descarga remota.",
+    },
+    {
+      question: "¿Puedo usar ihatelovepdf en mi teléfono o tableta?",
+      answer:
+        "¡Sí! Nuestra herramienta funciona perfectamente en dispositivos iOS (iPhone/iPad), Android, tabletas y ordenadores de escritorio. Sin necesidad de instalar ninguna app.",
     },
   ],
   spain: [
     {
-      question: "¿ihatelovepdf cumple con el RGPD europeo?",
+      question: "¿ihatelovepdf cumple con el RGPD europeo de protección de datos?",
       answer:
-        "Sí, al procesar todos los documentos localmente en tu navegador, ihatelovepdf garantiza el cumplimiento del RGPD ya que no almacenamos ni tratamos tus PDFs en servidores externos.",
+        "Sí. Al procesarse todos los documentos localmente en tu navegador, ihatelovepdf cumple de forma nativa con el RGPD ya que ningún dato sale de tu dispositivo.",
     },
     {
-      question: "¿Puedo usar ihatelovepdf para documentos oficiales o facturas?",
+      question: "¿Funciona en Windows, Mac y Linux?",
       answer:
-        "Sí, ihatelovepdf es ideal para optimizar cualquier tipo de documento, incluyendo facturas, contratos y documentos oficiales. La calidad se mantiene mientras se reduce el tamaño.",
+        "¡Sí! Como ihatelovepdf funciona completamente en el navegador, es compatible con Windows, macOS, Linux y ChromeOS sin instalar ningún software.",
     },
     {
-      question: "¿Cómo afecta la compresión a la validez legal de un documento?",
+      question: "¿La compresión o edición afecta a la validez legal de los documentos?",
       answer:
-        "La compresión de ihatelovepdf está diseñada para mantener la integridad del documento. No obstante, para documentos legales importantes, recomendamos verificar que el resultado sigue cumpliendo los requisitos específicos de la entidad receptora.",
+        "No. Nuestro motor mantiene intacta la calidad del texto, fuentes y gráficos para facturas, contratos y documentos oficiales.",
     },
   ],
   latam: [
     {
       question: "¿Es posible usar ihatelovepdf con conexiones de Internet lentas?",
       answer:
-        "Sí, ihatelovepdf es ideal para conexiones lentas ya que una vez cargada la página, todas las operaciones se realizan localmente sin necesidad de subir o descargar datos adicionales durante el procesamiento.",
-    },
-    {
-      question: "¿ihatelovepdf funciona con documentos generados por aplicaciones gubernamentales?",
-      answer:
-        "Sí, ihatelovepdf es compatible con PDFs generados por cualquier aplicación, incluyendo formularios y documentos oficiales de entidades gubernamentales.",
+        "Sí, ihatelovepdf es ideal para conexiones lentas ya que una vez cargada la página, todas las operaciones se realizan localmente sin subir archivos.",
     },
     {
       question: "¿Puedo confiar en ihatelovepdf para documentos de mi negocio?",
       answer:
-        "Absolutamente. ihatelovepdf está diseñado con la privacidad y seguridad como prioridades, haciéndolo ideal para documentos empresariales sensibles como contratos, facturas y reportes.",
+        "Absolutamente. Al no subirse archivos a ningún servidor, es perfecto para documentos confidenciales como contratos y estados financieros.",
     },
   ],
   tech: [
     {
-      question: "¿Qué tecnología utiliza ihatelovepdf para procesar los PDFs?",
+      question: "¿Puedo ordenar las páginas antes de unir los PDF?",
       answer:
-        "ihatelovepdf utiliza un motor ligero escrito en JavaScript moderno para manipular los PDFs de forma nativa en el navegador sin depender de componentes nativos. Esto reduce el tamaño del paquete y permite un mantenimiento mucho más sencillo.",
+        "¡Sí! Después de subir tus archivos PDF, puedes arrastrar y soltar las miniaturas para establecer el orden exacto deseado antes de unir.",
     },
     {
-      question: "¿Se pierden las características interactivas del PDF al comprimirlo?",
+      question: "¿Cuántos archivos PDF puedo unir a la vez?",
       answer:
-        "En la mayoría de los casos, ihatelovepdf preserva características como enlaces, formularios y marcadores. Sin embargo, con niveles de compresión muy altos, algunas características avanzadas podrían verse afectadas.",
+        "¡Ilimitado! Puedes unir 2, 5, 10 o 100 archivos PDF en una sola operación sin ninguna restricción.",
     },
     {
-      question: "¿Qué navegadores son compatibles con ihatelovepdf?",
+      question: "¿Qué pasa con mis archivos después de descargarlos?",
       answer:
-        "ihatelovepdf es compatible con la mayoría de navegadores modernos como Chrome, Firefox, Safari, Edge y Opera. Solo necesitas un navegador actualizado con soporte para JavaScript moderno (ES2020), sin requisitos adicionales.",
+        "Como el procesamiento se realiza 100% en tu navegador, no existe ninguna copia en servidor. Al cerrar la pestaña del navegador, la memoria se borra automáticamente.",
     },
     {
-      question: "¿Puedo convertir un PDF a otros formatos?",
+      question: "¿Puedo convertir PDF a imágenes de alta resolución?",
       answer:
-        "Actualmente puedes convertir PDFs a imágenes (PNG o JPEG) y crear PDFs desde JPG, PNG o WEBP, todo sin subir archivos. Para otros formatos específicos, te recomendamos usar una herramienta dedicada mientras seguimos ampliando el kit.",
+        "¡Sí! Puedes convertir las páginas de tus PDF en imágenes PNG o JPEG de alta calidad, o combinar varias imágenes JPG y PNG en un solo PDF.",
     },
   ],
 };
+

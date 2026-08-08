@@ -7,9 +7,9 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
     slug: "komprimieren",
     mode: "compress",
     meta: {
-      title: "PDF online komprimieren | Größe reduzieren | ihatelovepdf",
+      title: "PDF Komprimieren Online Kostenlos - Dateigröße Reduzieren",
       description:
-        "Reduziere PDF-Größe effizient ohne Qualitätsverlust. 100% privat und kostenlos direkt im Browser.",
+        "PDF-Dateien online kostenlos verkleinern. Reduzieren Sie die PDF-Größe für E-Mail und Speicher.",
       keywords: [
         "pdf komprimieren",
         "pdf verkleinern",
@@ -17,19 +17,21 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
         "pdf kompressor",
         "leichtes pdf",
       ],
-      ogTitle: "PDFs komprimieren ohne Qualitätsverlust | ihatelovepdf",
+      ogTitle: "PDF Komprimieren Online Kostenlos - Dateigröße Reduzieren | ihatelovepdf",
       ogDescription:
         "Ziehe deine Datei in das Feld, wähle die optimale Kompressionsstufe und lade das verkleinerte PDF in Sekunden herunter – sicher und ohne Server-Upload.",
       ogImageAlt: "ihatelovepdf Oberfläche beim Komprimieren",
     },
     hero: {
-      title: "PDF online komprimieren – mit klaren Ergebnissen",
+      title: "PDF Komprimieren Online Kostenlos - Dateigröße Reduzieren",
       description:
         "Reduziere die Dateigröße, damit Dokumente in E-Mails, Lernplattformen oder Behördenportale passen und trotzdem gut lesbar bleiben.",
       bulletPoints: [
-        "100 % lokale Verarbeitung – Dateien verlassen den Browser nicht",
-        "Zwischen leichter, mittlerer oder starker Kompression wählen",
-        "Metadaten und Struktur bei Bedarf beibehalten",
+        "✅ Völlig Kostenlos",
+        "✅ Keine Anmeldung Erforderlich",
+        "✅ Blitzschnell",
+        "✅ Sicher und Privat",
+        "✅ Auf Allen Geräten",
       ],
       imageAlt: "PDF Komprimierungsablauf in ihatelovepdf",
     },
@@ -74,9 +76,9 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
     slug: "zusammenfuehren",
     mode: "merge",
     meta: {
-      title: "PDFs online zusammenführen | Kombinieren | ihatelovepdf",
+      title: "PDF Zusammenfügen Online Kostenlos - Keine Anmeldung Erforderlich",
       description:
-        "Füge mehrere PDF-Dateien zu einem einzigen, geordneten Dokument zusammen. Einfach per Drag & Drop sortieren und sofort sicher herunterladen – ohne Seitenlimit.",
+        "PDF-Dateien online kostenlos zusammenfügen. Schnell, sicher und ohne Anmeldung. Mehrere PDFs hochladen und kombinieren.",
       keywords: [
         "pdf zusammenführen",
         "pdfs kombinieren",
@@ -84,19 +86,21 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
         "pdf merger",
         "dokumente vereinen",
       ],
-      ogTitle: "Mehrere PDFs in Sekunden kombinieren | ihatelovepdf",
+      ogTitle: "PDF Zusammenfügen Online Kostenlos - Keine Anmeldung Erforderlich | ihatelovepdf",
       ogDescription:
         "Ordne deine Dokumente beliebig an, passe die Einstellungen an und erhalte ein perfekt zusammengefügtes PDF, ohne dass Daten in die Cloud gelangen.",
       ogImageAlt: "Zusammenführen von PDFs mit ihatelovepdf",
     },
     hero: {
-      title: "PDFs online zusammenführen – schnell und sicher",
+      title: "PDF-Dateien Online Zusammenfügen - Kostenlos und ohne Registrierung",
       description:
         "Erstelle eine saubere Datei mit Verträgen, Kursunterlagen oder Richtlinien, bereit zum Versenden, Signieren oder Archivieren.",
       bulletPoints: [
-        "Per Drag & Drop die finale Reihenfolge bestimmen",
-        "Keine versteckten Limits – auch lange Dokumente frei vereinen",
-        "Lesezeichen und Metadaten bei Bedarf behalten",
+        "✅ Völlig Kostenlos",
+        "✅ Keine Anmeldung Erforderlich",
+        "✅ Blitzschnell",
+        "✅ Sicher und Privat",
+        "✅ Auf Allen Geräten",
       ],
       imageAlt: "PDF Zusammenführung",
     },
@@ -141,9 +145,9 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
     slug: "teilen",
     mode: "split",
     meta: {
-      title: "PDF nach Seiten oder Kapiteln teilen | Kostenlos | ihatelovepdf",
+      title: "PDF Online Teilen Kostenlos - Seiten Extrahieren",
       description:
-        "Teile große PDFs in handliche Dateien auf. Volle Kontrolle über deine Daten mit lokaler Verarbeitung.",
+        "PDF online kostenlos teilen und Seiten extrahieren. Schnell, einfach, ohne Registrierung.",
       keywords: [
         "pdf teilen",
         "pdf aufteilen",
@@ -151,13 +155,13 @@ const operationsDeContent: Record<OperationKey, OperationContent> = {
         "pdf splitter",
         "pdf zerlegen",
       ],
-      ogTitle: "PDFs präzise aufteilen | ihatelovepdf",
+      ogTitle: "PDF Online Teilen Kostenlos - Seiten Extrahieren | ihatelovepdf",
       ogDescription:
         "Wähle deinen bevorzugten Teilungsmodus, generiere so viele Einzeldateien wie nötig und speichere sie direkt ab – schnell, einfach und sicher.",
       ogImageAlt: "PDF aufteilen mit ihatelovepdf",
     },
     hero: {
-      title: "PDFs nach Seiten oder Segmenten teilen",
+      title: "PDF Online Teilen Kostenlos - Seiten Trennen und Extrahieren",
       description:
         "Kapitel, Anhänge oder gezielte Abschnitte als eigenständige Dateien exportieren – bereit zum Teilen.",
       bulletPoints: [

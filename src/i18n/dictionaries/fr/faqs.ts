@@ -1,63 +1,69 @@
 export const faqsFr = {
   common: [
     {
-      question: "Comment fonctionne ihatelovepdf sans télécharger mes documents sur des serveurs ?",
+      question: "Puis-je fusionner de grands fichiers PDF gratuitement ?",
       answer:
-        "ihatelovepdf fonctionne entièrement dans votre navigateur avec un moteur de traitement sur l'appareil. Aucun fichier n'est téléchargé sur nos serveurs, ce qui garantit une confidentialité totale et un traitement rapide.",
+        "Oui ! Il n'y a aucune limite de taille de fichier sur ihatelovepdf. Vous pouvez fusionner, diviser ou compresser des fichiers PDF aussi volumineux que vous le souhaitez, entièrement gratuitement et directement dans votre navigateur.",
     },
     {
-      question: "ihatelovepdf est-il sûr pour les documents confidentiels ?",
+      question: "Dois-je créer un compte ou me connecter ?",
       answer:
-        "Absolument. Tout reste sur votre appareil, de sorte que vos PDF ne quittent jamais votre contrôle — nous ne pouvons même pas accéder à leur contenu.",
+        "Non ! ihatelovepdf est 100% gratuit et ne nécessite aucune inscription. Chargez simplement vos fichiers PDF, traitez-les instantanément et téléchargez le résultat.",
     },
     {
-      question: "Y a-t-il une limite à la taille ou au nombre de PDF que je peux traiter ?",
+      question: "Mes fichiers PDF sont-ils sécurisés et confidentiels ?",
       answer:
-        "La principale limite est la mémoire de votre appareil. Dans la plupart des cas, ihatelovepdf traite des fichiers allant jusqu'à 50 Mo chacun, bien que cela puisse varier en fonction de votre matériel et de votre navigateur.",
+        "Oui, absolument. Tous les traitements s'effectuent localement dans votre navigateur web. Vos documents ne sont jamais téléchargés ni stockés sur des serveurs externes, garantissant une confidentialité totale.",
     },
     {
-      question: "ihatelovepdf fonctionne-t-il sur les appareils mobiles ?",
+      question: "Combien de temps prend le traitement des PDF ?",
       answer:
-        "Oui. ihatelovepdf est optimisé pour les ordinateurs de bureau, les tablettes et les téléphones. L'interface s'adapte à toutes les tailles d'écran.",
+        "Généralement moins de 10 secondes. La plupart des fusions et modifications sont instantanées car aucun transfert de fichier sur Internet n'est nécessaire.",
+    },
+    {
+      question: "Puis-je utiliser ihatelovepdf sur mon téléphone ou ma tablette ?",
+      answer:
+        "Oui ! Notre outil fonctionne parfaitement sur iOS (iPhone/iPad), appareils Android, tablettes et ordinateurs de bureau. Aucune application à installer.",
     },
   ],
   regional: [
     {
-      question: "ihatelovepdf m'aide-t-il à respecter les règles de protection des données ?",
+      question: "ihatelovepdf est-il conforme au RGPD et à la protection des données ?",
       answer:
-        "Parce que le traitement se fait localement, aucune donnée personnelle ne quitte votre organisation. Cela facilite le respect du RGPD, du HIPAA, du LGPD ou de toute politique de confidentialité interne.",
+        "Oui. Étant donné qu'aucune donnée de document n'est collectée, stockée ou transmise vers des serveurs distants, ihatelovepdf respecte naturellement le RGPD et les politiques de confidentialité des entreprises.",
     },
     {
-      question: "Puis-je utiliser ihatelovepdf pour des formulaires officiels ou des factures ?",
+      question: "Fonctionne-t-il sur Windows, Mac et Linux ?",
       answer:
-        "Oui. Il est idéal pour optimiser les factures, les contrats et les documents de l'administration publique tout en conservant la qualité d'origine.",
+        "Oui ! ihatelovepdf étant entièrement basé sur le navigateur, il fonctionne sur Windows, macOS, Linux et ChromeOS sans installer de logiciel.",
     },
     {
-      question: "La compression affectera-t-elle la validité légale de mes documents ?",
+      question: "La compression ou modification altère-t-elle la validité légale des documents ?",
       answer:
-        "Le compresseur ihatelovepdf préserve l'intégrité du document. Même ainsi, nous vous recommandons de confirmer que le fichier résultant répond aux exigences spécifiques de l'entité réceptrice lorsque les enjeux sont élevés.",
+        "Non. Notre moteur de traitement préserve la qualité du texte, des polices et des graphiques pour les factures, contrats et formulaires officiels.",
     },
   ],
   tech: [
     {
-      question: "Quelle technologie propulse ihatelovepdf ?",
+      question: "Puis-je réorganiser les pages avant de fusionner les PDF ?",
       answer:
-        "ihatelovepdf utilise un moteur JavaScript léger pour manipuler nativement les PDF dans le navigateur sans dépendre d'extensions natives. Cela permet de garder l'application plus légère et la maintenance plus simple.",
+        "Oui ! Après avoir téléchargé vos fichiers PDF, vous pouvez faire glisser et déposer les vignettes de pages pour définir la séquence exacte souhaitée avant de finaliser.",
     },
     {
-      question: "Les éléments interactifs sont-ils perdus lorsque je compresse un PDF ?",
+      question: "Combien de fichiers PDF puis-je fusionner à la fois ?",
       answer:
-        "Dans la plupart des cas, ihatelovepdf conserve les liens, les formulaires et les signets. Avec une compression très agressive, certaines fonctionnalités avancées peuvent être modifiées, nous vous recommandons donc de vérifier.",
+        "Illimité ! Vous pouvez fusionner 2, 5, 10 ou 100 fichiers PDF en un seul traitement sans aucune restriction.",
     },
     {
-      question: "Quels navigateurs sont compatibles avec ihatelovepdf ?",
+      question: "Que deviennent mes fichiers après le téléchargement ?",
       answer:
-        "ihatelovepdf fonctionne avec les navigateurs modernes tels que Chrome, Firefox, Safari, Edge et Opera. Tout ce dont vous avez besoin est un navigateur à jour prenant en charge ES2020 — aucun runtime supplémentaire n'est requis.",
+        "Puisque le traitement se fait à 100% dans votre navigateur, aucune copie n'existe sur un serveur. Dès que vous fermez l'onglet, la mémoire est libérée automatiquement.",
     },
     {
-      question: "Puis-je convertir un PDF vers d'autres formats ?",
+      question: "Puis-je convertir des PDF en images haute résolution ?",
       answer:
-        "Actuellement, vous pouvez convertir des PDF en images (PNG ou JPEG) et créer des PDF à partir de JPG, PNG ou WEBP sans télécharger de fichiers. Pour d'autres formats de niche, continuez à utiliser un convertisseur dédié pendant que nous continuons à développer la boîte à outils.",
+        "Oui ! Vous pouvez convertir les pages de vos PDF en images PNG ou JPEG de haute qualité, ou combiner plusieurs images JPG et PNG dans un seul document PDF.",
     },
   ],
 };
+
