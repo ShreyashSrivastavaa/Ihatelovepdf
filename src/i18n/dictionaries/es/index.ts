@@ -1,33 +1,34 @@
-import { DEFAULT_LOCALE, localeLabels } from "../../config";
+import { localeLabels } from "../../config";
 import { operationsEs } from "./operations";
 import { faqsEs } from "./faqs";
 import { getRoutePath, getOperationPath } from "../../routing";
 import type { Dictionary } from "../dictionary-types";
 
-const { label, nativeName, htmlLang, hrefLang } = localeLabels[DEFAULT_LOCALE];
+const locale = "es" as const;
+const { label, nativeName, htmlLang, hrefLang } = localeLabels[locale];
 
 const siteUrl = "https://ihatelovepdf.com";
 
 export const esDictionary: Dictionary = {
-  locale: DEFAULT_LOCALE,
+  locale,
   localeLabel: label,
   nativeName,
   htmlLang,
   hrefLang,
   routes: {
-    home: getRoutePath(DEFAULT_LOCALE, "home"),
-    faq: getRoutePath(DEFAULT_LOCALE, "faq"),
-    support: getRoutePath(DEFAULT_LOCALE, "support"),
+    home: getRoutePath(locale, "home"),
+    faq: getRoutePath(locale, "faq"),
+    support: getRoutePath(locale, "support"),
     operations: {
-      merge: getOperationPath(DEFAULT_LOCALE, "merge"),
-      compress: getOperationPath(DEFAULT_LOCALE, "compress"),
-      split: getOperationPath(DEFAULT_LOCALE, "split"),
-      extract: getOperationPath(DEFAULT_LOCALE, "extract"),
-      crop: getOperationPath(DEFAULT_LOCALE, "crop"),
-      rotate: getOperationPath(DEFAULT_LOCALE, "rotate"),
-      reorder: getOperationPath(DEFAULT_LOCALE, "reorder"),
-      pdfToImages: getOperationPath(DEFAULT_LOCALE, "pdfToImages"),
-      imagesToPdf: getOperationPath(DEFAULT_LOCALE, "imagesToPdf"),
+      merge: getOperationPath(locale, "merge"),
+      compress: getOperationPath(locale, "compress"),
+      split: getOperationPath(locale, "split"),
+      extract: getOperationPath(locale, "extract"),
+      crop: getOperationPath(locale, "crop"),
+      rotate: getOperationPath(locale, "rotate"),
+      reorder: getOperationPath(locale, "reorder"),
+      pdfToImages: getOperationPath(locale, "pdfToImages"),
+      imagesToPdf: getOperationPath(locale, "imagesToPdf"),
     },
   },
   metadata: {
@@ -76,7 +77,7 @@ export const esDictionary: Dictionary = {
         "dividir PDF ayuda",
         "reordenar PDF",
       ],
-      canonical: `${siteUrl}${getRoutePath(DEFAULT_LOCALE, "faq")}`,
+      canonical: `${siteUrl}${getRoutePath(locale, "faq")}`,
     },
     support: {
       title: "Apoya ihatelovepdf | Mantén la herramienta privada y gratuita",
@@ -89,7 +90,7 @@ export const esDictionary: Dictionary = {
         "donación privacidad",
         "mantener ihatelovepdf gratis",
       ],
-      canonical: `${siteUrl}${getRoutePath(DEFAULT_LOCALE, "support")}`,
+      canonical: `${siteUrl}${getRoutePath(locale, "support")}`,
     },
     operations: operationsEs,
   },
@@ -547,12 +548,12 @@ export const esDictionary: Dictionary = {
         ctaLinks: [
           {
             label: "PDF a imágenes",
-            href: getOperationPath(DEFAULT_LOCALE, "pdfToImages"),
+            href: getOperationPath(locale, "pdfToImages"),
             description: "Exporta páginas como PNG o JPEG",
           },
           {
             label: "Imágenes a PDF",
-            href: getOperationPath(DEFAULT_LOCALE, "imagesToPdf"),
+            href: getOperationPath(locale, "imagesToPdf"),
             description: "Combina JPG, PNG o WEBP",
           },
         ],
@@ -564,7 +565,7 @@ export const esDictionary: Dictionary = {
             title: "100% Privado",
             description:
               "Tus PDFs nunca salen de tu dispositivo. Todo el procesamiento ocurre en tu navegador.",
-            icon: "ðŸ”’",
+            icon: "🔒",
           },
           {
             title: "Rápido y Eficiente",
@@ -576,7 +577,7 @@ export const esDictionary: Dictionary = {
             title: "Funciona en cualquier dispositivo",
             description:
               "Compatible con ordenadores, tablets y teléfonos móviles. Solo necesitas un navegador moderno.",
-            icon: "ðŸ“±",
+            icon: "📱",
           },
         ],
       },
@@ -585,9 +586,9 @@ export const esDictionary: Dictionary = {
         description:
           "Cada donación cubre servidores, tiempo de desarrollo y nos permite mantener una experiencia 100% privada sin anuncios ni rastreadores.",
         ctaLabel: "Apoyar el proyecto",
-        ctaUrl: getRoutePath(DEFAULT_LOCALE, "support"),
+        ctaUrl: getRoutePath(locale, "support"),
         secondaryLabel: "Conoce cómo usamos los fondos",
-        secondaryUrl: getRoutePath(DEFAULT_LOCALE, "support") + "#support-transparency",
+        secondaryUrl: getRoutePath(locale, "support") + "#support-transparency",
       },
     },
     faq: {

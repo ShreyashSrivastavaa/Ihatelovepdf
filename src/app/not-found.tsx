@@ -117,7 +117,7 @@ export default function NotFound() {
           >
 
             {/* English tools */}
-            <p style={{ color: "#4e2525", fontSize: "0.75rem", marginBottom: "0.5rem", opacity: 0.7 }}>ðŸ‡¬ðŸ‡§ English</p>
+            <p style={{ color: "#4e2525", fontSize: "0.75rem", marginBottom: "0.5rem", opacity: 0.7 }}>🇬🇧 English</p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem", justifyContent: "center", marginBottom: "1rem" }}>
               {[
                 { label: "Merge PDF", href: "/en/merge" },
@@ -135,7 +135,7 @@ export default function NotFound() {
             </div>
 
             {/* Spanish tools */}
-            <p style={{ color: "#4e2525", fontSize: "0.75rem", marginBottom: "0.5rem", opacity: 0.7 }}>ðŸ‡ªðŸ‡¸ Español</p>
+            <p style={{ color: "#4e2525", fontSize: "0.75rem", marginBottom: "0.5rem", opacity: 0.7 }}>🇪🇸 Español</p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", justifyContent: "center", marginBottom: "1.5rem" }}>
               {[
                 { label: "Unir PDF", href: "/unir" },
@@ -158,7 +158,7 @@ export default function NotFound() {
                 { label: "Français", href: "/fr" },
                 { label: "Italiano", href: "/it" },
                 { label: "Português", href: "/pt" },
-                { label: "RomânÄƒ", href: "/ro" },
+                { label: "Română", href: "/ro" },
               ].map((lang) => (
                 <a key={lang.href} href={lang.href} style={langChipStyle}>{lang.label}</a>
               ))}

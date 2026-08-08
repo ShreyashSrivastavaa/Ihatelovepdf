@@ -1,13 +1,14 @@
-import { DEFAULT_LOCALE } from "../../i18n/config";
 import { getDictionary } from "../../i18n/get-dictionary";
 import { HomePageContent } from "../../components/HomePageContent";
-
 import { createHomeMetadata } from "../(helpers)/locale-metadata";
 
-export const generateMetadata = createHomeMetadata(DEFAULT_LOCALE);
+const LOCALE = "es" as const;
+
+export const generateMetadata = createHomeMetadata(LOCALE);
 
 export default function RootHomePage() {
-  const dictionary = getDictionary(DEFAULT_LOCALE);
+  const dictionary = getDictionary(LOCALE);
 
   return <HomePageContent dictionary={dictionary} />;
 }
+
