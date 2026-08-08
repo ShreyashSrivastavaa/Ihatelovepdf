@@ -52,42 +52,69 @@ export default function Footer() {
 
 
 
-          <div className="pt-4 text-xs text-[var(--tx-3)] space-y-1.5 border-t border-[var(--border)]">
-            <p className="font-medium text-[var(--tx-2)]">
-              Created &amp; Maintained by{' '}
-              <a
-                href="https://shreyashsrivastava.vercel.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-[var(--tx)] hover:underline"
-              >
-                Shreyash Srivastava
-              </a>{' '}
-              (UTS — UPSCALE TECH SOLUTION) • EMAIL:{' '}
-              <a
-                href="mailto:upscaletechsolution@gmail.com"
-                className="hover:text-[var(--tx)] transition-colors"
-              >
-                UPSCALETECHSOLUTION@GMAIL.COM
-              </a>{' '}
-              •{' '}
-              <a
-                href="https://github.com/ShreyashSrivastavaa"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[var(--tx)] transition-colors"
-              >
-                GitHub Profile
-              </a>
-            </p>
-            <p className="text-[11px] font-semibold text-[var(--tx-2)] tracking-wide">
-              ALL RIGHTS RESERVED UTS — UPSCALE TECH SOLUTION
-            </p>
-            <p>{footer.rights}</p>
-            <p className="opacity-75">{footer.license}</p>
-            {footer.disclaimer && (
-              <p className="opacity-65 text-[11px] max-w-4xl">{footer.disclaimer}</p>
-            )}
+          <div className="pt-6 border-t border-[var(--border)]">
+            {/* Top row: author info + badge */}
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
+              {/* Left: author + links */}
+              <div className="space-y-2 text-xs text-[var(--tx-3)]">
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                  <span className="font-medium text-[var(--tx-2)]">Created &amp; maintained by</span>
+                  <a
+                    href="https://shreyashsrivastava.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-[var(--tx)] hover:underline transition-colors"
+                  >
+                    Shreyash Srivastava
+                  </a>
+                  <span className="opacity-50">·</span>
+                  <span className="opacity-70">UTS — Upscale Tech Solution</span>
+                </div>
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-1 opacity-75">
+                  <a
+                    href="mailto:upscaletechsolution@gmail.com"
+                    className="hover:text-[var(--tx)] transition-colors"
+                  >
+                    upscaletechsolution@gmail.com
+                  </a>
+                  <span className="opacity-50">·</span>
+                  <a
+                    href="https://github.com/ShreyashSrivastavaa"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-[var(--tx)] transition-colors"
+                  >
+                    GitHub
+                  </a>
+                </div>
+                <div className="space-y-0.5 pt-1">
+                  <p className="text-[11px] text-[var(--tx-3)]">{footer.rights}</p>
+                  <p className="text-[11px] opacity-65">{footer.license}</p>
+                  {footer.disclaimer && (
+                    <p className="text-[11px] opacity-55 max-w-xl leading-relaxed">{footer.disclaimer}</p>
+                  )}
+                </div>
+              </div>
+
+              {/* Right: websitelaunches badge */}
+              <div className="shrink-0">
+                <a
+                  href="https://websitelaunches.com/site/ihatelovepdf.com"
+                  target="_blank"
+                  rel="noopener"
+                  className="block opacity-85 hover:opacity-100 transition-opacity"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="https://websitelaunches.com/badge/ihatelovepdf.com.svg"
+                    alt="Established online - Public launch record"
+                    width={200}
+                    height={43}
+                    style={{ height: 'auto' }}
+                  />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </footer>
