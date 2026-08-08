@@ -1,7 +1,7 @@
 {
   "home": {
-    "en": "/",
-    "es": "/es",
+    "en": "/en",
+    "es": "/",
     "pt": "/pt",
     "de": "/de",
     "it": "/it",
@@ -12,7 +12,7 @@
   },
   "faq": {
     "en": "/en/faq",
-    "es": "/es/preguntas-frecuentes",
+    "es": "/preguntas-frecuentes",
     "pt": "/pt/perguntas-frequentes",
     "de": "/de/haeufige-fragen",
     "it": "/it/faq",
@@ -23,7 +23,7 @@
   },
   "support": {
     "en": "/en/support",
-    "es": "/es/apoya",
+    "es": "/apoya",
     "pt": "/pt/apoie",
     "de": "/de/unterstuetzen",
     "it": "/it/supporto",
@@ -34,7 +34,7 @@
   },
   "privacy": {
     "en": "/privacy",
-    "es": "/es/privacidad",
+    "es": "/privacy",
     "pt": "/pt/privacidade",
     "de": "/de/datenschutz",
     "it": "/it/privacy",
@@ -45,7 +45,7 @@
   },
   "terms": {
     "en": "/terms",
-    "es": "/es/terminos",
+    "es": "/terms",
     "pt": "/pt/termos",
     "de": "/de/nutzungsbedingungen",
     "it": "/it/termini",
@@ -56,7 +56,7 @@
   },
   "contact": {
     "en": "/contact",
-    "es": "/es/contacto",
+    "es": "/contact",
     "pt": "/pt/contacto",
     "de": "/de/kontakt",
     "it": "/it/contatto",
@@ -67,8 +67,8 @@
   },
   "operations": {
     "compress": {
-      "en": "/compress",
-      "es": "/es/comprimir",
+      "en": "/en/compress",
+      "es": "/comprimir",
       "pt": "/pt/comprimir",
       "de": "/de/komprimieren",
       "it": "/it/comprimi",
@@ -78,8 +78,8 @@
       "hu": "/hu/tomoriteni"
     },
     "merge": {
-      "en": "/merge",
-      "es": "/es/unir",
+      "en": "/en/merge",
+      "es": "/unir",
       "pt": "/pt/juntar",
       "de": "/de/zusammenfuehren",
       "it": "/it/unisci",
@@ -89,8 +89,8 @@
       "hu": "/hu/osszefuzni"
     },
     "split": {
-      "en": "/split",
-      "es": "/es/dividir",
+      "en": "/en/split",
+      "es": "/dividir",
       "pt": "/pt/dividir",
       "de": "/de/teilen",
       "it": "/it/dividi",
@@ -100,8 +100,8 @@
       "hu": "/hu/szetbontas"
     },
     "extract": {
-      "en": "/extract",
-      "es": "/es/extraer",
+      "en": "/en/extract",
+      "es": "/extraer",
       "pt": "/pt/extrair",
       "de": "/de/seiten-extrahieren",
       "it": "/it/estrai",
@@ -111,8 +111,8 @@
       "hu": "/hu/kivalasztani"
     },
     "crop": {
-      "en": "/crop",
-      "es": "/es/recortar",
+      "en": "/en/crop",
+      "es": "/recortar",
       "pt": "/pt/recortar",
       "de": "/de/zuschneiden",
       "it": "/it/ritaglia",
@@ -122,8 +122,8 @@
       "hu": "/hu/korulvagas"
     },
     "rotate": {
-      "en": "/rotate",
-      "es": "/es/girar",
+      "en": "/en/rotate",
+      "es": "/girar",
       "pt": "/pt/girar",
       "de": "/de/drehen",
       "it": "/it/ruota",
@@ -133,8 +133,8 @@
       "hu": "/hu/forgatas"
     },
     "reorder": {
-      "en": "/reorder",
-      "es": "/es/reordenar",
+      "en": "/en/reorder",
+      "es": "/reordenar",
       "pt": "/pt/reordenar",
       "de": "/de/seiten-sortieren",
       "it": "/it/riordina",
@@ -144,8 +144,8 @@
       "hu": "/hu/atrendezni"
     },
     "pdfToImages": {
-      "en": "/pdf-to-images",
-      "es": "/es/convertir-pdf-a-imagenes",
+      "en": "/en/pdf-to-images",
+      "es": "/convertir-pdf-a-imagenes",
       "pt": "/pt/pdf-para-imagens",
       "de": "/de/pdf-zu-bildern",
       "it": "/it/da-pdf-a-immagini",
@@ -155,8 +155,8 @@
       "hu": "/hu/pdf-kepekbe"
     },
     "imagesToPdf": {
-      "en": "/images-to-pdf",
-      "es": "/es/crear-pdf-desde-imagenes",
+      "en": "/en/images-to-pdf",
+      "es": "/crear-pdf-desde-imagenes",
       "pt": "/pt/imagens-para-pdf",
       "de": "/de/bilder-zu-pdf",
       "it": "/it/da-immagini-a-pdf",

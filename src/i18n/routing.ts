@@ -1,5 +1,5 @@
 import routeMapJson from "../../content/i18n-route-map.json" assert { type: "json" };
-import { DEFAULT_LOCALE, Locale } from "./config";
+import { Locale } from "./config";
 import { OperationKey } from "../types/operations";
 
 export type StaticRouteKey = "home" | "faq" | "support" | "privacy" | "terms" | "contact";
@@ -145,9 +145,7 @@ const normalizePath = (path: string) => {
   const perLocale = routeMap.operations[operationKey];
   (Object.keys(perLocale) as Locale[]).forEach((locale) => {
     const fullPath = perLocale[locale];
-    const slug = locale === DEFAULT_LOCALE
-      ? trimLeadingSlash(fullPath)
-      : trimLeadingSlash(fullPath.replace(new RegExp(`^/${locale}/`), ""));
+    const slug = trimLeadingSlash(fullPath.replace(new RegExp(`^/${locale}/`), ""));
 
     localeOperationSlugMap[locale][operationKey] = slug;
     localeOperationSlugLookup[locale][slug] = operationKey;
