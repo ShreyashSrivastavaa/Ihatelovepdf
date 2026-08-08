@@ -63,6 +63,13 @@ export default function Footer() {
               >
                 Shreyash Srivastava
               </a>{' '}
+              (UTS — UPSCALE TECH SOLUTION) • EMAIL:{' '}
+              <a
+                href="mailto:upscaletechsolution@gmail.com"
+                className="hover:text-[var(--tx)] transition-colors"
+              >
+                UPSCALETECHSOLUTION@GMAIL.COM
+              </a>{' '}
               •{' '}
               <a
                 href="https://github.com/ShreyashSrivastavaa"
@@ -72,6 +79,9 @@ export default function Footer() {
               >
                 GitHub Profile
               </a>
+            </p>
+            <p className="text-[11px] font-semibold text-[var(--tx-2)] tracking-wide">
+              ALL RIGHTS RESERVED UTS — UPSCALE TECH SOLUTION
             </p>
             <p>{footer.rights}</p>
             <p className="opacity-75">{footer.license}</p>

@@ -31,7 +31,7 @@ export function SchemaOrg() {
         ],
         "author": {
             "@type": "Person",
-            "name": "Shreyash Srivastava",
+            "name": "Shreyash Srivastava (UTS — UPSCALE TECH SOLUTION)",
             "jobTitle": "Creator & Lead Developer",
             "url": "https://shreyashsrivastava.vercel.app/",
             "sameAs": [
@@ -40,17 +40,15 @@ export function SchemaOrg() {
             ]
         },
         "creator": {
-            "@type": "Person",
-            "name": "Shreyash Srivastava",
-            "url": "https://shreyashsrivastava.vercel.app/",
-            "sameAs": [
-                "https://github.com/ShreyashSrivastavaa"
-            ]
+            "@type": "Organization",
+            "name": "UTS — UPSCALE TECH SOLUTION",
+            "email": "upscaletechsolution@gmail.com",
+            "url": "https://shreyashsrivastava.vercel.app/"
         },
         "publisher": {
-            "@type": "Person",
-            "name": "Shreyash Srivastava",
-            "url": "https://shreyashsrivastava.vercel.app/"
+            "@type": "Organization",
+            "name": "UTS — UPSCALE TECH SOLUTION",
+            "email": "upscaletechsolution@gmail.com"
         }
     };
 
