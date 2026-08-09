@@ -80,6 +80,7 @@ export default function EnLayout({ children }: { children: ReactNode }) {
       <head>
         <meta charSet="UTF-8" />
         <meta name="websitelaunches-verification" content="714e3c091b00f4a86f93e6be17c060fc" />
+        <meta name="directree-verify" content="directree-verify=dfce967396d09deb8ea0daa79821f507" />
         <ThemeScript />
         <GoogleAnalyticsScripts />
         <SchemaOrg />
