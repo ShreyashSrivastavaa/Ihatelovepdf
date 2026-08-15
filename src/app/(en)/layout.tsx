@@ -16,6 +16,7 @@ import { BreadcrumbSchema } from "../../components/seo/BreadcrumbSchema";
 import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER, SHARED_AUTHORS, SHARED_CREATOR, SHARED_PUBLISHER } from "../../lib/metadata-shared";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ThemeScript } from "../../components/ThemeScript";
 
 const LOCALE = "en" as const;
 
@@ -28,15 +29,15 @@ export const metadata = {
   description: "Free online PDF tools to merge, compress, split, extract, and convert PDFs. 100% private, local processing in your browser.",
   icons: SHARED_ICONS,
   alternates: {
-    canonical: "https://ihatelovepdf.com/en/",
+    canonical: "https://ihatelovepdf.com/",
     languages: {
-      'es-ES': 'https://ihatelovepdf.com/',
-      'es-MX': 'https://ihatelovepdf.com/',
-      'es-CO': 'https://ihatelovepdf.com/',
-      'es-AR': 'https://ihatelovepdf.com/',
-      'es': 'https://ihatelovepdf.com/',
-      'en': 'https://ihatelovepdf.com/en/',
-      'en-US': 'https://ihatelovepdf.com/en/',
+      'en': 'https://ihatelovepdf.com/',
+      'en-US': 'https://ihatelovepdf.com/',
+      'es': 'https://ihatelovepdf.com/es/',
+      'es-ES': 'https://ihatelovepdf.com/es/',
+      'es-MX': 'https://ihatelovepdf.com/es/',
+      'es-CO': 'https://ihatelovepdf.com/es/',
+      'es-AR': 'https://ihatelovepdf.com/es/',
       'fr': 'https://ihatelovepdf.com/fr/',
       'fr-FR': 'https://ihatelovepdf.com/fr/',
       'pt': 'https://ihatelovepdf.com/pt/',
@@ -57,10 +58,10 @@ export const metadata = {
   },
   openGraph: {
     ...SHARED_OPEN_GRAPH,
-    images: [{ url: "https://ihatelovepdf.com/og-image.png", width: 1200, height: 630, alt: "ihatelovepdf - Private and free PDF processing" }],
+    images: [{ url: "https://ihatelovepdf.com/og-images/og-image-en.png", width: 1409, height: 736, alt: "ihatelovepdf - Private and free PDF processing" }],
     title: "ihatelovepdf - Free and Private PDF Tools in Your Browser",
     description: "Merge, compress, split, and convert PDFs without uploading files. Secure and 100% private processing.",
-    url: "https://ihatelovepdf.com/en",
+    url: "https://ihatelovepdf.com",
     locale: "en_US",
     type: "website",
   },
@@ -68,13 +69,11 @@ export const metadata = {
     ...SHARED_TWITTER,
     title: "ihatelovepdf - Free and Private PDF Tools in Your Browser",
     description: "Merge, compress, split, and convert PDFs without uploading files. Secure and 100% private processing.",
-    images: ["https://ihatelovepdf.com/og-image.png"],
+    images: ["https://ihatelovepdf.com/og-images/og-image-en.png"],
   },
 };
 
-import { ThemeScript } from "../../components/ThemeScript";
-
-export default function EnLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang={LOCALE}>
       <head>

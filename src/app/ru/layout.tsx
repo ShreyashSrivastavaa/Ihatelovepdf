@@ -26,13 +26,13 @@ export const metadata = {
   alternates: {
     canonical: "https://ihatelovepdf.com/ru/",
     languages: {
-      'es-ES': 'https://ihatelovepdf.com/',
-      'es-MX': 'https://ihatelovepdf.com/',
-      'es-CO': 'https://ihatelovepdf.com/',
-      'es-AR': 'https://ihatelovepdf.com/',
-      'es': 'https://ihatelovepdf.com/',
-      'en': 'https://ihatelovepdf.com/en/',
-      'en-US': 'https://ihatelovepdf.com/en/',
+      'en': 'https://ihatelovepdf.com/',
+      'en-US': 'https://ihatelovepdf.com/',
+      'es': 'https://ihatelovepdf.com/es/',
+      'es-ES': 'https://ihatelovepdf.com/es/',
+      'es-MX': 'https://ihatelovepdf.com/es/',
+      'es-CO': 'https://ihatelovepdf.com/es/',
+      'es-AR': 'https://ihatelovepdf.com/es/',
       'fr': 'https://ihatelovepdf.com/fr/',
       'fr-FR': 'https://ihatelovepdf.com/fr/',
       'pt': 'https://ihatelovepdf.com/pt/',
@@ -64,6 +64,7 @@ export const metadata = {
 };
 
 import { ThemeScript } from "../../components/ThemeScript";
+import { BreadcrumbSchema } from "../../components/seo/BreadcrumbSchema";
 
 export default function RuLayout({ children }: { children: ReactNode }) {
   return (
@@ -73,6 +74,7 @@ export default function RuLayout({ children }: { children: ReactNode }) {
         <ThemeScript />
         <GoogleAnalyticsScripts />
         <SchemaOrg />
+        <BreadcrumbSchema />
       </head>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
         <LocaleProvider locale={LOCALE}>

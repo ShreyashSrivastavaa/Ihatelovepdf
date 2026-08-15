@@ -6,7 +6,7 @@ const LOCALE = "en" as const;
 
 export const generateMetadata = createFaqMetadata(LOCALE);
 
-export default function EnFaqPage() {
+export default function FaqPage() {
   const dictionary = getDictionary(LOCALE);
   return <FaqPageContent dictionary={dictionary} />;
 }

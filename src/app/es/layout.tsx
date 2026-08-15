@@ -16,6 +16,7 @@ import { BreadcrumbSchema } from "../../components/seo/BreadcrumbSchema";
 import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER, SHARED_AUTHORS, SHARED_CREATOR, SHARED_PUBLISHER } from "../../lib/metadata-shared";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ThemeScript } from "../../components/ThemeScript";
 
 const LOCALE = "es" as const;
 
@@ -31,15 +32,15 @@ export const metadata = {
     "unir pdf, comprimir pdf, dividir pdf, extraer paginas pdf, convertir pdf, pdf a imagen, imagen a pdf, reordenar pdf, herramienta pdf gratis",
   icons: SHARED_ICONS,
   alternates: {
-    canonical: "https://ihatelovepdf.com/",
+    canonical: "https://ihatelovepdf.com/es/",
     languages: {
-      'en': 'https://ihatelovepdf.com/en/',
-      'en-US': 'https://ihatelovepdf.com/en/',
-      'es': 'https://ihatelovepdf.com/',
-      'es-ES': 'https://ihatelovepdf.com/',
-      'es-MX': 'https://ihatelovepdf.com/',
-      'es-CO': 'https://ihatelovepdf.com/',
-      'es-AR': 'https://ihatelovepdf.com/',
+      'en': 'https://ihatelovepdf.com/',
+      'en-US': 'https://ihatelovepdf.com/',
+      'es': 'https://ihatelovepdf.com/es/',
+      'es-ES': 'https://ihatelovepdf.com/es/',
+      'es-MX': 'https://ihatelovepdf.com/es/',
+      'es-CO': 'https://ihatelovepdf.com/es/',
+      'es-AR': 'https://ihatelovepdf.com/es/',
       'fr': 'https://ihatelovepdf.com/fr/',
       'fr-FR': 'https://ihatelovepdf.com/fr/',
       'pt': 'https://ihatelovepdf.com/pt/',
@@ -64,14 +65,12 @@ export const metadata = {
     title: "ihatelovepdf | Herramientas PDF Privadas y Gratuitas en tu Navegador",
     description:
       "Unir, comprimir, dividir y convertir PDFs sin subir archivos. Procesamiento 100% privado en tu navegador.",
-    url: "https://ihatelovepdf.com",
+    url: "https://ihatelovepdf.com/es",
     locale: "es_ES",
     type: "website",
   },
   twitter: SHARED_TWITTER,
 };
-
-import { ThemeScript } from "../../components/ThemeScript";
 
 export default function EsLayout({ children }: { children: ReactNode }) {
   return (
@@ -79,6 +78,7 @@ export default function EsLayout({ children }: { children: ReactNode }) {
       <head>
         <meta charSet="UTF-8" />
         <meta name="websitelaunches-verification" content="714e3c091b00f4a86f93e6be17c060fc" />
+        <meta name="directree-verify" content="directree-verify=dfce967396d09deb8ea0daa79821f507" />
         <ThemeScript />
         <GoogleAnalyticsScripts />
         <SchemaOrg />

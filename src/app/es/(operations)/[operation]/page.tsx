@@ -7,4 +7,3 @@ const { generateStaticParams, generateMetadata, OperationPage } = createLocaleOp
 export const dynamicParams = false;
 export { generateStaticParams, generateMetadata };
 export default OperationPage;
-
