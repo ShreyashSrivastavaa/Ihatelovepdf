@@ -1,16 +1,6 @@
 {
   "redirects": [
     {
-      "source": "/es",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/es/:path*",
-      "destination": "/:path*",
-      "permanent": true
-    },
-    {
       "source": "/:path*",
       "has": [
         {
@@ -18,7 +8,7 @@
           "value": "pdfhelp.vercel.app"
         }
       ],
-      "destination": "https://www.ihatelovepdf.com/:path*",
+      "destination": "https://ihatelovepdf.com/:path*",
       "permanent": true
     },
     {
@@ -29,7 +19,18 @@
           "value": "ihatelovepdf.vercel.app"
         }
       ],
-      "destination": "https://www.ihatelovepdf.com/:path*",
+      "destination": "https://ihatelovepdf.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.ihatelovepdf.com"
+        }
+      ],
+      "destination": "https://ihatelovepdf.com/:path*",
       "permanent": true
     }
   ],
@@ -65,4 +66,3 @@
     }
   ]
 }
-
