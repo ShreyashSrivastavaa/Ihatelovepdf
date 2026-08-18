@@ -1,39 +1,4 @@
 {
-  "redirects": [
-    {
-      "source": "/:path((?!_next/|favicon|apple-icon|icon|logo|manifest|.*\\.).*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "pdfhelp.vercel.app"
-        }
-      ],
-      "destination": "https://ihatelovepdf.com/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/:path((?!_next/|favicon|apple-icon|icon|logo|manifest|.*\\.).*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "ihatelovepdf.vercel.app"
-        }
-      ],
-      "destination": "https://ihatelovepdf.com/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/:path((?!_next/|favicon|apple-icon|icon|logo|manifest|.*\\.).*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.ihatelovepdf.com"
-        }
-      ],
-      "destination": "https://ihatelovepdf.com/:path*",
-      "permanent": true
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
