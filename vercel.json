@@ -40,7 +40,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://api.web3forms.com https://vercel.live https://*.vercel.live; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; worker-src 'self' blob:; frame-src 'self' https://vercel.live https://*.vercel.live; connect-src 'self' https://api.web3forms.com https://www.google-analytics.com https://*.google-analytics.com https://vercel.live https://*.vercel.live wss://*.pusher.com; object-src 'none'; frame-ancestors 'self' https://vercel.live https://*.vercel.live;"
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://api.web3forms.com https://vercel.live https://*.vercel.live; script-src-elem 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://api.web3forms.com https://vercel.live https://*.vercel.live; style-src 'self' 'unsafe-inline' https:; style-src-elem 'self' 'unsafe-inline' https:; img-src 'self' data: blob: https:; font-src 'self' data: https:; worker-src 'self' blob:; manifest-src 'self'; frame-src 'self' https://vercel.live https://*.vercel.live; connect-src 'self' https://api.web3forms.com https://www.google-analytics.com https://*.google-analytics.com https://vercel.live https://*.vercel.live wss://*.pusher.com; object-src 'none'; frame-ancestors 'self' https://vercel.live https://*.vercel.live;"
         },
         {
           "key": "X-Content-Type-Options",
