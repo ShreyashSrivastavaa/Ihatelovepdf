@@ -1,26 +1,16 @@
 import { localeLabels } from "../../config";
-import { getRoutePath, getOperationPath } from "../../routing";
+import { getRoutePath } from "../../routing";
 import { operationsIt } from "./operations";
 import { faqsIt } from "./faqs";
 import type { Dictionary } from "../dictionary-types";
-import { OperationKey } from "../../../types/operations";
+import { getOperationsRoutes, getOperationsFooterLabels, getOperationsModeLabels, getOperationsDownloadNames } from "../../operations-catalog";
 
 const locale = "it" as const;
 const { label, nativeName, htmlLang, hrefLang } = localeLabels[locale];
 const siteUrl = "https://ihatelovepdf.com";
 const homePath = getRoutePath(locale, "home");
 
-const operationsRoutes: Record<OperationKey, string> = {
-  merge: getOperationPath(locale, "merge"),
-  compress: getOperationPath(locale, "compress"),
-  split: getOperationPath(locale, "split"),
-  extract: getOperationPath(locale, "extract"),
-  crop: getOperationPath(locale, "crop"),
-  rotate: getOperationPath(locale, "rotate"),
-  reorder: getOperationPath(locale, "reorder"),
-  pdfToImages: getOperationPath(locale, "pdfToImages"),
-  imagesToPdf: getOperationPath(locale, "imagesToPdf"),
-};
+const operationsRoutes = getOperationsRoutes(locale);
 
 export const itDictionary: Dictionary = {
   locale,
@@ -123,17 +113,7 @@ export const itDictionary: Dictionary = {
         contact: "Contatti",
       },
       capabilitiesLabel: "Azioni principali",
-      operations: {
-        merge: "Unisci PDF",
-        compress: "Comprimi PDF",
-        split: "Dividi PDF",
-        extract: "Estrai pagine",
-        crop: "Ritaglia pagine",
-        rotate: "Ruota pagine",
-        reorder: "Riordina pagine",
-        pdfToImages: "PDF in immagini",
-        imagesToPdf: "Immagini in PDF",
-      },
+      operations: getOperationsFooterLabels(locale),
       license: "PDF Processing: PDF-lib (MIT), PDF.js (Apache 2.0) • Font: Geist (MIT)",
       disclaimer: "Il servizio è fornito così com'è senza alcuna garanzia. L'utente è responsabile dell'uso dei file generati.",
     },
@@ -164,47 +144,7 @@ export const itDictionary: Dictionary = {
     },
     pdfProcessor: {
       title: "Scegli un'operazione",
-      modes: {
-        merge: {
-          label: "Unisci PDF",
-          helper: "Ordina i PDF per unirli in un unico documento.",
-        },
-        compress: {
-          label: "Comprimi PDF",
-          helper:
-            "Riduci le dimensioni di un PDF. Elabora un file alla volta per il miglior equilibrio tra qualità e velocità.",
-        },
-        split: {
-          label: "Dividi PDF",
-          helper: "Seleziona PDF da suddividere in documenti separati.",
-        },
-        extract: {
-          label: "Estrai pagine",
-          helper: "Scegli pagine specifiche per creare un nuovo documento.",
-        },
-        crop: {
-          label: "Ritaglia pagine",
-          helper: "Riduci i margini visibili delle pagine selezionate senza uscire dal browser.",
-        },
-        rotate: {
-          label: "Ruota pagine",
-          helper: "Seleziona le pagine che hanno bisogno di un nuovo orientamento e ruota solo quelle.",
-        },
-        reorder: {
-          label: "Riordina pagine",
-          helper: "Cambia l’ordine delle pagine all’interno di un PDF.",
-        },
-        pdfToImages: {
-          label: "PDF in immagini",
-          helper:
-            "Esporta ogni pagina del PDF come PNG o JPEG senza caricare file.",
-        },
-        imagesToPdf: {
-          label: "Immagini in PDF",
-          helper:
-            "Combina immagini JPG, PNG o WEBP in un unico PDF con layout personalizzato.",
-        },
-      },
+      modes: getOperationsModeLabels(locale),
 
       upload: {
         title: "Seleziona i tuoi file",
@@ -237,17 +177,7 @@ export const itDictionary: Dictionary = {
         },
       },
 
-      downloadNames: {
-        compress: "compresso_ihatelovepdf",
-        merge: "unito_ihatelovepdf",
-        split: "parte_ihatelovepdf",
-        extract: "estratto_ihatelovepdf",
-        crop: "ritagliato_ihatelovepdf",
-        rotate: "ruotato_ihatelovepdf",
-        reorder: "riordinato_ihatelovepdf",
-        pdfToImages: "immagini_ihatelovepdf",
-        imagesToPdf: "immagini_a_pdf_ihatelovepdf",
-      },
+      downloadNames: getOperationsDownloadNames(locale),
 
       processButton: {
         idleSingle: "Elabora 1 file",

@@ -1,26 +1,16 @@
 import { localeLabels } from "../../config";
-import { getRoutePath, getOperationPath } from "../../routing";
+import { getRoutePath } from "../../routing";
 import { operationsFr } from "./operations";
 import { faqsFr } from "./faqs";
 import type { Dictionary } from "../dictionary-types";
-import { OperationKey } from "../../../types/operations";
+import { getOperationsRoutes, getOperationsFooterLabels, getOperationsModeLabels, getOperationsDownloadNames } from "../../operations-catalog";
 
 const locale = "fr" as const;
 const { label, nativeName, htmlLang, hrefLang } = localeLabels[locale];
 const siteUrl = "https://ihatelovepdf.com";
 const homePath = getRoutePath(locale, "home");
 
-const operationsRoutes: Record<OperationKey, string> = {
-  merge: getOperationPath(locale, "merge"),
-  compress: getOperationPath(locale, "compress"),
-  split: getOperationPath(locale, "split"),
-  extract: getOperationPath(locale, "extract"),
-  crop: getOperationPath(locale, "crop"),
-  rotate: getOperationPath(locale, "rotate"),
-  reorder: getOperationPath(locale, "reorder"),
-  pdfToImages: getOperationPath(locale, "pdfToImages"),
-  imagesToPdf: getOperationPath(locale, "imagesToPdf"),
-};
+const operationsRoutes = getOperationsRoutes(locale);
 
 export const frDictionary: Dictionary = {
   locale,
@@ -123,17 +113,7 @@ export const frDictionary: Dictionary = {
         contact: "Contact",
       },
       capabilitiesLabel: "Actions populaires",
-      operations: {
-        merge: "Fusionner des PDF",
-        compress: "Compresser un PDF",
-        split: "Diviser un PDF",
-        extract: "Extraire des pages",
-        crop: "Recadrer des pages",
-        rotate: "Faire pivoter",
-        reorder: "Réorganiser",
-        pdfToImages: "PDF en images",
-        imagesToPdf: "Images en PDF",
-      },
+      operations: getOperationsFooterLabels(locale),
       license: "Traitement PDF: PDF-lib (MIT), PDF.js (Apache 2.0) • Police: Geist (MIT)",
       disclaimer: "Le service est fourni « tel quel » sans garantie d'aucune sorte. L'utilisateur est responsable de l'utilisation des fichiers.",
     },
@@ -163,44 +143,7 @@ export const frDictionary: Dictionary = {
     },
     pdfProcessor: {
       title: "Choisissez une opération",
-      modes: {
-        merge: {
-          label: "Fusionner PDF",
-          helper: "Organisez les PDF pour les fusionner en un seul document.",
-        },
-        compress: {
-          label: "Compresser PDF",
-          helper: "Réduisez la taille d'un PDF. Traitez un fichier à la fois pour le meilleur équilibre entre qualité et vitesse.",
-        },
-        split: {
-          label: "Diviser PDF",
-          helper: "Choisissez des PDF pour les diviser en documents séparés.",
-        },
-        extract: {
-          label: "Extraire Pages",
-          helper: "Choisissez des pages spécifiques pour créer un nouveau document.",
-        },
-        crop: {
-          label: "Recadrer Pages",
-          helper: "Coupez les marges visibles des pages sélectionnées sans quitter le navigateur.",
-        },
-        rotate: {
-          label: "Faire Pivoter",
-          helper: "Sélectionnez les pages qui nécessitent une nouvelle orientation et faites-les pivoter.",
-        },
-        reorder: {
-          label: "Réorganiser",
-          helper: "Modifiez l'ordre des pages à l'intérieur d'un PDF.",
-        },
-        pdfToImages: {
-          label: "PDF en images",
-          helper: "Exportez chaque page PDF au format PNG ou JPEG sans téléchargement.",
-        },
-        imagesToPdf: {
-          label: "Images en PDF",
-          helper: "Combinez des images JPG, PNG ou WEBP dans un PDF avec une mise en page personnalisée.",
-        },
-      },
+      modes: getOperationsModeLabels(locale),
       upload: {
         title: "Sélectionnez vos fichiers",
         clearAll: "Tout effacer",
@@ -222,17 +165,7 @@ export const frDictionary: Dictionary = {
           imagesToPdf: "Déposez des images JPG, PNG, WEBP ou TIFF. Utilisez le panneau d'options pour choisir la taille, les marges et la couleur.",
         },
       },
-      downloadNames: {
-        compress: "compresse_ihatelovepdf",
-        merge: "fusionne_ihatelovepdf",
-        split: "partie_ihatelovepdf",
-        extract: "extrait_ihatelovepdf",
-        crop: "recadre_ihatelovepdf",
-        rotate: "pivote_ihatelovepdf",
-        reorder: "reorganise_ihatelovepdf",
-        pdfToImages: "images_ihatelovepdf",
-        imagesToPdf: "images_vers_pdf_ihatelovepdf",
-      },
+      downloadNames: getOperationsDownloadNames(locale),
       processButton: {
         idleSingle: "Traiter 1 fichier",
         idleMultiple: (count: number) => `Traiter ${count} fichiers`,

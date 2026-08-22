@@ -1,7 +1,8 @@
 import { OperationContent } from "../operation-types";
 import { OperationKey } from "../../../types/operations";
+import { getOperationsLocalized } from "../../operations-catalog";
 
-const operationsItContent: Record<OperationKey, OperationContent> = {
+const operationsItContent: Partial<Record<OperationKey, OperationContent>> = {
   compress: {
     key: "compress",
     slug: "compress",
@@ -585,15 +586,5 @@ const operationsItContent: Record<OperationKey, OperationContent> = {
   },
 };
 
-export const operationsIt: Record<OperationKey, OperationContent> = {
-  merge: operationsItContent.merge,
-  compress: operationsItContent.compress,
-  split: operationsItContent.split,
-  extract: operationsItContent.extract,
-  crop: operationsItContent.crop,
-  rotate: operationsItContent.rotate,
-  reorder: operationsItContent.reorder,
+export const operationsIt: Record<OperationKey, OperationContent> = getOperationsLocalized("it", operationsItContent);
 
-  pdfToImages: operationsItContent.pdfToImages,
-  imagesToPdf: operationsItContent.imagesToPdf,
-};

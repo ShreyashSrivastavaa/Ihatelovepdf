@@ -1,26 +1,16 @@
 import { localeLabels } from "../../config";
-import { getRoutePath, getOperationPath } from "../../routing";
+import { getRoutePath } from "../../routing";
 import { operationsHu } from "./operations";
 import { faqsHu } from "./faqs";
 import type { Dictionary } from "../dictionary-types";
-import { OperationKey } from "../../../types/operations";
+import { getOperationsRoutes, getOperationsFooterLabels, getOperationsModeLabels, getOperationsDownloadNames } from "../../operations-catalog";
 
 const locale = "hu" as const;
 const { label, nativeName, htmlLang, hrefLang } = localeLabels[locale];
 const siteUrl = "https://ihatelovepdf.com";
 const homePath = getRoutePath(locale, "home");
 
-const operationsRoutes: Record<OperationKey, string> = {
-  merge: getOperationPath(locale, "merge"),
-  compress: getOperationPath(locale, "compress"),
-  split: getOperationPath(locale, "split"),
-  extract: getOperationPath(locale, "extract"),
-  crop: getOperationPath(locale, "crop"),
-  rotate: getOperationPath(locale, "rotate"),
-  reorder: getOperationPath(locale, "reorder"),
-  pdfToImages: getOperationPath(locale, "pdfToImages"),
-  imagesToPdf: getOperationPath(locale, "imagesToPdf"),
-};
+const operationsRoutes = getOperationsRoutes(locale);
 
 export const huDictionary: Dictionary = {
   locale,
@@ -129,17 +119,7 @@ export const huDictionary: Dictionary = {
         contact: "Kapcsolat",
       },
       capabilitiesLabel: "NépszerÅ± mÅ±veletek",
-      operations: {
-        merge: "PDF összefÅ±zése",
-        compress: "PDF tömörítése",
-        split: "PDF szétbontása",
-        extract: "Oldalak kinyerése",
-        crop: "Oldalak vágása",
-        rotate: "Forgatás",
-        reorder: "Átrendezés",
-        pdfToImages: "PDF képekbe",
-        imagesToPdf: "Képek PDF-be",
-      },
+      operations: getOperationsFooterLabels(locale),
       license: "PDF-feldolgozás: PDF-lib (MIT), PDF.js (Apache 2.0) • BetÅ±készlet: Geist (MIT)",
       disclaimer:
         "A szolgáltatás \"jelenlegi állapotában\" kerül átadásra, mindenféle garancia nélkül. A fájlok felhasználásáért kizárólag a felhasználó felel.",
@@ -170,44 +150,7 @@ export const huDictionary: Dictionary = {
     },
     pdfProcessor: {
       title: "Válassz mÅ±veletet",
-      modes: {
-        merge: {
-          label: "PDF összefÅ±zése",
-          helper: "Rendezd a PDF-fájlokat egyetlen dokumentumba való összefÅ±zéshez.",
-        },
-        compress: {
-          label: "PDF tömörítése",
-          helper: "Csökkentsd a PDF méretét. A legjobb minÅ‘ség-sebesség egyensúly érdekében egyszerre egy fájlt dolgozz fel.",
-        },
-        split: {
-          label: "PDF szétbontása",
-          helper: "Válassz PDF-fájlokat különálló dokumentumokra való szétbontáshoz.",
-        },
-        extract: {
-          label: "Oldalak kinyerése",
-          helper: "Válassz ki egyes oldalakat új dokumentum létrehozásához.",
-        },
-        crop: {
-          label: "Oldalak vágása",
-          helper: "Távolítsd el a kiválasztott oldalak látható margóit a böngészÅ‘ elhagyása nélkül.",
-        },
-        rotate: {
-          label: "Oldalak forgatása",
-          helper: "Válassz ki helytelen tájolású oldalakat, és forgasd el Å‘ket.",
-        },
-        reorder: {
-          label: "Átrendezés",
-          helper: "Módosítsd az oldalak sorrendjét a PDF-ben.",
-        },
-        pdfToImages: {
-          label: "PDF képekbe",
-          helper: "Exportáld az egyes PDF-oldalakat PNG vagy JPEG formátumban szerverre feltöltés nélkül.",
-        },
-        imagesToPdf: {
-          label: "Képek PDF-be",
-          helper: "Kombinálj JPG, PNG vagy WEBP képeket PDF-be testre szabható elrendezéssel.",
-        },
-      },
+      modes: getOperationsModeLabels(locale),
       upload: {
         title: "Fájlok kiválasztása",
         clearAll: "Összes törlése",
@@ -229,17 +172,7 @@ export const huDictionary: Dictionary = {
           imagesToPdf: "Adj hozzá JPG, PNG, WEBP vagy TIFF képeket. A méret, a margók és a szín a beállítások panelen módosítható.",
         },
       },
-      downloadNames: {
-        compress: "tomoritett_ihatelovepdf",
-        merge: "osszefuzott_ihatelovepdf",
-        split: "resz_ihatelovepdf",
-        extract: "kinyert_ihatelovepdf",
-        crop: "vagott_ihatelovepdf",
-        rotate: "forgatott_ihatelovepdf",
-        reorder: "atrendezett_ihatelovepdf",
-        pdfToImages: "kepek_ihatelovepdf",
-        imagesToPdf: "kepek_pdf_ihatelovepdf",
-      },
+      downloadNames: getOperationsDownloadNames(locale),
       processButton: {
         idleSingle: "1 fájl feldolgozása",
         idleMultiple: (count: number) => `${count} fájl feldolgozása`,

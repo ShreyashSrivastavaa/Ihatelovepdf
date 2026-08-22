@@ -3,6 +3,7 @@ import { operationsEs } from "./operations";
 import { faqsEs } from "./faqs";
 import { getRoutePath, getOperationPath } from "../../routing";
 import type { Dictionary } from "../dictionary-types";
+import { getOperationsRoutes, getOperationsFooterLabels, getOperationsModeLabels, getOperationsDownloadNames } from "../../operations-catalog";
 
 const locale = "es" as const;
 const { label, nativeName, htmlLang, hrefLang } = localeLabels[locale];
@@ -19,17 +20,7 @@ export const esDictionary: Dictionary = {
     home: getRoutePath(locale, "home"),
     faq: getRoutePath(locale, "faq"),
     support: getRoutePath(locale, "support"),
-    operations: {
-      merge: getOperationPath(locale, "merge"),
-      compress: getOperationPath(locale, "compress"),
-      split: getOperationPath(locale, "split"),
-      extract: getOperationPath(locale, "extract"),
-      crop: getOperationPath(locale, "crop"),
-      rotate: getOperationPath(locale, "rotate"),
-      reorder: getOperationPath(locale, "reorder"),
-      pdfToImages: getOperationPath(locale, "pdfToImages"),
-      imagesToPdf: getOperationPath(locale, "imagesToPdf"),
-    },
+    operations: getOperationsRoutes(locale),
   },
   metadata: {
     site: {
@@ -118,17 +109,7 @@ export const esDictionary: Dictionary = {
         contact: "Contacto",
       },
       capabilitiesLabel: "Operaciones populares",
-      operations: {
-        merge: "Unir PDFs",
-        compress: "Comprimir PDF",
-        split: "Dividir PDF",
-        extract: "Extraer Páginas",
-        crop: "Recortar paginas",
-        rotate: "Girar páginas",
-        reorder: "Reordenar Páginas",
-        pdfToImages: "PDF a imágenes",
-        imagesToPdf: "Imágenes a PDF",
-      },
+      operations: getOperationsFooterLabels(locale),
       license: "Procesamiento de PDF: PDF-lib (MIT), PDF.js (Apache 2.0) • Fuente: Geist (MIT)",
       disclaimer: "El servicio se proporciona 'tal cual' sin garantía de ningún tipo. El usuario es responsable del uso de los archivos generados.",
     },
@@ -158,44 +139,7 @@ export const esDictionary: Dictionary = {
     },
     pdfProcessor: {
       title: "Selecciona una operación",
-      modes: {
-        merge: {
-          label: "Unir PDFs",
-          helper: "Selecciona el orden de los PDFs para unirlos en un solo documento.",
-        },
-        compress: {
-          label: "Comprimir PDF",
-          helper: "Comprime un PDF para reducir su tamaño. Procesa un archivo por vez para priorizar la calidad.",
-        },
-        split: {
-          label: "Dividir PDF",
-          helper: "Selecciona PDFs para dividirlos en documentos separados.",
-        },
-        extract: {
-          label: "Extraer Páginas",
-          helper: "Selecciona páginas específicas de un PDF para crear un nuevo documento.",
-        },
-        crop: {
-          label: "Recortar paginas",
-          helper: "Recorta los margenes visibles de las paginas seleccionadas sin salir del navegador.",
-        },
-        rotate: {
-          label: "Girar páginas",
-          helper: "Selecciona las páginas que necesitan otra orientación y rota solo esas hojas.",
-        },
-        reorder: {
-          label: "Reordenar Páginas",
-          helper: "Cambia el orden de las páginas dentro de un documento PDF.",
-        },
-        pdfToImages: {
-          label: "PDF a imágenes",
-          helper: "Exporta cada página del PDF como PNG o JPEG sin subir tus archivos.",
-        },
-        imagesToPdf: {
-          label: "Imágenes a PDF",
-          helper: "Combina JPG, PNG o WEBP en un único PDF con el diseño que prefieras.",
-        },
-      },
+      modes: getOperationsModeLabels(locale),
       upload: {
         title: "Selecciona tus archivos",
         clearAll: "Limpiar todo",
@@ -217,17 +161,7 @@ export const esDictionary: Dictionary = {
           imagesToPdf: "Arrastra JPG, PNG, WEBP o TIFF. Usa las opciones para definir tamaño de página, orientación y márgenes.",
         },
       },
-      downloadNames: {
-        compress: "comprimido_ihatelovepdf",
-        merge: "unido_ihatelovepdf",
-        split: "parte_ihatelovepdf",
-        extract: "extraido_ihatelovepdf",
-        crop: "recortado_ihatelovepdf",
-        rotate: "rotado_ihatelovepdf",
-        reorder: "reordenado_ihatelovepdf",
-        pdfToImages: "imagenes_ihatelovepdf",
-        imagesToPdf: "imagenes_a_pdf_ihatelovepdf",
-      },
+      downloadNames: getOperationsDownloadNames(locale),
       processButton: {
         idleSingle: "Procesar 1 archivo",
         idleMultiple: (count: number) => `Procesar ${count} archivos`,

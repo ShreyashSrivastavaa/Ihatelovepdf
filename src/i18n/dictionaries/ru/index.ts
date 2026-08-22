@@ -1,26 +1,16 @@
 import { localeLabels } from "../../config";
-import { getRoutePath, getOperationPath } from "../../routing";
+import { getRoutePath } from "../../routing";
 import { operationsRu } from "./operations";
 import { faqsRu } from "./faqs";
 import type { Dictionary } from "../dictionary-types";
-import { OperationKey } from "../../../types/operations";
+import { getOperationsRoutes, getOperationsFooterLabels, getOperationsModeLabels, getOperationsDownloadNames } from "../../operations-catalog";
 
 const locale = "ru" as const;
 const { label, nativeName, htmlLang, hrefLang } = localeLabels[locale];
 const siteUrl = "https://ihatelovepdf.com";
 const homePath = getRoutePath(locale, "home");
 
-const operationsRoutes: Record<OperationKey, string> = {
-  merge: getOperationPath(locale, "merge"),
-  compress: getOperationPath(locale, "compress"),
-  split: getOperationPath(locale, "split"),
-  extract: getOperationPath(locale, "extract"),
-  crop: getOperationPath(locale, "crop"),
-  rotate: getOperationPath(locale, "rotate"),
-  reorder: getOperationPath(locale, "reorder"),
-  pdfToImages: getOperationPath(locale, "pdfToImages"),
-  imagesToPdf: getOperationPath(locale, "imagesToPdf"),
-};
+const operationsRoutes = getOperationsRoutes(locale);
 
 export const ruDictionary: Dictionary = {
   locale,
@@ -123,17 +113,7 @@ export const ruDictionary: Dictionary = {
         contact: "Контакт",
       },
       capabilitiesLabel: "Популярные действия",
-      operations: {
-        merge: "Объединить PDF",
-        compress: "Сжать PDF",
-        split: "Разделить PDF",
-        extract: "Извлечь страницы",
-        crop: "Обрезать страницы",
-        rotate: "Повернуть",
-        reorder: "Переупорядочить",
-        pdfToImages: "PDF в изображения",
-        imagesToPdf: "Изображения в PDF",
-      },
+      operations: getOperationsFooterLabels(locale),
       license: "Обработка PDF: PDF-lib (MIT), PDF.js (Apache 2.0) • Шрифт: Geist (MIT)",
       disclaimer:
         "Сервис предоставляется «как есть», без каких-либо гарантий. Пользователь несёт полную ответственность за использование файлов.",
@@ -164,44 +144,7 @@ export const ruDictionary: Dictionary = {
     },
     pdfProcessor: {
       title: "Выберите операцию",
-      modes: {
-        merge: {
-          label: "Объединить PDF",
-          helper: "Упорядочьте PDF-файлы для объединения в один документ.",
-        },
-        compress: {
-          label: "Сжать PDF",
-          helper: "Уменьшите размер PDF. Обрабатывайте по одному файлу для лучшего баланса качества и скорости.",
-        },
-        split: {
-          label: "Разделить PDF",
-          helper: "Выберите PDF-файлы для разбивки на отдельные документы.",
-        },
-        extract: {
-          label: "Извлечь страницы",
-          helper: "Выберите конкретные страницы для создания нового документа.",
-        },
-        crop: {
-          label: "Обрезать страницы",
-          helper: "Убирайте видимые поля выбранных страниц, не покидая браузер.",
-        },
-        rotate: {
-          label: "Повернуть страницы",
-          helper: "Выберите страницы с неправильной ориентацией и поверните их.",
-        },
-        reorder: {
-          label: "Переупорядочить",
-          helper: "Измените порядок страниц внутри PDF.",
-        },
-        pdfToImages: {
-          label: "PDF в изображения",
-          helper: "Экспортируйте каждую страницу PDF как PNG или JPEG без загрузки на сервер.",
-        },
-        imagesToPdf: {
-          label: "Изображения в PDF",
-          helper: "Объедините изображения JPG, PNG или WEBP в PDF с настраиваемым макетом.",
-        },
-      },
+      modes: getOperationsModeLabels(locale),
       upload: {
         title: "Выберите файлы",
         clearAll: "Очистить всё",
@@ -223,17 +166,7 @@ export const ruDictionary: Dictionary = {
           imagesToPdf: "Добавьте изображения JPG, PNG, WEBP или TIFF. Настройте размер, поля и цвет на панели параметров.",
         },
       },
-      downloadNames: {
-        compress: "szhatyi_ihatelovepdf",
-        merge: "obedinennyi_ihatelovepdf",
-        split: "chast_ihatelovepdf",
-        extract: "izvlechennyi_ihatelovepdf",
-        crop: "obrezannyi_ihatelovepdf",
-        rotate: "povernutyi_ihatelovepdf",
-        reorder: "pereupordochennyi_ihatelovepdf",
-        pdfToImages: "izobrazheniya_ihatelovepdf",
-        imagesToPdf: "izobrazheniya_v_pdf_ihatelovepdf",
-      },
+      downloadNames: getOperationsDownloadNames(locale),
       processButton: {
         idleSingle: "Обработать 1 файл",
         idleMultiple: (count: number) => `Обработать ${count} файла`,

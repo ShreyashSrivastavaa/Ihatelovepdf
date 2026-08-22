@@ -1,7 +1,8 @@
 import { OperationContent } from "../operation-types";
 import { OperationKey } from "../../../types/operations";
+import { getOperationsLocalized } from "../../operations-catalog";
 
-const operationsRuContent: Record<OperationKey, OperationContent> = {
+const operationsRuContent: Partial<Record<OperationKey, OperationContent>> = {
   compress: {
     key: "compress",
     slug: "szhat",
@@ -610,14 +611,5 @@ const operationsRuContent: Record<OperationKey, OperationContent> = {
   },
 };
 
-export const operationsRu: Record<OperationKey, OperationContent> = {
-  merge: operationsRuContent.merge,
-  compress: operationsRuContent.compress,
-  split: operationsRuContent.split,
-  extract: operationsRuContent.extract,
-  crop: operationsRuContent.crop,
-  rotate: operationsRuContent.rotate,
-  reorder: operationsRuContent.reorder,
-  pdfToImages: operationsRuContent.pdfToImages,
-  imagesToPdf: operationsRuContent.imagesToPdf,
-};
+export const operationsRu: Record<OperationKey, OperationContent> = getOperationsLocalized("ru", operationsRuContent);
+

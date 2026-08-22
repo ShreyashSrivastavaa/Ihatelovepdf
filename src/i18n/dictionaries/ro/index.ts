@@ -1,26 +1,16 @@
 import { localeLabels } from "../../config";
-import { getRoutePath, getOperationPath } from "../../routing";
+import { getRoutePath } from "../../routing";
 import { operationsRo } from "./operations";
 import { faqsRo } from "./faqs";
 import type { Dictionary } from "../dictionary-types";
-import { OperationKey } from "../../../types/operations";
+import { getOperationsRoutes, getOperationsFooterLabels, getOperationsModeLabels, getOperationsDownloadNames } from "../../operations-catalog";
 
 const locale = "ro" as const;
 const { label, nativeName, htmlLang, hrefLang } = localeLabels[locale];
 const siteUrl = "https://ihatelovepdf.com";
 const homePath = getRoutePath(locale, "home");
 
-const operationsRoutes: Record<OperationKey, string> = {
-  merge: getOperationPath(locale, "merge"),
-  compress: getOperationPath(locale, "compress"),
-  split: getOperationPath(locale, "split"),
-  extract: getOperationPath(locale, "extract"),
-  crop: getOperationPath(locale, "crop"),
-  rotate: getOperationPath(locale, "rotate"),
-  reorder: getOperationPath(locale, "reorder"),
-  pdfToImages: getOperationPath(locale, "pdfToImages"),
-  imagesToPdf: getOperationPath(locale, "imagesToPdf"),
-};
+const operationsRoutes = getOperationsRoutes(locale);
 
 export const roDictionary: Dictionary = {
   locale,
@@ -131,17 +121,7 @@ export const roDictionary: Dictionary = {
         contact: "Contact",
       },
       capabilitiesLabel: "AcÈ›iuni populare",
-      operations: {
-        merge: "UneÈ™te PDF-uri",
-        compress: "ComprimÄƒ un PDF",
-        split: "Divide un PDF",
-        extract: "Extrage pagini",
-        crop: "DecupeazÄƒ pagini",
-        rotate: "RoteÈ™te",
-        reorder: "ReordoneazÄƒ",
-        pdfToImages: "PDF în Imagini",
-        imagesToPdf: "Imagini în PDF",
-      },
+      operations: getOperationsFooterLabels(locale),
       license: "Procesare PDF: PDF-lib (MIT), PDF.js (Apache 2.0) • Font: Geist (MIT)",
       disclaimer: "Serviciul este furnizat „ca atare”, fÄƒrÄƒ garanÈ›ii de niciun fel. Utilizatorul este singurul responsabil pentru utilizarea fiÈ™ierelor.",
     },
@@ -171,44 +151,7 @@ export const roDictionary: Dictionary = {
     },
     pdfProcessor: {
       title: "Alege o operaÈ›iune",
-      modes: {
-        merge: {
-          label: "UneÈ™te PDF",
-          helper: "OrganizeazÄƒ fiÈ™ierele PDF pentru a le uni într-un singur document.",
-        },
-        compress: {
-          label: "ComprimÄƒ PDF",
-          helper: "Redu dimensiunea unui PDF. ProceseazÄƒ câte un singur fiÈ™ier pentru cel mai bun echilibru între calitate È™i vitezÄƒ.",
-        },
-        split: {
-          label: "Divide PDF",
-          helper: "SelecteazÄƒ fiÈ™ierele PDF pentru a le diviza în documente separate.",
-        },
-        extract: {
-          label: "Extrage Pagini",
-          helper: "Alege pagini specifice pentru a crea un document nou.",
-        },
-        crop: {
-          label: "DecupeazÄƒ Pagini",
-          helper: "EliminÄƒ marginile vizibile ale paginilor selectate fÄƒrÄƒ a pÄƒrÄƒsi browserul.",
-        },
-        rotate: {
-          label: "RoteÈ™te Pagini",
-          helper: "SelecteazÄƒ paginile care necesitÄƒ o orientare nouÄƒ È™i roteÈ™te-le.",
-        },
-        reorder: {
-          label: "ReordoneazÄƒ",
-          helper: "ModificÄƒ ordinea paginilor din interiorul unui PDF.",
-        },
-        pdfToImages: {
-          label: "PDF în Imagini",
-          helper: "ExportÄƒ fiecare paginÄƒ PDF ca PNG sau JPEG fÄƒrÄƒ încÄƒrcare pe server.",
-        },
-        imagesToPdf: {
-          label: "Imagini în PDF",
-          helper: "CombinÄƒ imagini JPG, PNG sau WEBP într-un PDF cu un aspect personalizat.",
-        },
-      },
+      modes: getOperationsModeLabels(locale),
       upload: {
         title: "SelecteazÄƒ fiÈ™ierele",
         clearAll: "È˜terge tot",
@@ -230,17 +173,7 @@ export const roDictionary: Dictionary = {
           imagesToPdf: "AdaugÄƒ imagini JPG, PNG, WEBP sau TIFF. FoloseÈ™te panoul de opÈ›iuni pentru a alege dimensiunea, marginile È™i culoarea.",
         },
       },
-      downloadNames: {
-        compress: "comprimat_ihatelovepdf",
-        merge: "unit_ihatelovepdf",
-        split: "parte_ihatelovepdf",
-        extract: "extras_ihatelovepdf",
-        crop: "decupat_ihatelovepdf",
-        rotate: "rotit_ihatelovepdf",
-        reorder: "reordonat_ihatelovepdf",
-        pdfToImages: "imagini_ihatelovepdf",
-        imagesToPdf: "imagini_in_pdf_ihatelovepdf",
-      },
+      downloadNames: getOperationsDownloadNames(locale),
       processButton: {
         idleSingle: "ProceseazÄƒ 1 fiÈ™ier",
         idleMultiple: (count: number) => `ProceseazÄƒ ${count} fiÈ™iere`,
