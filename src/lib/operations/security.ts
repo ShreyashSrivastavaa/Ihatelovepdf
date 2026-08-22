@@ -1,4 +1,4 @@
-import { PDFDocument, PDFName, PDFRef, PDFDict, PDFArray } from 'pdf-lib';
+import { PDFDocument, PDFName, PDFRef, PDFDict } from 'pdf-lib';
 
 export interface PrivacyRiskItem {
   key: string;

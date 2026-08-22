@@ -398,6 +398,22 @@ export default function FileList({
                         </span>
                       </>
                     )}
+                    {pdfMeta?.error && (
+                      <>
+                        <span>&bull;</span>
+                        <span className="text-[var(--err)] font-semibold flex items-center gap-1">
+                          <AlertCircle className="h-3 w-3" /> Error loading
+                        </span>
+                      </>
+                    )}
+                    {pdfMeta?.loaded && !pdfMeta?.error && !isEncrypted && (
+                      <>
+                        <span>&bull;</span>
+                        <span className="text-[var(--success)] font-medium flex items-center gap-1">
+                          <CheckCircle2 className="h-3 w-3" /> Ready
+                        </span>
+                      </>
+                    )}
                   </div>
                 </div>
 

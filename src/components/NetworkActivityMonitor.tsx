@@ -52,15 +52,19 @@ export default function NetworkActivityMonitor({
     >
       <div className="flex items-center gap-2">
         <span className="relative flex h-2 w-2">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${isProcessing ? 'bg-amber-400 opacity-75' : 'bg-emerald-400 opacity-75'}`}></span>
+          <span className={`relative inline-flex rounded-full h-2 w-2 ${isProcessing ? 'bg-amber-500' : 'bg-emerald-500'}`}></span>
         </span>
         <span className="font-semibold flex items-center gap-1 text-[var(--tx)]">
           <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
           Zero-Network Sandbox:
         </span>
         <span className="text-[var(--tx-2)]">
-          {networkRequestsCount === 0 ? '0 Network Requests (100% Private)' : `${networkRequestsCount} Requests`}
+          {isProcessing
+            ? 'Processing in local RAM...'
+            : networkRequestsCount === 0
+            ? '0 Network Requests (100% Private)'
+            : `${networkRequestsCount} Requests`}
         </span>
       </div>
 
@@ -71,7 +75,7 @@ export default function NetworkActivityMonitor({
         </span>
         <span className="flex items-center gap-1 font-mono">
           <WifiOff className="h-3 w-3 text-emerald-400" />
-          0 Bytes Uploaded
+          {bytesSent} Bytes Uploaded
         </span>
         <span className="flex items-center gap-1 font-mono text-emerald-400">
           <Lock className="h-3 w-3" />

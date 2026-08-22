@@ -227,7 +227,7 @@ export default function FileUploader({
             </p>
 
             <p className="text-xs sm:text-sm text-[var(--tx-3)] font-medium">
-              {acceptImages ? uploaderStrings.accepted.images : uploaderStrings.accepted.pdf} &bull; Max {maxFileSizeMB}MB
+              {fileTypesLabel} &bull; Max {maxFileSizeMB}MB
             </p>
           </div>
 

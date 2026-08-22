@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { PDFProcessingMode, PDFProcessingOptions, renderPdfThumbnail } from '../../lib/pdf-processor';
-import { Eye, Sparkles } from 'lucide-react';
+import { Eye, Sparkles, Loader2 } from 'lucide-react';
 
 interface OptionLivePreviewProps {
   file?: File | null;
@@ -118,13 +118,29 @@ export default function OptionLivePreview({ file, mode, options }: OptionLivePre
           Live Preview (Page 1)
         </span>
         <span className="text-[11px] text-[var(--tx-3)] font-medium flex items-center gap-1">
-          <Sparkles className="h-3 w-3 text-[var(--accent)]" />
-          Instant updates
+          {isLoading ? (
+            <>
+              <Loader2 className="h-3 w-3 animate-spin text-[var(--accent)]" />
+              <span>Rendering...</span>
+            </>
+          ) : (
+            <>
+              <Sparkles className="h-3 w-3 text-[var(--accent)]" />
+              <span>Instant updates</span>
+            </>
+          )}
         </span>
       </div>
 
       {/* Preview Canvas Container */}
       <div className="relative mx-auto w-full max-w-[280px] sm:max-w-[320px] aspect-[1/1.38] rounded-xl border border-[var(--border)] bg-white shadow-md overflow-hidden flex items-center justify-center select-none">
+        {isLoading && (
+          <div className="absolute inset-0 bg-white/70 backdrop-blur-xs flex flex-col items-center justify-center z-10 gap-2 text-slate-700">
+            <Loader2 className="h-6 w-6 animate-spin text-[var(--accent)]" />
+            <span className="text-[11px] font-semibold">Generating Preview...</span>
+          </div>
+        )}
+
         {/* Base Page Canvas / Thumbnail */}
         {thumbnailUrl ? (
           <Image

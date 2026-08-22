@@ -2574,6 +2574,23 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
               </div>
             )}
 
+            {statusDialogState.status === 'error' && statusDialogState.isOpen && (
+              <div className="mt-6">
+                <ErrorState
+                  title={statusDialogState.title}
+                  message={statusDialogState.description}
+                  onRetry={() => {
+                    setStatusDialogState(prev => ({ ...prev, isOpen: false }));
+                    handleProcess();
+                  }}
+                  onReset={() => {
+                    setStatusDialogState(prev => ({ ...prev, isOpen: false }));
+                    clearFiles();
+                  }}
+                />
+              </div>
+            )}
+
             {completedResult && (
               <div className="mt-6">
                 <ResultPanel

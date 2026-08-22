@@ -62,6 +62,21 @@ export default function ResultPanel({
     }
   };
 
+  const handleDownloadPrimary = () => {
+    if (onDownloadPrimary) {
+      onDownloadPrimary();
+    } else if (primaryDownloadBlob) {
+      const url = URL.createObjectURL(primaryDownloadBlob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = primaryFileName;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+  };
+
   const handleDownloadSingleFile = (fileItem: OutputFileItem) => {
     if (fileItem.blob) {
       const url = URL.createObjectURL(fileItem.blob);
@@ -248,10 +263,10 @@ export default function ResultPanel({
 
       {/* 5. PRIMARY ACTIONS BAR */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
-        {onDownloadPrimary && (
+        {(onDownloadPrimary || primaryDownloadBlob) && (
           <button
             type="button"
-            onClick={onDownloadPrimary}
+            onClick={handleDownloadPrimary}
             className="btn-primary flex-1 py-3.5 px-6 rounded-2xl font-bold text-white text-base shadow-md flex items-center justify-center gap-2 cursor-pointer hover:shadow-lg transition-all duration-200"
           >
             <Download className="h-5 w-5" />
