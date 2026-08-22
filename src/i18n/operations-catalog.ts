@@ -944,7 +944,8 @@ export function getOperationsRoutes(locale: Locale): Record<OperationKey, string
   return result;
 }
 
-export function getOperationsFooterLabels(_locale: Locale): Record<OperationKey, string> {
+export function getOperationsFooterLabels(locale?: Locale): Record<OperationKey, string> {
+  void locale;
   const result = {} as Record<OperationKey, string>;
   for (const key of ALL_OPERATION_KEYS) {
     result[key] = OPERATIONS_CATALOG[key]?.label || key;
@@ -952,7 +953,8 @@ export function getOperationsFooterLabels(_locale: Locale): Record<OperationKey,
   return result;
 }
 
-export function getOperationsModeLabels(_locale: Locale): Record<OperationKey, { label: string; helper: string }> {
+export function getOperationsModeLabels(locale?: Locale): Record<OperationKey, { label: string; helper: string }> {
+  void locale;
   const result = {} as Record<OperationKey, { label: string; helper: string }>;
   for (const key of ALL_OPERATION_KEYS) {
     const item = OPERATIONS_CATALOG[key];
@@ -964,7 +966,8 @@ export function getOperationsModeLabels(_locale: Locale): Record<OperationKey, {
   return result;
 }
 
-export function getOperationsDownloadNames(_locale: Locale): Record<OperationKey, string> {
+export function getOperationsDownloadNames(locale?: Locale): Record<OperationKey, string> {
+  void locale;
   const result = {} as Record<OperationKey, string>;
   for (const key of ALL_OPERATION_KEYS) {
     result[key] = `${key}_ihatelovepdf`;

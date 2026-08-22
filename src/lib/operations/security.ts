@@ -239,8 +239,9 @@ export async function sanitizePdfMetadata(
 
 export async function decryptPdf(
   fileOrData: File | ArrayBuffer | Uint8Array,
-  _password?: string
+  password?: string
 ): Promise<Uint8Array> {
+  void password;
   const arrayBuffer =
     fileOrData instanceof File ? await fileOrData.arrayBuffer() : fileOrData;
   // Load ignoring encryption to salvage contents and save unencrypted
@@ -252,9 +253,11 @@ export async function decryptPdf(
 
 export async function encryptPdf(
   fileOrData: File | ArrayBuffer | Uint8Array,
-  _userPassword?: string,
-  _ownerPassword?: string
+  userPassword?: string,
+  ownerPassword?: string
 ): Promise<Uint8Array> {
+  void userPassword;
+  void ownerPassword;
   const arrayBuffer =
     fileOrData instanceof File ? await fileOrData.arrayBuffer() : fileOrData;
   const pdfDoc = await PDFDocument.load(arrayBuffer, { ignoreEncryption: true });
