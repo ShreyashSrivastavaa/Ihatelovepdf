@@ -43,6 +43,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   Object.values(terms).forEach((path) => addEntry(path, monthly, 0.5));
   Object.values(contact).forEach((path) => addEntry(path, monthly, 0.5));
 
+  // About Page (high E-E-A-T trust signal)
+  addEntry('/about', monthly, 0.8);
+
+  // Guides & Tutorials Content Hub
+  addEntry('/guides', weekly, 0.8);
+  addEntry('/guides/how-to-redact-pdf-free', weekly, 0.85);
+  addEntry('/guides/ihatelovepdf-vs-ilovepdf', weekly, 0.85);
+  addEntry('/guides/how-to-ocr-scanned-pdf-offline', weekly, 0.85);
+  addEntry('/guides/ihatelovepdf-vs-smallpdf', weekly, 0.85);
+
   return entries;
 }
 

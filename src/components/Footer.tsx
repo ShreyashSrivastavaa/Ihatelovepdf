@@ -32,6 +32,12 @@ export default function Footer() {
               <Link href={routes.home} className="hover:text-[var(--tx)] transition-colors">
                 {footer.links.home}
               </Link>
+              <Link href="/about" className="hover:text-[var(--tx)] transition-colors">
+                About
+              </Link>
+              <Link href="/guides" className="hover:text-[var(--tx)] transition-colors">
+                Guides
+              </Link>
               <Link href={routes.faq} className="hover:text-[var(--tx)] transition-colors">
                 {footer.links.faq}
               </Link>
