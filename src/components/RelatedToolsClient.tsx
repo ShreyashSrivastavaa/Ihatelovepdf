@@ -5,22 +5,58 @@ import { ArrowRight } from "lucide-react";
 import { useDictionary } from "../i18n/LocaleProvider";
 import { ShareButton } from "./ShareButton";
 
-// Maps each operation to 4 contextually relevant next-action tools
+// Maps operations to contextually relevant next-action tools
 const RELATED_TOOLS: Record<string, string[]> = {
-  merge:       ["compress", "split", "reorder", "extract"],
-  compress:    ["merge", "split", "pdfToImages", "rotate"],
-  split:       ["merge", "extract", "compress", "reorder"],
-  extract:     ["merge", "compress", "reorder", "rotate"],
-  crop:        ["rotate", "extract", "compress", "reorder"],
-  rotate:      ["crop", "extract", "reorder", "compress"],
-  reorder:     ["merge", "split", "extract", "compress"],
-  pdfToImages: ["compress", "merge", "imagesToPdf", "split"],
+  merge: ["compress", "split", "reorder", "watermark"],
+  compress: ["merge", "split", "pdfToImages", "rotate"],
+  split: ["merge", "extract", "compress", "reorder"],
+  extract: ["merge", "compress", "extractText", "pageNumbers"],
+  crop: ["rotate", "extract", "compress", "reorder"],
+  rotate: ["crop", "extract", "reorder", "compress"],
+  reorder: ["merge", "split", "pageNumbers", "compress"],
+  pdfToImages: ["compress", "merge", "imagesToPdf", "pdfToZip"],
   imagesToPdf: ["compress", "merge", "pdfToImages", "rotate"],
+  watermark: ["pageNumbers", "headersFooters", "encrypt", "compress"],
+  pageNumbers: ["headersFooters", "watermark", "reorder", "compress"],
+  headersFooters: ["pageNumbers", "watermark", "compress", "merge"],
+  extractText: ["aiSummarize", "pdfToAudio", "pdfToExcel", "markdownToPdf"],
+  invertColors: ["crop", "rotate", "extractText", "compress"],
+  redact: ["privacyScanner", "encrypt", "flatten", "fingerprint"],
+  flatten: ["encrypt", "redact", "compress", "merge"],
+  compare: ["redact", "extractText", "merge", "compress"],
+  encrypt: ["decrypt", "privacyScanner", "watermark", "flatten"],
+  decrypt: ["encrypt", "compress", "extractText", "merge"],
+  privacyScanner: ["redact", "fingerprint", "encrypt", "flatten"],
+  ocr: ["extractText", "aiSummarize", "pdfToAudio", "pdfToExcel"],
+  scanToPdf: ["ocr", "compress", "crop", "imagesToPdf"],
+  markdownToPdf: ["htmlToPdf", "csvToPdf", "createPdf", "compress"],
+  htmlToPdf: ["markdownToPdf", "pdfToHtml", "createPdf", "compress"],
+  csvToPdf: ["excelToPdf", "pdfToExcel", "markdownToPdf", "compress"],
+  createPdf: ["markdownToPdf", "htmlToPdf", "pageNumbers", "watermark"],
+  excelToPdf: ["pdfToExcel", "csvToPdf", "compress", "merge"],
+  pdfToExcel: ["excelToPdf", "csvToPdf", "extractText", "compress"],
+  powerpointToPdf: ["pdfToPowerpoint", "pdfToImages", "compress", "merge"],
+  pdfToPowerpoint: ["powerpointToPdf", "pdfToImages", "compress", "extract"],
+  pdfToHtml: ["htmlToPdf", "extractText", "pdfToEpub", "compress"],
+  pdfToEpub: ["ebookToPdf", "pdfToAudio", "extractText", "invertColors"],
+  ebookToPdf: ["pdfToEpub", "invertColors", "compress", "pageNumbers"],
+  pdfToAudio: ["audioToPdf", "extractText", "aiSummarize", "aiChat"],
+  audioToPdf: ["pdfToAudio", "createPdf", "markdownToPdf", "extractText"],
+  repair: ["compress", "flatten", "privacyScanner", "merge"],
+  p2pShare: ["encrypt", "compress", "watermark", "fingerprint"],
+  whiteboard: ["editPdf", "scanToPdf", "compress", "merge"],
+  gstInvoice: ["posBilling", "createPdf", "compress", "watermark"],
+  posBilling: ["gstInvoice", "createPdf", "compress", "scanToPdf"],
+  fingerprint: ["watermark", "privacyScanner", "encrypt", "redact"],
+  aiSummarize: ["aiChat", "extractText", "pdfToAudio", "compress"],
+  aiChat: ["aiSummarize", "extractText", "pdfToAudio", "ocr"],
 };
 
 export default function RelatedToolsClient({ currentMode }: { currentMode: string }) {
   const dictionary = useDictionary();
-  const relatedKeys = RELATED_TOOLS[currentMode] ?? [];
+  const relatedKeys =
+    RELATED_TOOLS[currentMode] ??
+    ['compress', 'merge', 'watermark', 'pageNumbers'].filter((k) => k !== currentMode);
 
   if (relatedKeys.length === 0) return null;
 
@@ -31,15 +67,21 @@ export default function RelatedToolsClient({ currentMode }: { currentMode: strin
           What do you need next?
         </h2>
         <span className="text-xs text-[var(--tx-3)] font-medium hidden sm:inline">
-          More free tools
+          Explore 46+ client-side PDF tools
         </span>
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        {relatedKeys.map((key) => {
+        {relatedKeys.slice(0, 4).map((key) => {
           const op = dictionary.operations[key as keyof typeof dictionary.operations];
-          const footerLabel = dictionary.components.footer.operations[key as keyof typeof dictionary.components.footer.operations];
-          const href = dictionary.routes.operations[key as keyof typeof dictionary.routes.operations];
+          const footerLabel =
+            dictionary.components.footer.operations[
+              key as keyof typeof dictionary.components.footer.operations
+            ];
+          const href =
+            dictionary.routes.operations[
+              key as keyof typeof dictionary.routes.operations
+            ];
           if (!op || !href) return null;
 
           return (

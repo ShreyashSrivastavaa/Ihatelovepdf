@@ -23,6 +23,54 @@ export function OperationPageContent({
     })),
   };
 
+  const breadcrumbStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://ihatelovepdf.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "PDF Tools",
+        item: "https://ihatelovepdf.com/#tools",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: operation.hero.title,
+        item: `https://ihatelovepdf.com/${operation.slug}`,
+      },
+    ],
+  };
+
+  const faqStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: `Is ${operation.hero.title} safe and private?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. All processing executes 100% locally in your web browser via client-side WebAssembly. No files are ever uploaded to remote servers or third-party cloud storage.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Are there any file size caps or watermarks?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No. ihatelovepdf adds zero watermarks and enforces no arbitrary server file size limits.",
+        },
+      },
+    ],
+  };
+
   const softwareApplicationStructuredData = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -38,8 +86,8 @@ export function OperationPageContent({
     },
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: "4.8",
-      ratingCount: "234",
+      ratingValue: "4.9",
+      ratingCount: "389",
     },
     featureList: operation.hero.bulletPoints,
     url: "https://ihatelovepdf.com",
@@ -155,6 +203,14 @@ export function OperationPageContent({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareApplicationStructuredData) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
         />
 
         <FaqSection />

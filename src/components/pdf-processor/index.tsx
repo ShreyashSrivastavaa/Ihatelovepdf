@@ -27,6 +27,16 @@ import CompressionSummaryCard from './CompressionSummaryCard';
 import type { OperationKey } from '../../types/operations';
 import { trackEvent } from '../../lib/analytics';
 
+import TextExtractionViewer from './TextExtractionViewer';
+import PdfRedactionEditor from './PdfRedactionEditor';
+import PdfCompareViewer from './PdfCompareViewer';
+import CameraScanInterface from './CameraScanInterface';
+import P2PShareInterface from './P2PShareInterface';
+import AudioTtsInterface from './AudioTtsInterface';
+import AiSummarizerInterface from './AiSummarizerInterface';
+import { ToolErrorBoundary } from '../ToolErrorBoundary';
+import { ByokProvider } from '../../context/ByokContext';
+
 type ProcessingMode = OperationKey;
 
 const cloneOptions = (options: PDFProcessingOptions): PDFProcessingOptions => ({
@@ -83,6 +93,101 @@ const MODE_DEFAULTS: Record<ProcessingMode, PDFProcessingOptions> = {
     pageOrientation: 'auto',
     pageMarginPoints: 18,
     backgroundColor: '#ffffff',
+  },
+  watermark: {
+    watermarkType: 'text',
+    watermarkText: 'CONFIDENTIAL',
+    watermarkColor: '#ff0000',
+    watermarkOpacity: 0.3,
+    watermarkRotation: 45,
+    watermarkPosition: 'center',
+    watermarkFontSize: 48,
+  },
+  pageNumbers: {
+    pageNumberFormat: 'Page {n} of {total}',
+    pageNumberPosition: 'bottom-center',
+    pageNumberStart: 1,
+    pageNumberSkipFirst: false,
+    pageNumberFontSize: 10,
+    pageNumberColor: '#666666',
+  },
+  headersFooters: {
+    headerCenter: '{title}',
+    footerLeft: '{date}',
+    footerRight: 'Page {page} of {total}',
+    headerFooterFontSize: 9,
+    headerFooterColor: '#555555',
+  },
+  extractText: {},
+  invertColors: {
+    colorMode: 'dark-mode',
+  },
+  redact: {
+    redactColor: '#000000',
+  },
+  flatten: {
+    flattenFormFields: true,
+    flattenAnnotations: true,
+  },
+  compare: {},
+  pdfToZip: {},
+  encrypt: {
+    userPassword: '',
+    ownerPassword: '',
+    permissions: {
+      printing: true,
+      copying: false,
+      modifying: false,
+    },
+  },
+  decrypt: {
+    decryptionPassword: '',
+  },
+  privacyScanner: {},
+  ocr: {
+    ocrLanguage: 'eng',
+  },
+  editPdf: {},
+  scanToPdf: {},
+  markdownToPdf: {
+    markdownTheme: 'github',
+  },
+  htmlToPdf: {},
+  csvToPdf: {
+    csvDelimiter: ',',
+  },
+  createPdf: {},
+  excelToPdf: {},
+  pdfToExcel: {},
+  powerpointToPdf: {},
+  pdfToPowerpoint: {},
+  pdfToHtml: {},
+  pdfToEpub: {},
+  ebookToPdf: {},
+  pdfToAudio: {
+    ttsVoice: 'default',
+    ttsRate: 1,
+    ttsPitch: 1,
+  },
+  audioToPdf: {},
+  repair: {},
+  p2pShare: {},
+  whiteboard: {},
+  gstInvoice: {
+    invoiceNumber: 'INV-001',
+    taxRate: 18,
+  },
+  posBilling: {},
+  fingerprint: {
+    fingerprintRecipient: 'Client-Copy',
+    fingerprintSecret: 'Sec-Key-2026',
+  },
+  aiSummarize: {
+    aiExtractLength: 'medium',
+    aiProvider: 'local',
+  },
+  aiChat: {
+    aiProvider: 'local',
   },
 };
 
@@ -229,17 +334,11 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
     downloads: [],
     donationPrompt: null,
   });
-  const modeOptionsRef = useRef<Record<ProcessingMode, PDFProcessingOptions>>({
-    merge: cloneOptions(MODE_DEFAULTS.merge),
-    compress: cloneOptions(MODE_DEFAULTS.compress),
-    split: cloneOptions(MODE_DEFAULTS.split),
-    extract: cloneOptions(MODE_DEFAULTS.extract),
-    crop: cloneOptions(MODE_DEFAULTS.crop),
-    reorder: cloneOptions(MODE_DEFAULTS.reorder),
-    rotate: cloneOptions(MODE_DEFAULTS.rotate),
-    pdfToImages: cloneOptions(MODE_DEFAULTS.pdfToImages),
-    imagesToPdf: cloneOptions(MODE_DEFAULTS.imagesToPdf),
-  });
+  const modeOptionsRef = useRef<Record<ProcessingMode, PDFProcessingOptions>>(
+    Object.fromEntries(
+      Object.entries(MODE_DEFAULTS).map(([k, v]) => [k, cloneOptions(v)])
+    ) as Record<ProcessingMode, PDFProcessingOptions>
+  );
   const [processingOptions, setProcessingOptions] = useState<PDFProcessingOptions>(() =>
     cloneOptions(
       modeOptionsRef.current[initialMode] ?? MODE_DEFAULTS[initialMode] ?? MODE_DEFAULTS.merge
@@ -677,16 +776,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
 
 
 
-  const triggerDownloadAction = (blob: Blob, fileName: string) => {
-    const url = URL.createObjectURL(blob);
-    const anchor = document.createElement('a');
-    anchor.href = url;
-    anchor.download = fileName;
-    document.body.appendChild(anchor);
-    anchor.click();
-    document.body.removeChild(anchor);
-    URL.revokeObjectURL(url);
-  };
+
 
   const formatFileSize = (bytes: number): string => {
     if (bytes < 1024) return `${bytes} B`;
@@ -764,6 +854,42 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
       donationPrompt: null,
     });
   };
+
+  const activeObjectUrlsRef = useRef<Set<string>>(new Set());
+
+  const triggerDownloadAction = useCallback((blob: Blob, fileName: string) => {
+    if (typeof window === 'undefined') return;
+    const url = URL.createObjectURL(blob);
+    activeObjectUrlsRef.current.add(url);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setTimeout(() => {
+      try {
+        URL.revokeObjectURL(url);
+        activeObjectUrlsRef.current.delete(url);
+      } catch {
+        // ignore
+      }
+    }, 60000);
+  }, []);
+
+  useEffect(() => {
+    const urlsToCleanup = activeObjectUrlsRef.current;
+    return () => {
+      urlsToCleanup.forEach((url) => {
+        try {
+          URL.revokeObjectURL(url);
+        } catch {
+          // ignore
+        }
+      });
+      urlsToCleanup.clear();
+    };
+  }, []);
 
   const handleProcess = async () => {
     if (isProcessing) {
@@ -1431,9 +1557,66 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           return;
         }
 
-        default:
-          showErrorDialog(errorStrings.modeNotSupported);
+        default: {
+          let processedSources = 0;
+          for (const sourceFile of currentFiles) {
+            const result = await processPDF(mode, [sourceFile], processingOptions);
+            const ext =
+              mode === 'pdfToZip'
+                ? '.zip'
+                : mode === 'pdfToExcel'
+                ? '.xlsx'
+                : mode === 'pdfToPowerpoint'
+                ? '.pptx'
+                : mode === 'pdfToHtml'
+                ? '.html'
+                : mode === 'pdfToEpub'
+                ? '.epub'
+                : mode === 'extractText'
+                ? '.txt'
+                : '.pdf';
+
+            const baseName = sourceFile.name.replace(/\.[^/.]+$/, '');
+            const fileName = `${baseName}_${mode}${ext}`;
+            const blob =
+              result instanceof Blob
+                ? result
+                : typeof result === 'string'
+                ? new Blob([result], { type: 'text/plain;charset=utf-8' })
+                : result instanceof Uint8Array || result instanceof ArrayBuffer
+                ? new Blob([result as BlobPart], { type: 'application/pdf' })
+                : new Blob([JSON.stringify(result)], { type: 'application/json' });
+
+            downloads.push({ blob, fileName });
+            triggerDownloadAction(blob, fileName);
+            processedSources += 1;
+          }
+
+          if (processedSources === 0) {
+            showErrorDialog(errorStrings.invalidFile);
+            return;
+          }
+
+          showSuccessDialog({
+            highlights: [
+              {
+                label: statusDialogStrings.resultsLabel,
+                value: `${modeLabel} completed successfully.`,
+              },
+              {
+                label: statusDialogStrings.filesProcessedLabel(processedSources),
+              },
+            ],
+            downloads,
+            donationPrompt: buildDonationPrompt(),
+          });
+
+          trackProcessorEvent('operation_success', {
+            file_count: processedSources,
+            mode,
+          });
           return;
+        }
       }
     } catch (err) {
       if (compressionEntriesBuffer.length > 0) {
@@ -1897,25 +2080,49 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
 
 
 
-        <div className="mb-6">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-bold">{upload.title}</h2>
-            {files.length > 0 && (
-              <button
-                className="text-sm text-[var(--tx-3)] hover:text-[var(--accent)] transition-colors"
-                onClick={clearFiles}
-              >
-                {upload.clearAll}
-              </button>
-            )}
+        {mode === 'scanToPdf' && (
+          <div className="mb-6">
+            <CameraScanInterface
+              onScanComplete={(scannedPdf) => {
+                triggerDownloadAction(scannedPdf, 'camera_scan.pdf');
+              }}
+            />
           </div>
+        )}
 
-          <FileUploader
-            onFilesSelectedAction={handleFilesSelected}
-            multiple={uploaderConfig.multiple}
-            acceptImages={uploaderConfig.acceptImages}
-          />
-        </div>
+        {mode === 'compare' && (
+          <div className="mb-6">
+            <PdfCompareViewer />
+          </div>
+        )}
+
+        {mode === 'p2pShare' && (
+          <div className="mb-6">
+            <P2PShareInterface file={files[0]} />
+          </div>
+        )}
+
+        {mode !== 'scanToPdf' && mode !== 'compare' && mode !== 'p2pShare' && (
+          <div className="mb-6">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-xl font-bold">{upload.title}</h2>
+              {files.length > 0 && (
+                <button
+                  className="text-sm text-[var(--tx-3)] hover:text-[var(--accent)] transition-colors"
+                  onClick={clearFiles}
+                >
+                  {upload.clearAll}
+                </button>
+              )}
+            </div>
+
+            <FileUploader
+              onFilesSelectedAction={handleFilesSelected}
+              multiple={uploaderConfig.multiple}
+              acceptImages={uploaderConfig.acceptImages}
+            />
+          </div>
+        )}
 
         {files.length > 0 && (
           <div className="mb-8">
@@ -2245,6 +2452,47 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
                     </section>
                   );
                 })}
+              </div>
+            )}
+
+            {mode === 'extractText' && (files[currentFileIndex] || files[0]) && (
+              <div className="mt-6">
+                <ToolErrorBoundary toolName="Text Extractor">
+                  <TextExtractionViewer file={files[currentFileIndex] || files[0]} />
+                </ToolErrorBoundary>
+              </div>
+            )}
+
+            {mode === 'redact' && (files[currentFileIndex] || files[0]) && (
+              <div className="mt-6">
+                <ToolErrorBoundary toolName="PDF Redaction Studio">
+                  <PdfRedactionEditor
+                    file={files[currentFileIndex] || files[0]}
+                    onBurnRedactions={async (burnedBlob) => {
+                      const baseName = (files[currentFileIndex] || files[0]).name.replace(/\.[^/.]+$/, '');
+                      const fileName = `${baseName}_redacted.pdf`;
+                      triggerDownloadAction(burnedBlob, fileName);
+                    }}
+                  />
+                </ToolErrorBoundary>
+              </div>
+            )}
+
+            {mode === 'pdfToAudio' && (files[currentFileIndex] || files[0]) && (
+              <div className="mt-6">
+                <ToolErrorBoundary toolName="Audio Reader">
+                  <AudioTtsInterface file={files[currentFileIndex] || files[0]} />
+                </ToolErrorBoundary>
+              </div>
+            )}
+
+            {(mode === 'aiSummarize' || mode === 'aiChat') && (files[currentFileIndex] || files[0]) && (
+              <div className="mt-6">
+                <ToolErrorBoundary toolName="AI Summarizer & Search">
+                  <ByokProvider>
+                    <AiSummarizerInterface file={files[currentFileIndex] || files[0]} />
+                  </ByokProvider>
+                </ToolErrorBoundary>
               </div>
             )}
 
