@@ -35,9 +35,12 @@
     "next": "^15.5.12",
     "pdf-lib": "^1.17.1",
     "pdfjs-dist": "^5.4.296",
+    "pptxgenjs": "^4.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.0",
     "server-only": "^0.0.1",
+    "tesseract.js": "^7.0.0",
+    "xlsx": "^0.18.5",
     "zod": "^3.23.3"
   },
   "devDependencies": {

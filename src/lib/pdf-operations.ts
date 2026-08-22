@@ -15,19 +15,31 @@ import {
   rgb,
 } from 'pdf-lib';
 
+import type { OperationKey } from '../types/operations';
+import type { WatermarkOptions } from './operations/watermark';
+import type { PageNumberOptions } from './operations/page-numbers';
+import type { HeaderFooterOptions } from './operations/headers-footers';
+import type { RedactionBox } from './operations/redact';
+import type { FlattenOptions } from './operations/flatten';
+import type { GstInvoiceData, PosReceiptData } from './operations/business';
+
+export * from './operations/watermark';
+export * from './operations/page-numbers';
+export * from './operations/headers-footers';
+export * from './operations/text-extract';
+export * from './operations/color-inversion';
+export * from './operations/redact';
+export * from './operations/flatten';
+export * from './operations/security';
+export * from './operations/fingerprint';
+export * from './operations/repair';
+export * from './operations/converters';
+export * from './operations/business';
+export * from './operations/ai-local';
+export * from './operations/ocr';
+
 // Type definitions
-export type PDFProcessingMode =
-  | 'compress'
-  | 'merge'
-  | 'split'
-  | 'extract'
-  | 'crop'
-  | 'rotate'
-  | 'reorder'
-  | 'rotate'
-  | 'pdfToImages'
-  | 'imagesToPdf'
-  | 'pageCount';
+export type PDFProcessingMode = OperationKey | 'pageCount';
 
 export type PDFProcessingOptions = {
   compressionLevel?: 'low' | 'medium' | 'high';
@@ -79,6 +91,73 @@ export type PDFProcessingOptions = {
   imageBorderType?: 'none' | 'thin' | 'standard' | 'thick' | 'custom';
   imageBorderWidth?: number;
   imageBorderColor?: string;
+
+  // New tool options (nested & flat)
+  watermark?: WatermarkOptions;
+  watermarkType?: 'text' | 'image';
+  watermarkText?: string;
+  watermarkColor?: string;
+  watermarkOpacity?: number;
+  watermarkRotation?: number;
+  watermarkPosition?: 'center' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'tile';
+  watermarkFontSize?: number;
+
+  pageNumbers?: PageNumberOptions;
+  pageNumberFormat?: string;
+  pageNumberPosition?: 'bottom-center' | 'bottom-right' | 'bottom-left' | 'top-center' | 'top-right' | 'top-left';
+  pageNumberStart?: number;
+  pageNumberSkipFirst?: boolean;
+  pageNumberFontSize?: number;
+  pageNumberColor?: string;
+
+  headersFooters?: HeaderFooterOptions;
+  headerLeft?: string;
+  headerCenter?: string;
+  headerRight?: string;
+  footerLeft?: string;
+  footerCenter?: string;
+  footerRight?: string;
+  headerFooterFontSize?: number;
+  headerFooterColor?: string;
+
+  invertColorMode?: 'dark' | 'sepia' | 'grayscale' | 'high-contrast';
+  colorMode?: 'dark-mode' | 'sepia' | 'grayscale' | 'high-contrast';
+
+  redactions?: RedactionBox[];
+  redactColor?: string;
+
+  flatten?: FlattenOptions;
+  flattenFormFields?: boolean;
+  flattenAnnotations?: boolean;
+
+  userPassword?: string;
+  ownerPassword?: string;
+  decryptionPassword?: string;
+  permissions?: { printing: boolean; copying: boolean; modifying: boolean };
+
+  fingerprintRecipient?: string;
+  fingerprintSecret?: string;
+
+  markdownContent?: string;
+  markdownTheme?: string;
+  htmlContent?: string;
+  csvContent?: string;
+  csvDelimiter?: string;
+  documentTitle?: string;
+
+  ttsVoice?: string;
+  ttsRate?: number;
+  ttsPitch?: number;
+
+  gstInvoice?: GstInvoiceData;
+  invoiceNumber?: string;
+  taxRate?: number;
+
+  posReceipt?: PosReceiptData;
+  ocrLanguage?: string;
+
+  aiExtractLength?: 'short' | 'medium' | 'detailed';
+  aiProvider?: 'local' | 'gemini' | 'openai';
 };
 
 export type ProcessingResult = {
