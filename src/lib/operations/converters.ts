@@ -120,7 +120,7 @@ async function renderTableRowsToPdf(
   }
 
   validRows.forEach((row, rowIdx) => {
-    if (currentY - rowHeight < margin + 20) {
+    if (currentY - rowHeight < margin) {
       currentPage = pdfDoc.addPage([pageWidth, pageHeight]);
       currentY = pageHeight - margin;
     }
@@ -184,7 +184,7 @@ async function renderTableRowsToPdf(
 }
 
 // -------------------------------------------------------------
-// 3. PDF -> Excel (.xlsx)
+// 3. PDF -> Excel (.xlsx) with Column Clustering & Table Inference
 // -------------------------------------------------------------
 export async function convertPdfToExcel(
   fileOrData: File | ArrayBuffer | Uint8Array
@@ -211,17 +211,20 @@ export async function convertPdfToExcel(
       transform: number[];
     }>;
 
-    // Group items by line based on Y coordinate
+    // 1. Group items by vertical lines (Y coordinate buckets within 5 pt)
     const lineMap = new Map<number, Array<{ x: number; text: string }>>();
+    const allXCoords: number[] = [];
+
     for (const item of items) {
-      if (!item.str.trim()) continue;
+      const text = item.str.trim();
+      if (!text) continue;
       const x = Math.round(item.transform[4]);
       const y = Math.round(item.transform[5]);
+      allXCoords.push(x);
 
-      // Find closest existing bucket within 4 points
       let matchedY = y;
       for (const existingY of lineMap.keys()) {
-        if (Math.abs(existingY - y) <= 4) {
+        if (Math.abs(existingY - y) <= 5) {
           matchedY = existingY;
           break;
         }
@@ -230,25 +233,65 @@ export async function convertPdfToExcel(
       if (!lineMap.has(matchedY)) {
         lineMap.set(matchedY, []);
       }
-      lineMap.get(matchedY)!.push({ x, text: item.str });
+      lineMap.get(matchedY)!.push({ x, text });
     }
 
-    // Sort lines top to bottom (highest Y first in PDF coords)
+    // 2. Compute Global Column Clusters (cluster X coordinates within 20 pt)
+    const sortedX = Array.from(new Set(allXCoords)).sort((a, b) => a - b);
+    const columnCentroids: number[] = [];
+
+    for (const x of sortedX) {
+      let matchedCol = false;
+      for (let i = 0; i < columnCentroids.length; i++) {
+        if (Math.abs(columnCentroids[i] - x) <= 24) {
+          matchedCol = true;
+          break;
+        }
+      }
+      if (!matchedCol) {
+        columnCentroids.push(x);
+      }
+    }
+    columnCentroids.sort((a, b) => a - b);
+
+    // 3. Populate Rows using Column Bins to prevent column shifts
     const sortedY = Array.from(lineMap.keys()).sort((a, b) => b - a);
-    const tableData: string[][] = [];
+    const tableData: Array<Array<string | number>> = [];
 
     for (const y of sortedY) {
-      const lineItems = lineMap.get(y)!.sort((a, b) => a.x - b.x);
-      const row: string[] = [];
+      const lineItems = lineMap.get(y)!;
+      const row: Array<string | number> = new Array(Math.max(1, columnCentroids.length)).fill('');
+
       for (const it of lineItems) {
-        row.push(it.text);
+        // Find nearest column centroid
+        let bestColIdx = 0;
+        let minDiff = Infinity;
+        for (let c = 0; c < columnCentroids.length; c++) {
+          const diff = Math.abs(columnCentroids[c] - it.x);
+          if (diff < minDiff) {
+            minDiff = diff;
+            bestColIdx = c;
+          }
+        }
+
+        const existingVal = row[bestColIdx];
+        const combinedStr = existingVal ? `${existingVal} ${it.text}` : it.text;
+
+        // Numeric parsing
+        const cleanNum = combinedStr.replace(/[$,€£]/g, '').trim();
+        if (cleanNum && !isNaN(Number(cleanNum)) && !cleanNum.startsWith('0') && cleanNum.length < 12) {
+          row[bestColIdx] = Number(cleanNum);
+        } else {
+          row[bestColIdx] = combinedStr;
+        }
       }
-      if (row.length > 0) {
+
+      if (row.some((cell) => cell !== '')) {
         tableData.push(row);
       }
     }
 
-    const sheet = XLSX.utils.aoa_to_sheet(tableData);
+    const sheet = XLSX.utils.aoa_to_sheet(tableData.length > 0 ? tableData : [['']]);
     XLSX.utils.book_append_sheet(workbook, sheet, `Page ${p}`);
   }
 
@@ -326,7 +369,6 @@ export async function convertPowerpointToPdf(
   const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
   const boldFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
 
-  // Search for slide XML files in ppt/slides/
   const slideFiles = Object.keys(zip.files)
     .filter((f) => f.startsWith('ppt/slides/slide') && f.endsWith('.xml'))
     .sort((a, b) => {
@@ -343,7 +385,6 @@ export async function convertPowerpointToPdf(
 
   for (const slidePath of slideFiles) {
     const xml = await zip.files[slidePath].async('string');
-    // Extract text nodes <a:t>
     const textMatches = Array.from(xml.matchAll(/<a:t>([^<]+)<\/a:t>/g)).map((m) => m[1]);
 
     const page = pdfDoc.addPage([841.89, 595.28]); // 16:9 Landscape
@@ -375,7 +416,7 @@ export async function convertPowerpointToPdf(
 }
 
 // -------------------------------------------------------------
-// 6. Markdown -> PDF
+// 6. Markdown -> PDF with Tables & Code Highlighting
 // -------------------------------------------------------------
 export async function convertMarkdownToPdf(
   markdownText: string,
@@ -447,15 +488,50 @@ export async function convertMarkdownToPdf(
       currentPage.drawText(item, { x: margin + 20, y: currentY, size: 10, font, color: rgb(0.2, 0.2, 0.2) });
       currentY -= 16;
     } else if (trimmed.startsWith('```')) {
-      // Code block start/end
-      currentY -= 8;
+      // Code block card
+      currentPage.drawRectangle({
+        x: margin,
+        y: currentY - 6,
+        width: contentWidth,
+        height: 18,
+        color: rgb(0.95, 0.95, 0.97),
+      });
+      currentY -= 14;
+    } else if (trimmed.startsWith('|') && trimmed.endsWith('|')) {
+      // Markdown Table Row
+      const cells = trimmed
+        .slice(1, -1)
+        .split('|')
+        .map((c) => c.trim());
+      if (cells.every((c) => c.match(/^:?-+:?$/))) {
+        // Separator line
+        currentPage.drawLine({
+          start: { x: margin, y: currentY },
+          end: { x: margin + contentWidth, y: currentY },
+          thickness: 1,
+          color: rgb(0.8, 0.8, 0.85),
+        });
+        currentY -= 12;
+      } else {
+        const cellW = contentWidth / cells.length;
+        cells.forEach((cell, idx) => {
+          currentPage.drawText(cell, {
+            x: margin + idx * cellW + 4,
+            y: currentY,
+            size: 9,
+            font: boldFont,
+            color: rgb(0.2, 0.2, 0.2),
+          });
+        });
+        currentY -= 16;
+      }
     } else if (line.startsWith('    ') || line.startsWith('\t')) {
-      currentPage.drawText(trimmed, { x: margin + 12, y: currentY, size: 9, font: monoFont, color: rgb(0.3, 0.3, 0.35) });
+      currentPage.drawText(trimmed, { x: margin + 12, y: currentY, size: 9, font: monoFont, color: rgb(0.2, 0.3, 0.5) });
       currentY -= 14;
     } else if (trimmed.length === 0) {
       currentY -= 10;
     } else {
-      // Normal paragraph text with basic word wrapping
+      // Normal paragraph text with word wrapping
       const words = trimmed.split(' ');
       let currentLine = '';
 
@@ -491,7 +567,6 @@ export async function convertHtmlToPdf(
   htmlContent: string,
   options: { title?: string } = {}
 ): Promise<Uint8Array> {
-  // Strip tags or convert to readable layout
   const text = htmlContent
     .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
     .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
@@ -580,10 +655,8 @@ export async function convertPdfToEpub(
   const doc = await loadingTask.promise;
   const zip = new JSZip();
 
-  // Standard EPUB mimetype (uncompressed)
   zip.file('mimetype', 'application/epub+zip', { compression: 'STORE' });
 
-  // META-INF
   zip.folder('META-INF')!.file(
     'container.xml',
     `<?xml version="1.0"?>
@@ -620,7 +693,6 @@ export async function convertPdfToEpub(
     spineItems += `    <itemref idref="chap_${i}"/>\n`;
   }
 
-  // content.opf
   oebps.file(
     'content.opf',
     `<?xml version="1.0" encoding="utf-8"?>
@@ -650,7 +722,6 @@ export async function convertEbookToPdf(
   const data = fileOrData instanceof File ? await fileOrData.arrayBuffer() : fileOrData;
   const zip = await JSZip.loadAsync(data);
 
-  // Find all xhtml / html files
   const htmlFiles = Object.keys(zip.files).filter(
     (f) => f.endsWith('.xhtml') || f.endsWith('.html') || f.endsWith('.htm')
   );

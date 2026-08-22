@@ -36,6 +36,11 @@ import AudioTtsInterface from './AudioTtsInterface';
 import AiSummarizerInterface from './AiSummarizerInterface';
 import { ToolErrorBoundary } from '../ToolErrorBoundary';
 import { ByokProvider } from '../../context/ByokContext';
+import StepIndicator, { type ToolStep } from '../StepIndicator';
+import ProcessingProgress from './ProcessingProgress';
+import StickyActionBar from './StickyActionBar';
+import ResultPanel, { type OutputFileItem } from './ResultPanel';
+import ErrorState from './ErrorState';
 
 type ProcessingMode = OperationKey;
 
@@ -334,6 +339,19 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
     downloads: [],
     donationPrompt: null,
   });
+  const [completedResult, setCompletedResult] = useState<{
+    title: string;
+    summaryText?: string;
+    beforeSizeBytes?: number;
+    afterSizeBytes?: number;
+    wordCount?: number;
+    pageCount?: number;
+    primaryFileName: string;
+    primaryBlob?: Blob;
+    outputFiles?: OutputFileItem[];
+    textContent?: string;
+  } | null>(null);
+  const actionButtonRef = useRef<HTMLDivElement | null>(null);
   const modeOptionsRef = useRef<Record<ProcessingMode, PDFProcessingOptions>>(
     Object.fromEntries(
       Object.entries(MODE_DEFAULTS).map(([k, v]) => [k, cloneOptions(v)])
@@ -707,6 +725,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
       });
       setFiles(prevFiles => [...prevFiles, ...pdfCandidates]);
       setCompressionSummary([]);
+      setCompletedResult(null);
       return;
     }
 
@@ -727,6 +746,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
       });
       setFiles(prevFiles => [...prevFiles, ...imageCandidates]);
       setCompressionSummary([]);
+      setCompletedResult(null);
       return;
     }
 
@@ -747,6 +767,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
     });
     setFiles(prevFiles => [...prevFiles, ...pdfCandidates]);
     setCompressionSummary([]);
+    setCompletedResult(null);
   };
 
   useEffect(() => {
@@ -827,6 +848,24 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
         download_count: downloads.length,
       });
     }
+
+    const beforeBytes = filesRef.current.reduce((acc, f) => acc + f.size, 0);
+    const afterBytes = downloads[0]?.blob?.size;
+    const firstDownload = downloads[0];
+
+    setCompletedResult({
+      title: `${modes[mode]?.label ?? mode} Complete!`,
+      summaryText: description ?? statusDialogStrings.successDescription,
+      beforeSizeBytes: beforeBytes > 0 ? beforeBytes : undefined,
+      afterSizeBytes: afterBytes,
+      primaryFileName: firstDownload?.fileName ?? 'processed_document.pdf',
+      primaryBlob: firstDownload?.blob,
+      outputFiles: downloads.map(d => ({
+        name: d.fileName,
+        blob: d.blob,
+        sizeBytes: d.blob.size,
+      })),
+    });
 
     setStatusDialogState({
       isOpen: true,
@@ -1923,6 +1962,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
     setCompressionPreviewStates({});
     setCompressionPreviewCache({});
     setCompressionSummary([]);
+    setCompletedResult(null);
   };
 
   const handleFileChange = (index: number) => {
@@ -2072,13 +2112,31 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
       : processButton.idleMultiple(files.length);
   };
 
+  const currentStep: ToolStep = completedResult
+    ? 'result'
+    : isProcessing
+    ? 'process'
+    : files.length > 0
+    ? 'options'
+    : 'upload';
+
   return (
     <>
-      <div className="p-6 sm:p-8 surface-card rounded-2xl shadow-sm border border-[var(--border)] space-y-6" id="pdf-processor">
+      <div className="p-6 sm:p-8 surface-card rounded-3xl shadow-sm border border-[var(--border)] space-y-6" id="pdf-processor">
 
-
-
-
+        {/* Step Indicator */}
+        <StepIndicator
+          currentStep={currentStep}
+          hasFiles={files.length > 0}
+          isProcessing={isProcessing}
+          hasResult={Boolean(completedResult)}
+          onStepClick={(step) => {
+            if (step === 'upload' && completedResult) {
+              setCompletedResult(null);
+              clearFiles();
+            }
+          }}
+        />
 
         {mode === 'scanToPdf' && (
           <div className="mb-6">
@@ -2102,7 +2160,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           </div>
         )}
 
-        {mode !== 'scanToPdf' && mode !== 'compare' && mode !== 'p2pShare' && (
+        {mode !== 'scanToPdf' && mode !== 'compare' && mode !== 'p2pShare' && !completedResult && (
           <div className="mb-6">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-bold">{upload.title}</h2>
@@ -2124,7 +2182,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           </div>
         )}
 
-        {files.length > 0 && (
+        {files.length > 0 && !completedResult && (
           <div className="mb-8">
             <div className="flex justify-between items-center mb-2">
               <h3 className="font-bold">{listHeading}</h3>
@@ -2139,6 +2197,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
               files={files}
               onMoveFileAction={mode === 'merge' || mode === 'imagesToPdf' ? moveFile : undefined}
               onRemoveFileAction={removeFile}
+              onClearAllAction={clearFiles}
               currentIndex={mode === 'extract' || mode === 'crop' || mode === 'reorder' || mode === 'rotate' ? currentFileIndex : undefined}
               onFileSelectAction={
                 mode === 'extract' || mode === 'crop' || mode === 'reorder' || mode === 'rotate' ? handleFileChange : undefined
@@ -2501,10 +2560,47 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
                 mode={mode}
                 options={processingOptions}
                 onOptionsChangeAction={handleProcessingOptionsChange}
+                file={files[currentFileIndex] || files[0]}
               />
             )}
 
-            {mode === 'compress' && previewItems.length > 0 && (
+            {isProcessing && (
+              <div className="mt-6">
+                <ProcessingProgress
+                  status="processing"
+                  statusMessage="Processing your files 100% locally in your browser..."
+                  onCancel={() => setIsProcessing(false)}
+                />
+              </div>
+            )}
+
+            {completedResult && (
+              <div className="mt-6">
+                <ResultPanel
+                  title={completedResult.title}
+                  summaryText={completedResult.summaryText}
+                  beforeSizeBytes={completedResult.beforeSizeBytes}
+                  afterSizeBytes={completedResult.afterSizeBytes}
+                  pageCount={completedResult.pageCount}
+                  wordCount={completedResult.wordCount}
+                  primaryFileName={completedResult.primaryFileName}
+                  primaryDownloadBlob={completedResult.primaryBlob}
+                  outputFiles={completedResult.outputFiles}
+                  textContent={completedResult.textContent}
+                  onDownloadPrimary={
+                    completedResult.primaryBlob
+                      ? () => triggerDownloadAction(completedResult.primaryBlob!, completedResult.primaryFileName)
+                      : undefined
+                  }
+                  onStartOver={() => {
+                    setCompletedResult(null);
+                    clearFiles();
+                  }}
+                />
+              </div>
+            )}
+
+            {mode === 'compress' && previewItems.length > 0 && !completedResult && (
               <div className="mt-6 space-y-4">
                 {previewItems.map(item => (
                   <CompressionPreviewCard
@@ -2526,7 +2622,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
               </div>
             )}
 
-            {mode === 'compress' && previewItems.length > 1 && previewItems.every(i => i.status === 'ready') && (
+            {mode === 'compress' && previewItems.length > 1 && previewItems.every(i => i.status === 'ready') && !completedResult && (
               <div className="mt-8 overflow-hidden rounded-xl border border-[var(--accent)] bg-[var(--accent)]/5 p-5 shadow-sm ring-1 ring-[var(--accent)]/20">
                 <div className="flex flex-wrap items-center justify-between gap-4">
                   <div className="space-y-1">
@@ -2578,45 +2674,63 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           </div>
         )}
 
-        <div className="flex justify-center pt-2">
-          <button
-            className="btn-primary w-full sm:w-auto px-8 py-3.5 rounded-xl font-semibold text-white shadow-md text-sm sm:text-base tracking-tight disabled:opacity-50 disabled:cursor-not-allowed"
+        {!completedResult && (
+          <div className="flex justify-center pt-2" ref={actionButtonRef}>
+            <button
+              className="btn-primary w-full sm:w-auto px-8 py-3.5 rounded-xl font-semibold text-white shadow-md text-sm sm:text-base tracking-tight disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+              disabled={
+                files.length === 0 ||
+                isProcessing ||
+                ((mode === 'extract' || mode === 'crop' || mode === 'rotate') && !hasExtractSelection)
+              }
+              onClick={handleProcess}
+            >
+              {isProcessing ? (
+                <span className="flex items-center gap-2">
+                  <svg
+                    className="animate-spin h-4 w-4 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                  <span>{processButton.processing}</span>
+                </span>
+              ) : (
+                resolveIdleButtonLabel()
+              )}
+            </button>
+          </div>
+        )}
+
+        {!completedResult && files.length > 0 && (
+          <StickyActionBar
+            buttonLabel={typeof resolveIdleButtonLabel() === 'string' ? (resolveIdleButtonLabel() as string) : 'Process Document'}
+            isProcessing={isProcessing}
             disabled={
               files.length === 0 ||
               isProcessing ||
               ((mode === 'extract' || mode === 'crop' || mode === 'rotate') && !hasExtractSelection)
             }
+            fileCount={files.length}
+            totalSizeLabel={formatFileSize(files.reduce((sum, f) => sum + f.size, 0))}
             onClick={handleProcess}
-          >
-            {isProcessing ? (
-              <span className="flex items-center gap-2">
-                <svg
-                  className="animate-spin h-4 w-4 text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  ></circle>
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  ></path>
-                </svg>
-                <span>{processButton.processing}</span>
-              </span>
-            ) : (
-              resolveIdleButtonLabel()
-            )}
-          </button>
-        </div>
+            targetRef={actionButtonRef}
+          />
+        )}
 
         {mode === 'compress' && compressionSummary.length > 0 && (
           <div className="mt-8 space-y-4">

@@ -1,6 +1,7 @@
 import React from 'react';
 import { PDFProcessingMode, PDFProcessingOptions } from '../../lib/pdf-processor';
 import { useDictionary } from '../../i18n/LocaleProvider';
+import OptionLivePreview from './OptionLivePreview';
 import {
   Lock,
   Unlock,
@@ -12,12 +13,14 @@ import {
   Type,
   Hash,
   Palette,
+  Info,
 } from 'lucide-react';
 
 type ProcessingOptionsProps = {
   mode: PDFProcessingMode;
   options: PDFProcessingOptions;
   onOptionsChangeAction: (newOptions: PDFProcessingOptions) => void;
+  file?: File | null;
 };
 
 type CompressionLevel = NonNullable<PDFProcessingOptions['compressionLevel']>;
@@ -47,6 +50,7 @@ export default function ProcessingOptions({
   mode,
   options,
   onOptionsChangeAction,
+  file,
 }: ProcessingOptionsProps) {
   const dictionary = useDictionary();
   const processingStrings = dictionary.components.processingOptions;
@@ -74,11 +78,20 @@ export default function ProcessingOptions({
 
     return (
       <div className="mt-6 space-y-6 pt-4 border-t border-[var(--border)]">
-        <div>
-          <h3 className="text-xs font-semibold text-[var(--tx-3)] uppercase tracking-wider">
-            {compressStrings.title}
-          </h3>
-          <p className="mt-1 text-xs text-[var(--tx-2)]">{compressStrings.level}</p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h3 className="text-xs font-semibold text-[var(--tx-3)] uppercase tracking-wider">
+              {compressStrings.title}
+            </h3>
+            <p className="mt-1 text-xs text-[var(--tx-2)]">{compressStrings.level}</p>
+          </div>
+          <span
+            className="inline-flex items-center gap-1 text-[11px] text-[var(--tx-3)] cursor-help"
+            title="Extreme compression downscales images to 72 DPI and removes annotations for maximum file size savings."
+          >
+            <Info className="h-3.5 w-3.5 text-[var(--accent)]" />
+            <span>Preset trade-offs</span>
+          </span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3" role="radiogroup" aria-label={compressStrings.title}>
@@ -87,7 +100,7 @@ export default function ProcessingOptions({
             return (
               <label
                 key={level}
-                className={`cursor-pointer rounded-xl border p-4 transition-all duration-150 shadow-xs ${
+                className={`cursor-pointer rounded-2xl border p-4 transition-all duration-200 shadow-xs ${
                   selected
                     ? 'border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--accent)] ring-1 ring-[var(--accent)]'
                     : 'border-[var(--border)] bg-[var(--bg-card)] text-[var(--tx)] hover:border-[var(--border-hover)]'
@@ -100,14 +113,21 @@ export default function ProcessingOptions({
                   checked={selected}
                   onChange={() => handleCompressionLevelChange(level)}
                 />
-                <div className="flex flex-col gap-1">
-                  <span className="text-sm font-bold capitalize">{compressStrings.levels[level]}</span>
+                <div className="flex flex-col gap-1.5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-bold capitalize">{compressStrings.levels[level]}</span>
+                    {level === 'high' && (
+                      <span className="px-1.5 py-0.5 rounded-full bg-[var(--accent)] text-white text-[10px] font-bold">
+                        Smallest
+                      </span>
+                    )}
+                  </div>
                   <span className="text-xs text-[var(--tx-2)] leading-relaxed">
                     {level === 'low'
-                      ? 'Light compression, maximum visual fidelity'
+                      ? 'Light compression, preserves maximum visual fidelity (200 DPI)'
                       : level === 'medium'
-                      ? 'Optimal balance of size & clarity'
-                      : 'Maximum file size reduction'}
+                      ? 'Optimal balance of compact file size & document sharpness (120 DPI)'
+                      : 'Extreme compression for email & portal limits (72 DPI)'}
                   </span>
                 </div>
               </label>
@@ -130,6 +150,7 @@ export default function ProcessingOptions({
     const currentRotation = wm.watermarkRotation ?? 45;
     const currentPosition = wm.watermarkPosition ?? 'center';
     const currentFontSize = wm.watermarkFontSize ?? 48;
+    const currentColor = wm.watermarkColor ?? '#ff0000';
 
     return (
       <div className="mt-6 space-y-6 pt-4 border-t border-[var(--border)]">
@@ -139,88 +160,129 @@ export default function ProcessingOptions({
             Watermark Customization
           </h3>
           <p className="mt-1 text-xs text-[var(--tx-2)]">
-            Configure custom text or logo watermark, opacity, rotation, and placement.
+            Configure custom text, styling, rotation angle, opacity, and page placement with real-time preview.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-[var(--tx)]">Watermark Text</label>
-            <input
-              type="text"
-              value={currentText}
-              onChange={(e) => updateWm({ watermarkText: e.target.value })}
-              className="input-modern w-full font-bold"
-              placeholder="CONFIDENTIAL, DRAFT, DO NOT COPY"
-            />
-          </div>
-
-          <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-[var(--tx)]">Position &amp; Layout</label>
-            <select
-              value={currentPosition}
-              onChange={(e) => updateWm({ watermarkPosition: e.target.value as typeof currentPosition })}
-              className="input-modern w-full cursor-pointer font-medium"
-            >
-              <option value="center">Center of Page</option>
-              <option value="tile">Tile / Repeat Across Entire Page</option>
-              <option value="top-left">Top Left</option>
-              <option value="top-center">Top Center</option>
-              <option value="top-right">Top Right</option>
-              <option value="bottom-left">Bottom Left</option>
-              <option value="bottom-center">Bottom Center</option>
-              <option value="bottom-right">Bottom Right</option>
-            </select>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="space-y-1.5">
-            <div className="flex items-center justify-between">
-              <label className="text-xs font-semibold text-[var(--tx)]">Opacity</label>
-              <span className="text-xs font-mono text-[var(--accent)] font-bold">{Math.round(currentOpacity * 100)}%</span>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          {/* Controls Column */}
+          <div className="lg:col-span-7 space-y-5">
+            {/* Content Group */}
+            <div className="p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] space-y-3">
+              <span className="text-xs font-bold text-[var(--accent)] uppercase tracking-wider block">
+                1. Watermark Content
+              </span>
+              <div className="space-y-1.5">
+                <label className="text-xs font-semibold text-[var(--tx)]">Watermark Text</label>
+                <input
+                  type="text"
+                  value={currentText}
+                  onChange={(e) => updateWm({ watermarkText: e.target.value })}
+                  className="input-modern w-full font-bold text-xs sm:text-sm"
+                  placeholder="CONFIDENTIAL, DRAFT, DO NOT COPY"
+                />
+              </div>
             </div>
-            <input
-              type="range"
-              min={0.05}
-              max={1.0}
-              step={0.05}
-              value={currentOpacity}
-              onChange={(e) => updateWm({ watermarkOpacity: parseFloat(e.target.value) })}
-              className="w-full h-1.5 bg-neutral-200 rounded-lg appearance-none cursor-pointer accent-[var(--accent)]"
-            />
+
+            {/* Position Group */}
+            <div className="p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] space-y-3">
+              <span className="text-xs font-bold text-[var(--accent)] uppercase tracking-wider block">
+                2. Position &amp; Layout
+              </span>
+              <div className="space-y-1.5">
+                <label className="text-xs font-semibold text-[var(--tx)]">Placement Grid</label>
+                <select
+                  value={currentPosition}
+                  onChange={(e) => updateWm({ watermarkPosition: e.target.value as typeof currentPosition })}
+                  className="input-modern w-full cursor-pointer font-medium text-xs"
+                >
+                  <option value="center">Center of Page (Diagonal)</option>
+                  <option value="top-left">Top Left</option>
+                  <option value="top-center">Top Center</option>
+                  <option value="top-right">Top Right</option>
+                  <option value="bottom-left">Bottom Left</option>
+                  <option value="bottom-center">Bottom Center</option>
+                  <option value="bottom-right">Bottom Right</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Style Group */}
+            <div className="p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] space-y-4">
+              <span className="text-xs font-bold text-[var(--accent)] uppercase tracking-wider block">
+                3. Style &amp; Appearance
+              </span>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div className="space-y-1">
+                  <label className="text-xs font-semibold text-[var(--tx)]">Color</label>
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="color"
+                      value={currentColor}
+                      onChange={(e) => updateWm({ watermarkColor: e.target.value })}
+                      className="h-8 w-12 rounded-lg border border-[var(--border)] cursor-pointer bg-transparent"
+                    />
+                    <span className="text-xs font-mono text-[var(--tx-2)]">{currentColor}</span>
+                  </div>
+                </div>
+
+                <div className="space-y-1 sm:col-span-2">
+                  <div className="flex items-center justify-between">
+                    <label className="text-xs font-semibold text-[var(--tx)]">Opacity</label>
+                    <span className="text-xs font-mono text-[var(--accent)] font-bold">{Math.round(currentOpacity * 100)}%</span>
+                  </div>
+                  <input
+                    type="range"
+                    min={0.05}
+                    max={1.0}
+                    step={0.05}
+                    value={currentOpacity}
+                    onChange={(e) => updateWm({ watermarkOpacity: parseFloat(e.target.value) })}
+                    className="w-full h-1.5 bg-neutral-200 rounded-lg appearance-none cursor-pointer accent-[var(--accent)]"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1">
+                  <div className="flex items-center justify-between">
+                    <label className="text-xs font-semibold text-[var(--tx)]">Rotation</label>
+                    <span className="text-xs font-mono text-[var(--accent)] font-bold">{currentRotation}&deg;</span>
+                  </div>
+                  <input
+                    type="range"
+                    min={-90}
+                    max={90}
+                    step={15}
+                    value={currentRotation}
+                    onChange={(e) => updateWm({ watermarkRotation: parseInt(e.target.value, 10) })}
+                    className="w-full h-1.5 bg-neutral-200 rounded-lg appearance-none cursor-pointer accent-[var(--accent)]"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <div className="flex items-center justify-between">
+                    <label className="text-xs font-semibold text-[var(--tx)]">Font Size</label>
+                    <span className="text-xs font-mono text-[var(--accent)] font-bold">{currentFontSize} pt</span>
+                  </div>
+                  <input
+                    type="range"
+                    min={18}
+                    max={96}
+                    step={2}
+                    value={currentFontSize}
+                    onChange={(e) => updateWm({ watermarkFontSize: parseInt(e.target.value, 10) })}
+                    className="w-full h-1.5 bg-neutral-200 rounded-lg appearance-none cursor-pointer accent-[var(--accent)]"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className="space-y-1.5">
-            <div className="flex items-center justify-between">
-              <label className="text-xs font-semibold text-[var(--tx)]">Rotation Angle</label>
-              <span className="text-xs font-mono text-[var(--accent)] font-bold">{currentRotation}&deg;</span>
-            </div>
-            <input
-              type="range"
-              min={-90}
-              max={90}
-              step={15}
-              value={currentRotation}
-              onChange={(e) => updateWm({ watermarkRotation: parseInt(e.target.value, 10) })}
-              className="w-full h-1.5 bg-neutral-200 rounded-lg appearance-none cursor-pointer accent-[var(--accent)]"
-            />
-          </div>
-
-          <div className="space-y-1.5">
-            <div className="flex items-center justify-between">
-              <label className="text-xs font-semibold text-[var(--tx)]">Font Size</label>
-              <span className="text-xs font-mono text-[var(--accent)] font-bold">{currentFontSize} pt</span>
-            </div>
-            <input
-              type="range"
-              min={18}
-              max={96}
-              step={2}
-              value={currentFontSize}
-              onChange={(e) => updateWm({ watermarkFontSize: parseInt(e.target.value, 10) })}
-              className="w-full h-1.5 bg-neutral-200 rounded-lg appearance-none cursor-pointer accent-[var(--accent)]"
-            />
+          {/* Live Preview Column */}
+          <div className="lg:col-span-5">
+            <OptionLivePreview file={file} mode={mode} options={options} />
           </div>
         </div>
       </div>
@@ -238,6 +300,7 @@ export default function ProcessingOptions({
     const currentPosition = pn.pageNumberPosition ?? 'bottom-center';
     const startNum = pn.pageNumberStartNumber ?? 1;
     const skipFirst = pn.skipFirstPage ?? false;
+    const currentColor = pn.pageNumberColor ?? '#666666';
 
     return (
       <div className="mt-6 space-y-6 pt-4 border-t border-[var(--border)]">
@@ -247,64 +310,85 @@ export default function ProcessingOptions({
             Page Numbering Options
           </h3>
           <p className="mt-1 text-xs text-[var(--tx-2)]">
-            Format, position, and customize numbering across all pages.
+            Format, position, and customize numbering across all pages with live preview.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-[var(--tx)]">Numbering Format</label>
-            <select
-              value={currentFormat}
-              onChange={(e) => updatePn({ pageNumberFormat: e.target.value as typeof currentFormat })}
-              className="input-modern w-full cursor-pointer"
-            >
-              <option value="page_n_of_total">Page 1 of 10</option>
-              <option value="n_of_total">1 / 10</option>
-              <option value="page_n">Page 1</option>
-              <option value="n">1 (Number only)</option>
-              <option value="dash_n_dash">- 1 -</option>
-            </select>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          <div className="lg:col-span-7 space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="space-y-1.5">
+                <label className="text-xs font-semibold text-[var(--tx)]">Numbering Format</label>
+                <select
+                  value={currentFormat}
+                  onChange={(e) => updatePn({ pageNumberFormat: e.target.value as typeof currentFormat })}
+                  className="input-modern w-full cursor-pointer text-xs"
+                >
+                  <option value="page_n_of_total">Page 1 of 8 (Standard)</option>
+                  <option value="n_of_total">1 / 8</option>
+                  <option value="page_n">Page 1</option>
+                  <option value="n">1 (Number only)</option>
+                  <option value="dash_n_dash">- 1 -</option>
+                </select>
+              </div>
+
+              <div className="space-y-1.5">
+                <label className="text-xs font-semibold text-[var(--tx)]">Alignment Position</label>
+                <select
+                  value={currentPosition}
+                  onChange={(e) => updatePn({ pageNumberPosition: e.target.value as typeof currentPosition })}
+                  className="input-modern w-full cursor-pointer text-xs"
+                >
+                  <option value="bottom-center">Bottom Center (Standard)</option>
+                  <option value="bottom-right">Bottom Right</option>
+                  <option value="bottom-left">Bottom Left</option>
+                  <option value="top-center">Top Center</option>
+                  <option value="top-right">Top Right</option>
+                  <option value="top-left">Top Left</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)]">
+              <div className="space-y-1">
+                <label className="text-xs font-semibold text-[var(--tx)]">Start Number:</label>
+                <input
+                  type="number"
+                  min={1}
+                  value={startNum}
+                  onChange={(e) => updatePn({ pageNumberStartNumber: Math.max(1, parseInt(e.target.value, 10) || 1) })}
+                  className="input-modern w-full text-center font-bold text-xs"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-xs font-semibold text-[var(--tx)]">Color:</label>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="color"
+                    value={currentColor}
+                    onChange={(e) => updatePn({ pageNumberColor: e.target.value })}
+                    className="h-8 w-12 rounded-lg border border-[var(--border)] cursor-pointer bg-transparent"
+                  />
+                  <span className="text-xs font-mono text-[var(--tx-2)]">{currentColor}</span>
+                </div>
+              </div>
+            </div>
+
+            <label className="flex items-center gap-2 cursor-pointer text-xs font-medium text-[var(--tx)] p-3 rounded-xl border border-[var(--border)] bg-[var(--bg-card)]">
+              <input
+                type="checkbox"
+                checked={skipFirst}
+                onChange={(e) => updatePn({ skipFirstPage: e.target.checked })}
+                className="rounded text-[var(--accent)] focus:ring-0"
+              />
+              <span>Skip First Page (Omit cover page)</span>
+            </label>
           </div>
 
-          <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-[var(--tx)]">Alignment Position</label>
-            <select
-              value={currentPosition}
-              onChange={(e) => updatePn({ pageNumberPosition: e.target.value as typeof currentPosition })}
-              className="input-modern w-full cursor-pointer"
-            >
-              <option value="bottom-center">Bottom Center (Standard)</option>
-              <option value="bottom-right">Bottom Right</option>
-              <option value="bottom-left">Bottom Left</option>
-              <option value="top-center">Top Center</option>
-              <option value="top-right">Top Right</option>
-              <option value="top-left">Top Left</option>
-            </select>
+          <div className="lg:col-span-5">
+            <OptionLivePreview file={file} mode={mode} options={options} />
           </div>
-        </div>
-
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-3.5 rounded-xl border border-[var(--border)] bg-[var(--bg-card)]">
-          <div className="flex items-center gap-3">
-            <label className="text-xs font-semibold text-[var(--tx)]">Start Number:</label>
-            <input
-              type="number"
-              min={1}
-              value={startNum}
-              onChange={(e) => updatePn({ pageNumberStartNumber: Math.max(1, parseInt(e.target.value, 10) || 1) })}
-              className="input-modern w-20 text-center font-bold"
-            />
-          </div>
-
-          <label className="flex items-center gap-2 cursor-pointer text-xs font-medium text-[var(--tx)]">
-            <input
-              type="checkbox"
-              checked={skipFirst}
-              onChange={(e) => updatePn({ skipFirstPage: e.target.checked })}
-              className="rounded text-[var(--accent)] focus:ring-0"
-            />
-            <span>Skip First Page (Cover page)</span>
-          </label>
         </div>
       </div>
     );
@@ -325,75 +409,81 @@ export default function ProcessingOptions({
             Headers &amp; Footers Configuration
           </h3>
           <p className="mt-1 text-xs text-[var(--tx-2)]">
-            Add custom text, dates, or page counters. Use macros: <code>{'{page}'}</code>, <code>{'{total}'}</code>, <code>{'{date}'}</code>, <code>{'{title}'}</code>.
+            Add custom running headers, timestamps, or page counters. Use macros: <code>{'{page}'}</code>, <code>{'{total}'}</code>, <code>{'{date}'}</code>, <code>{'{title}'}</code>.
           </p>
         </div>
 
-        <div className="space-y-4">
-          <div className="space-y-2">
-            <span className="text-xs font-bold text-[var(--accent)] uppercase">Top Header</span>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-              <input
-                type="text"
-                placeholder="Left header..."
-                value={hf.headerLeft || ''}
-                onChange={(e) => updateHf({ headerLeft: e.target.value })}
-                className="input-modern text-xs"
-              />
-              <input
-                type="text"
-                placeholder="Center header (e.g. {title})..."
-                value={hf.headerCenter || ''}
-                onChange={(e) => updateHf({ headerCenter: e.target.value })}
-                className="input-modern text-xs text-center"
-              />
-              <input
-                type="text"
-                placeholder="Right header (e.g. {date})..."
-                value={hf.headerRight || ''}
-                onChange={(e) => updateHf({ headerRight: e.target.value })}
-                className="input-modern text-xs text-right"
-              />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          <div className="lg:col-span-7 space-y-4">
+            <div className="p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] space-y-2">
+              <span className="text-xs font-bold text-[var(--accent)] uppercase tracking-wider">Top Header</span>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                <input
+                  type="text"
+                  placeholder="Left header..."
+                  value={hf.headerLeft || ''}
+                  onChange={(e) => updateHf({ headerLeft: e.target.value })}
+                  className="input-modern text-xs"
+                />
+                <input
+                  type="text"
+                  placeholder="Center (e.g. {title})..."
+                  value={hf.headerCenter || ''}
+                  onChange={(e) => updateHf({ headerCenter: e.target.value })}
+                  className="input-modern text-xs text-center"
+                />
+                <input
+                  type="text"
+                  placeholder="Right (e.g. {date})..."
+                  value={hf.headerRight || ''}
+                  onChange={(e) => updateHf({ headerRight: e.target.value })}
+                  className="input-modern text-xs text-right"
+                />
+              </div>
             </div>
+
+            <div className="p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] space-y-2">
+              <span className="text-xs font-bold text-[var(--accent)] uppercase tracking-wider">Bottom Footer</span>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                <input
+                  type="text"
+                  placeholder="Left (e.g. Confidential)..."
+                  value={hf.footerLeft || ''}
+                  onChange={(e) => updateHf({ footerLeft: e.target.value })}
+                  className="input-modern text-xs"
+                />
+                <input
+                  type="text"
+                  placeholder="Center (e.g. Page {page} of {total})..."
+                  value={hf.footerCenter || ''}
+                  onChange={(e) => updateHf({ footerCenter: e.target.value })}
+                  className="input-modern text-xs text-center"
+                />
+                <input
+                  type="text"
+                  placeholder="Right footer..."
+                  value={hf.footerRight || ''}
+                  onChange={(e) => updateHf({ footerRight: e.target.value })}
+                  className="input-modern text-xs text-right"
+                />
+              </div>
+            </div>
+
+            <label className="flex items-center gap-2 cursor-pointer text-xs font-medium text-[var(--tx)] p-3 rounded-xl border border-[var(--border)] bg-[var(--bg-card)]">
+              <input
+                type="checkbox"
+                checked={hf.skipFirstPage || false}
+                onChange={(e) => updateHf({ skipFirstPage: e.target.checked })}
+                className="rounded text-[var(--accent)] focus:ring-0"
+              />
+              <span>Exclude Header/Footer on First Page</span>
+            </label>
           </div>
 
-          <div className="space-y-2">
-            <span className="text-xs font-bold text-[var(--accent)] uppercase">Bottom Footer</span>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-              <input
-                type="text"
-                placeholder="Left footer (e.g. Confidential)..."
-                value={hf.footerLeft || ''}
-                onChange={(e) => updateHf({ footerLeft: e.target.value })}
-                className="input-modern text-xs"
-              />
-              <input
-                type="text"
-                placeholder="Center footer (e.g. Page {page} of {total})..."
-                value={hf.footerCenter || ''}
-                onChange={(e) => updateHf({ footerCenter: e.target.value })}
-                className="input-modern text-xs text-center"
-              />
-              <input
-                type="text"
-                placeholder="Right footer..."
-                value={hf.footerRight || ''}
-                onChange={(e) => updateHf({ footerRight: e.target.value })}
-                className="input-modern text-xs text-right"
-              />
-            </div>
+          <div className="lg:col-span-5">
+            <OptionLivePreview file={file} mode={mode} options={options} />
           </div>
         </div>
-
-        <label className="flex items-center gap-2 cursor-pointer text-xs font-medium text-[var(--tx)]">
-          <input
-            type="checkbox"
-            checked={hf.skipFirstPage || false}
-            onChange={(e) => updateHf({ skipFirstPage: e.target.checked })}
-            className="rounded text-[var(--accent)] focus:ring-0"
-          />
-          <span>Exclude Header/Footer on First Page</span>
-        </label>
       </div>
     );
   }
@@ -414,27 +504,33 @@ export default function ProcessingOptions({
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {[
-            { id: 'dark', label: 'Dark Mode (Invert)', desc: 'White text on dark background' },
-            { id: 'sepia', label: 'Sepia Reader', desc: 'Warm paper tone for eye comfort' },
-            { id: 'grayscale', label: 'Grayscale', desc: 'Monochrome black & white' },
-            { id: 'high-contrast', label: 'High Contrast', desc: 'Sharpened text clarity' },
-          ].map((item) => (
-            <button
-              key={item.id}
-              type="button"
-              onClick={() => update('invertColorMode', item.id as typeof currentMode)}
-              className={`p-3.5 rounded-xl border text-left space-y-1 transition-all cursor-pointer ${
-                currentMode === item.id
-                  ? 'border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--accent)] ring-1 ring-[var(--accent)]'
-                  : 'border-[var(--border)] bg-[var(--bg-card)] text-[var(--tx)] hover:border-[var(--border-hover)]'
-              }`}
-            >
-              <span className="text-xs font-bold block">{item.label}</span>
-              <span className="text-[11px] text-[var(--tx-2)] block leading-tight">{item.desc}</span>
-            </button>
-          ))}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {[
+              { id: 'dark', label: 'Dark Mode (Invert)', desc: 'White text on dark background' },
+              { id: 'sepia', label: 'Sepia Reader', desc: 'Warm paper tone for eye comfort' },
+              { id: 'grayscale', label: 'Grayscale', desc: 'Monochrome black & white' },
+              { id: 'high-contrast', label: 'High Contrast', desc: 'Sharpened text clarity' },
+            ].map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => update('invertColorMode', item.id as typeof currentMode)}
+                className={`p-4 rounded-2xl border text-left space-y-1 transition-all cursor-pointer ${
+                  currentMode === item.id
+                    ? 'border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--accent)] ring-1 ring-[var(--accent)] shadow-xs'
+                    : 'border-[var(--border)] bg-[var(--bg-card)] text-[var(--tx)] hover:border-[var(--border-hover)]'
+                }`}
+              >
+                <span className="text-xs font-bold block">{item.label}</span>
+                <span className="text-[11px] text-[var(--tx-2)] block leading-tight">{item.desc}</span>
+              </button>
+            ))}
+          </div>
+
+          <div className="lg:col-span-5">
+            <OptionLivePreview file={file} mode={mode} options={options} />
+          </div>
         </div>
       </div>
     );
@@ -455,8 +551,11 @@ export default function ProcessingOptions({
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="space-y-1.5">
-            <label className="text-xs font-bold text-[var(--tx)]">Document Open Password *</label>
+          <div className="p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] space-y-2">
+            <div className="flex items-center justify-between">
+              <label className="text-xs font-bold text-[var(--tx)]">Document Open Password *</label>
+              <span className="text-[10px] text-[var(--accent)] font-semibold uppercase">Required</span>
+            </div>
             <input
               type="password"
               placeholder="Required to open the PDF"
@@ -466,8 +565,11 @@ export default function ProcessingOptions({
             />
           </div>
 
-          <div className="space-y-1.5">
-            <label className="text-xs font-bold text-[var(--tx)]">Owner / Master Password (Optional)</label>
+          <div className="p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] space-y-2">
+            <div className="flex items-center justify-between">
+              <label className="text-xs font-bold text-[var(--tx)]">Owner Password (Optional)</label>
+              <span className="text-[10px] text-[var(--tx-3)] font-medium">Master key</span>
+            </div>
             <input
               type="password"
               placeholder="Required to edit permissions"
@@ -495,7 +597,7 @@ export default function ProcessingOptions({
           </p>
         </div>
 
-        <div className="max-w-md space-y-1.5">
+        <div className="max-w-md space-y-2 p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)]">
           <label className="text-xs font-bold text-[var(--tx)]">Document Password</label>
           <input
             type="password"
@@ -519,11 +621,11 @@ export default function ProcessingOptions({
             Invisible Leak-Tracking Steganography
           </h3>
           <p className="mt-1 text-xs text-[var(--tx-2)]">
-            Embeds invisible zero-width unicode identifiers into the document stream to trace leak origins.
+            Embeds invisible zero-width unicode identifiers into the document stream to trace leak origins without altering visual layout.
           </p>
         </div>
 
-        <div className="max-w-md space-y-1.5">
+        <div className="max-w-md space-y-2 p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)]">
           <label className="text-xs font-bold text-[var(--tx)]">Recipient Identifier / Name</label>
           <input
             type="text"
@@ -553,7 +655,7 @@ export default function ProcessingOptions({
           </p>
         </div>
 
-        <div className="max-w-md space-y-1.5">
+        <div className="max-w-md space-y-2 p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)]">
           <label className="text-xs font-bold text-[var(--tx)]">Document Language</label>
           <select
             value={currentLang}
@@ -593,7 +695,7 @@ export default function ProcessingOptions({
           rows={10}
           value={options.markdownContent ?? '# Document Title\n\n## Summary\nEnter your markdown formatted text here.\n\n- Feature 1\n- Feature 2\n- Feature 3\n\n```ts\nconst local = true;\n```'}
           onChange={(e) => update('markdownContent', e.target.value)}
-          className="w-full font-mono text-xs leading-relaxed p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] text-[var(--tx)] resize-y focus:outline-none focus:border-[var(--accent)]"
+          className="w-full font-mono text-xs leading-relaxed p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg)] text-[var(--tx)] resize-y focus:outline-none focus:border-[var(--accent)]"
         />
       </div>
     );
@@ -617,7 +719,7 @@ export default function ProcessingOptions({
           rows={10}
           value={options.htmlContent ?? '<h1>My Report</h1>\n<p>This is a paragraph generated from HTML.</p>\n<ul>\n  <li>Item 1</li>\n  <li>Item 2</li>\n</ul>'}
           onChange={(e) => update('htmlContent', e.target.value)}
-          className="w-full font-mono text-xs leading-relaxed p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] text-[var(--tx)] resize-y focus:outline-none focus:border-[var(--accent)]"
+          className="w-full font-mono text-xs leading-relaxed p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg)] text-[var(--tx)] resize-y focus:outline-none focus:border-[var(--accent)]"
         />
       </div>
     );
@@ -641,7 +743,7 @@ export default function ProcessingOptions({
           rows={8}
           value={options.csvContent ?? 'Product,Category,Price,Stock\nLaptop Pro,Electronics,1299,45\nWireless Mouse,Accessories,29,150\nUSB-C Cable,Accessories,15,300\nHD Monitor 27",Displays,249,20'}
           onChange={(e) => update('csvContent', e.target.value)}
-          className="w-full font-mono text-xs leading-relaxed p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)] text-[var(--tx)] resize-y focus:outline-none focus:border-[var(--accent)]"
+          className="w-full font-mono text-xs leading-relaxed p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg)] text-[var(--tx)] resize-y focus:outline-none focus:border-[var(--accent)]"
         />
       </div>
     );
@@ -681,7 +783,7 @@ export default function ProcessingOptions({
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="space-y-2 p-3.5 rounded-xl border border-[var(--border)] bg-[var(--bg-card)]">
+          <div className="space-y-2 p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)]">
             <span className="text-xs font-bold text-[var(--accent)] uppercase">Seller / Supplier</span>
             <input
               type="text"
@@ -706,7 +808,7 @@ export default function ProcessingOptions({
             />
           </div>
 
-          <div className="space-y-2 p-3.5 rounded-xl border border-[var(--border)] bg-[var(--bg-card)]">
+          <div className="space-y-2 p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)]">
             <span className="text-xs font-bold text-[var(--accent)] uppercase">Buyer / Recipient</span>
             <input
               type="text"
@@ -830,7 +932,7 @@ export default function ProcessingOptions({
     );
   }
 
-  // 15. PDF TO IMAGES / IMAGES TO PDF (Preserved)
+  // 15. PDF TO IMAGES / IMAGES TO PDF
   if (mode === 'pdfToImages' || mode === 'pdfToZip') {
     const imageStrings = processingStrings.pdfToImages;
     const currentFormat = options.imageOutputFormat ?? 'png';

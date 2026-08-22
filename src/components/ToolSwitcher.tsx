@@ -88,6 +88,54 @@ export const ICON_MAP: Record<string, React.ElementType> = {
   aiChat: Bot,
 };
 
+export const TOOL_DESCRIPTIONS: Record<string, string> = {
+  merge: "Combine multiple PDFs into one document",
+  compress: "Reduce PDF file size without quality loss",
+  split: "Separate PDF into individual pages or ranges",
+  extract: "Extract specific pages into a new PDF",
+  crop: "Trim margins and custom page areas visually",
+  rotate: "Rotate pages 90°, 180°, or 270° degrees",
+  reorder: "Rearrange page order with drag and drop",
+  pdfToImages: "Convert PDF pages to PNG or JPEG images",
+  imagesToPdf: "Convert photos and images into a single PDF",
+  watermark: "Add text or image watermark stamps",
+  pageNumbers: "Add formatted page numbers to headers/footers",
+  headersFooters: "Add running headers and footers with macros",
+  extractText: "Extract raw readable text from PDF pages",
+  invertColors: "Dark mode reader & inverted contrast",
+  redact: "Permanently erase and sanitize sensitive text",
+  flatten: "Flatten interactive form fields and annotations",
+  compare: "Side-by-side visual difference viewer",
+  pdfToZip: "Package PDF assets into a ZIP archive",
+  encrypt: "Password-protect and lock PDF permissions",
+  decrypt: "Remove passwords and export unlocked PDF",
+  privacyScanner: "Inspect metadata, hidden attachments & sensitive text",
+  ocr: "Extract text from scanned PDFs & images with local WASM",
+  editPdf: "Add text, signatures, and annotations",
+  scanToPdf: "Scan paper documents using camera to PDF",
+  markdownToPdf: "Compile markdown text and code blocks into PDF",
+  htmlToPdf: "Convert HTML documents and web pages to PDF",
+  csvToPdf: "Convert CSV tables and spreadsheets to PDF",
+  createPdf: "Create blank or templated PDF documents",
+  excelToPdf: "Convert Excel spreadsheets (.xlsx) to PDF",
+  pdfToExcel: "Extract table data from PDF to Excel spreadsheets",
+  powerpointToPdf: "Convert PowerPoint slides (.pptx) to PDF",
+  pdfToPowerpoint: "Convert PDF slides to PowerPoint presentations",
+  pdfToHtml: "Export PDF documents to HTML format",
+  pdfToEpub: "Convert eBooks and documents to EPUB format",
+  ebookToPdf: "Convert EPUB eBooks to PDF documents",
+  pdfToAudio: "Text-to-speech audio reader for PDF books",
+  audioToPdf: "Transcribe voice memos & audio recordings to PDF",
+  repair: "Recover damaged or corrupted PDF structure",
+  p2pShare: "Direct encrypted P2P transfer between devices",
+  whiteboard: "Collaborative whiteboard and visual sketches",
+  gstInvoice: "Generate Indian GST tax invoices with auto-tax",
+  posBilling: "Generate 58mm/80mm thermal receipts and bills",
+  fingerprint: "Embed invisible steganographic leak markers",
+  aiSummarize: "AI summary and key insights via local LLM",
+  aiChat: "Ask questions and chat with your PDF documents",
+};
+
 export interface ToolLink {
   key: string;
   label: string;
@@ -128,7 +176,7 @@ export default function ToolSwitcher({ tools, activeKey = null }: ToolSwitcherPr
       {/* Home Logo Button */}
       <Link
         href="/"
-        className="flex items-center gap-2 px-3.5 py-3 rounded-xl border border-[var(--border)] bg-[var(--bg-card)] hover:border-[var(--accent-border)] hover:bg-[var(--accent-soft)] transition-all duration-200 shadow-xs shrink-0 group"
+        className="flex items-center gap-2 px-3.5 py-3 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] hover:border-[var(--accent-border)] hover:bg-[var(--accent-soft)] transition-all duration-200 shadow-xs shrink-0 group cursor-pointer"
         title="Go to Home"
       >
         <Image
@@ -150,18 +198,20 @@ export default function ToolSwitcher({ tools, activeKey = null }: ToolSwitcherPr
           onClick={() => setIsOpen((p) => !p)}
           aria-expanded={isOpen}
           aria-label="Switch PDF tool"
-          className="flex w-full items-center justify-between rounded-xl border border-[var(--border)] bg-[var(--bg-card)] px-4 py-3 text-left shadow-xs transition-all duration-200 hover:border-[var(--accent-border)] hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] cursor-pointer group"
+          className="flex w-full items-center justify-between rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] px-4 py-3 text-left shadow-xs transition-all duration-200 hover:border-[var(--accent-border)] hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] cursor-pointer group"
         >
           <div className="flex items-center gap-3 min-w-0">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--accent-soft)] text-[var(--accent)] border border-[var(--accent-border)] transition-transform duration-200 group-hover:scale-105">
-              <ActiveIcon className="h-4 w-4" />
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[var(--accent-soft)] text-[var(--accent)] border border-[var(--accent-border)] transition-transform duration-200 group-hover:scale-105">
+              <ActiveIcon className="h-4 w-4 stroke-[2]" />
             </div>
             <div className="min-w-0">
               <span className="block truncate text-xs sm:text-sm font-bold text-[var(--tx)]">
                 {activeTool ? activeTool.label : 'Select a PDF tool'}
               </span>
               <span className="block text-[11px] text-[var(--tx-3)] truncate hidden sm:block">
-                All 46+ tools 100% free &amp; private in your browser
+                {activeTool && TOOL_DESCRIPTIONS[activeTool.key]
+                  ? TOOL_DESCRIPTIONS[activeTool.key]
+                  : 'All 46+ tools 100% free & private in your browser'}
               </span>
             </div>
           </div>
@@ -174,33 +224,46 @@ export default function ToolSwitcher({ tools, activeKey = null }: ToolSwitcherPr
 
         {/* Dropdown Menu */}
         {isOpen && (
-          <div className="absolute left-0 right-0 top-full z-50 mt-2 max-h-96 overflow-y-auto rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] p-2 shadow-xl backdrop-blur-lg animate-in fade-in slide-in-from-top-2 duration-150">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1">
+          <div className="absolute left-0 right-0 top-full z-50 mt-2 max-h-96 overflow-y-auto rounded-3xl border border-[var(--border)] bg-[var(--bg-card)] p-2.5 shadow-2xl backdrop-blur-xl animate-in fade-in slide-in-from-top-2 duration-150 scrollbar-thin">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
               {tools.map((tool) => {
                 const Icon = ICON_MAP[tool.key] ?? Wrench;
                 const isSelected = tool.key === activeKey;
+                const description = TOOL_DESCRIPTIONS[tool.key];
+
                 return (
                   <button
                     key={tool.key}
                     type="button"
                     onClick={() => handleSelect(tool)}
-                    className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-left text-xs font-semibold transition-all duration-150 cursor-pointer ${
+                    className={`flex items-start gap-3 rounded-2xl p-2.5 text-left transition-all duration-150 cursor-pointer ${
                       isSelected
                         ? 'bg-[var(--accent-soft)] text-[var(--accent)] font-bold border border-[var(--accent-border)]'
                         : 'text-[var(--tx)] hover:bg-[var(--bg-subtle)] hover:text-[var(--accent)]'
                     }`}
                   >
                     <div
-                      className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border transition-colors ${
+                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border transition-colors ${
                         isSelected
-                          ? 'border-[var(--accent-border)] bg-[var(--accent)] text-white'
+                          ? 'border-[var(--accent-border)] bg-[var(--accent)] text-white shadow-xs'
                           : 'border-[var(--border)] bg-[var(--bg-subtle)] text-[var(--tx-2)]'
                       }`}
                     >
-                      <Icon className="h-3.5 w-3.5" />
+                      <Icon className="h-4 w-4" />
                     </div>
-                    <span className="flex-1 truncate">{tool.label}</span>
-                    {isSelected && <Check className="h-4 w-4 shrink-0 text-[var(--accent)]" />}
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center justify-between gap-1">
+                        <span className="truncate text-xs font-bold block text-[var(--tx)]">
+                          {tool.label}
+                        </span>
+                        {isSelected && <Check className="h-3.5 w-3.5 shrink-0 text-[var(--accent)]" />}
+                      </div>
+                      {description && (
+                        <span className="block text-[10px] text-[var(--tx-3)] truncate leading-tight mt-0.5">
+                          {description}
+                        </span>
+                      )}
+                    </div>
                   </button>
                 );
               })}

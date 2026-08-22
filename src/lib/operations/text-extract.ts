@@ -5,6 +5,7 @@ export interface ExtractedTextResult {
   wordCount: number;
   characterCount: number;
   linesCount: number;
+  needsOcr?: boolean;
 }
 
 type PdfJsModule = typeof import('pdfjs-dist/legacy/build/pdf');
@@ -23,6 +24,18 @@ async function getPdfJs(): Promise<PdfJsModule> {
   return pdfjsLibPromise;
 }
 
+interface TextItem {
+  str: string;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  hasEOL?: boolean;
+}
+
+/**
+ * Extracts text while reconstructing visual reading order across multi-column layouts (XY-Cut / Column Clustering)
+ */
 export async function extractTextFromPdf(
   fileOrData: File | ArrayBuffer | Uint8Array,
   onProgress?: (current: number, total: number) => void
@@ -41,42 +54,104 @@ export async function extractTextFromPdf(
   const doc = await loadingTask.promise;
   const pageCount = doc.numPages;
   const pageTexts: string[] = [];
+  let totalCharacters = 0;
 
-  for (let i = 1; i <= pageCount; i++) {
-    const page = await doc.getPage(i);
+  for (let p = 1; p <= pageCount; p++) {
+    const page = await doc.getPage(p);
+    const viewport = page.getViewport({ scale: 1.0 });
     const textContent = await page.getTextContent();
 
-    // Group items by vertical position (y coordinate) to preserve natural line breaks
-    const items = textContent.items as Array<{
+    const rawItems = textContent.items as Array<{
       str: string;
       transform: number[];
+      width?: number;
+      height?: number;
       hasEOL?: boolean;
     }>;
 
-    let pageText = '';
-    let lastY: number | null = null;
+    const items: TextItem[] = [];
+    for (const it of rawItems) {
+      if (!it.str || it.str.trim().length === 0) continue;
+      const x = it.transform ? it.transform[4] : 0;
+      const y = it.transform ? it.transform[5] : 0;
+      const width = it.width ?? 10;
+      const height = it.height ?? 10;
+      items.push({ str: it.str, x, y, width, height, hasEOL: it.hasEOL });
+    }
 
-    for (const item of items) {
-      if (!item.str) continue;
-      const currentY = item.transform ? item.transform[5] : null;
+    if (items.length === 0) {
+      pageTexts.push('');
+      if (onProgress) onProgress(p, pageCount);
+      continue;
+    }
 
-      if (lastY !== null && currentY !== null && Math.abs(currentY - lastY) > 5) {
-        pageText += '\n';
-      } else if (pageText.length > 0 && !pageText.endsWith(' ') && !pageText.endsWith('\n')) {
-        pageText += ' ';
-      }
+    // Determine if page has a 2-column or 3-column layout
+    // We analyze X midpoints: if items cleanly cluster into distinct left/right halves with a gutter gap:
+    const pageWidth = viewport.width;
+    const midX = pageWidth / 2;
 
-      pageText += item.str;
-      if (item.hasEOL) {
-        pageText += '\n';
-      }
-      if (currentY !== null) {
-        lastY = currentY;
+    const leftItems: TextItem[] = [];
+    const rightItems: TextItem[] = [];
+    const fullWidthItems: TextItem[] = [];
+
+    // Check if there is significant column separation
+    let hasTwoColumns = false;
+    let itemsCrossingMid = 0;
+
+    for (const it of items) {
+      if (it.x < midX - 30 && it.x + it.width < midX + 20) {
+        leftItems.push(it);
+      } else if (it.x > midX - 20) {
+        rightItems.push(it);
+      } else {
+        itemsCrossingMid++;
+        fullWidthItems.push(it);
       }
     }
 
-    pageTexts.push(pageText.trim());
-    if (onProgress) onProgress(i, pageCount);
+    if (leftItems.length > 5 && rightItems.length > 5 && itemsCrossingMid < items.length * 0.25) {
+      hasTwoColumns = true;
+    }
+
+    let pageText = '';
+
+    if (hasTwoColumns) {
+      // 1. Process full-width header items (e.g. Title across top)
+      const topHeaders = fullWidthItems
+        .filter((it) => it.y > viewport.height * 0.8)
+        .sort((a, b) => b.y - a.y || a.x - b.x);
+
+      if (topHeaders.length > 0) {
+        pageText += renderItemsToText(topHeaders) + '\n\n';
+      }
+
+      // 2. Process Column 1 (Left column top-to-bottom)
+      leftItems.sort((a, b) => b.y - a.y || a.x - b.x);
+      pageText += renderItemsToText(leftItems) + '\n\n';
+
+      // 3. Process Column 2 (Right column top-to-bottom)
+      rightItems.sort((a, b) => b.y - a.y || a.x - b.x);
+      pageText += renderItemsToText(rightItems);
+
+      // 4. Process remaining full-width items at bottom (e.g. Footers)
+      const bottomFooters = fullWidthItems
+        .filter((it) => it.y <= viewport.height * 0.8)
+        .sort((a, b) => b.y - a.y || a.x - b.x);
+
+      if (bottomFooters.length > 0) {
+        pageText += '\n\n' + renderItemsToText(bottomFooters);
+      }
+    } else {
+      // Standard single-column top-to-bottom layout
+      items.sort((a, b) => b.y - a.y || a.x - b.x);
+      pageText = renderItemsToText(items);
+    }
+
+    const trimmed = pageText.trim();
+    totalCharacters += trimmed.length;
+    pageTexts.push(trimmed);
+
+    if (onProgress) onProgress(p, pageCount);
   }
 
   const fullText = pageTexts
@@ -93,8 +168,28 @@ export async function extractTextFromPdf(
     wordCount: words.length,
     characterCount: fullText.length,
     linesCount: lines.length,
+    needsOcr: totalCharacters < 50, // Flag for automatic OCR prompt when no text layer exists
   };
 }
 
-export const extractPdfText = extractTextFromPdf;
+function renderItemsToText(items: TextItem[]): string {
+  let result = '';
+  let lastY: number | null = null;
 
+  for (const it of items) {
+    if (lastY !== null && Math.abs(it.y - lastY) > 6) {
+      result += '\n';
+    } else if (result.length > 0 && !result.endsWith(' ') && !result.endsWith('\n')) {
+      result += ' ';
+    }
+    result += it.str;
+    if (it.hasEOL) {
+      result += '\n';
+    }
+    lastY = it.y;
+  }
+
+  return result.trim();
+}
+
+export const extractPdfText = extractTextFromPdf;

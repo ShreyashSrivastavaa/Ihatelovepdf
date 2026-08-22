@@ -1,8 +1,10 @@
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import Image from 'next/image';
 import { getPdfPageDimensions, renderPdfThumbnail } from '../../lib/pdf-processor';
 import { useDictionary } from '../../i18n/LocaleProvider';
+import { Crop, RotateCcw } from 'lucide-react';
 
 type CropMargins = {
   top: number;
@@ -63,7 +65,6 @@ export default function UnifiedCropInterface({
   const surfaceRef = useRef<HTMLDivElement | null>(null);
   const dragStartRef = useRef<{ x: number; y: number } | null>(null);
 
-  // Load preferred unit from localStorage
   useEffect(() => {
     setIsClient(true);
     try {
@@ -72,7 +73,7 @@ export default function UnifiedCropInterface({
         setUnit(savedUnit);
       }
     } catch {
-      // Ignore localStorage errors
+      // Ignore
     }
   }, []);
 
@@ -215,7 +216,6 @@ export default function UnifiedCropInterface({
     onCropChangeAction({ top: 0, right: 0, bottom: 0, left: 0 });
   };
 
-  // Unit conversion helpers for inputs
   const convertToUnit = (ptValue: number) => roundDecimals(ptValue / UNIT_CONVERSIONS[unit], unit === 'pt' ? 0 : 2);
   const convertToPt = (unitValue: number) => Math.round(unitValue * UNIT_CONVERSIONS[unit]);
 
@@ -228,27 +228,30 @@ export default function UnifiedCropInterface({
 
   const activeRect = dragRect ?? displayRect;
 
-  if (!isClient) return null; // Avoid hydration mismatch
+  if (!isClient) return null;
 
   return (
-    <div className="rounded-xl border border-[var(--ui-2)] bg-[var(--bg-2)] p-5 shadow-sm">
-      <div className="mb-4 flex flex-wrap items-center justify-between gap-4 border-b border-[var(--ui-2)] pb-4">
+    <div className="rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] p-5 sm:p-6 shadow-sm space-y-6">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--border)] pb-4">
         <div>
-          <h3 className="text-base font-semibold text-[var(--tx)]">{cropStrings.title || 'Crop PDF'}</h3>
-          <p className="text-sm text-[var(--tx-3)]">{cropStrings.hint}</p>
+          <h3 className="text-base font-bold text-[var(--tx)] flex items-center gap-2">
+            <Crop className="h-4 w-4 text-[var(--accent)]" />
+            {cropStrings.title || 'Interactive Crop PDF'}
+          </h3>
+          <p className="text-xs text-[var(--tx-2)]">{cropStrings.hint}</p>
         </div>
         
         <div className="flex items-center gap-3">
-          <div className="flex items-center rounded-lg border border-[var(--ui-2)] bg-white p-1 shadow-sm">
+          <div className="flex items-center rounded-xl border border-[var(--border)] bg-[var(--bg-subtle)] p-1">
             {(['pt', 'in', 'cm', 'mm'] as const).map(u => (
               <button
                 key={u}
                 type="button"
                 onClick={() => handleUnitChange(u)}
-                className={`rounded-md px-3 py-1 text-xs font-medium transition-colors ${
+                className={`rounded-lg px-2.5 py-1 text-xs font-semibold transition-colors cursor-pointer ${
                   unit === u 
-                    ? 'bg-[var(--accent)] text-white shadow' 
-                    : 'text-[var(--tx-2)] hover:bg-[var(--bg-1)]'
+                    ? 'bg-[var(--accent)] text-white shadow-xs' 
+                    : 'text-[var(--tx-2)] hover:text-[var(--tx)]'
                 }`}
               >
                 {u}
@@ -257,29 +260,30 @@ export default function UnifiedCropInterface({
           </div>
           <button
             type="button"
-            className="rounded-lg px-3 py-1.5 text-xs font-medium text-[var(--tx-2)] transition-colors hover:bg-[var(--bg-1)] hover:text-[var(--accent)]"
+            className="inline-flex items-center gap-1.5 rounded-xl border border-[var(--border)] bg-[var(--bg-subtle)] px-3 py-1.5 text-xs font-semibold text-[var(--tx-2)] hover:text-[var(--accent)] transition-colors cursor-pointer"
             onClick={handleReset}
           >
-            {cropStrings.manual.reset}
+            <RotateCcw className="h-3.5 w-3.5" />
+            <span>{cropStrings.manual.reset}</span>
           </button>
         </div>
       </div>
 
-      <div className="flex flex-col gap-6 md:flex-row">
-        {/* Left Side: Preview Canvas */}
-        <div className="flex-1 rounded-lg border border-[var(--ui-2)] bg-[var(--bg-1)] p-4 flex items-center justify-center min-h-[300px]">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+        {/* Left Side: Interactive Drag Canvas */}
+        <div className="md:col-span-7 rounded-2xl border border-[var(--border)] bg-[var(--bg-subtle)]/40 p-4 flex flex-col items-center justify-center min-h-[340px]">
           {isLoading ? (
-            <div className="text-sm text-[var(--tx-3)] animate-pulse">{cropStrings.manual.loading}</div>
+            <div className="text-xs text-[var(--tx-3)] animate-pulse">{cropStrings.manual.loading}</div>
           ) : error || !previewUrl ? (
-            <div className="text-sm text-red-500">{error ?? cropStrings.manual.error}</div>
+            <div className="text-xs text-[var(--err)]">{error ?? cropStrings.manual.error}</div>
           ) : (
-            <div className="relative flex flex-col items-center">
+            <div className="relative flex flex-col items-center w-full">
               <div
                 ref={surfaceRef}
-                className="relative mx-auto touch-none select-none overflow-hidden rounded-md border border-[var(--ui-3)] bg-white shadow-md transition-shadow hover:shadow-lg cursor-crosshair"
+                className="relative mx-auto touch-none select-none overflow-hidden rounded-xl border border-[var(--border)] bg-white shadow-md transition-shadow hover:shadow-lg cursor-crosshair"
                 style={{
                   width: '100%',
-                  maxWidth: '320px',
+                  maxWidth: '300px',
                   aspectRatio: pageSize ? `${pageSize.width} / ${pageSize.height}` : '3 / 4'
                 }}
                 onPointerDown={handlePointerDown}
@@ -287,19 +291,21 @@ export default function UnifiedCropInterface({
                 onPointerUp={handlePointerUp}
                 onPointerCancel={handlePointerUp}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={previewUrl}
                   alt={cropStrings.manual.pagePreview(pageNumber)}
+                  width={300}
+                  height={400}
                   className="h-full w-full object-contain pointer-events-none"
                   draggable={false}
+                  unoptimized
                 />
 
                 {activeRect ? (
                   <>
                     <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]" />
                     <div
-                      className="absolute border-2 border-[var(--accent)] bg-transparent shadow-[0_0_0_9999px_rgba(0,0,0,0.1)]"
+                      className="absolute border-2 border-[var(--accent)] bg-transparent shadow-[0_0_0_9999px_rgba(0,0,0,0.2)]"
                       style={{
                         left: `${activeRect.left}px`,
                         top: `${activeRect.top}px`,
@@ -307,30 +313,30 @@ export default function UnifiedCropInterface({
                         height: `${activeRect.height}px`,
                       }}
                     >
-                      {/* Drag Handles */}
-                      <div className="absolute -left-1.5 -top-1.5 h-3 w-3 rounded-full bg-[var(--accent)] shadow-sm" />
-                      <div className="absolute -right-1.5 -top-1.5 h-3 w-3 rounded-full bg-[var(--accent)] shadow-sm" />
-                      <div className="absolute -bottom-1.5 -left-1.5 h-3 w-3 rounded-full bg-[var(--accent)] shadow-sm" />
-                      <div className="absolute -bottom-1.5 -right-1.5 h-3 w-3 rounded-full bg-[var(--accent)] shadow-sm" />
+                      {/* Drag Handle Points */}
+                      <div className="absolute -left-1.5 -top-1.5 h-3 w-3 rounded-full bg-[var(--accent)] border-2 border-white shadow-sm" />
+                      <div className="absolute -right-1.5 -top-1.5 h-3 w-3 rounded-full bg-[var(--accent)] border-2 border-white shadow-sm" />
+                      <div className="absolute -bottom-1.5 -left-1.5 h-3 w-3 rounded-full bg-[var(--accent)] border-2 border-white shadow-sm" />
+                      <div className="absolute -bottom-1.5 -right-1.5 h-3 w-3 rounded-full bg-[var(--accent)] border-2 border-white shadow-sm" />
                     </div>
                   </>
                 ) : null}
               </div>
-              <p className="mt-3 text-xs font-medium text-[var(--tx-3)]">
-                {cropStrings.manual.pagePreview(pageNumber)}
+              <p className="mt-3 text-[11px] font-medium text-[var(--tx-3)]">
+                {cropStrings.manual.pagePreview(pageNumber)} &bull; Drag on canvas to define crop box
               </p>
             </div>
           )}
         </div>
 
-        {/* Right Side: Inputs */}
-        <div className="w-full md:w-64 space-y-6">
-          <div className="space-y-4">
-            <h4 className="text-sm font-medium text-[var(--tx)]">{cropStrings.marginsTitle}</h4>
-            <div className="grid grid-cols-2 gap-4">
+        {/* Right Side: Margin Inputs */}
+        <div className="md:col-span-5 space-y-4">
+          <div className="p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] space-y-3">
+            <h4 className="text-xs font-bold text-[var(--tx)] uppercase tracking-wider">{cropStrings.marginsTitle}</h4>
+            <div className="grid grid-cols-2 gap-3">
               {(['top', 'right', 'bottom', 'left'] as const).map(side => (
                 <div key={side} className="space-y-1">
-                  <label className="block text-xs font-medium text-[var(--tx-2)] capitalize" htmlFor={`crop-${side}`}>
+                  <label className="block text-xs font-semibold text-[var(--tx-2)] capitalize" htmlFor={`crop-${side}`}>
                     {cropStrings.marginLabels?.[side] || side} ({unit})
                   </label>
                   <input
@@ -340,15 +346,16 @@ export default function UnifiedCropInterface({
                     step={unit === 'pt' ? 1 : 0.1}
                     value={convertToUnit(cropMargins[side]).toString()}
                     onChange={e => handleMarginInputChange(side, e.target.value)}
-                    className="w-full rounded-lg border border-[var(--ui-2)] bg-white px-3 py-2 text-sm text-[var(--tx)] transition-colors focus:border-[var(--accent)] focus:outline-none focus:ring-1 focus:ring-[var(--accent)]"
+                    className="input-modern w-full text-xs font-bold"
                   />
                 </div>
               ))}
             </div>
-            <p className="text-xs text-[var(--tx-3)] bg-[var(--bg-1)] p-3 rounded-lg border border-[var(--ui-2)]">
-              {cropStrings.manual.hint}
-            </p>
           </div>
+
+          <p className="text-xs text-[var(--tx-2)] bg-[var(--bg-subtle)]/60 p-3.5 rounded-xl border border-[var(--border)] leading-relaxed">
+            {cropStrings.manual.hint}
+          </p>
         </div>
       </div>
     </div>

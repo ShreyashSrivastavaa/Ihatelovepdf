@@ -4,21 +4,26 @@ import Image from 'next/image';
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { useDictionary } from '../../i18n/LocaleProvider';
 import { getPdfPageCount, renderPdfThumbnail } from '../../lib/pdf-processor';
+import { Trash2, GripVertical, ChevronUp, ChevronDown, Lock, Unlock, FileText, CheckCircle2, AlertCircle } from 'lucide-react';
 
 type FileListProps = {
   files: File[];
   onMoveFileAction?: (index: number, direction: 'up' | 'down') => void;
   onRemoveFileAction: (index: number) => void;
-  currentIndex?: number; // Selected file index for extraction
-  onFileSelectAction?: (index: number) => void; // Handler for selecting a file
+  onClearAllAction?: () => void;
+  currentIndex?: number;
+  onFileSelectAction?: (index: number) => void;
+  onFileUnlockAction?: (index: number, password: string) => void;
 };
 
 export default function FileList({ 
   files, 
   onMoveFileAction, 
-  onRemoveFileAction, 
+  onRemoveFileAction,
+  onClearAllAction,
   currentIndex,
-  onFileSelectAction 
+  onFileSelectAction,
+  onFileUnlockAction,
 }: FileListProps) {
   const dictionary = useDictionary();
   const fileListStrings = dictionary.components.fileList;
@@ -27,23 +32,30 @@ export default function FileList({
   const [isDragging, setIsDragging] = useState(false);
   const listRef = useRef<HTMLUListElement>(null);
   const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
-  const lastSwappedRef = useRef<{from: number, to: number} | null>(null);
+  const lastSwappedRef = useRef<{ from: number; to: number } | null>(null);
 
-  // Use WeakMap to store image previews with file objects as keys
-  // This ensures previews persist when files are reordered and WeakMap allows garbage collection
+  // Password prompt state for encrypted files
+  const [passwords, setPasswords] = useState<Record<number, string>>({});
+  const [unlockedFiles, setUnlockedFiles] = useState<Record<number, boolean>>({});
+
   const previewsMapRef = useRef(new WeakMap<File, string>());
-  const [, setPreviewsUpdated] = useState(0); // Force re-renders when previews change
-  const [pdfMetaState, setPdfMetaState] = useState<Record<string, { thumbnail?: string; pageCount?: number; error?: boolean; loading?: boolean; loaded?: boolean }>>({});
+  const [, setPreviewsUpdated] = useState(0);
+  const [pdfMetaState, setPdfMetaState] = useState<Record<string, { 
+    thumbnail?: string; 
+    pageCount?: number; 
+    isEncrypted?: boolean;
+    error?: boolean; 
+    loading?: boolean; 
+    loaded?: boolean 
+  }>>({});
   const pdfMetaStateRef = useRef(pdfMetaState);
 
   const buildFileKey = useCallback((file: File) => `${file.name}_${file.size}_${file.lastModified}`, []);
 
-  // Reset itemRefs when files change
   useEffect(() => {
     itemRefs.current = itemRefs.current.slice(0, files.length);
   }, [files.length]);
 
-  // Cleanup function for blob URLs when component unmounts
   useEffect(() => {
     const filesSnapshot = [...files];
     const previewsMap = previewsMapRef.current;
@@ -59,24 +71,27 @@ export default function FileList({
     };
   }, [files, buildFileKey]);
 
-  // Track files that need to be removed from the WeakMap
   useEffect(() => {
-    // Create previews for any new image files
     files.forEach(file => {
       if (isImageFile(file) && !previewsMapRef.current.has(file)) {
         const url = URL.createObjectURL(file);
         previewsMapRef.current.set(file, url);
-        setPreviewsUpdated(prev => prev + 1); // Force re-render
+        setPreviewsUpdated(prev => prev + 1);
       }
     });
   }, [files]);
 
   const isPdfFile = (file: File): boolean => {
-    if (file.type === 'application/pdf') {
-      return true;
-    }
-
+    if (file.type === 'application/pdf') return true;
     return file.name.toLowerCase().endsWith('.pdf');
+  };
+
+  const isImageFile = (file: File): boolean => {
+    const imageTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/tiff'];
+    const imageExtensions = ['.jpg', '.jpeg', '.png', '.webp', '.tiff', '.tif'];
+    if (imageTypes.includes(file.type)) return true;
+    const fileName = file.name.toLowerCase();
+    return imageExtensions.some(ext => fileName.endsWith(ext));
   };
 
   useEffect(() => {
@@ -109,13 +124,20 @@ export default function FileList({
     const loadPdfMeta = async (file: File, key: string) => {
       try {
         const [thumbnail, pageCount] = await Promise.all([
-          renderPdfThumbnail(file, 1).catch(() => undefined),
+          renderPdfThumbnail(file, 1).catch((err: unknown) => {
+            const isPassword = String(err).toLowerCase().includes('password') || String(err).toLowerCase().includes('encrypted');
+            if (isPassword) {
+              setPdfMetaState(prev => ({
+                ...prev,
+                [key]: { ...prev[key], isEncrypted: true, loading: false, loaded: true }
+              }));
+            }
+            return undefined;
+          }),
           getPdfPageCount(file).catch(() => undefined),
         ]);
 
-        if (cancelled) {
-          return;
-        }
+        if (cancelled) return;
 
         setPdfMetaState(prev => ({
           ...prev,
@@ -129,9 +151,7 @@ export default function FileList({
           },
         }));
       } catch {
-        if (cancelled) {
-          return;
-        }
+        if (cancelled) return;
 
         setPdfMetaState(prev => ({
           ...prev,
@@ -146,15 +166,11 @@ export default function FileList({
     };
 
     files.forEach(file => {
-      if (!isPdfFile(file)) {
-        return;
-      }
+      if (!isPdfFile(file)) return;
 
       const key = buildFileKey(file);
       const entry = pdfMetaStateRef.current[key];
-      if (entry?.loading || entry?.loaded) {
-        return;
-      }
+      if (entry?.loading || entry?.loaded) return;
 
       setPdfMetaState(prev => ({
         ...prev,
@@ -173,410 +189,300 @@ export default function FileList({
     };
   }, [files, buildFileKey]);
 
-  // Format the file size into a human-readable string
   const formatFileSize = (bytes: number): string => {
     if (bytes < 1024) return bytes + ' B';
     if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
     return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
   };
 
-  // Truncate filename in the middle only if necessary
-  const truncateFilename = (filename: string, maxLength: number = 28): string => {
-    if (filename.length <= maxLength) {
-      // If filename fits, return it unmodified
-      return filename;
-    }
-    
-    // Get file extension
+  const truncateFilename = (filename: string, maxLength: number = 32): string => {
+    if (filename.length <= maxLength) return filename;
     const lastDotIndex = filename.lastIndexOf('.');
     const extension = lastDotIndex !== -1 ? filename.substring(lastDotIndex) : '';
     const nameWithoutExtension = lastDotIndex !== -1 ? filename.substring(0, lastDotIndex) : filename;
-    
-    // Calculate how many characters to keep from start and end
-    const availableChars = maxLength - 3 - extension.length; // 3 for the ellipsis
-    const startChars = Math.ceil(availableChars * 0.6); // 60% from start
-    const endChars = availableChars - startChars; // remaining from end
-    
-    // Create the truncated filename
+    const availableChars = maxLength - 3 - extension.length;
+    const startChars = Math.ceil(availableChars * 0.6);
+    const endChars = availableChars - startChars;
     return `${nameWithoutExtension.substring(0, startChars)}...${nameWithoutExtension.substring(nameWithoutExtension.length - endChars)}${extension}`;
   };
 
-  // Check if file is an image based on type or extension
-  const isImageFile = (file: File): boolean => {
-    const imageTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/tiff'];
-    const imageExtensions = ['.jpg', '.jpeg', '.png', '.webp', '.tiff', '.tif'];
-    
-    // Check mime type first
-    if (imageTypes.includes(file.type)) {
-      return true;
-    }
-    
-    // Fallback to extension check
-    const fileName = file.name.toLowerCase();
-    return imageExtensions.some(ext => fileName.endsWith(ext));
-  };
-
-  // Enhanced drag start with custom ghost image
   const handleDragStart = (e: React.DragEvent<HTMLLIElement>, index: number) => {
     e.stopPropagation();
     setIsDragging(true);
-    
-    // Store the mouse offset within the dragged item for more accurate positioning
-  const rect = e.currentTarget.getBoundingClientRect();
-  const offsetX = e.clientX - rect.left;
-  const offsetY = e.clientY - rect.top;
-    
-    // Create custom ghost image
-    const ghostElement = e.currentTarget.cloneNode(true) as HTMLElement;
-    ghostElement.style.width = `${rect.width}px`;
-    ghostElement.style.transform = 'rotate(2deg)';
-    ghostElement.style.opacity = '0.8';
-    ghostElement.classList.add('dragging-ghost');
-    
-    // Position offscreen initially
-    ghostElement.style.position = 'absolute';
-    ghostElement.style.top = '-1000px';
-    ghostElement.style.left = '-1000px';
-    
-    // Add to DOM, set as drag image, then remove
-    document.body.appendChild(ghostElement);
-    e.dataTransfer.setDragImage(ghostElement, offsetX, offsetY);
-    
-    // Schedule removal after drag image is captured
-    setTimeout(() => {
-      document.body.removeChild(ghostElement);
-    }, 0);
-    
     setDraggedItem(index);
-    
-    // Add dragging class to the dragged item
     if (itemRefs.current[index]) {
-      itemRefs.current[index].classList.add('dragging');
+      itemRefs.current[index]?.classList.add('opacity-50', 'scale-[0.98]');
     }
-    
-    // Add a class to indicate dragging state to the list
-    if (listRef.current) {
-      listRef.current.classList.add('is-dragging');
-    }
-    
     e.dataTransfer.effectAllowed = 'move';
-    
-    // Reset the last swapped reference
     lastSwappedRef.current = null;
   };
 
-  // Enhanced drag over with visual placeholder
   const handleDragOver = (e: React.DragEvent<HTMLLIElement>, index: number) => {
     e.preventDefault();
-    
-    if (!isDragging || draggedItem === null || draggedItem === index) {
-      return;
-    }
-    
-    // Update the currently dragged-over item for visual feedback
+    if (!isDragging || draggedItem === null || draggedItem === index) return;
     setDraggedOverItem(index);
-    
-    // If we've already swapped these items, don't do it again until we move to a new target
+
     if (lastSwappedRef.current && 
         lastSwappedRef.current.from === draggedItem && 
         lastSwappedRef.current.to === index) {
       return;
     }
-    
-    // Only move when the drag has crossed the midpoint of the target
+
     const targetRect = e.currentTarget.getBoundingClientRect();
     const targetMidY = targetRect.top + targetRect.height / 2;
-    
     const shouldReorder = 
       (draggedItem < index && e.clientY > targetMidY) || 
       (draggedItem > index && e.clientY < targetMidY);
-    
-  if (shouldReorder && onMoveFileAction) {
-      // Record this swap to prevent duplicate swaps
+
+    if (shouldReorder && onMoveFileAction) {
       lastSwappedRef.current = { from: draggedItem, to: index };
-      
       if (draggedItem < index) {
-  onMoveFileAction(draggedItem, 'down');
+        onMoveFileAction(draggedItem, 'down');
         setDraggedItem(draggedItem + 1);
       } else {
-  onMoveFileAction(draggedItem, 'up');
+        onMoveFileAction(draggedItem, 'up');
         setDraggedItem(draggedItem - 1);
       }
     }
   };
 
-  // Handle drop event
-  const handleDrop = (e: React.DragEvent<HTMLLIElement>, index: number) => {
+  const handleDrop = (e: React.DragEvent<HTMLLIElement>) => {
     e.preventDefault();
-    if (!isDragging || draggedItem === null) return;
-    
-    // Add a drop animation to the receiving item
-    if (itemRefs.current[index]) {
-      itemRefs.current[index].classList.add('item-drop-animation');
-      setTimeout(() => {
-        if (itemRefs.current[index]) {
-          itemRefs.current[index].classList.remove('item-drop-animation');
-        }
-      }, 300);
-    }
-    
-    // Clear drag states
     setDraggedOverItem(null);
   };
 
-  // Clean up drag state
   const handleDragEnd = () => {
     setIsDragging(false);
     setDraggedItem(null);
     setDraggedOverItem(null);
     lastSwappedRef.current = null;
-    
-    // Remove dragging class from all items
     itemRefs.current.forEach(item => {
-      if (item) item.classList.remove('dragging');
+      item?.classList.remove('opacity-50', 'scale-[0.98]');
     });
-    
-    // Remove dragging class from list
-    if (listRef.current) {
-      listRef.current.classList.remove('is-dragging');
-    }
   };
 
-  // Enhanced drag enter for better visual feedback
-  const handleDragEnter = (e: React.DragEvent<HTMLLIElement>, index: number) => {
+  const totalBytes = files.reduce((acc, f) => acc + f.size, 0);
+
+  const handleUnlockSubmit = (e: React.FormEvent, index: number) => {
     e.preventDefault();
-    if (draggedItem === null || draggedItem === index) return;
-    setDraggedOverItem(index);
-  };
-
-  // Clear the dragged-over state when leaving an item
-  const handleDragLeave = (e: React.DragEvent<HTMLLIElement>) => {
-    e.preventDefault();
-    // Only clear if we're leaving the element (not entering a child)
-    if (!e.currentTarget.contains(e.relatedTarget as Node)) {
-      setDraggedOverItem(null);
+    const password = passwords[index];
+    if (!password) return;
+    if (onFileUnlockAction) {
+      onFileUnlockAction(index, password);
     }
-  };
-
-  // Handle file selection for extraction
-  const handleFileClick = (index: number) => {
-    if (onFileSelectAction) {
-      onFileSelectAction(index);
-    }
-  };
-
-  // Visibly show button press animation and apply it to adjacent elements
-  const animateButtonPress = (event: React.MouseEvent<HTMLButtonElement>, index: number) => {
-    const button = event.currentTarget;
-    
-    // Add animation class to button
-    button.classList.remove('btn-press-animation');
-    void button.offsetWidth; // Force reflow to restart animation
-    button.classList.add('btn-press-animation');
-    
-    // Make item flash to indicate it will move
-    const item = itemRefs.current[index];
-    if (item) {
-      item.classList.add('item-flash-animation');
-      setTimeout(() => {
-        item.classList.remove('item-flash-animation');
-      }, 300);
-    }
-  };
-
-  // Add animation to item being moved
-  const handleMoveFile = (index: number, direction: 'up' | 'down') => {
-    if (!onMoveFileAction) return;
-    
-    const item = itemRefs.current[index];
-    const targetIndex = direction === 'up' ? index - 1 : index + 1;
-    const targetItem = itemRefs.current[targetIndex];
-    
-    if (item && targetItem) {
-      // Add animation classes with a visible delay
-      item.classList.add(direction === 'up' ? 'move-up' : 'move-down');
-      targetItem.classList.add(direction === 'up' ? 'move-down' : 'move-up');
-      
-      // Ensure there's a delay before file order actually changes
-      setTimeout(() => {
-  onMoveFileAction(index, direction);
-        
-        // Remove animation classes after animation completes
-        setTimeout(() => {
-          if (item) item.classList.remove('move-up', 'move-down');
-          if (targetItem) targetItem.classList.remove('move-up', 'move-down');
-        }, 850); // Match the new animation duration
-      }, 50);
-    } else {
-      // If for some reason we don't have references to the items, still move the file
-  onMoveFileAction(index, direction);
-    }
+    setUnlockedFiles(prev => ({ ...prev, [index]: true }));
   };
 
   return (
-    <ul 
-      ref={listRef}
-      className="space-y-2 max-h-60 overflow-y-scroll overflow-x-hidden scrollbar-thin pl-2 pb-4 pt-4 pr-2 pdf-file-list"
-    >
-      {files.map((file, index) => {
-        const isImage = isImageFile(file);
-        const previewUrl = isImage ? previewsMapRef.current.get(file) : null;
-        const isPdf = isPdfFile(file);
-        const fileKey = buildFileKey(file);
-  const pdfMeta = isPdf ? pdfMetaState[fileKey] : undefined;
-        const pdfThumbnail = pdfMeta?.thumbnail;
-        const pageCount = isPdf && typeof pdfMeta?.pageCount === 'number' ? pdfMeta.pageCount : undefined;
-        const pageCountLabel = pageCount !== undefined ? fileListStrings.pagesLabel(pageCount) : undefined;
-        const showPreviewLoading = isPdf && (!pdfMeta?.loaded || pdfMeta.loading);
-        
-        return (
-          <li 
-            key={`${file.name}-${index}`}
-            ref={el => {
-              itemRefs.current[index] = el;
-            }}
-            className={`pdf-preview ${onMoveFileAction ? (isDragging ? (draggedItem === index ? 'cursor-grabbing' : '') : 'cursor-grab') : ''} 
-              ${currentIndex === index ? 'border-[var(--accent)] bg-[var(--accent)]/5' : ''}
-              ${onFileSelectAction ? 'cursor-pointer' : ''}
-              ${draggedItem === index ? 'dragging' : ''}
-              ${draggedOverItem === index ? 'drag-over' : ''}`}
-            draggable={onMoveFileAction !== undefined}
-            onDragStart={(e) => handleDragStart(e, index)}
-            onDragOver={(e) => handleDragOver(e, index)}
-            onDragEnter={(e) => handleDragEnter(e, index)}
-            onDragLeave={handleDragLeave}
-            onDrop={(e) => handleDrop(e, index)}
-            onDragEnd={handleDragEnd}
-            onClick={() => onFileSelectAction && handleFileClick(index)}
+    <div className="w-full space-y-3">
+      {/* File List Header */}
+      <div className="flex items-center justify-between px-1 text-xs text-[var(--tx-2)]">
+        <div className="flex items-center gap-2 font-semibold">
+          <span>Files ({files.length})</span>
+          <span>&bull;</span>
+          <span>Total {formatFileSize(totalBytes)}</span>
+        </div>
+
+        {onClearAllAction && files.length > 1 && (
+          <button
+            type="button"
+            onClick={onClearAllAction}
+            className="inline-flex items-center gap-1 text-[var(--err)] hover:underline font-semibold cursor-pointer"
           >
-            {/* Show visual drop indicator when being dragged over */}
-            {draggedOverItem === index && draggedItem !== null && draggedItem < index && (
-              <div className="drop-indicator drop-indicator-bottom"></div>
-            )}
-            {draggedOverItem === index && draggedItem !== null && draggedItem > index && (
-              <div className="drop-indicator drop-indicator-top"></div>
-            )}
-            
-            <div className="flex items-center w-full">
-              {/* Drag handle for better UX */}
-              {onMoveFileAction && (
-                <div className="drag-handle mr-2">
-                  <svg className="w-5 h-5 text-[var(--tx-3)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 8h16M4 16h16"></path>
-                  </svg>
+            <Trash2 className="h-3.5 w-3.5" />
+            <span>Clear all</span>
+          </button>
+        )}
+      </div>
+
+      {/* List Container */}
+      <ul 
+        ref={listRef}
+        className="space-y-2.5 max-h-[380px] overflow-y-auto overflow-x-hidden scrollbar-thin pr-1"
+        aria-label="Uploaded file list"
+      >
+        {files.map((file, index) => {
+          const isImage = isImageFile(file);
+          const previewUrl = isImage ? previewsMapRef.current.get(file) : null;
+          const isPdf = isPdfFile(file);
+          const fileKey = buildFileKey(file);
+          const pdfMeta = isPdf ? pdfMetaState[fileKey] : undefined;
+          const pdfThumbnail = pdfMeta?.thumbnail;
+          const pageCount = isPdf && typeof pdfMeta?.pageCount === 'number' ? pdfMeta.pageCount : undefined;
+          const isEncrypted = pdfMeta?.isEncrypted;
+          const isSelected = currentIndex === index;
+
+          return (
+            <li 
+              key={`${file.name}-${index}`}
+              ref={el => {
+                itemRefs.current[index] = el;
+              }}
+              className={`relative flex flex-col p-3 rounded-2xl border transition-all duration-200 ${
+                isSelected 
+                  ? 'border-[var(--accent)] bg-[var(--accent-soft)]/50 ring-1 ring-[var(--accent)]' 
+                  : 'border-[var(--border)] bg-[var(--bg-card)] hover:border-[var(--border-hover)] shadow-xs'
+              } ${draggedItem === index ? 'opacity-50' : ''} ${draggedOverItem === index ? 'ring-2 ring-[var(--accent)]' : ''}`}
+              draggable={Boolean(onMoveFileAction)}
+              onDragStart={(e) => handleDragStart(e, index)}
+              onDragOver={(e) => handleDragOver(e, index)}
+              onDrop={handleDrop}
+              onDragEnd={handleDragEnd}
+              onClick={() => onFileSelectAction && onFileSelectAction(index)}
+            >
+              <div className="flex items-center justify-between gap-3">
+                {/* Drag Handle & Order Badge */}
+                <div className="flex items-center gap-2">
+                  {onMoveFileAction && (
+                    <div 
+                      className="cursor-grab active:cursor-grabbing text-[var(--tx-3)] hover:text-[var(--accent)] p-1 rounded-lg hover:bg-[var(--bg-subtle)]"
+                      title="Drag to reorder"
+                    >
+                      <GripVertical className="h-4 w-4" />
+                    </div>
+                  )}
+
+                  {files.length > 1 && (
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--bg-subtle)] text-[10px] font-bold text-[var(--tx-2)]">
+                      {index + 1}
+                    </span>
+                  )}
                 </div>
-              )}
-              
-              {/* File icon or image preview */}
-              {isImage && previewUrl ? (
-                <div className="file-preview-thumbnail">
-                  <Image
-                    src={previewUrl}
-                    alt={file.name}
-                    width={40}
-                    height={40}
-                    className="w-10 h-10 object-cover rounded"
-                    unoptimized
-                  />
+
+                {/* Thumbnail Preview */}
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[var(--border)] bg-[var(--bg-subtle)] overflow-hidden shadow-xs">
+                  {isImage && previewUrl ? (
+                    <Image
+                      src={previewUrl}
+                      alt={file.name}
+                      width={48}
+                      height={48}
+                      className="h-full w-full object-cover"
+                      unoptimized
+                    />
+                  ) : isPdf && pdfThumbnail ? (
+                    <Image
+                      src={pdfThumbnail}
+                      alt={file.name}
+                      width={48}
+                      height={48}
+                      className="h-full w-full object-cover"
+                      unoptimized
+                    />
+                  ) : isEncrypted ? (
+                    <Lock className="h-5 w-5 text-[var(--warning)]" />
+                  ) : (
+                    <FileText className="h-5 w-5 text-[var(--accent)]" />
+                  )}
                 </div>
-              ) : isPdf && pdfThumbnail ? (
-                <div className="file-preview-thumbnail">
-                  <Image
-                    src={pdfThumbnail}
-                    alt={file.name}
-                    width={40}
-                    height={40}
-                    className="h-10 w-10 rounded border border-[var(--ui-2)] object-cover"
-                    unoptimized
-                  />
+
+                {/* File Details */}
+                <div className="min-w-0 flex-1 space-y-1">
+                  <p className="font-semibold text-xs sm:text-sm text-[var(--tx)] truncate" title={file.name}>
+                    {truncateFilename(file.name)}
+                  </p>
+                  
+                  <div className="flex flex-wrap items-center gap-2 text-[11px] text-[var(--tx-3)]">
+                    <span className="font-medium">{formatFileSize(file.size)}</span>
+                    {pageCount !== undefined && (
+                      <>
+                        <span>&bull;</span>
+                        <span className="font-medium text-[var(--tx-2)]">{pageCount} {pageCount === 1 ? 'page' : 'pages'}</span>
+                      </>
+                    )}
+                    {isEncrypted && (
+                      <>
+                        <span>&bull;</span>
+                        <span className="text-[var(--warning)] font-semibold flex items-center gap-1">
+                          <Lock className="h-3 w-3" /> Password-protected
+                        </span>
+                      </>
+                    )}
+                  </div>
                 </div>
-              ) : (
-                <svg className="pdf-preview-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M14 2V8H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M9 13H15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M9 17H12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              )}
-              
-              {/* File info with improved filename display */}
-              <div className="pdf-preview-info">
-                <div className="pdf-preview-name" title={file.name}>
-                  {truncateFilename(file.name)}
+
+                {/* Reorder Buttons & Remove Action */}
+                <div className="flex items-center gap-1">
+                  {onMoveFileAction && files.length > 1 && (
+                    <>
+                      <button
+                        type="button"
+                        disabled={index === 0}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (index > 0) onMoveFileAction(index, 'up');
+                        }}
+                        className="p-1.5 rounded-lg text-[var(--tx-3)] hover:text-[var(--tx)] hover:bg-[var(--bg-subtle)] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                        title="Move up"
+                      >
+                        <ChevronUp className="h-4 w-4" />
+                      </button>
+                      <button
+                        type="button"
+                        disabled={index === files.length - 1}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (index < files.length - 1) onMoveFileAction(index, 'down');
+                        }}
+                        className="p-1.5 rounded-lg text-[var(--tx-3)] hover:text-[var(--tx)] hover:bg-[var(--bg-subtle)] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                        title="Move down"
+                      >
+                        <ChevronDown className="h-4 w-4" />
+                      </button>
+                    </>
+                  )}
+
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const previewUrl = previewsMapRef.current.get(file);
+                      if (previewUrl) {
+                        URL.revokeObjectURL(previewUrl);
+                        previewsMapRef.current.delete(file);
+                      }
+                      onRemoveFileAction(index);
+                    }}
+                    className="p-1.5 rounded-lg text-[var(--tx-3)] hover:text-[var(--err)] hover:bg-[var(--err-soft)] transition-colors cursor-pointer"
+                    title={fileListStrings.remove}
+                    aria-label={`Remove ${file.name}`}
+                  >
+                    <Trash2 className="h-4 w-4" />
+                  </button>
                 </div>
-                <div className="pdf-preview-size">
-                  {isPdf
-                    ? `${fileListStrings.pdfLabel} - ${formatFileSize(file.size)}${pageCountLabel ? ` • ${pageCountLabel}` : ''}`
-                    : isImage
-                      ? `${fileListStrings.imageLabel} - ${formatFileSize(file.size)}`
-                      : `${fileListStrings.fileLabel} - ${formatFileSize(file.size)}`}
-                </div>
-                {showPreviewLoading && (
-                  <div className="text-xs text-[var(--tx-3)]">{fileListStrings.previewLoading}</div>
-                )}
               </div>
-              
-              {/* Controls */}
-              <div className="flex gap-1">
-                {onMoveFileAction && (
-                  <>
-                    <button 
-                      className={`p-1.5 rounded hover:bg-[var(--ui-2)] text-[var(--tx-3)] ${index === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:text-[var(--accent)]'}`}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        if (index > 0) {
-                          animateButtonPress(e, index);
-                          handleMoveFile(index, 'up');
-                        }
-                      }}
-                      disabled={index === 0}
-                      title={fileListStrings.moveUp}
-                    >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 15l7-7 7 7"></path>
-                      </svg>
-                    </button>
-                    <button 
-                      className={`p-1.5 rounded hover:bg-[var(--ui-2)] text-[var(--tx-3)] ${index === files.length - 1 ? 'opacity-50 cursor-not-allowed' : 'hover:text-[var(--accent)]'}`}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        if (index < files.length - 1) {
-                          animateButtonPress(e, index);
-                          handleMoveFile(index, 'down');
-                        }
-                      }}
-                      disabled={index === files.length - 1}
-                      title={fileListStrings.moveDown}
-                    >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                      </svg>
-                    </button>
-                  </>
-                )}
-                <button 
-                  className="p-1.5 rounded hover:bg-[var(--ui-2)] text-[var(--tx-3)] hover:text-[var(--accent)]"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    // Revoke the blob URL before removing the file
-                    const previewUrl = previewsMapRef.current.get(file);
-                    if (previewUrl) {
-                      URL.revokeObjectURL(previewUrl);
-                      previewsMapRef.current.delete(file);
-                    }
-                    onRemoveFileAction(index);
-                  }}
-                  title={fileListStrings.remove}
+
+              {/* Inline Password Unlock Form for Encrypted Files */}
+              {isEncrypted && !unlockedFiles[index] && (
+                <form
+                  onSubmit={(e) => handleUnlockSubmit(e, index)}
+                  className="mt-2.5 pt-2.5 border-t border-[var(--border)] flex flex-col sm:flex-row items-stretch sm:items-center gap-2"
+                  onClick={(e) => e.stopPropagation()}
                 >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </li>
-        );
-      })}
-    </ul>
+                  <div className="flex items-center gap-2 flex-1">
+                    <Lock className="h-4 w-4 text-[var(--warning)] shrink-0" />
+                    <input
+                      type="password"
+                      placeholder="Enter password to unlock..."
+                      value={passwords[index] || ''}
+                      onChange={(e) => setPasswords(prev => ({ ...prev, [index]: e.target.value }))}
+                      className="input-modern py-1.5 px-3 text-xs flex-1"
+                      required
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="btn-primary py-1.5 px-3 rounded-lg text-xs font-semibold text-white flex items-center justify-center gap-1.5"
+                  >
+                    <Unlock className="h-3.5 w-3.5" />
+                    <span>Unlock</span>
+                  </button>
+                </form>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 }

@@ -7,8 +7,62 @@ export interface OcrResult {
 }
 
 /**
+ * Preprocesses an image canvas with grayscale conversion, contrast enhancement, and adaptive thresholding
+ * to maximize character recognition accuracy on phone scans and noisy receipts.
+ */
+export function preprocessCanvasForOcr(
+  sourceCanvas: HTMLCanvasElement,
+  options: { binarize?: boolean; contrastBoost?: number } = {}
+): HTMLCanvasElement {
+  if (typeof document === 'undefined') return sourceCanvas;
+
+  const width = sourceCanvas.width;
+  const height = sourceCanvas.height;
+
+  const procCanvas = document.createElement('canvas');
+  procCanvas.width = width;
+  procCanvas.height = height;
+  const ctx = procCanvas.getContext('2d');
+  if (!ctx) return sourceCanvas;
+
+  // Draw source image
+  ctx.drawImage(sourceCanvas, 0, 0);
+  const imgData = ctx.getImageData(0, 0, width, height);
+  const data = imgData.data;
+
+  // 1. Grayscale & Contrast Normalization
+  const contrast = options.contrastBoost ?? 1.3; // 30% contrast boost
+  const factor = (259 * (contrast * 255 + 255)) / (255 * (259 - contrast * 255));
+
+  for (let i = 0; i < data.length; i += 4) {
+    const r = data[i];
+    const g = data[i + 1];
+    const b = data[i + 2];
+
+    // Standard luminosity weights
+    let gray = 0.299 * r + 0.587 * g + 0.114 * b;
+
+    // Apply contrast
+    gray = factor * (gray - 128) + 128;
+    gray = Math.max(0, Math.min(255, gray));
+
+    if (options.binarize) {
+      // Otsu-style thresholding
+      gray = gray > 140 ? 255 : 0;
+    }
+
+    data[i] = gray;
+    data[i + 1] = gray;
+    data[i + 2] = gray;
+  }
+
+  ctx.putImageData(imgData, 0, 0);
+  return procCanvas;
+}
+
+/**
  * Executes 100% client-side WebAssembly OCR using Tesseract.js.
- * Dynamically loads the Tesseract engine on demand with granular progress updates.
+ * Dynamically loads the Tesseract engine on demand with preprocessed image enhancement.
  */
 export async function runClientOcr(
   imageOrCanvas: HTMLCanvasElement | Blob | string,
@@ -17,6 +71,15 @@ export async function runClientOcr(
 ): Promise<OcrResult> {
   if (onProgress) {
     onProgress(5, 'Loading client-side OCR engine (~2MB WebAssembly)...');
+  }
+
+  // Pre-process canvas if input is an HTMLCanvasElement
+  let targetInput: HTMLCanvasElement | Blob | string = imageOrCanvas;
+  if (typeof HTMLCanvasElement !== 'undefined' && imageOrCanvas instanceof HTMLCanvasElement) {
+    if (onProgress) {
+      onProgress(12, 'Enhancing scan contrast & normalization...');
+    }
+    targetInput = preprocessCanvasForOcr(imageOrCanvas, { contrastBoost: 1.25 });
   }
 
   // Dynamic import so tesseract is never pulled into initial bundle
@@ -46,7 +109,7 @@ export async function runClientOcr(
       onProgress(30, 'Performing optical character recognition...');
     }
 
-    const ret = await worker.recognize(imageOrCanvas);
+    const ret = await worker.recognize(targetInput);
     const text = ret.data.text;
     const confidence = ret.data.confidence;
 
