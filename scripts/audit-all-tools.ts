@@ -96,7 +96,7 @@ function createMockHtml(name: string = 'test_document.html'): File {
 
 async function runFullAudit(): Promise<ToolAuditResult[]> {
   console.log('===============================================================');
-  console.log('🔬 ihatelovepdf.com - Full Functional Audit of All 45 Tools');
+  console.log('🔬 ihatelovepdf.com - Full Functional Audit of All Registered Tools');
   console.log('===============================================================\n');
 
   const allTools: Array<{ key: OperationKey; category: string }> = [];
@@ -223,7 +223,7 @@ async function runFullAudit(): Promise<ToolAuditResult[]> {
           output = await PDFOps.extractTextFromPdf(testPdf1);
           break;
         case 'createPdf':
-          output = await PDFOps.createBlankPdf({ pageCount: 2, pageSize: 'a4', orientation: 'portrait' });
+          output = await PDFOps.buildPdfFromDocumentModel(PDFOps.DOCUMENT_PRESETS.blank('a4', 'portrait'));
           break;
         case 'scanToPdf':
           output = await PDFOps.convertImagesToPdf([testImage]);
@@ -379,7 +379,7 @@ runFullAudit().then(results => {
     console.error(`\n❌ Audit completed with ${failed.length} failures.`);
     process.exit(1);
   } else {
-    console.log(`\n🎉 All ${results.length}/45 tools passed end-to-end audit successfully!`);
+    console.log(`\n🎉 All ${results.length} registered tools passed end-to-end audit successfully!`);
     process.exit(0);
   }
 });

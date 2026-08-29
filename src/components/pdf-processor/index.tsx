@@ -2453,7 +2453,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
               initialPageSize={processingOptions.blankPageSize ?? 'a4'}
               initialOrientation={processingOptions.blankPageOrientation ?? 'portrait'}
               isProcessing={isProcessing}
-              onGenerate={async ({ pageCount, pageSize, orientation }) => {
+              onGenerate={async ({ pageCount, pageSize, orientation, documentModel }) => {
                 setIsProcessing(true);
                 openProcessingDialog(statusMessages.info(activeToolName));
                 trackProcessorEvent('operation_start', {
@@ -2464,16 +2464,21 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
                 });
 
                 try {
-                  const bytes = await PDFOps.createBlankPdf({ pageCount, pageSize, orientation });
+                  const bytes = documentModel
+                    ? await PDFOps.buildPdfFromDocumentModel(documentModel)
+                    : await PDFOps.createBlankPdf({ pageCount, pageSize, orientation });
                   const blob = createPdfBlob(bytes);
-                  const fileName = `blank_pdf_${pageCount}_page${pageCount > 1 ? 's' : ''}.pdf`;
+                  const docTitle = documentModel?.title
+                    ? documentModel.title.toLowerCase().replace(/[^a-z0-9_-]/g, '_')
+                    : 'document';
+                  const fileName = `${docTitle}_${pageCount}_page${pageCount > 1 ? 's' : ''}.pdf`;
 
                   triggerDownloadAction(blob, fileName);
 
-                  const summaryStr = `${pageCount} blank ${pageCount === 1 ? 'page' : 'pages'} • ${pageSize.toUpperCase()} • ${orientation === 'portrait' ? 'Portrait' : 'Landscape'}`;
+                  const summaryStr = `${pageCount} ${pageCount === 1 ? 'page' : 'pages'} • ${pageSize.toUpperCase()} • ${orientation === 'portrait' ? 'Portrait' : 'Landscape'}`;
 
                   setCompletedResult({
-                    title: 'Blank PDF Created!',
+                    title: 'PDF Document Created!',
                     summaryText: summaryStr,
                     pageCount,
                     primaryBlob: blob,

@@ -22,6 +22,7 @@ import type { HeaderFooterOptions } from './operations/headers-footers';
 import type { RedactionBox } from './operations/redact';
 import type { GstInvoiceData, PosReceiptData } from './operations/business';
 import type { BlankPdfPageSize, BlankPdfOrientation } from './operations/converters';
+import type { DocumentModel } from './pdf-engine/creator-engine';
 
 export * from './operations/watermark';
 export * from './operations/page-numbers';
@@ -33,11 +34,35 @@ export * from './operations/security';
 export * from './operations/converters';
 export * from './operations/business';
 export * from './operations/pdf-editor';
+export {
+  buildPdfFromDocumentModel,
+  DOCUMENT_PRESETS,
+  PAGE_DIMENSIONS,
+  getPageSize,
+  hexToRgb,
+  createEmptyPage,
+} from './pdf-engine/creator-engine';
+export type {
+  DocumentModel,
+  PageModel,
+  PageFormat,
+  PageOrientation,
+  CanvasElement,
+  ElementType as CreatorElementType,
+  TextElement as CreatorTextElement,
+  ImageElement as CreatorImageElement,
+  ShapeElement as CreatorShapeElement,
+  TableElement as CreatorTableElement,
+  FontFamily as CreatorFontFamily,
+  TextAlignment as CreatorTextAlignment,
+  ShapeType as CreatorShapeType,
+} from './pdf-engine/creator-engine';
 
 // Type definitions
 export type PDFProcessingMode = OperationKey | 'pageCount';
 
 export type PDFProcessingOptions = {
+  documentModel?: DocumentModel;
   compressionLevel?: 'low' | 'medium' | 'high';
   outputFormat?: 'pdf';
   pageRange?: string;

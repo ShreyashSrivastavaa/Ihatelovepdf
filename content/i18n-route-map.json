@@ -231,17 +231,6 @@
       "ru": "/ru/zamazat-tekst",
       "hu": "/hu/kitakaras"
     },
-    "flatten": {
-      "en": "/flatten",
-      "es": "/es/aplanar-pdf",
-      "pt": "/pt/nivelar-pdf",
-      "de": "/de/pdf-abflachen",
-      "it": "/it/appiattisci-pdf",
-      "fr": "/fr/aplatir-pdf",
-      "ro": "/ro/aplatizare-pdf",
-      "ru": "/ru/sglazhivanie-pdf",
-      "hu": "/hu/pdf-lapitasa"
-    },
     "compare": {
       "en": "/compare",
       "es": "/es/comparar-pdf",
@@ -264,17 +253,6 @@
       "ru": "/ru/pdf-v-zip",
       "hu": "/hu/pdf-bol-zip"
     },
-    "encrypt": {
-      "en": "/encrypt",
-      "es": "/es/proteger-con-contrasena",
-      "pt": "/pt/proteger-com-senha",
-      "de": "/de/passwort-schuetzen",
-      "it": "/it/proteggi-con-password",
-      "fr": "/fr/proteger-par-mot-de-passe",
-      "ro": "/ro/protejeaza-cu-parola",
-      "ru": "/ru/zashchitit-parolem",
-      "hu": "/hu/jelszavas-vedelem"
-    },
     "decrypt": {
       "en": "/decrypt",
       "es": "/es/quitar-contrasena",
@@ -285,28 +263,6 @@
       "ro": "/ro/elimina-parola",
       "ru": "/ru/snyat-parol",
       "hu": "/hu/jelszo-eltavolitasa"
-    },
-    "privacyScanner": {
-      "en": "/privacy-scanner",
-      "es": "/es/escaner-de-privacidad",
-      "pt": "/pt/scanner-de-privacidade",
-      "de": "/de/datenschutz-scanner",
-      "it": "/it/scanner-privacy",
-      "fr": "/fr/analyseur-de-confidentialite",
-      "ro": "/ro/scaner-de-confidentialitate",
-      "ru": "/ru/skaner-konfidentsialnosti",
-      "hu": "/hu/adatvedelmi-ellenorzo"
-    },
-    "ocr": {
-      "en": "/ocr",
-      "es": "/es/ocr-reconocimiento-de-texto",
-      "pt": "/pt/ocr-reconhecimento-de-texto",
-      "de": "/de/ocr-texterkennung",
-      "it": "/it/ocr-riconoscimento-testo",
-      "fr": "/fr/ocr-reconnaissance-texte",
-      "ro": "/ro/ocr-recunoastere-text",
-      "ru": "/ru/ocr-raspoznavanie-teksta",
-      "hu": "/hu/ocr-szovegfelismeres"
     },
     "editPdf": {
       "en": "/edit-pdf",
@@ -451,50 +407,6 @@
       "ru": "/ru/ebook-v-pdf",
       "hu": "/hu/ebook-bol-pdf"
     },
-    "pdfToAudio": {
-      "en": "/pdf-to-audio",
-      "es": "/es/pdf-a-audio",
-      "pt": "/pt/pdf-para-audio",
-      "de": "/de/pdf-zu-audio",
-      "it": "/it/da-pdf-a-audio",
-      "fr": "/fr/pdf-en-audio",
-      "ro": "/ro/pdf-in-audio",
-      "ru": "/ru/pdf-v-audio",
-      "hu": "/hu/pdf-bol-audio"
-    },
-    "audioToPdf": {
-      "en": "/audio-to-pdf",
-      "es": "/es/audio-a-pdf",
-      "pt": "/pt/audio-para-pdf",
-      "de": "/de/audio-zu-pdf",
-      "it": "/it/da-audio-a-pdf",
-      "fr": "/fr/audio-en-pdf",
-      "ro": "/ro/audio-in-pdf",
-      "ru": "/ru/audio-v-pdf",
-      "hu": "/hu/audio-bol-pdf"
-    },
-    "repair": {
-      "en": "/repair-pdf",
-      "es": "/es/reparar-pdf",
-      "pt": "/pt/reparar-pdf",
-      "de": "/de/pdf-reparieren",
-      "it": "/it/ripara-pdf",
-      "fr": "/fr/reparer-pdf",
-      "ro": "/ro/repara-pdf",
-      "ru": "/ru/vosstanovit-pdf",
-      "hu": "/hu/pdf-javitasa"
-    },
-    "p2pShare": {
-      "en": "/p2p-share",
-      "es": "/es/compartir-p2p",
-      "pt": "/pt/compartilhar-p2p",
-      "de": "/de/p2p-dateifreigabe",
-      "it": "/it/condivisione-p2p",
-      "fr": "/fr/partage-p2p",
-      "ro": "/ro/distribuire-p2p",
-      "ru": "/ru/p2p-obmen-faylami",
-      "hu": "/hu/p2p-megosztas"
-    },
     "whiteboard": {
       "en": "/whiteboard",
       "es": "/es/pizarra-colaborativa",
@@ -527,39 +439,6 @@
       "ro": "/ro/facturare-pos",
       "ru": "/ru/pos-kassovyy-chek",
       "hu": "/hu/pos-szamlazas"
-    },
-    "fingerprint": {
-      "en": "/fingerprint",
-      "es": "/es/huella-digital-pdf",
-      "pt": "/pt/impressao-digital-pdf",
-      "de": "/de/pdf-fingerabdruck",
-      "it": "/it/impronta-digitale-pdf",
-      "fr": "/fr/empreinte-pdf",
-      "ro": "/ro/amprenta-pdf",
-      "ru": "/ru/tsifrovoy-sled-pdf",
-      "hu": "/hu/pdf-ujjlenyomat"
-    },
-    "aiSummarize": {
-      "en": "/ai-summarize",
-      "es": "/es/resumir-pdf-ia",
-      "pt": "/pt/resumir-pdf-ia",
-      "de": "/de/pdf-zusammenfassen-ki",
-      "it": "/it/riassumi-pdf-ia",
-      "fr": "/fr/resumer-pdf-ia",
-      "ro": "/ro/rezumat-pdf-ia",
-      "ru": "/ru/kratkoe-soderzhanie-pdf-ii",
-      "hu": "/hu/pdf-osszegzes-ai"
-    },
-    "aiChat": {
-      "en": "/ai-chat",
-      "es": "/es/chatear-con-pdf-ia",
-      "pt": "/pt/conversar-com-pdf-ia",
-      "de": "/de/mit-pdf-chatten-ki",
-      "it": "/it/chatta-con-pdf-ia",
-      "fr": "/fr/discuter-avec-pdf-ia",
-      "ro": "/ro/chat-cu-pdf-ia",
-      "ru": "/ru/chat-s-pdf-ii",
-      "hu": "/hu/cseveges-pdf-fel-ai"
     }
   }
 }

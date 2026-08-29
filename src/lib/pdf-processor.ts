@@ -138,6 +138,10 @@ export async function processPDF(
 
 
     case 'createPdf': {
+      if (options.documentModel) {
+        const bytes = await PDFOps.buildPdfFromDocumentModel(options.documentModel);
+        return createPdfBlob(bytes);
+      }
       const pageCount = options.blankPageCount ?? 1;
       const pageSize = options.blankPageSize ?? 'a4';
       const orientation = options.blankPageOrientation ?? 'portrait';
