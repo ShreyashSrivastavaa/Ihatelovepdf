@@ -182,10 +182,10 @@ async function runEdgeCaseAndRedactionSuite() {
       if (fixture.type === 'corrupted-xref') {
         compatibilityResults[fixture.type][tool] = 'GRACEFUL_FALLBACK';
       } else if (fixture.type === 'scanned-image-only') {
-        if (tool === 'ocr' || tool === 'pdfToImages' || tool === 'compress' || tool === 'merge') {
+        if (tool === 'pdfToImages' || tool === 'compress' || tool === 'merge') {
           compatibilityResults[fixture.type][tool] = 'PASS';
         } else if (tool === 'extractText') {
-          compatibilityResults[fixture.type][tool] = 'GRACEFUL_FALLBACK'; // Auto-suggests OCR fallback
+          compatibilityResults[fixture.type][tool] = 'GRACEFUL_FALLBACK';
         } else {
           compatibilityResults[fixture.type][tool] = 'PASS';
         }

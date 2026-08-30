@@ -32,8 +32,6 @@ export * from './operations/redact';
 export * from './operations/security';
 export * from './operations/converters';
 export * from './operations/business';
-
-export * from './operations/ocr';
 export * from './operations/pdf-editor';
 
 // Type definitions
@@ -146,7 +144,6 @@ export type PDFProcessingOptions = {
   taxRate?: number;
 
   posReceipt?: PosReceiptData;
-  ocrLanguage?: string;
 };
 
 export type ProcessingResult = {

@@ -37,7 +37,6 @@ const TextExtractionViewer = dynamic(() => import('./TextExtractionViewer'), { s
 const PdfRedactionEditor = dynamic(() => import('./PdfRedactionEditor'), { ssr: false });
 const PdfCompareViewer = dynamic(() => import('./PdfCompareViewer'), { ssr: false });
 const CameraScanInterface = dynamic(() => import('./CameraScanInterface'), { ssr: false });
-const P2PShareInterface = dynamic(() => import('./P2PShareInterface'), { ssr: false });
 const PdfWhiteboardInterface = dynamic(() => import('./PdfWhiteboardInterface'), { ssr: false });
 const PdfEditorInterface = dynamic(() => import('./PdfEditorInterface'), { ssr: false });
 const PosBillingInterface = dynamic(() => import('./PosBillingInterface'), { ssr: false });
@@ -155,9 +154,6 @@ const MODE_DEFAULTS: Record<ProcessingMode, PDFProcessingOptions> = {
   decrypt: {
     decryptionPassword: '',
   },
-  ocr: {
-    ocrLanguage: 'eng',
-  },
   editPdf: {},
   scanToPdf: {},
   markdownToPdf: {
@@ -179,7 +175,6 @@ const MODE_DEFAULTS: Record<ProcessingMode, PDFProcessingOptions> = {
   pdfToHtml: {},
   pdfToEpub: {},
   ebookToPdf: {},
-  p2pShare: {},
   whiteboard: {},
   gstInvoice: {
     invoiceNumber: 'INV-001',
@@ -1690,74 +1685,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           return;
         }
 
-        case 'ocr': {
-          let processedSources = 0;
-          for (const sourceFile of currentFiles) {
-            openProcessingDialog('Initializing client-side WebAssembly OCR engine...', 5);
-            const onProgress = (prog: number, msg: string) => {
-              updateProcessingDialog(msg, prog);
-            };
 
-            const ocrResult = await PDFOps.performFullPdfOcr(
-              sourceFile,
-              processingOptions.ocrLanguage || 'eng',
-              onProgress
-            );
-
-            const baseName = sourceFile.name.replace(/\.[^/.]+$/, '');
-            const pdfBlob = createPdfBlob(ocrResult.pdfData);
-            const textBlob = new Blob([ocrResult.text], { type: 'text/plain;charset=utf-8' });
-            const pdfName = `${baseName}_searchable.pdf`;
-            const textName = `${baseName}_transcript.txt`;
-
-            downloads.push({ blob: pdfBlob, fileName: pdfName });
-            downloads.push({ blob: textBlob, fileName: textName });
-
-            // Automatically download the primary Searchable PDF
-            triggerDownloadAction(pdfBlob, pdfName);
-
-            setCompletedResult({
-              title: 'OCR Text Recognition Complete!',
-              summaryText: `Successfully recognized ${ocrResult.wordCount.toLocaleString()} words across ${ocrResult.pageCount} page(s) with ${ocrResult.confidence}% confidence.`,
-              primaryFileName: pdfName,
-              primaryBlob: pdfBlob,
-              textContent: ocrResult.text,
-              pageCount: ocrResult.pageCount,
-              wordCount: ocrResult.wordCount,
-              outputFiles: [
-                { name: pdfName, blob: pdfBlob, sizeBytes: pdfBlob.size },
-                { name: textName, blob: textBlob, sizeBytes: textBlob.size },
-              ],
-            });
-
-            processedSources += 1;
-          }
-
-          if (processedSources === 0) {
-            showErrorDialog(errorStrings.invalidFile);
-            return;
-          }
-
-          showSuccessDialog({
-            highlights: [
-              {
-                label: statusDialogStrings.resultsLabel,
-                value: 'OCR Searchable PDF & Text Transcript Ready',
-              },
-              {
-                label: statusDialogStrings.filesProcessedLabel(processedSources),
-              },
-            ],
-            downloads,
-            donationPrompt: buildDonationPrompt(),
-          });
-
-          trackProcessorEvent('operation_success', {
-            file_count: processedSources,
-            mode: 'ocr',
-          });
-          return;
-        }
 
         case 'imagesToPdf': {
           const output = await processPDF('imagesToPdf', currentFiles as [File, ...File[]], processingOptions);
@@ -2483,12 +2411,6 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           </div>
         )}
 
-        {mode === 'p2pShare' && (
-          <div className="mb-6">
-            <P2PShareInterface file={files[0]} />
-          </div>
-        )}
-
         {mode === 'posBilling' && (
           <div className="mb-6">
             <PosBillingInterface
@@ -2598,7 +2520,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           </div>
         )}
 
-        {mode !== 'createPdf' && mode !== 'scanToPdf' && mode !== 'whiteboard' && mode !== 'compare' && mode !== 'p2pShare' && mode !== 'posBilling' && (mode !== 'editPdf' || files.length === 0) && !completedResult && (
+        {mode !== 'createPdf' && mode !== 'scanToPdf' && mode !== 'whiteboard' && mode !== 'compare' && mode !== 'posBilling' && (mode !== 'editPdf' || files.length === 0) && !completedResult && (
           <div className="mb-6">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-bold">{upload.title}</h2>

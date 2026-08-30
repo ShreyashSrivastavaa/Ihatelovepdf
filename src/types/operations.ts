@@ -17,7 +17,6 @@ export type OperationKey =
 	| "compare"
 	| "pdfToZip"
 	| "decrypt"
-	| "ocr"
 	| "editPdf"
 	| "scanToPdf"
 	| "markdownToPdf"
@@ -31,7 +30,6 @@ export type OperationKey =
 	| "pdfToHtml"
 	| "pdfToEpub"
 	| "ebookToPdf"
-	| "p2pShare"
 	| "whiteboard"
 	| "gstInvoice"
 	| "posBilling";

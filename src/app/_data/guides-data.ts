@@ -123,7 +123,7 @@ export const GUIDES_DATA: Record<string, GuideItem> = {
     category: 'How-To',
     date: '2026-08-22',
     readTime: '5 min read',
-    toolSlug: 'ocr',
+    toolSlug: 'extractText',
     keyTakeaways: [
       'Optical Character Recognition (OCR) converts raster image scans into searchable, selectable text.',
       'Downloads the Tesseract neural model locally to execute recognition without external API calls.',
@@ -175,7 +175,7 @@ export const GUIDES_DATA: Record<string, GuideItem> = {
     category: 'Optimization',
     date: '2026-08-23',
     readTime: '3 min read',
-    toolSlug: 'ocr',
+    toolSlug: 'extractText',
     keyTakeaways: [
       'Executes 100% in your browser using local Tesseract WebAssembly.',
       'Generates a dual-layer Searchable PDF with selectable, copyable text over original scans.',

@@ -8,7 +8,6 @@ import {
   Code,
   Table,
   Receipt,
-  Scan,
   Type,
   Hash,
   Palette,
@@ -865,53 +864,7 @@ export default function ProcessingOptions({
     );
   }
 
-  // 8. OCR MODE
-  if (mode === 'ocr') {
-    const currentLang = options.ocrLanguage ?? 'eng';
 
-    return (
-      <div className="mt-6 space-y-6 pt-4 border-t border-[var(--border)]">
-        <div>
-          <h3 className="text-xs font-semibold text-[var(--tx-3)] uppercase tracking-wider flex items-center gap-2">
-            <Scan className="h-4 w-4 text-[var(--accent)]" />
-            Client-Side WASM OCR Engine
-          </h3>
-          <p className="mt-1 text-xs text-[var(--tx-2)]">
-            Recognize text in scanned PDFs and photos using client-side Tesseract WebAssembly. 100% private.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] space-y-2">
-            <label className="text-xs font-bold text-[var(--tx)]">Document Language</label>
-            <select
-              value={currentLang}
-              onChange={(e) => update('ocrLanguage', e.target.value)}
-              className="input-modern w-full cursor-pointer text-xs"
-            >
-              <option value="eng">English (eng)</option>
-              <option value="spa">Spanish / Español (spa)</option>
-              <option value="fra">French / Français (fra)</option>
-              <option value="deu">German / Deutsch (deu)</option>
-              <option value="ita">Italian / Italiano (ita)</option>
-              <option value="por">Portuguese / Português (por)</option>
-              <option value="hin">Hindi / हिन्दी (hin)</option>
-              <option value="jpn">Japanese / 日本語 (jpn)</option>
-              <option value="chi_sim">Chinese Simplified / 简体中文 (chi_sim)</option>
-              <option value="rus">Russian / Русский (rus)</option>
-            </select>
-          </div>
-
-          <div className="p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] space-y-2">
-            <label className="text-xs font-bold text-[var(--tx)]">Recognition Output</label>
-            <div className="p-2.5 rounded-xl bg-[var(--bg-subtle)] text-xs text-[var(--tx-2)] leading-relaxed">
-              Generates a <span className="font-semibold text-[var(--tx)]">Searchable PDF</span> with original scan graphics and selectable text, plus an extracted text transcript.
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   // 10. MARKDOWN TO PDF
   if (mode === 'markdownToPdf') {

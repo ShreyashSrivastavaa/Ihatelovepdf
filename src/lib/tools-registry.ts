@@ -15,7 +15,6 @@ import {
   ShieldCheck,
   ArrowRightLeft,
   FileText,
-  Share2,
   Store,
 } from 'lucide-react';
 
@@ -45,7 +44,7 @@ export const FEATURED_TOOLS: OperationKey[] = [
   'compress',
   'split',
   'redact',
-  'ocr',
+  'extractText',
   'scanToPdf',
 ];
 
@@ -95,15 +94,15 @@ export const TOOL_CATEGORIES: ToolCategory[] = [
     toolKeys: ['editPdf', 'watermark', 'pageNumbers', 'headersFooters'],
   },
   {
-    id: 'extract-ocr',
-    name: 'Extract & OCR',
-    description: 'Offline WebAssembly OCR, reading-order text extraction & dark mode',
+    id: 'extract-view',
+    name: 'Extract & View',
+    description: 'Reading-order vector text extraction & high-contrast dark mode',
     icon: FileSearch,
     color: '#0284C7',
     bgSoft: 'rgba(2, 132, 199, 0.12)',
     borderAccent: 'rgba(2, 132, 199, 0.3)',
     tag: 'EXTRACTION',
-    toolKeys: ['extractText', 'ocr', 'invertColors'],
+    toolKeys: ['extractText', 'invertColors'],
   },
   {
     id: 'security-privacy',
@@ -158,18 +157,6 @@ export const TOOL_CATEGORIES: ToolCategory[] = [
     toolKeys: ['compare', 'createPdf'],
   },
   {
-    id: 'share-accessibility',
-    name: 'Share & Accessibility',
-    description: 'Encrypted P2P file sharing between devices',
-    icon: Share2,
-    color: '#0D9488',
-    bgSoft: 'rgba(13, 148, 136, 0.12)',
-    borderAccent: 'rgba(13, 148, 136, 0.3)',
-    tag: 'SHARE',
-    toolKeys: ['p2pShare'],
-  },
-
-  {
     id: 'business',
     name: 'Business',
     description: 'GST tax invoices and point-of-sale quick billing for Indian retail',
@@ -201,7 +188,6 @@ export const TOOL_NAMES: Record<OperationKey, string> = {
   compare: 'Compare PDFs',
   pdfToZip: 'PDF to ZIP',
   decrypt: 'Unlock & Decrypt',
-  ocr: 'OCR Text Recognition',
   editPdf: 'Edit PDF & Annotate',
   scanToPdf: 'Scan Document (Camera)',
   markdownToPdf: 'Markdown to PDF',
@@ -215,7 +201,6 @@ export const TOOL_NAMES: Record<OperationKey, string> = {
   pdfToHtml: 'PDF to HTML',
   pdfToEpub: 'PDF to EPUB',
   ebookToPdf: 'eBook to PDF',
-  p2pShare: 'P2P Encrypted Transfer',
   whiteboard: 'Visual Canvas & Sketch',
   gstInvoice: 'GST Invoice Generator',
   posBilling: 'POS Billing',

@@ -174,9 +174,6 @@ async function runFullAudit(): Promise<ToolAuditResult[]> {
         case 'extractText':
           output = await PDFOps.extractTextFromPdf(testPdf1);
           break;
-        case 'ocr':
-          output = await PDFOps.extractTextFromPdf(testPdf1); // Fallback text extract if WASM offline
-          break;
         case 'invertColors':
           output = await PDFOps.invertPdfColors(testPdf1, 'dark');
           break;
@@ -185,9 +182,6 @@ async function runFullAudit(): Promise<ToolAuditResult[]> {
           break;
         case 'decrypt':
           output = await PDFOps.decryptPdf(testPdf1);
-          break;
-        case 'ocr':
-          output = (await PDFOps.performFullPdfOcr(testPdf1)).pdfData;
           break;
         case 'csvToPdf':
           output = await PDFOps.convertCsvToPdf(await testCsv.text());
@@ -239,9 +233,6 @@ async function runFullAudit(): Promise<ToolAuditResult[]> {
           break;
         case 'whiteboard':
           output = await PDFOps.applyWatermarkToPdf(testPdf1, { watermarkText: 'Whiteboard Markups' });
-          break;
-        case 'p2pShare':
-          output = new Uint8Array(await testPdf1.arrayBuffer());
           break;
         case 'gstInvoice':
           output = await PDFOps.generateGstInvoicePdf({

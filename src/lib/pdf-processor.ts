@@ -135,11 +135,7 @@ export async function processPDF(
       return createPdfBlob(bytes);
     }
 
-    case 'ocr': {
-      const ocrLang = options.ocrLanguage || 'eng';
-      const res = await PDFOps.performFullPdfOcr(primaryFile, ocrLang, onProgress);
-      return res.pdfData ? createPdfBlob(res.pdfData) : new Blob([res.text], { type: 'text/plain;charset=utf-8' });
-    }
+
 
     case 'createPdf': {
       const pageCount = options.blankPageCount ?? 1;

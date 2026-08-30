@@ -22,7 +22,6 @@ export const ALL_OPERATION_KEYS: OperationKey[] = [
   'compare',
   'pdfToZip',
   'decrypt',
-  'ocr',
   'editPdf',
   'scanToPdf',
   'markdownToPdf',
@@ -36,7 +35,6 @@ export const ALL_OPERATION_KEYS: OperationKey[] = [
   'pdfToHtml',
   'pdfToEpub',
   'ebookToPdf',
-  'p2pShare',
   'whiteboard',
   'gstInvoice',
   'posBilling',
@@ -385,24 +383,7 @@ export const OPERATIONS_CATALOG: Record<OperationKey, OperationCatalogItem> = {
     useCases: ['Removing passwords from bank statements for archiving', 'Unlocking printing permissions on purchased manuals'],
   },
 
-  ocr: {
-    key: 'ocr',
-    label: 'OCR PDF',
-    helper: 'Convert scanned PDF pages and images into searchable, selectable text using local WASM OCR.',
-    title: 'OCR PDF Online Free - Optical Character Recognition',
-    description: 'Extract and recognize text from scanned PDFs and photos using client-side Tesseract WebAssembly. 100% private.',
-    keywords: ['ocr pdf', 'optical character recognition pdf', 'searchable pdf', 'scanned pdf to text', 'free ocr online'],
-    bulletPoints: ['Tesseract.js WASM engine', 'Multi-language support (English, Spanish, French, German, etc.)', 'Preserves document layout', 'Zero cloud uploads'],
-    benefitsTitle: 'Why use local OCR',
-    benefits: [
-      { title: 'Make Scans Searchable', description: 'Enable Ctrl+F search and text copying on scanned image PDFs.' },
-      { title: 'Multi-Language Recognition', description: 'High-accuracy OCR for European and international languages.' },
-      { title: 'Zero Cloud Privacy', description: 'Document scans are processed entirely on your CPU.' },
-    ],
-    howToTitle: 'How to OCR a PDF',
-    howToSteps: ['Upload your scanned PDF or image.', 'Select the document language.', 'Click Run OCR to download searchable text or PDF.'],
-    useCases: ['Digitizing paper receipts and invoices', 'Making scanned book pages searchable', 'Extracting text from photos'],
-  },
+
   editPdf: {
     key: 'editPdf',
     label: 'Edit PDF',
@@ -638,24 +619,7 @@ export const OPERATIONS_CATALOG: Record<OperationKey, OperationCatalogItem> = {
     useCases: ['Printing digital study materials', 'Converting eBooks for annotation in PDF viewers', 'Archiving digital books'],
   },
 
-  p2pShare: {
-    key: 'p2pShare',
-    label: 'P2P Direct Share',
-    helper: 'Send large PDF files directly from browser to browser using encrypted WebRTC without cloud storage.',
-    title: 'P2P PDF File Share Online Free - Direct WebRTC Transfer',
-    description: 'Share confidential PDF files directly between two devices using end-to-end encrypted WebRTC. Zero cloud storage.',
-    keywords: ['p2p pdf share', 'direct pdf transfer', 'webrtc file share', 'private pdf transfer without server'],
-    bulletPoints: ['Direct device-to-device WebRTC stream', 'Zero server file storage (ephemeral)', '6-character room codes and QR links', '100% private'],
-    benefitsTitle: 'Why share PDFs peer-to-peer',
-    benefits: [
-      { title: 'True End-to-End Privacy', description: 'Files travel directly between sender and recipient browsers without touching cloud disks.' },
-      { title: 'No File Size Limits', description: 'Transfer multi-gigabyte document batches with zero cloud storage quotas.' },
-      { title: 'Instant Connection', description: 'Connect with a simple 6-digit room code or QR scan.' },
-    ],
-    howToTitle: 'How to share PDFs peer-to-peer',
-    howToSteps: ['Select your PDF file and click Create Room.', 'Share the room code or link with the recipient.', 'Transfer starts automatically.'],
-    useCases: ['Sharing large confidential files with colleagues', 'Transferring documents from phone to laptop without cables'],
-  },
+
   whiteboard: {
     key: 'whiteboard',
     label: 'Collaborative Whiteboard',
