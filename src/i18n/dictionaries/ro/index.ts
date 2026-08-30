@@ -510,94 +510,94 @@ export const roDictionary: Dictionary = {
           {
             title: "Privat implicit",
             description:
-              "PDF-urile tale nu pÄƒrÄƒsesc niciodatÄƒ dispozitivul. Totul se întâmplÄƒ în browser.",
-            icon: "ðŸ”’",
+              "PDF-urile tale nu părăsesc niciodată dispozitivul. Totul se întâmplă în browser.",
+            icon: "🔒",
           },
           {
-            title: "Rapid È™i eficient",
+            title: "Rapid și eficient",
             description:
-              "Motorul nostru local oferÄƒ o vitezÄƒ optimÄƒ, fÄƒrÄƒ a depinde de stocarea în cloud.",
+              "Motorul nostru local oferă o viteză optimă, fără a depinde de stocarea în cloud.",
             icon: "⚡",
           },
           {
-            title: "FuncÈ›ioneazÄƒ oriunde",
+            title: "Funcționează oriunde",
             description:
-              "Pe computer, tabletÄƒ sau telefon — este suficient un browser modern.",
-            icon: "ðŸ“±",
+              "Pe computer, tabletă sau telefon — este suficient un browser modern.",
+            icon: "📱",
           },
         ],
       },
       callout: {
-        title: "AjutÄƒ-ne sÄƒ menÈ›inem ihatelovepdf gratuit",
+        title: "Ajută-ne să menținem ihatelovepdf gratuit",
         description:
-          "Fiecare donaÈ›ie acoperÄƒ costurile de gÄƒzduire È™i ne permite sÄƒ menÈ›inem experienÈ›a 100% privatÄƒ, fÄƒrÄƒ reclame È™i fÄƒrÄƒ urmÄƒrire.",
-        ctaLabel: "SusÈ›ine proiectul",
+          "Fiecare donație acoperă costurile de găzduire și ne permite să menținem experiența 100% privată, fără reclame și fără urmărire.",
+        ctaLabel: "Susține proiectul",
         ctaUrl: getRoutePath(locale, "support"),
-        secondaryLabel: "Vezi cum utilizÄƒm fondurile",
+        secondaryLabel: "Vezi cum utilizăm fondurile",
         secondaryUrl: getRoutePath(locale, "support") + "#support-transparency",
       },
     },
     faq: {
-      title: "ÎntrebÄƒri Frecvente",
-      intro: "RÄƒspunsuri la cele mai comune întrebÄƒri despre ihatelovepdf",
+      title: "Întrebări Frecvente",
+      intro: "Răspunsuri la cele mai comune întrebări despre ihatelovepdf",
       cta: {
-        title: "ÎncearcÄƒ ihatelovepdf acum",
+        title: "Încearcă ihatelovepdf acum",
         description:
-          "UneÈ™te, comprimÄƒ, divide, extrage, roteÈ™te È™i reordoneazÄƒ PDF-uri în deplinÄƒ confidenÈ›ialitate.",
+          "Unește, comprimă, divide, extrage, rotește și reordonează PDF-uri în deplină confidențialitate.",
         ctaLabel: "Mergi la instrumente",
       },
     },
     support: {
       hero: {
-        eyebrow: "ðŸŒ± Proiect independent",
-        title: "AjutÄƒ-ne sÄƒ pÄƒstrÄƒm ihatelovepdf gratuit È™i privat",
+        eyebrow: "Proiect independent",
+        title: "Ajută-ne să păstrăm ihatelovepdf gratuit și privat",
         subtitle:
-          "ihatelovepdf este un proiect mic, dezvoltat din pasiune. SusÈ›inerea ta acoperÄƒ costurile serverelor.",
-        highlight: "Doar un instrument simplu care îÈ›i respectÄƒ confidenÈ›ialitatea.",
+          "ihatelovepdf este un proiect mic, dezvoltat din pasiune. Susținerea ta acoperă costurile serverelor.",
+        highlight: "Doar un instrument simplu care îți respectă confidențialitatea.",
       },
       reasons: {
-        title: "De ce sÄƒ donezi ?",
+        title: "De ce să donezi ?",
         cards: [
           {
-            title: "PÄƒstreazÄƒ-l gratuit",
+            title: "Păstrează-l gratuit",
             description:
-              "DonaÈ›iile ne permit sÄƒ menÈ›inem ihatelovepdf 100% gratuit pentru toatÄƒ lumea.",
-            icon: "ðŸ’š",
+              "Donațiile ne permit să menținem ihatelovepdf 100% gratuit pentru toată lumea.",
+            icon: "💚",
           },
           {
-            title: "ÎmbunÄƒtÄƒÈ›iri continue",
+            title: "Îmbunătățiri continue",
             description:
-              "SusÈ›inerea ta finanÈ›eazÄƒ corectarea erorilor È™i dezvoltarea de noi instrumente.",
+              "Susținerea ta finanțează corectarea erorilor și dezvoltarea de noi instrumente.",
             icon: "✨",
           },
           {
-            title: "Protejarea confidenÈ›ialitÄƒÈ›ii",
+            title: "Protejarea confidențialității",
             description:
-              "ProcesÄƒm totul local. DonaÈ›iile ne permit sÄƒ continuÄƒm în acest mod.",
-            icon: "ðŸ”’",
+              "Procesăm totul local. Donațiile ne permit să continuăm în acest mod.",
+            icon: "🔒",
           },
         ],
       },
       tiers: {
-        title: "DoneazÄƒ cât poÈ›i",
-        description: "Orice sumÄƒ ne ajutÄƒ. PlatÄƒ securizatÄƒ prin Stripe.",
+        title: "Donează cât poți",
+        description: "Orice sumă ne ajută. Plată securizată prin Stripe.",
         cards: [
           {
             id: "coffee",
-            title: "CumpÄƒrÄƒ o cafea",
+            title: "Cumpără o cafea",
             amount: "3 €",
-            description: "AcoperÄƒ gÄƒzduirea pentru câteva sÄƒptÄƒmâni.",
-            ctaLabel: "DoneazÄƒ 3 €",
+            description: "Acoperă găzduirea pentru câteva săptămâni.",
+            ctaLabel: "Donează 3 €",
             ctaHref: "#stripe-checkout-coffee",
           },
           {
             id: "monthly",
-            title: "SusÈ›inere lunarÄƒ",
-            amount: "10 €/lunÄƒ",
-            description: "Ne oferÄƒ timp dedicat în fiecare sÄƒptÄƒmânÄƒ pentru a îmbunÄƒtÄƒÈ›i ihatelovepdf.",
-            ctaLabel: "DoneazÄƒ 10 €/lunÄƒ",
+            title: "Susținere lunară",
+            amount: "10 €/lună",
+            description: "Ne oferă timp dedicat în fiecare săptămână pentru a îmbunătăți ihatelovepdf.",
+            ctaLabel: "Donează 10 €/lună",
             ctaHref: "#stripe-checkout-monthly",
-            badge: "ðŸ’™ MulÈ›umim",
+            badge: "Mulțumim",
           },
           {
             id: "custom",

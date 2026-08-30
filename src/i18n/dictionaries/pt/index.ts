@@ -503,7 +503,7 @@ export const ptDictionary: Dictionary = {
             title: "Privacidade por padrão",
             description:
               "Seus PDFs nunca saem do dispositivo. Tudo acontece no navegador.",
-            icon: "ðŸ”’",
+            icon: "🔒",
           },
           {
             title: "Rápido e eficiente",
@@ -515,7 +515,7 @@ export const ptDictionary: Dictionary = {
             title: "Funciona em qualquer tela",
             description:
               "Desktop, tablet ou celular — basta um navegador moderno.",
-            icon: "ðŸ“±",
+            icon: "📱",
           },
         ],
       },
@@ -541,7 +541,7 @@ export const ptDictionary: Dictionary = {
     },
     support: {
       hero: {
-        eyebrow: "ðŸŒ± Projeto independente",
+        eyebrow: "Projeto independente",
         title: "Ajude a manter o ihatelovepdf gratuito e privado",
         subtitle:
           "O ihatelovepdf é um projetinho feito com carinho. Seu apoio paga os servidores e nos dá tempo para continuar melhorando.",
@@ -554,7 +554,7 @@ export const ptDictionary: Dictionary = {
             title: "Continuar gratuito",
             description:
               "As doações nos permitem manter o ihatelovepdf 100% gratuito, sem planos premium nem recursos bloqueados.",
-            icon: "ðŸ’š",
+            icon: "💚",
           },
           {
             title: "Melhorias constantes",
@@ -566,7 +566,7 @@ export const ptDictionary: Dictionary = {
             title: "Privacidade sempre",
             description:
               "Processamos tudo localmente para que seus PDFs nunca saiam do dispositivo. As doações nos ajudam a manter essa arquitetura.",
-            icon: "ðŸ”’",
+            icon: "🔒",
           },
         ],
       },
@@ -589,7 +589,7 @@ export const ptDictionary: Dictionary = {
             description: "Garante horas semanais para evoluir o ihatelovepdf.",
             ctaLabel: "Doar €10/mês",
             ctaHref: "#stripe-checkout-monthly",
-            badge: "ðŸ’™ Obrigado",
+            badge: "Obrigado",
           },
           {
             id: "custom",

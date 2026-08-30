@@ -9,38 +9,37 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <html lang="en">
-      <body
+    <div
+      style={{
+        margin: 0,
+        padding: 0,
+        minHeight: "100vh",
+        backgroundColor: "#fff7f5",
+        color: "#2c0f0f",
+        fontFamily: "'Roboto', sans-serif",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <header
         style={{
-          margin: 0,
-          padding: 0,
-          minHeight: "100vh",
-          backgroundColor: "#fff7f5",
-          color: "#2c0f0f",
-          fontFamily: "'Roboto', sans-serif",
+          width: "100%",
+          borderBottom: "1px solid #ffe7e5",
+          backgroundColor: "rgba(255, 255, 255, 0.9)",
+          padding: "1rem 1.5rem",
           display: "flex",
-          flexDirection: "column",
+          alignItems: "center",
         }}
       >
-        <header
-          style={{
-            width: "100%",
-            borderBottom: "1px solid #ffe7e5",
-            backgroundColor: "rgba(255, 255, 255, 0.9)",
-            padding: "1rem 1.5rem",
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <div style={{ maxWidth: "1200px", margin: "0 auto", width: "100%", display: "flex" }}>
-            <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none", color: "inherit" }}>
-              <Image src="/logo.png" alt="ihatelovepdf logo" width={36} height={36} style={{ marginRight: "0.5rem", borderRadius: "8px" }} unoptimized />
-              <span style={{ fontSize: "1.25rem", fontWeight: 700, fontFamily: "'Montserrat', sans-serif" }}>ihatelovepdf</span>
-            </Link>
-          </div>
-        </header>
+        <div style={{ maxWidth: "1200px", margin: "0 auto", width: "100%", display: "flex" }}>
+          <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none", color: "inherit" }}>
+            <Image src="/logo.png" alt="ihatelovepdf logo" width={36} height={36} style={{ marginRight: "0.5rem", borderRadius: "8px" }} unoptimized />
+            <span style={{ fontSize: "1.25rem", fontWeight: 700, fontFamily: "'Montserrat', sans-serif" }}>ihatelovepdf</span>
+          </Link>
+        </div>
+      </header>
 
-        <main
+      <main
           style={{
             flex: 1,
             display: "flex",
@@ -186,8 +185,7 @@ export default function NotFound() {
           }
           a:hover { opacity: 0.8; }
         `}</style>
-      </body>
-    </html>
+    </div>
   );
 }
 

@@ -1,5 +1,4 @@
 import { FaqPageContent } from "../../../components/FaqPageContent";
-import { getDictionary } from "../../../i18n/get-dictionary";
 import { createFaqMetadata } from "../../(helpers)/locale-metadata";
 
 const LOCALE = "en" as const;
@@ -7,6 +6,5 @@ const LOCALE = "en" as const;
 export const generateMetadata = createFaqMetadata(LOCALE);
 
 export default function FaqPage() {
-  const dictionary = getDictionary(LOCALE);
-  return <FaqPageContent dictionary={dictionary} />;
+  return <FaqPageContent />;
 }

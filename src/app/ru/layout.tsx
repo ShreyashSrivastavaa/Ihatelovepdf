@@ -68,15 +68,15 @@ import { BreadcrumbSchema } from "../../components/seo/BreadcrumbSchema";
 
 export default function RuLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang={LOCALE}>
+    <html lang={LOCALE} suppressHydrationWarning>
       <head>
         <meta charSet="UTF-8" />
         <ThemeScript />
-        <GoogleAnalyticsScripts />
         <SchemaOrg />
         <BreadcrumbSchema />
       </head>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
+        <GoogleAnalyticsScripts />
         <LocaleProvider locale={LOCALE}>
           <WebVitalsReporter />
           <Suspense fallback={null}>

@@ -509,27 +509,27 @@ export const huDictionary: Dictionary = {
           {
             title: "Alapból privát",
             description:
-              "A PDF-jeid soha nem hagyják el az eszközödet. Minden a böngészÅ‘dben zajlik.",
-            icon: "ðŸ”’",
+              "A PDF-jeid soha nem hagyják el az eszközödet. Minden a böngésződben zajlik.",
+            icon: "🔒",
           },
           {
             title: "Gyors és hatékony",
             description:
-              "A helyi motor maximális sebességet biztosít felhÅ‘alapú tárhelytÅ‘l való függés nélkül.",
+              "A helyi motor maximális sebességet biztosít felhőalapú tárhelytől való függés nélkül.",
             icon: "⚡",
           },
           {
-            title: "Bárhol mÅ±ködik",
+            title: "Bárhol működik",
             description:
-              "Számítógépen, tableten vagy okostelefonon – elegendÅ‘ egy modern böngészÅ‘.",
-            icon: "ðŸ“±",
+              "Számítógépen, tableten vagy okostelefonon – elegendő egy modern böngésző.",
+            icon: "📱",
           },
         ],
       },
       callout: {
-        title: "Segíts megÅ‘rizni a ihatelovepdf-t ingyenesen",
+        title: "Segíts megőrizni a ihatelovepdf-t ingyenesen",
         description:
-          "Minden adományod fedezi a tárhelyköltségeket, és lehetÅ‘vé teszi a 100%-ban privát, reklám- és nyomkövetés-mentes mÅ±ködés fenntartását.",
+          "Minden adományod fedezi a tárhelyköltségeket, és lehetővé teszi a 100%-ban privát, reklám- és nyomkövetés-mentes működés fenntartását.",
         ctaLabel: "Projekt támogatása",
         ctaUrl: getRoutePath(locale, "support"),
         secondaryLabel: "Tudd meg, hogyan használjuk fel az összeget",
@@ -542,17 +542,17 @@ export const huDictionary: Dictionary = {
       cta: {
         title: "Próbáld ki a ihatelovepdf-t most",
         description:
-          "FÅ±zd össze, tömörítsd, bontsd szét, nyerd ki, forgasd el és rendezd át a PDF-eket teljes bizalmassággal.",
+          "Fűzd össze, tömörítsd, bontsd szét, nyerd ki, forgasd el és rendezd át a PDF-eket teljes bizalmassággal.",
         ctaLabel: "Ugrás az eszközökhöz",
       },
     },
     support: {
       hero: {
-        eyebrow: "ðŸŒ± Független projekt",
-        title: "Segíts megÅ‘rizni a ihatelovepdf-t ingyenesen és privát módon",
+        eyebrow: "Független projekt",
+        title: "Segíts megőrizni a ihatelovepdf-t ingyenesen és privát módon",
         subtitle:
           "A ihatelovepdf egy kis, szenvedéllyel fejlesztett projekt. A támogatásod fedezi a szerverköltségeket.",
-        highlight: "Csupán egy egyszerÅ± eszköz, amely tiszteletben tartja az adatvédelmedet.",
+        highlight: "Csupán egy egyszerű eszköz, amely tiszteletben tartja az adatvédelmedet.",
       },
       reasons: {
         title: "Miért támogasd?",
@@ -560,8 +560,8 @@ export const huDictionary: Dictionary = {
           {
             title: "Maradjon ingyenes",
             description:
-              "Az adományok lehetÅ‘vé teszik, hogy a ihatelovepdf 100%-ban ingyenes maradjon mindenki számára.",
-            icon: "ðŸ’š",
+              "Az adományok lehetővé teszik, hogy a ihatelovepdf 100%-ban ingyenes maradjon mindenki számára.",
+            icon: "💚",
           },
           {
             title: "Folyamatos fejlesztés",
@@ -570,10 +570,10 @@ export const huDictionary: Dictionary = {
             icon: "✨",
           },
           {
-            title: "Adatvédelem megÅ‘rzése",
+            title: "Adatvédelem megőrzése",
             description:
-              "Mindent helyben dolgozunk fel. Az adományok lehetÅ‘vé teszik, hogy így folytassuk.",
-            icon: "ðŸ”’",
+              "Mindent helyben dolgozunk fel. Az adományok lehetővé teszik, hogy így folytassuk.",
+            icon: "🔒",
           },
         ],
       },
@@ -593,10 +593,10 @@ export const huDictionary: Dictionary = {
             id: "monthly",
             title: "Havi támogatás",
             amount: "10 €/hó",
-            description: "Heti dedikált fejlesztési idÅ‘t biztosít a ihatelovepdf javítására.",
+            description: "Heti dedikált fejlesztési időt biztosít a ihatelovepdf javítására.",
             ctaLabel: "10 €/hó adományozása",
             ctaHref: "#stripe-checkout-monthly",
-            badge: "ðŸ’™ Köszönjük",
+            badge: "Köszönjük",
           },
           {
             id: "custom",

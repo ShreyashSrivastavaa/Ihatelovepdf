@@ -503,7 +503,7 @@ export const enDictionary: Dictionary = {
             title: "Private by Default",
             description:
               "Your files never leave your device. All processing is executed locally right inside your browser.",
-            icon: "ðŸ”’",
+            icon: "🔒",
           },
           {
             title: "Fast & Efficient",
@@ -515,7 +515,7 @@ export const enDictionary: Dictionary = {
             title: "Cross-Platform Simplicity",
             description:
               "Works seamlessly across desktop, tablet, and mobile browsers with zero software installation required.",
-            icon: "ðŸ“±",
+            icon: "📱",
           },
         ],
       },
@@ -541,7 +541,7 @@ export const enDictionary: Dictionary = {
     },
     support: {
       hero: {
-        eyebrow: "ðŸŒ± Independent Open Source Project",
+        eyebrow: "Independent Open Source Project",
         title: "Help Keep ihatelovepdf Free and Privacy-First",
         subtitle:
           "ihatelovepdf is an independent project dedicated to user privacy. Your support covers infrastructure costs and fuels continuous improvements.",
@@ -554,7 +554,7 @@ export const enDictionary: Dictionary = {
             title: "Keep It Free for Everyone",
             description:
               "Your contributions ensure ihatelovepdf remains 100% free with no paywalls, premium tiers, or hidden limits.",
-            icon: "ðŸ’š",
+            icon: "💚",
           },
           {
             title: "Accelerate Development",
@@ -566,7 +566,7 @@ export const enDictionary: Dictionary = {
             title: "Champion Digital Privacy",
             description:
               "Support local, on-device document processing and help build a web free from intrusive data tracking.",
-            icon: "ðŸ”’",
+            icon: "🔒",
           },
         ],
       },
@@ -589,7 +589,7 @@ export const enDictionary: Dictionary = {
             description: "Provides steady backing to dedicate time weekly to ihatelovepdf.",
             ctaLabel: "Give €10/mo",
             ctaHref: "#stripe-checkout-monthly",
-            badge: "ðŸ’™ Recommended",
+            badge: "Recommended",
           },
           {
             id: "custom",

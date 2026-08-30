@@ -499,7 +499,7 @@ export const deDictionary: Dictionary = {
           {
             title: "Datenschutz garantiert",
             description: "Deine PDFs verlassen dein Gerät nicht. Alles passiert lokal im Browser.",
-            icon: "ðŸ”’",
+            icon: "🔒",
           },
           {
             title: "Schnell & effizient",
@@ -509,7 +509,7 @@ export const deDictionary: Dictionary = {
           {
             title: "Auf jedem Gerät",
             description: "Funktioniert auf Desktop, Tablet und Smartphone mit modernen Browsern.",
-            icon: "ðŸ“±",
+            icon: "📱",
           },
         ],
       },
@@ -535,7 +535,7 @@ export const deDictionary: Dictionary = {
     },
     support: {
       hero: {
-        eyebrow: "ðŸŒ± Kleines Indie-Projekt",
+        eyebrow: "Kleines Indie-Projekt",
         title: "Hilf, ihatelovepdf kostenlos und privat zu halten",
         subtitle:
           "ihatelovepdf ist ein kleines Herzensprojekt. Deine Unterstützung finanziert die Server und schafft Zeit für neue Funktionen.",
@@ -548,7 +548,7 @@ export const deDictionary: Dictionary = {
             title: "Kostenlos erhalten",
             description:
               "Spenden ermöglichen es, ihatelovepdf für alle kostenlos zu lassen – ohne Premium-Stufen oder gesperrte Funktionen.",
-            icon: "ðŸ’š",
+            icon: "💚",
           },
           {
             title: "Weiterentwickeln",
@@ -560,7 +560,7 @@ export const deDictionary: Dictionary = {
             title: "Privatsphäre schützen",
             description:
               "Wir verarbeiten alles lokal, damit deine PDFs auf deinem Gerät bleiben. Spenden sichern dieses Konzept.",
-            icon: "ðŸ”’",
+            icon: "🔒",
           },
         ],
       },
@@ -583,7 +583,7 @@ export const deDictionary: Dictionary = {
             description: "Schenkt uns jede Woche Zeit, um ihatelovepdf besser zu machen.",
             ctaLabel: "€10/Monat spenden",
             ctaHref: "#stripe-checkout-monthly",
-            badge: "ðŸ’™ Danke",
+            badge: "Danke",
           },
           {
             id: "custom",

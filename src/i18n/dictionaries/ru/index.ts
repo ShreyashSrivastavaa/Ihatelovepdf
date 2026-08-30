@@ -504,7 +504,7 @@ export const ruDictionary: Dictionary = {
             title: "Конфиденциально по умолчанию",
             description:
               "Ваши PDF-файлы никогда не покидают устройство. Всё происходит в браузере.",
-            icon: "ðŸ”’",
+            icon: "🔒",
           },
           {
             title: "Быстро и эффективно",
@@ -516,7 +516,7 @@ export const ruDictionary: Dictionary = {
             title: "Работает везде",
             description:
               "На компьютере, планшете или смартфоне — достаточно современного браузера.",
-            icon: "ðŸ“±",
+            icon: "📱",
           },
         ],
       },
@@ -542,7 +542,7 @@ export const ruDictionary: Dictionary = {
     },
     support: {
       hero: {
-        eyebrow: "ðŸŒ± Независимый проект",
+        eyebrow: "Независимый проект",
         title: "Помогите сохранить ihatelovepdf бесплатным и конфиденциальным",
         subtitle:
           "ihatelovepdf — небольшой проект, созданный с душой. Ваша поддержка покрывает расходы на серверы.",
@@ -555,7 +555,7 @@ export const ruDictionary: Dictionary = {
             title: "Сохранить бесплатным",
             description:
               "Пожертвования позволяют нам поддерживать ihatelovepdf 100% бесплатным для всех.",
-            icon: "ðŸ’š",
+            icon: "💚",
           },
           {
             title: "Постоянное улучшение",
@@ -567,7 +567,7 @@ export const ruDictionary: Dictionary = {
             title: "Защита конфиденциальности",
             description:
               "Мы обрабатываем всё локально. Пожертвования помогают нам продолжать в этом направлении.",
-            icon: "ðŸ”’",
+            icon: "🔒",
           },
         ],
       },
@@ -590,7 +590,7 @@ export const ruDictionary: Dictionary = {
             description: "Даёт нам время каждую неделю улучшать ihatelovepdf.",
             ctaLabel: "Пожертвовать 10 €/месяц",
             ctaHref: "#stripe-checkout-monthly",
-            badge: "ðŸ’™ Спасибо",
+            badge: "Спасибо",
           },
           {
             id: "custom",

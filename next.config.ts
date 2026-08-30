@@ -7,12 +7,15 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'pdf-lib', 'jszip', 'xlsx'],
+  },
   webpack: (config, { isServer, webpack }) => {
     config.resolve = {
       ...config.resolve,
       alias: {
         ...(config.resolve?.alias || {}),
-        pptxgenjs: path.resolve(process.cwd(), 'node_modules/pptxgenjs/dist/pptxgen.bundle.js'),
+        pptxgenjs: path.resolve(process.cwd(), 'node_modules/pptxgenjs/dist/pptxgen.es.js'),
       },
       fallback: {
         ...(config.resolve?.fallback || {}),

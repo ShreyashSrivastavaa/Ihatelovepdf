@@ -538,7 +538,7 @@ export const esDictionary: Dictionary = {
     },
     support: {
       hero: {
-        eyebrow: "ðŸŒ± Proyecto independiente",
+        eyebrow: "Proyecto independiente",
         title: "Ayuda a mantener ihatelovepdf gratuito y privado",
         subtitle:
           "ihatelovepdf es un proyecto pequeño hecho con cariño. Tu apoyo cubre los servidores y nos da tiempo para seguir mejorándolo.",
@@ -551,7 +551,7 @@ export const esDictionary: Dictionary = {
             title: "Seguir siendo gratuito",
             description:
               "Cada donación nos ayuda a mantener ihatelovepdf 100% gratis para todos, sin planes premium ni funciones bloqueadas.",
-            icon: "❤ï¸",
+            icon: "❤️",
           },
           {
             title: "Mejoras constantes",
@@ -563,7 +563,7 @@ export const esDictionary: Dictionary = {
             title: "Privacidad siempre",
             description:
               "Tu dinero nos permite seguir procesando todo localmente, sin necesidad de subir tus archivos a ningún servidor.",
-            icon: "ðŸ”’",
+            icon: "🔒",
           },
         ],
       },
@@ -586,7 +586,7 @@ export const esDictionary: Dictionary = {
             description: "Nos permite dedicar tiempo cada semana a mejorar ihatelovepdf.",
             ctaLabel: "Donar €10/mes",
             ctaHref: "#stripe-checkout-monthly",
-            badge: "ðŸ’™ Gracias",
+            badge: "Gracias",
           },
           {
             id: "custom",

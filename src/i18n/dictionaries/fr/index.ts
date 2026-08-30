@@ -503,7 +503,7 @@ export const frDictionary: Dictionary = {
             title: "Privé par défaut",
             description:
               "Vos PDF ne quittent jamais votre appareil. Tout se passe dans votre navigateur.",
-            icon: "ðŸ”’",
+            icon: "🔒",
           },
           {
             title: "Rapide & efficace",
@@ -515,7 +515,7 @@ export const frDictionary: Dictionary = {
             title: "Fonctionne partout",
             description:
               "Ordinateur, tablette ou téléphone — un navigateur moderne suffit.",
-            icon: "ðŸ“±",
+            icon: "📱",
           },
         ],
       },
@@ -541,7 +541,7 @@ export const frDictionary: Dictionary = {
     },
     support: {
       hero: {
-        eyebrow: "ðŸŒ± Projet indépendant",
+        eyebrow: "Projet indépendant",
         title: "Aidez à garder ihatelovepdf gratuit et privé",
         subtitle:
           "ihatelovepdf est un petit projet de passionnés. Votre soutien couvre les serveurs.",
@@ -554,7 +554,7 @@ export const frDictionary: Dictionary = {
             title: "Garder la gratuité",
             description:
               "Les dons nous permettent de garder ihatelovepdf 100% gratuit pour tout le monde.",
-            icon: "ðŸ’š",
+            icon: "💚",
           },
           {
             title: "Améliorations",
@@ -566,7 +566,7 @@ export const frDictionary: Dictionary = {
             title: "Protéger la confidentialité",
             description:
               "Nous traitons tout localement. Les dons nous permettent de continuer.",
-            icon: "ðŸ”’",
+            icon: "🔒",
           },
         ],
       },
@@ -589,7 +589,7 @@ export const frDictionary: Dictionary = {
             description: "Nous donne du temps chaque semaine pour améliorer ihatelovepdf.",
             ctaLabel: "Donner 10 €/mois",
             ctaHref: "#stripe-checkout-monthly",
-            badge: "ðŸ’™ Merci",
+            badge: "Merci",
           },
           {
             id: "custom",

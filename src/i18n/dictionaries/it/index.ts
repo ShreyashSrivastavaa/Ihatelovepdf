@@ -566,7 +566,7 @@ export const itDictionary: Dictionary = {
               title: "Privacy prima di tutto",
               description:
                 "I tuoi PDF non lasciano mai il tuo dispositivo. Tutto avviene nel browser.",
-              icon: "ðŸ”’",
+              icon: "🔒",
             },
             {
               title: "Veloce ed efficiente",
@@ -578,7 +578,7 @@ export const itDictionary: Dictionary = {
               title: "Funziona ovunque",
               description:
                 "Desktop, tablet o telefono — se hai un browser moderno, sei pronto.",
-              icon: "ðŸ“±",
+              icon: "📱",
             },
           ],
         },
@@ -604,7 +604,7 @@ export const itDictionary: Dictionary = {
       },
       support: {
         hero: {
-          eyebrow: "ðŸŒ± Progetto indipendente",
+          eyebrow: "Progetto indipendente",
           title: "Aiutaci a mantenere ihatelovepdf gratuito e privato",
           subtitle:
             "ihatelovepdf è un piccolo progetto nato dalla passione. Il tuo supporto copre i server e ci dà il tempo di rifinire nuove funzionalità.",
@@ -617,7 +617,7 @@ export const itDictionary: Dictionary = {
               title: "Mantienilo gratuito",
               description:
                 "Le donazioni ci permettono di mantenere ihatelovepdf gratuito al 100% per tutti, senza piani premium o funzioni bloccate.",
-              icon: "ðŸ’š",
+              icon: "💚",
             },
             {
               title: "Migliora continuamente",
@@ -629,7 +629,7 @@ export const itDictionary: Dictionary = {
               title: "Proteggi la privacy",
               description:
                 "Elaboriamo tutto in locale, così i tuoi PDF restano sul tuo dispositivo. Le donazioni ci aiutano a continuare così.",
-              icon: "ðŸ”’",
+              icon: "🔒",
             },
           ],
         },
@@ -653,7 +653,7 @@ export const itDictionary: Dictionary = {
                 "Ci dà tempo ogni settimana per migliorare ihatelovepdf.",
               ctaLabel: "Dona 10 €/mese",
               ctaHref: "#stripe-checkout-monthly",
-              badge: "ðŸ’™ Grazie",
+              badge: "Grazie",
             },
             {
               id: "custom",
