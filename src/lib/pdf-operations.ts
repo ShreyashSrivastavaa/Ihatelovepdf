@@ -20,8 +20,8 @@ import type { WatermarkOptions } from './operations/watermark';
 import type { PageNumberOptions } from './operations/page-numbers';
 import type { HeaderFooterOptions } from './operations/headers-footers';
 import type { RedactionBox } from './operations/redact';
-import type { FlattenOptions } from './operations/flatten';
 import type { GstInvoiceData, PosReceiptData } from './operations/business';
+import type { BlankPdfPageSize, BlankPdfOrientation } from './operations/converters';
 
 export * from './operations/watermark';
 export * from './operations/page-numbers';
@@ -29,14 +29,12 @@ export * from './operations/headers-footers';
 export * from './operations/text-extract';
 export * from './operations/color-inversion';
 export * from './operations/redact';
-export * from './operations/flatten';
 export * from './operations/security';
-export * from './operations/fingerprint';
-export * from './operations/repair';
 export * from './operations/converters';
 export * from './operations/business';
-export * from './operations/ai-local';
+
 export * from './operations/ocr';
+export * from './operations/pdf-editor';
 
 // Type definitions
 export type PDFProcessingMode = OperationKey | 'pageCount';
@@ -73,6 +71,8 @@ export type PDFProcessingOptions = {
   addPageDividers?: boolean;
 
   splitMode?: 'pageCount' | 'bookmarks' | 'pageNumbers';
+  pagesToSplit?: number[];
+  splitRanges?: Array<[number, number]>;
   pagesPerFile?: number;
   splitPoints?: string;
   outputNamePattern?: string;
@@ -91,6 +91,8 @@ export type PDFProcessingOptions = {
   imageBorderType?: 'none' | 'thin' | 'standard' | 'thick' | 'custom';
   imageBorderWidth?: number;
   imageBorderColor?: string;
+  zipMode?: 'direct' | 'images' | 'splitPdf';
+  documentEditState?: import('./operations/pdf-editor').DocumentEditState;
 
   // New tool options (nested & flat)
   watermark?: WatermarkOptions;
@@ -126,17 +128,7 @@ export type PDFProcessingOptions = {
   redactions?: RedactionBox[];
   redactColor?: string;
 
-  flatten?: FlattenOptions;
-  flattenFormFields?: boolean;
-  flattenAnnotations?: boolean;
-
-  userPassword?: string;
-  ownerPassword?: string;
   decryptionPassword?: string;
-  permissions?: { printing: boolean; copying: boolean; modifying: boolean };
-
-  fingerprintRecipient?: string;
-  fingerprintSecret?: string;
 
   markdownContent?: string;
   markdownTheme?: string;
@@ -145,9 +137,9 @@ export type PDFProcessingOptions = {
   csvDelimiter?: string;
   documentTitle?: string;
 
-  ttsVoice?: string;
-  ttsRate?: number;
-  ttsPitch?: number;
+  blankPageCount?: number;
+  blankPageSize?: BlankPdfPageSize;
+  blankPageOrientation?: BlankPdfOrientation;
 
   gstInvoice?: GstInvoiceData;
   invoiceNumber?: string;
@@ -155,9 +147,6 @@ export type PDFProcessingOptions = {
 
   posReceipt?: PosReceiptData;
   ocrLanguage?: string;
-
-  aiExtractLength?: 'short' | 'medium' | 'detailed';
-  aiProvider?: 'local' | 'gemini' | 'openai';
 };
 
 export type ProcessingResult = {
@@ -686,9 +675,69 @@ export async function splitPDF(
     const arrayBuffer = fileOrData instanceof File ? await fileOrData.arrayBuffer() : fileOrData;
     const pdfDoc = await PDFDocument.load(arrayBuffer, { ignoreEncryption: true });
     const pageCount = pdfDoc.getPageCount();
-    const pagesPerFile = options.pagesPerFile || 1;
     const results: Uint8Array[] = [];
 
+    // Mode A: Custom Selected Pages (e.g. pagesToExtract or pagesToSplit)
+    const rawSelected: number[] = options.pagesToExtract || options.pagesToSplit || [];
+    const selectedPages = rawSelected.filter((p) => p >= 1 && p <= pageCount);
+
+    if (selectedPages.length > 0 && selectedPages.length < pageCount) {
+      const selectedIndices = Array.from(new Set(selectedPages)).map((p) => Number(p) - 1).sort((a, b) => a - b);
+      const remainingIndices = Array.from({ length: pageCount }, (_, i) => i).filter((i) => !selectedIndices.includes(i));
+
+      // Part 1: Selected pages PDF
+      const part1Doc = await PDFDocument.create();
+      const copied1 = await part1Doc.copyPages(pdfDoc, selectedIndices);
+      copied1.forEach((p) => part1Doc.addPage(p));
+      results.push(await part1Doc.save({ useObjectStreams: true }));
+
+      // Part 2: Remaining pages PDF
+      if (remainingIndices.length > 0) {
+        const part2Doc = await PDFDocument.create();
+        const copied2 = await part2Doc.copyPages(pdfDoc, remainingIndices);
+        copied2.forEach((p) => part2Doc.addPage(p));
+        results.push(await part2Doc.save({ useObjectStreams: true }));
+      }
+      return results;
+    }
+
+    // Mode B: Custom Range String (e.g. "1-3, 4-5, 6")
+    let ranges: Array<[number, number]> = [];
+    if (Array.isArray(options.splitRanges)) {
+      ranges = options.splitRanges;
+    } else if (typeof options.pageRange === 'string' && options.pageRange.trim()) {
+      const parts = options.pageRange.split(',').map((s) => s.trim()).filter(Boolean);
+      for (const part of parts) {
+        if (part.includes('-')) {
+          const [startStr, endStr] = part.split('-');
+          const start = Math.max(1, parseInt(startStr, 10) || 1);
+          const end = Math.min(pageCount, parseInt(endStr, 10) || start);
+          if (start <= end) ranges.push([start, end]);
+        } else {
+          const p = parseInt(part, 10);
+          if (!isNaN(p) && p >= 1 && p <= pageCount) ranges.push([p, p]);
+        }
+      }
+    }
+
+    if (ranges.length > 0) {
+      for (const [start, end] of ranges) {
+        await yieldToMain();
+        const startIdx = Math.max(0, start - 1);
+        const endIdx = Math.min(pageCount - 1, end - 1);
+        const count = endIdx - startIdx + 1;
+        if (count <= 0) continue;
+        const pageIndices = Array.from({ length: count }, (_, idx) => startIdx + idx);
+        const newPdf = await PDFDocument.create();
+        const copiedPages = await newPdf.copyPages(pdfDoc, pageIndices);
+        copiedPages.forEach((p) => newPdf.addPage(p));
+        results.push(await newPdf.save({ useObjectStreams: true }));
+      }
+      if (results.length > 0) return results;
+    }
+
+    // Mode C: Fixed Interval / Every N Pages (Default: 1)
+    const pagesPerFile = options.pagesPerFile || 1;
     for (let i = 0; i < pageCount; i += pagesPerFile) {
       await yieldToMain();
       const newPdf = await PDFDocument.create();
@@ -781,10 +830,7 @@ export async function cropPages(
       throw new Error('No pages to crop');
     }
 
-    const margins = options.cropMargins;
-    if (!margins) {
-      throw new Error('No crop margins provided');
-    }
+    const margins = options.cropMargins || { top: 18, right: 18, bottom: 18, left: 18 };
 
     const left = Math.max(0, margins.left ?? 0);
     const right = Math.max(0, margins.right ?? 0);
@@ -886,7 +932,7 @@ export async function cropPages(
 export async function rotatePages(
   fileOrData: File | ArrayBuffer | Uint8Array,
   pageNumbers: number[],
-  rotationDegrees: 90 | 180 | 270 | -90 | -180 | -270 = 90,
+  degreesOrOptions: number | PDFProcessingOptions = 90,
   options: PDFProcessingOptions = {}
 ): Promise<Uint8Array> {
   try {
@@ -894,12 +940,19 @@ export async function rotatePages(
       throw new Error('No pages to rotate');
     }
 
+    const rotationDegrees = typeof degreesOrOptions === 'number'
+      ? degreesOrOptions
+      : (degreesOrOptions?.rotationDegrees ?? 90);
+    const resolvedOptions = typeof degreesOrOptions === 'object' && degreesOrOptions !== null
+      ? degreesOrOptions
+      : options;
+
     const arrayBuffer =
       fileOrData instanceof File ? await fileOrData.arrayBuffer() : fileOrData;
 
     const pdfDoc = await PDFDocument.load(arrayBuffer, {
       ignoreEncryption: true,
-      updateMetadata: options.preserveMetadata !== false,
+      updateMetadata: resolvedOptions.preserveMetadata !== false,
     });
 
     const pageCount = pdfDoc.getPageCount();
@@ -917,16 +970,16 @@ export async function rotatePages(
     for (const pageIndex of validPageIndices) {
       const page = pdfDoc.getPage(pageIndex);
       const currentRotation = page.getRotation().angle;
-      const nextRotation = normalizeRotation(currentRotation + rotationDegrees);
+      const nextRotation = normalizeRotation(currentRotation + Number(rotationDegrees));
       page.setRotation(degrees(nextRotation));
     }
 
-    if (options.metadata) {
-      if (options.metadata.title) pdfDoc.setTitle(options.metadata.title);
-      if (options.metadata.author) pdfDoc.setAuthor(options.metadata.author);
-      if (options.metadata.subject) pdfDoc.setSubject(options.metadata.subject);
-      if (options.metadata.keywords) {
-        pdfDoc.setKeywords([options.metadata.keywords]);
+    if (resolvedOptions.metadata) {
+      if (resolvedOptions.metadata.title) pdfDoc.setTitle(resolvedOptions.metadata.title);
+      if (resolvedOptions.metadata.author) pdfDoc.setAuthor(resolvedOptions.metadata.author);
+      if (resolvedOptions.metadata.subject) pdfDoc.setSubject(resolvedOptions.metadata.subject);
+      if (resolvedOptions.metadata.keywords) {
+        pdfDoc.setKeywords([resolvedOptions.metadata.keywords]);
       }
     }
 
@@ -942,6 +995,76 @@ export async function rotatePages(
       }`
     );
   }
+}
+
+function getSafeZipEntryName(rawName: string, existingNames: Set<string>): string {
+  const baseOnly = rawName.replace(/^.*[\\\/]/, '').trim();
+  const sanitized = baseOnly.replace(/[\x00-\x1f\x80-\x9f<>:"/\\|?*]/g, '_').trim() || 'document.pdf';
+  const withExt = sanitized.toLowerCase().endsWith('.pdf') ? sanitized : `${sanitized}.pdf`;
+
+  let finalName = withExt;
+  let counter = 1;
+  const baseWithoutExt = withExt.slice(0, -4);
+  while (existingNames.has(finalName.toLowerCase())) {
+    finalName = `${baseWithoutExt}_${counter}.pdf`;
+    counter++;
+  }
+  existingNames.add(finalName.toLowerCase());
+  return finalName;
+}
+
+export async function pdfToZip(
+  fileOrData: File | File[] | ArrayBuffer | Uint8Array,
+  options: PDFProcessingOptions = {},
+  onProgress?: (progress: number, status: string) => void
+): Promise<Uint8Array> {
+  const { default: JSZip } = await import('jszip');
+  const zip = new JSZip();
+  const filesArray = Array.isArray(fileOrData) ? fileOrData : [fileOrData];
+  const usedNames = new Set<string>();
+
+  for (let idx = 0; idx < filesArray.length; idx++) {
+    const item = filesArray[idx];
+    let bytes: Uint8Array;
+    let originalName = 'document.pdf';
+
+    if (item instanceof File) {
+      originalName = item.name;
+      const buffer = await item.arrayBuffer();
+      bytes = new Uint8Array(buffer);
+    } else if (item instanceof ArrayBuffer) {
+      bytes = new Uint8Array(item);
+    } else if (item instanceof Uint8Array) {
+      bytes = item;
+    } else {
+      continue;
+    }
+
+    const safeName = getSafeZipEntryName(originalName, usedNames);
+    zip.file(safeName, bytes, { binary: true });
+
+    onProgress?.(
+      Math.min(50, Math.round(((idx + 1) / filesArray.length) * 50)),
+      `Added ${safeName} (${idx + 1} of ${filesArray.length})...`
+    );
+  }
+
+  const compressionLevel =
+    options.compressionLevel === 'high' ? 9 : options.compressionLevel === 'low' ? 1 : 6;
+
+  return zip.generateAsync(
+    {
+      type: 'uint8array',
+      compression: 'DEFLATE',
+      compressionOptions: { level: compressionLevel },
+    },
+    (metadata) => {
+      onProgress?.(
+        Math.min(99, 50 + Math.round(metadata.percent * 0.5)),
+        `Packaging ZIP archive (${Math.round(metadata.percent)}%)...`
+      );
+    }
+  );
 }
 
 function normalizeRotation(angle: number): 0 | 90 | 180 | 270 {
@@ -996,12 +1119,13 @@ interface PdfjsDocument {
 }
 
 interface PdfjsPage {
-  getViewport(params: { scale: number }): { width: number; height: number };
-  render(params: { canvasContext: CanvasRenderingContext2D | OffscreenCanvasRenderingContext2D; viewport: { width: number; height: number } }): { promise: Promise<void> };
+  rotate?: number;
+  getViewport(params: { scale: number; rotation?: number }): { width: number; height: number };
+  render(params: { canvasContext: CanvasRenderingContext2D | OffscreenCanvasRenderingContext2D; viewport: { width: number; height: number }; canvasFactory?: unknown }): { promise: Promise<void> };
   cleanup(): void;
 }
 
-type PdfJsModule = typeof import('pdfjs-dist/legacy/build/pdf');
+type PdfJsModule = typeof import('pdfjs-dist');
 let pdfjsLibPromise: Promise<PdfJsModule> | null = null;
 const pdfDocumentCache = new WeakMap<File, Promise<PdfjsDocument>>();
 const thumbnailCache = new WeakMap<File, Map<string, string>>();
@@ -1012,10 +1136,9 @@ const PAGE_SIZE_MAP: Record<'a4' | 'letter', { width: number; height: number }> 
 };
 
 async function getPdfJsLib(): Promise<PdfJsModule> {
-  if (typeof window === 'undefined') throw new Error('PDF.js can only be used in the browser');
   if (!pdfjsLibPromise) {
-    pdfjsLibPromise = import('pdfjs-dist/legacy/build/pdf').then((module) => {
-      if (!module.GlobalWorkerOptions.workerSrc) {
+    pdfjsLibPromise = import('pdfjs-dist/legacy/build/pdf.mjs').then((module) => {
+      if (typeof window !== 'undefined' && !module.GlobalWorkerOptions.workerSrc) {
         module.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
       }
       return module;
@@ -1032,7 +1155,7 @@ async function getCachedPdfDocument(fileOrData: File | ArrayBuffer | Uint8Array)
       const pdfjsLib = await getPdfJsLib();
       const data = fileOrData instanceof File ? await fileOrData.arrayBuffer() : fileOrData;
       // Use absolute URLs for CMap/font loading
-      const baseUrl = typeof window !== 'undefined' ? window.location.origin : self.location.origin;
+      const baseUrl = typeof window !== 'undefined' ? window.location.origin : typeof self !== 'undefined' && self.location ? self.location.origin : '';
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const isInWorker = typeof (globalThis as any).importScripts === 'function';
       const loadingTask = pdfjsLib.getDocument({
@@ -1159,14 +1282,15 @@ export async function convertImagesToPdf(files: File[], options: PDFProcessingOp
 // Canvas factory for PDF.js in worker environment
 const workerCanvasFactory = {
   create: function (width: number, height: number) {
-    if (width <= 0 || height <= 0) throw new Error('Invalid canvas size');
+    const safeW = Math.max(1, Math.ceil(width || 1));
+    const safeH = Math.max(1, Math.ceil(height || 1));
     let canvas: HTMLCanvasElement | OffscreenCanvas;
     if (typeof OffscreenCanvas !== 'undefined') {
-      canvas = new OffscreenCanvas(width, height);
+      canvas = new OffscreenCanvas(safeW, safeH);
     } else if (typeof document !== 'undefined') {
       canvas = document.createElement('canvas'); // SAFE
-      canvas.width = width;
-      canvas.height = height;
+      canvas.width = safeW;
+      canvas.height = safeH;
     } else {
       throw new Error('Canvas not supported');
     }
@@ -1174,39 +1298,116 @@ const workerCanvasFactory = {
     return { canvas, context };
   },
   reset: function (canvasAndContext: { canvas: HTMLCanvasElement | OffscreenCanvas; context: CanvasRenderingContext2D | OffscreenCanvasRenderingContext2D }, width: number, height: number) {
-    canvasAndContext.canvas.width = width;
-    canvasAndContext.canvas.height = height;
+    if (canvasAndContext?.canvas) {
+      canvasAndContext.canvas.width = Math.max(1, Math.ceil(width || 1));
+      canvasAndContext.canvas.height = Math.max(1, Math.ceil(height || 1));
+    }
   },
   destroy: function (canvasAndContext: { canvas: HTMLCanvasElement | OffscreenCanvas | null; context: CanvasRenderingContext2D | OffscreenCanvasRenderingContext2D | null }) {
-    canvasAndContext.canvas = null;
-    canvasAndContext.context = null;
+    if (canvasAndContext) {
+      canvasAndContext.canvas = null;
+      canvasAndContext.context = null;
+    }
   },
 };
 
 
-export async function convertPdfToImages(fileOrData: File | ArrayBuffer | Uint8Array, options: PDFProcessingOptions = {}): Promise<PdfToImagesArchiveResult> {
+export async function convertPdfToImages(
+  fileOrData: File | ArrayBuffer | Uint8Array,
+  options: PDFProcessingOptions = {},
+  onProgress?: (progress: number, status: string) => void
+): Promise<PdfToImagesArchiveResult> {
   const doc = await getCachedPdfDocument(fileOrData);
-  const scale = (options.imageRenderDpi ?? 144) / 72;
+  const rawDpi =
+    typeof options.imageRenderDpi === 'number' && !isNaN(options.imageRenderDpi)
+      ? options.imageRenderDpi
+      : Number(options.imageRenderDpi) || 144;
+  const dpi = Math.max(36, Math.min(600, rawDpi));
+  const scale = dpi / 72;
   const extension = (options.imageOutputFormat ?? 'png') === 'png' ? 'png' : 'jpg';
+  const mimeType = extension === 'jpg' ? 'image/jpeg' : 'image/png';
+  const quality =
+    typeof options.imageOutputQuality === 'number' && !isNaN(options.imageOutputQuality)
+      ? Math.min(Math.max(options.imageOutputQuality, 0.1), 1.0)
+      : 0.92;
+
+  const base = sanitizeFileBaseName(
+    options.imageBaseName ??
+      (fileOrData instanceof File ? stripExtension(fileOrData.name) : 'ihatelovepdf')
+  );
+
+  // Determine target pages
+  let targetPages: number[] = [];
+  if (options.pagesToExtract && options.pagesToExtract.length > 0) {
+    targetPages = options.pagesToExtract.filter((p) => p >= 1 && p <= doc.numPages);
+  } else if (options.pageRange) {
+    const parts = options.pageRange.split(',').map((s) => s.trim());
+    for (const part of parts) {
+      if (part.includes('-')) {
+        const [start, end] = part.split('-').map((n) => parseInt(n, 10));
+        if (!isNaN(start) && !isNaN(end)) {
+          for (let p = Math.max(1, start); p <= Math.min(doc.numPages, end); p++) {
+            if (!targetPages.includes(p)) targetPages.push(p);
+          }
+        }
+      } else {
+        const p = parseInt(part, 10);
+        if (!isNaN(p) && p >= 1 && p <= doc.numPages && !targetPages.includes(p)) {
+          targetPages.push(p);
+        }
+      }
+    }
+  }
+
+  if (targetPages.length === 0) {
+    for (let i = 1; i <= doc.numPages; i++) {
+      targetPages.push(i);
+    }
+  }
+
+  const isZip = options.bundleAsZip !== false;
+  let zip: InstanceType<typeof import('jszip')> | null = null;
+  if (isZip) {
+    const { default: JSZip } = await import('jszip');
+    zip = new JSZip();
+  }
   const entries: Array<{ name: string; blob: Blob }> = [];
-  const base = sanitizeFileBaseName(options.imageBaseName ?? (fileOrData instanceof File ? stripExtension(fileOrData.name) : 'ihatelovepdf'));
-  for (let i = 1; i <= doc.numPages; i++) {
+
+  for (let idx = 0; idx < targetPages.length; idx++) {
+    const pageNum = targetPages[idx];
     await yieldToMain();
-    const page = await doc.getPage(i);
-    const vp = page.getViewport({ scale });
-    const w = Math.ceil(vp.width);
-    const h = Math.ceil(vp.height);
+
+    onProgress?.(
+      Math.min(85, Math.round(((idx + 1) / targetPages.length) * 85)),
+      `Rendering page ${pageNum} (${idx + 1} of ${targetPages.length})...`
+    );
+
+    const page = await doc.getPage(pageNum);
+    const vp = page.getViewport({ scale, rotation: page.rotate || 0 });
+    const w = Math.max(1, Math.ceil(vp.width || 595));
+    const h = Math.max(1, Math.ceil(vp.height || 842));
+
     let canvas: HTMLCanvasElement | OffscreenCanvas;
     if (typeof OffscreenCanvas !== 'undefined') {
       canvas = new OffscreenCanvas(w, h);
     } else if (typeof document !== 'undefined') {
       canvas = document.createElement('canvas');
-      canvas.width = w; canvas.height = h;
+      canvas.width = w;
+      canvas.height = h;
     } else {
       throw new Error('Canvas support required for PDF processing');
     }
+
+    if (canvas.width <= 0 || canvas.height <= 0) {
+      throw new Error(
+        `Page ${pageNum} viewport computed invalid dimensions (${canvas.width}x${canvas.height}) — cannot rasterize.`
+      );
+    }
+
     const ctx = canvas.getContext('2d', { alpha: false })! as CanvasRenderingContext2D;
-    ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     await page.render({
       canvasContext: ctx as unknown as CanvasRenderingContext2D,
@@ -1223,54 +1424,110 @@ export async function convertPdfToImages(fileOrData: File | ArrayBuffer | Uint8A
       ctx.lineWidth = scaledWidth;
       ctx.strokeRect(scaledWidth / 2, scaledWidth / 2, w - scaledWidth, h - scaledWidth);
     }
-    const blob = (canvas instanceof OffscreenCanvas) ? await canvas.convertToBlob({ type: `image/${extension === 'jpg' ? 'jpeg' : 'png'}`, quality: options.imageOutputQuality }) : await new Promise<Blob>(r => (canvas as HTMLCanvasElement).toBlob(b => r(b!), `image/${extension === 'jpg' ? 'jpeg' : 'png'}`, options.imageOutputQuality));
-    entries.push({ name: `${base}_${String(i).padStart(String(doc.numPages).length, '0')}.${extension}`, blob });
+
+    let blob: Blob;
+    if (canvas instanceof OffscreenCanvas) {
+      blob =
+        extension === 'jpg'
+          ? await canvas.convertToBlob({ type: mimeType, quality })
+          : await canvas.convertToBlob({ type: mimeType });
+    } else {
+      blob = await new Promise<Blob>((resolve, reject) => {
+        (canvas as HTMLCanvasElement).toBlob(
+          (b) => (b ? resolve(b) : reject(new Error(`Failed to rasterize page ${pageNum} to blob`))),
+          mimeType,
+          extension === 'jpg' ? quality : undefined
+        );
+      });
+    }
+
+    const paddedNum = String(pageNum).padStart(String(doc.numPages).length, '0');
+    const entryName = `${base}_${paddedNum}.${extension}`;
+
+    if (zip) {
+      const buffer = await blob.arrayBuffer();
+      zip.file(entryName, buffer);
+    } else {
+      entries.push({ name: entryName, blob });
+    }
+
     page.cleanup();
   }
-  if (options.bundleAsZip === false) return { kind: 'files', files: entries, imageCount: entries.length, format: options.imageOutputFormat ?? 'png' };
-  const { default: JSZip } = await import('jszip');
-  const zip = new JSZip();
-  entries.forEach(e => zip.file(e.name, e.blob));
-  return { kind: 'zip', blob: await zip.generateAsync({ type: 'blob' }), imageCount: entries.length, format: options.imageOutputFormat ?? 'png', suggestedName: `${base}_${extension}.zip` };
+
+  if (!zip) {
+    return {
+      kind: 'files',
+      files: entries,
+      imageCount: entries.length,
+      format: options.imageOutputFormat ?? 'png',
+    };
+  }
+
+  const zipBlob = await zip.generateAsync({ type: 'blob' }, (metadata) => {
+    onProgress?.(
+      Math.min(99, 85 + Math.round(metadata.percent * 0.14)),
+      `Building ZIP archive (${Math.round(metadata.percent)}%)...`
+    );
+  });
+
+  return {
+    kind: 'zip',
+    blob: zipBlob,
+    imageCount: targetPages.length,
+    format: options.imageOutputFormat ?? 'png',
+    suggestedName: `${base}_${extension}.zip`,
+  };
 }
 
 export async function renderPDFThumbnail(file: File, pageNumber: number, targetWidth = 160): Promise<string> {
   const cache = getThumbnailCache(file);
-  const resolvedTargetWidth = Math.max(1, Math.round(targetWidth));
+  const resolvedTargetWidth = Math.max(32, Math.min(600, targetWidth));
   const cacheKey = `${pageNumber}_${resolvedTargetWidth}`;
   if (cache.has(cacheKey)) return cache.get(cacheKey)!;
   try {
     const doc = await getCachedPdfDocument(file);
     const page = await doc.getPage(pageNumber);
     const viewportAtScaleOne = page.getViewport({ scale: 1 });
-    const vp = page.getViewport({ scale: resolvedTargetWidth / viewportAtScaleOne.width });
+    const scale = viewportAtScaleOne.width > 0 ? resolvedTargetWidth / viewportAtScaleOne.width : 1;
+    const vp = page.getViewport({ scale, rotation: page.rotate || 0 });
+    const w = Math.max(1, Math.ceil(vp.width || resolvedTargetWidth));
+    const h = Math.max(1, Math.ceil(vp.height || resolvedTargetWidth * 1.414));
+
     let canvas: HTMLCanvasElement | OffscreenCanvas;
     if (typeof OffscreenCanvas !== 'undefined') {
-      canvas = new OffscreenCanvas(vp.width, vp.height);
+      canvas = new OffscreenCanvas(w, h);
     } else if (typeof document !== 'undefined') {
       canvas = document.createElement('canvas');
-      canvas.width = vp.width; canvas.height = vp.height;
+      canvas.width = w;
+      canvas.height = h;
     } else {
       return FALLBACK_THUMBNAIL;
     }
-    canvas.width = vp.width; canvas.height = vp.height;
+
     const ctx = canvas.getContext('2d')! as CanvasRenderingContext2D;
-    ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, w, h);
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     await page.render({
       canvasContext: ctx as unknown as CanvasRenderingContext2D,
       viewport: vp,
-      canvasFactory: workerCanvasFactory
+      canvasFactory: workerCanvasFactory,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } as any).promise;
 
-    // Convert to Data URL (OffscreenCanvas needs hack or FileReader)
+    if (canvas.width <= 0 || canvas.height <= 0) {
+      return FALLBACK_THUMBNAIL;
+    }
+
+    // Convert to Data URL (OffscreenCanvas needs FileReader)
     let url: string;
     if (canvas instanceof OffscreenCanvas) {
       const blob = await canvas.convertToBlob({ type: 'image/png' });
       url = await new Promise<string>((resolve) => {
         const reader = new FileReader();
-        reader.onloadend = () => resolve(reader.result as string);
+        reader.onloadend = () => resolve((reader.result as string) || FALLBACK_THUMBNAIL);
+        reader.onerror = () => resolve(FALLBACK_THUMBNAIL);
         reader.readAsDataURL(blob);
       });
     } else {

@@ -12,11 +12,8 @@ import {
   applyWatermarkToPdf,
   addPageNumbersToPdf,
   addHeadersFootersToPdf,
-  flattenPdf,
-  sanitizePdfMetadata,
-  encryptPdf,
   decryptPdf,
-  repairPdf,
+  pdfToZip,
   ProcessingResult,
 } from '../lib/pdf-operations';
 
@@ -53,6 +50,10 @@ if (typeof self !== 'undefined') {
 self.onmessage = async (e: MessageEvent) => {
   const { id, mode, files, options } = e.data;
 
+  const reportProgress = (progress: number, statusMessage: string) => {
+    self.postMessage({ id, progress, statusMessage });
+  };
+
   try {
     let result: unknown;
 
@@ -82,7 +83,10 @@ self.onmessage = async (e: MessageEvent) => {
         result = await getPDFPageCount(files[0]);
         break;
       case 'pdfToImages':
-        result = await convertPdfToImages(files[0], options);
+        result = await convertPdfToImages(files[0], options, reportProgress);
+        break;
+      case 'pdfToZip':
+        result = await pdfToZip(files, options, reportProgress);
         break;
       case 'imagesToPdf':
         result = await convertImagesToPdf(files, options);
@@ -96,41 +100,31 @@ self.onmessage = async (e: MessageEvent) => {
       case 'headersFooters':
         result = await addHeadersFootersToPdf(files[0], options.headersFooters || {});
         break;
-      case 'flatten':
-        result = await flattenPdf(files[0], options.flatten || {});
-        break;
-      case 'sanitizeMetadata':
-        result = await sanitizePdfMetadata(files[0]);
-        break;
-      case 'encrypt':
-      case 'lockPdf':
-        result = await encryptPdf(files[0], options.userPassword, options.ownerPassword);
-        break;
       case 'decrypt':
       case 'unlockPdf':
         result = await decryptPdf(files[0], options.decryptionPassword || options.password);
-        break;
-      case 'repair':
-        result = await repairPdf(files[0]);
         break;
       default:
         throw new Error(`Unsupported mode in worker: ${mode}`);
     }
 
-    // Zero-copy Transferable objects
+    // Transferable optimization:
+    // IMPORTANT: Do NOT add a Uint8Array's .buffer to the transfer list if that same
+    // Uint8Array is also being sent as `result`. Transferring detaches the underlying
+    // ArrayBuffer in-place, making result.buffer.byteLength === 0 on the main thread
+    // before createPdfBlob() can slice it — producing empty/blank PDF outputs.
+    //
+    // Safe rule: only transfer standalone ArrayBuffer objects, or ProcessingResult.data
+    // buffers (accessed by named key after the message lands, not by .buffer reference
+    // on the Uint8Array itself).
     const transfer: Transferable[] = [];
 
-    if (result instanceof Uint8Array) {
-      transfer.push(result.buffer);
-    } else if (result && typeof result === 'object' && 'data' in result && (result as ProcessingResult).data instanceof Uint8Array) {
+    if (result && typeof result === 'object' && 'data' in result && (result as ProcessingResult).data instanceof Uint8Array) {
+      // ProcessingResult shape — main thread accesses .data directly, safe to transfer
       transfer.push((result as ProcessingResult).data.buffer);
-    } else if (Array.isArray(result)) {
-      result.forEach((item) => {
-        if (item instanceof Uint8Array) {
-          transfer.push(item.buffer);
-        }
-      });
     }
+    // Uint8Array and Uint8Array[] results are NOT transferred — structured clone is used
+    // so createPdfBlob() receives a valid, non-detached buffer on the main thread.
 
     (self as unknown as Worker).postMessage({ id, success: true, result }, transfer);
   } catch (error: unknown) {

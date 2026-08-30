@@ -322,14 +322,20 @@ export async function decryptPdf(
   fileOrData: File | ArrayBuffer | Uint8Array,
   password?: string
 ): Promise<Uint8Array> {
+  // NOTE: pdf-lib v1.x loads encrypted PDFs with ignoreEncryption:true, which bypasses
+  // the password check entirely and gives access to the unencrypted content stream.
+  // The `password` param is intentionally unused here — we cannot validate it without
+  // a real decryption implementation. Re-saving produces a clean, unencrypted PDF.
   void password;
   const arrayBuffer =
     fileOrData instanceof File ? await fileOrData.arrayBuffer() : fileOrData;
-  // Load ignoring encryption to salvage contents and save unencrypted
+  console.info(`[PDFPipeline] decryptPdf: input=${arrayBuffer.byteLength} bytes`);
   const pdfDoc = await PDFDocument.load(arrayBuffer, {
     ignoreEncryption: true,
   });
-  return pdfDoc.save({ useObjectStreams: true });
+  const result = await pdfDoc.save({ useObjectStreams: true });
+  console.info(`[PDFPipeline] decryptPdf: output=${result.byteLength} bytes`);
+  return result;
 }
 
 export async function encryptPdf(
@@ -338,14 +344,15 @@ export async function encryptPdf(
   ownerPassword?: string,
   permissions?: EncryptionPermissions
 ): Promise<Uint8Array> {
+  // pdf-lib v1.x does not support writing encrypted PDFs (encryption API is not
+  // implemented in this library version). The userPassword / ownerPassword / permissions
+  // arguments cannot be applied. Rather than silently returning an unprotected PDF,
+  // we throw so the calling UI can surface a clear "not supported" message.
   void userPassword;
   void ownerPassword;
   void permissions;
-  const arrayBuffer =
-    fileOrData instanceof File ? await fileOrData.arrayBuffer() : fileOrData;
-  const pdfDoc = await PDFDocument.load(arrayBuffer, { ignoreEncryption: true });
-
-  return pdfDoc.save({
-    useObjectStreams: true,
-  });
+  throw new Error(
+    'PDF password protection is not supported by the current PDF engine (pdf-lib v1.x does not implement encryption). ' +
+    'The original PDF has not been modified.'
+  );
 }

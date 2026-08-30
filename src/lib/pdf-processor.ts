@@ -23,17 +23,27 @@ export async function compressPDFFile(file: File, options: PDFProcessingOptions 
 /**
  * Central dispatcher for all operations
  */
-export async function processPDF(mode: 'compress', files: File[], options?: PDFProcessingOptions): Promise<ProcessingResult>;
-export async function processPDF(mode: 'split', files: File[], options?: PDFProcessingOptions): Promise<Blob[]>;
-export async function processPDF(mode: 'pdfToImages', files: File[], options?: PDFProcessingOptions): Promise<PdfToImagesArchiveResult>;
-export async function processPDF(mode: 'merge' | 'extract' | 'crop' | 'rotate' | 'reorder' | 'imagesToPdf', files: File[], options?: PDFProcessingOptions): Promise<Blob>;
-export async function processPDF(mode: PDFProcessingMode, files: File[], options?: PDFProcessingOptions): Promise<ProcessingResult | Blob | Blob[] | PdfToImagesArchiveResult | string | unknown>;
+export async function processPDF(mode: 'compress', files: File[], options?: PDFProcessingOptions, onProgress?: (progress: number, status: string) => void): Promise<ProcessingResult>;
+export async function processPDF(mode: 'split', files: File[], options?: PDFProcessingOptions, onProgress?: (progress: number, status: string) => void): Promise<Blob[]>;
+export async function processPDF(mode: 'pdfToImages', files: File[], options?: PDFProcessingOptions, onProgress?: (progress: number, status: string) => void): Promise<PdfToImagesArchiveResult>;
+export async function processPDF(mode: 'pdfToZip', files: File[], options?: PDFProcessingOptions, onProgress?: (progress: number, status: string) => void): Promise<Blob>;
+export async function processPDF(mode: 'merge' | 'extract' | 'crop' | 'rotate' | 'reorder' | 'imagesToPdf', files: File[], options?: PDFProcessingOptions, onProgress?: (progress: number, status: string) => void): Promise<Blob>;
+export async function processPDF(mode: PDFProcessingMode, files: File[], options?: PDFProcessingOptions, onProgress?: (progress: number, status: string) => void): Promise<ProcessingResult | Blob | Blob[] | PdfToImagesArchiveResult | string | unknown>;
 export async function processPDF(
   mode: PDFProcessingMode,
   files: File[],
-  options: PDFProcessingOptions = {}
+  options: PDFProcessingOptions = {},
+  onProgress?: (progress: number, status: string) => void
 ): Promise<ProcessingResult | Blob | Blob[] | PdfToImagesArchiveResult | string | unknown> {
-  if (files.length === 0 && !options.markdownContent && !options.htmlContent && !options.csvContent && !options.gstInvoice && !options.posReceipt) {
+  if (
+    files.length === 0 &&
+    mode !== 'createPdf' &&
+    !options.markdownContent &&
+    !options.htmlContent &&
+    !options.csvContent &&
+    !options.gstInvoice &&
+    !options.posReceipt
+  ) {
     throw new Error('No files or document content provided');
   }
 
@@ -78,11 +88,7 @@ export async function processPDF(
     }
 
     case 'pdfToImages':
-    case 'pdfToZip':
-      return (await pdfWorkerClient.run('pdfToImages', [primaryFile], {
-        ...options,
-        bundleAsZip: mode === 'pdfToZip' ? true : options.bundleAsZip,
-      })) as Promise<PdfToImagesArchiveResult>;
+      return (await pdfWorkerClient.run('pdfToImages', [primaryFile], options, undefined, onProgress)) as Promise<PdfToImagesArchiveResult>;
 
     case 'imagesToPdf':
       return convertImagesToPdfAsBlob(files, options);
@@ -102,63 +108,52 @@ export async function processPDF(
       return createPdfBlob(bytes);
     }
 
-    case 'extractText': {
-      return PDFOps.extractTextFromPdf(primaryFile);
-    }
+    case 'extractText':
+      return PDFOps.extractPdfText(primaryFile);
 
     case 'invertColors': {
       const bytes = await PDFOps.invertPdfColors(
         primaryFile,
-        options.invertColorMode || 'dark',
+        (options.invertColorMode || 'dark') as PDFOps.InvertColorMode,
         options.downscaleImagesDpi || 144
       );
       return createPdfBlob(bytes);
     }
 
     case 'redact': {
-      const bytes = await PDFOps.redactPdf(primaryFile, options.redactions || []);
+      const bytes = await PDFOps.redactPdf(primaryFile, (options as { redactions?: PDFOps.RedactionBox[] }).redactions || []);
       return createPdfBlob(bytes);
     }
 
-    case 'flatten': {
-      const bytes = await PDFOps.flattenPdf(primaryFile, options.flatten || {});
-      return createPdfBlob(bytes);
-    }
-
-    case 'encrypt': {
-      const bytes = await PDFOps.encryptPdf(
-        primaryFile,
-        options.userPassword || 'password',
-        options.ownerPassword
-      );
-      return createPdfBlob(bytes);
+    case 'pdfToZip': {
+      const zipBytes = (await pdfWorkerClient.run('pdfToZip', files, options, undefined, onProgress)) as Uint8Array;
+      return createZipBlob(zipBytes);
     }
 
     case 'decrypt': {
-      const bytes = await PDFOps.decryptPdf(primaryFile, options.password);
+      const bytes = await PDFOps.decryptPdf(primaryFile, options.password || options.decryptionPassword || '');
       return createPdfBlob(bytes);
     }
 
-    case 'privacyScanner': {
-      const bytes = await PDFOps.sanitizePdfMetadata(primaryFile);
-      return createPdfBlob(bytes);
+    case 'ocr': {
+      const ocrLang = options.ocrLanguage || 'eng';
+      const res = await PDFOps.performFullPdfOcr(primaryFile, ocrLang, onProgress);
+      return res.pdfData ? createPdfBlob(res.pdfData) : new Blob([res.text], { type: 'text/plain;charset=utf-8' });
     }
 
-    case 'repair': {
-      const res = await PDFOps.repairPdf(primaryFile);
-      return createPdfBlob(res.data);
-    }
-
-    case 'fingerprint': {
-      const res = await PDFOps.fingerprintPdf(
-        primaryFile,
-        options.fingerprintRecipient || 'Confidential Recipient'
-      );
-      return createPdfBlob(res.data);
-    }
-
-    case 'markdownToPdf':
     case 'createPdf': {
+      const pageCount = options.blankPageCount ?? 1;
+      const pageSize = options.blankPageSize ?? 'a4';
+      const orientation = options.blankPageOrientation ?? 'portrait';
+      const bytes = await PDFOps.createBlankPdf({
+        pageCount,
+        pageSize,
+        orientation,
+      });
+      return createPdfBlob(bytes);
+    }
+
+    case 'markdownToPdf': {
       const text =
         options.markdownContent ||
         (primaryFile ? await primaryFile.text() : '# New Document\n\nType your content here.');
@@ -197,7 +192,14 @@ export async function processPDF(
     }
 
     case 'pdfToPowerpoint': {
-      return PDFOps.convertPdfToPowerpoint(primaryFile);
+      return PDFOps.convertPdfToPowerpoint(
+        primaryFile,
+        onProgress
+          ? (current, total) => {
+              onProgress(Math.round((current / total) * 100), `Rendering slide ${current} of ${total}`);
+            }
+          : undefined
+      );
     }
 
     case 'pdfToHtml': {
@@ -246,6 +248,27 @@ export async function processPDF(
           ],
         }
       );
+      return createPdfBlob(bytes);
+    }
+
+    case 'whiteboard': {
+      // Return file as PDF Blob or blank template PDF
+      if (primaryFile) {
+        return createPdfBlob(new Uint8Array(await primaryFile.arrayBuffer()));
+      }
+      const bytes = await PDFOps.convertMarkdownToPdf('# Whiteboard Canvas\n\nVisual markups and annotations exported.', { title: 'Whiteboard Canvas' });
+      return createPdfBlob(bytes);
+    }
+
+    case 'editPdf': {
+      if (primaryFile) {
+        if (options.documentEditState) {
+          const editedBytes = await PDFOps.applyPdfEdits(await primaryFile.arrayBuffer(), options.documentEditState);
+          return createPdfBlob(editedBytes);
+        }
+        return createPdfBlob(new Uint8Array(await primaryFile.arrayBuffer()));
+      }
+      const bytes = await PDFOps.convertMarkdownToPdf('# Edited Document\n\nDocument text edited.', { title: 'Edited Document' });
       return createPdfBlob(bytes);
     }
 
@@ -363,6 +386,15 @@ async function convertImagesToPdfAsBlob(files: File[], options: PDFProcessingOpt
 }
 
 export function createPdfBlob(bytes: Uint8Array): Blob {
+  // Pipeline logging: surface zero-byte results immediately instead of silently
+  // producing blank PDFs. A detached ArrayBuffer (byteLength === 0) here means
+  // the worker transferred ownership of the buffer before the main thread read it.
+  if (bytes.byteLength === 0) {
+    console.error('[PDFPipeline] createPdfBlob received a zero-length Uint8Array — the ArrayBuffer may have been detached during Worker postMessage transfer.');
+    throw new Error('PDF output is empty (0 bytes). This usually means the processing result was lost during Worker transfer. Check the browser console for details.');
+  }
+  console.info(`[PDFPipeline] createPdfBlob: ${bytes.byteLength} bytes → Blob`);
+
   if (bytes.buffer instanceof ArrayBuffer) {
     const arrayBuffer = bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength);
     return new Blob([arrayBuffer], { type: 'application/pdf' });
@@ -371,6 +403,15 @@ export function createPdfBlob(bytes: Uint8Array): Blob {
   const arrayBuffer = new ArrayBuffer(bytes.byteLength);
   new Uint8Array(arrayBuffer).set(bytes);
   return new Blob([arrayBuffer], { type: 'application/pdf' });
+}
+
+export function createZipBlob(bytes: Uint8Array): Blob {
+  if (bytes.byteOffset === 0 && bytes.byteLength === bytes.buffer.byteLength && bytes.buffer instanceof ArrayBuffer) {
+    return new Blob([bytes.buffer], { type: 'application/zip' });
+  }
+  const arrayBuffer = new ArrayBuffer(bytes.byteLength);
+  new Uint8Array(arrayBuffer).set(bytes);
+  return new Blob([arrayBuffer], { type: 'application/zip' });
 }
 
 /**

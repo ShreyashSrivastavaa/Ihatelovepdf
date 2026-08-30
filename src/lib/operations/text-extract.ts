@@ -8,14 +8,13 @@ export interface ExtractedTextResult {
   needsOcr?: boolean;
 }
 
-type PdfJsModule = typeof import('pdfjs-dist/legacy/build/pdf');
+type PdfJsModule = typeof import('pdfjs-dist');
 let pdfjsLibPromise: Promise<PdfJsModule> | null = null;
 
 async function getPdfJs(): Promise<PdfJsModule> {
-  if (typeof window === 'undefined') throw new Error('PDF text extraction requires browser environment');
   if (!pdfjsLibPromise) {
-    pdfjsLibPromise = import('pdfjs-dist/legacy/build/pdf').then((m) => {
-      if (!m.GlobalWorkerOptions.workerSrc) {
+    pdfjsLibPromise = import('pdfjs-dist/legacy/build/pdf.mjs').then((m) => {
+      if (typeof window !== 'undefined' && !m.GlobalWorkerOptions.workerSrc) {
         m.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
       }
       return m;

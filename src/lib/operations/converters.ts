@@ -1,34 +1,118 @@
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
-import * as XLSX from 'xlsx';
 import JSZip from 'jszip';
 
 import type pptxgen from 'pptxgenjs';
 
-type PdfJsModule = typeof import('pdfjs-dist/legacy/build/pdf');
+type PdfJsModule = typeof import('pdfjs-dist');
 type PptxConstructor = new () => pptxgen;
+type XlsxModule = typeof import('xlsx');
 
 let pdfjsLibPromise: Promise<PdfJsModule> | null = null;
 let pptxGenPromise: Promise<PptxConstructor> | null = null;
+let xlsxPromise: Promise<XlsxModule> | null = null;
+
+/**
+ * Sanitizes arbitrary unicode strings into valid WinAnsi / Latin-1 encoding compatible with standard PDF fonts
+ */
+export function sanitizeForWinAnsi(text: string): string {
+  if (!text) return '';
+  return text
+    // Replace null and replacement characters
+    .replace(/[\u0000\uFFFD]/g, '')
+    // Replace smart quotes and apostrophes with standard ASCII quotes
+    .replace(/[\u2018\u2019\u201A\u201B]/g, "'")
+    .replace(/[\u201C\u201D\u201E\u201F]/g, '"')
+    // Replace various unicode dashes and hyphens with standard ASCII hyphen
+    .replace(/[\u2010\u2011\u2012\u2013\u2014\u2015\u2212]/g, '-')
+    // Replace bullets and list markers with standard dash
+    .replace(/[\u2022\u2023\u25E6\u2043\u2219\u25CB\u25CF\u25AA\u25AB]/g, '-')
+    // Replace ellipsis
+    .replace(/\u2026/g, '...')
+    // Replace non-breaking spaces and zero-width spaces with standard space
+    .replace(/[\u00A0\u2000-\u200B\u202F\u205F\u3000\uFEFF]/g, ' ')
+    // Replace remaining non-WinAnsi characters
+    .replace(/[^\x00-\xFF]/g, (ch) => {
+      // Try decomposing accented characters to base ASCII
+      const normalized = ch.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      return normalized && normalized.length === 1 && normalized.charCodeAt(0) <= 0xff
+        ? normalized
+        : ' ';
+    });
+}
+
+async function getXlsx(): Promise<XlsxModule> {
+  if (!xlsxPromise) {
+    xlsxPromise = import('xlsx').then((m) => (m.default || m) as XlsxModule);
+  }
+  return xlsxPromise;
+}
 
 async function getPptxGen(): Promise<PptxConstructor> {
-  if (typeof window === 'undefined') throw new Error('PPTX generation requires browser environment');
   if (!pptxGenPromise) {
-    pptxGenPromise = import('pptxgenjs').then((m) => (m.default || m) as PptxConstructor);
+    pptxGenPromise = import('pptxgenjs').then((m) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const mod = m as any;
+      if (typeof mod.default === 'function') {
+        return mod.default;
+      }
+      if (mod.default && typeof mod.default.default === 'function') {
+        return mod.default.default;
+      }
+      if (typeof mod === 'function') {
+        return mod;
+      }
+      return (mod.default || mod) as PptxConstructor;
+    });
   }
   return pptxGenPromise;
 }
 
 async function getPdfJs(): Promise<PdfJsModule> {
-  if (typeof window === 'undefined') throw new Error('PDF conversions require browser environment');
   if (!pdfjsLibPromise) {
-    pdfjsLibPromise = import('pdfjs-dist/legacy/build/pdf').then((m) => {
-      if (!m.GlobalWorkerOptions.workerSrc) {
+    pdfjsLibPromise = import('pdfjs-dist/legacy/build/pdf.mjs').then((m) => {
+      if (typeof window !== 'undefined' && !m.GlobalWorkerOptions.workerSrc) {
         m.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
       }
       return m;
     });
   }
   return pdfjsLibPromise;
+}
+
+export type BlankPdfPageSize = 'a4' | 'letter' | 'legal' | 'a3' | 'a5';
+export type BlankPdfOrientation = 'portrait' | 'landscape';
+
+export const BLANK_PAGE_DIMENSIONS: Record<BlankPdfPageSize, [number, number]> = {
+  a4: [595.28, 841.89],
+  letter: [612.0, 792.0],
+  legal: [612.0, 1008.0],
+  a3: [841.89, 1190.55],
+  a5: [419.53, 595.28],
+};
+
+/**
+ * Creates a completely blank PDF document with the requested page count, size, and orientation.
+ * Contains genuinely blank pages with zero text, fonts, or images.
+ */
+export async function createBlankPdf(options: {
+  pageCount?: number;
+  pageSize?: BlankPdfPageSize;
+  orientation?: BlankPdfOrientation;
+} = {}): Promise<Uint8Array> {
+  const count = Math.min(500, Math.max(1, Math.floor(options.pageCount || 1)));
+  const sizeKey = options.pageSize || 'a4';
+  const orientation = options.orientation || 'portrait';
+
+  const [baseW, baseH] = BLANK_PAGE_DIMENSIONS[sizeKey] || BLANK_PAGE_DIMENSIONS.a4;
+  const [pageWidth, pageHeight] = orientation === 'landscape' ? [baseH, baseW] : [baseW, baseH];
+
+  const pdfDoc = await PDFDocument.create();
+
+  for (let i = 0; i < count; i++) {
+    pdfDoc.addPage([pageWidth, pageHeight]);
+  }
+
+  return pdfDoc.save({ useObjectStreams: true });
 }
 
 // -------------------------------------------------------------
@@ -43,6 +127,7 @@ export async function convertCsvToPdf(
     orientation?: 'portrait' | 'landscape';
   } = {}
 ): Promise<Uint8Array> {
+  const XLSX = await getXlsx();
   const workbook = XLSX.read(csvText, { type: 'string', raw: true });
   const firstSheetName = workbook.SheetNames[0];
   const sheet = workbook.Sheets[firstSheetName];
@@ -62,6 +147,7 @@ export async function convertExcelToPdf(
     orientation?: 'portrait' | 'landscape';
   } = {}
 ): Promise<Uint8Array> {
+  const XLSX = await getXlsx();
   const data = fileOrData instanceof File ? await fileOrData.arrayBuffer() : fileOrData;
   const workbook = XLSX.read(data, { type: 'array' });
   const sheetName = options.sheetName || workbook.SheetNames[0];
@@ -109,7 +195,7 @@ async function renderTableRowsToPdf(
 
   // Title
   if (options.title) {
-    currentPage.drawText(options.title, {
+    currentPage.drawText(sanitizeForWinAnsi(options.title), {
       x: margin,
       y: currentY - 14,
       size: 16,
@@ -155,7 +241,7 @@ async function renderTableRowsToPdf(
     });
 
     for (let c = 0; c < colCount; c++) {
-      const cellText = String(row[c] ?? '').trim();
+      const cellText = sanitizeForWinAnsi(String(row[c] ?? '').trim());
       const cellFont = isHeader ? boldFont : font;
       const cellColor = isHeader ? rgb(0.1, 0.1, 0.15) : rgb(0.2, 0.2, 0.25);
 
@@ -190,6 +276,7 @@ export async function convertPdfToExcel(
   fileOrData: File | ArrayBuffer | Uint8Array
 ): Promise<Blob> {
   const pdfjs = await getPdfJs();
+  const XLSX = await getXlsx();
   const data = fileOrData instanceof File ? await fileOrData.arrayBuffer() : fileOrData;
   const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
 
@@ -304,56 +391,134 @@ export async function convertPdfToExcel(
 // -------------------------------------------------------------
 // 4. PDF -> PowerPoint (.pptx)
 // -------------------------------------------------------------
+// 4. PDF -> PowerPoint (.pptx)
+// -------------------------------------------------------------
 export async function convertPdfToPowerpoint(
   fileOrData: File | ArrayBuffer | Uint8Array,
   onProgress?: (current: number, total: number) => void
 ): Promise<Blob> {
+  if (typeof window !== 'undefined') {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).JSZip = JSZip;
+  }
+
   const pdfjs = await getPdfJs();
   const data = fileOrData instanceof File ? await fileOrData.arrayBuffer() : fileOrData;
   const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
 
-  const loadingTask = pdfjs.getDocument({
-    data,
-    cMapUrl: `${baseUrl}/cmaps/`,
-    cMapPacked: true,
-    standardFontDataUrl: `${baseUrl}/standard_fonts/`,
-  });
+  let doc;
+  try {
+    const loadingTask = pdfjs.getDocument({
+      data,
+      cMapUrl: `${baseUrl}/cmaps/`,
+      cMapPacked: true,
+      standardFontDataUrl: `${baseUrl}/standard_fonts/`,
+    });
+    doc = await loadingTask.promise;
+  } catch (err: unknown) {
+    const errorObj = err as { name?: string; message?: string };
+    if (errorObj?.name === 'PasswordException') {
+      throw new Error('This PDF is password-protected. Please decrypt it first.');
+    }
+    throw new Error(`Failed to read PDF: ${errorObj?.message || 'Invalid or corrupted PDF document.'}`);
+  }
 
-  const doc = await loadingTask.promise;
+  if (doc.numPages === 0) {
+    throw new Error('The provided PDF document has 0 pages.');
+  }
+
   const PptxGen = await getPptxGen();
   const pptx = new PptxGen();
-  pptx.layout = 'LAYOUT_WIDE'; // 16:9
+
+  // Inspect first page to determine slide aspect ratio
+  try {
+    const firstPage = await doc.getPage(1);
+    const unscaledVp = firstPage.getViewport({ scale: 1.0 });
+    const isPortrait = unscaledVp.height > unscaledVp.width;
+    const isStandard43 = !isPortrait && unscaledVp.width / unscaledVp.height < 1.5;
+
+    if (isPortrait) {
+      // If defineLayout is supported on the instance, register portrait; otherwise fallback to LAYOUT_4x3 or LAYOUT_WIDE
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      if (typeof (pptx as any).defineLayout === 'function') {
+        try {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (pptx as any).defineLayout({ name: 'PORTRAIT_PAGE', width: 8.5, height: 11.0 });
+          pptx.layout = 'PORTRAIT_PAGE';
+        } catch {
+          pptx.layout = 'LAYOUT_WIDE';
+        }
+      } else {
+        pptx.layout = 'LAYOUT_WIDE';
+      }
+    } else if (isStandard43) {
+      pptx.layout = 'LAYOUT_4x3';
+    } else {
+      pptx.layout = 'LAYOUT_WIDE'; // Standard 16:9 widescreen
+    }
+  } catch (layoutErr) {
+    console.warn('Could not inspect initial page dimensions for layout, using standard widescreen:', layoutErr);
+    pptx.layout = 'LAYOUT_WIDE';
+  }
 
   for (let i = 1; i <= doc.numPages; i++) {
     const page = await doc.getPage(i);
-    const vp = page.getViewport({ scale: 2.0 }); // High-res 144 DPI
-    const canvas = document.createElement('canvas');
-    canvas.width = Math.ceil(vp.width);
-    canvas.height = Math.ceil(vp.height);
-    const ctx = canvas.getContext('2d')!;
 
-    ctx.fillStyle = '#ffffff';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    if (typeof document === 'undefined') {
+      const textContent = await page.getTextContent();
+      const text = textContent.items
+        .map((item) => ('str' in item ? (item as { str: string }).str : ''))
+        .filter(Boolean)
+        .join(' ');
+      const slide = pptx.addSlide();
+      slide.addText(text || `Slide ${i}`, { x: 0.5, y: 0.5, w: '90%', h: '80%', fontSize: 16 });
+    } else {
+      const unscaledVp = page.getViewport({ scale: 1.0 });
+      // Crisp 150-200 DPI rendering with bounds to avoid canvas size overflow
+      const renderScale = Math.min(2.5, Math.max(1.5, 1800 / Math.max(unscaledVp.width, unscaledVp.height)));
+      const vp = page.getViewport({ scale: renderScale });
 
-    await page.render({ canvasContext: ctx, viewport: vp, canvas } as Parameters<typeof page.render>[0]).promise;
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.ceil(vp.width);
+      canvas.height = Math.ceil(vp.height);
+      const ctx = canvas.getContext('2d', { willReadFrequently: true });
+      if (!ctx) {
+        throw new Error('Failed to create 2D canvas context for slide rendering.');
+      }
 
-    const dataUrl = canvas.toDataURL('image/jpeg', 0.92);
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    const slide = pptx.addSlide();
-    slide.addImage({
-      data: dataUrl,
-      x: 0,
-      y: 0,
-      w: '100%',
-      h: '100%',
-    });
+      await page.render({
+        canvasContext: ctx,
+        viewport: vp,
+        canvas,
+      } as Parameters<typeof page.render>[0]).promise;
+
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.92);
+
+      const slide = pptx.addSlide();
+      slide.addImage({
+        data: dataUrl,
+        x: 0,
+        y: 0,
+        w: '100%',
+        h: '100%',
+        sizing: { type: 'contain', w: '100%', h: '100%' },
+      });
+    }
 
     page.cleanup();
     if (onProgress) onProgress(i, doc.numPages);
   }
 
-  const pptxBlob = (await pptx.write({ outputType: 'blob' })) as Blob;
-  return pptxBlob;
+  const output = await pptx.write({ outputType: 'blob' });
+  if (output instanceof Blob) {
+    return output;
+  }
+  return new Blob([output as ArrayBuffer], {
+    type: 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+  });
 }
 
 // -------------------------------------------------------------
@@ -363,12 +528,38 @@ export async function convertPowerpointToPdf(
   fileOrData: File | ArrayBuffer | Uint8Array
 ): Promise<Uint8Array> {
   const data = fileOrData instanceof File ? await fileOrData.arrayBuffer() : fileOrData;
-  const zip = await JSZip.loadAsync(data);
+
+  let zip: JSZip;
+  try {
+    zip = await JSZip.loadAsync(data);
+  } catch {
+    throw new Error('Invalid or corrupted PowerPoint presentation file (.pptx).');
+  }
 
   const pdfDoc = await PDFDocument.create();
   const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
   const boldFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
 
+  // 1. Determine slide dimensions from presentation.xml
+  let slideWidth = 960; // default 16:9 widescreen in pt
+  let slideHeight = 540;
+
+  const presFile = zip.file('ppt/presentation.xml');
+  if (presFile) {
+    const presXml = await presFile.async('string');
+    const sldSzMatch = presXml.match(/<p:sldSz[^>]*cx="(\d+)"[^>]*cy="(\d+)"/i);
+    if (sldSzMatch) {
+      const cxEmu = parseInt(sldSzMatch[1], 10);
+      const cyEmu = parseInt(sldSzMatch[2], 10);
+      if (cxEmu > 0 && cyEmu > 0) {
+        // 1 EMU = 1/12700 pt
+        slideWidth = Math.round(cxEmu / 12700);
+        slideHeight = Math.round(cyEmu / 12700);
+      }
+    }
+  }
+
+  // 2. Discover slides in order
   const slideFiles = Object.keys(zip.files)
     .filter((f) => f.startsWith('ppt/slides/slide') && f.endsWith('.xml'))
     .sort((a, b) => {
@@ -378,37 +569,135 @@ export async function convertPowerpointToPdf(
     });
 
   if (slideFiles.length === 0) {
-    const page = pdfDoc.addPage([841.89, 595.28]);
-    page.drawText('Converted Presentation', { x: 50, y: 500, size: 20, font: boldFont });
-    return pdfDoc.save();
+    const page = pdfDoc.addPage([slideWidth, slideHeight]);
+    page.drawText('Converted Presentation', {
+      x: 50,
+      y: slideHeight - 80,
+      size: 24,
+      font: boldFont,
+      color: rgb(0.1, 0.2, 0.4),
+    });
+    return pdfDoc.save({ useObjectStreams: true });
   }
 
-  for (const slidePath of slideFiles) {
+  for (let idx = 0; idx < slideFiles.length; idx++) {
+    const slidePath = slideFiles[idx];
+    const slideNum = idx + 1;
     const xml = await zip.files[slidePath].async('string');
-    const textMatches = Array.from(xml.matchAll(/<a:t>([^<]+)<\/a:t>/g)).map((m) => m[1]);
+    const page = pdfDoc.addPage([slideWidth, slideHeight]);
 
-    const page = pdfDoc.addPage([841.89, 595.28]); // 16:9 Landscape
-    let y = 520;
+    // Check for slide background or embedded images in relations
+    const relsPath = `ppt/slides/_rels/slide${slideNum}.xml.rels`;
+    const relsFile = zip.file(relsPath);
+    if (relsFile) {
+      try {
+        const relsXml = await relsFile.async('string');
+        const mediaMatches = Array.from(
+          relsXml.matchAll(/Target="(?:\.\.\/)?media\/([^"]+)"/g)
+        ).map((m) => m[1]);
 
-    page.drawText(`Slide ${slidePath.replace(/[^\d]/g, '')}`, {
+        for (const mediaName of mediaMatches) {
+          const mediaFile = zip.file(`ppt/media/${mediaName}`);
+          if (mediaFile) {
+            const mediaBytes = await mediaFile.async('uint8array');
+            if (mediaName.endsWith('.png')) {
+              const embeddedImg = await pdfDoc.embedPng(mediaBytes);
+              const imgDims = embeddedImg.scale(Math.min(1.0, (slideWidth * 0.4) / embeddedImg.width));
+              page.drawImage(embeddedImg, {
+                x: slideWidth - imgDims.width - 40,
+                y: 40,
+                width: imgDims.width,
+                height: imgDims.height,
+              });
+            } else if (mediaName.endsWith('.jpg') || mediaName.endsWith('.jpeg')) {
+              const embeddedImg = await pdfDoc.embedJpg(mediaBytes);
+              const imgDims = embeddedImg.scale(Math.min(1.0, (slideWidth * 0.4) / embeddedImg.width));
+              page.drawImage(embeddedImg, {
+                x: slideWidth - imgDims.width - 40,
+                y: 40,
+                width: imgDims.width,
+                height: imgDims.height,
+              });
+            }
+          }
+        }
+      } catch {
+        // Continue if embedded media decoding fails
+      }
+    }
+
+    // Extract text paragraphs and runs
+    const paragraphs: string[] = [];
+    const pRegex = /<a:p>([\s\S]*?)<\/a:p>/g;
+    let pMatch: RegExpExecArray | null;
+
+    while ((pMatch = pRegex.exec(xml)) !== null) {
+      const pContent = pMatch[1];
+      const textPieces = Array.from(pContent.matchAll(/<a:t>([^<]+)<\/a:t>/g)).map(
+        (m) => m[1]
+      );
+      const joined = textPieces.join(' ').trim();
+      if (joined) {
+        paragraphs.push(joined);
+      }
+    }
+
+    let y = slideHeight - 60;
+
+    // Slide Header
+    page.drawText(`Slide ${slideNum}`, {
       x: 50,
       y,
-      size: 14,
+      size: 13,
       font: boldFont,
-      color: rgb(0.1, 0.3, 0.7),
+      color: rgb(0.85, 0.35, 0.15), // Brand accent
     });
-    y -= 30;
+    y -= 35;
 
-    for (const line of textMatches) {
-      if (y < 60) break;
-      page.drawText(line, {
-        x: 60,
-        y,
-        size: 12,
-        font,
-        color: rgb(0.15, 0.15, 0.15),
-      });
-      y -= 22;
+    // Slide title & content paragraphs
+    for (let pIdx = 0; pIdx < paragraphs.length; pIdx++) {
+      if (y < 45) break;
+      const text = sanitizeForWinAnsi(paragraphs[pIdx]);
+      const isTitle = pIdx === 0 && text.length < 80;
+      const fontSize = isTitle ? 18 : 12;
+      const activeFont = isTitle ? boldFont : font;
+      const color = isTitle ? rgb(0.1, 0.15, 0.25) : rgb(0.2, 0.25, 0.3);
+
+      // Simple word wrapping
+      const words = text.split(' ');
+      let currentLine = '';
+      const maxLineWidth = slideWidth * 0.65;
+
+      for (const word of words) {
+        const testLine = currentLine ? `${currentLine} ${word}` : word;
+        const testWidth = activeFont.widthOfTextAtSize(testLine, fontSize);
+        if (testWidth > maxLineWidth) {
+          if (currentLine && y >= 45) {
+            page.drawText(currentLine, {
+              x: isTitle ? 50 : 65,
+              y,
+              size: fontSize,
+              font: activeFont,
+              color,
+            });
+            y -= fontSize + 6;
+          }
+          currentLine = word;
+        } else {
+          currentLine = testLine;
+        }
+      }
+
+      if (currentLine && y >= 45) {
+        page.drawText(currentLine, {
+          x: isTitle ? 50 : 65,
+          y,
+          size: fontSize,
+          font: activeFont,
+          color,
+        });
+        y -= fontSize + (isTitle ? 16 : 8);
+      }
     }
   }
 
@@ -440,7 +729,8 @@ export async function convertMarkdownToPdf(
   let currentPage = pdfDoc.addPage([pageWidth, pageHeight]);
   let currentY = pageHeight - margin;
 
-  const lines = markdownText.split('\n');
+  const cleanMarkdown = sanitizeForWinAnsi(markdownText);
+  const lines = cleanMarkdown.split('\n');
 
   for (const line of lines) {
     if (currentY < margin + 40) {
@@ -451,7 +741,7 @@ export async function convertMarkdownToPdf(
     const trimmed = line.trim();
 
     if (trimmed.startsWith('# ')) {
-      const heading = trimmed.slice(2);
+      const heading = sanitizeForWinAnsi(trimmed.slice(2));
       currentY -= 10;
       currentPage.drawText(heading, {
         x: margin,
@@ -462,7 +752,7 @@ export async function convertMarkdownToPdf(
       });
       currentY -= 28;
     } else if (trimmed.startsWith('## ')) {
-      const heading = trimmed.slice(3);
+      const heading = sanitizeForWinAnsi(trimmed.slice(3));
       currentY -= 6;
       currentPage.drawText(heading, {
         x: margin,
@@ -473,7 +763,7 @@ export async function convertMarkdownToPdf(
       });
       currentY -= 22;
     } else if (trimmed.startsWith('### ')) {
-      const heading = trimmed.slice(4);
+      const heading = sanitizeForWinAnsi(trimmed.slice(4));
       currentPage.drawText(heading, {
         x: margin,
         y: currentY,
@@ -483,9 +773,14 @@ export async function convertMarkdownToPdf(
       });
       currentY -= 18;
     } else if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
-      const item = trimmed.slice(2);
-      currentPage.drawText('•', { x: margin + 8, y: currentY, size: 10, font: boldFont, color: rgb(0.3, 0.3, 0.3) });
-      currentPage.drawText(item, { x: margin + 20, y: currentY, size: 10, font, color: rgb(0.2, 0.2, 0.2) });
+      const item = sanitizeForWinAnsi(trimmed.slice(2));
+      currentPage.drawCircle({
+        x: margin + 8,
+        y: currentY + 3.5,
+        size: 2,
+        color: rgb(0.3, 0.3, 0.35),
+      });
+      currentPage.drawText(item, { x: margin + 18, y: currentY, size: 10, font, color: rgb(0.2, 0.2, 0.2) });
       currentY -= 16;
     } else if (trimmed.startsWith('```')) {
       // Code block card
@@ -502,7 +797,7 @@ export async function convertMarkdownToPdf(
       const cells = trimmed
         .slice(1, -1)
         .split('|')
-        .map((c) => c.trim());
+        .map((c) => sanitizeForWinAnsi(c.trim()));
       if (cells.every((c) => c.match(/^:?-+:?$/))) {
         // Separator line
         currentPage.drawLine({
@@ -526,7 +821,7 @@ export async function convertMarkdownToPdf(
         currentY -= 16;
       }
     } else if (line.startsWith('    ') || line.startsWith('\t')) {
-      currentPage.drawText(trimmed, { x: margin + 12, y: currentY, size: 9, font: monoFont, color: rgb(0.2, 0.3, 0.5) });
+      currentPage.drawText(sanitizeForWinAnsi(trimmed), { x: margin + 12, y: currentY, size: 9, font: monoFont, color: rgb(0.2, 0.3, 0.5) });
       currentY -= 14;
     } else if (trimmed.length === 0) {
       currentY -= 10;
@@ -535,11 +830,14 @@ export async function convertMarkdownToPdf(
       const words = trimmed.split(' ');
       let currentLine = '';
 
-      for (const word of words) {
+      for (const rawWord of words) {
+        const word = sanitizeForWinAnsi(rawWord);
         const testLine = currentLine ? `${currentLine} ${word}` : word;
         if (font.widthOfTextAtSize(testLine, baseFontSize) > contentWidth) {
-          currentPage.drawText(currentLine, { x: margin, y: currentY, size: baseFontSize, font, color: rgb(0.2, 0.2, 0.2) });
-          currentY -= baseFontSize + 4;
+          if (currentLine) {
+            currentPage.drawText(currentLine, { x: margin, y: currentY, size: baseFontSize, font, color: rgb(0.2, 0.2, 0.2) });
+            currentY -= baseFontSize + 4;
+          }
           if (currentY < margin + 40) {
             currentPage = pdfDoc.addPage([pageWidth, pageHeight]);
             currentY = pageHeight - margin;

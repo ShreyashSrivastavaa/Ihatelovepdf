@@ -8,10 +8,11 @@ export interface HeaderFooterOptions {
   footerCenter?: string;
   footerRight?: string;
   margin?: number; // default 25 pt
-  fontSize?: number; // default 9 pt
+  fontSize?: number; // default 10 pt
   color?: string; // hex
   skipFirstPage?: boolean;
   documentTitle?: string;
+  shrinkToFit?: boolean; // Scales and shifts page content down so headers/footers never overlap
 }
 
 function parseHexColor(hex = '#4b5563') {
@@ -71,6 +72,15 @@ export async function addHeadersFootersToPdf(
   pages.forEach((page, index) => {
     if (skipFirst && index === 0) return;
     const { width, height } = page.getSize();
+
+    if (options.shrinkToFit) {
+      // Scale page content down to 92% and translate downwards to guarantee header and footer margins
+      const scaleFactor = 0.92;
+      page.scaleContent(scaleFactor, scaleFactor);
+      const shiftX = (width * (1 - scaleFactor)) / 2;
+      const shiftY = (height * (1 - scaleFactor)) / 2 - 12;
+      page.translateContent(shiftX, shiftY);
+    }
 
     // Top Header
     const topY = height - margin - fontSize;

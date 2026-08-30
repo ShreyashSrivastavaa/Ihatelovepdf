@@ -237,6 +237,14 @@ export async function generateGstInvoicePdf(data: GstInvoiceData): Promise<Uint8
   return pdfDoc.save({ useObjectStreams: true });
 }
 
+export interface PosReceiptItem {
+  name: string;
+  quantity: number;
+  price: number;
+  /** Whole-number GST rate for this line, e.g. 18 for 18%. Omit for untaxed lines. */
+  gstPercent?: number;
+}
+
 export interface PosReceiptData {
   storeName: string;
   storeAddress: string;
@@ -244,15 +252,38 @@ export interface PosReceiptData {
   receiptNumber: string;
   receiptDate?: string;
   cashierName?: string;
-  items: Array<{
-    name: string;
-    quantity: number;
-    price: number;
-  }>;
+  customerName?: string;
+  customerPhone?: string;
+  /** Free-text payment mode, e.g. Cash / Card / UPI. */
+  paymentMode?: string;
+  items: PosReceiptItem[];
   discountPercent?: number;
+  /** When true (default) item prices already include GST and the tax is back-computed. */
+  taxInclusive?: boolean;
   format?: '58mm' | '80mm' | 'a4';
   footerMessage?: string;
 }
+
+/**
+ * StandardFonts use WinAnsi encoding, which cannot represent characters outside
+ * Latin-1 (a typed rupee sign or Devanagari product name would throw during embedding).
+ */
+const toReceiptText = (value: string | undefined): string =>
+  (value || '').replace(/\u20B9/g, 'Rs.').replace(/[^\x20-\x7E\u00A0-\u00FF]/g, '');
+
+const truncateToWidth = (
+  text: string,
+  font: { widthOfTextAtSize: (t: string, s: number) => number },
+  size: number,
+  maxWidth: number
+): string => {
+  if (font.widthOfTextAtSize(text, size) <= maxWidth) return text;
+  let clipped = text;
+  while (clipped.length > 1 && font.widthOfTextAtSize(`${clipped}...`, size) > maxWidth) {
+    clipped = clipped.slice(0, -1);
+  }
+  return `${clipped}...`;
+};
 
 export async function generatePosReceiptPdf(data: PosReceiptData): Promise<Uint8Array> {
   const pdfDoc = await PDFDocument.create();
@@ -260,9 +291,17 @@ export async function generatePosReceiptPdf(data: PosReceiptData): Promise<Uint8
   const boldFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
   const monoFont = await pdfDoc.embedFont(StandardFonts.Courier);
 
+  const items: PosReceiptItem[] = data.items && data.items.length > 0 ? data.items : [
+    { name: 'Organic Coffee Beans 250g', quantity: 1, price: 350 },
+    { name: 'Artisan Croissant', quantity: 2, price: 120 },
+    { name: 'Mineral Water 500ml', quantity: 1, price: 30 },
+  ];
+
+  const isA4 = data.format === 'a4';
   const is58mm = data.format === '58mm';
-  const pageWidth = is58mm ? 164 : 226; // 58mm = ~164pt, 80mm = ~226pt
-  const pageHeight = 450; // Continuous receipt height
+  const pageWidth = isA4 ? 595.28 : is58mm ? 164 : 226; // 58mm = ~164pt, 80mm = ~226pt
+  // Thermal rolls are continuous: grow the page so long carts are never clipped.
+  const pageHeight = isA4 ? 841.89 : Math.max(450, 240 + items.length * 22);
   const margin = 12;
   const contentWidth = pageWidth - margin * 2;
 
@@ -270,20 +309,20 @@ export async function generatePosReceiptPdf(data: PosReceiptData): Promise<Uint8
   let y = pageHeight - margin - 10;
 
   // Store Name Header
-  const storeName = data.storeName || 'RETAIL POS STORE';
+  const storeName = toReceiptText(data.storeName) || 'RETAIL POS STORE';
   const nameWidth = boldFont.widthOfTextAtSize(storeName, 11);
-  page.drawText(storeName, { x: (pageWidth - nameWidth) / 2, y, size: 11, font: boldFont, color: rgb(0.1, 0.1, 0.1) });
+  page.drawText(storeName, { x: Math.max(margin, (pageWidth - nameWidth) / 2), y, size: 11, font: boldFont, color: rgb(0.1, 0.1, 0.1) });
   y -= 14;
 
-  const addr = data.storeAddress || '123 Main Street, Market Area';
+  const addr = toReceiptText(data.storeAddress) || '123 Main Street, Market Area';
   const addrWidth = font.widthOfTextAtSize(addr, 7);
   page.drawText(addr, { x: Math.max(margin, (pageWidth - addrWidth) / 2), y, size: 7, font, color: rgb(0.3, 0.3, 0.3) });
   y -= 12;
 
   if (data.storePhone) {
-    const ph = `Tel: ${data.storePhone}`;
+    const ph = `Tel: ${toReceiptText(data.storePhone)}`;
     const phWidth = font.widthOfTextAtSize(ph, 7);
-    page.drawText(ph, { x: (pageWidth - phWidth) / 2, y, size: 7, font, color: rgb(0.3, 0.3, 0.3) });
+    page.drawText(ph, { x: Math.max(margin, (pageWidth - phWidth) / 2), y, size: 7, font, color: rgb(0.3, 0.3, 0.3) });
     y -= 12;
   }
 
@@ -292,54 +331,85 @@ export async function generatePosReceiptPdf(data: PosReceiptData): Promise<Uint8
   y -= 12;
 
   // Meta
-  page.drawText(`Rcpt: #${data.receiptNumber || 'POS-8902'}`, { x: margin, y, size: 7, font: monoFont, color: rgb(0.2, 0.2, 0.2) });
+  page.drawText(`Rcpt: #${toReceiptText(data.receiptNumber) || 'POS-8902'}`, { x: margin, y, size: 7, font: monoFont, color: rgb(0.2, 0.2, 0.2) });
   page.drawText(`Date: ${data.receiptDate || new Date().toLocaleDateString()}`, { x: margin + contentWidth - 65, y, size: 7, font: monoFont, color: rgb(0.2, 0.2, 0.2) });
-  y -= 14;
+  y -= 12;
 
+  if (data.customerName || data.customerPhone) {
+    const customerLine = [toReceiptText(data.customerName), toReceiptText(data.customerPhone)]
+      .filter(Boolean)
+      .join(' / ');
+    page.drawText(truncateToWidth(`Cust: ${customerLine}`, monoFont, 7, contentWidth), { x: margin, y, size: 7, font: monoFont, color: rgb(0.2, 0.2, 0.2) });
+    y -= 12;
+  }
+
+  if (data.paymentMode || data.cashierName) {
+    if (data.paymentMode) {
+      page.drawText(`Pay: ${toReceiptText(data.paymentMode)}`, { x: margin, y, size: 7, font: monoFont, color: rgb(0.2, 0.2, 0.2) });
+    }
+    if (data.cashierName) {
+      const cashier = truncateToWidth(`By: ${toReceiptText(data.cashierName)}`, monoFont, 7, contentWidth / 2);
+      page.drawText(cashier, { x: margin + contentWidth - monoFont.widthOfTextAtSize(cashier, 7), y, size: 7, font: monoFont, color: rgb(0.2, 0.2, 0.2) });
+    }
+    y -= 12;
+  }
+
+  y -= 2;
   page.drawLine({ start: { x: margin, y }, end: { x: margin + contentWidth, y }, thickness: 0.5, color: rgb(0.6, 0.6, 0.6) });
   y -= 12;
 
-  // Items
-  let subtotal = 0;
-  const items = data.items && data.items.length > 0 ? data.items : [
-    { name: 'Organic Coffee Beans 250g', quantity: 1, price: 350 },
-    { name: 'Artisan Croissant', quantity: 2, price: 120 },
-    { name: 'Mineral Water 500ml', quantity: 1, price: 30 },
-  ];
+  // Items — prices are GST-inclusive unless taxInclusive is explicitly false
+  const taxInclusive = data.taxInclusive !== false;
+  let netTotal = 0;
+  let gstTotal = 0;
+  let grossSubtotal = 0;
 
   items.forEach((item) => {
-    const lineTotal = item.quantity * item.price;
-    subtotal += lineTotal;
+    const lineAmount = item.quantity * item.price;
+    const gstRate = Math.max(0, item.gstPercent || 0) / 100;
+    const lineNet = taxInclusive ? lineAmount / (1 + gstRate) : lineAmount;
+    const lineGross = taxInclusive ? lineAmount : lineAmount * (1 + gstRate);
 
-    page.drawText(item.name.slice(0, 22), { x: margin, y, size: 8, font, color: rgb(0.1, 0.1, 0.1) });
+    netTotal += lineNet;
+    gstTotal += lineGross - lineNet;
+    grossSubtotal += lineGross;
+
+    const gstTag = item.gstPercent ? ` (GST ${item.gstPercent}%)` : '';
+    page.drawText(truncateToWidth(toReceiptText(item.name), font, 8, contentWidth), { x: margin, y, size: 8, font, color: rgb(0.1, 0.1, 0.1) });
     y -= 10;
-    page.drawText(`${item.quantity} x ${item.price.toFixed(2)}`, { x: margin + 6, y, size: 7, font: monoFont, color: rgb(0.4, 0.4, 0.4) });
-    page.drawText(lineTotal.toFixed(2), { x: margin + contentWidth - 40, y, size: 8, font: monoFont, color: rgb(0.1, 0.1, 0.1) });
+    page.drawText(`${item.quantity} x ${item.price.toFixed(2)}${gstTag}`, { x: margin + 6, y, size: 7, font: monoFont, color: rgb(0.4, 0.4, 0.4) });
+    page.drawText(lineGross.toFixed(2), { x: margin + contentWidth - 40, y, size: 8, font: monoFont, color: rgb(0.1, 0.1, 0.1) });
     y -= 12;
   });
 
   page.drawLine({ start: { x: margin, y }, end: { x: margin + contentWidth, y }, thickness: 0.5, color: rgb(0.6, 0.6, 0.6) });
   y -= 14;
 
-  // Subtotal & Grand Total
+  // Taxable value, GST component & grand total
   page.drawText('SUBTOTAL:', { x: margin, y, size: 8, font, color: rgb(0.3, 0.3, 0.3) });
-  page.drawText(subtotal.toFixed(2), { x: margin + contentWidth - 45, y, size: 8, font: monoFont, color: rgb(0.1, 0.1, 0.1) });
+  page.drawText(netTotal.toFixed(2), { x: margin + contentWidth - 45, y, size: 8, font: monoFont, color: rgb(0.1, 0.1, 0.1) });
   y -= 14;
 
-  const discount = (subtotal * (data.discountPercent || 0)) / 100;
+  if (gstTotal > 0) {
+    page.drawText(`GST${taxInclusive ? ' (incl.)' : ''}:`, { x: margin, y, size: 7, font, color: rgb(0.3, 0.3, 0.3) });
+    page.drawText(gstTotal.toFixed(2), { x: margin + contentWidth - 45, y, size: 7, font: monoFont, color: rgb(0.2, 0.2, 0.2) });
+    y -= 12;
+  }
+
+  const discount = (grossSubtotal * (data.discountPercent || 0)) / 100;
   if (discount > 0) {
     page.drawText(`DISCOUNT (${data.discountPercent}%):`, { x: margin, y, size: 7, font, color: rgb(0.3, 0.3, 0.3) });
     page.drawText(`-${discount.toFixed(2)}`, { x: margin + contentWidth - 45, y, size: 7, font: monoFont, color: rgb(0.8, 0.1, 0.1) });
     y -= 12;
   }
 
-  const grandTotal = subtotal - discount;
+  const grandTotal = grossSubtotal - discount;
   page.drawText('TOTAL DUE:', { x: margin, y, size: 9, font: boldFont, color: rgb(0.1, 0.1, 0.1) });
   page.drawText(`Rs ${grandTotal.toFixed(2)}`, { x: margin + contentWidth - 55, y, size: 10, font: boldFont, color: rgb(0.1, 0.1, 0.1) });
   y -= 20;
 
   // Footer Message
-  const foot = data.footerMessage || 'Thank you for your purchase!';
+  const foot = toReceiptText(data.footerMessage) || 'Thank you for your purchase!';
   const footWidth = font.widthOfTextAtSize(foot, 7);
   page.drawText(foot, { x: Math.max(margin, (pageWidth - footWidth) / 2), y, size: 7, font, color: rgb(0.3, 0.3, 0.3) });
 
