@@ -1,48 +1,63 @@
 "use client";
 
 import Link from "next/link";
-
+import { Heart, Sparkles, ShieldCheck, Leaf } from "lucide-react";
 import { useDictionary } from "../i18n/LocaleProvider";
 import DonationWidget from "./DonationWidget";
 
-export function SupportPageContent() {
+const REASON_ICONS = [Heart, Sparkles, ShieldCheck];
+const REASON_COLORS = [
+  "text-rose-500 bg-rose-500/10 border-rose-500/20",
+  "text-amber-500 bg-amber-500/10 border-amber-500/20",
+  "text-emerald-500 bg-emerald-500/10 border-emerald-500/20",
+];
 
+export function SupportPageContent() {
   const dictionary = useDictionary();
   const {
     pages: { support },
   } = dictionary;
   const { hero, reasons, transparency, faq, closing, legalNotice } = support;
 
+  const cleanEyebrow = hero.eyebrow ? hero.eyebrow.replace(/^[^\w\d\s\u00C0-\u024F\u0400-\u04FF]+\s*/, "") : "Independent Open Source Project";
+
   return (
-    <div className="min-h-screen bg-gradient-soft relative">
-      <div className="container mx-auto px-4 py-12 max-w-4xl">
-        {/* Hero section - more personal and minimal */}
-        <section className="text-center mb-16">
-          <div className="mb-6 flex items-center justify-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-[var(--ui)]/70 bg-white/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--tx-3)]">
-              {hero.eyebrow}
+    <div className="min-h-screen bg-[var(--bg)] relative text-[var(--tx)]">
+      <div className="container mx-auto px-4 py-12 sm:py-16 max-w-4xl space-y-16">
+        {/* Hero section */}
+        <section className="text-center space-y-4 max-w-2xl mx-auto">
+          <div className="flex items-center justify-center">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[var(--accent-border)] bg-[var(--accent-soft)] px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-[var(--accent)]">
+              <Leaf className="h-3.5 w-3.5 text-emerald-500" />
+              <span>{cleanEyebrow}</span>
             </span>
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-balance mb-4">{hero.title}</h1>
-          <p className="text-lg text-[var(--tx-2)] max-w-2xl mx-auto text-balance leading-relaxed">
+          <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-balance leading-tight">{hero.title}</h1>
+          <p className="text-base sm:text-lg text-[var(--tx-2)] text-balance leading-relaxed">
             {hero.subtitle}
           </p>
-          <p className="mt-8 text-sm text-[var(--tx-3)] italic max-w-xl mx-auto">
+          <p className="pt-2 text-xs sm:text-sm text-[var(--tx-3)] italic">
             {hero.highlight}
           </p>
         </section>
 
-        {/* Simple 3-column reasons */}
-        <section className="my-20">
-          <h2 className="text-2xl font-semibold text-center mb-10">{reasons.title}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {reasons.cards.map((card) => (
-              <div key={card.title} className="text-center">
-                <div className="text-5xl mb-4">{card.icon}</div>
-                <h3 className="text-lg font-semibold mb-3">{card.title}</h3>
-                <p className="text-[var(--tx-2)] text-sm leading-relaxed">{card.description}</p>
-              </div>
-            ))}
+        {/* 3-column reasons with clean icons */}
+        <section className="space-y-8">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-center tracking-tight">{reasons.title}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {reasons.cards.map((card, idx) => {
+              const IconComp = REASON_ICONS[idx % REASON_ICONS.length] || Sparkles;
+              const colorClass = REASON_COLORS[idx % REASON_COLORS.length];
+              return (
+                <div key={card.title} className="surface-card rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] p-6 sm:p-7 text-center space-y-3 hover:border-[var(--accent-border)] transition-all">
+                  <div className={`mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border shadow-xs ${colorClass}`}>
+                    <IconComp className="h-7 w-7" />
+                  </div>
+                  <h3 className="text-base font-bold text-[var(--tx)]">{card.title}</h3>
+                  <p className="text-[var(--tx-2)] text-xs sm:text-sm leading-relaxed">{card.description}</p>
+                </div>
+              );
+            })}
           </div>
         </section>
 

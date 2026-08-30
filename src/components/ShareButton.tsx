@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Share2, Copy, Check, Twitter, MessageCircle, X } from "lucide-react";
 import { useDictionary } from "../i18n/LocaleProvider";
 
@@ -15,10 +15,15 @@ interface ShareButtonProps {
 export function ShareButton({ url, variant = "inline", className = "" }: ShareButtonProps) {
   const [copied, setCopied] = useState(false);
   const [expanded, setExpanded] = useState(false);
+  const [shareUrl, setShareUrl] = useState(url ?? "https://ihatelovepdf.com");
   const dictionary = useDictionary();
   const sharePrompt = dictionary.components.pdfProcessor.statusDialog.sharePrompt;
 
-  const shareUrl = url ?? (typeof window !== "undefined" ? window.location.href : "https://ihatelovepdf.com");
+  useEffect(() => {
+    if (!url && typeof window !== "undefined") {
+      setShareUrl(window.location.href);
+    }
+  }, [url]);
   const shareText = sharePrompt.shareText;
 
   const handleNativeShare = useCallback(async () => {

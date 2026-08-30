@@ -23,16 +23,40 @@ export default function NetworkActivityMonitor({
     const originalXhrSend = XMLHttpRequest.prototype.send;
 
     window.fetch = async (...args) => {
-      // Only count if targeting external network endpoints
-      const url = typeof args[0] === 'string' ? args[0] : (args[0] as Request)?.url || '';
-      if (!url.startsWith('blob:') && !url.startsWith('data:') && !url.includes('/_next/')) {
+      // Only count genuine external network requests (not same-origin static assets, fonts, wasm, or prefetching)
+      const input = args[0];
+      const url = typeof input === 'string' ? input : (input as Request)?.url || '';
+      
+      const isInternalAsset = 
+        url.startsWith('blob:') ||
+        url.startsWith('data:') ||
+        url.includes('/_next/') ||
+        url.includes('/standard_fonts/') ||
+        url.includes('/cmaps/') ||
+        url.includes('/images/') ||
+        url.includes('.wasm') ||
+        url.includes('.mjs') ||
+        url.includes('favicon.ico') ||
+        url.includes('manifest');
+
+      let isExternal = false;
+      try {
+        if (url.startsWith('http://') || url.startsWith('https://')) {
+          const parsed = new URL(url);
+          isExternal = parsed.origin !== window.location.origin;
+        }
+      } catch {
+        isExternal = false;
+      }
+
+      if (isExternal && !isInternalAsset) {
         setNetworkRequestsCount((prev) => prev + 1);
       }
       return originalFetch.apply(window, args);
     };
 
     XMLHttpRequest.prototype.send = function (body) {
-      if (body && typeof body === 'string') {
+      if (body && typeof body === 'string' && isProcessing) {
         setBytesSent((prev) => prev + body.length);
       }
       return originalXhrSend.apply(this, [body] as Parameters<typeof originalXhrSend>);
@@ -42,7 +66,7 @@ export default function NetworkActivityMonitor({
       window.fetch = originalFetch;
       XMLHttpRequest.prototype.send = originalXhrSend;
     };
-  }, []);
+  }, [isProcessing]);
 
   return (
     <div

@@ -3,9 +3,8 @@ import { PDFProcessingMode, PDFProcessingOptions } from '../../lib/pdf-processor
 import { useDictionary } from '../../i18n/LocaleProvider';
 import OptionLivePreview from './OptionLivePreview';
 import {
-  Lock,
+  Image as ImageIcon,
   Unlock,
-  Fingerprint,
   Code,
   Table,
   Receipt,
@@ -14,6 +13,9 @@ import {
   Hash,
   Palette,
   Info,
+  Scissors,
+  Layers,
+  CheckSquare,
 } from 'lucide-react';
 
 type ProcessingOptionsProps = {
@@ -138,7 +140,171 @@ export default function ProcessingOptions({
     );
   }
 
-  // 2. WATERMARK MODE
+  // 2. SPLIT MODE
+  if (mode === 'split') {
+    const splitStrategy = options.splitMode === 'pageNumbers' ? 'ranges' : (options.splitMode || 'customPages');
+    const pageRangeVal = options.pageRange || '';
+    const pagesPerFileVal = options.pagesPerFile || 1;
+
+    return (
+      <div className="mt-6 space-y-6 pt-4 border-t border-[var(--border)]">
+        <div className="flex items-center justify-between">
+          <div>
+            <h3 className="text-xs font-semibold text-[var(--tx-3)] uppercase tracking-wider flex items-center gap-2">
+              <Scissors className="h-4 w-4 text-[var(--accent)]" />
+              Split Mode &amp; Page Selection
+            </h3>
+            <p className="mt-1 text-xs text-[var(--tx-2)]">
+              Choose how you want to split your PDF: pick specific pages visually below, set custom ranges, or split by page count.
+            </p>
+          </div>
+        </div>
+
+        {/* Strategy Selector Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3" role="radiogroup" aria-label="Split Method">
+          <label
+            className={`cursor-pointer rounded-2xl border p-4 transition-all duration-200 shadow-xs ${
+              splitStrategy === 'customPages'
+                ? 'border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--accent)] ring-1 ring-[var(--accent)]'
+                : 'border-[var(--border)] bg-[var(--bg-card)] text-[var(--tx)] hover:border-[var(--border-hover)]'
+            }`}
+          >
+            <input
+              type="radio"
+              name="split-strategy"
+              className="sr-only"
+              checked={splitStrategy === 'customPages'}
+              onChange={() => {
+                onOptionsChangeAction({
+                  ...options,
+                  splitMode: 'pageNumbers',
+                  pageRange: undefined,
+                });
+              }}
+            />
+            <div className="flex flex-col gap-1.5">
+              <div className="flex items-center gap-2">
+                <CheckSquare className="h-4 w-4" />
+                <span className="text-sm font-bold">Visual Page Picker</span>
+              </div>
+              <span className="text-[11px] text-[var(--tx-2)] leading-tight">
+                Click pages in the grid below to choose which pages to split out.
+              </span>
+            </div>
+          </label>
+
+          <label
+            className={`cursor-pointer rounded-2xl border p-4 transition-all duration-200 shadow-xs ${
+              splitStrategy === 'ranges'
+                ? 'border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--accent)] ring-1 ring-[var(--accent)]'
+                : 'border-[var(--border)] bg-[var(--bg-card)] text-[var(--tx)] hover:border-[var(--border-hover)]'
+            }`}
+          >
+            <input
+              type="radio"
+              name="split-strategy"
+              className="sr-only"
+              checked={splitStrategy === 'ranges'}
+              onChange={() => {
+                onOptionsChangeAction({
+                  ...options,
+                  splitMode: 'pageNumbers',
+                  pageRange: pageRangeVal || '1-2, 3-5',
+                });
+              }}
+            />
+            <div className="flex flex-col gap-1.5">
+              <div className="flex items-center gap-2">
+                <Layers className="h-4 w-4" />
+                <span className="text-sm font-bold">Custom Page Ranges</span>
+              </div>
+              <span className="text-[11px] text-[var(--tx-2)] leading-tight">
+                Define split ranges (e.g. 1-3, 4-5, 6) into separate PDF files.
+              </span>
+            </div>
+          </label>
+
+          <label
+            className={`cursor-pointer rounded-2xl border p-4 transition-all duration-200 shadow-xs ${
+              splitStrategy === 'pageCount'
+                ? 'border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--accent)] ring-1 ring-[var(--accent)]'
+                : 'border-[var(--border)] bg-[var(--bg-card)] text-[var(--tx)] hover:border-[var(--border-hover)]'
+            }`}
+          >
+            <input
+              type="radio"
+              name="split-strategy"
+              className="sr-only"
+              checked={splitStrategy === 'pageCount'}
+              onChange={() => {
+                onOptionsChangeAction({
+                  ...options,
+                  splitMode: 'pageCount',
+                  pagesPerFile: 1,
+                  pageRange: undefined,
+                });
+              }}
+            />
+            <div className="flex flex-col gap-1.5">
+              <div className="flex items-center gap-2">
+                <Scissors className="h-4 w-4" />
+                <span className="text-sm font-bold">Fixed Page Interval</span>
+              </div>
+              <span className="text-[11px] text-[var(--tx-2)] leading-tight">
+                Split into single pages or every N pages per output file.
+              </span>
+            </div>
+          </label>
+        </div>
+
+        {/* Dynamic Controls based on selected strategy */}
+        {splitStrategy === 'ranges' && (
+          <div className="p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] space-y-3">
+            <span className="text-xs font-bold text-[var(--accent)] uppercase tracking-wider block">
+              Enter Split Ranges
+            </span>
+            <div className="space-y-1.5">
+              <label className="text-xs font-semibold text-[var(--tx)]">Page Ranges (comma-separated)</label>
+              <input
+                type="text"
+                value={pageRangeVal}
+                onChange={(e) => update('pageRange', e.target.value)}
+                className="input-modern w-full font-mono text-sm"
+                placeholder="e.g. 1-3, 4-6, 7-10"
+              />
+              <p className="text-[11px] text-[var(--tx-3)]">
+                Example: <code className="px-1 py-0.5 rounded bg-[var(--bg-card-hover)]">1-2, 3-5</code> will split into two PDF documents: one with pages 1–2 and one with pages 3–5.
+              </p>
+            </div>
+          </div>
+        )}
+
+        {splitStrategy === 'pageCount' && (
+          <div className="p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] space-y-3">
+            <span className="text-xs font-bold text-[var(--accent)] uppercase tracking-wider block">
+              Split Interval
+            </span>
+            <div className="flex items-center gap-4">
+              <label className="text-xs font-semibold text-[var(--tx)]">Pages per Split Document:</label>
+              <input
+                type="number"
+                min={1}
+                max={500}
+                value={pagesPerFileVal}
+                onChange={(e) => update('pagesPerFile', Math.max(1, parseInt(e.target.value, 10) || 1))}
+                className="input-modern w-28 text-center font-bold text-sm"
+              />
+              <span className="text-xs text-[var(--tx-3)]">
+                {pagesPerFileVal === 1 ? '(Creates a separate PDF for each single page)' : `(Splits into chunks of ${pagesPerFileVal} pages each)`}
+              </span>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // 3. WATERMARK MODE
   if (mode === 'watermark') {
     const wm = options.watermark || {};
     const updateWm = (partial: Partial<typeof wm>) => {
@@ -469,12 +635,83 @@ export default function ProcessingOptions({
               </div>
             </div>
 
+            {/* Spacing, Margin & Overlap Prevention */}
+            <div className="p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] space-y-3">
+              <span className="text-xs font-bold text-[var(--tx)] uppercase tracking-wider block">
+                Spacing &amp; Formatting
+              </span>
+
+              <label className="flex items-center gap-2.5 cursor-pointer text-xs font-semibold text-[var(--tx)] p-2.5 rounded-xl border border-[var(--accent)]/30 bg-[var(--accent-soft)]/20">
+                <input
+                  type="checkbox"
+                  checked={hf.shrinkToFit ?? true}
+                  onChange={(e) => updateHf({ shrinkToFit: e.target.checked })}
+                  className="rounded text-[var(--accent)] focus:ring-0 cursor-pointer"
+                />
+                <div>
+                  <span>Fit &amp; Space Content (Prevent Text Overlap)</span>
+                  <p className="text-[11px] font-normal text-[var(--tx-2)] leading-tight">
+                    Scales document slightly to create dedicated header &amp; footer margin bands.
+                  </p>
+                </div>
+              </label>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                <div className="space-y-1">
+                  <div className="flex justify-between text-xs">
+                    <span className="text-[var(--tx-2)] font-medium">Page Edge Margin</span>
+                    <span className="font-mono font-bold text-[var(--tx)]">{hf.margin ?? 25} pt</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="10"
+                    max="60"
+                    value={hf.margin ?? 25}
+                    onChange={(e) => updateHf({ margin: Number(e.target.value) })}
+                    className="w-full accent-[var(--accent)] cursor-pointer"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <div className="flex justify-between text-xs">
+                    <span className="text-[var(--tx-2)] font-medium">Font Size</span>
+                    <span className="font-mono font-bold text-[var(--tx)]">{hf.fontSize ?? 10} pt</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="8"
+                    max="16"
+                    value={hf.fontSize ?? 10}
+                    onChange={(e) => updateHf({ fontSize: Number(e.target.value) })}
+                    className="w-full accent-[var(--accent)] cursor-pointer"
+                  />
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between pt-1 border-t border-[var(--border)]">
+                <span className="text-xs text-[var(--tx-2)] font-medium">Text Color</span>
+                <div className="flex items-center gap-1.5">
+                  {['#4b5563', '#000000', '#2563EB', '#E24A24', '#059669', '#7C3AED'].map((c) => (
+                    <button
+                      key={c}
+                      type="button"
+                      onClick={() => updateHf({ color: c })}
+                      style={{ backgroundColor: c }}
+                      className={`h-5 w-5 rounded-full border transition-all cursor-pointer ${
+                        (hf.color || '#4b5563') === c ? 'ring-2 ring-[var(--accent)] ring-offset-1 scale-110' : 'border-neutral-300 dark:border-neutral-700'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+
             <label className="flex items-center gap-2 cursor-pointer text-xs font-medium text-[var(--tx)] p-3 rounded-xl border border-[var(--border)] bg-[var(--bg-card)]">
               <input
                 type="checkbox"
                 checked={hf.skipFirstPage || false}
                 onChange={(e) => updateHf({ skipFirstPage: e.target.checked })}
-                className="rounded text-[var(--accent)] focus:ring-0"
+                className="rounded text-[var(--accent)] focus:ring-0 cursor-pointer"
               />
               <span>Exclude Header/Footer on First Page</span>
             </label>
@@ -536,47 +773,64 @@ export default function ProcessingOptions({
     );
   }
 
-  // 6. ENCRYPT MODE
-  if (mode === 'encrypt') {
+  // 6. PDF TO IMAGES MODE
+  if (mode === 'pdfToImages') {
+    const currentFormat = options.imageOutputFormat ?? 'png';
+    const currentDpi = options.imageRenderDpi ?? 144;
+
     return (
       <div className="mt-6 space-y-6 pt-4 border-t border-[var(--border)]">
         <div>
           <h3 className="text-xs font-semibold text-[var(--tx-3)] uppercase tracking-wider flex items-center gap-2">
-            <Lock className="h-4 w-4 text-[var(--accent)]" />
-            Password Protection &amp; Permissions
+            <ImageIcon className="h-4 w-4 text-[var(--accent)]" />
+            Image Conversion Settings
           </h3>
           <p className="mt-1 text-xs text-[var(--tx-2)]">
-            Encrypt your PDF directly in your browser. The file is locked before leaving memory.
+            Export PDF pages into high-resolution images. Downloads directly with individual image previews.
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] space-y-2">
-            <div className="flex items-center justify-between">
-              <label className="text-xs font-bold text-[var(--tx)]">Document Open Password *</label>
-              <span className="text-[10px] text-[var(--accent)] font-semibold uppercase">Required</span>
+            <label className="text-xs font-bold text-[var(--tx)]">Image Output Format</label>
+            <div className="grid grid-cols-2 gap-2">
+              <button
+                type="button"
+                onClick={() => update('imageOutputFormat', 'png')}
+                className={`py-2 px-3 rounded-xl border text-xs font-semibold transition-all cursor-pointer ${
+                  currentFormat === 'png'
+                    ? 'border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--accent)]'
+                    : 'border-[var(--border)] bg-[var(--bg-subtle)] text-[var(--tx-2)] hover:text-[var(--tx)]'
+                }`}
+              >
+                PNG (Lossless)
+              </button>
+              <button
+                type="button"
+                onClick={() => update('imageOutputFormat', 'jpeg')}
+                className={`py-2 px-3 rounded-xl border text-xs font-semibold transition-all cursor-pointer ${
+                  currentFormat === 'jpeg'
+                    ? 'border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--accent)]'
+                    : 'border-[var(--border)] bg-[var(--bg-subtle)] text-[var(--tx-2)] hover:text-[var(--tx)]'
+                }`}
+              >
+                JPEG (Compact)
+              </button>
             </div>
-            <input
-              type="password"
-              placeholder="Required to open the PDF"
-              value={options.userPassword || ''}
-              onChange={(e) => update('userPassword', e.target.value)}
-              className="input-modern w-full font-mono text-xs"
-            />
           </div>
 
           <div className="p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] space-y-2">
-            <div className="flex items-center justify-between">
-              <label className="text-xs font-bold text-[var(--tx)]">Owner Password (Optional)</label>
-              <span className="text-[10px] text-[var(--tx-3)] font-medium">Master key</span>
-            </div>
-            <input
-              type="password"
-              placeholder="Required to edit permissions"
-              value={options.ownerPassword || ''}
-              onChange={(e) => update('ownerPassword', e.target.value)}
-              className="input-modern w-full font-mono text-xs"
-            />
+            <label className="text-xs font-bold text-[var(--tx)]">Render Clarity / Resolution</label>
+            <select
+              value={currentDpi}
+              onChange={(e) => update('imageRenderDpi', Number(e.target.value))}
+              className="input-modern w-full cursor-pointer text-xs"
+            >
+              <option value={72}>72 DPI (Standard Web Preview)</option>
+              <option value={144}>144 DPI (High Resolution - Recommended)</option>
+              <option value={200}>200 DPI (Ultra Crisp Print Quality)</option>
+              <option value={300}>300 DPI (Maximum Quality)</option>
+            </select>
           </div>
         </div>
       </div>
@@ -590,7 +844,7 @@ export default function ProcessingOptions({
         <div>
           <h3 className="text-xs font-semibold text-[var(--tx-3)] uppercase tracking-wider flex items-center gap-2">
             <Unlock className="h-4 w-4 text-emerald-500" />
-            Client-Side PDF Decryption
+            Client-Side PDF Decryption &amp; Unlock
           </h3>
           <p className="mt-1 text-xs text-[var(--tx-2)]">
             Enter the password to unlock and export an unencrypted copy of your document.
@@ -611,35 +865,7 @@ export default function ProcessingOptions({
     );
   }
 
-  // 8. FINGERPRINT MODE
-  if (mode === 'fingerprint') {
-    return (
-      <div className="mt-6 space-y-6 pt-4 border-t border-[var(--border)]">
-        <div>
-          <h3 className="text-xs font-semibold text-[var(--tx-3)] uppercase tracking-wider flex items-center gap-2">
-            <Fingerprint className="h-4 w-4 text-[var(--accent)]" />
-            Invisible Leak-Tracking Steganography
-          </h3>
-          <p className="mt-1 text-xs text-[var(--tx-2)]">
-            Embeds invisible zero-width unicode identifiers into the document stream to trace leak origins without altering visual layout.
-          </p>
-        </div>
-
-        <div className="max-w-md space-y-2 p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)]">
-          <label className="text-xs font-bold text-[var(--tx)]">Recipient Identifier / Name</label>
-          <input
-            type="text"
-            placeholder="e.g. John Doe / Board Member A"
-            value={options.fingerprintRecipient || ''}
-            onChange={(e) => update('fingerprintRecipient', e.target.value)}
-            className="input-modern w-full text-xs font-semibold"
-          />
-        </div>
-      </div>
-    );
-  }
-
-  // 9. OCR MODE
+  // 8. OCR MODE
   if (mode === 'ocr') {
     const currentLang = options.ocrLanguage ?? 'eng';
 
@@ -651,34 +877,44 @@ export default function ProcessingOptions({
             Client-Side WASM OCR Engine
           </h3>
           <p className="mt-1 text-xs text-[var(--tx-2)]">
-            Recognize text in scanned documents using local Tesseract WASM with zero server calls.
+            Recognize text in scanned PDFs and photos using client-side Tesseract WebAssembly. 100% private.
           </p>
         </div>
 
-        <div className="max-w-md space-y-2 p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)]">
-          <label className="text-xs font-bold text-[var(--tx)]">Document Language</label>
-          <select
-            value={currentLang}
-            onChange={(e) => update('ocrLanguage', e.target.value)}
-            className="input-modern w-full cursor-pointer text-xs"
-          >
-            <option value="eng">English (eng)</option>
-            <option value="spa">Spanish / Español (spa)</option>
-            <option value="fra">French / Français (fra)</option>
-            <option value="deu">German / Deutsch (deu)</option>
-            <option value="ita">Italian / Italiano (ita)</option>
-            <option value="por">Portuguese / Português (por)</option>
-            <option value="rus">Russian / Русский (rus)</option>
-            <option value="hun">Hungarian / Magyar (hun)</option>
-            <option value="ron">Romanian / Română (ron)</option>
-          </select>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] space-y-2">
+            <label className="text-xs font-bold text-[var(--tx)]">Document Language</label>
+            <select
+              value={currentLang}
+              onChange={(e) => update('ocrLanguage', e.target.value)}
+              className="input-modern w-full cursor-pointer text-xs"
+            >
+              <option value="eng">English (eng)</option>
+              <option value="spa">Spanish / Español (spa)</option>
+              <option value="fra">French / Français (fra)</option>
+              <option value="deu">German / Deutsch (deu)</option>
+              <option value="ita">Italian / Italiano (ita)</option>
+              <option value="por">Portuguese / Português (por)</option>
+              <option value="hin">Hindi / हिन्दी (hin)</option>
+              <option value="jpn">Japanese / 日本語 (jpn)</option>
+              <option value="chi_sim">Chinese Simplified / 简体中文 (chi_sim)</option>
+              <option value="rus">Russian / Русский (rus)</option>
+            </select>
+          </div>
+
+          <div className="p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] space-y-2">
+            <label className="text-xs font-bold text-[var(--tx)]">Recognition Output</label>
+            <div className="p-2.5 rounded-xl bg-[var(--bg-subtle)] text-xs text-[var(--tx-2)] leading-relaxed">
+              Generates a <span className="font-semibold text-[var(--tx)]">Searchable PDF</span> with original scan graphics and selectable text, plus an extracted text transcript.
+            </div>
+          </div>
         </div>
       </div>
     );
   }
 
-  // 10. MARKDOWN / CREATE PDF
-  if (mode === 'markdownToPdf' || mode === 'createPdf') {
+  // 10. MARKDOWN TO PDF
+  if (mode === 'markdownToPdf') {
     return (
       <div className="mt-6 space-y-4 pt-4 border-t border-[var(--border)]">
         <div>
@@ -932,61 +1168,43 @@ export default function ProcessingOptions({
     );
   }
 
-  // 15. PDF TO IMAGES / IMAGES TO PDF
-  if (mode === 'pdfToImages' || mode === 'pdfToZip') {
-    const imageStrings = processingStrings.pdfToImages;
-    const currentFormat = options.imageOutputFormat ?? 'png';
-    const currentDpi = options.imageRenderDpi ?? 144;
-    const currentQuality = Math.round((options.imageOutputQuality ?? 0.9) * 100);
+  // 15. PDF TO ZIP (Direct lossless PDF archiving)
+  if (mode === 'pdfToZip') {
+    const currentLevel = options.compressionLevel ?? 'medium';
 
     return (
       <div className="mt-6 space-y-6 pt-4 border-t border-[var(--border)]">
         <div>
-          <h3 className="text-xs font-semibold text-[var(--tx-3)] uppercase tracking-wider">{imageStrings.title}</h3>
+          <h3 className="text-xs font-semibold text-[var(--tx-3)] uppercase tracking-wider">ZIP Packaging Settings</h3>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="space-y-1">
-            <label className="text-xs font-semibold text-[var(--tx)]">Format</label>
-            <select
-              value={currentFormat}
-              onChange={(e) => update('imageOutputFormat', e.target.value as 'png' | 'jpeg')}
-              className="input-modern w-full cursor-pointer text-xs"
-            >
-              <option value="png">PNG (Lossless High Quality)</option>
-              <option value="jpeg">JPEG (Compressed)</option>
-            </select>
+        <div className="space-y-3">
+          <label className="text-xs font-semibold text-[var(--tx)]">Compression Level</label>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {(['low', 'medium', 'high'] as const).map((lvl) => (
+              <button
+                key={lvl}
+                type="button"
+                onClick={() => update('compressionLevel', lvl)}
+                className={`py-2.5 px-3 rounded-xl border text-xs font-medium cursor-pointer transition-all ${
+                  currentLevel === lvl
+                    ? 'border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--accent)] shadow-xs font-bold'
+                    : 'border-[var(--border)] bg-[var(--bg-card)] text-[var(--tx-2)] hover:text-[var(--tx)] hover:border-[var(--accent-border)]'
+                }`}
+              >
+                {lvl === 'low' ? '⚡ Fast (Level 1)' : lvl === 'medium' ? '⚖️ Standard (Level 6)' : '🔒 Maximum (Level 9)'}
+              </button>
+            ))}
           </div>
-
-          <div className="space-y-1">
-            <label className="text-xs font-semibold text-[var(--tx)]">Resolution (DPI)</label>
-            <select
-              value={currentDpi}
-              onChange={(e) => update('imageRenderDpi', Number(e.target.value))}
-              className="input-modern w-full cursor-pointer text-xs"
-            >
-              <option value={72}>72 DPI (Web Screen)</option>
-              <option value={144}>144 DPI (Crisp / Balanced)</option>
-              <option value={300}>300 DPI (High Resolution Print)</option>
-            </select>
-          </div>
-
-          <div className="space-y-1">
-            <label className="text-xs font-semibold text-[var(--tx)]">Quality ({currentQuality}%)</label>
-            <input
-              type="range"
-              min={30}
-              max={100}
-              step={5}
-              value={currentQuality}
-              onChange={(e) => update('imageOutputQuality', Number(e.target.value) / 100)}
-              className="w-full h-1.5 bg-neutral-200 rounded-lg appearance-none cursor-pointer accent-[var(--accent)] mt-3"
-            />
-          </div>
+          <p className="text-[11px] text-[var(--tx-3)] leading-relaxed mt-2">
+            ℹ️ Original PDF bytes are packaged directly into the ZIP archive without rasterization or alteration. Since PDFs are already compressed internally, standard ZIP archiving packages them instantly with byte-for-byte fidelity.
+          </p>
         </div>
       </div>
     );
   }
+
+
 
   if (mode === 'imagesToPdf') {
     const layoutStrings = processingStrings.imagesToPdf;

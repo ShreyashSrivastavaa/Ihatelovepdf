@@ -1,7 +1,5 @@
-"use client";
-
 import React, { useState } from 'react';
-import { Download, Archive, RotateCcw, Copy, Check, Sparkles, FileText, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Download, Archive, RotateCcw, Copy, Check, Sparkles, FileText, CheckCircle2, ArrowRight, SlidersHorizontal } from 'lucide-react';
 
 export interface OutputFileItem {
   name: string;
@@ -23,6 +21,7 @@ interface ResultPanelProps {
   textContent?: string;
   onDownloadPrimary?: () => void;
   onDownloadZip?: () => void;
+  onEditOptions?: () => void;
   onStartOver: () => void;
 }
 
@@ -47,6 +46,7 @@ export default function ResultPanel({
   textContent,
   onDownloadPrimary,
   onDownloadZip,
+  onEditOptions,
   onStartOver,
 }: ResultPanelProps) {
   const [copied, setCopied] = useState(false);
@@ -154,7 +154,7 @@ export default function ResultPanel({
               <span className="text-[10px] uppercase font-bold text-[var(--tx-3)] tracking-wider block">
                 Original Size
               </span>
-              <span className="text-sm sm:text-base font-semibold text-[var(--tx-2)] line-through">
+              <span className={`text-sm sm:text-base font-semibold text-[var(--tx-2)] ${beforeSizeBytes > afterSizeBytes ? 'line-through' : ''}`}>
                 {formatBytes(beforeSizeBytes)}
               </span>
             </div>
@@ -170,10 +170,21 @@ export default function ResultPanel({
           </div>
 
           <div className="text-right">
-            <span className="text-xs font-bold text-[var(--success)] block">
-              Saved {formatBytes(Math.max(0, beforeSizeBytes - afterSizeBytes))}
-            </span>
-            <span className="text-[11px] text-[var(--tx-3)]">100% loss-free structure</span>
+            {beforeSizeBytes > afterSizeBytes ? (
+              <>
+                <span className="text-xs font-bold text-[var(--success)] block">
+                  Saved {formatBytes(beforeSizeBytes - afterSizeBytes)}
+                </span>
+                <span className="text-[11px] text-[var(--tx-3)]">100% loss-free compression</span>
+              </>
+            ) : (
+              <>
+                <span className="text-xs font-bold text-[var(--accent)] block">
+                  {afterSizeBytes === beforeSizeBytes ? 'Exact Size Preserved' : `ZIP Overhead: +${formatBytes(afterSizeBytes - beforeSizeBytes)}`}
+                </span>
+                <span className="text-[11px] text-[var(--tx-3)]">Original bytes preserved</span>
+              </>
+            )}
           </div>
         </div>
       )}
@@ -214,14 +225,16 @@ export default function ResultPanel({
         </div>
       )}
 
-      {/* 4. MULTI-FILE LIST (Split, PDF to Images) */}
-      {outputFiles && outputFiles.length > 1 && (
-        <div className="space-y-3">
+      {/* 4. IMAGE GALLERY PREVIEWS & MULTI-FILE LIST */}
+      {outputFiles && outputFiles.length > 0 && (
+        <div className="space-y-4">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-[var(--tx)] uppercase tracking-wider">
-              Output Files ({outputFiles.length})
+              {outputFiles.every((f) => /\.(png|jpe?g|webp|bmp)$/i.test(f.name))
+                ? `Generated Images (${outputFiles.length})`
+                : `Output Files (${outputFiles.length})`}
             </span>
-            {onDownloadZip && (
+            {onDownloadZip && outputFiles.length > 1 && (
               <button
                 type="button"
                 onClick={onDownloadZip}
@@ -233,31 +246,78 @@ export default function ResultPanel({
             )}
           </div>
 
-          <div className="max-h-48 overflow-y-auto space-y-2 pr-1 scrollbar-thin">
-            {outputFiles.map((file, idx) => (
-              <div
-                key={file.name + idx}
-                className="flex items-center justify-between p-3 rounded-xl border border-[var(--border)] bg-[var(--bg-subtle)]/40 text-xs"
-              >
-                <div className="flex items-center gap-2 min-w-0">
-                  <FileText className="h-4 w-4 text-[var(--accent)] shrink-0" />
-                  <span className="font-semibold text-[var(--tx)] truncate">{file.name}</span>
-                  {file.sizeBytes && (
-                    <span className="text-[var(--tx-3)]">({formatBytes(file.sizeBytes)})</span>
-                  )}
-                </div>
+          {/* If outputs are image files, show visual thumbnail grid */}
+          {outputFiles.every((f) => /\.(png|jpe?g|webp|bmp)$/i.test(f.name)) ? (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+              {outputFiles.map((file, idx) => {
+                const imgUrl = file.blob ? URL.createObjectURL(file.blob) : file.url;
+                return (
+                  <div
+                    key={file.name + idx}
+                    className="flex flex-col justify-between p-2.5 rounded-2xl border border-[var(--border)] bg-[var(--bg-subtle)]/40 hover:border-[var(--accent-border)] transition-all space-y-2 group shadow-xs"
+                  >
+                    {/* Thumbnail preview */}
+                    <div className="relative aspect-[3/4] w-full rounded-xl overflow-hidden bg-neutral-900/5 border border-[var(--border)] flex items-center justify-center">
+                      {imgUrl ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={imgUrl}
+                          alt={file.name}
+                          className="w-full h-full object-contain p-1"
+                        />
+                      ) : (
+                        <FileText className="h-8 w-8 text-[var(--tx-3)]" />
+                      )}
+                    </div>
 
-                <button
-                  type="button"
-                  onClick={() => handleDownloadSingleFile(file)}
-                  className="p-1.5 rounded-lg text-[var(--accent)] hover:bg-[var(--accent-soft)] transition-colors cursor-pointer"
-                  title={`Download ${file.name}`}
+                    <div className="space-y-1">
+                      <p className="text-[11px] font-bold text-[var(--tx)] truncate" title={file.name}>
+                        {file.name}
+                      </p>
+                      {file.sizeBytes && (
+                        <p className="text-[10px] text-[var(--tx-3)]">{formatBytes(file.sizeBytes)}</p>
+                      )}
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => handleDownloadSingleFile(file)}
+                      className="w-full py-1.5 px-2 rounded-xl bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white text-xs font-semibold flex items-center justify-center gap-1 cursor-pointer transition-colors shadow-xs"
+                    >
+                      <Download className="h-3.5 w-3.5" />
+                      <span>Download</span>
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="max-h-48 overflow-y-auto space-y-2 pr-1 scrollbar-thin">
+              {outputFiles.map((file, idx) => (
+                <div
+                  key={file.name + idx}
+                  className="flex items-center justify-between p-3 rounded-xl border border-[var(--border)] bg-[var(--bg-subtle)]/40 text-xs"
                 >
-                  <Download className="h-4 w-4" />
-                </button>
-              </div>
-            ))}
-          </div>
+                  <div className="flex items-center gap-2 min-w-0">
+                    <FileText className="h-4 w-4 text-[var(--accent)] shrink-0" />
+                    <span className="font-semibold text-[var(--tx)] truncate">{file.name}</span>
+                    {file.sizeBytes && (
+                      <span className="text-[var(--tx-3)]">({formatBytes(file.sizeBytes)})</span>
+                    )}
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => handleDownloadSingleFile(file)}
+                    className="p-1.5 rounded-lg text-[var(--accent)] hover:bg-[var(--accent-soft)] transition-colors cursor-pointer"
+                    title={`Download ${file.name}`}
+                  >
+                    <Download className="h-4 w-4" />
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
 
@@ -274,6 +334,17 @@ export default function ResultPanel({
             {afterSizeBytes && (
               <span className="text-xs font-medium opacity-80">({formatBytes(afterSizeBytes)})</span>
             )}
+          </button>
+        )}
+
+        {onEditOptions && (
+          <button
+            type="button"
+            onClick={onEditOptions}
+            className="py-3.5 px-5 rounded-2xl font-semibold border border-[var(--border)] bg-[var(--bg-subtle)] text-[var(--tx)] text-sm flex items-center justify-center gap-2 hover:bg-[var(--border)] hover:text-[var(--accent)] transition-colors cursor-pointer"
+          >
+            <SlidersHorizontal className="h-4 w-4" />
+            <span>Make Changes</span>
           </button>
         )}
 

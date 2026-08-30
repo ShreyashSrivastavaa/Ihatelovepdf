@@ -1,7 +1,7 @@
 import Script from "next/script";
 
 export function SchemaOrg() {
-    const schema = {
+    const softwareSchema = {
         "@context": "https://schema.org",
         "@type": ["SoftwareApplication", "WebApplication"],
         "name": "ihatelovepdf",
@@ -13,24 +13,28 @@ export function SchemaOrg() {
             "priceCurrency": "USD",
             "availability": "https://schema.org/InStock"
         },
-        "description": "Free and 100% private browser-based PDF toolkit. Merge, Compress, Split, Extract, Crop, Rotate, Reorder, PDF to Image, and Image to PDF with zero file uploads.",
+        "description": "Free and 100% private browser-based PDF toolkit. Merge, Compress, Split, Extract, Crop, Rotate, Reorder, Redact, OCR, Convert, and Protect PDFs with zero file uploads.",
         "url": "https://ihatelovepdf.com",
-        "softwareVersion": "1.0.0",
+        "softwareVersion": "1.2.0",
         "applicationSubCategory": "PDF Processing Toolkit",
         "browserRequirements": "Requires WebAssembly & JavaScript in modern browsers",
-        "keywords": "merge pdf, compress pdf, split pdf, extract pdf pages, rotate pdf, crop pdf, pdf to jpg, jpg to pdf, free online pdf tools, private pdf converter",
+        "keywords": "merge pdf, compress pdf, split pdf, redact pdf, offline ocr pdf, pdf to excel, word to pdf, crop pdf, rotate pdf, private pdf converter, client-side pdf tools",
         "featureList": [
             "100% Private Local Browser Processing",
             "Zero File Uploads to External Servers",
-            "Merge PDF Files",
-            "Compress PDF Files",
-            "Split PDF Documents",
-            "Extract Specific PDF Pages",
-            "Crop PDF Page Dimensions",
-            "Rotate PDF Pages",
-            "Reorder & Organize PDF Pages",
-            "Convert PDF to JPG / PNG Images",
-            "Convert JPG / PNG Images to PDF"
+            "Merge Unlimited PDF Files",
+            "Extreme Lossless & High-Ratio PDF Compression",
+            "Split PDF Documents by Page Range",
+            "Visual Page Crop & Margin Trimming",
+            "Permanent Black-Box Redaction & Sanitization",
+            "WebAssembly OCR Text Recognition (100+ Languages)",
+            "Convert PDF to Images, Excel, PowerPoint, HTML, EPUB",
+            "Convert Office Documents, Images, Markdown & HTML to PDF",
+            "Extract Plain & Structured Text",
+            "Add Custom Watermarks, Page Numbers, Headers & Footers",
+            "Visual Document Compare & Corruption Repair",
+            "Client-Side Camera Scanner with Perspective Correction",
+            "TextRank AI Document Summarizer & Offline Chat"
         ],
         "aggregateRating": {
             "@type": "AggregateRating",
@@ -62,11 +66,35 @@ export function SchemaOrg() {
         }
     };
 
+    const websiteSchema = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "ihatelovepdf",
+        "url": "https://ihatelovepdf.com",
+        "description": "Powerful, Private & Free PDF Tools running 100% in your browser.",
+        "inLanguage": ["en", "es", "pt", "de", "fr", "hu", "it", "ro", "ru"],
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://ihatelovepdf.com/tools?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+        }
+    };
+
     return (
-        <Script
-            id="schema-org"
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
+        <>
+            <Script
+                id="schema-org-software"
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
+            />
+            <Script
+                id="schema-org-website"
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+            />
+        </>
     );
 }

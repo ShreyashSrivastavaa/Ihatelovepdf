@@ -1,16 +1,23 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Share2, Copy, Check, Upload, ArrowRight, ShieldCheck } from 'lucide-react';
 
 export default function P2PShareInterface({ file }: { file?: File | null }) {
   const [selectedFile, setSelectedFile] = useState<File | null>(file || null);
-  const [roomCode] = useState(() => Math.random().toString(36).slice(2, 8).toUpperCase());
+  const [roomCode, setRoomCode] = useState('SYNCING');
+  const [shareUrl, setShareUrl] = useState('');
   const [copied, setCopied] = useState(false);
   const [joinCode, setJoinCode] = useState('');
   const [status, setStatus] = useState<'idle' | 'waiting' | 'connected' | 'completed'>('idle');
 
-  const shareUrl = typeof window !== 'undefined' ? `${window.location.origin}/p2p-share?code=${roomCode}` : '';
+  useEffect(() => {
+    const code = Math.random().toString(36).slice(2, 8).toUpperCase();
+    setRoomCode(code);
+    if (typeof window !== 'undefined') {
+      setShareUrl(`${window.location.origin}/p2p-share?code=${code}`);
+    }
+  }, []);
 
   const handleCopyLink = async () => {
     await navigator.clipboard.writeText(shareUrl || roomCode);

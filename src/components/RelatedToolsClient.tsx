@@ -16,18 +16,15 @@ const RELATED_TOOLS: Record<string, string[]> = {
   reorder: ["merge", "split", "pageNumbers", "compress"],
   pdfToImages: ["compress", "merge", "imagesToPdf", "pdfToZip"],
   imagesToPdf: ["compress", "merge", "pdfToImages", "rotate"],
-  watermark: ["pageNumbers", "headersFooters", "encrypt", "compress"],
+  watermark: ["pageNumbers", "headersFooters", "decrypt", "compress"],
   pageNumbers: ["headersFooters", "watermark", "reorder", "compress"],
   headersFooters: ["pageNumbers", "watermark", "compress", "merge"],
-  extractText: ["aiSummarize", "pdfToAudio", "pdfToExcel", "markdownToPdf"],
+  extractText: ["ocr", "pdfToExcel", "markdownToPdf", "compress"],
   invertColors: ["crop", "rotate", "extractText", "compress"],
-  redact: ["privacyScanner", "encrypt", "flatten", "fingerprint"],
-  flatten: ["encrypt", "redact", "compress", "merge"],
+  redact: ["decrypt", "ocr", "extractText", "compress"],
   compare: ["redact", "extractText", "merge", "compress"],
-  encrypt: ["decrypt", "privacyScanner", "watermark", "flatten"],
-  decrypt: ["encrypt", "compress", "extractText", "merge"],
-  privacyScanner: ["redact", "fingerprint", "encrypt", "flatten"],
-  ocr: ["extractText", "aiSummarize", "pdfToAudio", "pdfToExcel"],
+  decrypt: ["compress", "extractText", "merge", "watermark"],
+  ocr: ["extractText", "pdfToExcel", "scanToPdf", "compress"],
   scanToPdf: ["ocr", "compress", "crop", "imagesToPdf"],
   markdownToPdf: ["htmlToPdf", "csvToPdf", "createPdf", "compress"],
   htmlToPdf: ["markdownToPdf", "pdfToHtml", "createPdf", "compress"],
@@ -38,18 +35,12 @@ const RELATED_TOOLS: Record<string, string[]> = {
   powerpointToPdf: ["pdfToPowerpoint", "pdfToImages", "compress", "merge"],
   pdfToPowerpoint: ["powerpointToPdf", "pdfToImages", "compress", "extract"],
   pdfToHtml: ["htmlToPdf", "extractText", "pdfToEpub", "compress"],
-  pdfToEpub: ["ebookToPdf", "pdfToAudio", "extractText", "invertColors"],
+  pdfToEpub: ["ebookToPdf", "extractText", "invertColors", "compress"],
   ebookToPdf: ["pdfToEpub", "invertColors", "compress", "pageNumbers"],
-  pdfToAudio: ["audioToPdf", "extractText", "aiSummarize", "aiChat"],
-  audioToPdf: ["pdfToAudio", "createPdf", "markdownToPdf", "extractText"],
-  repair: ["compress", "flatten", "privacyScanner", "merge"],
-  p2pShare: ["encrypt", "compress", "watermark", "fingerprint"],
+  p2pShare: ["compress", "watermark", "decrypt", "merge"],
   whiteboard: ["editPdf", "scanToPdf", "compress", "merge"],
   gstInvoice: ["posBilling", "createPdf", "compress", "watermark"],
   posBilling: ["gstInvoice", "createPdf", "compress", "scanToPdf"],
-  fingerprint: ["watermark", "privacyScanner", "encrypt", "redact"],
-  aiSummarize: ["aiChat", "extractText", "pdfToAudio", "compress"],
-  aiChat: ["aiSummarize", "extractText", "pdfToAudio", "ocr"],
 };
 
 export default function RelatedToolsClient({ currentMode }: { currentMode: string }) {
@@ -67,7 +58,7 @@ export default function RelatedToolsClient({ currentMode }: { currentMode: strin
           What do you need next?
         </h2>
         <span className="text-xs text-[var(--tx-3)] font-medium hidden sm:inline">
-          Explore 46+ client-side PDF tools
+          Explore all free &amp; private client-side PDF tools
         </span>
       </div>
 
@@ -88,6 +79,7 @@ export default function RelatedToolsClient({ currentMode }: { currentMode: strin
             <Link
               key={key}
               href={href}
+              prefetch={true}
               id={`related-tool-${key}`}
               className="group surface-card p-4 space-y-2 hover:border-[var(--accent-border)] hover:shadow-sm transition-all duration-200 flex flex-col"
             >

@@ -53,13 +53,23 @@ export default function FileUploader({
 
     const invalidType = files.find(file => {
       const fileName = file.name.toLowerCase();
+      if (acceptedFileTypes) {
+        const allowed = acceptedFileTypes.split(',').map(s => s.trim().toLowerCase());
+        return !allowed.some(rule => {
+          if (rule.startsWith('.')) {
+            return fileName.endsWith(rule);
+          }
+          return file.type === rule || file.type.startsWith(rule.replace('/*', ''));
+        });
+      }
       if (acceptImages) {
-        const validExts = ['.jpg', '.jpeg', '.png', '.webp', '.tiff', '.tif'];
+        const validExts = ['.jpg', '.jpeg', '.png', '.webp', '.tiff', '.tif', '.bmp', '.svg'];
         return !validExts.some(ext => fileName.endsWith(ext)) &&
           !file.type.startsWith('image/');
       } else {
-        return file.type !== 'application/pdf' &&
-          !fileName.endsWith('.pdf');
+        return !fileName.endsWith('.pdf') &&
+          file.type !== 'application/pdf' &&
+          !file.type.includes('pdf');
       }
     });
 
@@ -75,10 +85,13 @@ export default function FileUploader({
         params: { reason: 'invalid_type', attempted_ext: fileExt },
       });
 
-      if (acceptImages) {
-        return `This tool requires images (JPG, PNG, WebP) — you added a ${fileExt} file ("${invalidType.name}").`;
+      if (acceptedFileTypes) {
+        return `Unsupported file format ("${invalidType.name}"). Please upload: ${acceptedFileTypes}`;
       }
-      return `This tool needs a PDF file — you added a ${fileExt} file ("${invalidType.name}").`;
+      if (acceptImages) {
+        return `This tool requires image files (JPG, PNG, WebP) — you added a ${fileExt} file ("${invalidType.name}").`;
+      }
+      return `This tool requires a PDF file — you added a ${fileExt} file ("${invalidType.name}").`;
     }
 
     const oversizedFile = files.find(file => file.size > maxFileSize);
@@ -97,7 +110,7 @@ export default function FileUploader({
     }
 
     return null;
-  }, [acceptImages, errors, maxFileSize, maxFileSizeMB]);
+  }, [acceptImages, acceptedFileTypes, errors, maxFileSize, maxFileSizeMB]);
 
   const handleFiles = useCallback((files: FileList | null) => {
     if (!files || files.length === 0) return;

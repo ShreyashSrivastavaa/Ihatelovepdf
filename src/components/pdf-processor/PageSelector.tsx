@@ -12,15 +12,21 @@ type PageSelectorProps = {
   selectedPageRotationDegrees?: 0 | 90 | 180 | 270 | -90 | -180 | -270;
 };
 
+// In-memory persistent cache for instant thumbnail & page-count retrieval across page/file switches
+const globalThumbnailCache = new Map<string, { pageCount: number; thumbnails: string[] }>();
+
 export default function PageSelector({
   file,
   selectedPages,
   onPageSelectAction,
   selectedPageRotationDegrees = 0,
 }: PageSelectorProps) {
-  const [pageCount, setPageCount] = useState<number>(0);
-  const [thumbnails, setThumbnails] = useState<string[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const fileKey = file ? `${file.name}-${file.size}-${file.lastModified}` : '';
+  const cachedData = fileKey ? globalThumbnailCache.get(fileKey) : undefined;
+
+  const [pageCount, setPageCount] = useState<number>(cachedData?.pageCount ?? 0);
+  const [thumbnails, setThumbnails] = useState<string[]>(cachedData?.thumbnails ?? []);
+  const [loading, setLoading] = useState<boolean>(!cachedData);
   const [error, setError] = useState<string | null>(null);
   const dictionary = useDictionary();
   const selectorStrings = dictionary.components.pageSelector;
@@ -29,6 +35,17 @@ export default function PageSelector({
     let isMounted = true;
 
     async function loadPdfInfo() {
+      if (!file) return;
+
+      const key = `${file.name}-${file.size}-${file.lastModified}`;
+      const existing = globalThumbnailCache.get(key);
+      if (existing) {
+        setPageCount(existing.pageCount);
+        setThumbnails(existing.thumbnails);
+        setLoading(false);
+        return;
+      }
+
       setLoading(true);
       setError(null);
       try {
@@ -37,18 +54,32 @@ export default function PageSelector({
         if (!isMounted) return;
         setPageCount(count);
 
-        // Generate thumbnails for the first 20 pages
-        const maxPages = Math.min(count, 20);
-        setThumbnails([]); // Reset
+        // Generate thumbnails for the first 24 pages in fast concurrent batches
+        const maxPages = Math.min(count, 24);
+        const loadedThumbnails: string[] = [];
 
-        for (let i = 1; i <= maxPages; i++) {
+        const BATCH_SIZE = 4;
+        for (let i = 1; i <= maxPages; i += BATCH_SIZE) {
           if (!isMounted) return;
-          const thumbnail = await renderPdfThumbnail(file, i);
+          const batchIndices: number[] = [];
+          for (let j = i; j < i + BATCH_SIZE && j <= maxPages; j++) {
+            batchIndices.push(j);
+          }
+
+          const batchResults = await Promise.all(
+            batchIndices.map(pageIdx => renderPdfThumbnail(file, pageIdx))
+          );
           if (!isMounted) return;
-          setThumbnails(prev => [...prev, thumbnail]);
-          // Small yield to ensure UI updates
-          await new Promise(resolve => setTimeout(resolve, 0));
+
+          loadedThumbnails.push(...batchResults);
+          setThumbnails([...loadedThumbnails]);
         }
+
+        // Save to global cache for 0ms instant reload on subsequent page switches
+        globalThumbnailCache.set(key, {
+          pageCount: count,
+          thumbnails: loadedThumbnails,
+        });
       } catch (err) {
         if (!isMounted) return;
         console.error('Error loading PDF info:', err);
@@ -60,9 +91,7 @@ export default function PageSelector({
       }
     }
 
-    if (file) {
-      loadPdfInfo();
-    }
+    loadPdfInfo();
 
     return () => {
       isMounted = false;
@@ -127,11 +156,13 @@ export default function PageSelector({
     );
   }
 
+  const selectedCount = Object.values(selectedPages).filter(Boolean).length;
+
   return (
     <div>
       <div className="flex justify-between mb-4">
         <p className="text-sm text-[var(--tx-2)]">
-          {selectorStrings.summary(pageCount, Object.keys(selectedPages).length)}
+          {selectorStrings.summary(pageCount, selectedCount)}
         </p>
         <div className="space-x-2">
           <button
@@ -143,7 +174,7 @@ export default function PageSelector({
           <button
             className="text-sm text-[var(--tx-3)] hover:text-[var(--accent)]"
             onClick={deselectAllPages}
-            disabled={Object.keys(selectedPages).length === 0}
+            disabled={selectedCount === 0}
           >
             {selectorStrings.deselectAll}
           </button>

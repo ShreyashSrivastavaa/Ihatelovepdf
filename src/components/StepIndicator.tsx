@@ -10,12 +10,19 @@ interface StepIndicatorProps {
   isProcessing: boolean;
   hasResult: boolean;
   onStepClick?: (step: ToolStep) => void;
+  isGenerator?: boolean;
 }
 
-const STEPS: { id: ToolStep; label: string; icon: React.ElementType }[] = [
+const STANDARD_STEPS: { id: ToolStep; label: string; icon: React.ElementType }[] = [
   { id: 'upload', label: 'Upload', icon: Upload },
   { id: 'options', label: 'Options', icon: Sliders },
   { id: 'process', label: 'Process', icon: Cpu },
+  { id: 'result', label: 'Download', icon: Download },
+];
+
+const GENERATOR_STEPS: { id: ToolStep; label: string; icon: React.ElementType }[] = [
+  { id: 'options', label: 'Options', icon: Sliders },
+  { id: 'process', label: 'Create', icon: Cpu },
   { id: 'result', label: 'Download', icon: Download },
 ];
 
@@ -25,8 +32,28 @@ export default function StepIndicator({
   isProcessing,
   hasResult,
   onStepClick,
+  isGenerator = false,
 }: StepIndicatorProps) {
+  const steps = isGenerator ? GENERATOR_STEPS : STANDARD_STEPS;
+
   const getStepStatus = (stepId: ToolStep): 'completed' | 'active' | 'upcoming' => {
+    if (isGenerator) {
+      if (stepId === 'options') {
+        if (isProcessing || hasResult) return 'completed';
+        return 'active';
+      }
+      if (stepId === 'process') {
+        if (hasResult) return 'completed';
+        if (isProcessing) return 'active';
+        return 'upcoming';
+      }
+      if (stepId === 'result') {
+        if (hasResult) return 'active';
+        return 'upcoming';
+      }
+      return 'upcoming';
+    }
+
     if (stepId === 'upload') {
       if (hasFiles) return 'completed';
       return currentStep === 'upload' ? 'active' : 'upcoming';
@@ -54,12 +81,12 @@ export default function StepIndicator({
       className="w-full py-3 px-2 sm:px-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)]/70 backdrop-blur-sm shadow-xs"
     >
       <ol className="flex items-center justify-between gap-1 sm:gap-2">
-        {STEPS.map((step, index) => {
+        {steps.map((step, index) => {
           const status = getStepStatus(step.id);
           const isClickable =
             Boolean(onStepClick) &&
             ((step.id === 'upload') ||
-              (step.id === 'options' && hasFiles && !isProcessing) ||
+              (step.id === 'options' && (isGenerator || (hasFiles && !isProcessing))) ||
               (step.id === 'result' && hasResult));
 
           const Icon = step.icon;
@@ -117,7 +144,7 @@ export default function StepIndicator({
               </div>
 
               {/* Connecting Divider line */}
-              {index < STEPS.length - 1 && (
+              {index < steps.length - 1 && (
                 <div
                   className={`h-0.5 w-2 sm:w-6 mx-1 sm:mx-2 rounded-full transition-colors ${
                     status === 'completed' ? 'bg-[var(--success)]' : 'bg-[var(--border)]'

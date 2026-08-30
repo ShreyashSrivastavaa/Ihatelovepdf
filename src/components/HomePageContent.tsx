@@ -52,9 +52,9 @@ export function HomePageContent({ dictionary }: { dictionary: Dictionary }) {
           </div>
         </section>
 
-        {/* TOOL SWITCHER (46+ Tools) */}
+        {/* TOOL SWITCHER (45+ Tools) */}
         <section className="max-w-4xl mx-auto">
-          <ToolSwitcher tools={tools} activeKey={null} />
+          <ToolSwitcher tools={tools} activeKey="merge" />
         </section>
 
         {/* CENTERPIECE PDF PROCESSOR UI CONTAINER */}
@@ -69,7 +69,7 @@ export function HomePageContent({ dictionary }: { dictionary: Dictionary }) {
               {home.why.title}
             </h2>
             <p className="text-sm text-[var(--tx-2)]">
-              Designed for professionals who demand total data sovereignty, zero speed bottlenecks, and privacy guarantees across 46+ PDF tools.
+              Designed for professionals who demand total data sovereignty, zero speed bottlenecks, and privacy guarantees across all {tools.length}+ client-side PDF tools.
             </p>
           </div>
 

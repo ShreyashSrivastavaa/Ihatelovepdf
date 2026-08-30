@@ -43,7 +43,7 @@ export default function QuickToolSelector({ links }: { links: QuickToolLink[] })
     <section className="space-y-3 max-w-4xl mx-auto">
       <div className="flex items-center justify-between px-1">
         <h2 className="text-xs font-semibold text-[var(--tx-3)] uppercase tracking-wider" id="tool-selector-label">
-          46+ Free &amp; Private PDF Tools
+          {links.length}+ Free &amp; Private PDF Tools
         </h2>
         <span className="text-xs text-[var(--tx-3)]">100% Local Browser Processing</span>
       </div>
@@ -64,7 +64,7 @@ export default function QuickToolSelector({ links }: { links: QuickToolLink[] })
             </div>
             <div>
               <span className="block truncate text-sm font-bold text-[var(--tx)]">
-                {activeTool ? activeTool.label : 'Choose a PDF tool from 46+ free tools...'}
+                {activeTool ? activeTool.label : `Choose a PDF tool from ${links.length}+ free tools...`}
               </span>
             </div>
           </div>
@@ -87,6 +87,7 @@ export default function QuickToolSelector({ links }: { links: QuickToolLink[] })
                     key={tool.key}
                     type="button"
                     onClick={() => handleSelect(tool)}
+                    onMouseEnter={() => router.prefetch(tool.href)}
                     className={`flex items-center justify-between rounded-xl px-3 py-2.5 text-left text-xs font-semibold transition-colors cursor-pointer min-h-[44px] ${
                       isSelected
                         ? 'bg-[var(--accent-soft)] text-[var(--accent)] border border-[var(--accent-border)] font-bold'

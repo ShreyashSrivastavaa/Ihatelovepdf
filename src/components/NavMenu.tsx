@@ -91,6 +91,7 @@ export default function NavMenu() {
               <li>
                 <Link
                   href={routes.home}
+                  prefetch={true}
                   className={`px-2.5 py-1.5 rounded-md transition-colors ${
                     isActive(routes.home)
                       ? 'text-[var(--accent)] bg-[var(--accent-soft)] font-semibold'
@@ -102,7 +103,34 @@ export default function NavMenu() {
               </li>
               <li>
                 <Link
+                  href="/tools"
+                  prefetch={true}
+                  className={`px-2.5 py-1.5 rounded-md transition-colors ${
+                    isActive('/tools')
+                      ? 'text-[var(--accent)] bg-[var(--accent-soft)] font-semibold'
+                      : 'text-[var(--tx-2)] hover:text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
+                  }`}
+                >
+                  All Tools
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/guides"
+                  prefetch={true}
+                  className={`px-2.5 py-1.5 rounded-md transition-colors ${
+                    isActive('/guides')
+                      ? 'text-[var(--accent)] bg-[var(--accent-soft)] font-semibold'
+                      : 'text-[var(--tx-2)] hover:text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
+                  }`}
+                >
+                  Guides
+                </Link>
+              </li>
+              <li>
+                <Link
                   href={routes.faq}
+                  prefetch={true}
                   className={`px-2.5 py-1.5 rounded-md transition-colors ${
                     isActive(routes.faq)
                       ? 'text-[var(--accent)] bg-[var(--accent-soft)] font-semibold'
@@ -115,6 +143,7 @@ export default function NavMenu() {
               <li>
                 <Link
                   href={routes.support || '/support'}
+                  prefetch={true}
                   className={`px-2.5 py-1.5 rounded-md transition-colors ${
                     isActive(routes.support || '/support')
                       ? 'text-[var(--accent)] bg-[var(--accent-soft)] font-semibold text-[var(--accent)]'
@@ -221,6 +250,7 @@ export default function NavMenu() {
           <nav className="space-y-1.5">
             <Link
               href={routes.home}
+              prefetch={true}
               onClick={() => setIsOpen(false)}
               className={`flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-semibold transition-colors min-h-[44px] w-full ${
                 isActive(routes.home)
@@ -232,7 +262,34 @@ export default function NavMenu() {
             </Link>
 
             <Link
+              href="/tools"
+              prefetch={true}
+              onClick={() => setIsOpen(false)}
+              className={`flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-semibold transition-colors min-h-[44px] w-full ${
+                isActive('/tools')
+                  ? 'text-[var(--accent)] bg-[var(--accent-soft)]'
+                  : 'text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
+              }`}
+            >
+              <span>All Tools (45+)</span>
+            </Link>
+
+            <Link
+              href="/guides"
+              prefetch={true}
+              onClick={() => setIsOpen(false)}
+              className={`flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-semibold transition-colors min-h-[44px] w-full ${
+                isActive('/guides')
+                  ? 'text-[var(--accent)] bg-[var(--accent-soft)]'
+                  : 'text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
+              }`}
+            >
+              <span>Guides & Tutorials</span>
+            </Link>
+
+            <Link
               href={routes.faq}
+              prefetch={true}
               onClick={() => setIsOpen(false)}
               className={`flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-semibold transition-colors min-h-[44px] w-full ${
                 isActive(routes.faq)
@@ -245,6 +302,7 @@ export default function NavMenu() {
 
             <Link
               href={routes.support || '/support'}
+              prefetch={true}
               onClick={() => setIsOpen(false)}
               className={`flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold transition-colors min-h-[44px] w-full ${
                 isActive(routes.support || '/support')
@@ -260,6 +318,7 @@ export default function NavMenu() {
 
             <Link
               href={routes.privacy || '/privacy'}
+              prefetch={true}
               onClick={() => setIsOpen(false)}
               className={`flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold transition-colors min-h-[44px] w-full ${
                 isActive(routes.privacy || '/privacy')
@@ -275,6 +334,7 @@ export default function NavMenu() {
 
             <Link
               href={routes.terms || '/terms'}
+              prefetch={true}
               onClick={() => setIsOpen(false)}
               className={`flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold transition-colors min-h-[44px] w-full ${
                 isActive(routes.terms || '/terms')

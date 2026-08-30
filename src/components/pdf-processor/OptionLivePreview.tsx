@@ -60,30 +60,49 @@ export default function OptionLivePreview({ file, mode, options }: OptionLivePre
     }
   };
 
-  // Watermark positioning styles
-  const getWatermarkPositionStyle = () => {
-    const pos = options.watermarkPosition || 'center';
-    switch (pos) {
+  // Watermark options (resolving nested object or flat props)
+  const wm = options.watermark || {};
+  const watermarkText = wm.watermarkText ?? options.watermarkText ?? 'CONFIDENTIAL';
+  const watermarkColor = wm.watermarkColor ?? options.watermarkColor ?? '#ff0000';
+  const watermarkOpacity = wm.watermarkOpacity ?? options.watermarkOpacity ?? 0.35;
+  const watermarkRotation = wm.watermarkRotation ?? options.watermarkRotation ?? 45;
+  const watermarkPosition = wm.watermarkPosition ?? options.watermarkPosition ?? 'center';
+  const watermarkFontSize = wm.watermarkFontSize ?? options.watermarkFontSize ?? 48;
+
+  // Watermark positioning flex alignment classes
+  const getWatermarkPositionClasses = () => {
+    switch (watermarkPosition) {
       case 'top-left':
-        return 'top-4 left-4 items-start justify-start';
+        return 'items-start justify-start text-left';
+      case 'top-center':
+        return 'items-start justify-center text-center';
       case 'top-right':
-        return 'top-4 right-4 items-start justify-end';
+        return 'items-start justify-end text-right';
       case 'bottom-left':
-        return 'bottom-4 left-4 items-end justify-start';
+        return 'items-end justify-start text-left';
+      case 'bottom-center':
+        return 'items-end justify-center text-center';
       case 'bottom-right':
-        return 'bottom-4 right-4 items-end justify-end';
+        return 'items-end justify-end text-right';
       case 'tile':
-        return 'inset-0 items-center justify-center';
       case 'center':
       default:
-        return 'inset-0 items-center justify-center';
+        return 'items-center justify-center text-center';
     }
   };
 
+  // Page Numbers options (resolving nested object or flat props)
+  const pn = options.pageNumbers || {};
+  const pageNumberFormat = pn.pageNumberFormat ?? options.pageNumberFormat ?? 'page_n_of_total';
+  const pageNumberPosition = pn.pageNumberPosition ?? options.pageNumberPosition ?? 'bottom-center';
+  const pageNumberColor = pn.pageNumberColor ?? options.pageNumberColor ?? '#666666';
+  const pageNumberFontSize = pn.pageNumberFontSize ?? options.pageNumberFontSize ?? 11;
+  const pageNumberStart = pn.pageNumberStartNumber ?? options.pageNumberStart ?? 1;
+  const pageNumberSkipFirst = pn.skipFirstPage ?? options.pageNumberSkipFirst ?? false;
+
   // Page Numbers positioning styles
   const getPageNumberPositionStyle = () => {
-    const pos = options.pageNumberPosition || 'bottom-center';
-    switch (pos) {
+    switch (pageNumberPosition) {
       case 'bottom-left':
         return 'bottom-3 left-4 text-left';
       case 'bottom-right':
@@ -100,15 +119,35 @@ export default function OptionLivePreview({ file, mode, options }: OptionLivePre
     }
   };
 
-  const resolveMacroText = (template: string) => {
+  const resolveMacroText = (template: string, pageNum: number = 1, totalPages: number = 8) => {
     const today = new Date().toISOString().split('T')[0];
     return template
-      .replace(/\{page\}/gi, '1')
-      .replace(/\{n\}/gi, '1')
-      .replace(/\{total\}/gi, '8')
+      .replace(/\{page\}/gi, String(pageNum))
+      .replace(/\{n\}/gi, String(pageNum))
+      .replace(/\{total\}/gi, String(totalPages))
       .replace(/\{date\}/gi, today)
       .replace(/\{title\}/gi, file ? file.name.replace(/\.[^/.]+$/, '') : 'Document');
   };
+
+  const formatPageNumberText = (fmt: string, n: number, total: number) => {
+    switch (fmt) {
+      case 'page_n_of_total':
+        return `Page ${n} of ${total}`;
+      case 'n_of_total':
+        return `${n} / ${total}`;
+      case 'page_n':
+        return `Page ${n}`;
+      case 'n':
+        return `${n}`;
+      case 'dash_n_dash':
+        return `- ${n} -`;
+      default:
+        return resolveMacroText(fmt, n, total);
+    }
+  };
+
+  // Headers & Footers options
+  const hf = options.headersFooters || {};
 
   return (
     <div className="rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] p-4 sm:p-5 space-y-3 shadow-xs">
@@ -176,60 +215,109 @@ export default function OptionLivePreview({ file, mode, options }: OptionLivePre
 
         {/* 1. Live Overlay: Watermark */}
         {mode === 'watermark' && (
-          <div
-            className={`absolute flex pointer-events-none ${getWatermarkPositionStyle()}`}
-            style={{
-              opacity: options.watermarkOpacity ?? 0.3,
-            }}
-          >
-            <span
-              className="font-extrabold uppercase whitespace-nowrap tracking-wider text-center"
+          watermarkPosition === 'tile' ? (
+            <div
+              className="absolute inset-0 p-3 grid grid-cols-2 grid-rows-3 gap-2 pointer-events-none"
+              style={{ opacity: watermarkOpacity }}
+            >
+              {[...Array(6)].map((_, i) => (
+                <div key={i} className="flex items-center justify-center overflow-hidden">
+                  <span
+                    className="font-extrabold uppercase whitespace-nowrap tracking-wider text-center"
+                    style={{
+                      transform: `rotate(${-(watermarkRotation)}deg)`,
+                      color: watermarkColor,
+                      fontSize: `${Math.round(Math.max(10, Math.min(36, watermarkFontSize * 0.35)))}px`,
+                      textShadow: '0 1px 2px rgba(0,0,0,0.1)',
+                    }}
+                  >
+                    {watermarkText}
+                  </span>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div
+              className={`absolute inset-0 p-5 flex pointer-events-none ${getWatermarkPositionClasses()}`}
               style={{
-                transform: `rotate(${-(options.watermarkRotation ?? 45)}deg)`,
-                color: options.watermarkColor || '#ff0000',
-                fontSize: `${Math.min(32, Math.max(14, (options.watermarkFontSize || 48) / 2))}px`,
-                textShadow: '0 1px 2px rgba(0,0,0,0.1)',
+                opacity: watermarkOpacity,
               }}
             >
-              {options.watermarkText || 'CONFIDENTIAL'}
-            </span>
-          </div>
+              <span
+                className="font-extrabold uppercase whitespace-nowrap tracking-wider text-center transition-transform duration-150 inline-block"
+                style={{
+                  transform: `rotate(${-(watermarkRotation)}deg)`,
+                  color: watermarkColor,
+                  fontSize: `${Math.round(Math.max(12, Math.min(52, watermarkFontSize * 0.48)))}px`,
+                  textShadow: '0 1px 2px rgba(0,0,0,0.12)',
+                }}
+              >
+                {watermarkText}
+              </span>
+            </div>
+          )
         )}
 
         {/* 2. Live Overlay: Page Numbers */}
         {mode === 'pageNumbers' && (
-          <div
-            className={`absolute px-4 pointer-events-none ${getPageNumberPositionStyle()}`}
-          >
-            <span
-              className="font-medium"
-              style={{
-                color: options.pageNumberColor || '#666666',
-                fontSize: `${Math.min(14, Math.max(9, (options.pageNumberFontSize || 10) * 1.1))}px`,
-              }}
+          pageNumberSkipFirst ? (
+            <div className="absolute top-2 right-2 px-1.5 py-0.5 rounded bg-slate-100/80 text-[9px] font-mono text-slate-500 border border-slate-200">
+              Page 1 (Cover - Skipped)
+            </div>
+          ) : (
+            <div
+              className={`absolute px-4 pointer-events-none ${getPageNumberPositionStyle()}`}
             >
-              {resolveMacroText(options.pageNumberFormat || 'Page {n} of {total}')}
-            </span>
-          </div>
+              <span
+                className="font-medium font-mono"
+                style={{
+                  color: pageNumberColor,
+                  fontSize: `${Math.min(14, Math.max(9, pageNumberFontSize * 1.1))}px`,
+                }}
+              >
+                {formatPageNumberText(pageNumberFormat, pageNumberStart, 8)}
+              </span>
+            </div>
+          )
         )}
 
         {/* 3. Live Overlay: Headers & Footers */}
         {mode === 'headersFooters' && (
-          <>
-            {/* Top Header */}
-            <div className="absolute top-2 inset-x-3 flex items-center justify-between text-[8px] sm:text-[9px] font-medium text-slate-600 pointer-events-none border-b border-slate-200/60 pb-1">
-              <span className="truncate max-w-[30%]">{resolveMacroText(options.headersFooters?.headerLeft || '')}</span>
-              <span className="truncate max-w-[40%] text-center">{resolveMacroText(options.headersFooters?.headerCenter || '')}</span>
-              <span className="truncate max-w-[30%] text-right">{resolveMacroText(options.headersFooters?.headerRight || '')}</span>
+          hf.skipFirstPage ? (
+            <div className="absolute top-2 right-2 px-1.5 py-0.5 rounded bg-slate-100/80 text-[9px] font-mono text-slate-500 border border-slate-200">
+              Page 1 (Header/Footer Excluded)
             </div>
+          ) : (
+            <>
+              {/* Top Header */}
+              <div
+                style={{
+                  top: `${Math.max(4, Math.round((hf.margin ?? 25) / 4))}px`,
+                  color: hf.color || '#4b5563',
+                  fontSize: `${Math.min(12, Math.max(7, Math.round((hf.fontSize ?? 10) * 0.85)))}px`,
+                }}
+                className="absolute inset-x-3 flex items-center justify-between font-medium pointer-events-none border-b border-slate-200/60 pb-0.5"
+              >
+                <span className="truncate max-w-[30%]">{resolveMacroText(hf.headerLeft || '')}</span>
+                <span className="truncate max-w-[40%] text-center">{resolveMacroText(hf.headerCenter || '')}</span>
+                <span className="truncate max-w-[30%] text-right">{resolveMacroText(hf.headerRight || '')}</span>
+              </div>
 
-            {/* Bottom Footer */}
-            <div className="absolute bottom-2 inset-x-3 flex items-center justify-between text-[8px] sm:text-[9px] font-medium text-slate-600 pointer-events-none border-t border-slate-200/60 pt-1">
-              <span className="truncate max-w-[30%]">{resolveMacroText(options.headersFooters?.footerLeft || '')}</span>
-              <span className="truncate max-w-[40%] text-center">{resolveMacroText(options.headersFooters?.footerCenter || '')}</span>
-              <span className="truncate max-w-[30%] text-right">{resolveMacroText(options.headersFooters?.footerRight || '')}</span>
-            </div>
-          </>
+              {/* Bottom Footer */}
+              <div
+                style={{
+                  bottom: `${Math.max(4, Math.round((hf.margin ?? 25) / 4))}px`,
+                  color: hf.color || '#4b5563',
+                  fontSize: `${Math.min(12, Math.max(7, Math.round((hf.fontSize ?? 10) * 0.85)))}px`,
+                }}
+                className="absolute inset-x-3 flex items-center justify-between font-medium pointer-events-none border-t border-slate-200/60 pt-0.5"
+              >
+                <span className="truncate max-w-[30%]">{resolveMacroText(hf.footerLeft || '')}</span>
+                <span className="truncate max-w-[40%] text-center">{resolveMacroText(hf.footerCenter || '')}</span>
+                <span className="truncate max-w-[30%] text-right">{resolveMacroText(hf.footerRight || '')}</span>
+              </div>
+            </>
+          )
         )}
       </div>
     </div>

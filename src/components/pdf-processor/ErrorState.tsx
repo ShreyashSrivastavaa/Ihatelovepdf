@@ -1,7 +1,8 @@
 "use client";
 
 import React from 'react';
-import { AlertCircle, RefreshCw, Lock, FileQuestion, ShieldAlert, Cpu } from 'lucide-react';
+import Link from 'next/link';
+import { AlertCircle, RefreshCw, Lock, FileQuestion, ShieldAlert, Cpu, Home } from 'lucide-react';
 
 export type ErrorType = 'general' | 'password' | 'corrupt' | 'memory' | 'unsupported';
 
@@ -12,6 +13,7 @@ interface ErrorStateProps {
   suggestedAction?: string;
   onRetry?: () => void;
   onReset?: () => void;
+  onGoHome?: boolean;
 }
 
 export default function ErrorState({
@@ -21,6 +23,7 @@ export default function ErrorState({
   suggestedAction,
   onRetry,
   onReset,
+  onGoHome,
 }: ErrorStateProps) {
   const getIcon = () => {
     switch (type) {
@@ -70,7 +73,7 @@ export default function ErrorState({
         </div>
       </div>
 
-      {(onRetry || onReset) && (
+      {(onRetry || onReset || onGoHome) && (
         <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-[var(--border)]/50">
           {onRetry && (
             <button
@@ -91,6 +94,16 @@ export default function ErrorState({
             >
               Choose another file
             </button>
+          )}
+
+          {onGoHome && (
+            <Link
+              href="/"
+              className="px-4 py-2 rounded-xl text-xs font-semibold border border-[var(--border)] bg-[var(--bg-card)] text-[var(--tx)] hover:bg-[var(--bg-subtle)] transition-colors flex items-center gap-1.5"
+            >
+              <Home className="h-3.5 w-3.5" />
+              Go to Home
+            </Link>
           )}
         </div>
       )}

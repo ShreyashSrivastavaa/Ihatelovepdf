@@ -29,22 +29,25 @@ export default function Footer() {
             </div>
 
             <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-sm font-medium">
-              <Link href={routes.home} className="hover:text-[var(--tx)] transition-colors">
+              <Link href={routes.home} prefetch={true} className="hover:text-[var(--tx)] transition-colors">
                 {footer.links.home}
               </Link>
-              <Link href="/about" className="hover:text-[var(--tx)] transition-colors">
+              <Link href="/tools" prefetch={true} className="hover:text-[var(--tx)] transition-colors">
+                All Tools
+              </Link>
+              <Link href="/about" prefetch={true} className="hover:text-[var(--tx)] transition-colors">
                 About
               </Link>
-              <Link href="/guides" className="hover:text-[var(--tx)] transition-colors">
+              <Link href="/guides" prefetch={true} className="hover:text-[var(--tx)] transition-colors">
                 Guides
               </Link>
-              <Link href={routes.faq} className="hover:text-[var(--tx)] transition-colors">
+              <Link href={routes.faq} prefetch={true} className="hover:text-[var(--tx)] transition-colors">
                 {footer.links.faq}
               </Link>
-              <Link href={routes.privacy || '/privacy'} className="hover:text-[var(--tx)] transition-colors">
+              <Link href={routes.privacy || '/privacy'} prefetch={true} className="hover:text-[var(--tx)] transition-colors">
                 Privacy Policy
               </Link>
-              <Link href={routes.terms || '/terms'} className="hover:text-[var(--tx)] transition-colors">
+              <Link href={routes.terms || '/terms'} prefetch={true} className="hover:text-[var(--tx)] transition-colors">
                 Terms of Service
               </Link>
               <button

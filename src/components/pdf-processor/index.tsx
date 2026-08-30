@@ -1,6 +1,9 @@
 "use client";
 
+import dynamic from 'next/dynamic';
+
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
+import Link from 'next/link';
 import FileUploader from './FileUploader';
 import FileList from './FileList';
 import PageSelector from './PageSelector';
@@ -20,27 +23,34 @@ import {
   createPdfBlob,
   getPdfPageCount,
   processPDF,
+  type PdfToImagesArchiveResult,
 } from '../../lib/pdf-processor';
+import * as PDFOps from '../../lib/pdf-operations';
 import { useDictionary } from '../../i18n/LocaleProvider';
 import CompressionPreviewCard, { PreviewStatus } from './CompressionPreviewCard';
 import CompressionSummaryCard from './CompressionSummaryCard';
 import type { OperationKey } from '../../types/operations';
 import { trackEvent } from '../../lib/analytics';
 
-import TextExtractionViewer from './TextExtractionViewer';
-import PdfRedactionEditor from './PdfRedactionEditor';
-import PdfCompareViewer from './PdfCompareViewer';
-import CameraScanInterface from './CameraScanInterface';
-import P2PShareInterface from './P2PShareInterface';
-import AudioTtsInterface from './AudioTtsInterface';
-import AiSummarizerInterface from './AiSummarizerInterface';
+// Heavy tool interfaces — lazy-loaded so only the active tool's bundle is fetched
+const TextExtractionViewer = dynamic(() => import('./TextExtractionViewer'), { ssr: false });
+const PdfRedactionEditor = dynamic(() => import('./PdfRedactionEditor'), { ssr: false });
+const PdfCompareViewer = dynamic(() => import('./PdfCompareViewer'), { ssr: false });
+const CameraScanInterface = dynamic(() => import('./CameraScanInterface'), { ssr: false });
+const P2PShareInterface = dynamic(() => import('./P2PShareInterface'), { ssr: false });
+const PdfWhiteboardInterface = dynamic(() => import('./PdfWhiteboardInterface'), { ssr: false });
+const PdfEditorInterface = dynamic(() => import('./PdfEditorInterface'), { ssr: false });
+const PosBillingInterface = dynamic(() => import('./PosBillingInterface'), { ssr: false });
+const CreateBlankPdfInterface = dynamic(() => import('./CreateBlankPdfInterface'), { ssr: false });
 import { ToolErrorBoundary } from '../ToolErrorBoundary';
-import { ByokProvider } from '../../context/ByokContext';
+
 import StepIndicator, { type ToolStep } from '../StepIndicator';
 import ProcessingProgress from './ProcessingProgress';
 import StickyActionBar from './StickyActionBar';
 import ResultPanel, { type OutputFileItem } from './ResultPanel';
 import ErrorState from './ErrorState';
+import { ICON_MAP } from '../ToolSwitcher';
+import { Layers } from 'lucide-react';
 
 type ProcessingMode = OperationKey;
 
@@ -117,11 +127,15 @@ const MODE_DEFAULTS: Record<ProcessingMode, PDFProcessingOptions> = {
     pageNumberColor: '#666666',
   },
   headersFooters: {
-    headerCenter: '{title}',
-    footerLeft: '{date}',
-    footerRight: 'Page {page} of {total}',
-    headerFooterFontSize: 9,
-    headerFooterColor: '#555555',
+    headersFooters: {
+      headerCenter: '{title}',
+      footerLeft: '{date}',
+      footerRight: 'Page {page} of {total}',
+      margin: 25,
+      fontSize: 10,
+      color: '#4b5563',
+      shrinkToFit: true,
+    },
   },
   extractText: {},
   invertColors: {
@@ -130,25 +144,17 @@ const MODE_DEFAULTS: Record<ProcessingMode, PDFProcessingOptions> = {
   redact: {
     redactColor: '#000000',
   },
-  flatten: {
-    flattenFormFields: true,
-    flattenAnnotations: true,
-  },
   compare: {},
-  pdfToZip: {},
-  encrypt: {
-    userPassword: '',
-    ownerPassword: '',
-    permissions: {
-      printing: true,
-      copying: false,
-      modifying: false,
-    },
+  pdfToZip: {
+    imageOutputFormat: 'png',
+    imageOutputQuality: 0.9,
+    imageRenderDpi: 144,
+    bundleAsZip: true,
+    imageBaseName: DEFAULT_IMAGE_BASE_NAME,
   },
   decrypt: {
     decryptionPassword: '',
   },
-  privacyScanner: {},
   ocr: {
     ocrLanguage: 'eng',
   },
@@ -161,7 +167,11 @@ const MODE_DEFAULTS: Record<ProcessingMode, PDFProcessingOptions> = {
   csvToPdf: {
     csvDelimiter: ',',
   },
-  createPdf: {},
+  createPdf: {
+    blankPageCount: 1,
+    blankPageSize: 'a4',
+    blankPageOrientation: 'portrait',
+  },
   excelToPdf: {},
   pdfToExcel: {},
   powerpointToPdf: {},
@@ -169,13 +179,6 @@ const MODE_DEFAULTS: Record<ProcessingMode, PDFProcessingOptions> = {
   pdfToHtml: {},
   pdfToEpub: {},
   ebookToPdf: {},
-  pdfToAudio: {
-    ttsVoice: 'default',
-    ttsRate: 1,
-    ttsPitch: 1,
-  },
-  audioToPdf: {},
-  repair: {},
   p2pShare: {},
   whiteboard: {},
   gstInvoice: {
@@ -183,17 +186,6 @@ const MODE_DEFAULTS: Record<ProcessingMode, PDFProcessingOptions> = {
     taxRate: 18,
   },
   posBilling: {},
-  fingerprint: {
-    fingerprintRecipient: 'Client-Copy',
-    fingerprintSecret: 'Sec-Key-2026',
-  },
-  aiSummarize: {
-    aiExtractLength: 'medium',
-    aiProvider: 'local',
-  },
-  aiChat: {
-    aiProvider: 'local',
-  },
 };
 
 
@@ -246,6 +238,7 @@ type ProcessingDialogState = {
   status: 'processing' | 'success' | 'error';
   title: string;
   description?: string;
+  progress?: number;
   highlights: DialogHighlight[];
   downloads: DownloadEntry[];
   donationPrompt: DonationPrompt | null;
@@ -384,7 +377,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
   }, [mode, listHeadings]);
 
   const currentFile =
-    mode === 'extract' || mode === 'crop' || mode === 'reorder' || mode === 'rotate'
+    mode === 'extract' || mode === 'split' || mode === 'crop' || mode === 'reorder' || mode === 'rotate'
       ? files[currentFileIndex] ?? null
       : files[0] ?? null;
 
@@ -750,6 +743,36 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
       return;
     }
 
+    if (uploaderConfig.acceptedFileTypes && uploaderConfig.acceptedFileTypes !== 'application/pdf,.pdf') {
+      const allowedRules = uploaderConfig.acceptedFileTypes.split(',').map(s => s.trim().toLowerCase());
+      const customCandidates = selectedFiles.filter(file => {
+        const lowerName = file.name.toLowerCase();
+        return allowedRules.some(rule => {
+          if (rule.startsWith('.')) return lowerName.endsWith(rule);
+          return file.type === rule || file.type.startsWith(rule.replace('/*', ''));
+        });
+      });
+
+      if (customCandidates.length === 0) {
+        trackProcessorEvent('file_rejected', {
+          reason: 'invalid_format',
+          selection_count: selectedFiles.length,
+        });
+        error(`Please upload valid ${uploaderConfig.acceptedFileTypes} files.`);
+        return;
+      }
+
+      trackProcessorEvent('files_added', {
+        accepted_count: customCandidates.length,
+        previous_total: files.length,
+        new_total: files.length + customCandidates.length,
+      });
+      setFiles(prevFiles => uploaderConfig.multiple ? [...prevFiles, ...customCandidates] : customCandidates);
+      setCompressionSummary([]);
+      setCompletedResult(null);
+      return;
+    }
+
     const pdfCandidates = selectedFiles.filter(isPdfFile);
     if (pdfCandidates.length === 0) {
       trackProcessorEvent('file_rejected', {
@@ -809,7 +832,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
     return null;
   };
 
-  const openProcessingDialog = (description: string) => {
+  const openProcessingDialog = (description: string, progress?: number) => {
     if (!statusDialogStrings) {
       return;
     }
@@ -819,10 +842,19 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
       status: 'processing',
       title: statusDialogStrings.processingTitle,
       description,
+      progress,
       highlights: [],
       downloads: [],
       donationPrompt: null,
     });
+  };
+
+  const updateProcessingDialog = (description: string, progress?: number) => {
+    setStatusDialogState((prev) => ({
+      ...prev,
+      description,
+      progress: progress !== undefined ? progress : prev.progress,
+    }));
   };
 
   const showSuccessDialog = ({
@@ -1247,7 +1279,18 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           let latestMessage = '';
 
           for (const sourceFile of currentFiles) {
-            const parts = await processPDF('split', [sourceFile], processingOptions);
+            const fileKey = buildFileSignature(sourceFile);
+            const rawSelection = fileKey === currentFileKey ? selectedPages : (extractSelectionsByFile[fileKey] ?? {});
+            const selectedPageNumbers = Object.entries(rawSelection)
+              .filter(([, isSelected]) => isSelected)
+              .map(([page]) => Number(page));
+
+            const optionsForFile: PDFProcessingOptions = {
+              ...processingOptions,
+              pagesToExtract: selectedPageNumbers.length > 0 ? selectedPageNumbers : undefined,
+            };
+
+            const parts = await processPDF('split', [sourceFile], optionsForFile);
             if (!parts || parts.length === 0) {
               continue;
             }
@@ -1505,45 +1548,189 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           return;
         }
 
+        case 'pdfToZip': {
+          openProcessingDialog('Packaging PDF files into ZIP archive...', 10);
+
+          const onProgress = (prog: number, msg: string) => {
+            updateProcessingDialog(msg, prog);
+          };
+
+          const zipBlob = (await processPDF(
+            'pdfToZip',
+            currentFiles,
+            processingOptions,
+            onProgress
+          )) as Blob;
+
+          const fileName =
+            currentFiles.length === 1
+              ? `${stripPdfExtension(currentFiles[0].name)}.zip`
+              : 'documents.zip';
+
+          downloads.push({ blob: zipBlob, fileName });
+          triggerDownloadAction(zipBlob, fileName);
+
+          const modeSummary =
+            currentFiles.length === 1
+              ? 'Packaged PDF document directly into ZIP archive'
+              : `Packaged ${currentFiles.length} PDF documents directly into ZIP archive`;
+
+          showSuccessDialog({
+            highlights: [
+              {
+                label: statusDialogStrings.resultsLabel,
+                value: modeSummary,
+              },
+              {
+                label: statusDialogStrings.filesProcessedLabel(currentFiles.length),
+              },
+            ],
+            downloads,
+            donationPrompt: buildDonationPrompt(),
+          });
+
+          trackProcessorEvent('operation_success', {
+            file_count: currentFiles.length,
+          });
+          return;
+        }
+
         case 'pdfToImages': {
           let processedSources = 0;
           let totalImages = 0;
-          let zippedCount = 0;
+          const imageOutputs: OutputFileItem[] = [];
 
           for (const source of currentFiles) {
             if (!isPdfFile(source)) {
               continue;
             }
 
-            const result = await processPDF('pdfToImages', [source], {
-              ...processingOptions,
-              imageBaseName: `${stripPdfExtension(source.name)}_${downloadNames.pdfToImages}`,
-            });
+            const onProgress = (prog: number, msg: string) => {
+              updateProcessingDialog(msg, prog);
+            };
+
+            const isZip = processingOptions.bundleAsZip === true;
+            const result = (await processPDF(
+              'pdfToImages',
+              [source],
+              {
+                ...processingOptions,
+                bundleAsZip: isZip,
+                imageBaseName: `${stripPdfExtension(source.name)}_${downloadNames.pdfToImages || 'image'}`,
+              },
+              onProgress
+            )) as PdfToImagesArchiveResult;
+
             processedSources += 1;
             totalImages += result.imageCount;
 
             if (result.kind === 'zip') {
-              zippedCount += 1;
               downloads.push({ blob: result.blob, fileName: result.suggestedName });
               triggerDownloadAction(result.blob, result.suggestedName);
             } else {
               if (result.files.length > 0) {
-                const [first, ...rest] = result.files;
-                downloads.push({ blob: first.blob, fileName: first.name });
-                triggerDownloadAction(first.blob, first.name);
-
-                if (rest.length > 0) {
-                  rest.forEach(entry => {
-                    downloads.push({ blob: entry.blob, fileName: entry.name });
-                    window.setTimeout(() => {
-                      triggerDownloadAction(entry.blob, entry.name);
-                    }, 600);
+                result.files.forEach((file) => {
+                  downloads.push({ blob: file.blob, fileName: file.name });
+                  imageOutputs.push({
+                    name: file.name,
+                    blob: file.blob,
+                    sizeBytes: file.blob.size,
                   });
+                });
+
+                // If single page, trigger direct download immediately
+                if (result.files.length === 1) {
+                  triggerDownloadAction(result.files[0].blob, result.files[0].name);
                 }
               }
             }
 
-            await new Promise(resolve => setTimeout(resolve, 500));
+            await new Promise((resolve) => setTimeout(resolve, 200));
+          }
+
+          if (processedSources === 0) {
+            showErrorDialog(errorStrings.invalidFile);
+            return;
+          }
+
+          if (imageOutputs.length > 0) {
+            const firstImg = imageOutputs[0];
+            setCompletedResult({
+              title: 'PDF to Images Converted!',
+              summaryText: `Successfully converted ${imageOutputs.length} page(s) into high-resolution ${processingOptions.imageOutputFormat === 'jpeg' ? 'JPEG' : 'PNG'} images.`,
+              primaryFileName: firstImg.name,
+              primaryBlob: firstImg.blob,
+              outputFiles: imageOutputs,
+              pageCount: imageOutputs.length,
+            });
+          }
+
+          showSuccessDialog({
+            highlights: [
+              {
+                label: statusDialogStrings.resultsLabel,
+                value: statusMessages.pdfToImages(
+                  totalImages,
+                  processingOptions.imageOutputFormat || 'png',
+                  false
+                ),
+              },
+              {
+                label: statusDialogStrings.filesProcessedLabel(processedSources),
+              },
+            ],
+            downloads,
+            donationPrompt: buildDonationPrompt(),
+          });
+
+          trackProcessorEvent('operation_success', {
+            file_count: processedSources,
+            image_count: totalImages,
+          });
+          return;
+        }
+
+        case 'ocr': {
+          let processedSources = 0;
+          for (const sourceFile of currentFiles) {
+            openProcessingDialog('Initializing client-side WebAssembly OCR engine...', 5);
+            const onProgress = (prog: number, msg: string) => {
+              updateProcessingDialog(msg, prog);
+            };
+
+            const ocrResult = await PDFOps.performFullPdfOcr(
+              sourceFile,
+              processingOptions.ocrLanguage || 'eng',
+              onProgress
+            );
+
+            const baseName = sourceFile.name.replace(/\.[^/.]+$/, '');
+            const pdfBlob = createPdfBlob(ocrResult.pdfData);
+            const textBlob = new Blob([ocrResult.text], { type: 'text/plain;charset=utf-8' });
+            const pdfName = `${baseName}_searchable.pdf`;
+            const textName = `${baseName}_transcript.txt`;
+
+            downloads.push({ blob: pdfBlob, fileName: pdfName });
+            downloads.push({ blob: textBlob, fileName: textName });
+
+            // Automatically download the primary Searchable PDF
+            triggerDownloadAction(pdfBlob, pdfName);
+
+            setCompletedResult({
+              title: 'OCR Text Recognition Complete!',
+              summaryText: `Successfully recognized ${ocrResult.wordCount.toLocaleString()} words across ${ocrResult.pageCount} page(s) with ${ocrResult.confidence}% confidence.`,
+              primaryFileName: pdfName,
+              primaryBlob: pdfBlob,
+              textContent: ocrResult.text,
+              pageCount: ocrResult.pageCount,
+              wordCount: ocrResult.wordCount,
+              outputFiles: [
+                { name: pdfName, blob: pdfBlob, sizeBytes: pdfBlob.size },
+                { name: textName, blob: textBlob, sizeBytes: textBlob.size },
+              ],
+            });
+
+            processedSources += 1;
           }
 
           if (processedSources === 0) {
@@ -1555,11 +1742,11 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
             highlights: [
               {
                 label: statusDialogStrings.resultsLabel,
-                value: statusMessages.pdfToImages(totalImages, processingOptions.imageOutputFormat || 'png', zippedCount > 0),
+                value: 'OCR Searchable PDF & Text Transcript Ready',
               },
               {
                 label: statusDialogStrings.filesProcessedLabel(processedSources),
-              }
+              },
             ],
             downloads,
             donationPrompt: buildDonationPrompt(),
@@ -1567,8 +1754,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
 
           trackProcessorEvent('operation_success', {
             file_count: processedSources,
-            image_count: totalImages,
-            zipped: zippedCount,
+            mode: 'ocr',
           });
           return;
         }
@@ -1600,30 +1786,30 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           let processedSources = 0;
           for (const sourceFile of currentFiles) {
             const result = await processPDF(mode, [sourceFile], processingOptions);
-            const ext =
-              mode === 'pdfToZip'
-                ? '.zip'
-                : mode === 'pdfToExcel'
-                ? '.xlsx'
-                : mode === 'pdfToPowerpoint'
-                ? '.pptx'
-                : mode === 'pdfToHtml'
-                ? '.html'
-                : mode === 'pdfToEpub'
-                ? '.epub'
-                : mode === 'extractText'
-                ? '.txt'
-                : '.pdf';
-
             const baseName = sourceFile.name.replace(/\.[^/.]+$/, '');
-            const fileName = `${baseName}_${mode}${ext}`;
+
+            let ext = '.pdf';
+            if (mode === 'pdfToExcel') ext = '.xlsx';
+            else if (mode === 'pdfToPowerpoint') ext = '.pptx';
+            else if (mode === 'pdfToHtml') ext = '.html';
+            else if (mode === 'pdfToEpub') ext = '.epub';
+            else if (mode === 'extractText') ext = '.txt';
+
+            const fileName = `${baseName}${ext}`;
             const blob =
               result instanceof Blob
                 ? result
                 : typeof result === 'string'
                 ? new Blob([result], { type: 'text/plain;charset=utf-8' })
                 : result instanceof Uint8Array || result instanceof ArrayBuffer
-                ? new Blob([result as BlobPart], { type: 'application/pdf' })
+                ? new Blob([result as BlobPart], {
+                    type:
+                      mode === 'pdfToExcel'
+                        ? 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                        : mode === 'pdfToPowerpoint'
+                        ? 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
+                        : 'application/pdf',
+                  })
                 : new Blob([JSON.stringify(result)], { type: 'application/json' });
 
             downloads.push({ blob, fileName });
@@ -1634,6 +1820,24 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           if (processedSources === 0) {
             showErrorDialog(errorStrings.invalidFile);
             return;
+          }
+
+          if (downloads.length > 0) {
+            const primary = downloads[0];
+            const isSingle = downloads.length === 1;
+            setCompletedResult({
+              title: `${modeLabel} Complete!`,
+              summaryText: isSingle
+                ? `Generated ${primary.fileName}`
+                : `Successfully processed ${downloads.length} files.`,
+              primaryBlob: primary.blob,
+              primaryFileName: primary.fileName,
+              outputFiles: downloads.map((d) => ({
+                name: d.fileName,
+                blob: d.blob,
+                sizeBytes: d.blob.size,
+              })),
+            });
           }
 
           showSuccessDialog({
@@ -1806,7 +2010,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
   );
 
   useEffect(() => {
-    if (mode !== 'extract' && mode !== 'crop' && mode !== 'rotate') {
+    if (mode !== 'extract' && mode !== 'split' && mode !== 'crop' && mode !== 'rotate') {
       if (Object.keys(selectedPages).length > 0) {
         setSelectedPages({});
       }
@@ -1911,28 +2115,36 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           return Object.keys(rest).length === 0 ? {} : rest;
         });
 
-        const key = buildPreviewKey(target, processingOptions);
-        if (key) {
+        if (compressionPreviewStates[signature]) {
           setCompressionPreviewStates(prev => {
-            if (!prev[key]) {
+            if (!prev[signature]) {
               return prev;
             }
-            const nextState = { ...prev };
-            delete nextState[key];
-            return nextState;
+            const nextStates = { ...prev };
+            delete nextStates[signature];
+            return nextStates;
           });
+        }
+        if (compressionPreviewCache[signature]) {
           setCompressionPreviewCache(prev => {
-            if (!prev[key]) {
+            if (!prev[signature]) {
               return prev;
             }
             const nextCache = { ...prev };
-            delete nextCache[key];
+            delete nextCache[signature];
             return nextCache;
           });
         }
       }
 
-      if (mode === 'extract' || mode === 'crop' || mode === 'reorder' || mode === 'rotate') {
+      if (next.length === 0) {
+        setSelectedPages({});
+        setPageOrder([]);
+        setCurrentFileIndex(0);
+        setCompressionPreviewStates({});
+        setCompressionPreviewCache({});
+        setCompressionSummary([]);
+      } else if (mode === 'extract' || mode === 'split' || mode === 'crop' || mode === 'reorder' || mode === 'rotate') {
         setCurrentFileIndex(prevIndex => {
           if (prevIndex === index) {
             return 0;
@@ -1975,7 +2187,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
       changed: index !== currentFileIndex,
     });
 
-    if (mode === 'extract' || mode === 'crop' || mode === 'rotate') {
+    if (mode === 'extract' || mode === 'split' || mode === 'crop' || mode === 'rotate') {
       setSelectedPages(targetKey ? { ...(extractSelectionsByFile[targetKey] ?? {}) } : {});
     }
 
@@ -1995,21 +2207,36 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
   const showProcessingOptions = files.length > 0 && !isProcessing;
 
   const uploaderConfig = useMemo(() => {
-    if (mode === 'pdfToImages') {
-      return { multiple: true, acceptImages: false } as const;
-    }
     if (mode === 'imagesToPdf') {
-      return { multiple: true, acceptImages: true } as const;
+      return { multiple: true, acceptImages: true, acceptedFileTypes: '.jpg,.jpeg,.png,.webp,.tiff,.tif,.bmp' };
     }
-    return { multiple: true, acceptImages: false } as const;
+    if (mode === 'excelToPdf') {
+      return { multiple: false, acceptImages: false, acceptedFileTypes: '.xlsx,.xls,.csv' };
+    }
+    if (mode === 'csvToPdf') {
+      return { multiple: false, acceptImages: false, acceptedFileTypes: '.csv' };
+    }
+    if (mode === 'powerpointToPdf') {
+      return { multiple: false, acceptImages: false, acceptedFileTypes: '.pptx,.ppt' };
+    }
+    if (mode === 'markdownToPdf') {
+      return { multiple: false, acceptImages: false, acceptedFileTypes: '.md,.markdown,.txt' };
+    }
+    if (mode === 'htmlToPdf') {
+      return { multiple: false, acceptImages: false, acceptedFileTypes: '.html,.htm' };
+    }
+    if (mode === 'ebookToPdf') {
+      return { multiple: false, acceptImages: false, acceptedFileTypes: '.epub' };
+    }
+    return { multiple: true, acceptImages: false, acceptedFileTypes: 'application/pdf,.pdf' };
   }, [mode]);
 
   const totalExtractPageSelections = useMemo(() => {
     let total = 0;
-    const activeKey = mode === 'extract' || mode === 'crop' || mode === 'rotate' ? currentFileKey : null;
+    const activeKey = mode === 'extract' || mode === 'split' || mode === 'crop' || mode === 'rotate' ? currentFileKey : null;
 
     Object.entries(extractSelectionsByFile).forEach(([key, selection]) => {
-      if ((mode === 'extract' || mode === 'crop' || mode === 'rotate') && key === activeKey) {
+      if ((mode === 'extract' || mode === 'split' || mode === 'crop' || mode === 'rotate') && key === activeKey) {
         return;
       }
 
@@ -2019,7 +2246,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
       }, 0);
     });
 
-    if (mode === 'extract' || mode === 'crop' || mode === 'rotate') {
+    if (mode === 'extract' || mode === 'split' || mode === 'crop' || mode === 'rotate') {
       total += Object.keys(selectedPages).reduce((count, page) => {
         const pageNumber = parseInt(page, 10);
         return selectedPages[pageNumber] ? count + 1 : count;
@@ -2083,6 +2310,19 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
       return processButton.extract(totalExtractPageSelections);
     }
 
+    if (mode === 'split') {
+      if (totalExtractPageSelections > 0) {
+        return `Split ${totalExtractPageSelections} Selected Page${totalExtractPageSelections === 1 ? '' : 's'}`;
+      }
+      if (processingOptions.pageRange) {
+        return `Split by Range (${processingOptions.pageRange})`;
+      }
+      if (processingOptions.pagesPerFile && processingOptions.pagesPerFile > 1) {
+        return `Split Every ${processingOptions.pagesPerFile} Pages`;
+      }
+      return 'Split PDF into Single Pages';
+    }
+
     if (mode === 'crop') {
       return processButton.crop(totalExtractPageSelections);
     }
@@ -2112,17 +2352,53 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
       : processButton.idleMultiple(files.length);
   };
 
+  const isGeneratorTool = mode === 'createPdf' || mode === 'posBilling';
+
   const currentStep: ToolStep = completedResult
     ? 'result'
     : isProcessing
     ? 'process'
-    : files.length > 0
+    : isGeneratorTool || files.length > 0
     ? 'options'
     : 'upload';
+
+  const ActiveToolIcon = ICON_MAP[mode] ?? Layers;
+  const activeToolName = dictionary.components.footer.operations[mode as keyof typeof dictionary.components.footer.operations] || mode;
 
   return (
     <>
       <div className="p-6 sm:p-8 surface-card rounded-3xl shadow-sm border border-[var(--border)] space-y-6" id="pdf-processor">
+
+        {/* Active Tool Identifier Header */}
+        <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[var(--border)]">
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[var(--accent-soft)] text-[var(--accent)] border border-[var(--accent-border)] shadow-xs">
+              <ActiveToolIcon className="h-5 w-5 stroke-[2]" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[var(--accent)]">
+                  Selected Tool
+                </span>
+                <span className="text-[10px] px-1.5 py-0.5 rounded-md font-mono bg-[var(--bg-subtle)] text-[var(--tx-3)] border border-[var(--border)]">
+                  {isGeneratorTool
+                    ? (currentStep === 'options' ? 'STEP 1: OPTIONS' : currentStep === 'process' ? 'STEP 2: GENERATING' : 'STEP 3: COMPLETE')
+                    : (currentStep === 'upload' ? 'STEP 1: UPLOAD' : currentStep === 'options' ? 'STEP 2: OPTIONS' : currentStep === 'process' ? 'STEP 3: PROCESSING' : 'STEP 4: COMPLETE')}
+                </span>
+              </div>
+              <h2 className="text-base sm:text-lg font-extrabold text-[var(--tx)] leading-tight">
+                {activeToolName}
+              </h2>
+            </div>
+          </div>
+
+          <Link
+            href="/tools"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-[var(--bg-subtle)] text-[var(--tx-2)] hover:text-[var(--tx)] hover:border-[var(--accent-border)] border border-[var(--border)] transition-all shadow-xs"
+          >
+            <span>Change Tool (45+)</span>
+          </Link>
+        </div>
 
         {/* Step Indicator */}
         <StepIndicator
@@ -2130,19 +2406,72 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           hasFiles={files.length > 0}
           isProcessing={isProcessing}
           hasResult={Boolean(completedResult)}
+          isGenerator={isGeneratorTool}
           onStepClick={(step) => {
-            if (step === 'upload' && completedResult) {
+            if (step === 'upload') {
               setCompletedResult(null);
               clearFiles();
+            } else if (step === 'options') {
+              setCompletedResult(null);
             }
           }}
         />
+
+        {/* 1. Completed Result Panel */}
+        {completedResult && (
+          <div className="mb-8">
+            <ResultPanel
+              title={completedResult.title}
+              summaryText={completedResult.summaryText}
+              beforeSizeBytes={completedResult.beforeSizeBytes}
+              afterSizeBytes={completedResult.afterSizeBytes}
+              pageCount={completedResult.pageCount}
+              wordCount={completedResult.wordCount}
+              primaryFileName={completedResult.primaryFileName}
+              primaryDownloadBlob={completedResult.primaryBlob}
+              outputFiles={completedResult.outputFiles}
+              textContent={completedResult.textContent}
+              onDownloadPrimary={
+                completedResult.primaryBlob
+                  ? () => triggerDownloadAction(completedResult.primaryBlob!, completedResult.primaryFileName)
+                  : undefined
+              }
+              onDownloadZip={
+                completedResult.outputFiles && completedResult.outputFiles.length > 1
+                  ? () => {
+                      if (completedResult.primaryBlob) {
+                        triggerDownloadAction(completedResult.primaryBlob, `${completedResult.primaryFileName.replace(/\.[^/.]+$/, '')}_all.zip`);
+                      }
+                    }
+                  : undefined
+              }
+              onEditOptions={() => {
+                setCompletedResult(null);
+              }}
+              onStartOver={() => {
+                setCompletedResult(null);
+                clearFiles();
+              }}
+            />
+          </div>
+        )}
 
         {mode === 'scanToPdf' && (
           <div className="mb-6">
             <CameraScanInterface
               onScanComplete={(scannedPdf) => {
                 triggerDownloadAction(scannedPdf, 'camera_scan.pdf');
+              }}
+            />
+          </div>
+        )}
+
+        {mode === 'whiteboard' && (
+          <div className="mb-6">
+            <PdfWhiteboardInterface
+              file={files[0] || null}
+              onDone={(blob) => {
+                triggerDownloadAction(blob, files[0] ? `${files[0].name.replace(/\.[^/.]+$/, '')}_whiteboard.pdf` : 'whiteboard_export.pdf');
               }}
             />
           </div>
@@ -2160,7 +2489,116 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           </div>
         )}
 
-        {mode !== 'scanToPdf' && mode !== 'compare' && mode !== 'p2pShare' && !completedResult && (
+        {mode === 'posBilling' && (
+          <div className="mb-6">
+            <PosBillingInterface
+              onCheckout={(blob, fileName) => {
+                triggerDownloadAction(blob, fileName);
+              }}
+            />
+          </div>
+        )}
+
+        {mode === 'editPdf' && files[0] && !completedResult && (
+          <div className="mb-6">
+            <PdfEditorInterface
+              file={files[0]}
+              onDone={(blob) => {
+                const outFileName = `${files[0].name.replace(/\.[^/.]+$/, '')}_edited.pdf`;
+                triggerDownloadAction(blob, outFileName);
+                showSuccessDialog({
+                  highlights: [
+                    {
+                      label: statusDialogStrings?.resultsLabel || 'Status',
+                      value: 'PDF edited and vector elements saved successfully',
+                    },
+                    {
+                      label: statusDialogStrings?.filesProcessedLabel?.(1) || '1 File',
+                    },
+                  ],
+                  downloads: [{ blob, fileName: outFileName }],
+                  donationPrompt: buildDonationPrompt(),
+                });
+              }}
+            />
+          </div>
+        )}
+
+        {mode === 'createPdf' && !completedResult && (
+          <div className="mb-6">
+            <CreateBlankPdfInterface
+              initialPageCount={processingOptions.blankPageCount ?? 1}
+              initialPageSize={processingOptions.blankPageSize ?? 'a4'}
+              initialOrientation={processingOptions.blankPageOrientation ?? 'portrait'}
+              isProcessing={isProcessing}
+              onGenerate={async ({ pageCount, pageSize, orientation }) => {
+                setIsProcessing(true);
+                openProcessingDialog(statusMessages.info(activeToolName));
+                trackProcessorEvent('operation_start', {
+                  mode: 'createPdf',
+                  page_count: pageCount,
+                  page_size: pageSize,
+                  orientation,
+                });
+
+                try {
+                  const bytes = await PDFOps.createBlankPdf({ pageCount, pageSize, orientation });
+                  const blob = createPdfBlob(bytes);
+                  const fileName = `blank_pdf_${pageCount}_page${pageCount > 1 ? 's' : ''}.pdf`;
+
+                  triggerDownloadAction(blob, fileName);
+
+                  const summaryStr = `${pageCount} blank ${pageCount === 1 ? 'page' : 'pages'} • ${pageSize.toUpperCase()} • ${orientation === 'portrait' ? 'Portrait' : 'Landscape'}`;
+
+                  setCompletedResult({
+                    title: 'Blank PDF Created!',
+                    summaryText: summaryStr,
+                    pageCount,
+                    primaryBlob: blob,
+                    primaryFileName: fileName,
+                    outputFiles: [
+                      {
+                        name: fileName,
+                        blob,
+                        sizeBytes: blob.size,
+                      },
+                    ],
+                  });
+
+                  showSuccessDialog({
+                    highlights: [
+                      {
+                        label: statusDialogStrings?.resultsLabel || 'Status',
+                        value: summaryStr,
+                      },
+                      {
+                        label: 'Document Type',
+                        value: `Genuine Blank PDF (${pageSize.toUpperCase()} ${orientation === 'portrait' ? 'Portrait' : 'Landscape'})`,
+                      },
+                    ],
+                    downloads: [{ blob, fileName }],
+                    donationPrompt: buildDonationPrompt(),
+                  });
+
+                  trackProcessorEvent('operation_success', {
+                    mode: 'createPdf',
+                    page_count: pageCount,
+                    page_size: pageSize,
+                    orientation,
+                  });
+                } catch (err) {
+                  const message = err instanceof Error ? err.message : errorStrings.unknown;
+                  showErrorDialog(message);
+                  trackProcessorEvent('operation_error', { reason: message });
+                } finally {
+                  setIsProcessing(false);
+                }
+              }}
+            />
+          </div>
+        )}
+
+        {mode !== 'createPdf' && mode !== 'scanToPdf' && mode !== 'whiteboard' && mode !== 'compare' && mode !== 'p2pShare' && mode !== 'posBilling' && (mode !== 'editPdf' || files.length === 0) && !completedResult && (
           <div className="mb-6">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-bold">{upload.title}</h2>
@@ -2178,6 +2616,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
               onFilesSelectedAction={handleFilesSelected}
               multiple={uploaderConfig.multiple}
               acceptImages={uploaderConfig.acceptImages}
+              acceptedFileTypes={uploaderConfig.acceptedFileTypes}
             />
           </div>
         )}
@@ -2198,15 +2637,24 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
               onMoveFileAction={mode === 'merge' || mode === 'imagesToPdf' ? moveFile : undefined}
               onRemoveFileAction={removeFile}
               onClearAllAction={clearFiles}
-              currentIndex={mode === 'extract' || mode === 'crop' || mode === 'reorder' || mode === 'rotate' ? currentFileIndex : undefined}
+              currentIndex={mode === 'extract' || mode === 'split' || mode === 'crop' || mode === 'reorder' || mode === 'rotate' ? currentFileIndex : undefined}
               onFileSelectAction={
-                mode === 'extract' || mode === 'crop' || mode === 'reorder' || mode === 'rotate' ? handleFileChange : undefined
+                mode === 'extract' || mode === 'split' || mode === 'crop' || mode === 'reorder' || mode === 'rotate' ? handleFileChange : undefined
               }
             />
 
-            {mode === 'extract' && (
+            {(mode === 'extract' || mode === 'split') && (
               <div className="mt-6 space-y-8">
-                <h3 className="font-bold">{labels.pagesToExtract}</h3>
+                <div className="flex flex-col gap-1">
+                  <h3 className="font-bold">
+                    {mode === 'split' ? 'Choose Pages to Split' : labels.pagesToExtract}
+                  </h3>
+                  {mode === 'split' && (
+                    <p className="text-xs text-[var(--tx-2)]">
+                      Click any page thumbnail below to choose which pages you want to split out into a separate PDF file.
+                    </p>
+                  )}
+                </div>
                 {files.map((file, index) => {
                   const fileKey = buildFileSignature(file);
                   const selection =
@@ -2241,6 +2689,8 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
                           <p className="text-xs text-[var(--tx-3)]">
                             {selectedCount > 0
                               ? `${fileListStrings.pagesLabel(selectedCount)} • ${fileListStrings.selected}`
+                              : mode === 'split'
+                              ? 'Split into single pages or pick specific pages below'
                               : errorStrings.noPagesSelected}
                           </p>
                         </div>
@@ -2537,24 +2987,6 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
               </div>
             )}
 
-            {mode === 'pdfToAudio' && (files[currentFileIndex] || files[0]) && (
-              <div className="mt-6">
-                <ToolErrorBoundary toolName="Audio Reader">
-                  <AudioTtsInterface file={files[currentFileIndex] || files[0]} />
-                </ToolErrorBoundary>
-              </div>
-            )}
-
-            {(mode === 'aiSummarize' || mode === 'aiChat') && (files[currentFileIndex] || files[0]) && (
-              <div className="mt-6">
-                <ToolErrorBoundary toolName="AI Summarizer & Search">
-                  <ByokProvider>
-                    <AiSummarizerInterface file={files[currentFileIndex] || files[0]} />
-                  </ByokProvider>
-                </ToolErrorBoundary>
-              </div>
-            )}
-
             {showProcessingOptions && (
               <ProcessingOptions
                 mode={mode}
@@ -2579,6 +3011,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
                 <ErrorState
                   title={statusDialogState.title}
                   message={statusDialogState.description}
+                  type="general"
                   onRetry={() => {
                     setStatusDialogState(prev => ({ ...prev, isOpen: false }));
                     handleProcess();
@@ -2591,31 +3024,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
               </div>
             )}
 
-            {completedResult && (
-              <div className="mt-6">
-                <ResultPanel
-                  title={completedResult.title}
-                  summaryText={completedResult.summaryText}
-                  beforeSizeBytes={completedResult.beforeSizeBytes}
-                  afterSizeBytes={completedResult.afterSizeBytes}
-                  pageCount={completedResult.pageCount}
-                  wordCount={completedResult.wordCount}
-                  primaryFileName={completedResult.primaryFileName}
-                  primaryDownloadBlob={completedResult.primaryBlob}
-                  outputFiles={completedResult.outputFiles}
-                  textContent={completedResult.textContent}
-                  onDownloadPrimary={
-                    completedResult.primaryBlob
-                      ? () => triggerDownloadAction(completedResult.primaryBlob!, completedResult.primaryFileName)
-                      : undefined
-                  }
-                  onStartOver={() => {
-                    setCompletedResult(null);
-                    clearFiles();
-                  }}
-                />
-              </div>
-            )}
+
 
             {mode === 'compress' && previewItems.length > 0 && !completedResult && (
               <div className="mt-6 space-y-4">
@@ -2691,7 +3100,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           </div>
         )}
 
-        {!completedResult && (
+        {!completedResult && mode !== 'createPdf' && (
           <div className="flex justify-center pt-2" ref={actionButtonRef}>
             <button
               className="btn-primary w-full sm:w-auto px-8 py-3.5 rounded-xl font-semibold text-white shadow-md text-sm sm:text-base tracking-tight disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
@@ -2733,7 +3142,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           </div>
         )}
 
-        {!completedResult && files.length > 0 && (
+        {!completedResult && mode !== 'createPdf' && files.length > 0 && (
           <StickyActionBar
             buttonLabel={typeof resolveIdleButtonLabel() === 'string' ? (resolveIdleButtonLabel() as string) : 'Process Document'}
             isProcessing={isProcessing}
@@ -2772,6 +3181,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           status={statusDialogState.status}
           title={statusDialogState.title}
           description={statusDialogState.description}
+          progress={statusDialogState.progress}
           highlights={statusDialogState.highlights}
           donationPrompt={statusDialogState.donationPrompt}
           sharePrompt={statusDialogStrings.sharePrompt}

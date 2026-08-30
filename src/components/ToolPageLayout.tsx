@@ -44,8 +44,8 @@ export default function ToolPageLayout({ operation, children }: ToolPageLayoutPr
       {
         '@type': 'ListItem',
         position: 2,
-        name: 'PDF Tools',
-        item: 'https://ihatelovepdf.com/#tools',
+        name: 'All PDF Tools',
+        item: 'https://ihatelovepdf.com/tools',
       },
       {
         '@type': 'ListItem',

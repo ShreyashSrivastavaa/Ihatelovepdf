@@ -33,6 +33,7 @@ interface ProcessingStatusDialogProps {
   status: DialogStatus;
   title: string;
   description?: string;
+  progress?: number;
   highlights?: DialogHighlight[];
   donationPrompt?: DonationPrompt | null;
   sharePrompt?: { dialogMessage: string; shareText: string; actionLabel: string; copiedLabel: string } | null;
@@ -109,6 +110,7 @@ export function ProcessingStatusDialog({
   status,
   title,
   description,
+  progress,
   highlights,
   donationPrompt,
   sharePrompt,
@@ -264,6 +266,21 @@ export function ProcessingStatusDialog({
         </div>
         <div className="space-y-4 px-6 py-5">
           {description ? <p className="text-sm leading-relaxed text-[var(--tx-2)]">{description}</p> : null}
+
+          {status === 'processing' && typeof progress === 'number' && progress >= 0 ? (
+            <div className="space-y-1.5 pt-1">
+              <div className="flex justify-between text-xs font-semibold text-[var(--tx-2)]">
+                <span>Processing Progress</span>
+                <span className="font-mono text-[var(--accent)] font-bold">{Math.round(progress)}%</span>
+              </div>
+              <div className="w-full bg-[var(--bg-subtle)] border border-[var(--border)] rounded-full h-2.5 overflow-hidden">
+                <div
+                  className="bg-[var(--accent)] h-2.5 rounded-full transition-all duration-300 ease-out shadow-xs"
+                  style={{ width: `${Math.min(100, Math.max(0, progress))}%` }}
+                />
+              </div>
+            </div>
+          ) : null}
 
           {highlights && highlights.length > 0 ? (
             <ul className="space-y-2 text-sm">

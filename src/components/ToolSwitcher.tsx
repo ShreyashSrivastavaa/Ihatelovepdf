@@ -21,18 +21,13 @@ import {
   Type,
   FileText,
   ShieldAlert,
-  Lock,
   Unlock,
   Scan,
   Camera,
   Code,
   Table,
   Receipt,
-  Fingerprint,
-  Bot,
   SplitSquareVertical,
-  Volume2,
-  Mic,
   Share2,
   FileSpreadsheet,
   Presentation,
@@ -56,12 +51,9 @@ export const ICON_MAP: Record<string, React.ElementType> = {
   extractText: FileText,
   invertColors: Palette,
   redact: ShieldAlert,
-  flatten: Layers,
   compare: SplitSquareVertical,
   pdfToZip: Archive,
-  encrypt: Lock,
   decrypt: Unlock,
-  privacyScanner: ShieldAlert,
   ocr: Scan,
   editPdf: Type,
   scanToPdf: Camera,
@@ -76,16 +68,10 @@ export const ICON_MAP: Record<string, React.ElementType> = {
   pdfToHtml: Code,
   pdfToEpub: BookOpen,
   ebookToPdf: BookOpen,
-  pdfToAudio: Volume2,
-  audioToPdf: Mic,
-  repair: Wrench,
   p2pShare: Share2,
   whiteboard: Palette,
   gstInvoice: Receipt,
   posBilling: Receipt,
-  fingerprint: Fingerprint,
-  aiSummarize: Bot,
-  aiChat: Bot,
 };
 
 export const TOOL_DESCRIPTIONS: Record<string, string> = {
@@ -104,13 +90,10 @@ export const TOOL_DESCRIPTIONS: Record<string, string> = {
   extractText: "Extract raw readable text from PDF pages",
   invertColors: "Dark mode reader & inverted contrast",
   redact: "Permanently erase and sanitize sensitive text",
-  flatten: "Flatten interactive form fields and annotations",
   compare: "Side-by-side visual difference viewer",
   pdfToZip: "Package PDF assets into a ZIP archive",
-  encrypt: "Password-protect and lock PDF permissions",
   decrypt: "Remove passwords and export unlocked PDF",
-  privacyScanner: "Inspect metadata, hidden attachments & sensitive text",
-  ocr: "Extract text from scanned PDFs & images with local WASM",
+  ocr: "Extract and recognize text from scanned PDFs with local WASM",
   editPdf: "Add text, signatures, and annotations",
   scanToPdf: "Scan paper documents using camera to PDF",
   markdownToPdf: "Compile markdown text and code blocks into PDF",
@@ -124,22 +107,19 @@ export const TOOL_DESCRIPTIONS: Record<string, string> = {
   pdfToHtml: "Export PDF documents to HTML format",
   pdfToEpub: "Convert eBooks and documents to EPUB format",
   ebookToPdf: "Convert EPUB eBooks to PDF documents",
-  pdfToAudio: "Text-to-speech audio reader for PDF books",
-  audioToPdf: "Transcribe voice memos & audio recordings to PDF",
-  repair: "Recover damaged or corrupted PDF structure",
   p2pShare: "Direct encrypted P2P transfer between devices",
   whiteboard: "Collaborative whiteboard and visual sketches",
   gstInvoice: "Generate Indian GST tax invoices with auto-tax",
   posBilling: "Generate 58mm/80mm thermal receipts and bills",
-  fingerprint: "Embed invisible steganographic leak markers",
-  aiSummarize: "AI summary and key insights via local LLM",
-  aiChat: "Ask questions and chat with your PDF documents",
 };
+
+import { Search, X as CloseIcon } from 'lucide-react';
 
 export interface ToolLink {
   key: string;
   label: string;
   href: string;
+  categoryName?: string;
 }
 
 interface ToolSwitcherProps {
@@ -150,10 +130,27 @@ interface ToolSwitcherProps {
 export default function ToolSwitcher({ tools, activeKey = null }: ToolSwitcherProps) {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const ref = useRef<HTMLDivElement>(null);
 
   const activeTool = tools.find((t) => t.key === activeKey) ?? null;
   const ActiveIcon = activeTool ? (ICON_MAP[activeTool.key] ?? Wrench) : Wrench;
+
+  // Extract unique categories
+  const categories = ['All', ...Array.from(new Set(tools.map((t) => t.categoryName).filter(Boolean))) as string[]];
+
+  // Filter tools by query & category
+  const filteredTools = tools.filter((tool) => {
+    const matchesCategory = selectedCategory === 'All' || tool.categoryName === selectedCategory;
+    if (!matchesCategory) return false;
+
+    if (!searchQuery.trim()) return true;
+    const q = searchQuery.toLowerCase();
+    const label = tool.label.toLowerCase();
+    const desc = (TOOL_DESCRIPTIONS[tool.key] || '').toLowerCase();
+    return label.includes(q) || desc.includes(q) || tool.key.toLowerCase().includes(q);
+  });
 
   // Close on outside click
   useEffect(() => {
@@ -176,6 +173,7 @@ export default function ToolSwitcher({ tools, activeKey = null }: ToolSwitcherPr
       {/* Home Logo Button */}
       <Link
         href="/"
+        prefetch={true}
         className="flex items-center gap-2 px-3.5 py-3 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] hover:border-[var(--accent-border)] hover:bg-[var(--accent-soft)] transition-all duration-200 shadow-xs shrink-0 group cursor-pointer"
         title="Go to Home"
       >
@@ -211,7 +209,7 @@ export default function ToolSwitcher({ tools, activeKey = null }: ToolSwitcherPr
               <span className="block text-[11px] text-[var(--tx-3)] truncate hidden sm:block">
                 {activeTool && TOOL_DESCRIPTIONS[activeTool.key]
                   ? TOOL_DESCRIPTIONS[activeTool.key]
-                  : 'All 46+ tools 100% free & private in your browser'}
+                  : `All ${tools.length}+ tools 100% free & private in your browser`}
               </span>
             </div>
           </div>
@@ -222,51 +220,103 @@ export default function ToolSwitcher({ tools, activeKey = null }: ToolSwitcherPr
           />
         </button>
 
-        {/* Dropdown Menu */}
+        {/* Dropdown Menu Popover */}
         {isOpen && (
-          <div className="absolute left-0 right-0 top-full z-50 mt-2 max-h-96 overflow-y-auto rounded-3xl border border-[var(--border)] bg-[var(--bg-card)] p-2.5 shadow-2xl backdrop-blur-xl animate-in fade-in slide-in-from-top-2 duration-150 scrollbar-thin">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
-              {tools.map((tool) => {
-                const Icon = ICON_MAP[tool.key] ?? Wrench;
-                const isSelected = tool.key === activeKey;
-                const description = TOOL_DESCRIPTIONS[tool.key];
-
-                return (
+          <div className="absolute left-0 right-0 top-full z-50 mt-2 rounded-3xl border border-[var(--border)] bg-[var(--bg-card)] p-3 shadow-2xl backdrop-blur-xl animate-in fade-in slide-in-from-top-2 duration-150 space-y-2.5">
+            {/* Search and Category Filter Bar */}
+            <div className="space-y-2">
+              <div className="relative flex items-center">
+                <Search className="absolute left-3 h-3.5 w-3.5 text-[var(--tx-3)] pointer-events-none" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder={`Search ${tools.length}+ PDF tools...`}
+                  autoFocus
+                  className="w-full pl-9 pr-8 py-2 rounded-xl text-xs bg-[var(--bg-subtle)] border border-[var(--border)] text-[var(--tx)] placeholder:text-[var(--tx-3)] focus:outline-none focus:border-[var(--accent-border)] focus:ring-1 focus:ring-[var(--accent)]"
+                />
+                {searchQuery && (
                   <button
-                    key={tool.key}
-                    type="button"
-                    onClick={() => handleSelect(tool)}
-                    className={`flex items-start gap-3 rounded-2xl p-2.5 text-left transition-all duration-150 cursor-pointer ${
-                      isSelected
-                        ? 'bg-[var(--accent-soft)] text-[var(--accent)] font-bold border border-[var(--accent-border)]'
-                        : 'text-[var(--tx)] hover:bg-[var(--bg-subtle)] hover:text-[var(--accent)]'
-                    }`}
+                    onClick={() => setSearchQuery('')}
+                    className="absolute right-2.5 text-[var(--tx-3)] hover:text-[var(--tx)]"
                   >
-                    <div
-                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border transition-colors ${
-                        isSelected
-                          ? 'border-[var(--accent-border)] bg-[var(--accent)] text-white shadow-xs'
-                          : 'border-[var(--border)] bg-[var(--bg-subtle)] text-[var(--tx-2)]'
+                    <CloseIcon className="h-3 w-3" />
+                  </button>
+                )}
+              </div>
+
+              {/* Category Filter Chips */}
+              {categories.length > 2 && (
+                <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none text-[11px]">
+                  {categories.map((cat) => (
+                    <button
+                      key={cat}
+                      onClick={() => setSelectedCategory(cat)}
+                      className={`px-2.5 py-1 rounded-lg shrink-0 font-medium transition-colors cursor-pointer ${
+                        selectedCategory === cat
+                          ? 'bg-[var(--accent)] text-white font-bold'
+                          : 'bg-[var(--bg-subtle)] text-[var(--tx-2)] hover:text-[var(--tx)] hover:bg-[var(--border)]'
                       }`}
                     >
-                      <Icon className="h-4 w-4" />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-center justify-between gap-1">
-                        <span className="truncate text-xs font-bold block text-[var(--tx)]">
-                          {tool.label}
-                        </span>
-                        {isSelected && <Check className="h-3.5 w-3.5 shrink-0 text-[var(--accent)]" />}
-                      </div>
-                      {description && (
-                        <span className="block text-[10px] text-[var(--tx-3)] truncate leading-tight mt-0.5">
-                          {description}
-                        </span>
-                      )}
-                    </div>
-                  </button>
-                );
-              })}
+                      {cat}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Scrollable Tool Grid */}
+            <div className="max-h-80 overflow-y-auto pr-1 scrollbar-thin">
+              {filteredTools.length === 0 ? (
+                <div className="py-8 text-center text-xs text-[var(--tx-3)]">
+                  No tools found matching &quot;{searchQuery}&quot;
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                  {filteredTools.map((tool) => {
+                    const Icon = ICON_MAP[tool.key] ?? Wrench;
+                    const isSelected = tool.key === activeKey;
+                    const description = TOOL_DESCRIPTIONS[tool.key];
+
+                    return (
+                      <button
+                        key={tool.key}
+                        type="button"
+                        onClick={() => handleSelect(tool)}
+                        onMouseEnter={() => router.prefetch(tool.href)}
+                        className={`flex items-start gap-3 rounded-2xl p-2.5 text-left transition-all duration-150 cursor-pointer ${
+                          isSelected
+                            ? 'bg-[var(--accent-soft)] text-[var(--accent)] font-bold border border-[var(--accent-border)] shadow-xs'
+                            : 'text-[var(--tx)] hover:bg-[var(--bg-subtle)] hover:text-[var(--accent)]'
+                        }`}
+                      >
+                        <div
+                          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border transition-colors ${
+                            isSelected
+                              ? 'border-[var(--accent-border)] bg-[var(--accent)] text-white shadow-xs'
+                              : 'border-[var(--border)] bg-[var(--bg-subtle)] text-[var(--tx-2)]'
+                          }`}
+                        >
+                          <Icon className="h-4 w-4" />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <div className="flex items-center justify-between gap-1">
+                            <span className="truncate text-xs font-bold block text-[var(--tx)]">
+                              {tool.label}
+                            </span>
+                            {isSelected && <Check className="h-3.5 w-3.5 shrink-0 text-[var(--accent)]" />}
+                          </div>
+                          {description && (
+                            <span className="block text-[10px] text-[var(--tx-3)] truncate leading-tight mt-0.5">
+                              {description}
+                            </span>
+                          )}
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
         )}
