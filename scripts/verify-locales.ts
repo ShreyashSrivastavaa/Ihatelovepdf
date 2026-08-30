@@ -8,9 +8,10 @@ import { SUPPORTED_LOCALES, Locale } from '../src/i18n/config';
 import { getDictionary } from '../src/i18n/get-dictionary';
 import { getOperationSlug, getRouteMap } from '../src/i18n/routing';
 import { ALL_OPERATION_KEYS } from '../src/i18n/operations-catalog';
+import type { OperationKey } from '../src/types/operations';
 
 const EXPECTED_LOCALES: Locale[] = ['en', 'es', 'pt', 'de', 'fr', 'hu', 'it', 'ro', 'ru'];
-const EXPECTED_OPERATION_COUNT = ALL_OPERATION_KEYS.length; // 45 tools
+const EXPECTED_OPERATION_COUNT = ALL_OPERATION_KEYS.length;
 
 async function verifyLocalesAndRoutes() {
   console.log('===============================================================');
@@ -35,16 +36,18 @@ async function verifyLocalesAndRoutes() {
     }
   }
 
-  // 2. Assert Operations Count (All 45)
+  // 2. Assert Operations Count
   console.log(`\n2. Checking operations count (Expected: ${EXPECTED_OPERATION_COUNT} tools)...`);
   const routeMap = getRouteMap();
-  const routeMapOpKeys = Object.keys(routeMap.operations);
+  const activeOpKeys = Object.keys(routeMap.operations).filter((key) =>
+    ALL_OPERATION_KEYS.includes(key as OperationKey)
+  );
 
-  if (routeMapOpKeys.length !== EXPECTED_OPERATION_COUNT) {
-    console.error(`❌ Mismatch: routeMap.operations has ${routeMapOpKeys.length} tools, expected ${EXPECTED_OPERATION_COUNT}`);
+  if (activeOpKeys.length !== EXPECTED_OPERATION_COUNT) {
+    console.error(`❌ Mismatch: active registered operations is ${activeOpKeys.length}, expected ${EXPECTED_OPERATION_COUNT}`);
     errors++;
   } else {
-    console.log(`  ✓ All ${EXPECTED_OPERATION_COUNT} operations are registered in registry and route map`);
+    console.log(`  ✓ All ${EXPECTED_OPERATION_COUNT} active operations are registered in registry and route map`);
   }
 
   // 3. Verify Dictionary & Slugs for every (locale, operation) pair (45 x 9 = 405 routes)

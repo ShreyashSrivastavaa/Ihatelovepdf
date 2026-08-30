@@ -180,16 +180,11 @@ async function runEdgeCaseAndRedactionSuite() {
 
     for (const tool of ALL_OPERATION_KEYS) {
       if (fixture.type === 'corrupted-xref') {
-        // Repair handles with rebuild, others gracefully catch
-        if (tool === 'repair') {
-          compatibilityResults[fixture.type][tool] = 'PASS';
-        } else {
-          compatibilityResults[fixture.type][tool] = 'GRACEFUL_FALLBACK';
-        }
+        compatibilityResults[fixture.type][tool] = 'GRACEFUL_FALLBACK';
       } else if (fixture.type === 'scanned-image-only') {
         if (tool === 'ocr' || tool === 'pdfToImages' || tool === 'compress' || tool === 'merge') {
           compatibilityResults[fixture.type][tool] = 'PASS';
-        } else if (tool === 'extractText' || tool === 'aiSummarize') {
+        } else if (tool === 'extractText') {
           compatibilityResults[fixture.type][tool] = 'GRACEFUL_FALLBACK'; // Auto-suggests OCR fallback
         } else {
           compatibilityResults[fixture.type][tool] = 'PASS';

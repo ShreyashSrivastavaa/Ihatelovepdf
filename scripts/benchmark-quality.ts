@@ -6,7 +6,6 @@
 import { createTestFixture, diagnosePdfBuffer } from '../src/lib/pdf-engine/test-fixtures';
 import { redactPdfWithDiagnostics } from '../src/lib/operations/redact';
 import { scanPdfPrivacyRisk, sanitizePdfMetadata } from '../src/lib/operations/security';
-import { runLocalExtractiveSummary, runLocalSemanticSearch } from '../src/lib/operations/ai-local';
 import { extractTextFromPdf } from '../src/lib/operations/text-extract';
 import { compressPDF, cropPages, mergePDFs } from '../src/lib/pdf-operations';
 
@@ -75,31 +74,15 @@ async function runQualityBenchmarks() {
   );
 
   // -------------------------------------------------------------
-  // Test 3: AI TextRank vs Naive Baseline
+  // Test 3: Text Extraction Engine
   // -------------------------------------------------------------
-  console.log('\n🧠 3. Extractive TextRank AI Engine:');
-  const sampleCorpus = `
-    Client-side web assembly architecture allows full offline execution without network leaks.
-    Data privacy is strictly guaranteed by local in-memory cryptographic sandboxes.
-    Performance benchmarks demonstrate superior throughput compared to server-based APIs.
-    We evaluate 46 distinct operations against standard document corpora containing diverse structures.
-    Results are verified with zero remnant leak detection and accurate spatial reconstruction.
-    The offline summarizer uses graph-based TextRank power iteration with Porter suffix stemming.
-    BM25 relevance scoring handles morphological variants such as invoices, billing, and payments.
-  `;
-
-  const summary = runLocalExtractiveSummary(sampleCorpus, 'short');
+  console.log('\n📄 3. Vector Text Extraction Engine:');
+  const samplePdf = await createTestFixture('multi-page');
+  const extractedText = await extractTextFromPdf(samplePdf);
   assert(
-    summary.keyPoints.length > 0 && summary.overview.length > 30,
-    'TextRank graph sentence convergence',
-    `${summary.keyPoints.length} key points extracted, reading time ${summary.statistics.estimatedReadingTimeMinutes}m`
-  );
-
-  const searchMatches = runLocalSemanticSearch([sampleCorpus], 'invoices and billing');
-  assert(
-    searchMatches.length > 0 && searchMatches[0].score > 0,
-    'Stemmed BM25 semantic search matching',
-    `Top match score: ${searchMatches[0]?.score}`
+    extractedText.fullText.length > 0,
+    'Vector text stream extraction',
+    `Extracted ${extractedText.fullText.length} characters from multi-page PDF`
   );
 
   // -------------------------------------------------------------
