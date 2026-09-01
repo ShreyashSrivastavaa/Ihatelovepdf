@@ -13,6 +13,7 @@ import CookieBanner from "../../components/CookieBanner";
 import { SchemaOrg } from "../../components/SchemaOrg";
 import { BreadcrumbSchema } from "../../components/seo/BreadcrumbSchema";
 
+import { PagePulseScript } from "../../components/analytics/PagePulseScript";
 import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER, SHARED_AUTHORS, SHARED_CREATOR, SHARED_PUBLISHER } from "../../lib/metadata-shared";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -25,52 +26,68 @@ export const metadata = {
   authors: SHARED_AUTHORS,
   creator: SHARED_CREATOR,
   publisher: SHARED_PUBLISHER,
-  title: "ihatelovepdf - Merge, Compress, Split, and Convert PDFs Online",
-  description: "Free online PDF tools to merge, compress, split, extract, and convert PDFs. 100% private, local processing in your browser.",
   icons: SHARED_ICONS,
+  openGraph: SHARED_OPEN_GRAPH,
+  twitter: SHARED_TWITTER,
+  title: {
+    default: "ihatelovepdf - Free and Private PDF Tools in Your Browser",
+    template: "%s | ihatelovepdf",
+  },
+  description: "Merge, compress, split, extract, and convert PDFs locally in your browser. 100% private, no server uploads, free forever.",
+  keywords: [
+    "PDF tools",
+    "merge PDF",
+    "compress PDF",
+    "split PDF",
+    "convert PDF",
+    "local PDF processing",
+    "private PDF tools",
+    "free PDF editor",
+    "PDF security",
+  ],
   alternates: {
-    canonical: "https://ihatelovepdf.com/",
+    canonical: "https://ihatelovepdf.com",
     languages: {
-      'en': 'https://ihatelovepdf.com/',
-      'en-US': 'https://ihatelovepdf.com/',
-      'es': 'https://ihatelovepdf.com/es/',
-      'es-ES': 'https://ihatelovepdf.com/es/',
-      'es-MX': 'https://ihatelovepdf.com/es/',
-      'es-CO': 'https://ihatelovepdf.com/es/',
-      'es-AR': 'https://ihatelovepdf.com/es/',
-      'fr': 'https://ihatelovepdf.com/fr/',
-      'fr-FR': 'https://ihatelovepdf.com/fr/',
-      'pt': 'https://ihatelovepdf.com/pt/',
-      'pt-BR': 'https://ihatelovepdf.com/pt/',
-      'pt-PT': 'https://ihatelovepdf.com/pt/',
-      'de': 'https://ihatelovepdf.com/de/',
-      'de-DE': 'https://ihatelovepdf.com/de/',
-      'it': 'https://ihatelovepdf.com/it/',
-      'it-IT': 'https://ihatelovepdf.com/it/',
-      'ro': 'https://ihatelovepdf.com/ro/',
-      'ro-RO': 'https://ihatelovepdf.com/ro/',
-      'ru': 'https://ihatelovepdf.com/ru/',
-      'ru-RU': 'https://ihatelovepdf.com/ru/',
-      'hu': 'https://ihatelovepdf.com/hu/',
-      'hu-HU': 'https://ihatelovepdf.com/hu/',
-      'x-default': 'https://ihatelovepdf.com/',
+      "x-default": "https://ihatelovepdf.com",
+      en: "https://ihatelovepdf.com",
+      es: "https://ihatelovepdf.com/es",
+      de: "https://ihatelovepdf.com/de",
+      fr: "https://ihatelovepdf.com/fr",
+      it: "https://ihatelovepdf.com/it",
+      pt: "https://ihatelovepdf.com/pt",
+      ru: "https://ihatelovepdf.com/ru",
+      ro: "https://ihatelovepdf.com/ro",
+      hu: "https://ihatelovepdf.com/hu",
     },
   },
-  openGraph: {
-    ...SHARED_OPEN_GRAPH,
-    images: [{ url: "https://ihatelovepdf.com/og-images/og-image-en.png", width: 1409, height: 736, alt: "ihatelovepdf - Private and free PDF processing" }],
-    title: "ihatelovepdf - Free and Private PDF Tools in Your Browser",
-    description: "Merge, compress, split, and convert PDFs without uploading files. Secure and 100% private processing.",
-    url: "https://ihatelovepdf.com",
-    locale: "en_US",
-    type: "website",
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "ihatelovepdf",
+  url: "https://ihatelovepdf.com",
+  applicationCategory: "UtilityApplication",
+  operatingSystem: "All",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD",
   },
-  twitter: {
-    ...SHARED_TWITTER,
-    title: "ihatelovepdf - Free and Private PDF Tools in Your Browser",
-    description: "Merge, compress, split, and convert PDFs without uploading files. Secure and 100% private processing.",
-    images: ["https://ihatelovepdf.com/og-images/og-image-en.png"],
-  },
+  featureList: [
+    "Merge PDF files locally",
+    "Compress PDF files in browser",
+    "Split PDF into individual pages",
+    "Convert PDF to images and text",
+    "Add page numbers and watermarks",
+    "Protect and unlock PDF files",
+    "Rotate and crop PDF pages",
+    "100% client-side processing",
+  ],
+  browserRequirements: "Requires JavaScript. Requires HTML5.",
+  softwareVersion: "1.0.0",
+  inLanguage: "en",
+  screenshot: "https://ihatelovepdf.com/og-images/og-image-en.png",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -99,6 +116,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <Analytics />
           <SpeedInsights />
         </LocaleProvider>
+        <PagePulseScript />
       </body>
     </html>
   );

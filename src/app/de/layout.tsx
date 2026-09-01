@@ -7,6 +7,7 @@ import Footer from "../../components/Footer";
 
 import { LocaleProvider } from "../../i18n/LocaleProvider";
 import { GoogleAnalyticsScripts } from "../../components/analytics/GoogleAnalyticsScripts";
+import { PagePulseScript } from "../../components/analytics/PagePulseScript";
 import { GaPageViewTracker } from "../../components/analytics/GaPageViewTracker";
 import { WebVitalsReporter } from "../../components/analytics/WebVitalsReporter";
 import CookieBanner from "../../components/CookieBanner";
@@ -91,6 +92,7 @@ export default function DeLayout({ children }: { children: ReactNode }) {
           <Analytics />
           <SpeedInsights />
         </LocaleProvider>
+        <PagePulseScript />
       </body>
     </html>
   );
