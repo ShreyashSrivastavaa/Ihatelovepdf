@@ -62,34 +62,6 @@ export const metadata = {
   },
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  name: "ihatelovepdf",
-  url: "https://ihatelovepdf.com",
-  applicationCategory: "UtilityApplication",
-  operatingSystem: "All",
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "USD",
-  },
-  featureList: [
-    "Merge PDF files locally",
-    "Compress PDF files in browser",
-    "Split PDF into individual pages",
-    "Convert PDF to images and text",
-    "Add page numbers and watermarks",
-    "Protect and unlock PDF files",
-    "Rotate and crop PDF pages",
-    "100% client-side processing",
-  ],
-  browserRequirements: "Requires JavaScript. Requires HTML5.",
-  softwareVersion: "1.0.0",
-  inLanguage: "en",
-  screenshot: "https://ihatelovepdf.com/og-images/og-image-en.png",
-};
-
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang={LOCALE} suppressHydrationWarning>
