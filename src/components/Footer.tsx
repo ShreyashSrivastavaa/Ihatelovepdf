@@ -108,20 +108,6 @@ export default function Footer() {
               {/* Right: Badges */}
               <div className="shrink-0 flex flex-wrap items-center gap-3">
                 <a
-                  href="https://startupbase.io/products/ihatelovepdf?utm_source=startupbase&utm_medium=badge&utm_campaign=featured-badge-neutral"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block opacity-85 hover:opacity-100 transition-opacity"
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="https://statics.startupbase.io/site/badges/featured-on-sb-neutral.svg"
-                    alt="Featured on StartupBase"
-                    height={43}
-                    style={{ height: '43px', width: 'auto' }}
-                  />
-                </a>
-                <a
                   href="https://websitelaunches.com/site/ihatelovepdf.com"
                   target="_blank"
                   rel="noopener noreferrer"
