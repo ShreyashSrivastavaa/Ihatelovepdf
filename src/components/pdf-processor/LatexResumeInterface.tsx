@@ -110,6 +110,17 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
     let isCancelled = false;
 
     async function renderPreview() {
+      // 1. Cancel in-flight render task and wait for PDF.js to release the canvas
+      if (activeRenderTaskRef.current) {
+        try {
+          activeRenderTaskRef.current.cancel();
+          await activeRenderTaskRef.current.promise.catch(() => {});
+        } catch {
+          // ignore
+        }
+      }
+      if (isCancelled) return;
+
       try {
         const pdfjs = await getPdfJs();
         const baseUrl = window.location.origin;
@@ -132,19 +143,22 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
         const canvas = canvasRef.current;
         if (!canvas) return;
 
-        canvas.width = Math.round(viewport.width);
-        canvas.height = Math.round(viewport.height);
-
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
 
+        // Double check in case another preview was queued while getting page
         if (activeRenderTaskRef.current) {
           try {
             activeRenderTaskRef.current.cancel();
+            await activeRenderTaskRef.current.promise.catch(() => {});
           } catch {
             // ignore
           }
         }
+        if (isCancelled) return;
+
+        canvas.width = Math.round(viewport.width);
+        canvas.height = Math.round(viewport.height);
 
         const renderTask = page.render({
           canvasContext: ctx,
@@ -153,10 +167,16 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
         } as Parameters<typeof page.render>[0]);
         activeRenderTaskRef.current = renderTask;
 
-        await renderTask.promise;
+        try {
+          await renderTask.promise;
+        } finally {
+          if (activeRenderTaskRef.current === renderTask) {
+            activeRenderTaskRef.current = null;
+          }
+        }
       } catch (renderErr: unknown) {
         const errorName = renderErr && typeof renderErr === 'object' && 'name' in renderErr ? (renderErr as { name: string }).name : '';
-        if (errorName !== 'RenderingCancelledException') {
+        if (!isCancelled && errorName !== 'RenderingCancelledException') {
           console.warn('Preview render error:', renderErr);
         }
       }

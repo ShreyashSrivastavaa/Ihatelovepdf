@@ -100,68 +100,119 @@ export default function PdfWhiteboardInterface({ file, onDone, onGenerated }: Pd
   const pdfCanvasRef = useRef<HTMLCanvasElement>(null);
   const drawCanvasRef = useRef<HTMLCanvasElement>(null);
   const currentStrokeRef = useRef<Stroke | null>(null);
+  const activeRenderTaskRef = useRef<{ cancel: () => void; promise: Promise<unknown> } | null>(null);
 
   // Dimensions state
   const [canvasDimensions, setCanvasDimensions] = useState({ width: 800, height: 1100 });
 
   // 1. Render PDF Page Base Layer
-  const renderPdfPage = useCallback(async (pageNum: number) => {
-    if (!file || (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf'))) {
-      // Standby blank whiteboard mode
-      setTotalPages(1);
-      const width = 850;
-      const height = 1100;
-      setCanvasDimensions({ width, height });
+  useEffect(() => {
+    let isCancelled = false;
 
-      const pdfCanvas = pdfCanvasRef.current;
-      if (pdfCanvas) {
-        pdfCanvas.width = width;
-        pdfCanvas.height = height;
-        const ctx = pdfCanvas.getContext('2d');
-        if (ctx) {
-          ctx.fillStyle = '#ffffff';
-          ctx.fillRect(0, 0, width, height);
+    async function renderPage() {
+      if (!file || (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf'))) {
+        // Standby blank whiteboard mode
+        setTotalPages(1);
+        const width = 850;
+        const height = 1100;
+        setCanvasDimensions({ width, height });
+
+        const pdfCanvas = pdfCanvasRef.current;
+        if (pdfCanvas) {
+          pdfCanvas.width = width;
+          pdfCanvas.height = height;
+          const ctx = pdfCanvas.getContext('2d');
+          if (ctx) {
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, width, height);
+          }
+        }
+        return;
+      }
+
+      // Cancel and wait for prior render to finish
+      if (activeRenderTaskRef.current) {
+        try {
+          activeRenderTaskRef.current.cancel();
+          await activeRenderTaskRef.current.promise.catch(() => {});
+        } catch {
+          // ignore
         }
       }
-      return;
+      if (isCancelled) return;
+
+      try {
+        const pdfjs = await getPdfJs();
+        const arrayBuffer = await file.arrayBuffer();
+        const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
+        const doc = await pdfjs.getDocument({
+          data: arrayBuffer,
+          cMapUrl: `${baseUrl}/cmaps/`,
+          cMapPacked: true,
+          standardFontDataUrl: `${baseUrl}/standard_fonts/`,
+        }).promise;
+
+        if (isCancelled) return;
+        setTotalPages(doc.numPages);
+        const page = await doc.getPage(currentPage);
+        if (isCancelled) return;
+
+        const vp = page.getViewport({ scale: 1.5 });
+        setCanvasDimensions({ width: vp.width, height: vp.height });
+
+        const pdfCanvas = pdfCanvasRef.current;
+        if (!pdfCanvas) return;
+
+        const ctx = pdfCanvas.getContext('2d');
+        if (!ctx) return;
+
+        if (activeRenderTaskRef.current) {
+          try {
+            activeRenderTaskRef.current.cancel();
+            await activeRenderTaskRef.current.promise.catch(() => {});
+          } catch {
+            // ignore
+          }
+        }
+        if (isCancelled) return;
+
+        pdfCanvas.width = vp.width;
+        pdfCanvas.height = vp.height;
+
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, vp.width, vp.height);
+
+        const renderTask = page.render({ canvasContext: ctx, viewport: vp, canvas: pdfCanvas } as Parameters<typeof page.render>[0]);
+        activeRenderTaskRef.current = renderTask;
+
+        try {
+          await renderTask.promise;
+        } finally {
+          if (activeRenderTaskRef.current === renderTask) {
+            activeRenderTaskRef.current = null;
+          }
+        }
+      } catch (err: unknown) {
+        const errorName = err && typeof err === 'object' && 'name' in err ? (err as { name: string }).name : '';
+        if (!isCancelled && errorName !== 'RenderingCancelledException') {
+          console.error('Failed to render PDF page on whiteboard:', err);
+        }
+      }
     }
 
-    try {
-      const pdfjs = await getPdfJs();
-      const arrayBuffer = await file.arrayBuffer();
-      const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
-      const doc = await pdfjs.getDocument({
-        data: arrayBuffer,
-        cMapUrl: `${baseUrl}/cmaps/`,
-        cMapPacked: true,
-        standardFontDataUrl: `${baseUrl}/standard_fonts/`,
-      }).promise;
+    renderPage();
 
-      setTotalPages(doc.numPages);
-      const page = await doc.getPage(pageNum);
-      const vp = page.getViewport({ scale: 1.5 });
-
-      setCanvasDimensions({ width: vp.width, height: vp.height });
-
-      const pdfCanvas = pdfCanvasRef.current;
-      if (!pdfCanvas) return;
-      pdfCanvas.width = vp.width;
-      pdfCanvas.height = vp.height;
-      const ctx = pdfCanvas.getContext('2d');
-      if (!ctx) return;
-
-      ctx.fillStyle = '#ffffff';
-      ctx.fillRect(0, 0, vp.width, vp.height);
-
-      await page.render({ canvasContext: ctx, viewport: vp, canvas: pdfCanvas } as Parameters<typeof page.render>[0]).promise;
-    } catch (err) {
-      console.error('Failed to render PDF page on whiteboard:', err);
-    }
-  }, [file]);
-
-  useEffect(() => {
-    renderPdfPage(currentPage);
-  }, [currentPage, renderPdfPage]);
+    return () => {
+      isCancelled = true;
+      if (activeRenderTaskRef.current) {
+        try {
+          activeRenderTaskRef.current.cancel();
+        } catch {
+          // ignore
+        }
+      }
+    };
+  }, [file, currentPage]);
 
   // 2. Redraw drawing canvas whenever page strokes change
   const redrawDrawingCanvas = useCallback(() => {

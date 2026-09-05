@@ -172,6 +172,7 @@ export default function PdfEditorInterface({ file, onDone }: PdfEditorInterfaceP
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const imageUploadRef = useRef<HTMLInputElement>(null);
+  const activeRenderTaskRef = useRef<{ cancel: () => void; promise: Promise<unknown> } | null>(null);
 
   // 1. Initial PDF Loading: extract page metadata and text items
   useEffect(() => {
@@ -309,47 +310,97 @@ export default function PdfEditorInterface({ file, onDone }: PdfEditorInterfaceP
   }, [historyIndex, history]);
 
   // Render current PDF page on canvas via PDF.js
-  const renderCurrentPage = useCallback(async () => {
+  useEffect(() => {
     if (pages.length === 0) return;
     const pageMeta = pages[currentPageIndex];
     if (!pageMeta) return;
 
-    try {
-      const pdfjs = await getPdfJs();
-      const arrayBuffer = await file.arrayBuffer();
-      const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
-      const doc = await pdfjs.getDocument({
-        data: arrayBuffer,
-        cMapUrl: `${baseUrl}/cmaps/`,
-        cMapPacked: true,
-        standardFontDataUrl: `${baseUrl}/standard_fonts/`,
-      }).promise;
+    let isCancelled = false;
 
-      if (pageMeta.originalIndex >= doc.numPages) return;
+    async function renderPage() {
+      // 1. Cancel and wait for previous render task to release the canvas
+      if (activeRenderTaskRef.current) {
+        try {
+          activeRenderTaskRef.current.cancel();
+          await activeRenderTaskRef.current.promise.catch(() => {});
+        } catch {
+          // ignore
+        }
+      }
+      if (isCancelled) return;
 
-      const page = await doc.getPage(pageMeta.originalIndex + 1);
-      const vp = page.getViewport({ scale: zoomLevel, rotation: pageMeta.rotation });
+      try {
+        const pdfjs = await getPdfJs();
+        const arrayBuffer = await file.arrayBuffer();
+        const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
+        const doc = await pdfjs.getDocument({
+          data: arrayBuffer,
+          cMapUrl: `${baseUrl}/cmaps/`,
+          cMapPacked: true,
+          standardFontDataUrl: `${baseUrl}/standard_fonts/`,
+        }).promise;
 
-      const canvas = canvasRef.current;
-      if (!canvas) return;
-      canvas.width = vp.width;
-      canvas.height = vp.height;
+        if (isCancelled || pageMeta.originalIndex >= doc.numPages) return;
 
-      const ctx = canvas.getContext('2d');
-      if (!ctx) return;
+        const page = await doc.getPage(pageMeta.originalIndex + 1);
+        if (isCancelled) return;
 
-      ctx.fillStyle = '#ffffff';
-      ctx.fillRect(0, 0, vp.width, vp.height);
+        const vp = page.getViewport({ scale: zoomLevel, rotation: pageMeta.rotation });
 
-      await page.render({ canvasContext: ctx, viewport: vp, canvas } as Parameters<typeof page.render>[0]).promise;
-    } catch (err) {
-      console.error('Failed to render current page:', err);
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        // Double-check if another render was queued
+        if (activeRenderTaskRef.current) {
+          try {
+            activeRenderTaskRef.current.cancel();
+            await activeRenderTaskRef.current.promise.catch(() => {});
+          } catch {
+            // ignore
+          }
+        }
+        if (isCancelled) return;
+
+        canvas.width = vp.width;
+        canvas.height = vp.height;
+
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, vp.width, vp.height);
+
+        const renderTask = page.render({ canvasContext: ctx, viewport: vp, canvas } as Parameters<typeof page.render>[0]);
+        activeRenderTaskRef.current = renderTask;
+
+        try {
+          await renderTask.promise;
+        } finally {
+          if (activeRenderTaskRef.current === renderTask) {
+            activeRenderTaskRef.current = null;
+          }
+        }
+      } catch (err: unknown) {
+        const errorName = err && typeof err === 'object' && 'name' in err ? (err as { name: string }).name : '';
+        if (!isCancelled && errorName !== 'RenderingCancelledException') {
+          console.error('Failed to render current page:', err);
+        }
+      }
     }
-  }, [file, pages, currentPageIndex, zoomLevel]);
 
-  useEffect(() => {
-    renderCurrentPage();
-  }, [renderCurrentPage]);
+    renderPage();
+
+    return () => {
+      isCancelled = true;
+      if (activeRenderTaskRef.current) {
+        try {
+          activeRenderTaskRef.current.cancel();
+        } catch {
+          // ignore
+        }
+      }
+    };
+  }, [file, pages, currentPageIndex, zoomLevel]);
 
   // Current page state and active elements
   const currentPageMeta = pages[currentPageIndex];

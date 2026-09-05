@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import {
   ShieldAlert,
   ShieldCheck,
@@ -59,59 +59,87 @@ export default function PdfRedactionEditor({ file, onDone, onBurnRedactions }: P
   const pdfDocRef = useRef<any>(null);
 
   // Load PDF and render current page
-  const renderPage = useCallback(async (pageNum: number) => {
-    try {
+  useEffect(() => {
+    let isCancelled = false;
+
+    async function doRender() {
+      // 1. Cancel in-flight render task and wait for PDF.js to release the canvas
       if (activeRenderTaskRef.current) {
         try {
           activeRenderTaskRef.current.cancel();
+          await activeRenderTaskRef.current.promise.catch(() => {});
         } catch {
           // ignore cancellation
         }
       }
+      if (isCancelled) return;
 
-      let doc = pdfDocRef.current;
-      if (!doc) {
-        const pdfjs = await getPdfJs();
-        const arrayBuffer = await file.arrayBuffer();
-        const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
-        doc = await pdfjs.getDocument({
-          data: arrayBuffer,
-          cMapUrl: `${baseUrl}/cmaps/`,
-          cMapPacked: true,
-          standardFontDataUrl: `${baseUrl}/standard_fonts/`,
-        }).promise;
-        pdfDocRef.current = doc;
-        setTotalPages(doc.numPages);
-      }
+      try {
+        let doc = pdfDocRef.current;
+        if (!doc) {
+          const pdfjs = await getPdfJs();
+          const arrayBuffer = await file.arrayBuffer();
+          const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
+          doc = await pdfjs.getDocument({
+            data: arrayBuffer,
+            cMapUrl: `${baseUrl}/cmaps/`,
+            cMapPacked: true,
+            standardFontDataUrl: `${baseUrl}/standard_fonts/`,
+          }).promise;
+          if (isCancelled) return;
+          pdfDocRef.current = doc;
+          setTotalPages(doc.numPages);
+        }
 
-      const page = await doc.getPage(pageNum);
-      const vp = page.getViewport({ scale: 1.5 });
+        const page = await doc.getPage(currentPage);
+        if (isCancelled) return;
+        const vp = page.getViewport({ scale: 1.5 });
 
-      const canvas = canvasRef.current;
-      if (!canvas) return;
-      canvas.width = vp.width;
-      canvas.height = vp.height;
-      const ctx = canvas.getContext('2d');
-      if (!ctx) return;
+        const canvas = canvasRef.current;
+        if (!canvas) return;
 
-      ctx.fillStyle = '#ffffff';
-      ctx.fillRect(0, 0, vp.width, vp.height);
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
 
-      const renderTask = page.render({ canvasContext: ctx, viewport: vp, canvas } as Parameters<typeof page.render>[0]);
-      activeRenderTaskRef.current = renderTask;
+        // Double-check if another render task was created while getting page
+        if (activeRenderTaskRef.current) {
+          try {
+            activeRenderTaskRef.current.cancel();
+            await activeRenderTaskRef.current.promise.catch(() => {});
+          } catch {
+            // ignore
+          }
+        }
+        if (isCancelled) return;
 
-      await renderTask.promise;
-    } catch (err: unknown) {
-      const errorName = err && typeof err === 'object' && 'name' in err ? (err as { name: string }).name : '';
-      if (errorName !== 'RenderingCancelledException') {
-        console.error('Failed to render page for redaction:', err);
+        canvas.width = vp.width;
+        canvas.height = vp.height;
+
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, vp.width, vp.height);
+
+        const renderTask = page.render({ canvasContext: ctx, viewport: vp, canvas } as Parameters<typeof page.render>[0]);
+        activeRenderTaskRef.current = renderTask;
+
+        try {
+          await renderTask.promise;
+        } finally {
+          if (activeRenderTaskRef.current === renderTask) {
+            activeRenderTaskRef.current = null;
+          }
+        }
+      } catch (err: unknown) {
+        const errorName = err && typeof err === 'object' && 'name' in err ? (err as { name: string }).name : '';
+        if (!isCancelled && errorName !== 'RenderingCancelledException') {
+          console.error('Failed to render page for redaction:', err);
+        }
       }
     }
-  }, [file]);
 
-  useEffect(() => {
-    renderPage(currentPage);
+    doRender();
+
     return () => {
+      isCancelled = true;
       if (activeRenderTaskRef.current) {
         try {
           activeRenderTaskRef.current.cancel();
@@ -120,7 +148,7 @@ export default function PdfRedactionEditor({ file, onDone, onBurnRedactions }: P
         }
       }
     };
-  }, [currentPage, renderPage]);
+  }, [file, currentPage]);
 
   // Coordinate helper: maps pointer to normalized 0-to-1 coordinates within canvas bounds
   const getNormalizedPos = (e: React.PointerEvent<HTMLDivElement>) => {

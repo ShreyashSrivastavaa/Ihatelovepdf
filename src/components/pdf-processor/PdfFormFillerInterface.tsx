@@ -178,6 +178,17 @@ export default function PdfFormFillerInterface({
     let isCancelled = false;
 
     async function renderPage() {
+      // 1. If another render task is currently in flight, cancel it and WAIT for PDF.js to release the canvas
+      if (activeRenderTaskRef.current) {
+        try {
+          activeRenderTaskRef.current.cancel();
+          await activeRenderTaskRef.current.promise.catch(() => {});
+        } catch {
+          // ignore
+        }
+      }
+      if (isCancelled) return;
+
       try {
         const page = await pdfDocument.getPage(currentPageIndex + 1);
         if (isCancelled) return;
@@ -189,13 +200,16 @@ export default function PdfFormFillerInterface({
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
 
+        // Double check if another render was started while getting page
         if (activeRenderTaskRef.current) {
           try {
             activeRenderTaskRef.current.cancel();
+            await activeRenderTaskRef.current.promise.catch(() => {});
           } catch {
             // ignore
           }
         }
+        if (isCancelled) return;
 
         canvas.width = viewport.width;
         canvas.height = viewport.height;
@@ -206,7 +220,13 @@ export default function PdfFormFillerInterface({
         });
         activeRenderTaskRef.current = renderTask;
 
-        await renderTask.promise;
+        try {
+          await renderTask.promise;
+        } finally {
+          if (activeRenderTaskRef.current === renderTask) {
+            activeRenderTaskRef.current = null;
+          }
+        }
       } catch (err: unknown) {
         const errorName = err && typeof err === 'object' && 'name' in err ? (err as { name: string }).name : '';
         if (!isCancelled && errorName !== 'RenderingCancelledException') {
