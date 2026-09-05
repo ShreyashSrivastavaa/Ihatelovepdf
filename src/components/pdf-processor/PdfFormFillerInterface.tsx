@@ -85,6 +85,7 @@ export default function PdfFormFillerInterface({
   const [isExporting, setIsExporting] = useState<boolean>(false);
 
   const pageCanvasRef = useRef<HTMLCanvasElement | null>(null);
+  const activeRenderTaskRef = useRef<{ cancel: () => void; promise: Promise<unknown> } | null>(null);
   const pageContainerRef = useRef<HTMLDivElement | null>(null);
 
   // 1. Inspect PDF for AcroForm fields
@@ -188,15 +189,27 @@ export default function PdfFormFillerInterface({
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
 
+        if (activeRenderTaskRef.current) {
+          try {
+            activeRenderTaskRef.current.cancel();
+          } catch {
+            // ignore
+          }
+        }
+
         canvas.width = viewport.width;
         canvas.height = viewport.height;
 
-        await page.render({
+        const renderTask = page.render({
           canvasContext: ctx,
           viewport,
-        }).promise;
-      } catch (err) {
-        if (!isCancelled) {
+        });
+        activeRenderTaskRef.current = renderTask;
+
+        await renderTask.promise;
+      } catch (err: unknown) {
+        const errorName = err && typeof err === 'object' && 'name' in err ? (err as { name: string }).name : '';
+        if (!isCancelled && errorName !== 'RenderingCancelledException') {
           console.warn('Page rendering interrupted:', err);
         }
       }
@@ -205,6 +218,13 @@ export default function PdfFormFillerInterface({
     renderPage();
     return () => {
       isCancelled = true;
+      if (activeRenderTaskRef.current) {
+        try {
+          activeRenderTaskRef.current.cancel();
+        } catch {
+          // ignore
+        }
+      }
     };
   }, [pdfDocument, currentPageIndex, scale, pages]);
 

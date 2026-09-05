@@ -72,6 +72,7 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
   const [, startTransition] = useTransition();
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const activeRenderTaskRef = useRef<{ cancel: () => void; promise: Promise<unknown> } | null>(null);
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   // Keep LaTeX code in sync when data or template changes in form mode
@@ -137,22 +138,40 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
 
-        ctx.fillStyle = '#ffffff';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        if (activeRenderTaskRef.current) {
+          try {
+            activeRenderTaskRef.current.cancel();
+          } catch {
+            // ignore
+          }
+        }
 
-        await page.render({
+        const renderTask = page.render({
           canvasContext: ctx,
           viewport,
           canvas,
-        } as Parameters<typeof page.render>[0]).promise;
-      } catch (renderErr) {
-        console.warn('Preview render error:', renderErr);
+        } as Parameters<typeof page.render>[0]);
+        activeRenderTaskRef.current = renderTask;
+
+        await renderTask.promise;
+      } catch (renderErr: unknown) {
+        const errorName = renderErr && typeof renderErr === 'object' && 'name' in renderErr ? (renderErr as { name: string }).name : '';
+        if (errorName !== 'RenderingCancelledException') {
+          console.warn('Preview render error:', renderErr);
+        }
       }
     }
 
     renderPreview();
     return () => {
       isCancelled = true;
+      if (activeRenderTaskRef.current) {
+        try {
+          activeRenderTaskRef.current.cancel();
+        } catch {
+          // ignore
+        }
+      }
     };
   }, [pdfBytes, currentPage, scale]);
 

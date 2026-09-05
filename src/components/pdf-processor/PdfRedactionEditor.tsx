@@ -54,21 +54,36 @@ export default function PdfRedactionEditor({ file, onDone, onBurnRedactions }: P
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const activeRenderTaskRef = useRef<{ cancel: () => void; promise: Promise<unknown> } | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const pdfDocRef = useRef<any>(null);
 
   // Load PDF and render current page
   const renderPage = useCallback(async (pageNum: number) => {
     try {
-      const pdfjs = await getPdfJs();
-      const arrayBuffer = await file.arrayBuffer();
-      const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
-      const doc = await pdfjs.getDocument({
-        data: arrayBuffer,
-        cMapUrl: `${baseUrl}/cmaps/`,
-        cMapPacked: true,
-        standardFontDataUrl: `${baseUrl}/standard_fonts/`,
-      }).promise;
+      if (activeRenderTaskRef.current) {
+        try {
+          activeRenderTaskRef.current.cancel();
+        } catch {
+          // ignore cancellation
+        }
+      }
 
-      setTotalPages(doc.numPages);
+      let doc = pdfDocRef.current;
+      if (!doc) {
+        const pdfjs = await getPdfJs();
+        const arrayBuffer = await file.arrayBuffer();
+        const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
+        doc = await pdfjs.getDocument({
+          data: arrayBuffer,
+          cMapUrl: `${baseUrl}/cmaps/`,
+          cMapPacked: true,
+          standardFontDataUrl: `${baseUrl}/standard_fonts/`,
+        }).promise;
+        pdfDocRef.current = doc;
+        setTotalPages(doc.numPages);
+      }
+
       const page = await doc.getPage(pageNum);
       const vp = page.getViewport({ scale: 1.5 });
 
@@ -76,19 +91,35 @@ export default function PdfRedactionEditor({ file, onDone, onBurnRedactions }: P
       if (!canvas) return;
       canvas.width = vp.width;
       canvas.height = vp.height;
-      const ctx = canvas.getContext('2d')!;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
 
       ctx.fillStyle = '#ffffff';
       ctx.fillRect(0, 0, vp.width, vp.height);
 
-      await page.render({ canvasContext: ctx, viewport: vp, canvas } as Parameters<typeof page.render>[0]).promise;
-    } catch (err) {
-      console.error('Failed to render page for redaction:', err);
+      const renderTask = page.render({ canvasContext: ctx, viewport: vp, canvas } as Parameters<typeof page.render>[0]);
+      activeRenderTaskRef.current = renderTask;
+
+      await renderTask.promise;
+    } catch (err: unknown) {
+      const errorName = err && typeof err === 'object' && 'name' in err ? (err as { name: string }).name : '';
+      if (errorName !== 'RenderingCancelledException') {
+        console.error('Failed to render page for redaction:', err);
+      }
     }
   }, [file]);
 
   useEffect(() => {
     renderPage(currentPage);
+    return () => {
+      if (activeRenderTaskRef.current) {
+        try {
+          activeRenderTaskRef.current.cancel();
+        } catch {
+          // ignore
+        }
+      }
+    };
   }, [currentPage, renderPage]);
 
   // Coordinate helper: maps pointer to normalized 0-to-1 coordinates within canvas bounds

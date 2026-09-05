@@ -143,6 +143,7 @@ export default function SignPdfInterface({
 
   // Canvas Refs
   const pageCanvasRef = useRef<HTMLCanvasElement | null>(null);
+  const activeRenderTaskRef = useRef<{ cancel: () => void; promise: Promise<unknown> } | null>(null);
   const pageContainerRef = useRef<HTMLDivElement | null>(null);
 
   // Load PDF Document
@@ -201,7 +202,13 @@ export default function SignPdfInterface({
     async function renderPage() {
       try {
         const page = await pdfDocument.getPage(currentPageIndex + 1);
-        if (isCancelled) return;
+        if (activeRenderTaskRef.current) {
+          try {
+            activeRenderTaskRef.current.cancel();
+          } catch {
+            // ignore
+          }
+        }
 
         const viewport = page.getViewport({ scale });
         const canvas = pageCanvasRef.current;
@@ -213,12 +220,16 @@ export default function SignPdfInterface({
         canvas.width = viewport.width;
         canvas.height = viewport.height;
 
-        await page.render({
+        const renderTask = page.render({
           canvasContext: ctx,
           viewport,
-        }).promise;
-      } catch (err) {
-        if (!isCancelled) {
+        });
+        activeRenderTaskRef.current = renderTask;
+
+        await renderTask.promise;
+      } catch (err: unknown) {
+        const errorName = err && typeof err === 'object' && 'name' in err ? (err as { name: string }).name : '';
+        if (!isCancelled && errorName !== 'RenderingCancelledException') {
           console.warn('Page rendering interrupted:', err);
         }
       }
@@ -227,6 +238,13 @@ export default function SignPdfInterface({
     renderPage();
     return () => {
       isCancelled = true;
+      if (activeRenderTaskRef.current) {
+        try {
+          activeRenderTaskRef.current.cancel();
+        } catch {
+          // ignore
+        }
+      }
     };
   }, [pdfDocument, currentPageIndex, scale, pages]);
 
