@@ -989,6 +989,13 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
     const rotatePlan: Array<{ file: File; pages: number[] }> = [];
 
     switch (mode) {
+      case 'redact':
+      case 'signPdf':
+      case 'fillPdfForm':
+      case 'latexResume':
+      case 'createPdf':
+        // Interactive studio modes handle their own processing via their studio interfaces
+        return;
       case 'merge':
         if (currentFiles.length < 2) {
           trackProcessorEvent('operation_blocked', {
@@ -2505,6 +2512,50 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           </div>
         )}
 
+        {mode === 'redact' && files[0] && !completedResult && (
+          <div className="mb-6">
+            <ToolErrorBoundary toolName="PDF Redaction Studio">
+              <PdfRedactionEditor
+                file={files[0]}
+                onDone={(burnedBlob) => {
+                  const outFileName = `${files[0].name.replace(/\.[^/.]+$/, '')}_redacted.pdf`;
+                  triggerDownloadAction(burnedBlob, outFileName);
+                  showSuccessDialog({
+                    highlights: [
+                      {
+                        label: statusDialogStrings?.resultsLabel || 'Status',
+                        value: 'PDF document redacted with zero forensic leakage',
+                      },
+                      {
+                        label: statusDialogStrings?.filesProcessedLabel?.(1) || '1 File',
+                      },
+                    ],
+                    downloads: [{ blob: burnedBlob, fileName: outFileName }],
+                    donationPrompt: buildDonationPrompt(),
+                  });
+                }}
+                onBurnRedactions={(burnedBlob) => {
+                  const outFileName = `${files[0].name.replace(/\.[^/.]+$/, '')}_redacted.pdf`;
+                  triggerDownloadAction(burnedBlob, outFileName);
+                  showSuccessDialog({
+                    highlights: [
+                      {
+                        label: statusDialogStrings?.resultsLabel || 'Status',
+                        value: 'PDF document redacted with zero forensic leakage',
+                      },
+                      {
+                        label: statusDialogStrings?.filesProcessedLabel?.(1) || '1 File',
+                      },
+                    ],
+                    downloads: [{ blob: burnedBlob, fileName: outFileName }],
+                    donationPrompt: buildDonationPrompt(),
+                  });
+                }}
+              />
+            </ToolErrorBoundary>
+          </div>
+        )}
+
         {mode === 'latexResume' && !completedResult && (
           <div className="mb-6">
             <LatexResumeInterface
@@ -2608,7 +2659,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           </div>
         )}
 
-        {mode !== 'createPdf' && mode !== 'latexResume' && mode !== 'scanToPdf' && mode !== 'whiteboard' && mode !== 'compare' && mode !== 'posBilling' && ((mode !== 'editPdf' && mode !== 'signPdf' && mode !== 'fillPdfForm') || files.length === 0) && !completedResult && (
+        {mode !== 'createPdf' && mode !== 'latexResume' && mode !== 'scanToPdf' && mode !== 'whiteboard' && mode !== 'compare' && mode !== 'posBilling' && ((mode !== 'editPdf' && mode !== 'signPdf' && mode !== 'fillPdfForm' && mode !== 'redact') || files.length === 0) && !completedResult && (
           <div className="mb-6">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-bold">{upload.title}</h2>
@@ -2631,7 +2682,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           </div>
         )}
 
-        {files.length > 0 && !completedResult && mode !== 'editPdf' && mode !== 'signPdf' && mode !== 'fillPdfForm' && mode !== 'latexResume' && (
+        {files.length > 0 && !completedResult && mode !== 'editPdf' && mode !== 'signPdf' && mode !== 'fillPdfForm' && mode !== 'latexResume' && mode !== 'redact' && (
           <div className="mb-8">
             <div className="flex justify-between items-center mb-2">
               <h3 className="font-bold">{listHeading}</h3>
@@ -2982,20 +3033,6 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
               </div>
             )}
 
-            {mode === 'redact' && (files[currentFileIndex] || files[0]) && (
-              <div className="mt-6">
-                <ToolErrorBoundary toolName="PDF Redaction Studio">
-                  <PdfRedactionEditor
-                    file={files[currentFileIndex] || files[0]}
-                    onBurnRedactions={async (burnedBlob) => {
-                      const baseName = (files[currentFileIndex] || files[0]).name.replace(/\.[^/.]+$/, '');
-                      const fileName = `${baseName}_redacted.pdf`;
-                      triggerDownloadAction(burnedBlob, fileName);
-                    }}
-                  />
-                </ToolErrorBoundary>
-              </div>
-            )}
 
             {showProcessingOptions && (
               <ProcessingOptions
@@ -3110,7 +3147,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           </div>
         )}
 
-        {!completedResult && mode !== 'createPdf' && mode !== 'latexResume' && ((mode !== 'editPdf' && mode !== 'signPdf' && mode !== 'fillPdfForm') || files.length === 0) && (
+        {!completedResult && mode !== 'createPdf' && mode !== 'latexResume' && ((mode !== 'editPdf' && mode !== 'signPdf' && mode !== 'fillPdfForm' && mode !== 'redact') || files.length === 0) && (
           <div className="flex justify-center pt-2" ref={actionButtonRef}>
             <button
               className="btn-primary w-full sm:w-auto px-8 py-3.5 rounded-xl font-semibold text-white shadow-md text-sm sm:text-base tracking-tight disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
@@ -3152,7 +3189,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           </div>
         )}
 
-        {!completedResult && mode !== 'createPdf' && mode !== 'latexResume' && mode !== 'editPdf' && mode !== 'signPdf' && mode !== 'fillPdfForm' && files.length > 0 && (
+        {!completedResult && mode !== 'createPdf' && mode !== 'latexResume' && mode !== 'editPdf' && mode !== 'signPdf' && mode !== 'fillPdfForm' && mode !== 'redact' && files.length > 0 && (
           <StickyActionBar
             buttonLabel={typeof resolveIdleButtonLabel() === 'string' ? (resolveIdleButtonLabel() as string) : 'Process Document'}
             isProcessing={isProcessing}
