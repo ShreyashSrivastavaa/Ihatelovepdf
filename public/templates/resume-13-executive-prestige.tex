@@ -1,0 +1,60 @@
+%----------------------------------------------------------------------------------------
+% Template: C-Suite Executive (resume-13-executive-prestige)
+% Category: executive-senior
+% Description: Understated luxury serif layout for CEOs, VPs, and board advisory positions.
+% Packages: geometry, titlesec, enumitem, mathpazo, xcolor, hyperref
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{mathpazo} % Dignified serif
+\usepackage[hidelinks]{hyperref}
+
+\pagestyle{empty}
+\raggedbottom
+\raggedright
+
+\definecolor{executivecharcoal}{HTML}{1E293B}
+
+\titleformat{\section}{
+  \vspace{6pt}\scshape\large\color{executivecharcoal}
+}{}{0em}{}[\vspace{1pt}\hrule height 0.6pt\vspace{4pt}]
+
+\setlist[itemize]{leftmargin=1.2em, label=$\diamond$, itemsep=2.5pt, parsep=0pt, topsep=1pt}
+
+\begin{document}
+
+% Dignified Executive Header
+\begin{center}
+  {\Huge \textsc{{{FULL_NAME}}}} \\[4pt]
+  {\normalsize \textit{{{JOB_TITLE}}}} \\[6pt]
+  \small
+  {{LOCATION}} \ \textbar \ 
+  {{PHONE}} \ \textbar \ 
+  \href{mailto:{{EMAIL}}}{{{EMAIL}}} \ \textbar \ 
+  \href{https://{{LINKEDIN}}}{{{LINKEDIN}}}
+\end{center}
+
+\vspace{2pt}
+
+\section{Executive Profile \& P\&L Oversight}
+{{SUMMARY}}
+
+\section{Core Leadership Competencies}
+{{SKILLS_BLOCK}}
+
+\section{Executive Experience}
+{{EXPERIENCE_ITEMS}}
+
+\section{Board Advisory \& Strategic Transactions}
+{{PROJECTS_BLOCK}}
+
+\section{Education \& Executive Credentials}
+{{EDUCATION_ITEMS}}
+
+\end{document}

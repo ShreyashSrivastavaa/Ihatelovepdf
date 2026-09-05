@@ -1,0 +1,61 @@
+%----------------------------------------------------------------------------------------
+% Template: Nordic Minimal (resume-05-minimal-mono)
+% Category: minimalist
+% Description: Ample whitespace, razor-thin hairlines, small-caps titles, pure monochrome.
+% Packages: geometry, titlesec, enumitem, lmodern, hyperref
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.85in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{lmodern}
+\usepackage[hidelinks]{hyperref}
+
+\pagestyle{empty}
+\raggedbottom
+\raggedright
+
+% Thin hairlines and spaced small-caps headers
+\titleformat{\section}{
+  \vspace{6pt}\scshape\normalsize\lsstyle
+}{}{0em}{}[\vspace{2pt}\hrule height 0.3pt\vspace{3pt}]
+
+\setlist[itemize]{leftmargin=1.1em, label=--, itemsep=2pt, parsep=0pt, topsep=1pt}
+
+\begin{document}
+
+% Minimal Header
+{\LARGE \textsc{{{FULL_NAME}}}} \\[4pt]
+{\small \textit{{{JOB_TITLE}}}} \\[6pt]
+\small
+{{LOCATION}} \ \textperiodcentered \ 
+{{PHONE}} \ \textperiodcentered \ 
+\href{mailto:{{EMAIL}}}{{{EMAIL}}} \ \textperiodcentered \ 
+\href{https://{{WEBSITE}}}{{{WEBSITE}}}
+
+\vspace{8pt}
+
+% Section: Statement
+\section{Profile}
+{{SUMMARY}}
+
+% Section: Experience
+\section{Experience}
+{{EXPERIENCE_ITEMS}}
+
+% Section: Projects
+\section{Selected Projects}
+{{PROJECTS_BLOCK}}
+
+% Section: Education
+\section{Education}
+{{EDUCATION_ITEMS}}
+
+% Section: Skills
+\section{Expertise}
+{{SKILLS_BLOCK}}
+
+\end{document}

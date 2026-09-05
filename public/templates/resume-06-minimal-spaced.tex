@@ -1,0 +1,56 @@
+%----------------------------------------------------------------------------------------
+% Template: Airy Typographic (resume-06-minimal-spaced)
+% Category: minimalist
+% Description: Pure whitespace hierarchy with zero divider rules, airy line-height.
+% Packages: geometry, titlesec, enumitem, charter, hyperref
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{charter}
+\usepackage[hidelinks]{hyperref}
+
+\pagestyle{empty}
+\raggedbottom
+\raggedright
+
+% Pure typographic spacing, no lines
+\titleformat{\section}{
+  \vspace{10pt}\large\bfseries
+}{}{0em}{}
+
+\setlist[itemize]{leftmargin=1.1em, label=$\cdot$, itemsep=2.5pt, parsep=0pt, topsep=2pt}
+
+\begin{document}
+
+% Airy Header
+{\huge \textbf{{{FULL_NAME}}}} \\[4pt]
+{\normalsize \textbf{{{JOB_TITLE}}}} \\[6pt]
+\small
+{{LOCATION}} \ \textbullet \ 
+{{PHONE}} \ \textbullet \ 
+\href{mailto:{{EMAIL}}}{{{EMAIL}}} \ \textbullet \ 
+\href{https://{{LINKEDIN}}}{{{LINKEDIN}}}
+
+\vspace{6pt}
+
+\section{Overview}
+{{SUMMARY}}
+
+\section{Experience}
+{{EXPERIENCE_ITEMS}}
+
+\section{Education}
+{{EDUCATION_ITEMS}}
+
+\section{Projects}
+{{PROJECTS_BLOCK}}
+
+\section{Skills \& Tools}
+{{SKILLS_BLOCK}}
+
+\end{document}

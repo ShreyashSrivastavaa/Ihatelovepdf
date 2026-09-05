@@ -1,0 +1,90 @@
+%----------------------------------------------------------------------------------------
+% Template: Modern Split Column (resume-03-modern-sidebar)
+% Category: modern-twocolumn
+% Description: Two-column layout with a 30% sidebar for profile, contact, and skills.
+% Packages: geometry, xcolor, enumitem, titlesec, helvet, hyperref
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.6in]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[hidelinks]{hyperref}
+
+\pagestyle{empty}
+\raggedbottom
+\setlength{\parindent}{0pt}
+
+% Color definitions
+\definecolor{primary}{HTML}{2563EB} % Modern Royal Blue
+\definecolor{darkgray}{HTML}{1F2937}
+\definecolor{lightgray}{HTML}{F3F4F6}
+\definecolor{sidebarborder}{HTML}{E5E7EB}
+
+% Section styling
+\titleformat{\section}{\color{primary}\large\bfseries}{}{0em}{}[\vspace{1pt}\titlerule]
+\newcommand{\sidesection}[1]{\vspace{8pt}{\color{primary}\normalsize\bfseries #1}\vspace{2pt}\par\hrule\vspace{4pt}}
+
+\setlist[itemize]{leftmargin=1.1em, label=\textbullet, itemsep=2pt, parsep=0pt, topsep=1pt}
+
+\begin{document}
+
+% Top Header
+\begin{minipage}[b]{0.65\textwidth}
+  {\Huge \textbf{\color{darkgray}{{FULL_NAME}}}} \\[4pt]
+  {\Large \textbf{\color{primary}{{JOB_TITLE}}}}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.32\textwidth}
+  \raggedleft \small
+  {{LOCATION}} \\
+  {{PHONE}} \\
+  \href{mailto:{{EMAIL}}}{{{EMAIL}}} \\
+  \href{https://{{LINKEDIN}}}{{{LINKEDIN}}}
+\end{minipage}
+
+\vspace{6pt}
+\hrule height 1.5pt \color{primary}
+\vspace{10pt}
+
+% Two Columns: Left Sidebar (30%) + Main Body (67%)
+\begin{minipage}[t]{0.30\textwidth}
+  \sidesection{Contact}
+  \small
+  \textbf{Email:} \href{mailto:{{EMAIL}}}{{{EMAIL}}} \\[2pt]
+  \textbf{Phone:} {{PHONE}} \\[2pt]
+  \textbf{Location:} {{LOCATION}} \\[2pt]
+  \textbf{Portfolio:} \href{https://{{WEBSITE}}}{{{WEBSITE}}} \\[2pt]
+  \textbf{GitHub:} \href{https://{{GITHUB}}}{{{GITHUB}}}
+
+  \sidesection{Core Skills}
+  {{SKILLS_BLOCK}}
+
+  \sidesection{Education}
+  {{EDUCATION_ITEMS}}
+\end{minipage}
+\hfill
+\vrule width 0.5pt \color{sidebarborder}
+\hfill
+\begin{minipage}[t]{0.66\textwidth}
+  \section{Professional Summary}
+  \small
+  {{SUMMARY}}
+
+  \vspace{6pt}
+  \section{Experience}
+  \small
+  {{EXPERIENCE_ITEMS}}
+
+  \vspace{6pt}
+  \section{Key Projects}
+  \small
+  {{PROJECTS_BLOCK}}
+\end{minipage}
+
+\end{document}

@@ -1,0 +1,65 @@
+%----------------------------------------------------------------------------------------
+% Template: Full-Stack Engineer (resume-11-tech-dev)
+% Category: tech-developer
+% Description: Developer-focused layout emphasizing technical skills matrix, GitHub metrics, and live URLs.
+% Packages: geometry, titlesec, enumitem, xcolor, fontawesome5, helvet, hyperref
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.65in]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[hidelinks]{hyperref}
+
+\pagestyle{empty}
+\raggedbottom
+\raggedright
+
+\definecolor{techaccent}{HTML}{059669} % Emerald Green
+\definecolor{darkgray}{HTML}{111827}
+
+\titleformat{\section}{
+  \vspace{3pt}\color{techaccent}\bfseries\large
+}{}{0em}{}[\vspace{1pt}{\color{techaccent}\titlerule}\vspace{2pt}]
+
+\setlist[itemize]{leftmargin=1.15em, label=$\triangleright$, itemsep=2pt, parsep=0pt, topsep=1pt}
+
+\begin{document}
+
+% Top Developer Header
+\begin{center}
+  {\Huge \textbf{\color{darkgray}{{FULL_NAME}}}} \\[4pt]
+  {\normalsize \textbf{{{JOB_TITLE}}}} \\[5pt]
+  \small
+  \faMapMarker* \ {{LOCATION}} \ \ \textbar\ \ 
+  \faEnvelope \ \href{mailto:{{EMAIL}}}{{{EMAIL}}} \ \ \textbar\ \ 
+  \faPhone \ {{PHONE}} \ \ \textbar\ \ 
+  \faGithub \ \href{https://{{GITHUB}}}{github.com/{{GITHUB}}} \ \ \textbar\ \ 
+  \faLinkedin \ \href{https://{{LINKEDIN}}}{linkedin.com/in/{{LINKEDIN}}}
+\end{center}
+
+\vspace{-4pt}
+
+\section{Technical Skills Matrix}
+\small
+{{SKILLS_BLOCK}}
+
+\section{Work Experience}
+\small
+{{EXPERIENCE_ITEMS}}
+
+\section{Featured Open-Source \& Production Projects}
+\small
+{{PROJECTS_BLOCK}}
+
+\section{Education \& Coursework}
+\small
+{{EDUCATION_ITEMS}}
+
+\end{document}

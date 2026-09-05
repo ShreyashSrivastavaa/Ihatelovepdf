@@ -1,0 +1,64 @@
+%----------------------------------------------------------------------------------------
+% Template: Scholar Academic CV (resume-07-academic-classic)
+% Category: academic-cv
+% Description: Traditional academic curriculum vitae layout with publication & research sections.
+% Packages: geometry, titlesec, enumitem, mathpazo, hyperref
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{mathpazo} % Elegant Palatino
+\usepackage[hidelinks]{hyperref}
+
+\pagestyle{empty}
+\raggedbottom
+\raggedright
+
+% Academic Section formatting
+\titleformat{\section}{
+  \vspace{6pt}\large\scshape\raggedright
+}{}{0em}{}[\vspace{1pt}\hrule height 0.5pt\vspace{3pt}]
+
+\setlist[enumerate]{leftmargin=1.4em, itemsep=2pt, parsep=0pt, topsep=2pt}
+\setlist[itemize]{leftmargin=1.2em, label=$\circ$, itemsep=2pt, parsep=0pt, topsep=1pt}
+
+\begin{document}
+
+% Academic Header
+\begin{center}
+  {\LARGE \textbf{{{FULL_NAME}}}} \\[4pt]
+  {\normalsize {{JOB_TITLE}}} \\[4pt]
+  \small
+  Department of Computer Science \textbar{} {{LOCATION}} \\
+  {{PHONE}} \textbar{} 
+  \href{mailto:{{EMAIL}}}{{{EMAIL}}} \textbar{} 
+  \href{https://{{WEBSITE}}}{{{WEBSITE}}}
+\end{center}
+
+\vspace{-2pt}
+
+% Section: Research Interests
+\section{Research Summary}
+{{SUMMARY}}
+
+% Section: Education
+\section{Education}
+{{EDUCATION_ITEMS}}
+
+% Section: Academic Appointments / Experience
+\section{Appointments \& Experience}
+{{EXPERIENCE_ITEMS}}
+
+% Section: Peer-Reviewed Publications & Projects
+\section{Publications \& Research Projects}
+{{PROJECTS_BLOCK}}
+
+% Section: Technical & Methodological Skills
+\section{Skills \& Methodologies}
+{{SKILLS_BLOCK}}
+
+\end{document}

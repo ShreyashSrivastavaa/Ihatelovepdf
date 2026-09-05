@@ -1,0 +1,79 @@
+%----------------------------------------------------------------------------------------
+% Template: ATS Modern Streamline (resume-02-ats-modern)
+% Category: ats-friendly
+% Description: Modern sans-serif layout with clear visual hierarchy, 100% ATS compliant.
+% Packages: geometry, titlesec, enumitem, helvet, hyperref
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[hidelinks]{hyperref}
+
+% Page setup
+\pagestyle{empty}
+\raggedbottom
+\raggedright
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-2pt}\bfseries\large\color[gray]{0.15}
+}{}{0em}{}[\vspace{1pt}\titlerule\vspace{-4pt}]
+
+% List spacing
+\setlist[itemize]{leftmargin=1.2em, label=\textbullet, itemsep=2.5pt, parsep=0pt, topsep=2pt}
+
+\begin{document}
+
+%===============================================================================
+% HEADER / CONTACT
+%===============================================================================
+\begin{center}
+  {\LARGE \textbf{{{FULL_NAME}}}} \\[3pt]
+  \textbf{{{JOB_TITLE}}} \\[4pt]
+  \small
+  {{LOCATION}} \ \textbullet \ 
+  {{PHONE}} \ \textbullet \ 
+  \href{mailto:{{EMAIL}}}{{{EMAIL}}} \ \textbullet \ 
+  \href{https://{{LINKEDIN}}}{{{LINKEDIN}}} \ \textbullet \ 
+  \href{https://{{WEBSITE}}}{{{WEBSITE}}}
+\end{center}
+
+\vspace{-6pt}
+
+%===============================================================================
+% SUMMARY
+%===============================================================================
+\section{Summary}
+{{SUMMARY}}
+
+%===============================================================================
+% CORE COMPETENCIES
+%===============================================================================
+\section{Core Competencies}
+{{SKILLS_BLOCK}}
+
+%===============================================================================
+% EXPERIENCE
+%===============================================================================
+\section{Work Experience}
+{{EXPERIENCE_ITEMS}}
+
+%===============================================================================
+% PROJECTS
+%===============================================================================
+\section{Key Projects}
+{{PROJECTS_BLOCK}}
+
+%===============================================================================
+% EDUCATION
+%===============================================================================
+\section{Education}
+{{EDUCATION_ITEMS}}
+
+\end{document}
