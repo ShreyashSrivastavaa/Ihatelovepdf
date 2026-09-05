@@ -41,6 +41,8 @@ const PdfWhiteboardInterface = dynamic(() => import('./PdfWhiteboardInterface'),
 const PdfEditorInterface = dynamic(() => import('./PdfEditorInterface'), { ssr: false });
 const PosBillingInterface = dynamic(() => import('./PosBillingInterface'), { ssr: false });
 const CreateBlankPdfInterface = dynamic(() => import('./CreateBlankPdfInterface'), { ssr: false });
+const SignPdfInterface = dynamic(() => import('./SignPdfInterface'), { ssr: false });
+const PdfFormFillerInterface = dynamic(() => import('./PdfFormFillerInterface'), { ssr: false });
 import { ToolErrorBoundary } from '../ToolErrorBoundary';
 
 import StepIndicator, { type ToolStep } from '../StepIndicator';
@@ -181,6 +183,8 @@ const MODE_DEFAULTS: Record<ProcessingMode, PDFProcessingOptions> = {
     taxRate: 18,
   },
   posBilling: {},
+  signPdf: {},
+  fillPdfForm: {},
 };
 
 
@@ -2138,6 +2142,9 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
     if (mode === 'imagesToPdf') {
       return { multiple: true, acceptImages: true, acceptedFileTypes: '.jpg,.jpeg,.png,.webp,.tiff,.tif,.bmp' };
     }
+    if (mode === 'signPdf' || mode === 'fillPdfForm') {
+      return { multiple: false, acceptImages: false, acceptedFileTypes: 'application/pdf,.pdf' };
+    }
     if (mode === 'excelToPdf') {
       return { multiple: false, acceptImages: false, acceptedFileTypes: '.xlsx,.xls,.csv' };
     }
@@ -2446,6 +2453,56 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           </div>
         )}
 
+        {mode === 'signPdf' && files[0] && !completedResult && (
+          <div className="mb-6">
+            <SignPdfInterface
+              file={files[0]}
+              onDone={(blob) => {
+                const outFileName = `${files[0].name.replace(/\.[^/.]+$/, '')}_signed.pdf`;
+                triggerDownloadAction(blob, outFileName);
+                showSuccessDialog({
+                  highlights: [
+                    {
+                      label: statusDialogStrings?.resultsLabel || 'Status',
+                      value: 'PDF document signed and verified successfully',
+                    },
+                    {
+                      label: statusDialogStrings?.filesProcessedLabel?.(1) || '1 File',
+                    },
+                  ],
+                  downloads: [{ blob, fileName: outFileName }],
+                  donationPrompt: buildDonationPrompt(),
+                });
+              }}
+            />
+          </div>
+        )}
+
+        {mode === 'fillPdfForm' && files[0] && !completedResult && (
+          <div className="mb-6">
+            <PdfFormFillerInterface
+              file={files[0]}
+              onDone={(blob) => {
+                const outFileName = `${files[0].name.replace(/\.[^/.]+$/, '')}_filled.pdf`;
+                triggerDownloadAction(blob, outFileName);
+                showSuccessDialog({
+                  highlights: [
+                    {
+                      label: statusDialogStrings?.resultsLabel || 'Status',
+                      value: 'PDF form completed and saved successfully',
+                    },
+                    {
+                      label: statusDialogStrings?.filesProcessedLabel?.(1) || '1 File',
+                    },
+                  ],
+                  downloads: [{ blob, fileName: outFileName }],
+                  donationPrompt: buildDonationPrompt(),
+                });
+              }}
+            />
+          </div>
+        )}
+
         {mode === 'createPdf' && !completedResult && (
           <div className="mb-6">
             <CreateBlankPdfInterface
@@ -2525,7 +2582,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           </div>
         )}
 
-        {mode !== 'createPdf' && mode !== 'scanToPdf' && mode !== 'whiteboard' && mode !== 'compare' && mode !== 'posBilling' && (mode !== 'editPdf' || files.length === 0) && !completedResult && (
+        {mode !== 'createPdf' && mode !== 'scanToPdf' && mode !== 'whiteboard' && mode !== 'compare' && mode !== 'posBilling' && ((mode !== 'editPdf' && mode !== 'signPdf' && mode !== 'fillPdfForm') || files.length === 0) && !completedResult && (
           <div className="mb-6">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-bold">{upload.title}</h2>
@@ -2548,7 +2605,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           </div>
         )}
 
-        {files.length > 0 && !completedResult && (
+        {files.length > 0 && !completedResult && mode !== 'editPdf' && mode !== 'signPdf' && mode !== 'fillPdfForm' && (
           <div className="mb-8">
             <div className="flex justify-between items-center mb-2">
               <h3 className="font-bold">{listHeading}</h3>
@@ -3027,7 +3084,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           </div>
         )}
 
-        {!completedResult && mode !== 'createPdf' && (
+        {!completedResult && mode !== 'createPdf' && ((mode !== 'editPdf' && mode !== 'signPdf' && mode !== 'fillPdfForm') || files.length === 0) && (
           <div className="flex justify-center pt-2" ref={actionButtonRef}>
             <button
               className="btn-primary w-full sm:w-auto px-8 py-3.5 rounded-xl font-semibold text-white shadow-md text-sm sm:text-base tracking-tight disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
@@ -3069,7 +3126,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           </div>
         )}
 
-        {!completedResult && mode !== 'createPdf' && files.length > 0 && (
+        {!completedResult && mode !== 'createPdf' && mode !== 'editPdf' && mode !== 'signPdf' && mode !== 'fillPdfForm' && files.length > 0 && (
           <StickyActionBar
             buttonLabel={typeof resolveIdleButtonLabel() === 'string' ? (resolveIdleButtonLabel() as string) : 'Process Document'}
             isProcessing={isProcessing}

@@ -256,6 +256,40 @@ async function runFullAudit(): Promise<ToolAuditResult[]> {
             items: [{ name: 'Item 1', quantity: 1, price: 100 }],
           });
           break;
+        case 'signPdf': {
+          const sampleSignaturePng =
+            'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAAyCAYAAACqNX6+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA0SURBVHhe7cExAQAAAMKg9U9tCj+gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPg1N/UAAW4d0pEAAAAASUVORK5CYII=';
+          output = await PDFOps.signPdf(testPdf1, [
+            {
+              id: 'audit_sig_1',
+              pageIndex: 0,
+              x: 100,
+              y: 200,
+              width: 100,
+              height: 50,
+              dataUrl: sampleSignaturePng,
+            },
+          ]);
+          break;
+        }
+        case 'fillPdfForm': {
+          output = await PDFOps.fillPdfForm(testPdf1, {
+            flatten: true,
+            textPlacements: [
+              {
+                id: 'audit_field_1',
+                pageIndex: 0,
+                x: 100,
+                y: 150,
+                text: 'Audit Test Field Value',
+                fontSize: 14,
+                fontFamily: 'Helvetica',
+                color: '#1e293b',
+              },
+            ],
+          });
+          break;
+        }
         default:
           output = await PDFOps.compressPDF(testPdf1);
       }

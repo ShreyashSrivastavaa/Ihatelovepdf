@@ -43,6 +43,7 @@ export const FEATURED_TOOLS: OperationKey[] = [
   'merge',
   'compress',
   'split',
+  'signPdf',
   'redact',
   'extractText',
   'scanToPdf',
@@ -91,7 +92,7 @@ export const TOOL_CATEGORIES: ToolCategory[] = [
     bgSoft: 'rgba(124, 58, 237, 0.12)',
     borderAccent: 'rgba(124, 58, 237, 0.3)',
     tag: 'ANNOTATE',
-    toolKeys: ['editPdf', 'watermark', 'pageNumbers', 'headersFooters'],
+    toolKeys: ['editPdf', 'fillPdfForm', 'watermark', 'pageNumbers', 'headersFooters'],
   },
   {
     id: 'extract-view',
@@ -113,7 +114,7 @@ export const TOOL_CATEGORIES: ToolCategory[] = [
     bgSoft: 'rgba(5, 150, 105, 0.12)',
     borderAccent: 'rgba(5, 150, 105, 0.3)',
     tag: 'SECURITY',
-    toolKeys: ['redact', 'decrypt'],
+    toolKeys: ['signPdf', 'redact', 'decrypt'],
   },
   {
     id: 'convert-to-pdf',
@@ -204,6 +205,8 @@ export const TOOL_NAMES: Record<OperationKey, string> = {
   whiteboard: 'Visual Canvas & Sketch',
   gstInvoice: 'GST Invoice Generator',
   posBilling: 'POS Billing',
+  signPdf: 'Sign PDF',
+  fillPdfForm: 'Fill PDF Form',
 };
 
 export function getToolMeta(key: OperationKey): ToolRegistryItem {

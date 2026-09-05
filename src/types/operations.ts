@@ -32,4 +32,6 @@ export type OperationKey =
 	| "ebookToPdf"
 	| "whiteboard"
 	| "gstInvoice"
-	| "posBilling";
+	| "posBilling"
+	| "signPdf"
+	| "fillPdfForm";

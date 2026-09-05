@@ -31,6 +31,8 @@ import {
   Presentation,
   BookOpen,
   Archive,
+  PenLine,
+  CheckSquare,
 } from 'lucide-react';
 
 export const ICON_MAP: Record<string, React.ElementType> = {
@@ -68,6 +70,8 @@ export const ICON_MAP: Record<string, React.ElementType> = {
   whiteboard: Palette,
   gstInvoice: Receipt,
   posBilling: Receipt,
+  signPdf: PenLine,
+  fillPdfForm: CheckSquare,
 };
 
 export const TOOL_DESCRIPTIONS: Record<string, string> = {
@@ -105,6 +109,8 @@ export const TOOL_DESCRIPTIONS: Record<string, string> = {
   whiteboard: "Collaborative whiteboard and visual sketches",
   gstInvoice: "Generate Indian GST tax invoices with auto-tax",
   posBilling: "Generate 58mm/80mm thermal receipts and bills",
+  signPdf: "Draw, type, or upload electronic signatures on PDF",
+  fillPdfForm: "Complete interactive PDF forms or click-to-type anywhere",
 };
 
 import { Search, X as CloseIcon } from 'lucide-react';

@@ -34,6 +34,8 @@ export * from './operations/security';
 export * from './operations/converters';
 export * from './operations/business';
 export * from './operations/pdf-editor';
+export * from './operations/sign';
+export * from './operations/form-filler';
 export {
   buildPdfFromDocumentModel,
   DOCUMENT_PRESETS,
@@ -63,6 +65,10 @@ export type PDFProcessingMode = OperationKey | 'pageCount';
 
 export type PDFProcessingOptions = {
   documentModel?: DocumentModel;
+  signaturePlacements?: import('./operations/sign').SignaturePlacement[];
+  formFieldValues?: Record<string, string | boolean>;
+  flattenForm?: boolean;
+  freeformTextPlacements?: import('./operations/form-filler').FreeformTextPlacement[];
   compressionLevel?: 'low' | 'medium' | 'high';
   outputFormat?: 'pdf';
   pageRange?: string;

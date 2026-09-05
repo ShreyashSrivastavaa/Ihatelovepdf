@@ -251,6 +251,30 @@ export async function processPDF(
       return createPdfBlob(bytes);
     }
 
+    case 'signPdf': {
+      if (primaryFile) {
+        const placements = options.signaturePlacements || [];
+        const bytes = await PDFOps.signPdf(primaryFile, placements);
+        return createPdfBlob(bytes);
+      }
+      throw new Error('No PDF file provided to sign');
+    }
+
+    case 'fillPdfForm': {
+      if (primaryFile) {
+        const fieldValues = options.formFieldValues || {};
+        const freeformPlacements = options.freeformTextPlacements || [];
+        const flatten = options.flattenForm !== undefined ? options.flattenForm : true;
+        const bytes = await PDFOps.fillPdfForm(primaryFile, {
+          acroValues: fieldValues,
+          flatten,
+          textPlacements: freeformPlacements,
+        });
+        return createPdfBlob(bytes);
+      }
+      throw new Error('No PDF file provided to fill form');
+    }
+
     case 'whiteboard': {
       // Return file as PDF Blob or blank template PDF
       if (primaryFile) {

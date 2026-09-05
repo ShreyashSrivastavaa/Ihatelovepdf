@@ -38,6 +38,8 @@ export const ALL_OPERATION_KEYS: OperationKey[] = [
   'whiteboard',
   'gstInvoice',
   'posBilling',
+  'signPdf',
+  'fillPdfForm',
 ];
 
 export interface OperationCatalogItem {
@@ -673,6 +675,42 @@ export const OPERATIONS_CATALOG: Record<OperationKey, OperationCatalogItem> = {
     howToTitle: 'How to generate a POS receipt',
     howToSteps: ['Enter your store name and receipt number.', 'Add purchased items and prices.', 'Click Generate POS Receipt.'],
     useCases: ['Cafes, coffee shops, and bakeries', 'Pop-up stores and retail boutiques', 'Quick payment acknowledgment'],
+  },
+  signPdf: {
+    key: 'signPdf',
+    label: 'Sign PDF',
+    helper: 'Sign PDF documents with digital signatures, typed cursive script, or uploaded signature stamps.',
+    title: 'Sign PDF Online Free - Draw, Type & Add Signatures to PDF',
+    description: 'Sign PDF documents electronically with smooth handwriting draw pad, typed calligraphy fonts, or image stamps. 100% private in-browser signing.',
+    keywords: ['sign pdf', 'sign pdf online free', 'electronic signature pdf', 'draw signature on pdf', 'fill and sign pdf free'],
+    bulletPoints: ['Smooth touch & mouse drawing canvas', 'Custom cursive & handwriting fonts', 'Transparent signature image upload', 'Multi-page date & stamp placement'],
+    benefitsTitle: 'Why sign PDFs locally',
+    benefits: [
+      { title: 'Legally Sound E-Signatures', description: 'Create clean, vector-sharp electronic signatures adhering to standard e-sign practices.' },
+      { title: 'Zero Cloud Storage', description: 'Your contracts, legal deeds, and private agreements never leave your browser.' },
+      { title: 'Multi-Signature Workflow', description: 'Place signatures, initials, dates, and approval stamps across any page effortlessly.' },
+    ],
+    howToTitle: 'How to sign a PDF document',
+    howToSteps: ['Upload your PDF document.', 'Draw, type, or upload your signature.', 'Drag your signature onto the desired page location and download.'],
+    useCases: ['Signing contracts and NDAs', 'Authorizing purchase orders and invoices', 'Endorsing tax forms and employment agreements'],
+  },
+  fillPdfForm: {
+    key: 'fillPdfForm',
+    label: 'Fill PDF Form',
+    helper: 'Fill out PDF forms, check boxes, select dropdowns, and add custom text directly in your browser.',
+    title: 'Fill PDF Form Online Free - Complete & Flatten Interactive Forms',
+    description: 'Fill out interactive AcroForm PDF forms, checkboxes, and dropdowns, or type anywhere on standard PDFs. Flatten and save without watermark.',
+    keywords: ['fill pdf form', 'fill out pdf form free', 'complete pdf forms online', 'edit pdf form fields', 'flatten pdf form'],
+    bulletPoints: ['Auto-detects interactive AcroForm text fields and checkboxes', 'Click-to-type anywhere on non-interactive documents', 'Flatten form fields to prevent tampering', '100% private in-browser form completion'],
+    benefitsTitle: 'Why fill PDF forms locally',
+    benefits: [
+      { title: 'Interactive Form Field Detection', description: 'Automatically maps native PDF AcroForm fields for rapid tab-and-fill completion.' },
+      { title: 'Click & Type Fallback', description: 'Type anywhere on scanned or non-interactive PDFs with custom fonts, sizes, and colors.' },
+      { title: 'Form Flattening Security', description: 'Permanently lock entered data and signatures into page streams so values cannot be altered.' },
+    ],
+    howToTitle: 'How to fill a PDF form',
+    howToSteps: ['Upload your PDF form.', 'Fill detected AcroForm fields or click anywhere on the page to type custom text.', 'Toggle flattening if desired and click Fill & Download PDF.'],
+    useCases: ['Completing government, tax, and visa applications', 'Filling medical intake and patient registration forms', 'Entering employment verification and insurance claim details'],
   },
 };
 

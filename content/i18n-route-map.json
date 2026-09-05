@@ -439,6 +439,28 @@
       "ro": "/ro/facturare-pos",
       "ru": "/ru/pos-kassovyy-chek",
       "hu": "/hu/pos-szamlazas"
+    },
+    "signPdf": {
+      "en": "/sign-pdf",
+      "es": "/es/firmar-pdf",
+      "pt": "/pt/assinar-pdf",
+      "de": "/de/pdf-unterschreiben",
+      "it": "/it/firma-pdf",
+      "fr": "/fr/signer-pdf",
+      "ro": "/ro/semneaza-pdf",
+      "ru": "/ru/podpisat-pdf",
+      "hu": "/hu/pdf-alairasa"
+    },
+    "fillPdfForm": {
+      "en": "/fill-pdf-form",
+      "es": "/es/rellenar-formulario-pdf",
+      "pt": "/pt/preencher-formulario-pdf",
+      "de": "/de/pdf-formular-ausfuellen",
+      "it": "/it/compila-modulo-pdf",
+      "fr": "/fr/remplir-formulaire-pdf",
+      "ro": "/ro/completeaza-formular-pdf",
+      "ru": "/ru/zapolnit-formu-pdf",
+      "hu": "/hu/pdf-urlap-kitoltese"
     }
   }
 }

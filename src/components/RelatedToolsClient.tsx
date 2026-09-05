@@ -39,6 +39,8 @@ const RELATED_TOOLS: Record<string, string[]> = {
   whiteboard: ["editPdf", "scanToPdf", "compress", "merge"],
   gstInvoice: ["posBilling", "createPdf", "compress", "watermark"],
   posBilling: ["gstInvoice", "createPdf", "compress", "scanToPdf"],
+  signPdf: ["editPdf", "redact", "watermark", "compress"],
+  fillPdfForm: ["signPdf", "editPdf", "watermark", "compress"],
 };
 
 export default function RelatedToolsClient({ currentMode }: { currentMode: string }) {
