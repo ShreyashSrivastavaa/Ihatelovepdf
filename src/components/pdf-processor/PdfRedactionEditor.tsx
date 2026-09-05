@@ -1,8 +1,21 @@
 'use client';
 
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { ShieldAlert, Trash2, Download, ChevronLeft, ChevronRight } from 'lucide-react';
-import { redactPdf, type RedactionBox } from '../../lib/operations/redact';
+import {
+  ShieldAlert,
+  ShieldCheck,
+  Trash2,
+  Download,
+  ChevronLeft,
+  ChevronRight,
+  Info,
+  Loader2,
+  Lock,
+} from 'lucide-react';
+import {
+  redactPdfWithDiagnostics,
+  type RedactionBox,
+} from '../../lib/operations/redact';
 import { createPdfBlob } from '../../lib/pdf-processor';
 
 type PdfJsModule = typeof import('pdfjs-dist/legacy/build/pdf');
@@ -35,7 +48,9 @@ export default function PdfRedactionEditor({ file, onDone, onBurnRedactions }: P
   const [startPos, setStartPos] = useState<{ x: number; y: number } | null>(null);
   const [currentRect, setCurrentRect] = useState<{ x: number; y: number; w: number; h: number } | null>(null);
   const [colorMode, setColorMode] = useState<'black' | 'white'>('black');
+  const [redactionMode, setRedactionMode] = useState<'true' | 'vector'>('true');
   const [isProcessing, setIsProcessing] = useState(false);
+  const [processingStatus, setProcessingStatus] = useState<string>('');
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -106,9 +121,11 @@ export default function PdfRedactionEditor({ file, onDone, onBurnRedactions }: P
   };
 
   const handleMouseUp = () => {
-    if (isDrawing && currentRect && currentRect.w > 5 && currentRect.h > 5 && canvasRef.current) {
+    if (isDrawing && currentRect && currentRect.w > 5 && currentRect.h > 5) {
       const canvas = canvasRef.current;
-      // Convert to normalized coordinates (0 to 1) with top-left origin
+      if (!canvas) return;
+
+      // Store normalized (0-1) coordinates
       const normalizedBox: RedactionBox = {
         pageNumber: currentPage,
         x: currentRect.x / canvas.width,
@@ -134,9 +151,71 @@ export default function PdfRedactionEditor({ file, onDone, onBurnRedactions }: P
   const handleApplyRedactions = async () => {
     if (redactions.length === 0) return;
     setIsProcessing(true);
+    setProcessingStatus('Preparing document redaction...');
     try {
-      const bytes = await redactPdf(file, redactions);
-      const blob = createPdfBlob(bytes);
+      let rasterizedPages: Record<number, Uint8Array> | undefined = undefined;
+
+      if (redactionMode === 'true') {
+        rasterizedPages = {};
+        const pdfjs = await getPdfJs();
+        const arrayBuffer = await file.arrayBuffer();
+        const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
+        const doc = await pdfjs.getDocument({
+          data: arrayBuffer,
+          cMapUrl: `${baseUrl}/cmaps/`,
+          cMapPacked: true,
+          standardFontDataUrl: `${baseUrl}/standard_fonts/`,
+        }).promise;
+
+        const uniquePages = Array.from(new Set(redactions.map((r) => r.pageNumber ?? 1)));
+
+        for (let i = 0; i < uniquePages.length; i++) {
+          const pageNum = uniquePages[i];
+          setProcessingStatus(`True Redaction: rasterizing page ${pageNum} of ${totalPages}...`);
+          const page = await doc.getPage(pageNum);
+          const vp = page.getViewport({ scale: 2.0 });
+
+          const offscreen = document.createElement('canvas');
+          offscreen.width = Math.round(vp.width);
+          offscreen.height = Math.round(vp.height);
+          const ctx = offscreen.getContext('2d');
+          if (!ctx) continue;
+
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(0, 0, offscreen.width, offscreen.height);
+
+          await page.render({
+            canvasContext: ctx,
+            viewport: vp,
+            canvas: offscreen,
+          } as Parameters<typeof page.render>[0]).promise;
+
+          // Burn all redactions for this page directly onto the canvas pixels
+          const pageRedacts = redactions.filter((r) => (r.pageNumber ?? 1) === pageNum);
+          for (const box of pageRedacts) {
+            const bx = box.x * offscreen.width;
+            const by = box.y * offscreen.height;
+            const bw = box.width * offscreen.width;
+            const bh = box.height * offscreen.height;
+            ctx.fillStyle = box.color === 'white' ? '#ffffff' : '#000000';
+            ctx.fillRect(bx, by, bw, bh);
+          }
+
+          const blob = await new Promise<Blob | null>((resolve) => offscreen.toBlob(resolve, 'image/png'));
+          if (blob) {
+            rasterizedPages[pageNum] = new Uint8Array(await blob.arrayBuffer());
+          }
+        }
+      }
+
+      setProcessingStatus('Assembling sanitized PDF document...');
+      const result = await redactPdfWithDiagnostics(file, redactions, {
+        mode: redactionMode,
+        purgeMetadata: true,
+        rasterizedPages,
+      });
+
+      const blob = createPdfBlob(result.pdfBytes);
       if (onBurnRedactions) {
         onBurnRedactions(blob);
       } else if (onDone) {
@@ -153,6 +232,7 @@ export default function PdfRedactionEditor({ file, onDone, onBurnRedactions }: P
       console.error('Redaction failed:', err);
     } finally {
       setIsProcessing(false);
+      setProcessingStatus('');
     }
   };
 
@@ -168,37 +248,100 @@ export default function PdfRedactionEditor({ file, onDone, onBurnRedactions }: P
             Visual PDF Redaction Studio
           </h3>
           <p className="text-xs text-[var(--tx-2)] mt-0.5">
-            Permanently black out or white out sensitive data. Opaque solid vectors are burned directly into the PDF.
+            Permanently black out or white out sensitive data with zero-leakage forensic rasterization.
           </p>
         </div>
 
-        {/* Color Mode Selector */}
-        <div className="flex items-center gap-2 bg-[var(--bg-subtle)] p-1 rounded-xl border border-[var(--border)] shrink-0">
-          <button
-            type="button"
-            onClick={() => setColorMode('black')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors ${
-              colorMode === 'black'
-                ? 'bg-black text-white shadow-xs'
-                : 'text-[var(--tx-2)] hover:text-[var(--tx)]'
-            }`}
-          >
-            <span className="h-2.5 w-2.5 rounded-full bg-black border border-white/30" />
-            Blackout
-          </button>
-          <button
-            type="button"
-            onClick={() => setColorMode('white')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors ${
-              colorMode === 'white'
-                ? 'bg-white text-gray-900 shadow-xs border border-gray-200'
-                : 'text-[var(--tx-2)] hover:text-[var(--tx)]'
-            }`}
-          >
-            <span className="h-2.5 w-2.5 rounded-full bg-white border border-gray-400" />
-            Whiteout
-          </button>
+        {/* Controls: Redaction Security Level & Color Mode */}
+        <div className="flex flex-wrap items-center gap-3">
+          <div className="flex items-center gap-1 bg-[var(--bg-subtle)] p-1 rounded-xl border border-[var(--border)] shrink-0">
+            <button
+              type="button"
+              onClick={() => setRedactionMode('true')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer ${
+                redactionMode === 'true'
+                  ? 'bg-emerald-600 text-white shadow-xs'
+                  : 'text-[var(--tx-2)] hover:text-[var(--tx)]'
+              }`}
+            >
+              <ShieldCheck className="w-3.5 h-3.5" />
+              <span>True Redaction (Zero Leakage)</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setRedactionMode('vector')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer ${
+                redactionMode === 'vector'
+                  ? 'bg-[var(--accent)] text-white shadow-xs'
+                  : 'text-[var(--tx-2)] hover:text-[var(--tx)]'
+              }`}
+            >
+              <span>Vector Box Only</span>
+            </button>
+          </div>
+
+          <div className="flex items-center gap-1 bg-[var(--bg-subtle)] p-1 rounded-xl border border-[var(--border)] shrink-0">
+            <button
+              type="button"
+              onClick={() => setColorMode('black')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer ${
+                colorMode === 'black'
+                  ? 'bg-black text-white shadow-xs'
+                  : 'text-[var(--tx-2)] hover:text-[var(--tx)]'
+              }`}
+            >
+              <span className="h-2.5 w-2.5 rounded-full bg-black border border-white/30" />
+              Blackout
+            </button>
+            <button
+              type="button"
+              onClick={() => setColorMode('white')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer ${
+                colorMode === 'white'
+                  ? 'bg-white text-gray-900 shadow-xs border border-gray-200'
+                  : 'text-[var(--tx-2)] hover:text-[var(--tx)]'
+              }`}
+            >
+              <span className="h-2.5 w-2.5 rounded-full bg-white border border-gray-400" />
+              Whiteout
+            </button>
+          </div>
         </div>
+      </div>
+
+      {/* Security Status Banner */}
+      <div
+        className={`p-3.5 rounded-xl border text-xs flex items-start gap-2.5 transition-all ${
+          redactionMode === 'true'
+            ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-700 dark:text-emerald-300'
+            : 'bg-amber-500/10 border-amber-500/30 text-amber-700 dark:text-amber-300'
+        }`}
+      >
+        {redactionMode === 'true' ? (
+          <>
+            <ShieldCheck className="w-4 h-4 shrink-0 mt-0.5 text-emerald-500" />
+            <div className="space-y-0.5 leading-relaxed">
+              <strong className="font-bold flex items-center gap-1.5">
+                <Lock className="w-3.5 h-3.5" />
+                Zero-Leakage True Redaction Active
+              </strong>
+              <p>
+                Redacted pages are transformed into high-resolution pixel layers with your redactions permanently burned in.
+                All underlying text operators, font tables, and document metadata are deleted with zero leakage. Un-redacted pages remain pure vector PDF.
+              </p>
+            </div>
+          </>
+        ) : (
+          <>
+            <Info className="w-4 h-4 shrink-0 mt-0.5 text-amber-500" />
+            <div className="space-y-0.5 leading-relaxed">
+              <strong className="font-bold">Vector Box Overlay Mode</strong>
+              <p>
+                Draws solid vector rectangles and purges interactive annotations. Note that underlying text in the stream may remain searchable outside the visual box.
+              </p>
+            </div>
+          </>
+        )}
       </div>
 
       {/* Main Canvas & Sidebar Container */}
@@ -327,14 +470,20 @@ export default function PdfRedactionEditor({ file, onDone, onBurnRedactions }: P
           </div>
 
           {/* Apply Button */}
-          <div className="pt-4 border-t border-[var(--border)]">
+          <div className="pt-4 border-t border-[var(--border)] space-y-2">
+            {processingStatus && (
+              <p className="text-[11px] text-[var(--tx-2)] text-center flex items-center justify-center gap-1.5 animate-pulse">
+                <Loader2 className="w-3 h-3 animate-spin text-emerald-500" />
+                <span>{processingStatus}</span>
+              </p>
+            )}
             <button
               type="button"
               disabled={redactions.length === 0 || isProcessing}
               onClick={handleApplyRedactions}
-              className="w-full py-3 px-4 rounded-xl bg-[var(--accent)] hover:bg-[var(--accent-hover)] disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full py-3 px-4 rounded-xl bg-rose-600 hover:bg-rose-700 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
-              <Download className="h-4 w-4" />
+              {isProcessing ? <Loader2 className="h-4 w-4 animate-spin" /> : <Download className="h-4 w-4" />}
               <span>{isProcessing ? 'Burning Redactions...' : 'Apply & Download PDF'}</span>
             </button>
           </div>

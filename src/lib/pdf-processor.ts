@@ -121,7 +121,8 @@ export async function processPDF(
     }
 
     case 'redact': {
-      const bytes = await PDFOps.redactPdf(primaryFile, (options as { redactions?: PDFOps.RedactionBox[] }).redactions || []);
+      const redactions = options.redactions || [];
+      const bytes = await PDFOps.redactPdf(primaryFile, redactions, options.redactionOptions);
       return createPdfBlob(bytes);
     }
 

@@ -19,7 +19,7 @@ import type { OperationKey } from '../types/operations';
 import type { WatermarkOptions } from './operations/watermark';
 import type { PageNumberOptions } from './operations/page-numbers';
 import type { HeaderFooterOptions } from './operations/headers-footers';
-import type { RedactionBox } from './operations/redact';
+import type { RedactionBox, RedactOptions } from './operations/redact';
 import type { GstInvoiceData, PosReceiptData } from './operations/business';
 import type { BlankPdfPageSize, BlankPdfOrientation } from './operations/converters';
 import type { DocumentModel } from './pdf-engine/creator-engine';
@@ -155,6 +155,7 @@ export type PDFProcessingOptions = {
   colorMode?: 'dark-mode' | 'sepia' | 'grayscale' | 'high-contrast';
 
   redactions?: RedactionBox[];
+  redactionOptions?: RedactOptions;
   redactColor?: string;
 
   decryptionPassword?: string;
