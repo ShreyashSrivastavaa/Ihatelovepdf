@@ -14,6 +14,14 @@ export default function NetworkActivityMonitor({
 }: NetworkActivityMonitorProps) {
   const [networkRequestsCount, setNetworkRequestsCount] = useState(0);
   const [bytesSent, setBytesSent] = useState(0);
+  const isMountedRef = React.useRef(true);
+
+  useEffect(() => {
+    isMountedRef.current = true;
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -50,14 +58,23 @@ export default function NetworkActivityMonitor({
       }
 
       if (isExternal && !isInternalAsset) {
-        setNetworkRequestsCount((prev) => prev + 1);
+        setTimeout(() => {
+          if (isMountedRef.current) {
+            setNetworkRequestsCount((prev) => prev + 1);
+          }
+        }, 0);
       }
       return originalFetch.apply(window, args);
     };
 
     XMLHttpRequest.prototype.send = function (body) {
       if (body && typeof body === 'string' && isProcessing) {
-        setBytesSent((prev) => prev + body.length);
+        const bodyLength = body.length;
+        setTimeout(() => {
+          if (isMountedRef.current) {
+            setBytesSent((prev) => prev + bodyLength);
+          }
+        }, 0);
       }
       return originalXhrSend.apply(this, [body] as Parameters<typeof originalXhrSend>);
     };
