@@ -1,0 +1,82 @@
+%----------------------------------------------------------------------------------------
+% Template: Executive Split Column (resume-04-split-compact)
+% Category: modern-twocolumn
+% Description: Two-column layout with a right-hand sidebar for tools, patents, and education.
+% Packages: geometry, xcolor, enumitem, titlesec, charte, hyperref
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.65in]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{charter}
+\usepackage[hidelinks]{hyperref}
+
+\pagestyle{empty}
+\raggedbottom
+\setlength{\parindent}{0pt}
+
+\definecolor{primary}{HTML}{0F766E} % Deep Teal
+\definecolor{darkgray}{HTML}{1E293B}
+\definecolor{bordergray}{HTML}{D1D5DB}
+
+\titleformat{\section}{\color{primary}\large\bfseries\scshape}{}{0em}{}[\vspace{1pt}\titlerule]
+\newcommand{\sidesection}[1]{\vspace{8pt}{\color{primary}\normalsize\bfseries\scshape #1}\vspace{2pt}\par\hrule\vspace{4pt}}
+
+\setlist[itemize]{leftmargin=1.1em, label=$\circ$, itemsep=2pt, parsep=0pt, topsep=1pt}
+
+\begin{document}
+
+% Header
+\begin{center}
+  {\LARGE \textbf{\color{darkgray}{{FULL_NAME}}}} \\[3pt]
+  {\normalsize \textbf{\color{primary}{{JOB_TITLE}}}} \\[4pt]
+  \small
+  {{LOCATION}} \ \textbar \ 
+  {{PHONE}} \ \textbar \ 
+  \href{mailto:{{EMAIL}}}{{{EMAIL}}} \ \textbar \ 
+  \href{https://{{LINKEDIN}}}{{{LINKEDIN}}}
+\end{center}
+
+\vspace{2pt}
+\hrule height 1pt \color{primary}
+\vspace{10pt}
+
+% Main (68%) on Left, Side (29%) on Right
+\begin{minipage}[t]{0.68\textwidth}
+  \section{Executive Profile}
+  \small
+  {{SUMMARY}}
+
+  \vspace{6pt}
+  \section{Career History}
+  \small
+  {{EXPERIENCE_ITEMS}}
+
+  \vspace{6pt}
+  \section{Flagship Initiatives}
+  \small
+  {{PROJECTS_BLOCK}}
+\end{minipage}
+\hfill
+\vrule width 0.5pt \color{bordergray}
+\hfill
+\begin{minipage}[t]{0.28\textwidth}
+  \sidesection{Education}
+  \small
+  {{EDUCATION_ITEMS}}
+
+  \sidesection{Competencies}
+  {{SKILLS_BLOCK}}
+
+  \sidesection{Portfolio Links}
+  \small
+  \textbf{Web:} \href{https://{{WEBSITE}}}{{{WEBSITE}}} \\[3pt]
+  \textbf{Code:} \href{https://{{GITHUB}}}{{{GITHUB}}} \\[3pt]
+  \textbf{Network:} \href{https://{{LINKEDIN}}}{{{LINKEDIN}}}
+\end{minipage}
+
+\end{document}

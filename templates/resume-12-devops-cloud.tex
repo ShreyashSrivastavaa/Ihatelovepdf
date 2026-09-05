@@ -1,0 +1,71 @@
+%----------------------------------------------------------------------------------------
+% Template: Cloud & SRE Architect (resume-12-devops-cloud)
+% Category: tech-developer
+% Description: Cloud infrastructure, SRE, and systems layout with telemetry and certification focus.
+% Packages: geometry, titlesec, enumitem, xcolor, fontawesome5, helvet, hyperref
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.65in]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[hidelinks]{hyperref}
+
+\pagestyle{empty}
+\raggedbottom
+\raggedright
+
+\definecolor{cloudcyan}{HTML}{0891B2} % Cyan Terminal Accent
+\definecolor{darkslate}{HTML}{0F172A}
+
+\titleformat{\section}{
+  \vspace{4pt}\color{cloudcyan}\bfseries\normalsize\uppercase
+}{}{0em}{}[\vspace{1pt}{\color{cloudcyan}\hrule height 0.8pt}\vspace{3pt}]
+
+\setlist[itemize]{leftmargin=1.1em, label={\color{cloudcyan}$\bullet$}, itemsep=2.5pt, parsep=0pt, topsep=1pt}
+
+\begin{document}
+
+% Header
+\begin{minipage}[c]{0.65\textwidth}
+  {\LARGE \textbf{\color{darkslate}{{FULL_NAME}}}} \\[3pt]
+  {\small \textbf{\color{cloudcyan}{{JOB_TITLE}}}}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.33\textwidth}
+  \raggedleft \small
+  \faMapPin \ {{LOCATION}} \\
+  \faEnvelope \ \href{mailto:{{EMAIL}}}{{{EMAIL}}} \\
+  \faPhone \ {{PHONE}} \\
+  \faCloud \ \href{https://{{GITHUB}}}{github.com/{{GITHUB}}}
+\end{minipage}
+
+\vspace{6pt}
+
+\section{Infrastructure \& Reliability Profile}
+\small
+{{SUMMARY}}
+
+\section{Cloud, SRE \& Tooling Stack}
+\small
+{{SKILLS_BLOCK}}
+
+\section{Professional Experience}
+\small
+{{EXPERIENCE_ITEMS}}
+
+\section{Architecture Deployments \& Projects}
+\small
+{{PROJECTS_BLOCK}}
+
+\section{Education \& Certifications}
+\small
+{{EDUCATION_ITEMS}}
+
+\end{document}

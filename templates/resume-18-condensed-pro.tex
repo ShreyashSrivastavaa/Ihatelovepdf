@@ -1,0 +1,66 @@
+%----------------------------------------------------------------------------------------
+% Template: Condensed Impact (resume-18-condensed-pro)
+% Category: compact-dense
+% Description: Compact single-column layout optimized for senior engineers fitting 10+ years into 1 page.
+% Packages: geometry, titlesec, enumitem, xcolor, charter, hyperref
+%----------------------------------------------------------------------------------------
+
+\documentclass[9.5pt,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{charter}
+\usepackage[hidelinks]{hyperref}
+
+\pagestyle{empty}
+\raggedbottom
+\raggedright
+
+\definecolor{slateaccent}{HTML}{334155}
+
+\titleformat{\section}{
+  \vspace{-1pt}\color{slateaccent}\bfseries\small\scshape
+}{}{0em}{}[\vspace{1pt}{\color{slateaccent}\hrule height 0.5pt}\vspace{-3pt}]
+
+\setlist[itemize]{leftmargin=1.0em, label=$\circ$, itemsep=1.5pt, parsep=0pt, topsep=1pt}
+
+\begin{document}
+
+% Header
+\begin{center}
+  {\LARGE \textbf{\color{slateaccent}{{FULL_NAME}}}} \\[2pt]
+  {\small \textit{{{JOB_TITLE}}}} \\[3pt]
+  \footnotesize
+  {{LOCATION}} \ \textbar \ 
+  {{PHONE}} \ \textbar \ 
+  \href{mailto:{{EMAIL}}}{{{EMAIL}}} \ \textbar \ 
+  \href{https://{{LINKEDIN}}}{{{LINKEDIN}}} \ \textbar \ 
+  \href{https://{{WEBSITE}}}{{{WEBSITE}}}
+\end{center}
+
+\vspace{-4pt}
+
+\section{Executive Summary}
+\footnotesize
+{{SUMMARY}}
+
+\section{Core Competencies}
+\footnotesize
+{{SKILLS_BLOCK}}
+
+\section{Professional Experience}
+\footnotesize
+{{EXPERIENCE_ITEMS}}
+
+\section{Major Projects}
+\footnotesize
+{{PROJECTS_BLOCK}}
+
+\section{Education \& Accreditations}
+\footnotesize
+{{EDUCATION_ITEMS}}
+
+\end{document}

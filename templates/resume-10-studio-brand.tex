@@ -1,0 +1,74 @@
+%----------------------------------------------------------------------------------------
+% Template: Studio Art Director (resume-10-studio-brand)
+% Category: creative-designer
+% Description: High-impact creative studio layout with royal indigo accents and brand credentials.
+% Packages: geometry, titlesec, enumitem, xcolor, fontawesome5, helvet, hyperref
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.65in]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[hidelinks]{hyperref}
+
+\pagestyle{empty}
+\raggedbottom
+\raggedright
+
+\definecolor{brand}{HTML}{3730A3} % Deep Indigo
+\definecolor{charcoal}{HTML}{111827}
+\definecolor{lightline}{HTML}{E0E7FF}
+
+\titleformat{\section}{
+  \vspace{6pt}\color{brand}\bfseries\normalsize\uppercase
+}{}{0em}{}[\vspace{1pt}{\color{brand}\hrule height 1pt}\vspace{3pt}]
+
+\setlist[itemize]{leftmargin=1.1em, label={\color{brand}\scriptsize$\blacksquare$}, itemsep=2.5pt, parsep=0pt, topsep=1pt}
+
+\begin{document}
+
+% Geometric banner header
+\begin{minipage}[c]{0.70\textwidth}
+  {\Huge \textbf{\color{charcoal}{{FULL_NAME}}}} \\[4pt]
+  {\normalsize \textbf{\color{brand}{{JOB_TITLE}}}}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.28\textwidth}
+  \raggedleft \small
+  \faMapPin \ {{LOCATION}} \\
+  \faPhone* \ {{PHONE}} \\
+  \faEnvelope \ \href{mailto:{{EMAIL}}}{{{EMAIL}}}\\
+  \faGlobe \ \href{https://{{WEBSITE}}}{{{WEBSITE}}}
+\end{minipage}
+
+\vspace{6pt}
+{\color{lightline}\hrule height 2pt}
+\vspace{6pt}
+
+\section{Executive Creative Profile}
+\small
+{{SUMMARY}}
+
+\section{Creative Leadership \& Experience}
+\small
+{{EXPERIENCE_ITEMS}}
+
+\section{Campaigns, Case Studies \& Direction}
+\small
+{{PROJECTS_BLOCK}}
+
+\section{Creative Technologies \& Craft}
+\small
+{{SKILLS_BLOCK}}
+
+\section{Education \& Recognition}
+\small
+{{EDUCATION_ITEMS}}
+
+\end{document}

@@ -1,0 +1,71 @@
+%----------------------------------------------------------------------------------------
+% Template: Milestone Flow (resume-20-timeline-milestones)
+% Category: timeline-style
+% Description: Chronological milestone flow layout with amber accents and distinct year callouts.
+% Packages: geometry, titlesec, enumitem, xcolor, fontawesome5, helvet, hyperref
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.65in]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[hidelinks]{hyperref}
+
+\pagestyle{empty}
+\raggedbottom
+\raggedright
+
+\definecolor{amberaccent}{HTML}{D97706} % Warm Amber
+\definecolor{slateheader}{HTML}{0F172A}
+
+\titleformat{\section}{
+  \vspace{4pt}\color{amberaccent}\bfseries\normalsize
+}{}{0em}{}[\vspace{1pt}{\color{amberaccent}\hrule height 1pt}\vspace{3pt}]
+
+\setlist[itemize]{leftmargin=1.15em, label={\color{amberaccent}$\blacktriangleright$}, itemsep=2pt, parsep=0pt, topsep=1pt}
+
+\begin{document}
+
+% Top Header
+\begin{minipage}[t]{0.65\textwidth}
+  {\LARGE \textbf{\color{slateheader}{{FULL_NAME}}}} \\[3pt]
+  {\small \textbf{\color{amberaccent}{{JOB_TITLE}}}}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.33\textwidth}
+  \raggedleft \small
+  \faMapMarker* \ {{LOCATION}} \\
+  \faPhone \ {{PHONE}} \\
+  \faEnvelope \ \href{mailto:{{EMAIL}}}{{{EMAIL}}} \\
+  \faGlobe \ \href{https://{{WEBSITE}}}{{{WEBSITE}}}
+\end{minipage}
+
+\vspace{6pt}
+
+\section{Career Vision \& Summary}
+\small
+{{SUMMARY}}
+
+\section{Core Technologies \& Tooling}
+\small
+{{SKILLS_BLOCK}}
+
+\section{Chronological Experience Milestones}
+\small
+{{EXPERIENCE_ITEMS}}
+
+\section{Featured Project Deliverables}
+\small
+{{PROJECTS_BLOCK}}
+
+\section{Academic Background}
+\small
+{{EDUCATION_ITEMS}}
+
+\end{document}

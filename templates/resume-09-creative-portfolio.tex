@@ -1,0 +1,71 @@
+%----------------------------------------------------------------------------------------
+% Template: Creative UX & Product Designer (resume-09-creative-portfolio)
+% Category: creative-designer
+% Description: Designer layout with FontAwesome5 icons, subtle color accents, and portfolio focus.
+% Packages: geometry, titlesec, enumitem, xcolor, fontawesome5, helvet, hyperref
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.65in]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[hidelinks]{hyperref}
+
+\pagestyle{empty}
+\raggedbottom
+\raggedright
+
+% Accent colors
+\definecolor{accent}{HTML}{C2410C} % Terracotta Warm Accent
+\definecolor{darktext}{HTML}{1F2937}
+\definecolor{mutedtext}{HTML}{4B5563}
+
+\titleformat{\section}{
+  \vspace{4pt}\color{accent}\bfseries\large
+}{}{0em}{}[\vspace{1pt}{\color{accent}\titlerule}\vspace{2pt}]
+
+\setlist[itemize]{leftmargin=1.1em, label={\color{accent}$\blacktriangleright$}, itemsep=2.5pt, parsep=0pt, topsep=1pt}
+
+\begin{document}
+
+% Creative Header with Icons
+\begin{center}
+  {\Huge \textbf{\color{darktext}{{FULL_NAME}}}} \\[4pt]
+  {\Large \textbf{\color{accent}{{JOB_TITLE}}}} \\[6pt]
+  \small \color{mutedtext}
+  \faMapMarker* \ {{LOCATION}} \ \ \textbar\ \ 
+  \faPhone \ {{PHONE}} \ \ \textbar\ \ 
+  \faEnvelope \ \href{mailto:{{EMAIL}}}{{{EMAIL}}} \ \ \textbar\ \ 
+  \faGlobe \ \href{https://{{WEBSITE}}}{{{WEBSITE}}} \ \ \textbar\ \ 
+  \faLinkedin \ \href{https://{{LINKEDIN}}}{{{LINKEDIN}}}
+\end{center}
+
+\vspace{2pt}
+
+\section{Design Philosophy \& Summary}
+\small
+{{SUMMARY}}
+
+\section{Design Toolkit \& Systems}
+\small
+{{SKILLS_BLOCK}}
+
+\section{Experience}
+\small
+{{EXPERIENCE_ITEMS}}
+
+\section{Featured Design Systems \& Projects}
+\small
+{{PROJECTS_BLOCK}}
+
+\section{Education \& Accreditations}
+\small
+{{EDUCATION_ITEMS}}
+
+\end{document}

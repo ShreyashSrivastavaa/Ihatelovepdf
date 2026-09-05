@@ -1,0 +1,73 @@
+%----------------------------------------------------------------------------------------
+% Template: Campus Kickstart (resume-15-grad-kickstart)
+% Category: fresh-grad
+% Description: Education-first layout designed for university students and new graduates.
+% Packages: geometry, titlesec, enumitem, xcolor, helvet, hyperref
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.65in]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[hidelinks]{hyperref}
+
+\pagestyle{empty}
+\raggedbottom
+\raggedright
+
+\definecolor{gradaccent}{HTML}{4F46E5} % Vibrant Indigo
+\definecolor{charcoal}{HTML}{1F2937}
+
+\titleformat{\section}{
+  \vspace{3pt}\color{gradaccent}\bfseries\normalsize\uppercase
+}{}{0em}{}[\vspace{1pt}{\color{gradaccent}\titlerule}\vspace{2pt}]
+
+\setlist[itemize]{leftmargin=1.15em, label=$\bullet$, itemsep=2pt, parsep=0pt, topsep=1pt}
+
+\begin{document}
+
+% Centered Header
+\begin{center}
+  {\Huge \textbf{\color{charcoal}{{FULL_NAME}}}} \\[4pt]
+  {\small \textbf{{{JOB_TITLE}}}} \\[4pt]
+  \small
+  {{LOCATION}} \ \textbullet \ 
+  {{PHONE}} \ \textbullet \ 
+  \href{mailto:{{EMAIL}}}{{{EMAIL}}} \ \textbullet \ 
+  \href{https://{{GITHUB}}}{github.com/{{GITHUB}}} \ \textbullet \ 
+  \href{https://{{LINKEDIN}}}{linkedin.com/in/{{LINKEDIN}}}
+\end{center}
+
+\vspace{-4pt}
+
+% Section 1: Education Forward
+\section{Education}
+\small
+{{EDUCATION_ITEMS}}
+
+% Section 2: Technical Skills
+\section{Technical Skills \& Coursework}
+\small
+{{SKILLS_BLOCK}}
+
+% Section 3: Flagship Capstone & Academic Projects
+\section{Academic Projects \& Hackathons}
+\small
+{{PROJECTS_BLOCK}}
+
+% Section 4: Internships & Practical Experience
+\section{Internships \& Experience}
+\small
+{{EXPERIENCE_ITEMS}}
+
+% Section 5: Campus Leadership & Summary
+\section{Leadership \& Activities}
+\small
+{{SUMMARY}}
+
+\end{document}

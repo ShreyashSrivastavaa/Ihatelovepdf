@@ -1,0 +1,70 @@
+%----------------------------------------------------------------------------------------
+% Template: Rail Timeline (resume-19-timeline-vertical)
+% Category: timeline-style
+% Description: Timeline layout with a vertical accent rail, date markers, and clean milestone flow.
+% Packages: geometry, titlesec, enumitem, xcolor, fontawesome5, helvet, hyperref
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.65in]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[hidelinks]{hyperref}
+
+\pagestyle{empty}
+\raggedbottom
+\raggedright
+
+\definecolor{timelinepurple}{HTML}{7C3AED} % Royal Violet
+\definecolor{darkgray}{HTML}{1F2937}
+\definecolor{lightrail}{HTML}{DDD6FE}
+
+\titleformat{\section}{
+  \vspace{4pt}\color{timelinepurple}\bfseries\normalsize\uppercase
+}{}{0em}{}[\vspace{1pt}{\color{timelinepurple}\titlerule}\vspace{3pt}]
+
+\setlist[itemize]{leftmargin=1.2em, label={\color{timelinepurple}$\circ$}, itemsep=2pt, parsep=0pt, topsep=1pt}
+
+\begin{document}
+
+% Top Header
+\begin{center}
+  {\Huge \textbf{\color{darkgray}{{FULL_NAME}}}} \\[3pt]
+  {\normalsize \textbf{\color{timelinepurple}{{JOB_TITLE}}}} \\[5pt]
+  \small
+  \faMapMarker* \ {{LOCATION}} \ \ \textbar\ \ 
+  \faPhone \ {{PHONE}} \ \ \textbar\ \ 
+  \faEnvelope \ \href{mailto:{{EMAIL}}}{{{EMAIL}}} \ \ \textbar\ \ 
+  \faLinkedin \ \href{https://{{LINKEDIN}}}{{{LINKEDIN}}}
+\end{center}
+
+\vspace{-2pt}
+
+\section{Career Objective \& Profile}
+\small
+{{SUMMARY}}
+
+\section{Technical Skill Stack}
+\small
+{{SKILLS_BLOCK}}
+
+% Timeline Section: Experience
+\section{Career Progression \& Milestones}
+\small
+{{EXPERIENCE_ITEMS}}
+
+\section{Milestone Projects}
+\small
+{{PROJECTS_BLOCK}}
+
+\section{Education \& Foundation}
+\small
+{{EDUCATION_ITEMS}}
+
+\end{document}

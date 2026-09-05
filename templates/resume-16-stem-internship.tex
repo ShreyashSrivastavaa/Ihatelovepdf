@@ -1,0 +1,70 @@
+%----------------------------------------------------------------------------------------
+% Template: STEM Undergraduate (resume-16-stem-internship)
+% Category: fresh-grad
+% Description: Engineering and STEM student layout highlighting lab skills, teams, and internships.
+% Packages: geometry, titlesec, enumitem, xcolor, helvet, hyperref
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.65in]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[hidelinks]{hyperref}
+
+\pagestyle{empty}
+\raggedbottom
+\raggedright
+
+\definecolor{stemblue}{HTML}{0284C7} % Sky Blue Accent
+\definecolor{darktext}{HTML}{0F172A}
+
+\titleformat{\section}{
+  \vspace{4pt}\color{stemblue}\bfseries\normalsize
+}{}{0em}{}[\vspace{1pt}{\color{stemblue}\hrule height 0.8pt}\vspace{2pt}]
+
+\setlist[itemize]{leftmargin=1.15em, label=$\blacktriangleright$, itemsep=2pt, parsep=0pt, topsep=1pt}
+
+\begin{document}
+
+% Top Header
+\begin{minipage}[t]{0.65\textwidth}
+  {\LARGE \textbf{\color{darktext}{{FULL_NAME}}}} \\[2pt]
+  {\normalsize \textbf{\color{stemblue}{{JOB_TITLE}}}}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.33\textwidth}
+  \raggedleft \small
+  {{LOCATION}} \\
+  {{PHONE}} \\
+  \href{mailto:{{EMAIL}}}{{{EMAIL}}} \\
+  \href{https://{{GITHUB}}}{github.com/{{GITHUB}}}
+\end{minipage}
+
+\vspace{6pt}
+
+\section{Education \& Academic Honors}
+\small
+{{EDUCATION_ITEMS}}
+
+\section{Laboratory \& Computational Skills}
+\small
+{{SKILLS_BLOCK}}
+
+\section{Engineering Projects \& Research}
+\small
+{{PROJECTS_BLOCK}}
+
+\section{Internships \& Co-Op Experience}
+\small
+{{EXPERIENCE_ITEMS}}
+
+\section{Relevant Coursework \& Certifications}
+\small
+{{SUMMARY}}
+
+\end{document}

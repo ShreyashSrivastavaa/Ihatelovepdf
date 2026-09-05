@@ -25,6 +25,7 @@
     "start": "npx serve out --single",
     "test": "npx tsx scripts/audit-all-tools.ts && npx tsx scripts/benchmark-quality.ts && npx tsx scripts/verify-locales.ts",
     "test:e2e": "playwright test",
+    "generate:thumbnails": "node scripts/generate-template-thumbnails.js",
     "postinstall": "node scripts/setup-pdf-worker.mjs"
   },
   "dependencies": {
