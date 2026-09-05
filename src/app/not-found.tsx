@@ -9,18 +9,20 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div
-      style={{
-        margin: 0,
-        padding: 0,
-        minHeight: "100vh",
-        backgroundColor: "#fff7f5",
-        color: "#2c0f0f",
-        fontFamily: "'Roboto', sans-serif",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
+    <html lang="en">
+      <body style={{ margin: 0, padding: 0 }}>
+        <div
+          style={{
+            margin: 0,
+            padding: 0,
+            minHeight: "100vh",
+            backgroundColor: "#fff7f5",
+            color: "#2c0f0f",
+            fontFamily: "'Roboto', sans-serif",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
       <header
         style={{
           width: "100%",
@@ -186,6 +188,8 @@ export default function NotFound() {
           a:hover { opacity: 0.8; }
         `}</style>
     </div>
+      </body>
+    </html>
   );
 }
 
