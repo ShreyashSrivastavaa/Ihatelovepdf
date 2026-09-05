@@ -91,47 +91,57 @@ export default function PdfRedactionEditor({ file, onDone, onBurnRedactions }: P
     renderPage(currentPage);
   }, [currentPage, renderPage]);
 
-  // Canvas Drawing Handlers
-  const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
+  // Coordinate helper: maps pointer to normalized 0-to-1 coordinates within canvas bounds
+  const getNormalizedPos = (e: React.PointerEvent<HTMLDivElement>) => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas) return null;
     const rect = canvas.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * canvas.width;
-    const y = ((e.clientY - rect.top) / rect.height) * canvas.height;
+    if (rect.width <= 0 || rect.height <= 0) return null;
+    const rawX = (e.clientX - rect.left) / rect.width;
+    const rawY = (e.clientY - rect.top) / rect.height;
+    return {
+      x: Math.max(0, Math.min(1, rawX)),
+      y: Math.max(0, Math.min(1, rawY)),
+    };
+  };
 
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    e.currentTarget.setPointerCapture(e.pointerId);
+    const pos = getNormalizedPos(e);
+    if (!pos) return;
     setIsDrawing(true);
-    setStartPos({ x, y });
+    setStartPos(pos);
     setCurrentRect(null);
   };
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!isDrawing || !startPos) return;
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const rect = canvas.getBoundingClientRect();
-    const curX = ((e.clientX - rect.left) / rect.width) * canvas.width;
-    const curY = ((e.clientY - rect.top) / rect.height) * canvas.height;
+    const pos = getNormalizedPos(e);
+    if (!pos) return;
 
-    const x = Math.min(startPos.x, curX);
-    const y = Math.min(startPos.y, curY);
-    const w = Math.abs(curX - startPos.x);
-    const h = Math.abs(curY - startPos.y);
+    const x = Math.min(startPos.x, pos.x);
+    const y = Math.min(startPos.y, pos.y);
+    const w = Math.abs(pos.x - startPos.x);
+    const h = Math.abs(pos.y - startPos.y);
 
     setCurrentRect({ x, y, w, h });
   };
 
-  const handleMouseUp = () => {
-    if (isDrawing && currentRect && currentRect.w > 5 && currentRect.h > 5) {
-      const canvas = canvasRef.current;
-      if (!canvas) return;
+  const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    try {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    } catch {
+      // ignore
+    }
 
+    if (isDrawing && currentRect && currentRect.w > 0.005 && currentRect.h > 0.005) {
       // Store normalized (0-1) coordinates
       const normalizedBox: RedactionBox = {
         pageNumber: currentPage,
-        x: currentRect.x / canvas.width,
-        y: currentRect.y / canvas.height,
-        width: currentRect.w / canvas.width,
-        height: currentRect.h / canvas.height,
+        x: currentRect.x,
+        y: currentRect.y,
+        width: currentRect.w,
+        height: currentRect.h,
         color: colorMode,
         isNormalized: true,
         isTopLeftOrigin: true,
@@ -371,47 +381,53 @@ export default function PdfRedactionEditor({ file, onDone, onBurnRedactions }: P
             </button>
           </div>
 
-          {/* Canvas Wrapper */}
+          {/* Outer Scroll Area */}
           <div
             ref={containerRef}
-            className="relative border border-[var(--border)] rounded-xl overflow-hidden shadow-md bg-neutral-900/5 cursor-crosshair max-w-full max-h-[600px] overflow-auto select-none"
+            className="w-full max-h-[650px] overflow-auto p-4 flex justify-center bg-neutral-900/5 dark:bg-neutral-950/40 rounded-xl border border-[var(--border)] select-none"
           >
-            <canvas
-              ref={canvasRef}
-              onMouseDown={handleMouseDown}
-              onMouseMove={handleMouseMove}
-              onMouseUp={handleMouseUp}
-              className="block max-w-full h-auto"
-            />
-
-            {/* Render Existing Redactions for Current Page */}
-            {currentPageRedactions.map((box, idx) => (
-              <div
-                key={idx}
-                className="absolute pointer-events-none transition-all"
-                style={{
-                  left: `${box.x * 100}%`,
-                  top: `${box.y * 100}%`,
-                  width: `${box.width * 100}%`,
-                  height: `${box.height * 100}%`,
-                  backgroundColor: box.color === 'white' ? '#ffffff' : '#000000',
-                  boxShadow: '0 0 0 1px rgba(239, 68, 68, 0.6)',
-                }}
+            {/* Page-Sized Relative Wrapper: wraps canvas tightly so percentages match canvas exactly */}
+            <div
+              className="relative shadow-xl rounded-sm cursor-crosshair"
+              style={{ width: 'fit-content', height: 'fit-content' }}
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={handlePointerUp}
+            >
+              <canvas
+                ref={canvasRef}
+                className="block max-w-full h-auto pointer-events-none"
               />
-            ))}
 
-            {/* Currently Drafting Rect */}
-            {currentRect && canvasRef.current && (
-              <div
-                className="absolute pointer-events-none border-2 border-dashed border-rose-500 bg-rose-500/20"
-                style={{
-                  left: `${(currentRect.x / canvasRef.current.width) * 100}%`,
-                  top: `${(currentRect.y / canvasRef.current.height) * 100}%`,
-                  width: `${(currentRect.w / canvasRef.current.width) * 100}%`,
-                  height: `${(currentRect.h / canvasRef.current.height) * 100}%`,
-                }}
-              />
-            )}
+              {/* Render Existing Redactions for Current Page */}
+              {currentPageRedactions.map((box, idx) => (
+                <div
+                  key={idx}
+                  className="absolute pointer-events-none transition-all z-10"
+                  style={{
+                    left: `${box.x * 100}%`,
+                    top: `${box.y * 100}%`,
+                    width: `${box.width * 100}%`,
+                    height: `${box.height * 100}%`,
+                    backgroundColor: box.color === 'white' ? '#ffffff' : '#000000',
+                    boxShadow: '0 0 0 1.5px rgba(239, 68, 68, 0.8)',
+                  }}
+                />
+              ))}
+
+              {/* Currently Drafting Rect */}
+              {currentRect && (
+                <div
+                  className="absolute pointer-events-none border-2 border-dashed border-rose-500 bg-rose-500/25 z-20"
+                  style={{
+                    left: `${currentRect.x * 100}%`,
+                    top: `${currentRect.y * 100}%`,
+                    width: `${currentRect.w * 100}%`,
+                    height: `${currentRect.h * 100}%`,
+                  }}
+                />
+              )}
+            </div>
           </div>
           <p className="text-[11px] text-[var(--tx-3)] text-center">
             Click and drag on the page above to draw redaction boxes.
