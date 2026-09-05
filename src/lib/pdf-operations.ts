@@ -36,6 +36,8 @@ export * from './operations/business';
 export * from './operations/pdf-editor';
 export * from './operations/sign';
 export * from './operations/form-filler';
+export * from './latex/resume-types';
+export * from './latex/resume-compiler';
 export {
   buildPdfFromDocumentModel,
   DOCUMENT_PRESETS,
@@ -69,6 +71,8 @@ export type PDFProcessingOptions = {
   formFieldValues?: Record<string, string | boolean>;
   flattenForm?: boolean;
   freeformTextPlacements?: import('./operations/form-filler').FreeformTextPlacement[];
+  resumeData?: import('./latex/resume-types').ResumeData;
+  resumeTemplateId?: import('./latex/resume-types').ResumeTemplateId;
   compressionLevel?: 'low' | 'medium' | 'high';
   outputFormat?: 'pdf';
   pageRange?: string;

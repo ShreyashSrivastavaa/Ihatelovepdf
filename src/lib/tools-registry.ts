@@ -45,6 +45,7 @@ export const FEATURED_TOOLS: OperationKey[] = [
   'split',
   'signPdf',
   'redact',
+  'latexResume',
   'extractText',
   'scanToPdf',
 ];
@@ -155,7 +156,7 @@ export const TOOL_CATEGORIES: ToolCategory[] = [
     bgSoft: 'rgba(79, 70, 229, 0.12)',
     borderAccent: 'rgba(79, 70, 229, 0.3)',
     tag: 'UTILITIES',
-    toolKeys: ['compare', 'createPdf'],
+    toolKeys: ['compare', 'createPdf', 'latexResume'],
   },
   {
     id: 'business',
@@ -207,6 +208,7 @@ export const TOOL_NAMES: Record<OperationKey, string> = {
   posBilling: 'POS Billing',
   signPdf: 'Sign PDF',
   fillPdfForm: 'Fill PDF Form',
+  latexResume: 'LaTeX Resume Builder',
 };
 
 export function getToolMeta(key: OperationKey): ToolRegistryItem {

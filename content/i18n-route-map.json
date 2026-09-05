@@ -461,6 +461,17 @@
       "ro": "/ro/completeaza-formular-pdf",
       "ru": "/ru/zapolnit-formu-pdf",
       "hu": "/hu/pdf-urlap-kitoltese"
+    },
+    "latexResume": {
+      "en": "/latex-resume",
+      "es": "/es/curriculum-latex",
+      "pt": "/pt/curriculo-latex",
+      "de": "/de/latex-lebenslauf",
+      "it": "/it/curriculum-latex",
+      "fr": "/fr/cv-latex",
+      "ro": "/ro/cv-latex",
+      "ru": "/ru/rezyume-latex",
+      "hu": "/hu/latex-oneletrajz"
     }
   }
 }

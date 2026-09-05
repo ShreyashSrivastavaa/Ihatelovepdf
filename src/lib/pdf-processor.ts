@@ -38,6 +38,7 @@ export async function processPDF(
   if (
     files.length === 0 &&
     mode !== 'createPdf' &&
+    mode !== 'latexResume' &&
     !options.markdownContent &&
     !options.htmlContent &&
     !options.csvContent &&
@@ -274,6 +275,13 @@ export async function processPDF(
         return createPdfBlob(bytes);
       }
       throw new Error('No PDF file provided to fill form');
+    }
+
+    case 'latexResume': {
+      const data = options.resumeData || PDFOps.SAMPLE_RESUME_DATA;
+      const templateId = options.resumeTemplateId || 'jakes';
+      const bytes = await PDFOps.generateResumePdf(data, templateId);
+      return createPdfBlob(bytes);
     }
 
     case 'whiteboard': {

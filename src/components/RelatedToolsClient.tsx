@@ -41,6 +41,7 @@ const RELATED_TOOLS: Record<string, string[]> = {
   posBilling: ["gstInvoice", "createPdf", "compress", "scanToPdf"],
   signPdf: ["editPdf", "redact", "watermark", "compress"],
   fillPdfForm: ["signPdf", "editPdf", "watermark", "compress"],
+  latexResume: ["createPdf", "editPdf", "signPdf", "compress"],
 };
 
 export default function RelatedToolsClient({ currentMode }: { currentMode: string }) {

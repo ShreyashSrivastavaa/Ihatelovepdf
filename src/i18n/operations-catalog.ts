@@ -40,6 +40,7 @@ export const ALL_OPERATION_KEYS: OperationKey[] = [
   'posBilling',
   'signPdf',
   'fillPdfForm',
+  'latexResume',
 ];
 
 export interface OperationCatalogItem {
@@ -711,6 +712,24 @@ export const OPERATIONS_CATALOG: Record<OperationKey, OperationCatalogItem> = {
     howToTitle: 'How to fill a PDF form',
     howToSteps: ['Upload your PDF form.', 'Fill detected AcroForm fields or click anywhere on the page to type custom text.', 'Toggle flattening if desired and click Fill & Download PDF.'],
     useCases: ['Completing government, tax, and visa applications', 'Filling medical intake and patient registration forms', 'Entering employment verification and insurance claim details'],
+  },
+  latexResume: {
+    key: 'latexResume',
+    label: 'LaTeX Resume Builder',
+    helper: 'Create ATS-friendly resumes using authentic LaTeX templates, live PDF preview, and source code export.',
+    title: 'Free LaTeX Resume Builder Online - ATS-Friendly CV Generator',
+    description: 'Build professional, ATS-optimized resumes using authentic LaTeX templates (Jake\'s Resume, Classic Corporate, Modern Tech, Academic CV). Real-time client-side PDF preview and .tex download.',
+    keywords: ['latex resume builder', 'latex cv generator online', 'jakes resume online', 'ats friendly resume builder', 'free latex resume'],
+    bulletPoints: ['4 ATS-friendly templates including Jake\'s Resume & Classic Corporate', 'Dual editor: Visual form mode or direct raw LaTeX code mode', '100% private in-browser vector PDF compilation', 'Export both formatted PDF and compilable .tex source files'],
+    benefitsTitle: 'Why build resumes with LaTeX',
+    benefits: [
+      { title: '100% ATS-Compliant Parsing', description: 'Standard LaTeX layouts generate clean single-column text trees that ATS scanners can parse with 100% fidelity.' },
+      { title: 'Dual-Mode Editing', description: 'Easily fill out simple guided form fields or take full control by customizing raw LaTeX code directly.' },
+      { title: 'Zero Cloud Compilation', description: 'Your private career history, phone number, and address never touch external compile servers.' },
+    ],
+    howToTitle: 'How to create a LaTeX resume',
+    howToSteps: ['Choose an ATS template (Jake\'s Resume, Corporate, Modern, or Academic).', 'Fill in your personal details, work history, education, skills, and projects.', 'Preview the vector PDF in real-time, then download your PDF or .tex source.'],
+    useCases: ['Software engineers and developers applying for tech roles', 'Finance, consulting, and corporate executive applications', 'Academic faculty, postdoctoral, and graduate researcher CVs'],
   },
 };
 

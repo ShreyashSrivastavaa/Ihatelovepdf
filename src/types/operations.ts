@@ -34,4 +34,5 @@ export type OperationKey =
 	| "gstInvoice"
 	| "posBilling"
 	| "signPdf"
-	| "fillPdfForm";
+	| "fillPdfForm"
+	| "latexResume";

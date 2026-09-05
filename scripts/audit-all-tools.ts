@@ -290,6 +290,10 @@ async function runFullAudit(): Promise<ToolAuditResult[]> {
           });
           break;
         }
+        case 'latexResume': {
+          output = await PDFOps.generateResumePdf(PDFOps.SAMPLE_RESUME_DATA, 'jakes');
+          break;
+        }
         default:
           output = await PDFOps.compressPDF(testPdf1);
       }
