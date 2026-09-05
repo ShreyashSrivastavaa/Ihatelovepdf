@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   experimental: {
-    optimizePackageImports: ['lucide-react', 'pdf-lib', 'jszip', 'xlsx'],
+    optimizePackageImports: ['lucide-react'],
   },
   webpack: (config, { isServer, webpack }) => {
     config.resolve = {
