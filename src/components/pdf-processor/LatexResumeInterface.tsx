@@ -22,6 +22,7 @@ import {
   Wrench,
   Award,
   User,
+  Upload,
 } from 'lucide-react';
 import {
   ResumeData,
@@ -34,6 +35,13 @@ import {
   generateResumePdf,
 } from '../../lib/latex/resume-compiler';
 import { createPdfBlob } from '../../lib/pdf-processor';
+import {
+  getCustomTemplates,
+  deleteCustomTemplate,
+  CustomTemplateRecord,
+} from '../../lib/latex/custom-template-store';
+import { injectPlaceholders, ResumeFormData } from '../../lib/latex-escape';
+import TemplateUploadModal from './TemplateUploadModal';
 
 type PdfJsModule = typeof import('pdfjs-dist/legacy/build/pdf');
 let pdfjsLibPromise: Promise<PdfJsModule> | null = null;
@@ -57,11 +65,20 @@ interface LatexResumeInterfaceProps {
 
 export default function LatexResumeInterface({ onDone }: LatexResumeInterfaceProps) {
   const [data, setData] = useState<ResumeData>(SAMPLE_RESUME_DATA);
-  const [templateId, setTemplateId] = useState<ResumeTemplateId>('jakes');
+  const [templateId, setTemplateId] = useState<string>('jakes');
+  const [customTemplates, setCustomTemplates] = useState<CustomTemplateRecord[]>([]);
+  const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
   const [editorMode, setEditorMode] = useState<'form' | 'latex'>('form');
   const [activeFormTab, setActiveFormTab] = useState<'personal' | 'experience' | 'education' | 'projects' | 'skills' | 'certs'>('personal');
   const [latexCode, setLatexCode] = useState<string>('');
   const [isCopied, setIsCopied] = useState(false);
+
+  // Load custom templates from IndexedDB on component mount
+  useEffect(() => {
+    getCustomTemplates().then((templates) => {
+      setCustomTemplates(templates);
+    });
+  }, []);
 
   // PDF Preview & Compilation State
   const [pdfBytes, setPdfBytes] = useState<Uint8Array | null>(null);
@@ -75,11 +92,58 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
   const activeRenderTaskRef = useRef<{ cancel: () => void; promise: Promise<unknown> } | null>(null);
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
 
+  // Convert ResumeData into ResumeFormData for custom template placeholder injection
+  const resumeDataToFormData = useCallback((d: ResumeData): ResumeFormData => {
+    return {
+      fullName: d.personalInfo.name,
+      email: d.personalInfo.email,
+      phone: d.personalInfo.phone,
+      location: d.personalInfo.location,
+      linkedin: d.personalInfo.linkedin,
+      github: d.personalInfo.github,
+      website: d.personalInfo.portfolio,
+      summary: d.personalInfo.summary || '',
+      skills: d.skills.map((s) => ({
+        category: s.name,
+        list: s.skills.split(',').map((x) => x.trim()),
+      })),
+      experience: d.experience.map((e) => ({
+        role: e.role,
+        company: e.company,
+        location: e.location,
+        startDate: e.startDate,
+        endDate: e.endDate,
+        bullets: e.bullets,
+      })),
+      education: d.education.map((ed) => ({
+        degree: ed.degree,
+        institution: ed.institution,
+        location: ed.location,
+        startDate: ed.startDate,
+        endDate: ed.endDate,
+        details: ed.gpa ? `GPA: ${ed.gpa}` : undefined,
+      })),
+      projects: d.projects.map((p) => ({
+        title: p.name,
+        tech: p.technologies,
+        link: p.link,
+        bullets: p.bullets,
+      })),
+      certifications: d.certifications,
+    };
+  }, []);
+
   // Keep LaTeX code in sync when data or template changes in form mode
   useEffect(() => {
-    const code = generateLatexSource(data, templateId);
-    setLatexCode(code);
-  }, [data, templateId]);
+    const custom = customTemplates.find((c) => c.id === templateId);
+    if (custom) {
+      const code = injectPlaceholders(custom.rawTex, resumeDataToFormData(data), custom.placeholders);
+      setLatexCode(code);
+    } else {
+      const code = generateLatexSource(data, (templateId as ResumeTemplateId) || 'jakes');
+      setLatexCode(code);
+    }
+  }, [data, templateId, customTemplates, resumeDataToFormData]);
 
   // Compile PDF on change
   const triggerCompile = useCallback(() => {
@@ -88,7 +152,9 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
 
     debounceTimerRef.current = setTimeout(async () => {
       try {
-        const bytes = await generateResumePdf(data, templateId);
+        const isBuiltIn = RESUME_TEMPLATES.some((t) => t.id === templateId);
+        const activeTmplId = isBuiltIn ? (templateId as ResumeTemplateId) : 'jakes';
+        const bytes = await generateResumePdf(data, activeTmplId);
         startTransition(() => {
           setPdfBytes(bytes);
           setIsCompiling(false);
@@ -212,6 +278,20 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
     }
   };
 
+  const handleTemplateSaved = (saved: CustomTemplateRecord) => {
+    setCustomTemplates((prev) => [saved, ...prev.filter((t) => t.id !== saved.id)]);
+    setTemplateId(saved.id);
+  };
+
+  const handleDeleteCustomTemplate = async (id: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    await deleteCustomTemplate(id);
+    setCustomTemplates((prev) => prev.filter((t) => t.id !== id));
+    if (templateId === id) {
+      setTemplateId('jakes');
+    }
+  };
+
   // Download LaTeX Source (.tex) Handler
   const handleDownloadTex = () => {
     const code = latexCode || generateLatexSource(data, templateId);
@@ -286,10 +366,72 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
       </div>
 
       {/* Template Selection Bar */}
-      <div className="space-y-2">
-        <label className="text-[11px] font-bold uppercase tracking-wider text-[var(--tx-3)]">
-          Select ATS Template
-        </label>
+      <div className="space-y-3">
+        <div className="flex items-center justify-between">
+          <label className="text-[11px] font-bold uppercase tracking-wider text-[var(--tx-3)] flex items-center gap-1.5">
+            <FileText className="w-3.5 h-3.5 text-indigo-500" />
+            Select Resume Template
+          </label>
+          <button
+            type="button"
+            onClick={() => setIsUploadModalOpen(true)}
+            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold text-indigo-500 bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/20 transition cursor-pointer"
+          >
+            <Upload className="w-3.5 h-3.5" />
+            <span>Upload Custom Template</span>
+          </button>
+        </div>
+
+        {/* Custom Uploaded Templates (if any) */}
+        {customTemplates.length > 0 && (
+          <div className="space-y-1.5">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-400">
+              My Saved Templates ({customTemplates.length})
+            </span>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+              {customTemplates.map((tmpl) => {
+                const isSelected = templateId === tmpl.id;
+                return (
+                  <div
+                    key={tmpl.id}
+                    onClick={() => setTemplateId(tmpl.id)}
+                    className={`relative p-2.5 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between group ${
+                      isSelected
+                        ? 'border-indigo-500 bg-indigo-500/10 shadow-xs'
+                        : 'border-indigo-500/30 bg-[var(--bg)] hover:border-indigo-500/60 hover:bg-[var(--bg-subtle)]'
+                    }`}
+                  >
+                    <div>
+                      <div className="flex items-center justify-between gap-1">
+                        <span className="text-xs font-bold text-[var(--tx)] truncate">{tmpl.name}</span>
+                        <div className="flex items-center gap-1 shrink-0">
+                          {isSelected && <Check className="w-3.5 h-3.5 text-indigo-600" />}
+                          <button
+                            type="button"
+                            onClick={(e) => handleDeleteCustomTemplate(tmpl.id, e)}
+                            className="p-1 rounded text-slate-400 hover:text-red-500 hover:bg-red-500/10 transition opacity-0 group-hover:opacity-100"
+                            title="Delete custom template"
+                            aria-label="Delete custom template"
+                          >
+                            <Trash2 className="w-3 h-3" />
+                          </button>
+                        </div>
+                      </div>
+                      <span className="text-[10px] text-indigo-400 font-medium block mt-0.5">
+                        Custom User Template
+                      </span>
+                    </div>
+                    <p className="text-[10px] text-[var(--tx-3)] line-clamp-2 mt-1 leading-tight">
+                      {tmpl.description}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* Built-in Templates */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
           {RESUME_TEMPLATES.map((tmpl) => {
             const isSelected = templateId === tmpl.id;
@@ -1203,6 +1345,13 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
           </div>
         </div>
       </div>
+
+      {/* Upload Custom Template Modal */}
+      <TemplateUploadModal
+        isOpen={isUploadModalOpen}
+        onClose={() => setIsUploadModalOpen(false)}
+        onTemplateSaved={handleTemplateSaved}
+      />
     </div>
   );
 }
