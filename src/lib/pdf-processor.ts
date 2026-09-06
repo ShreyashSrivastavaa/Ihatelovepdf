@@ -132,9 +132,32 @@ export async function processPDF(
       return createZipBlob(zipBytes);
     }
 
+    case 'encrypt': {
+      try {
+        const bytes = (await pdfWorkerClient.run('encrypt', [primaryFile], options, undefined, onProgress)) as Uint8Array;
+        return createPdfBlob(bytes);
+      } catch (workerErr) {
+        console.warn('Worker encryption failed, executing on main thread', workerErr);
+        const bytes = await PDFOps.encryptPdf(
+          primaryFile,
+          options.userPassword || options.password,
+          options.ownerPassword,
+          options.encryptionPermissions,
+          options.encryptionAlgorithm || 'AES-256'
+        );
+        return createPdfBlob(bytes);
+      }
+    }
+
     case 'decrypt': {
-      const bytes = await PDFOps.decryptPdf(primaryFile, options.password || options.decryptionPassword || '');
-      return createPdfBlob(bytes);
+      try {
+        const bytes = (await pdfWorkerClient.run('decrypt', [primaryFile], options, undefined, onProgress)) as Uint8Array;
+        return createPdfBlob(bytes);
+      } catch (workerErr) {
+        console.warn('Worker decryption failed, executing on main thread', workerErr);
+        const bytes = await PDFOps.decryptPdf(primaryFile, options.password || options.decryptionPassword || '');
+        return createPdfBlob(bytes);
+      }
     }
 
 

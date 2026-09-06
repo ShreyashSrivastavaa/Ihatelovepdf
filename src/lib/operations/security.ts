@@ -1,4 +1,6 @@
 import { PDFDocument, PDFName, PDFRef, PDFDict } from 'pdf-lib';
+import { encryptPDF, type EncryptPDFOptions } from '@pdfsmaller/pdf-encrypt';
+import { decryptPDF, isEncrypted } from '@pdfsmaller/pdf-decrypt';
 
 export interface PrivacyRiskItem {
   key: string;
@@ -24,10 +26,16 @@ export interface PrivacyScanReport {
 }
 
 export interface EncryptionPermissions {
-  printing?: 'highResolution' | 'lowResolution' | 'none';
+  printing?: 'highResolution' | 'lowResolution' | 'none' | boolean;
   copying?: boolean;
   modifying?: boolean;
   annotating?: boolean;
+  fillingForms?: boolean;
+  allowPrinting?: boolean;
+  allowCopying?: boolean;
+  allowModifying?: boolean;
+  allowAnnotating?: boolean;
+  allowFillingForms?: boolean;
 }
 
 /**
@@ -322,37 +330,97 @@ export async function decryptPdf(
   fileOrData: File | ArrayBuffer | Uint8Array,
   password?: string
 ): Promise<Uint8Array> {
-  // NOTE: pdf-lib v1.x loads encrypted PDFs with ignoreEncryption:true, which bypasses
-  // the password check entirely and gives access to the unencrypted content stream.
-  // The `password` param is intentionally unused here — we cannot validate it without
-  // a real decryption implementation. Re-saving produces a clean, unencrypted PDF.
-  void password;
-  const arrayBuffer =
-    fileOrData instanceof File ? await fileOrData.arrayBuffer() : fileOrData;
-  console.info(`[PDFPipeline] decryptPdf: input=${arrayBuffer.byteLength} bytes`);
-  const pdfDoc = await PDFDocument.load(arrayBuffer, {
-    ignoreEncryption: true,
-  });
-  const result = await pdfDoc.save({ useObjectStreams: true });
-  console.info(`[PDFPipeline] decryptPdf: output=${result.byteLength} bytes`);
-  return result;
+  const bytes =
+    fileOrData instanceof File
+      ? new Uint8Array(await fileOrData.arrayBuffer())
+      : fileOrData instanceof ArrayBuffer
+        ? new Uint8Array(fileOrData)
+        : fileOrData;
+
+  console.info(`[PDFPipeline] decryptPdf: input=${bytes.byteLength} bytes`);
+
+  const encInfo = await isEncrypted(bytes);
+  if (!encInfo.encrypted) {
+    console.info('[PDFPipeline] decryptPdf: Document is not encrypted, returning clean byte stream');
+    return bytes;
+  }
+
+  if (!password) {
+    throw new Error('This PDF is password-protected. Please enter the password to unlock it.');
+  }
+
+  try {
+    const result = await decryptPDF(bytes, password);
+    console.info(`[PDFPipeline] decryptPdf: output=${result.byteLength} bytes`);
+    return result;
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : String(err);
+    if (message.toLowerCase().includes('incorrect password') || message.toLowerCase().includes('match')) {
+      throw new Error('Incorrect password. Please verify the document password and try again.');
+    }
+    throw new Error(`Failed to unlock PDF: ${message}`);
+  }
 }
 
 export async function encryptPdf(
   fileOrData: File | ArrayBuffer | Uint8Array,
   userPassword?: string,
   ownerPassword?: string,
-  permissions?: EncryptionPermissions
+  permissions?: EncryptionPermissions,
+  algorithm: 'AES-256' | 'RC4' = 'AES-256'
 ): Promise<Uint8Array> {
-  // pdf-lib v1.x does not support writing encrypted PDFs (encryption API is not
-  // implemented in this library version). The userPassword / ownerPassword / permissions
-  // arguments cannot be applied. Rather than silently returning an unprotected PDF,
-  // we throw so the calling UI can surface a clear "not supported" message.
-  void userPassword;
-  void ownerPassword;
-  void permissions;
-  throw new Error(
-    'PDF password protection is not supported by the current PDF engine (pdf-lib v1.x does not implement encryption). ' +
-    'The original PDF has not been modified.'
-  );
+  const effectiveUserPassword = (userPassword || '').trim();
+  const effectiveOwnerPassword = (ownerPassword || '').trim();
+
+  if (!effectiveUserPassword && !effectiveOwnerPassword) {
+    throw new Error('Please specify a password to protect your PDF document.');
+  }
+
+  const bytes =
+    fileOrData instanceof File
+      ? new Uint8Array(await fileOrData.arrayBuffer())
+      : fileOrData instanceof ArrayBuffer
+        ? new Uint8Array(fileOrData)
+        : fileOrData;
+
+  console.info(`[PDFPipeline] encryptPdf: input=${bytes.byteLength} bytes, algorithm=${algorithm}`);
+
+  // Check if document is already encrypted
+  const encInfo = await isEncrypted(bytes);
+  if (encInfo.encrypted) {
+    throw new Error('This PDF is already password-protected. Please unlock/decrypt it first before applying new password protection.');
+  }
+
+  const allowPrint =
+    permissions?.allowPrinting ??
+    (permissions?.printing !== 'none' && permissions?.printing !== false);
+
+  const allowHighQuality =
+    permissions?.printing === 'highResolution' ||
+    permissions?.printing === true ||
+    permissions?.allowPrinting === true ||
+    permissions?.printing === undefined;
+
+  const options: EncryptPDFOptions = {
+    ownerPassword: effectiveOwnerPassword || effectiveUserPassword,
+    algorithm,
+    allowPrinting: allowPrint,
+    allowHighQualityPrint: allowHighQuality,
+    allowCopying: permissions?.allowCopying ?? permissions?.copying ?? true,
+    allowModifying: permissions?.allowModifying ?? permissions?.modifying ?? false,
+    allowAnnotating: permissions?.allowAnnotating ?? permissions?.annotating ?? true,
+    allowFillingForms: permissions?.allowFillingForms ?? permissions?.fillingForms ?? true,
+    allowExtraction: permissions?.allowCopying ?? permissions?.copying ?? true,
+    allowAssembly: permissions?.allowModifying ?? permissions?.modifying ?? false,
+  };
+
+  try {
+    const result = await encryptPDF(bytes, effectiveUserPassword, options);
+    console.info(`[PDFPipeline] encryptPdf: output=${result.byteLength} bytes`);
+    return result;
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : String(err);
+    throw new Error(`Failed to encrypt PDF: ${message}`);
+  }
 }
+

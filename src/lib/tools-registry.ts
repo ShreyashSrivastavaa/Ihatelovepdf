@@ -115,7 +115,7 @@ export const TOOL_CATEGORIES: ToolCategory[] = [
     bgSoft: 'rgba(5, 150, 105, 0.12)',
     borderAccent: 'rgba(5, 150, 105, 0.3)',
     tag: 'SECURITY',
-    toolKeys: ['signPdf', 'redact', 'decrypt'],
+    toolKeys: ['encrypt', 'decrypt', 'signPdf', 'redact'],
   },
   {
     id: 'convert-to-pdf',
@@ -189,6 +189,7 @@ export const TOOL_NAMES: Record<OperationKey, string> = {
   redact: 'Redact PDF',
   compare: 'Compare PDFs',
   pdfToZip: 'PDF to ZIP',
+  encrypt: 'Protect & Encrypt',
   decrypt: 'Unlock & Decrypt',
   editPdf: 'Edit PDF & Annotate',
   scanToPdf: 'Scan Document (Camera)',

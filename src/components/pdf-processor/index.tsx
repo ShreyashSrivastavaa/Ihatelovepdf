@@ -154,7 +154,21 @@ const MODE_DEFAULTS: Record<ProcessingMode, PDFProcessingOptions> = {
     bundleAsZip: true,
     imageBaseName: DEFAULT_IMAGE_BASE_NAME,
   },
+  encrypt: {
+    userPassword: '',
+    confirmPassword: '',
+    ownerPassword: '',
+    encryptionAlgorithm: 'AES-256',
+    encryptionPermissions: {
+      allowPrinting: true,
+      allowCopying: true,
+      allowModifying: false,
+      allowAnnotating: true,
+      allowFillingForms: true,
+    },
+  },
   decrypt: {
+    password: '',
     decryptionPassword: '',
   },
   editPdf: {},
@@ -1113,6 +1127,40 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           return;
         }
         break;
+      case 'encrypt': {
+        if (currentFiles.length === 0) {
+          trackProcessorEvent('operation_blocked', { reason: 'encrypt_no_files' });
+          error(errorStrings.noFiles);
+          return;
+        }
+        const userPass = (processingOptions.userPassword || processingOptions.password || '').trim();
+        const ownerPass = (processingOptions.ownerPassword || '').trim();
+        if (!userPass && !ownerPass) {
+          trackProcessorEvent('operation_blocked', { reason: 'encrypt_missing_password' });
+          error('Please enter a password to encrypt your PDF.');
+          return;
+        }
+        if (processingOptions.confirmPassword && userPass !== processingOptions.confirmPassword.trim()) {
+          trackProcessorEvent('operation_blocked', { reason: 'encrypt_password_mismatch' });
+          error('Passwords do not match. Please verify your password confirmation.');
+          return;
+        }
+        break;
+      }
+      case 'decrypt': {
+        if (currentFiles.length === 0) {
+          trackProcessorEvent('operation_blocked', { reason: 'decrypt_no_files' });
+          error(errorStrings.noFiles);
+          return;
+        }
+        const pass = (processingOptions.password || processingOptions.decryptionPassword || '').trim();
+        if (!pass) {
+          trackProcessorEvent('operation_blocked', { reason: 'decrypt_missing_password' });
+          error('Please enter the document password to unlock your PDF.');
+          return;
+        }
+        break;
+      }
       default:
         break;
     }
@@ -1736,7 +1784,11 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
             else if (mode === 'pdfToEpub') ext = '.epub';
             else if (mode === 'extractText') ext = '.txt';
 
-            const fileName = `${baseName}${ext}`;
+            let suffix = '';
+            if (mode === 'encrypt') suffix = '_protected';
+            else if (mode === 'decrypt') suffix = '_unlocked';
+
+            const fileName = `${baseName}${suffix}${ext}`;
             const blob =
               result instanceof Blob
                 ? result
@@ -2289,6 +2341,14 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
       return files.length <= 1
         ? processButton.imagesToPdf.single
         : processButton.imagesToPdf.multiple(files.length);
+    }
+
+    if (mode === 'encrypt') {
+      return files.length <= 1 ? 'Protect & Encrypt PDF' : `Protect & Encrypt ${files.length} PDFs`;
+    }
+
+    if (mode === 'decrypt') {
+      return files.length <= 1 ? 'Unlock & Decrypt PDF' : `Unlock & Decrypt ${files.length} PDFs`;
     }
 
     return files.length === 1
@@ -3154,7 +3214,9 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
               disabled={
                 files.length === 0 ||
                 isProcessing ||
-                ((mode === 'extract' || mode === 'crop' || mode === 'rotate') && !hasExtractSelection)
+                ((mode === 'extract' || mode === 'crop' || mode === 'rotate') && !hasExtractSelection) ||
+                (mode === 'encrypt' && (!processingOptions.userPassword && !processingOptions.password && !processingOptions.ownerPassword)) ||
+                (mode === 'decrypt' && (!processingOptions.password && !processingOptions.decryptionPassword))
               }
               onClick={handleProcess}
             >
@@ -3196,7 +3258,9 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
             disabled={
               files.length === 0 ||
               isProcessing ||
-              ((mode === 'extract' || mode === 'crop' || mode === 'rotate') && !hasExtractSelection)
+              ((mode === 'extract' || mode === 'crop' || mode === 'rotate') && !hasExtractSelection) ||
+              (mode === 'encrypt' && (!processingOptions.userPassword && !processingOptions.password && !processingOptions.ownerPassword)) ||
+              (mode === 'decrypt' && (!processingOptions.password && !processingOptions.decryptionPassword))
             }
             fileCount={files.length}
             totalSizeLabel={formatFileSize(files.reduce((sum, f) => sum + f.size, 0))}

@@ -16,6 +16,7 @@ export type OperationKey =
 	| "redact"
 	| "compare"
 	| "pdfToZip"
+	| "encrypt"
 	| "decrypt"
 	| "editPdf"
 	| "scanToPdf"

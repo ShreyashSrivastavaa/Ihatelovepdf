@@ -13,6 +13,7 @@ import {
   addPageNumbersToPdf,
   addHeadersFootersToPdf,
   decryptPdf,
+  encryptPdf,
   pdfToZip,
   ProcessingResult,
 } from '../lib/pdf-operations';
@@ -99,6 +100,15 @@ self.onmessage = async (e: MessageEvent) => {
         break;
       case 'headersFooters':
         result = await addHeadersFootersToPdf(files[0], options.headersFooters || {});
+        break;
+      case 'encrypt':
+        result = await encryptPdf(
+          files[0],
+          options.userPassword || options.password,
+          options.ownerPassword,
+          options.encryptionPermissions,
+          options.encryptionAlgorithm || 'AES-256'
+        );
         break;
       case 'decrypt':
       case 'unlockPdf':

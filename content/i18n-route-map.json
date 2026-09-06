@@ -253,6 +253,17 @@
       "ru": "/ru/pdf-v-zip",
       "hu": "/hu/pdf-bol-zip"
     },
+    "encrypt": {
+      "en": "/encrypt",
+      "es": "/es/proteger-con-contrasena",
+      "pt": "/pt/proteger-com-senha",
+      "de": "/de/passwort-schuetzen",
+      "it": "/it/proteggi-con-password",
+      "fr": "/fr/proteger-par-mot-de-passe",
+      "ro": "/ro/protejeaza-cu-parola",
+      "ru": "/ru/zashchitit-parolem",
+      "hu": "/hu/jelszavas-vedelem"
+    },
     "decrypt": {
       "en": "/decrypt",
       "es": "/es/quitar-contrasena",

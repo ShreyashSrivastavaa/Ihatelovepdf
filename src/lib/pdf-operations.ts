@@ -163,6 +163,17 @@ export type PDFProcessingOptions = {
   redactColor?: string;
 
   decryptionPassword?: string;
+  userPassword?: string;
+  confirmPassword?: string;
+  ownerPassword?: string;
+  encryptionAlgorithm?: 'AES-256' | 'RC4';
+  encryptionPermissions?: {
+    allowPrinting?: boolean;
+    allowCopying?: boolean;
+    allowModifying?: boolean;
+    allowAnnotating?: boolean;
+    allowFillingForms?: boolean;
+  };
 
   markdownContent?: string;
   markdownTheme?: string;

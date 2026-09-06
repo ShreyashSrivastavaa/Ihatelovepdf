@@ -18,6 +18,7 @@
   },
   "scripts": {
     "build": "next build",
+    "analyze": "cross-env ANALYZE=true next build",
     "dev": "cross-env NODE_OPTIONS=--max-old-space-size=4096 STRICT_LINT=true next dev",
     "lint": "cross-env STRICT_LINT=true next lint",
     "lint:fix": "cross-env STRICT_LINT=true next lint --fix",
@@ -29,6 +30,8 @@
     "postinstall": "node scripts/setup-pdf-worker.mjs"
   },
   "dependencies": {
+    "@pdfsmaller/pdf-decrypt": "^1.0.1",
+    "@pdfsmaller/pdf-encrypt": "^1.2.0",
     "@t3-oss/env-nextjs": "^0.10.1",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
@@ -46,6 +49,7 @@
     "zod": "^3.23.3"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^16.3.4",
     "@playwright/test": "^1.58.2",
     "@tailwindcss/typography": "^0.5.16",
     "@types/eslint": "^8.56.10",

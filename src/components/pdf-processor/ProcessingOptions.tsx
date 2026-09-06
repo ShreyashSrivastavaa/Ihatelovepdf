@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PDFProcessingMode, PDFProcessingOptions } from '../../lib/pdf-processor';
 import { useDictionary } from '../../i18n/LocaleProvider';
 import OptionLivePreview from './OptionLivePreview';
 import {
   Image as ImageIcon,
+  Lock,
   Unlock,
+  KeyRound,
+  ShieldCheck,
+  Eye,
+  EyeOff,
+  CheckCircle2,
+  AlertCircle,
+  ChevronDown,
+  ChevronUp,
+  Sliders,
   Code,
   Table,
   Receipt,
@@ -59,6 +69,86 @@ export default function ProcessingOptions({
     k: K,
     v: PDFProcessingOptions[K]
   ) => onOptionsChangeAction({ ...options, [k]: v });
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [showOwnerPassword, setShowOwnerPassword] = useState(false);
+  const [showAdvancedSecurity, setShowAdvancedSecurity] = useState(false);
+
+  const evaluatePasswordStrength = (pwd: string) => {
+    if (!pwd) {
+      return {
+        score: 0,
+        label: 'Enter a password',
+        color: 'bg-[var(--border)]',
+        textColor: 'text-[var(--tx-3)]',
+        percent: 0,
+        checks: {
+          length: false,
+          long: false,
+          upper: false,
+          lower: false,
+          number: false,
+          special: false,
+        },
+      };
+    }
+
+    const checks = {
+      length: pwd.length >= 8,
+      long: pwd.length >= 12,
+      upper: /[A-Z]/.test(pwd),
+      lower: /[a-z]/.test(pwd),
+      number: /[0-9]/.test(pwd),
+      special: /[^A-Za-z0-9]/.test(pwd),
+    };
+
+    let points = 0;
+    if (checks.length) points += 1;
+    if (checks.long) points += 1;
+    if (checks.upper && checks.lower) points += 1;
+    if (checks.number) points += 1;
+    if (checks.special) points += 1;
+
+    if (points <= 1) {
+      return {
+        score: 1,
+        label: 'Weak',
+        color: 'bg-red-500',
+        textColor: 'text-red-500',
+        percent: 25,
+        checks,
+      };
+    }
+    if (points <= 2) {
+      return {
+        score: 2,
+        label: 'Fair',
+        color: 'bg-amber-500',
+        textColor: 'text-amber-500',
+        percent: 50,
+        checks,
+      };
+    }
+    if (points <= 4) {
+      return {
+        score: 3,
+        label: 'Strong',
+        color: 'bg-blue-500',
+        textColor: 'text-blue-500',
+        percent: 75,
+        checks,
+      };
+    }
+    return {
+      score: 4,
+      label: 'Very Strong',
+      color: 'bg-emerald-500',
+      textColor: 'text-emerald-500',
+      percent: 100,
+      checks,
+    };
+  };
 
   // 1. COMPRESS MODE
   if (mode === 'compress') {
@@ -836,8 +926,387 @@ export default function ProcessingOptions({
     );
   }
 
+  // 6. ENCRYPT MODE
+  if (mode === 'encrypt') {
+    const userPassword = options.userPassword || options.password || '';
+    const confirmPassword = options.confirmPassword || '';
+    const ownerPassword = options.ownerPassword || '';
+    const algorithm = options.encryptionAlgorithm || 'AES-256';
+    const permissions = options.encryptionPermissions || {
+      allowPrinting: true,
+      allowCopying: true,
+      allowModifying: false,
+      allowAnnotating: true,
+      allowFillingForms: true,
+    };
+
+    const strength = evaluatePasswordStrength(userPassword);
+    const isMatch = Boolean(confirmPassword && userPassword && confirmPassword === userPassword);
+    const isMismatch = Boolean(confirmPassword && userPassword && confirmPassword !== userPassword);
+
+    const handleUserPasswordChange = (val: string) => {
+      onOptionsChangeAction({
+        ...options,
+        userPassword: val,
+        password: val,
+      });
+    };
+
+    const updatePermission = (key: keyof typeof permissions, val: boolean) => {
+      onOptionsChangeAction({
+        ...options,
+        encryptionPermissions: {
+          ...permissions,
+          [key]: val,
+        },
+      });
+    };
+
+    return (
+      <div className="mt-6 space-y-6 pt-4 border-t border-[var(--border)]">
+        {/* Header */}
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h3 className="text-xs font-semibold text-[var(--tx-3)] uppercase tracking-wider flex items-center gap-2">
+              <Lock className="h-4 w-4 text-emerald-500" />
+              Client-Side PDF Protection &amp; Encryption
+            </h3>
+            <p className="mt-1 text-xs text-[var(--tx-2)]">
+              Secure your PDF with bank-grade AES-256 encryption. Processed 100% locally in your browser.
+            </p>
+          </div>
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
+            <ShieldCheck className="h-3.5 w-3.5" />
+            AES-256 Bit • Zero Server Uploads
+          </span>
+        </div>
+
+        {/* Password Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Main / Open Password */}
+          <div className="space-y-2 p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)]">
+            <div className="flex items-center justify-between">
+              <label className="text-xs font-bold text-[var(--tx)] flex items-center gap-1.5">
+                <KeyRound className="h-3.5 w-3.5 text-[var(--accent)]" />
+                Document Password (Required to Open)
+              </label>
+              <span className={`text-[11px] font-semibold ${strength.textColor}`}>
+                {strength.label}
+              </span>
+            </div>
+
+            <div className="relative">
+              <input
+                type={showPassword ? 'text' : 'password'}
+                placeholder="Enter strong password (e.g. 12+ chars)"
+                value={userPassword}
+                onChange={(e) => handleUserPasswordChange(e.target.value)}
+                className="input-modern w-full font-mono text-xs pr-9"
+                required
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[var(--tx-3)] hover:text-[var(--tx)] transition-colors p-1"
+                title={showPassword ? 'Hide password' : 'Show password'}
+              >
+                {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+              </button>
+            </div>
+
+            {/* Password Strength Meter */}
+            <div className="space-y-1.5 pt-1">
+              <div className="h-1.5 w-full bg-[var(--ui-2)] rounded-full overflow-hidden">
+                <div
+                  className={`h-full transition-all duration-300 ${strength.color}`}
+                  style={{ width: `${strength.percent}%` }}
+                />
+              </div>
+
+              {/* Requirement Checkpoints */}
+              <div className="flex flex-wrap gap-1.5 pt-1 text-[10px]">
+                <span
+                  className={`px-1.5 py-0.5 rounded ${
+                    strength.checks.long
+                      ? 'bg-emerald-500/10 text-emerald-500 font-medium'
+                      : 'bg-[var(--ui-2)] text-[var(--tx-3)]'
+                  }`}
+                >
+                  12+ Chars
+                </span>
+                <span
+                  className={`px-1.5 py-0.5 rounded ${
+                    strength.checks.upper
+                      ? 'bg-emerald-500/10 text-emerald-500 font-medium'
+                      : 'bg-[var(--ui-2)] text-[var(--tx-3)]'
+                  }`}
+                >
+                  Uppercase
+                </span>
+                <span
+                  className={`px-1.5 py-0.5 rounded ${
+                    strength.checks.lower
+                      ? 'bg-emerald-500/10 text-emerald-500 font-medium'
+                      : 'bg-[var(--ui-2)] text-[var(--tx-3)]'
+                  }`}
+                >
+                  Lowercase
+                </span>
+                <span
+                  className={`px-1.5 py-0.5 rounded ${
+                    strength.checks.number
+                      ? 'bg-emerald-500/10 text-emerald-500 font-medium'
+                      : 'bg-[var(--ui-2)] text-[var(--tx-3)]'
+                  }`}
+                >
+                  Number
+                </span>
+                <span
+                  className={`px-1.5 py-0.5 rounded ${
+                    strength.checks.special
+                      ? 'bg-emerald-500/10 text-emerald-500 font-medium'
+                      : 'bg-[var(--ui-2)] text-[var(--tx-3)]'
+                  }`}
+                >
+                  Symbol
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Confirm Password */}
+          <div className="space-y-2 p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] flex flex-col justify-between">
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <label className="text-xs font-bold text-[var(--tx)] flex items-center gap-1.5">
+                  <KeyRound className="h-3.5 w-3.5 text-emerald-500" />
+                  Confirm Password
+                </label>
+                {isMatch && (
+                  <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-500">
+                    <CheckCircle2 className="h-3.5 w-3.5" />
+                    Matches
+                  </span>
+                )}
+                {isMismatch && (
+                  <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-amber-500">
+                    <AlertCircle className="h-3.5 w-3.5" />
+                    Does not match
+                  </span>
+                )}
+              </div>
+
+              <div className="relative">
+                <input
+                  type={showConfirmPassword ? 'text' : 'password'}
+                  placeholder="Re-enter password to confirm"
+                  value={confirmPassword}
+                  onChange={(e) => update('confirmPassword', e.target.value)}
+                  className={`input-modern w-full font-mono text-xs pr-9 ${
+                    isMismatch ? 'border-amber-500/50 focus:border-amber-500' : ''
+                  }`}
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[var(--tx-3)] hover:text-[var(--tx)] transition-colors p-1"
+                  title={showConfirmPassword ? 'Hide password' : 'Show password'}
+                >
+                  {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                </button>
+              </div>
+            </div>
+
+            <p className="text-[11px] text-[var(--tx-3)] pt-2">
+              Re-entering ensures there are no accidental typos before you lock the document.
+            </p>
+          </div>
+        </div>
+
+        {/* Algorithm Selection */}
+        <div className="space-y-2">
+          <label className="text-xs font-bold text-[var(--tx-2)] uppercase tracking-wider">
+            Encryption Standard
+          </label>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <button
+              type="button"
+              onClick={() => update('encryptionAlgorithm', 'AES-256')}
+              className={`p-3.5 rounded-xl border text-left transition-all cursor-pointer ${
+                algorithm === 'AES-256'
+                  ? 'border-emerald-500/60 bg-emerald-500/5 shadow-xs ring-1 ring-emerald-500/30'
+                  : 'border-[var(--border)] bg-[var(--bg-card)] hover:border-[var(--border-hover)]'
+              }`}
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-semibold text-xs text-[var(--tx)] flex items-center gap-1.5">
+                  <ShieldCheck className="h-4 w-4 text-emerald-500" />
+                  AES-256 (Recommended)
+                </span>
+                <span className="text-[10px] uppercase font-bold text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded">
+                  Military Grade
+                </span>
+              </div>
+              <p className="mt-1 text-[11px] text-[var(--tx-2)]">
+                256-bit encryption compliant with ISO 32000-2 (PDF 2.0). Supported by all modern PDF viewers.
+              </p>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => update('encryptionAlgorithm', 'RC4')}
+              className={`p-3.5 rounded-xl border text-left transition-all cursor-pointer ${
+                algorithm === 'RC4'
+                  ? 'border-[var(--accent)]/60 bg-[var(--accent-soft)]/20 shadow-xs ring-1 ring-[var(--accent)]/30'
+                  : 'border-[var(--border)] bg-[var(--bg-card)] hover:border-[var(--border-hover)]'
+              }`}
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-semibold text-xs text-[var(--tx)]">
+                  RC4 128-Bit (Legacy)
+                </span>
+                <span className="text-[10px] uppercase font-bold text-[var(--tx-3)] bg-[var(--ui-2)] px-2 py-0.5 rounded">
+                  Legacy
+                </span>
+              </div>
+              <p className="mt-1 text-[11px] text-[var(--tx-2)]">
+                Older 128-bit format for backwards compatibility with legacy PDF software (Acrobat 5.0+).
+              </p>
+            </button>
+          </div>
+        </div>
+
+        {/* Advanced Permissions Accordion */}
+        <div className="border border-[var(--border)] rounded-2xl bg-[var(--bg-card)] overflow-hidden">
+          <button
+            type="button"
+            onClick={() => setShowAdvancedSecurity(!showAdvancedSecurity)}
+            className="w-full flex items-center justify-between p-4 text-left hover:bg-[var(--ui-2)]/40 transition-colors cursor-pointer"
+          >
+            <div className="flex items-center gap-2">
+              <Sliders className="h-4 w-4 text-[var(--accent)]" />
+              <span className="text-xs font-bold text-[var(--tx)]">
+                Advanced Permissions &amp; Owner Password (Optional)
+              </span>
+            </div>
+            {showAdvancedSecurity ? (
+              <ChevronUp className="h-4 w-4 text-[var(--tx-3)]" />
+            ) : (
+              <ChevronDown className="h-4 w-4 text-[var(--tx-3)]" />
+            )}
+          </button>
+
+          {showAdvancedSecurity && (
+            <div className="p-4 pt-2 border-t border-[var(--border)] space-y-4">
+              {/* Separate Owner Password */}
+              <div className="space-y-1.5 max-w-md">
+                <label className="text-xs font-semibold text-[var(--tx)] flex items-center gap-1.5">
+                  <KeyRound className="h-3.5 w-3.5 text-[var(--tx-3)]" />
+                  Owner / Master Password (To modify permissions)
+                </label>
+                <div className="relative">
+                  <input
+                    type={showOwnerPassword ? 'text' : 'password'}
+                    placeholder="Optional separate owner password"
+                    value={ownerPassword}
+                    onChange={(e) => update('ownerPassword', e.target.value)}
+                    className="input-modern w-full font-mono text-xs pr-9"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowOwnerPassword(!showOwnerPassword)}
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[var(--tx-3)] hover:text-[var(--tx)] transition-colors p-1"
+                    title={showOwnerPassword ? 'Hide password' : 'Show password'}
+                  >
+                    {showOwnerPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  </button>
+                </div>
+                <p className="text-[10px] text-[var(--tx-3)]">
+                  If omitted, your document password will also act as the owner password.
+                </p>
+              </div>
+
+              {/* Toggles */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <label className="flex items-center gap-2.5 text-xs text-[var(--tx)] p-2.5 rounded-lg border border-[var(--border)] bg-[var(--bg)] cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={permissions.allowPrinting ?? true}
+                    onChange={(e) => updatePermission('allowPrinting', e.target.checked)}
+                    className="checkbox-modern"
+                  />
+                  <span>Allow Document Printing</span>
+                </label>
+
+                <label className="flex items-center gap-2.5 text-xs text-[var(--tx)] p-2.5 rounded-lg border border-[var(--border)] bg-[var(--bg)] cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={permissions.allowCopying ?? true}
+                    onChange={(e) => updatePermission('allowCopying', e.target.checked)}
+                    className="checkbox-modern"
+                  />
+                  <span>Allow Copying Text &amp; Images</span>
+                </label>
+
+                <label className="flex items-center gap-2.5 text-xs text-[var(--tx)] p-2.5 rounded-lg border border-[var(--border)] bg-[var(--bg)] cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={permissions.allowModifying ?? false}
+                    onChange={(e) => updatePermission('allowModifying', e.target.checked)}
+                    className="checkbox-modern"
+                  />
+                  <span>Allow Modifying Document</span>
+                </label>
+
+                <label className="flex items-center gap-2.5 text-xs text-[var(--tx)] p-2.5 rounded-lg border border-[var(--border)] bg-[var(--bg)] cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={permissions.allowAnnotating ?? true}
+                    onChange={(e) => updatePermission('allowAnnotating', e.target.checked)}
+                    className="checkbox-modern"
+                  />
+                  <span>Allow Adding Annotations</span>
+                </label>
+
+                <label className="flex items-center gap-2.5 text-xs text-[var(--tx)] p-2.5 rounded-lg border border-[var(--border)] bg-[var(--bg)] cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={permissions.allowFillingForms ?? true}
+                    onChange={(e) => updatePermission('allowFillingForms', e.target.checked)}
+                    className="checkbox-modern"
+                  />
+                  <span>Allow Filling Form Fields</span>
+                </label>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Security Notice */}
+        <div className="p-3.5 rounded-xl border border-emerald-500/20 bg-emerald-500/5 text-xs text-[var(--tx-2)] flex items-start gap-2.5">
+          <ShieldCheck className="h-4 w-4 text-emerald-500 shrink-0 mt-0.5" />
+          <div>
+            <strong className="text-[var(--tx)] font-semibold">100% Client-Side Privacy:</strong> All
+            encryption keys and password derivation algorithms run inside your local browser memory using the Web Crypto API. Your document and password never leave your device.
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   // 7. DECRYPT MODE
   if (mode === 'decrypt') {
+    const password = options.password || options.decryptionPassword || '';
+
+    const handlePasswordChange = (val: string) => {
+      onOptionsChangeAction({
+        ...options,
+        password: val,
+        decryptionPassword: val,
+      });
+    };
+
     return (
       <div className="mt-6 space-y-6 pt-4 border-t border-[var(--border)]">
         <div>
@@ -846,19 +1315,45 @@ export default function ProcessingOptions({
             Client-Side PDF Decryption &amp; Unlock
           </h3>
           <p className="mt-1 text-xs text-[var(--tx-2)]">
-            Enter the password to unlock and export an unencrypted copy of your document.
+            Enter the password to permanently unlock and export an unencrypted copy of your document.
           </p>
         </div>
 
         <div className="max-w-md space-y-2 p-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)]">
-          <label className="text-xs font-bold text-[var(--tx)]">Document Password</label>
-          <input
-            type="password"
-            placeholder="Enter document password"
-            value={options.password || ''}
-            onChange={(e) => update('password', e.target.value)}
-            className="input-modern w-full font-mono text-xs"
-          />
+          <label className="text-xs font-bold text-[var(--tx)] flex items-center gap-1.5">
+            <KeyRound className="h-3.5 w-3.5 text-emerald-500" />
+            Document Password
+          </label>
+          <div className="relative">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              placeholder="Enter password to unlock PDF"
+              value={password}
+              onChange={(e) => handlePasswordChange(e.target.value)}
+              className="input-modern w-full font-mono text-xs pr-9"
+              required
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[var(--tx-3)] hover:text-[var(--tx)] transition-colors p-1"
+              title={showPassword ? 'Hide password' : 'Show password'}
+            >
+              {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+            </button>
+          </div>
+          <p className="text-[11px] text-[var(--tx-3)] pt-1">
+            After entering the correct password, clicking process will remove all locks and download a clean, open PDF.
+          </p>
+        </div>
+
+        {/* Privacy Note */}
+        <div className="p-3.5 rounded-xl border border-emerald-500/20 bg-emerald-500/5 text-xs text-[var(--tx-2)] flex items-start gap-2.5 max-w-xl">
+          <ShieldCheck className="h-4 w-4 text-emerald-500 shrink-0 mt-0.5" />
+          <div>
+            <strong className="text-[var(--tx)] font-semibold">Zero Server Uploads:</strong> Decryption
+            happens locally in your device RAM. The password is never saved or transmitted to any server.
+          </div>
         </div>
       </div>
     );

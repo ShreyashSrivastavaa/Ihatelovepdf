@@ -21,6 +21,7 @@ export const ALL_OPERATION_KEYS: OperationKey[] = [
   'redact',
   'compare',
   'pdfToZip',
+  'encrypt',
   'decrypt',
   'editPdf',
   'scanToPdf',
@@ -365,6 +366,35 @@ export const OPERATIONS_CATALOG: Record<OperationKey, OperationCatalogItem> = {
     howToTitle: 'How to package PDF files into ZIP',
     howToSteps: ['Upload one or more PDF files.', 'Choose your preferred compression level if desired.', 'Download your ZIP archive immediately.'],
     useCases: ['Packaging multiple contracts into a single archive', 'Sending document bundles via email attachments', 'Organizing multi-file PDF projects'],
+  },
+
+  encrypt: {
+    key: 'encrypt',
+    label: 'Protect / Encrypt PDF',
+    helper: 'Add robust AES-256 password protection and permission restrictions to your PDF documents.',
+    title: 'Protect PDF Online Free - Password Protect PDF',
+    description: 'Secure your PDF files with AES-256 password encryption directly in your browser. Set user and owner passwords with zero cloud uploads.',
+    keywords: ['encrypt pdf', 'password protect pdf', 'protect pdf online', 'aes 256 pdf encryption', 'lock pdf with password'],
+    bulletPoints: ['Industry-standard AES-256 encryption', '100% client-side browser processing', 'Real-time password strength validation', 'Custom printing and copying permissions'],
+    benefitsTitle: 'Why encrypt PDFs with ihatelovepdf',
+    benefits: [
+      { title: 'AES-256 Encryption', description: 'Industry-standard Advanced Encryption Standard with 256-bit keys. Virtually unbreakable and used worldwide for top-secret documents.' },
+      { title: 'Client-Side Encryption', description: 'All encryption happens locally in your browser. Your PDF file and password never travel over the internet — completely private on your device.' },
+      { title: 'Password Strength Validation', description: 'Real-time password strength meter analyzes your password for length, complexity, and common patterns to ensure maximum security against attacks.' },
+      { title: 'Instant Processing', description: 'Fast encryption process completes in seconds. No waiting, no queues — your encrypted PDF is ready to download immediately after processing.' },
+    ],
+    howToTitle: 'How to Encrypt PDF with Password',
+    howToSteps: [
+      'Upload PDF: Select the PDF file you want to password protect.',
+      'Create Password: Enter a strong password — use 12+ characters with mixed case, numbers & symbols.',
+      'Confirm Password: Re-enter your password to prevent typos.',
+      'Download Encrypted PDF: Get your password-protected PDF file instantly.',
+    ],
+    useCases: [
+      'Protecting confidential financial statements, payroll, and tax records',
+      'Securing legal contracts and NDAs before email transmission',
+      'Locking intellectual property, eBooks, and medical documents',
+    ],
   },
 
   decrypt: {
