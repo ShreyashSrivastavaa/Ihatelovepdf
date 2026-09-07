@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import {
   Download,
   Type,
@@ -26,6 +26,8 @@ import {
   ZoomIn,
   ZoomOut,
   Maximize2,
+  Pencil,
+  Check,
 } from 'lucide-react';
 import {
   DocumentModel,
@@ -88,9 +90,13 @@ export default function CreateBlankPdfInterface({
   );
   const [activePageIndex, setActivePageIndex] = useState<number>(0);
   const [selectedElementId, setSelectedElementId] = useState<string | null>(null);
+  const [editingElementId, setEditingElementId] = useState<string | null>(null);
   const [zoomScale, setZoomScale] = useState<number>(0.85);
   const [isExporting, setIsExporting] = useState<boolean>(false);
   const [activePreset, setActivePreset] = useState<string>('blank');
+
+  // Double-tap tracking for touch devices
+  const lastTapRef = useRef<{ id: string; time: number }>({ id: '', time: 0 });
 
   // Dragging & Resizing tracking state
   const [dragInfo, setDragInfo] = useState<{
@@ -120,6 +126,7 @@ export default function CreateBlankPdfInterface({
       setDoc(newDoc);
       setActivePageIndex(0);
       setSelectedElementId(null);
+      setEditingElementId(null);
     }
   };
 
@@ -151,6 +158,7 @@ export default function CreateBlankPdfInterface({
     }));
     setActivePageIndex(doc.pages.length);
     setSelectedElementId(null);
+    setEditingElementId(null);
   };
 
   const duplicatePage = () => {
@@ -169,6 +177,7 @@ export default function CreateBlankPdfInterface({
     }));
     setActivePageIndex(activePageIndex + 1);
     setSelectedElementId(null);
+    setEditingElementId(null);
   };
 
   const removePage = () => {
@@ -179,6 +188,7 @@ export default function CreateBlankPdfInterface({
     }));
     setActivePageIndex(Math.max(0, activePageIndex - 1));
     setSelectedElementId(null);
+    setEditingElementId(null);
   };
 
   // Add Elements
@@ -186,7 +196,7 @@ export default function CreateBlankPdfInterface({
     const newEl: TextElement = {
       id: `text_${Date.now()}`,
       type: 'text',
-      text: 'Double click to edit text',
+      text: 'Type your text here',
       font: 'Helvetica',
       fontSize: 16,
       color: '#1e293b',
@@ -194,7 +204,7 @@ export default function CreateBlankPdfInterface({
       x: 60,
       y: 80,
       width: 320,
-      height: 40,
+      height: 44,
     };
     setDoc((prev) => ({
       ...prev,
@@ -203,6 +213,7 @@ export default function CreateBlankPdfInterface({
       ),
     }));
     setSelectedElementId(newEl.id);
+    setEditingElementId(newEl.id);
   };
 
   const addShapeElement = (shapeType: ShapeType) => {
@@ -312,15 +323,57 @@ export default function CreateBlankPdfInterface({
     [activePageIndex]
   );
 
-  const deleteElement = (id: string) => {
-    setDoc((prev) => ({
-      ...prev,
-      pages: prev.pages.map((p, idx) =>
-        idx === activePageIndex ? { ...p, elements: p.elements.filter((el) => el.id !== id) } : p
-      ),
-    }));
-    if (selectedElementId === id) setSelectedElementId(null);
-  };
+  const deleteElement = useCallback(
+    (id: string) => {
+      setDoc((prev) => ({
+        ...prev,
+        pages: prev.pages.map((p, idx) =>
+          idx === activePageIndex ? { ...p, elements: p.elements.filter((el) => el.id !== id) } : p
+        ),
+      }));
+      if (selectedElementId === id) setSelectedElementId(null);
+      if (editingElementId === id) setEditingElementId(null);
+    },
+    [activePageIndex, selectedElementId, editingElementId]
+  );
+
+  // Global keyboard shortcuts (Delete, Backspace, Escape, Enter)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // If user is actively editing, Esc cancels/finishes edit
+      if (editingElementId) {
+        if (e.key === 'Escape') {
+          setEditingElementId(null);
+        }
+        return;
+      }
+
+      // Check if target is an input or textarea
+      const target = e.target as HTMLElement;
+      if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) {
+        return;
+      }
+
+      if (selectedElementId) {
+        if (e.key === 'Delete' || e.key === 'Backspace') {
+          e.preventDefault();
+          deleteElement(selectedElementId);
+        } else if (e.key === 'Escape') {
+          setSelectedElementId(null);
+          setEditingElementId(null);
+        } else if (e.key === 'Enter') {
+          const el = currentPage.elements.find((item) => item.id === selectedElementId);
+          if (el && el.type === 'text') {
+            e.preventDefault();
+            setEditingElementId(el.id);
+          }
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedElementId, editingElementId, currentPage.elements, deleteElement]);
 
   const duplicateElement = (id: string) => {
     const el = currentPage.elements.find((e) => e.id === id);
@@ -359,6 +412,26 @@ export default function CreateBlankPdfInterface({
     }));
   };
 
+  // Element click / double tap handler
+  const handleElementClick = (e: React.MouseEvent, el: CanvasElement) => {
+    e.stopPropagation();
+    const isAlreadySelected = selectedElementId === el.id;
+    setSelectedElementId(el.id);
+
+    if (el.type === 'text') {
+      const now = Date.now();
+      const isDoubleTap = lastTapRef.current.id === el.id && now - lastTapRef.current.time < 380;
+
+      // Enter editing mode on double tap OR if clicked while already selected
+      if (isDoubleTap || isAlreadySelected) {
+        setEditingElementId(el.id);
+        lastTapRef.current = { id: '', time: 0 };
+      } else {
+        lastTapRef.current = { id: el.id, time: now };
+      }
+    }
+  };
+
   // Drag and Resize Pointer Events
   const handlePointerDown = (
     e: React.PointerEvent,
@@ -366,6 +439,11 @@ export default function CreateBlankPdfInterface({
     action: 'move' | 'resize'
   ) => {
     e.stopPropagation();
+    // If currently editing text and trying to select/drag inside textarea, ignore move drag
+    if (editingElementId === elementId && action === 'move') {
+      return;
+    }
+
     setSelectedElementId(elementId);
     const el = currentPage.elements.find((item) => item.id === elementId);
     if (!el) return;
@@ -386,6 +464,9 @@ export default function CreateBlankPdfInterface({
 
   const handlePointerMove = (e: React.PointerEvent) => {
     if (!dragInfo) return;
+    if (editingElementId === dragInfo.elementId && dragInfo.action === 'move') {
+      return;
+    }
     const dx = (e.clientX - dragInfo.startX) / zoomScale;
     const dy = (e.clientY - dragInfo.startY) / zoomScale;
 
@@ -697,7 +778,10 @@ export default function CreateBlankPdfInterface({
           {/* Canvas Viewport */}
           <div
             ref={canvasContainerRef}
-            onClick={() => setSelectedElementId(null)}
+            onClick={() => {
+              setSelectedElementId(null);
+              setEditingElementId(null);
+            }}
             onPointerMove={handlePointerMove}
             onPointerUp={handlePointerUp}
             className="w-full h-[620px] bg-neutral-900/5 dark:bg-neutral-950/40 rounded-2xl border border-[var(--border)] p-8 overflow-auto flex items-center justify-center relative cursor-default"
@@ -723,13 +807,20 @@ export default function CreateBlankPdfInterface({
                   <div
                     key={el.id}
                     onPointerDown={(e) => handlePointerDown(e, el.id, 'move')}
+                    onClick={(e) => handleElementClick(e, el)}
+                    onDoubleClick={(e) => {
+                      e.stopPropagation();
+                      if (el.type === 'text') {
+                        setEditingElementId(el.id);
+                      }
+                    }}
                     style={{
                       position: 'absolute',
                       left,
                       top,
                       width,
                       height: el.type === 'shape' && (el as ShapeElement).shapeType === 'line' ? Math.max(12, height) : height,
-                      cursor: dragInfo ? 'grabbing' : 'grab',
+                      cursor: dragInfo ? 'grabbing' : (editingElementId === el.id ? 'default' : (el.type === 'text' ? 'text' : 'grab')),
                     }}
                     className={`group ${
                       isSelected
@@ -737,22 +828,118 @@ export default function CreateBlankPdfInterface({
                         : 'hover:ring-1 hover:ring-blue-400/60 z-10'
                     }`}
                   >
+                    {/* Floating Quick Action Bar for Selected Element */}
+                    {isSelected && (
+                      <div
+                        onPointerDown={(e) => e.stopPropagation()}
+                        onClick={(e) => e.stopPropagation()}
+                        style={{
+                          top: -38,
+                          left: 0,
+                        }}
+                        className="absolute z-50 flex items-center gap-1 bg-neutral-900/95 text-white px-2 py-1 rounded-xl shadow-xl border border-neutral-700/80 backdrop-blur-md text-xs font-semibold whitespace-nowrap pointer-events-auto select-none"
+                      >
+                        {el.type === 'text' && (
+                          editingElementId === el.id ? (
+                            <button
+                              type="button"
+                              onClick={() => setEditingElementId(null)}
+                              className="flex items-center gap-1 px-2 py-0.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-semibold transition-colors cursor-pointer"
+                            >
+                              <Check className="h-3 w-3" />
+                              <span>Done</span>
+                            </button>
+                          ) : (
+                            <button
+                              type="button"
+                              onClick={() => setEditingElementId(el.id)}
+                              className="flex items-center gap-1 px-2 py-0.5 rounded-lg bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white text-[11px] font-semibold transition-colors cursor-pointer"
+                              title="Click to type text directly"
+                            >
+                              <Pencil className="h-3 w-3" />
+                              <span>Type / Edit</span>
+                            </button>
+                          )
+                        )}
+
+                        <button
+                          type="button"
+                          onClick={() => duplicateElement(el.id)}
+                          title="Duplicate"
+                          className="p-1 rounded-lg hover:bg-white/20 text-neutral-300 hover:text-white transition-colors cursor-pointer"
+                        >
+                          <Copy className="h-3 w-3" />
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => deleteElement(el.id)}
+                          title="Delete"
+                          className="p-1 rounded-lg hover:bg-rose-500/30 text-rose-400 hover:text-rose-300 transition-colors cursor-pointer"
+                        >
+                          <Trash2 className="h-3 w-3" />
+                        </button>
+                      </div>
+                    )}
+
                     {/* Element-specific content renderer */}
                     {el.type === 'text' && (
-                      <div
-                        style={{
-                          fontFamily: (el as TextElement).font || 'Helvetica',
-                          fontSize: ((el as TextElement).fontSize || 14) * zoomScale,
-                          color: (el as TextElement).color || '#000000',
-                          textAlign: (el as TextElement).alignment || 'left',
-                          fontWeight: (el as TextElement).bold ? 'bold' : 'normal',
-                          fontStyle: (el as TextElement).italic ? 'italic' : 'normal',
-                          lineHeight: (el as TextElement).lineHeight || 1.25,
-                        }}
-                        className="w-full h-full overflow-hidden break-words whitespace-pre-wrap select-none p-0.5"
-                      >
-                        {(el as TextElement).text}
-                      </div>
+                      editingElementId === el.id ? (
+                        <textarea
+                          autoFocus
+                          ref={(textarea) => {
+                            if (textarea) {
+                              textarea.focus();
+                              if (
+                                textarea.value === 'Double click to edit text' ||
+                                textarea.value === 'Type your text here' ||
+                                textarea.value === 'Untitled Document' ||
+                                textarea.value.startsWith('Start typing your document')
+                              ) {
+                                textarea.select();
+                              }
+                            }
+                          }}
+                          value={(el as TextElement).text}
+                          onChange={(e) => updateElement(el.id, { text: e.target.value })}
+                          onBlur={() => setEditingElementId(null)}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Escape') {
+                              setEditingElementId(null);
+                            }
+                            e.stopPropagation();
+                          }}
+                          onPointerDown={(e) => e.stopPropagation()}
+                          onClick={(e) => e.stopPropagation()}
+                          style={{
+                            fontFamily: (el as TextElement).font || 'Helvetica',
+                            fontSize: ((el as TextElement).fontSize || 14) * zoomScale,
+                            color: (el as TextElement).color || '#000000',
+                            textAlign: (el as TextElement).alignment || 'left',
+                            fontWeight: (el as TextElement).bold ? 'bold' : 'normal',
+                            fontStyle: (el as TextElement).italic ? 'italic' : 'normal',
+                            lineHeight: (el as TextElement).lineHeight || 1.25,
+                          }}
+                          className="w-full h-full resize-none border-2 border-dashed border-[var(--accent)] bg-white/95 dark:bg-neutral-900/95 rounded-xs p-0.5 outline-none shadow-sm cursor-text selection:bg-[var(--accent-soft)]"
+                          placeholder="Type your text..."
+                        />
+                      ) : (
+                        <div
+                          style={{
+                            fontFamily: (el as TextElement).font || 'Helvetica',
+                            fontSize: ((el as TextElement).fontSize || 14) * zoomScale,
+                            color: (el as TextElement).color || '#000000',
+                            textAlign: (el as TextElement).alignment || 'left',
+                            fontWeight: (el as TextElement).bold ? 'bold' : 'normal',
+                            fontStyle: (el as TextElement).italic ? 'italic' : 'normal',
+                            lineHeight: (el as TextElement).lineHeight || 1.25,
+                          }}
+                          className="w-full h-full overflow-hidden break-words whitespace-pre-wrap select-none p-0.5 cursor-text"
+                          title="Double click or click to type"
+                        >
+                          {(el as TextElement).text}
+                        </div>
+                      )
                     )}
 
                     {el.type === 'image' && (
@@ -886,11 +1073,22 @@ export default function CreateBlankPdfInterface({
               {selectedElement.type === 'text' && (
                 <>
                   <div className="space-y-1.5">
-                    <label className="font-semibold text-[var(--tx-2)]">Content</label>
+                    <div className="flex items-center justify-between">
+                      <label className="font-semibold text-[var(--tx-2)]">Text Content</label>
+                      <button
+                        type="button"
+                        onClick={() => setEditingElementId(selectedElement.id)}
+                        className="text-[11px] font-semibold text-[var(--accent)] hover:underline flex items-center gap-1 cursor-pointer"
+                      >
+                        <Pencil className="h-3 w-3" />
+                        <span>Type on Canvas</span>
+                      </button>
+                    </div>
                     <textarea
                       rows={3}
                       value={(selectedElement as TextElement).text}
                       onChange={(e) => updateElement(selectedElement.id, { text: e.target.value })}
+                      placeholder="Type text here..."
                       className="w-full px-3 py-2 rounded-xl border border-[var(--border)] bg-[var(--bg)] text-[var(--tx)] focus:border-[var(--accent)] focus:outline-hidden font-mono text-xs"
                     />
                   </div>
