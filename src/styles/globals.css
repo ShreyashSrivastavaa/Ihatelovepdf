@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Design System Tokens */
 /* Light Mode Defaults */
 :root {
   --bg: #FBF9F6;

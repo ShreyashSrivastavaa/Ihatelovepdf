@@ -1,6 +1,7 @@
-import PDFProcessor from "./pdf-processor";
+import Link from "next/link";
+import DynamicPdfProcessor from "./DynamicPdfProcessor";
 import type { Dictionary } from "../i18n/dictionaries/dictionary-types";
-import { ShieldCheck, Zap, Laptop, Lock, CheckCircle2 } from "lucide-react";
+import { ShieldCheck, Zap, Laptop, Lock, CheckCircle2, Upload, ArrowRight } from "lucide-react";
 import FaqSection from "./faq-section";
 import ToolSwitcher, { type ToolLink } from "./ToolSwitcher";
 
@@ -21,10 +22,9 @@ export function HomePageContent({ dictionary }: { dictionary: Dictionary }) {
 
   return (
     <div className="min-h-screen bg-[var(--bg)] text-[var(--tx)]">
-      <div className="mx-auto max-w-[1140px] px-4 sm:px-6 py-10 sm:py-16 space-y-16 sm:space-y-20">
+      <div className="mx-auto max-w-[1140px] px-4 sm:px-6 py-10 sm:py-16 space-y-12 sm:space-y-16">
         {/* HERO SECTION */}
         <section className="text-center space-y-6 max-w-4xl mx-auto">
-          {/* Privacy Anchor Banner */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[var(--success-border)] bg-[var(--success-soft)] text-xs sm:text-sm font-medium text-[var(--tx)] shadow-xs animate-fade-in">
             <ShieldCheck className="h-4 w-4 text-[var(--success)] shrink-0" />
             <span>Your files never leave your browser &bull; 100% Client-Side</span>
@@ -38,7 +38,6 @@ export function HomePageContent({ dictionary }: { dictionary: Dictionary }) {
             {home.hero.subtitle}
           </p>
 
-          {/* Badges Pill Bar */}
           <div className="pt-2 grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-2">
             {home.hero.badges.map((badge) => (
               <span
@@ -50,6 +49,24 @@ export function HomePageContent({ dictionary }: { dictionary: Dictionary }) {
               </span>
             ))}
           </div>
+
+          {/* ABOVE-THE-FOLD PRIMARY CALLS TO ACTION */}
+          <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+            <a
+              href="#processor-main"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white font-bold text-sm shadow-lg shadow-[var(--accent-soft)] hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+            >
+              <Upload className="h-4 w-4 stroke-[2.5]" />
+              <span>Select PDF Files</span>
+            </a>
+            <Link
+              href="/tools"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] hover:border-[var(--accent-border)] hover:bg-[var(--bg-subtle)] text-[var(--tx)] font-semibold text-sm transition-all shadow-xs"
+            >
+              <span>Explore All Tools</span>
+              <ArrowRight className="h-4 w-4 text-[var(--tx-3)]" />
+            </Link>
+          </div>
         </section>
 
         {/* TOOL SWITCHER (45+ Tools) */}
@@ -58,8 +75,8 @@ export function HomePageContent({ dictionary }: { dictionary: Dictionary }) {
         </section>
 
         {/* CENTERPIECE PDF PROCESSOR UI CONTAINER */}
-        <section className="relative">
-          <PDFProcessor />
+        <section id="processor-main" className="relative">
+          <DynamicPdfProcessor />
         </section>
 
         {/* WHY ihatelovepdf / VALUE PROPOSITION */}
