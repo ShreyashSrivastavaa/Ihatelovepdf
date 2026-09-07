@@ -106,9 +106,9 @@ async function fallbackCompileTex(texSource: string, templateId?: string): Promi
     author: name,
     pages: [
       {
-        pageNumber: 1,
-        width: 595,
-        height: 842,
+        id: 'page_1',
+        format: 'a4',
+        orientation: 'portrait',
         elements: [
           {
             id: 'hdr_name',
@@ -118,19 +118,21 @@ async function fallbackCompileTex(texSource: string, templateId?: string): Promi
             y: 45,
             width: 515,
             height: 24,
-            font: 'Helvetica-Bold',
+            font: 'Helvetica',
+            bold: true,
             fontSize: 18,
             color: '#0f172a',
             alignment: 'center',
           },
           {
             id: 'hdr_line',
-            type: 'line',
+            type: 'shape',
+            shapeType: 'line',
             x: 40,
             y: 78,
             width: 515,
             height: 1,
-            color: templateId?.includes('modern') ? '#2563eb' : '#64748b',
+            strokeColor: templateId?.includes('modern') ? '#2563eb' : '#64748b',
           },
           {
             id: 'sec_summary_title',
@@ -140,7 +142,8 @@ async function fallbackCompileTex(texSource: string, templateId?: string): Promi
             y: 95,
             width: 515,
             height: 14,
-            font: 'Helvetica-Bold',
+            font: 'Helvetica',
+            bold: true,
             fontSize: 10,
             color: '#1e293b',
           },
@@ -152,7 +155,8 @@ async function fallbackCompileTex(texSource: string, templateId?: string): Promi
             y: 190,
             width: 515,
             height: 14,
-            font: 'Helvetica-Bold',
+            font: 'Helvetica',
+            bold: true,
             fontSize: 10,
             color: '#1e293b',
           },
@@ -164,7 +168,8 @@ async function fallbackCompileTex(texSource: string, templateId?: string): Promi
             y: 480,
             width: 515,
             height: 14,
-            font: 'Helvetica-Bold',
+            font: 'Helvetica',
+            bold: true,
             fontSize: 10,
             color: '#1e293b',
           },
@@ -200,27 +205,36 @@ self.onmessage = async (e: MessageEvent<LatexWorkerRequest>) => {
       const arrayBuffer = resultBytes.buffer.slice(
         resultBytes.byteOffset,
         resultBytes.byteOffset + resultBytes.byteLength
-      );
+      ) as ArrayBuffer;
 
       const successResponse: LatexWorkerResponse = {
         id,
         status: 'success',
         pdfBlob: arrayBuffer,
       };
-      self.postMessage(successResponse, [arrayBuffer]);
+      (self as unknown as { postMessage: (msg: unknown, transfer?: Transferable[]) => void }).postMessage(
+        successResponse,
+        [arrayBuffer]
+      );
       return;
     }
 
     // 2. High-fidelity vector PDF fallback
     const pdfBytes = await fallbackCompileTex(texSource, templateId);
-    const arrayBuffer = pdfBytes.buffer.slice(pdfBytes.byteOffset, pdfBytes.byteOffset + pdfBytes.byteLength);
+    const arrayBuffer = pdfBytes.buffer.slice(
+      pdfBytes.byteOffset,
+      pdfBytes.byteOffset + pdfBytes.byteLength
+    ) as ArrayBuffer;
 
     const successResponse: LatexWorkerResponse = {
       id,
       status: 'success',
       pdfBlob: arrayBuffer,
     };
-    self.postMessage(successResponse, [arrayBuffer]);
+    (self as unknown as { postMessage: (msg: unknown, transfer?: Transferable[]) => void }).postMessage(
+      successResponse,
+      [arrayBuffer]
+    );
   } catch (err: unknown) {
     const rawLog = err instanceof Error ? err.stack || err.message : String(err);
     const friendlyMessage = extractFriendlyErrorMessage(rawLog);

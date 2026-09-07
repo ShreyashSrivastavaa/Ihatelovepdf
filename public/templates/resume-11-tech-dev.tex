@@ -1,18 +1,19 @@
 %----------------------------------------------------------------------------------------
 % Template: Full-Stack Engineer (resume-11-tech-dev)
 % Category: tech-developer
-% Description: Developer-focused layout emphasizing technical skills matrix, GitHub metrics, and live URLs.
-% Packages: geometry, titlesec, enumitem, xcolor, fontawesome5, helvet, hyperref
+% Description: Developer-focused layout with Technical Skills Matrix at the top before experience.
+% Packages: geometry, titlesec, enumitem, xcolor, fontawesome5, tabularx, helvet, hyperref
 %----------------------------------------------------------------------------------------
 
 \documentclass[10pt,letterpaper]{article}
 
 \usepackage[utf8]{inputenc}
-\usepackage[margin=0.65in]{geometry}
+\usepackage[margin=0.6in]{geometry}
 \usepackage[table]{xcolor}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{fontawesome5}
+\usepackage{tabularx}
 \usepackage{helvet}
 \renewcommand{\familydefault}{\sfdefault}
 \usepackage[hidelinks]{hyperref}
@@ -20,22 +21,23 @@
 \pagestyle{empty}
 \raggedbottom
 \raggedright
+\setlength{\parindent}{0pt}
 
 \definecolor{techaccent}{HTML}{059669} % Emerald Green
 \definecolor{darkgray}{HTML}{111827}
 
 \titleformat{\section}{
-  \vspace{3pt}\color{techaccent}\bfseries\large
-}{}{0em}{}[\vspace{1pt}{\color{techaccent}\titlerule}\vspace{2pt}]
+  \vspace{4pt}\color{techaccent}\bfseries\normalsize\uppercase
+}{}{0em}{}[\vspace{1pt}{\color{techaccent}\hrule height 1pt}\vspace{3pt}]
 
-\setlist[itemize]{leftmargin=1.15em, label=$\triangleright$, itemsep=2pt, parsep=0pt, topsep=1pt}
+\setlist[itemize]{leftmargin=1.15em, label={\color{techaccent}$\triangleright$}, itemsep=2pt, parsep=0pt, topsep=1pt}
 
 \begin{document}
 
 % Top Developer Header
 \begin{center}
-  {\Huge \textbf{\color{darkgray}{{FULL_NAME}}}} \\[4pt]
-  {\normalsize \textbf{{{JOB_TITLE}}}} \\[5pt]
+  {\Huge \textbf{\color{darkgray}{{FULL_NAME}}}} \\[3pt]
+  {\normalsize \textbf{\color{techaccent}{{JOB_TITLE}}}} \\[5pt]
   \small
   \faMapMarker* \ {{LOCATION}} \ \ \textbar\ \ 
   \faEnvelope \ \href{mailto:{{EMAIL}}}{{{EMAIL}}} \ \ \textbar\ \ 
@@ -44,21 +46,30 @@
   \faLinkedin \ \href{https://{{LINKEDIN}}}{linkedin.com/in/{{LINKEDIN}}}
 \end{center}
 
-\vspace{-4pt}
+\vspace{-2pt}
 
+% Section 1: Technical Skills Matrix at the top
 \section{Technical Skills Matrix}
 \small
 {{SKILLS_BLOCK}}
 
-\section{Work Experience}
+% Section 2: Work Experience
+\section{Engineering Experience}
 \small
 {{EXPERIENCE_ITEMS}}
 
-\section{Featured Open-Source \& Production Projects}
+% Section 3: Open-Source & Production Projects
+\section{Featured Open-Source \& Production Systems}
 \small
 {{PROJECTS_BLOCK}}
 
-\section{Education \& Coursework}
+% Section 4: Summary / Philosophy
+\section{Architecture Focus \& Overview}
+\small
+{{SUMMARY}}
+
+% Section 5: Education
+\section{Education \& Credentials}
 \small
 {{EDUCATION_ITEMS}}
 

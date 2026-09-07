@@ -2,16 +2,17 @@
 % Template: Campus Kickstart (resume-15-grad-kickstart)
 % Category: fresh-grad
 % Description: Education-first layout designed for university students and new graduates.
-% Packages: geometry, titlesec, enumitem, xcolor, helvet, hyperref
+% Packages: geometry, titlesec, enumitem, xcolor, fontawesome5, helvet, hyperref
 %----------------------------------------------------------------------------------------
 
 \documentclass[10pt,letterpaper]{article}
 
 \usepackage[utf8]{inputenc}
-\usepackage[margin=0.65in]{geometry}
+\usepackage[margin=0.6in]{geometry}
 \usepackage[table]{xcolor}
 \usepackage{titlesec}
 \usepackage{enumitem}
+\usepackage{fontawesome5}
 \usepackage{helvet}
 \renewcommand{\familydefault}{\sfdefault}
 \usepackage[hidelinks]{hyperref}
@@ -19,54 +20,55 @@
 \pagestyle{empty}
 \raggedbottom
 \raggedright
+\setlength{\parindent}{0pt}
 
-\definecolor{gradaccent}{HTML}{4F46E5} % Vibrant Indigo
+\definecolor{gradindigo}{HTML}{4F46E5} % Vibrant Indigo
 \definecolor{charcoal}{HTML}{1F2937}
 
 \titleformat{\section}{
-  \vspace{3pt}\color{gradaccent}\bfseries\normalsize\uppercase
-}{}{0em}{}[\vspace{1pt}{\color{gradaccent}\titlerule}\vspace{2pt}]
+  \vspace{4pt}\color{gradindigo}\bfseries\normalsize\uppercase
+}{}{0em}{}[\vspace{1pt}{\color{gradindigo}\hrule height 1.2pt}\vspace{3pt}]
 
-\setlist[itemize]{leftmargin=1.15em, label=$\bullet$, itemsep=2pt, parsep=0pt, topsep=1pt}
+\setlist[itemize]{leftmargin=1.15em, label={\color{gradindigo}$\bullet$}, itemsep=2pt, parsep=0pt, topsep=1pt}
 
 \begin{document}
 
 % Centered Header
 \begin{center}
-  {\Huge \textbf{\color{charcoal}{{FULL_NAME}}}} \\[4pt]
-  {\small \textbf{{{JOB_TITLE}}}} \\[4pt]
+  {\Huge \textbf{\color{charcoal}{{FULL_NAME}}}} \\[3pt]
+  {\normalsize \textbf{\color{gradindigo}{{JOB_TITLE}}}} \\[5pt]
   \small
-  {{LOCATION}} \ \textbullet \ 
-  {{PHONE}} \ \textbullet \ 
-  \href{mailto:{{EMAIL}}}{{{EMAIL}}} \ \textbullet \ 
-  \href{https://{{GITHUB}}}{github.com/{{GITHUB}}} \ \textbullet \ 
-  \href{https://{{LINKEDIN}}}{linkedin.com/in/{{LINKEDIN}}}
+  \faMapMarker* \ {{LOCATION}} \ \ \textbar\ \ 
+  \faPhone \ {{PHONE}} \ \ \textbar\ \ 
+  \faEnvelope \ \href{mailto:{{EMAIL}}}{{{EMAIL}}} \ \ \textbar\ \ 
+  \faGithub \ \href{https://{{GITHUB}}}{github.com/{{GITHUB}}} \ \ \textbar\ \ 
+  \faLinkedin \ \href{https://{{LINKEDIN}}}{linkedin.com/in/{{LINKEDIN}}}
 \end{center}
 
-\vspace{-4pt}
+\vspace{-2pt}
 
-% Section 1: Education Forward
-\section{Education}
+% Section 1: Education Forward at the Top
+\section{Education \& Academic Honors}
 \small
 {{EDUCATION_ITEMS}}
 
-% Section 2: Technical Skills
-\section{Technical Skills \& Coursework}
-\small
-{{SKILLS_BLOCK}}
-
-% Section 3: Flagship Capstone & Academic Projects
-\section{Academic Projects \& Hackathons}
+% Section 2: Flagship Capstone & Hackathons
+\section{Capstone Projects \& Hackathons}
 \small
 {{PROJECTS_BLOCK}}
 
+% Section 3: Technical Skills
+\section{Technical Proficiencies \& Tooling}
+\small
+{{SKILLS_BLOCK}}
+
 % Section 4: Internships & Practical Experience
-\section{Internships \& Experience}
+\section{Internships \& Industry Experience}
 \small
 {{EXPERIENCE_ITEMS}}
 
 % Section 5: Campus Leadership & Summary
-\section{Leadership \& Activities}
+\section{Campus Leadership \& Aspirations}
 \small
 {{SUMMARY}}
 

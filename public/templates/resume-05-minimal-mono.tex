@@ -1,7 +1,7 @@
 %----------------------------------------------------------------------------------------
 % Template: Nordic Minimal (resume-05-minimal-mono)
 % Category: minimalist
-% Description: Ample whitespace, razor-thin hairlines, small-caps titles, pure monochrome.
+% Description: Extreme whitespace, razor-thin hairlines, small-caps titles, pure monochrome.
 % Packages: geometry, titlesec, enumitem, lmodern, hyperref
 %----------------------------------------------------------------------------------------
 
@@ -17,17 +17,18 @@
 \pagestyle{empty}
 \raggedbottom
 \raggedright
+\setlength{\parindent}{0pt}
 
-% Thin hairlines and spaced small-caps headers
+% Section styling: small-caps headers with ultra-thin hairline rules
 \titleformat{\section}{
-  \vspace{6pt}\scshape\normalsize\lsstyle
-}{}{0em}{}[\vspace{2pt}\hrule height 0.3pt\vspace{3pt}]
+  \vspace{8pt}\scshape\normalsize
+}{}{0em}{}[\vspace{2pt}\hrule height 0.25pt\vspace{4pt}]
 
-\setlist[itemize]{leftmargin=1.1em, label=--, itemsep=2pt, parsep=0pt, topsep=1pt}
+\setlist[itemize]{leftmargin=1.1em, label=--, itemsep=1.5pt, parsep=0pt, topsep=1pt}
 
 \begin{document}
 
-% Minimal Header
+% Minimal Left-Aligned Header
 {\LARGE \textsc{{{FULL_NAME}}}} \\[4pt]
 {\small \textit{{{JOB_TITLE}}}} \\[6pt]
 \small
@@ -36,26 +37,30 @@
 \href{mailto:{{EMAIL}}}{{{EMAIL}}} \ \textperiodcentered \ 
 \href{https://{{WEBSITE}}}{{{WEBSITE}}}
 
-\vspace{8pt}
+\vspace{10pt}
 
-% Section: Statement
 \section{Profile}
+\small
 {{SUMMARY}}
 
-% Section: Experience
+\vspace{4pt}
 \section{Experience}
+\small
 {{EXPERIENCE_ITEMS}}
 
-% Section: Projects
+\vspace{4pt}
 \section{Selected Projects}
+\small
 {{PROJECTS_BLOCK}}
 
-% Section: Education
+\vspace{4pt}
 \section{Education}
+\small
 {{EDUCATION_ITEMS}}
 
-% Section: Skills
+\vspace{4pt}
 \section{Expertise}
+\small
 {{SKILLS_BLOCK}}
 
 \end{document}

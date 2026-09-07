@@ -2,13 +2,13 @@
 % Template: Principal Consultant (resume-14-senior-consultant)
 % Category: executive-senior
 % Description: Management consulting and advisory layout with client transformation callouts.
-% Packages: geometry, titlesec, enumitem, charter, xcolor, hyperref
+% Packages: geometry, titlesec, enumitem, xcolor, charter, hyperref
 %----------------------------------------------------------------------------------------
 
 \documentclass[10pt,letterpaper]{article}
 
 \usepackage[utf8]{inputenc}
-\usepackage[margin=0.7in]{geometry}
+\usepackage[margin=0.65in]{geometry}
 \usepackage[table]{xcolor}
 \usepackage{titlesec}
 \usepackage{enumitem}
@@ -18,24 +18,26 @@
 \pagestyle{empty}
 \raggedbottom
 \raggedright
+\setlength{\parindent}{0pt}
 
-\definecolor{consultingblue}{HTML}{1E3A8A} % Deep Navy
+\definecolor{consultnavy}{HTML}{1E3A8A} % Deep Navy
+\definecolor{slatecharcoal}{HTML}{1E293B}
 
 \titleformat{\section}{
-  \vspace{5pt}\color{consultingblue}\bfseries\normalsize\scshape
-}{}{0em}{}[\vspace{1pt}{\color{consultingblue}\titlerule}\vspace{3pt}]
+  \vspace{5pt}\color{consultnavy}\bfseries\normalsize\uppercase
+}{}{0em}{}[\vspace{1pt}{\color{consultnavy}\hrule height 1.2pt}\vspace{3pt}]
 
-\setlist[itemize]{leftmargin=1.15em, label=$\blacktriangleright$, itemsep=2.5pt, parsep=0pt, topsep=1pt}
+\setlist[itemize]{leftmargin=1.15em, label={\color{consultnavy}\tiny$\blacksquare$}, itemsep=2.5pt, parsep=0pt, topsep=1pt}
 
 \begin{document}
 
-% Top Consultant Header
-\begin{minipage}[c]{0.65\textwidth}
-  {\LARGE \textbf{\color{consultingblue}{{FULL_NAME}}}} \\[3pt]
-  {\normalsize \textit{{{JOB_TITLE}}}}
+% Top Header
+\begin{minipage}[b]{0.68\textwidth}
+  {\Huge \textbf{\color{slatecharcoal}{{FULL_NAME}}}} \\[3pt]
+  {\normalsize \textbf{\color{consultnavy}{{JOB_TITLE}}}}
 \end{minipage}
 \hfill
-\begin{minipage}[c]{0.33\textwidth}
+\begin{minipage}[b]{0.30\textwidth}
   \raggedleft \small
   {{LOCATION}} \\
   {{PHONE}} \\
@@ -44,24 +46,26 @@
 \end{minipage}
 
 \vspace{6pt}
+{\color{consultnavy}\hrule height 2pt}
+\vspace{6pt}
 
-\section{Practice Summary}
+\section{Management Consulting Profile}
 \small
 {{SUMMARY}}
 
-\section{Advisory Practice Areas}
-\small
-{{SKILLS_BLOCK}}
-
-\section{Consulting \& Industry Experience}
+\section{Advisory Practice \& Client Transformation Experience}
 \small
 {{EXPERIENCE_ITEMS}}
 
-\section{Selected Client Engagements \& Case Studies}
+\section{Strategic Engagements \& Deliverables}
 \small
 {{PROJECTS_BLOCK}}
 
-\section{Education \& Professional Designations}
+\section{Domain Expertise \& Frameworks}
+\small
+{{SKILLS_BLOCK}}
+
+\section{Education \& MBA Credentials}
 \small
 {{EDUCATION_ITEMS}}
 

@@ -8,7 +8,7 @@
 \documentclass[10pt,letterpaper]{article}
 
 \usepackage[utf8]{inputenc}
-\usepackage[margin=0.65in]{geometry}
+\usepackage[margin=0.6in]{geometry}
 \usepackage[table]{xcolor}
 \usepackage{titlesec}
 \usepackage{enumitem}
@@ -20,54 +20,55 @@
 \pagestyle{empty}
 \raggedbottom
 \raggedright
+\setlength{\parindent}{0pt}
 
-\definecolor{brand}{HTML}{3730A3} % Deep Indigo
+\definecolor{brandindigo}{HTML}{3730A3} % Deep Indigo
 \definecolor{charcoal}{HTML}{111827}
-\definecolor{lightline}{HTML}{E0E7FF}
+\definecolor{bannerbg}{HTML}{1E1B4B}
 
 \titleformat{\section}{
-  \vspace{6pt}\color{brand}\bfseries\normalsize\uppercase
-}{}{0em}{}[\vspace{1pt}{\color{brand}\hrule height 1pt}\vspace{3pt}]
+  \vspace{6pt}\color{brandindigo}\bfseries\normalsize\uppercase
+}{}{0em}{}[\vspace{1pt}{\color{brandindigo}\hrule height 1.5pt}\vspace{4pt}]
 
-\setlist[itemize]{leftmargin=1.1em, label={\color{brand}\scriptsize$\blacksquare$}, itemsep=2.5pt, parsep=0pt, topsep=1pt}
+\setlist[itemize]{leftmargin=1.1em, label={\color{brandindigo}\scriptsize$\blacksquare$}, itemsep=2.5pt, parsep=0pt, topsep=1pt}
 
 \begin{document}
 
-% Geometric banner header
-\begin{minipage}[c]{0.70\textwidth}
-  {\Huge \textbf{\color{charcoal}{{FULL_NAME}}}} \\[4pt]
-  {\normalsize \textbf{\color{brand}{{JOB_TITLE}}}}
-\end{minipage}
-\hfill
-\begin{minipage}[c]{0.28\textwidth}
-  \raggedleft \small
-  \faMapPin \ {{LOCATION}} \\
-  \faPhone* \ {{PHONE}} \\
-  \faEnvelope \ \href{mailto:{{EMAIL}}}{{{EMAIL}}}\\
-  \faGlobe \ \href{https://{{WEBSITE}}}{{{WEBSITE}}}
-\end{minipage}
+% Top Inverted Header Block
+\noindent
+\colorbox{bannerbg}{%
+  \begin{minipage}{\dimexpr\textwidth-2\fboxsep\relax}
+    \vspace{6pt}
+    {\Huge \textbf{\color{white}{{FULL_NAME}}}} \\[4pt]
+    {\normalsize \textbf{\color{indigo!30}{{JOB_TITLE}}}} \\[6pt]
+    \small\color{gray!30}
+    {{LOCATION}} \ \textbullet \ 
+    {{PHONE}} \ \textbullet \ 
+    \href{mailto:{{EMAIL}}}{\color{gray!20}{{EMAIL}}} \ \textbullet \ 
+    \href{https://{{WEBSITE}}}{\color{gray!20}{{WEBSITE}}}
+    \vspace{6pt}
+  \end{minipage}%
+}
 
-\vspace{6pt}
-{\color{lightline}\hrule height 2pt}
-\vspace{6pt}
+\vspace{10pt}
 
-\section{Executive Creative Profile}
+\section{Creative Philosophy \& Direction}
 \small
 {{SUMMARY}}
 
-\section{Creative Leadership \& Experience}
+\section{Art Direction \& Professional History}
 \small
 {{EXPERIENCE_ITEMS}}
 
-\section{Campaigns, Case Studies \& Direction}
+\section{Flagship Campaigns \& Brand Systems}
 \small
 {{PROJECTS_BLOCK}}
 
-\section{Creative Technologies \& Craft}
+\section{Creative Technologies \& Software}
 \small
 {{SKILLS_BLOCK}}
 
-\section{Education \& Recognition}
+\section{Academic Background \& Honors}
 \small
 {{EDUCATION_ITEMS}}
 

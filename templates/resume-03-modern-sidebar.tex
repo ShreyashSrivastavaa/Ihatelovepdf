@@ -8,7 +8,7 @@
 \documentclass[10pt,letterpaper]{article}
 
 \usepackage[utf8]{inputenc}
-\usepackage[margin=0.6in]{geometry}
+\usepackage[margin=0.55in]{geometry}
 \usepackage[table]{xcolor}
 \usepackage{titlesec}
 \usepackage{enumitem}
@@ -24,23 +24,23 @@
 \definecolor{primary}{HTML}{2563EB} % Modern Royal Blue
 \definecolor{darkgray}{HTML}{1F2937}
 \definecolor{lightgray}{HTML}{F3F4F6}
-\definecolor{sidebarborder}{HTML}{E5E7EB}
+\definecolor{sidebarborder}{HTML}{CBD5E1}
 
 % Section styling
-\titleformat{\section}{\color{primary}\large\bfseries}{}{0em}{}[\vspace{1pt}\titlerule]
-\newcommand{\sidesection}[1]{\vspace{8pt}{\color{primary}\normalsize\bfseries #1}\vspace{2pt}\par\hrule\vspace{4pt}}
+\titleformat{\section}{\color{primary}\large\bfseries}{}{0em}{}[\vspace{1pt}{\color{primary}\hrule height 1.2pt}\vspace{3pt}]
+\newcommand{\sidesection}[1]{\vspace{10pt}{\color{primary}\normalsize\bfseries\uppercase{#1}}\vspace{2pt}\par\hrule height 0.8pt\vspace{5pt}}
 
-\setlist[itemize]{leftmargin=1.1em, label=\textbullet, itemsep=2pt, parsep=0pt, topsep=1pt}
+\setlist[itemize]{leftmargin=1.1em, label={\color{primary}$\bullet$}, itemsep=2.5pt, parsep=0pt, topsep=1pt}
 
 \begin{document}
 
 % Top Header
-\begin{minipage}[b]{0.65\textwidth}
-  {\Huge \textbf{\color{darkgray}{{FULL_NAME}}}} \\[4pt]
+\begin{minipage}[b]{0.64\textwidth}
+  {\Huge \textbf{\color{darkgray}{{FULL_NAME}}}} \\[3pt]
   {\Large \textbf{\color{primary}{{JOB_TITLE}}}}
 \end{minipage}
 \hfill
-\begin{minipage}[b]{0.32\textwidth}
+\begin{minipage}[b]{0.33\textwidth}
   \raggedleft \small
   {{LOCATION}} \\
   {{PHONE}} \\
@@ -49,18 +49,18 @@
 \end{minipage}
 
 \vspace{6pt}
-\hrule height 1.5pt \color{primary}
+{\color{primary}\hrule height 2pt}
 \vspace{10pt}
 
-% Two Columns: Left Sidebar (30%) + Main Body (67%)
+% Two Columns: Left Sidebar (30%) + Divider + Main Body (66%)
 \begin{minipage}[t]{0.30\textwidth}
-  \sidesection{Contact}
+  \sidesection{Contact Details}
   \small
-  \textbf{Email:} \href{mailto:{{EMAIL}}}{{{EMAIL}}} \\[2pt]
-  \textbf{Phone:} {{PHONE}} \\[2pt]
-  \textbf{Location:} {{LOCATION}} \\[2pt]
-  \textbf{Portfolio:} \href{https://{{WEBSITE}}}{{{WEBSITE}}} \\[2pt]
-  \textbf{GitHub:} \href{https://{{GITHUB}}}{{{GITHUB}}}
+  \textbf{Email:}\\ \href{mailto:{{EMAIL}}}{{{EMAIL}}} \\[4pt]
+  \textbf{Phone:}\\ {{PHONE}} \\[4pt]
+  \textbf{Location:}\\ {{LOCATION}} \\[4pt]
+  \textbf{Portfolio:}\\ \href{https://{{WEBSITE}}}{{{WEBSITE}}} \\[4pt]
+  \textbf{GitHub:}\\ \href{https://{{GITHUB}}}{{{GITHUB}}}
 
   \sidesection{Core Skills}
   {{SKILLS_BLOCK}}
@@ -69,19 +69,19 @@
   {{EDUCATION_ITEMS}}
 \end{minipage}
 \hfill
-\vrule width 0.5pt \color{sidebarborder}
+{\color{sidebarborder}\vrule width 0.75pt}
 \hfill
 \begin{minipage}[t]{0.66\textwidth}
   \section{Professional Summary}
   \small
   {{SUMMARY}}
 
-  \vspace{6pt}
-  \section{Experience}
+  \vspace{8pt}
+  \section{Professional Experience}
   \small
   {{EXPERIENCE_ITEMS}}
 
-  \vspace{6pt}
+  \vspace{8pt}
   \section{Key Projects}
   \small
   {{PROJECTS_BLOCK}}

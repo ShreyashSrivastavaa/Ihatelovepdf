@@ -1,60 +1,68 @@
 %----------------------------------------------------------------------------------------
 % Template: C-Suite Executive (resume-13-executive-prestige)
 % Category: executive-senior
-% Description: Understated luxury serif layout for CEOs, VPs, and board advisory positions.
-% Packages: geometry, titlesec, enumitem, mathpazo, xcolor, hyperref
+% Description: Understated luxury serif layout with double rules for CEOs, VPs, and directors.
+% Packages: geometry, titlesec, enumitem, mathpazo, hyperref
 %----------------------------------------------------------------------------------------
 
 \documentclass[10pt,letterpaper]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[margin=0.75in]{geometry}
-\usepackage[table]{xcolor}
 \usepackage{titlesec}
 \usepackage{enumitem}
-\usepackage{mathpazo} % Dignified serif
+\usepackage{mathpazo} % Palatino font
 \usepackage[hidelinks]{hyperref}
 
 \pagestyle{empty}
 \raggedbottom
 \raggedright
+\setlength{\parindent}{0pt}
 
-\definecolor{executivecharcoal}{HTML}{1E293B}
-
+% Section styling with distinct DOUBLE horizontal rules
 \titleformat{\section}{
-  \vspace{6pt}\scshape\large\color{executivecharcoal}
-}{}{0em}{}[\vspace{1pt}\hrule height 0.6pt\vspace{4pt}]
+  \vspace{8pt}\scshape\normalsize\center
+}{}{0em}{}[\vspace{2pt}\hrule height 1pt\vspace{1.5pt}\hrule height 0.3pt\vspace{4pt}]
 
-\setlist[itemize]{leftmargin=1.2em, label=$\diamond$, itemsep=2.5pt, parsep=0pt, topsep=1pt}
+\setlist[itemize]{leftmargin=1.2em, label=$\bullet$, itemsep=2pt, parsep=0pt, topsep=1pt}
 
 \begin{document}
 
-% Dignified Executive Header
+% Luxury Centered Header
 \begin{center}
   {\Huge \textsc{{{FULL_NAME}}}} \\[4pt]
-  {\normalsize \textit{{{JOB_TITLE}}}} \\[6pt]
+  {\normalsize \textbf{{{JOB_TITLE}}}} \\[6pt]
   \small
-  {{LOCATION}} \ \textbar \ 
-  {{PHONE}} \ \textbar \ 
-  \href{mailto:{{EMAIL}}}{{{EMAIL}}} \ \textbar \ 
+  {{LOCATION}} \ \textperiodcentered \ 
+  {{PHONE}} \ \textperiodcentered \ 
+  \href{mailto:{{EMAIL}}}{{{EMAIL}}} \ \textperiodcentered \ 
   \href{https://{{LINKEDIN}}}{{{LINKEDIN}}}
 \end{center}
 
 \vspace{2pt}
+\hrule height 1.2pt
+\vspace{1.5pt}
+\hrule height 0.4pt
+\vspace{6pt}
 
 \section{Executive Profile \& P\&L Oversight}
+\small
 {{SUMMARY}}
 
-\section{Core Leadership Competencies}
+\section{Core Executive Competencies}
+\small
 {{SKILLS_BLOCK}}
 
-\section{Executive Experience}
+\section{Executive Experience \& Organizational Growth}
+\small
 {{EXPERIENCE_ITEMS}}
 
-\section{Board Advisory \& Strategic Transactions}
+\section{Strategic Initiatives \& Corporate Milestones}
+\small
 {{PROJECTS_BLOCK}}
 
-\section{Education \& Executive Credentials}
+\section{Academic Credentials \& Executive Education}
+\small
 {{EDUCATION_ITEMS}}
 
 \end{document}

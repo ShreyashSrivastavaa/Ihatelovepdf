@@ -1,14 +1,14 @@
 %----------------------------------------------------------------------------------------
 % Template: Airy Typographic (resume-06-minimal-spaced)
 % Category: minimalist
-% Description: Pure whitespace hierarchy with zero divider rules, airy line-height.
+% Description: Pure whitespace hierarchy with zero horizontal rules, 0.9in margins, Charter serif.
 % Packages: geometry, titlesec, enumitem, charter, hyperref
 %----------------------------------------------------------------------------------------
 
 \documentclass[10pt,letterpaper]{article}
 
 \usepackage[utf8]{inputenc}
-\usepackage[margin=0.8in]{geometry}
+\usepackage[margin=0.9in]{geometry}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{charter}
@@ -17,40 +17,48 @@
 \pagestyle{empty}
 \raggedbottom
 \raggedright
+\setlength{\parindent}{0pt}
 
-% Pure typographic spacing, no lines
+% Section styling: bold serif titles separated PURELY by vertical whitespace, ZERO rules
 \titleformat{\section}{
-  \vspace{10pt}\large\bfseries
-}{}{0em}{}
+  \vspace{14pt}\Large\bfseries
+}{}{0em}{}[\vspace{4pt}]
 
-\setlist[itemize]{leftmargin=1.1em, label=$\cdot$, itemsep=2.5pt, parsep=0pt, topsep=2pt}
+\setlist[itemize]{leftmargin=1.1em, label=$\cdot$, itemsep=2pt, parsep=0pt, topsep=2pt}
 
 \begin{document}
 
-% Airy Header
-{\huge \textbf{{{FULL_NAME}}}} \\[4pt]
-{\normalsize \textbf{{{JOB_TITLE}}}} \\[6pt]
+% Airy Centered Header
+\begin{center}
+  {\huge \textbf{{{FULL_NAME}}}} \\[4pt]
+  {\normalsize \textit{{{JOB_TITLE}}}} \\[8pt]
+  \small
+  {{LOCATION}} \ \textbar \ 
+  {{PHONE}} \ \textbar \ 
+  \href{mailto:{{EMAIL}}}{{{EMAIL}}} \ \textbar \ 
+  \href{https://{{LINKEDIN}}}{{{LINKEDIN}}}
+\end{center}
+
+\vspace{8pt}
+
+\section{Introduction}
 \small
-{{LOCATION}} \ \textbullet \ 
-{{PHONE}} \ \textbullet \ 
-\href{mailto:{{EMAIL}}}{{{EMAIL}}} \ \textbullet \ 
-\href{https://{{LINKEDIN}}}{{{LINKEDIN}}}
-
-\vspace{6pt}
-
-\section{Overview}
 {{SUMMARY}}
 
 \section{Experience}
+\small
 {{EXPERIENCE_ITEMS}}
 
 \section{Education}
+\small
 {{EDUCATION_ITEMS}}
 
-\section{Projects}
+\section{Key Projects}
+\small
 {{PROJECTS_BLOCK}}
 
-\section{Skills \& Tools}
+\section{Competencies}
+\small
 {{SKILLS_BLOCK}}
 
 \end{document}

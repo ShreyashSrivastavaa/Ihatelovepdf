@@ -3,16 +3,16 @@
  * Supports ATS-friendly resumes: Jake's Resume, Classic Corporate, Modern Tech, and Academic CV
  */
 
-export type ResumeTemplateId = 'jakes' | 'corporate' | 'modern' | 'academic';
+export type ResumeTemplateId = 'jakes' | 'corporate' | 'modern' | 'academic' | string;
 
 export interface ResumeTemplateMeta {
   id: ResumeTemplateId;
   name: string;
-  tagline: string;
+  tagline?: string;
   description: string;
-  font: 'Helvetica' | 'Times';
-  accentColor: string;
-  category: 'Tech / Software' | 'Corporate / Finance' | 'Modern Creative' | 'Research / Academic';
+  font?: 'Helvetica' | 'Times' | string;
+  accentColor?: string;
+  category: string;
 }
 
 export const RESUME_TEMPLATES: ResumeTemplateMeta[] = [

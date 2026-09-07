@@ -1,14 +1,14 @@
 %----------------------------------------------------------------------------------------
 % Template: Creative UX & Product Designer (resume-09-creative-portfolio)
 % Category: creative-designer
-% Description: Designer layout with FontAwesome5 icons, subtle color accents, and portfolio focus.
+% Description: Designer layout with FontAwesome5 icons, terracotta accents, and portfolio links.
 % Packages: geometry, titlesec, enumitem, xcolor, fontawesome5, helvet, hyperref
 %----------------------------------------------------------------------------------------
 
 \documentclass[10pt,letterpaper]{article}
 
 \usepackage[utf8]{inputenc}
-\usepackage[margin=0.65in]{geometry}
+\usepackage[margin=0.6in]{geometry}
 \usepackage[table]{xcolor}
 \usepackage{titlesec}
 \usepackage{enumitem}
@@ -20,51 +20,56 @@
 \pagestyle{empty}
 \raggedbottom
 \raggedright
+\setlength{\parindent}{0pt}
 
-% Accent colors
-\definecolor{accent}{HTML}{C2410C} % Terracotta Warm Accent
-\definecolor{darktext}{HTML}{1F2937}
-\definecolor{mutedtext}{HTML}{4B5563}
+\definecolor{terracotta}{HTML}{C2410C} % Warm Terracotta
+\definecolor{darkslate}{HTML}{0F172A}
+\definecolor{subtleline}{HTML}{FED7AA}
 
+% Icon-prefixed section headings
 \titleformat{\section}{
-  \vspace{4pt}\color{accent}\bfseries\large
-}{}{0em}{}[\vspace{1pt}{\color{accent}\titlerule}\vspace{2pt}]
+  \vspace{5pt}\color{terracotta}\bfseries\normalsize\uppercase
+}{}{0em}{}[\vspace{1pt}{\color{terracotta}\hrule height 1.2pt}\vspace{3pt}]
 
-\setlist[itemize]{leftmargin=1.1em, label={\color{accent}$\blacktriangleright$}, itemsep=2.5pt, parsep=0pt, topsep=1pt}
+\setlist[itemize]{leftmargin=1.15em, label={\color{terracotta}\faAngleRight}, itemsep=2pt, parsep=0pt, topsep=1pt}
 
 \begin{document}
 
-% Creative Header with Icons
-\begin{center}
-  {\Huge \textbf{\color{darktext}{{FULL_NAME}}}} \\[4pt]
-  {\Large \textbf{\color{accent}{{JOB_TITLE}}}} \\[6pt]
-  \small \color{mutedtext}
-  \faMapMarker* \ {{LOCATION}} \ \ \textbar\ \ 
-  \faPhone \ {{PHONE}} \ \ \textbar\ \ 
-  \faEnvelope \ \href{mailto:{{EMAIL}}}{{{EMAIL}}} \ \ \textbar\ \ 
-  \faGlobe \ \href{https://{{WEBSITE}}}{{{WEBSITE}}} \ \ \textbar\ \ 
-  \faLinkedin \ \href{https://{{LINKEDIN}}}{{{LINKEDIN}}}
-\end{center}
+% Top Header
+\begin{minipage}[t]{0.64\textwidth}
+  {\Huge \textbf{\color{darkslate}{{FULL_NAME}}}} \\[4pt]
+  {\normalsize \textbf{\color{terracotta}{{JOB_TITLE}}}}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.34\textwidth}
+  \raggedleft \small
+  \faMapMarker* \ {{LOCATION}} \\
+  \faPhone \ {{PHONE}} \\
+  \faEnvelope \ \href{mailto:{{EMAIL}}}{{{EMAIL}}} \\
+  \faGlobe \ \href{https://{{WEBSITE}}}{{{WEBSITE}}}
+\end{minipage}
 
-\vspace{2pt}
+\vspace{6pt}
+{\color{terracotta}\hrule height 2pt}
+\vspace{6pt}
 
-\section{Design Philosophy \& Summary}
+\section{\faUser\hspace{0.4em} Product \& Design Philosophy}
 \small
 {{SUMMARY}}
 
-\section{Design Toolkit \& Systems}
-\small
-{{SKILLS_BLOCK}}
-
-\section{Experience}
+\section{\faBriefcase\hspace{0.4em} Design Experience \& Leadership}
 \small
 {{EXPERIENCE_ITEMS}}
 
-\section{Featured Design Systems \& Projects}
+\section{\faFolderOpen\hspace{0.4em} Featured Case Studies \& Systems}
 \small
 {{PROJECTS_BLOCK}}
 
-\section{Education \& Accreditations}
+\section{\faTools\hspace{0.4em} Design Systems \& Craft Tools}
+\small
+{{SKILLS_BLOCK}}
+
+\section{\faGraduationCap\hspace{0.4em} Education \& Credentials}
 \small
 {{EDUCATION_ITEMS}}
 

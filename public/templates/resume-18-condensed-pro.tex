@@ -1,66 +1,79 @@
 %----------------------------------------------------------------------------------------
-% Template: Condensed Impact (resume-18-condensed-pro)
+% Template: Dense Engineering Summary (resume-18-condensed-pro)
 % Category: compact-dense
-% Description: Compact single-column layout optimized for senior engineers fitting 10+ years into 1 page.
-% Packages: geometry, titlesec, enumitem, xcolor, charter, hyperref
+% Description: Dense engineering summary with two-column skills & credentials footer.
+% Packages: geometry, titlesec, enumitem, xcolor, helvet, hyperref
 %----------------------------------------------------------------------------------------
 
 \documentclass[9.5pt,letterpaper]{article}
 
 \usepackage[utf8]{inputenc}
-\usepackage[margin=0.5in]{geometry}
+\usepackage[margin=0.4in]{geometry}
 \usepackage[table]{xcolor}
 \usepackage{titlesec}
 \usepackage{enumitem}
-\usepackage{charter}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
 \usepackage[hidelinks]{hyperref}
 
 \pagestyle{empty}
 \raggedbottom
 \raggedright
+\setlength{\parindent}{0pt}
 
-\definecolor{slateaccent}{HTML}{334155}
+\definecolor{charcoal}{HTML}{374151}
+\definecolor{deepslate}{HTML}{1F2937}
 
 \titleformat{\section}{
-  \vspace{-1pt}\color{slateaccent}\bfseries\small\scshape
-}{}{0em}{}[\vspace{1pt}{\color{slateaccent}\hrule height 0.5pt}\vspace{-3pt}]
+  \vspace{-2pt}\color{charcoal}\bfseries\small\uppercase
+}{}{0em}{}[\vspace{1pt}{\color{charcoal}\hrule height 0.8pt}\vspace{-2pt}]
 
-\setlist[itemize]{leftmargin=1.0em, label=$\circ$, itemsep=1.5pt, parsep=0pt, topsep=1pt}
+\setlist[itemize]{leftmargin=1.1em, label={\color{charcoal}$\circ$}, itemsep=1pt, parsep=0pt, topsep=1pt}
 
 \begin{document}
 
-% Header
-\begin{center}
-  {\LARGE \textbf{\color{slateaccent}{{FULL_NAME}}}} \\[2pt]
-  {\small \textit{{{JOB_TITLE}}}} \\[3pt]
-  \footnotesize
-  {{LOCATION}} \ \textbar \ 
-  {{PHONE}} \ \textbar \ 
-  \href{mailto:{{EMAIL}}}{{{EMAIL}}} \ \textbar \ 
-  \href{https://{{LINKEDIN}}}{{{LINKEDIN}}} \ \textbar \ 
-  \href{https://{{WEBSITE}}}{{{WEBSITE}}}
-\end{center}
+% Top Header
+\begin{minipage}[t]{0.70\textwidth}
+  {\Large \textbf{\color{deepslate}{{FULL_NAME}}}} \ \ \textbar \ \ {\small \textbf{\color{charcoal}{{JOB_TITLE}}}}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.28\textwidth}
+  \raggedleft \scriptsize
+  {{LOCATION}} \ \textbullet \ {{PHONE}} \\
+  \href{mailto:{{EMAIL}}}{{{EMAIL}}} \ \textbullet \ \href{https://{{LINKEDIN}}}{{{LINKEDIN}}}
+\end{minipage}
 
-\vspace{-4pt}
+\vspace{3pt}
+{\color{charcoal}\hrule height 1.2pt}
+\vspace{4pt}
 
-\section{Executive Summary}
+\section{Summary}
 \footnotesize
 {{SUMMARY}}
 
-\section{Core Competencies}
-\footnotesize
-{{SKILLS_BLOCK}}
-
+\vspace{2pt}
 \section{Professional Experience}
 \footnotesize
 {{EXPERIENCE_ITEMS}}
 
-\section{Major Projects}
+\vspace{2pt}
+\section{Key Projects \& Implementations}
 \footnotesize
 {{PROJECTS_BLOCK}}
 
-\section{Education \& Accreditations}
-\footnotesize
-{{EDUCATION_ITEMS}}
+\vspace{4pt}
+
+% Two-Column Footer: Skills (50%) + Education (48%)
+\begin{minipage}[t]{0.50\textwidth}
+  \section{Skills Matrix}
+  \scriptsize
+  {{SKILLS_BLOCK}}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.47\textwidth}
+  \section{Education \& Credentials}
+  \scriptsize
+  {{EDUCATION_ITEMS}}
+\end{minipage}
 
 \end{document}

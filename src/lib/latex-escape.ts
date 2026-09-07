@@ -3,6 +3,8 @@
  * 100% client-side, zero server dependencies.
  */
 
+import type { ResumeData } from './latex/resume-types';
+
 // Forbidden/dangerous raw LaTeX commands that must be stripped from user plain-text inputs
 const FORBIDDEN_LATEX_COMMANDS = [
   /\\input(?![a-zA-Z])/gi,
@@ -263,4 +265,50 @@ export function injectPlaceholders(
   }
 
   return output;
+}
+
+/**
+ * Transforms internal ResumeData model into template-compatible ResumeFormData
+ */
+export function resumeDataToFormData(d: ResumeData): ResumeFormData {
+  if (!d) return {};
+  const p = d.personalInfo;
+
+  return {
+    fullName: p?.name || '',
+    email: p?.email || '',
+    phone: p?.phone || '',
+    location: p?.location || '',
+    linkedin: p?.linkedin || '',
+    github: p?.github || '',
+    website: p?.portfolio || '',
+    summary: d.summary || '',
+    skills: (d.skills || []).map((s) => ({
+      category: s.name,
+      list: typeof s.skills === 'string' ? s.skills.split(',').map((x: string) => x.trim()) : [],
+    })),
+    experience: (d.experience || []).map((e) => ({
+      role: e.role,
+      company: e.company,
+      location: e.location,
+      startDate: e.startDate,
+      endDate: e.endDate,
+      bullets: e.bullets || [],
+    })),
+    education: (d.education || []).map((ed) => ({
+      degree: ed.degree,
+      institution: ed.institution,
+      location: ed.location,
+      startDate: ed.startDate,
+      endDate: ed.endDate,
+      details: ed.gpa ? `GPA: ${ed.gpa}` : undefined,
+    })),
+    projects: (d.projects || []).map((proj) => ({
+      title: proj.name,
+      tech: proj.technologies,
+      link: proj.link,
+      bullets: proj.bullets || [],
+    })),
+    certifications: (d.certifications || []).map((c) => `${c.name} (${c.issuer})`),
+  };
 }

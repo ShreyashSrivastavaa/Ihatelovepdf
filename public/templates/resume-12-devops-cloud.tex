@@ -1,14 +1,14 @@
 %----------------------------------------------------------------------------------------
 % Template: Cloud & SRE Architect (resume-12-devops-cloud)
 % Category: tech-developer
-% Description: Cloud infrastructure, SRE, and systems layout with telemetry and certification focus.
+% Description: Cloud infrastructure, SRE, and distributed systems layout with telemetry focus.
 % Packages: geometry, titlesec, enumitem, xcolor, fontawesome5, helvet, hyperref
 %----------------------------------------------------------------------------------------
 
 \documentclass[10pt,letterpaper]{article}
 
 \usepackage[utf8]{inputenc}
-\usepackage[margin=0.65in]{geometry}
+\usepackage[margin=0.6in]{geometry}
 \usepackage[table]{xcolor}
 \usepackage{titlesec}
 \usepackage{enumitem}
@@ -20,51 +20,54 @@
 \pagestyle{empty}
 \raggedbottom
 \raggedright
+\setlength{\parindent}{0pt}
 
-\definecolor{cloudcyan}{HTML}{0891B2} % Cyan Terminal Accent
-\definecolor{darkslate}{HTML}{0F172A}
+\definecolor{srecyan}{HTML}{0891B2} % Cyan Accent
+\definecolor{slateheader}{HTML}{0F172A}
 
 \titleformat{\section}{
-  \vspace{4pt}\color{cloudcyan}\bfseries\normalsize\uppercase
-}{}{0em}{}[\vspace{1pt}{\color{cloudcyan}\hrule height 0.8pt}\vspace{3pt}]
+  \vspace{4pt}\color{srecyan}\bfseries\normalsize\uppercase
+}{}{0em}{}[\vspace{1pt}{\color{srecyan}\hrule height 1.2pt}\vspace{3pt}]
 
-\setlist[itemize]{leftmargin=1.1em, label={\color{cloudcyan}$\bullet$}, itemsep=2.5pt, parsep=0pt, topsep=1pt}
+\setlist[itemize]{leftmargin=1.15em, label={\color{srecyan}\small\texttt{>}}, itemsep=2pt, parsep=0pt, topsep=1pt}
 
 \begin{document}
 
-% Header
-\begin{minipage}[c]{0.65\textwidth}
-  {\LARGE \textbf{\color{darkslate}{{FULL_NAME}}}} \\[3pt]
-  {\small \textbf{\color{cloudcyan}{{JOB_TITLE}}}}
+% Top Header
+\begin{minipage}[t]{0.65\textwidth}
+  {\Huge \textbf{\color{slateheader}{{FULL_NAME}}}} \\[3pt]
+  {\normalsize \textbf{\color{srecyan}{{JOB_TITLE}}}}
 \end{minipage}
 \hfill
-\begin{minipage}[c]{0.33\textwidth}
+\begin{minipage}[t]{0.33\textwidth}
   \raggedleft \small
-  \faMapPin \ {{LOCATION}} \\
-  \faEnvelope \ \href{mailto:{{EMAIL}}}{{{EMAIL}}} \\
+  \faMapMarker* \ {{LOCATION}} \\
   \faPhone \ {{PHONE}} \\
-  \faCloud \ \href{https://{{GITHUB}}}{github.com/{{GITHUB}}}
+  \faEnvelope \ \href{mailto:{{EMAIL}}}{{{EMAIL}}} \\
+  \faGithub \ \href{https://{{GITHUB}}}{{{GITHUB}}}
 \end{minipage}
 
 \vspace{6pt}
+{\color{srecyan}\hrule height 2pt}
+\vspace{6pt}
 
-\section{Infrastructure \& Reliability Profile}
+\section{System Architecture \& Infrastructure Focus}
 \small
 {{SUMMARY}}
 
-\section{Cloud, SRE \& Tooling Stack}
+\section{Core Infrastructure Stack \& SRE Tools}
 \small
 {{SKILLS_BLOCK}}
 
-\section{Professional Experience}
+\section{Distributed Systems \& Engineering Experience}
 \small
 {{EXPERIENCE_ITEMS}}
 
-\section{Architecture Deployments \& Projects}
+\section{Cloud Migrations, Reliability \& IaC Deployments}
 \small
 {{PROJECTS_BLOCK}}
 
-\section{Education \& Certifications}
+\section{Academic Foundation \& Certifications}
 \small
 {{EDUCATION_ITEMS}}
 

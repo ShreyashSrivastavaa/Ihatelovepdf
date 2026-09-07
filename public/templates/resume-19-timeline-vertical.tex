@@ -1,14 +1,14 @@
 %----------------------------------------------------------------------------------------
-% Template: Rail Timeline (resume-19-timeline-vertical)
+% Template: Timeline Journey (resume-19-timeline-vertical)
 % Category: timeline-style
-% Description: Timeline layout with a vertical accent rail, date markers, and clean milestone flow.
+% Description: Vertical timeline layout with milestone date rail and node bullets.
 % Packages: geometry, titlesec, enumitem, xcolor, fontawesome5, helvet, hyperref
 %----------------------------------------------------------------------------------------
 
 \documentclass[10pt,letterpaper]{article}
 
 \usepackage[utf8]{inputenc}
-\usepackage[margin=0.65in]{geometry}
+\usepackage[margin=0.6in]{geometry}
 \usepackage[table]{xcolor}
 \usepackage{titlesec}
 \usepackage{enumitem}
@@ -20,16 +20,18 @@
 \pagestyle{empty}
 \raggedbottom
 \raggedright
+\setlength{\parindent}{0pt}
 
 \definecolor{timelinepurple}{HTML}{7C3AED} % Royal Violet
 \definecolor{darkgray}{HTML}{1F2937}
-\definecolor{lightrail}{HTML}{DDD6FE}
+\definecolor{lightrail}{HTML}{C4B5FD}
 
 \titleformat{\section}{
-  \vspace{4pt}\color{timelinepurple}\bfseries\normalsize\uppercase
-}{}{0em}{}[\vspace{1pt}{\color{timelinepurple}\titlerule}\vspace{3pt}]
+  \vspace{6pt}\color{timelinepurple}\bfseries\normalsize\uppercase
+}{}{0em}{}[\vspace{1pt}{\color{timelinepurple}\hrule height 1.2pt}\vspace{4pt}]
 
-\setlist[itemize]{leftmargin=1.2em, label={\color{timelinepurple}$\circ$}, itemsep=2pt, parsep=0pt, topsep=1pt}
+% Timeline itemize with circle node markers
+\setlist[itemize]{leftmargin=1.2em, label={\color{timelinepurple}\small$\circ$}, itemsep=2pt, parsep=0pt, topsep=1pt}
 
 \begin{document}
 
@@ -46,20 +48,38 @@
 
 \vspace{-2pt}
 
-\section{Career Objective \& Profile}
+\section{Career Vision \& Summary}
 \small
 {{SUMMARY}}
 
-\section{Technical Skill Stack}
+\section{Core Skill Stack}
 \small
 {{SKILLS_BLOCK}}
 
-% Timeline Section: Experience
-\section{Career Progression \& Milestones}
+% Timeline Experience Section: Left Milestone Rail (18%) + Right Content (79%)
+\section{Career Progression \& Timeline Milestones}
 \small
-{{EXPERIENCE_ITEMS}}
+\noindent
+\begin{minipage}[t]{0.14\textwidth}
+  \raggedleft
+  \color{timelinepurple}\bfseries
+  \small
+  Recent \\
+  \vspace{22pt}
+  Prior \\
+  \vspace{22pt}
+  Early
+\end{minipage}
+\hfill
+{\color{timelinepurple}\vrule width 1.2pt}
+\hfill
+\begin{minipage}[t]{0.82\textwidth}
+  {{EXPERIENCE_ITEMS}}
+\end{minipage}
 
-\section{Milestone Projects}
+\vspace{6pt}
+
+\section{Milestone Projects \& Deliverables}
 \small
 {{PROJECTS_BLOCK}}
 

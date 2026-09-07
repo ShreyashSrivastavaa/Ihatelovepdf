@@ -1,8 +1,8 @@
 %----------------------------------------------------------------------------------------
 % Template: Faculty & Fellowship CV (resume-08-fellowship-research)
 % Category: academic-cv
-% Description: Structured academic curriculum vitae emphasizing fellowships, grants, and labs.
-% Packages: geometry, titlesec, enumitem, lmodern, hyperref
+% Description: Structured academic CV emphasizing fellowships, grants, and research mentorship.
+% Packages: geometry, titlesec, enumitem, fancyhdr, lmodern, hyperref
 %----------------------------------------------------------------------------------------
 
 \documentclass[10pt,letterpaper]{article}
@@ -11,50 +11,59 @@
 \usepackage[margin=0.75in]{geometry}
 \usepackage{titlesec}
 \usepackage{enumitem}
+\usepackage{fancyhdr}
 \usepackage{lmodern}
 \usepackage[hidelinks]{hyperref}
 
-\pagestyle{empty}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.3pt}
+\lhead{\footnotesize\scshape {{FULL_NAME}}}
+\rhead{\footnotesize\thepage}
+
 \raggedbottom
 \raggedright
+\setlength{\parindent}{0pt}
 
 \titleformat{\section}{
-  \vspace{4pt}\bfseries\normalsize\uppercase
-}{}{0em}{}[\vspace{1pt}\titlerule\vspace{2pt}]
+  \vspace{6pt}\bfseries\normalsize\uppercase
+}{}{0em}{}[\vspace{1pt}\hrule height 0.4pt\vspace{4pt}]
 
-\setlist[itemize]{leftmargin=1.1em, label=\textbullet, itemsep=2pt, parsep=0pt, topsep=1pt}
+\setlist[itemize]{leftmargin=1.15em, label=$\diamond$, itemsep=2pt, parsep=0pt, topsep=1pt}
 
 \begin{document}
 
-% Header
-\begin{minipage}[t]{0.65\textwidth}
-  {\LARGE \textbf{{{FULL_NAME}}}} \\[2pt]
-  {\small \textbf{{{JOB_TITLE}}}}
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.33\textwidth}
-  \raggedleft \small
-  {{LOCATION}} \\
-  {{PHONE}} \\
-  \href{mailto:{{EMAIL}}}{{{EMAIL}}} \\
+% Top Header
+\begin{center}
+  {\Huge \textbf{{{FULL_NAME}}}} \\[4pt]
+  {\normalsize \textsc{{{JOB_TITLE}}}} \\[5pt]
+  \small
+  {{LOCATION}} \ \textbar \ 
+  {{PHONE}} \ \textbar \ 
+  \href{mailto:{{EMAIL}}}{{{EMAIL}}} \ \textbar \ 
   \href{https://{{WEBSITE}}}{{{WEBSITE}}}
-\end{minipage}
+\end{center}
 
-\vspace{6pt}
+\vspace{4pt}
 
-\section{Scholarly Statement}
-{{SUMMARY}}
-
-\section{Academic Credentials}
+\section{Academic Qualifications}
+\small
 {{EDUCATION_ITEMS}}
 
-\section{Research \& Teaching Appointments}
+\section{Fellowships \& Research Focus}
+\small
+{{SUMMARY}}
+
+\section{Research Positions \& Clinical Appointments}
+\small
 {{EXPERIENCE_ITEMS}}
 
-\section{Selected Grants, Projects \& Publications}
+\section{Peer-Reviewed Grants \& Major Projects}
+\small
 {{PROJECTS_BLOCK}}
 
-\section{Laboratory \& Computational Expertise}
+\section{Technical Proficiencies \& Lab Techniques}
+\small
 {{SKILLS_BLOCK}}
 
 \end{document}

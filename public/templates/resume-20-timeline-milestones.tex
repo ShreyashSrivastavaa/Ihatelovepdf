@@ -1,14 +1,14 @@
 %----------------------------------------------------------------------------------------
-% Template: Milestone Flow (resume-20-timeline-milestones)
+% Template: Milestone Career Track (resume-20-timeline-milestones)
 % Category: timeline-style
-% Description: Chronological milestone flow layout with amber accents and distinct year callouts.
+% Description: Chronological milestone flow layout with amber accents and milestone callouts.
 % Packages: geometry, titlesec, enumitem, xcolor, fontawesome5, helvet, hyperref
 %----------------------------------------------------------------------------------------
 
 \documentclass[10pt,letterpaper]{article}
 
 \usepackage[utf8]{inputenc}
-\usepackage[margin=0.65in]{geometry}
+\usepackage[margin=0.6in]{geometry}
 \usepackage[table]{xcolor}
 \usepackage{titlesec}
 \usepackage{enumitem}
@@ -20,13 +20,14 @@
 \pagestyle{empty}
 \raggedbottom
 \raggedright
+\setlength{\parindent}{0pt}
 
 \definecolor{amberaccent}{HTML}{D97706} % Warm Amber
 \definecolor{slateheader}{HTML}{0F172A}
 
 \titleformat{\section}{
-  \vspace{4pt}\color{amberaccent}\bfseries\normalsize
-}{}{0em}{}[\vspace{1pt}{\color{amberaccent}\hrule height 1pt}\vspace{3pt}]
+  \vspace{6pt}\color{amberaccent}\bfseries\normalsize\uppercase
+}{}{0em}{}[\vspace{1pt}{\color{amberaccent}\hrule height 1.2pt}\vspace{4pt}]
 
 \setlist[itemize]{leftmargin=1.15em, label={\color{amberaccent}$\blacktriangleright$}, itemsep=2pt, parsep=0pt, topsep=1pt}
 
@@ -35,7 +36,7 @@
 % Top Header
 \begin{minipage}[t]{0.65\textwidth}
   {\LARGE \textbf{\color{slateheader}{{FULL_NAME}}}} \\[3pt]
-  {\small \textbf{\color{amberaccent}{{JOB_TITLE}}}}
+  {\normalsize \textbf{\color{amberaccent}{{JOB_TITLE}}}}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.33\textwidth}
@@ -47,16 +48,18 @@
 \end{minipage}
 
 \vspace{6pt}
+{\color{amberaccent}\hrule height 1.5pt}
+\vspace{6pt}
 
-\section{Career Vision \& Summary}
+\section{Career Progression \& Mission}
 \small
 {{SUMMARY}}
 
-\section{Core Technologies \& Tooling}
+\section{Technical Competency Stack}
 \small
 {{SKILLS_BLOCK}}
 
-\section{Chronological Experience Milestones}
+\section{Chronological Experience Track}
 \small
 {{EXPERIENCE_ITEMS}}
 
@@ -64,7 +67,7 @@
 \small
 {{PROJECTS_BLOCK}}
 
-\section{Academic Background}
+\section{Academic Foundation}
 \small
 {{EDUCATION_ITEMS}}
 

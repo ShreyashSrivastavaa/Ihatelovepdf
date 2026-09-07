@@ -1,14 +1,14 @@
 %----------------------------------------------------------------------------------------
-% Template: High-Density Chrono (resume-17-compact-dense)
+% Template: Compact 1-Page Pro (resume-17-compact-dense)
 % Category: compact-dense
-% Description: 0.45-in margins, inline company/role format, maximum content density for 1 page.
+% Description: 0.35-in margins, 9pt typography, maximum content density for 1 page.
 % Packages: geometry, titlesec, enumitem, helvet, hyperref
 %----------------------------------------------------------------------------------------
 
 \documentclass[9pt,letterpaper]{article}
 
 \usepackage[utf8]{inputenc}
-\usepackage[margin=0.45in]{geometry}
+\usepackage[margin=0.35in]{geometry}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{helvet}
@@ -18,19 +18,21 @@
 \pagestyle{empty}
 \raggedbottom
 \raggedright
+\setlength{\parindent}{0pt}
 
+% Section styling: ultra compact titles with zero extra vertical padding
 \titleformat{\section}{
-  \vspace{-2pt}\bfseries\small\uppercase
-}{}{0em}{}[\vspace{1pt}\titlerule\vspace{-4pt}]
+  \vspace{-3pt}\bfseries\footnotesize\uppercase
+}{}{0em}{}[\vspace{1pt}\hrule height 0.6pt\vspace{-3pt}]
 
-\setlist[itemize]{leftmargin=1.0em, label=$\cdot$, itemsep=1pt, parsep=0pt, topsep=1pt}
+\setlist[itemize]{leftmargin=1.0em, label=$\cdot$, itemsep=0.5pt, parsep=0pt, topsep=1pt}
 
 \begin{document}
 
 % Dense Single-Line Header
 \begin{center}
-  {\Large \textbf{{{FULL_NAME}}}} \ \textbar \ \textbf{{{JOB_TITLE}}} \\[2pt]
-  \footnotesize
+  {\Large \textbf{{{FULL_NAME}}}} \ \textbar \ \textbf{{{JOB_TITLE}}} \\[1pt]
+  \scriptsize
   {{LOCATION}} \ \textbullet \ 
   {{PHONE}} \ \textbullet \ 
   \href{mailto:{{EMAIL}}}{{{EMAIL}}} \ \textbullet \ 
@@ -40,24 +42,28 @@
 
 \vspace{-6pt}
 
-\section{Summary}
-\footnotesize
+\section{Executive Summary}
+\scriptsize
 {{SUMMARY}}
 
-\section{Technical Skills}
-\footnotesize
+\vspace{1pt}
+\section{Technical Competencies}
+\scriptsize
 {{SKILLS_BLOCK}}
 
-\section{Experience}
-\footnotesize
+\vspace{1pt}
+\section{Professional Experience}
+\scriptsize
 {{EXPERIENCE_ITEMS}}
 
-\section{Key Projects}
-\footnotesize
+\vspace{1pt}
+\section{Key Projects \& Technical Contributions}
+\scriptsize
 {{PROJECTS_BLOCK}}
 
-\section{Education}
-\footnotesize
+\vspace{1pt}
+\section{Education \& Certifications}
+\scriptsize
 {{EDUCATION_ITEMS}}
 
 \end{document}

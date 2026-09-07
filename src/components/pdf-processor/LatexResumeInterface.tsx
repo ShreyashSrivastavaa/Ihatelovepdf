@@ -7,10 +7,10 @@ import {
   Download,
   Plus,
   Trash2,
-  ZoomIn,
-  ZoomOut,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
+  ChevronUp,
   Loader2,
   Copy,
   Check,
@@ -42,6 +42,7 @@ import {
 } from '../../lib/latex/custom-template-store';
 import { injectPlaceholders, ResumeFormData } from '../../lib/latex-escape';
 import TemplateUploadModal from './TemplateUploadModal';
+import templateManifest from '../../../templates/manifest.json';
 
 type PdfJsModule = typeof import('pdfjs-dist/legacy/build/pdf');
 let pdfjsLibPromise: Promise<PdfJsModule> | null = null;
@@ -63,15 +64,84 @@ interface LatexResumeInterfaceProps {
   onDone?: (blob: Blob) => void;
 }
 
+function formatCategoryLabel(cat: string): string {
+  if (!cat) return '';
+  if (cat.toLowerCase() === 'all') return 'All';
+  const specialMap: Record<string, string> = {
+    'ats-friendly': 'ATS-Friendly',
+    'modern-twocolumn': 'Modern Two-Column',
+    'minimalist': 'Minimalist',
+    'academic-cv': 'Academic CV',
+    'creative-designer': 'Creative Designer',
+    'tech-developer': 'Tech Developer',
+    'executive-senior': 'Executive Senior',
+    'fresh-grad': 'Fresh Graduate',
+    'compact-dense': 'Compact Dense',
+    'timeline-style': 'Timeline Style',
+    'international': 'International',
+  };
+  if (specialMap[cat.toLowerCase()]) {
+    return specialMap[cat.toLowerCase()];
+  }
+  return cat
+    .split(/[-_/\s]+/)
+    .map((word) => {
+      const lower = word.toLowerCase();
+      if (lower === 'ats') return 'ATS';
+      if (lower === 'cv') return 'CV';
+      if (lower === 'ux') return 'UX';
+      if (lower === 'mba') return 'MBA';
+      if (lower === 'stem') return 'STEM';
+      if (lower === 'sre') return 'SRE';
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    })
+    .join(' ');
+}
+
 export default function LatexResumeInterface({ onDone }: LatexResumeInterfaceProps) {
+  const manifestTemplates = templateManifest.templates;
   const [data, setData] = useState<ResumeData>(SAMPLE_RESUME_DATA);
-  const [templateId, setTemplateId] = useState<string>('jakes');
+  const [templateId, setTemplateId] = useState<string>(manifestTemplates[0]?.id || 'jakes');
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const [customTemplates, setCustomTemplates] = useState<CustomTemplateRecord[]>([]);
   const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
   const [editorMode, setEditorMode] = useState<'form' | 'latex'>('form');
   const [activeFormTab, setActiveFormTab] = useState<'personal' | 'experience' | 'education' | 'projects' | 'skills' | 'certs'>('personal');
   const [latexCode, setLatexCode] = useState<string>('');
   const [isCopied, setIsCopied] = useState(false);
+
+  // Derive distinct categories dynamically from manifest
+  const categories = React.useMemo(() => {
+    const distinct = Array.from(
+      new Set(manifestTemplates.map((t) => t.category).filter(Boolean))
+    );
+    return ['all', ...distinct];
+  }, [manifestTemplates]);
+
+  // Filtered templates based on category filter
+  const filteredTemplates = React.useMemo(() => {
+    if (selectedCategory === 'all') return manifestTemplates;
+    return manifestTemplates.filter((t) => t.category === selectedCategory);
+  }, [selectedCategory, manifestTemplates]);
+
+  // Auto-expand if the currently active template is beyond the first 8 in "All" view
+  useEffect(() => {
+    if (selectedCategory === 'all' && !isExpanded) {
+      const idx = filteredTemplates.findIndex((t) => t.id === templateId);
+      if (idx >= 8) {
+        setIsExpanded(true);
+      }
+    }
+  }, [templateId, selectedCategory, filteredTemplates, isExpanded]);
+
+  // Visible templates (collapsible to 8 items in "All" view)
+  const visibleTemplates = React.useMemo(() => {
+    if (selectedCategory === 'all' && filteredTemplates.length > 8 && !isExpanded) {
+      return filteredTemplates.slice(0, 8);
+    }
+    return filteredTemplates;
+  }, [selectedCategory, filteredTemplates, isExpanded]);
 
   // Load custom templates from IndexedDB on component mount
   useEffect(() => {
@@ -83,7 +153,6 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
   // PDF Preview & Compilation State
   const [pdfBytes, setPdfBytes] = useState<Uint8Array | null>(null);
   const [isCompiling, setIsCompiling] = useState<boolean>(true);
-  const [scale, setScale] = useState<number>(0.95);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
   const [, startTransition] = useTransition();
@@ -102,7 +171,7 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
       linkedin: d.personalInfo.linkedin,
       github: d.personalInfo.github,
       website: d.personalInfo.portfolio,
-      summary: d.personalInfo.summary || '',
+      summary: d.summary || '',
       skills: d.skills.map((s) => ({
         category: s.name,
         list: s.skills.split(',').map((x) => x.trim()),
@@ -129,21 +198,45 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
         link: p.link,
         bullets: p.bullets,
       })),
-      certifications: d.certifications,
+      certifications: d.certifications?.map((c) => `${c.name} (${c.issuer})`),
     };
   }, []);
 
   // Keep LaTeX code in sync when data or template changes in form mode
   useEffect(() => {
+    let isCancelled = false;
     const custom = customTemplates.find((c) => c.id === templateId);
     if (custom) {
       const code = injectPlaceholders(custom.rawTex, resumeDataToFormData(data), custom.placeholders);
       setLatexCode(code);
-    } else {
-      const code = generateLatexSource(data, (templateId as ResumeTemplateId) || 'jakes');
-      setLatexCode(code);
+      return;
     }
-  }, [data, templateId, customTemplates, resumeDataToFormData]);
+
+    const manifestEntry = manifestTemplates.find((t) => t.id === templateId);
+    const templatePath = manifestEntry ? `/${manifestEntry.file}` : `/templates/${templateId}.tex`;
+
+    fetch(templatePath)
+      .then((res) => {
+        if (!res.ok) throw new Error('Template fetch failed');
+        return res.text();
+      })
+      .then((rawTex) => {
+        if (!isCancelled) {
+          const code = injectPlaceholders(rawTex, resumeDataToFormData(data), manifestEntry?.placeholders);
+          setLatexCode(code);
+        }
+      })
+      .catch(() => {
+        if (!isCancelled) {
+          const fallbackCode = generateLatexSource(data, (templateId as ResumeTemplateId) || 'jakes');
+          setLatexCode(fallbackCode);
+        }
+      });
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [data, templateId, customTemplates, resumeDataToFormData, manifestTemplates]);
 
   // Compile PDF on change
   const triggerCompile = useCallback(() => {
@@ -152,7 +245,9 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
 
     debounceTimerRef.current = setTimeout(async () => {
       try {
-        const isBuiltIn = RESUME_TEMPLATES.some((t) => t.id === templateId);
+        const isBuiltIn =
+          manifestTemplates.some((t) => t.id === templateId) ||
+          RESUME_TEMPLATES.some((t) => t.id === templateId);
         const activeTmplId = isBuiltIn ? (templateId as ResumeTemplateId) : 'jakes';
         const bytes = await generateResumePdf(data, activeTmplId);
         startTransition(() => {
@@ -164,7 +259,7 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
         setIsCompiling(false);
       }
     }, 180);
-  }, [data, templateId]);
+  }, [data, templateId, manifestTemplates]);
 
   useEffect(() => {
     triggerCompile();
@@ -205,7 +300,7 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
         const page = await doc.getPage(pageNum);
         if (isCancelled) return;
 
-        const viewport = page.getViewport({ scale: scale * 1.5 });
+        const viewport = page.getViewport({ scale: 1.5 });
         const canvas = canvasRef.current;
         if (!canvas) return;
 
@@ -259,7 +354,7 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
         }
       }
     };
-  }, [pdfBytes, currentPage, scale]);
+  }, [pdfBytes, currentPage]);
 
   // Download PDF Handler
   const handleDownloadPdf = () => {
@@ -367,28 +462,69 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
 
       {/* Template Selection Bar */}
       <div className="space-y-3">
-        <div className="flex items-center justify-between">
-          <label className="text-[11px] font-bold uppercase tracking-wider text-[var(--tx-3)] flex items-center gap-1.5">
-            <FileText className="w-3.5 h-3.5 text-indigo-500" />
-            Select Resume Template
-          </label>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+          <div className="flex items-center gap-2">
+            <label className="text-[11px] font-bold uppercase tracking-wider text-[var(--tx-3)] flex items-center gap-1.5">
+              <FileText className="w-3.5 h-3.5 text-indigo-500" />
+              Select Resume Template
+            </label>
+            <span className="text-[11px] font-medium text-[var(--tx-3)] bg-[var(--bg-subtle)] px-2 py-0.5 rounded-full border border-[var(--border)]">
+              {filteredTemplates.length} {filteredTemplates.length === 1 ? 'template' : 'templates'}
+            </span>
+          </div>
           <button
             type="button"
             onClick={() => setIsUploadModalOpen(true)}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold text-indigo-500 bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/20 transition cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold text-indigo-500 bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/20 transition cursor-pointer self-start sm:self-auto"
           >
             <Upload className="w-3.5 h-3.5" />
             <span>Upload Custom Template</span>
           </button>
         </div>
 
+        {/* Category Filter Tabs / Pills */}
+        <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
+          {categories.map((cat) => {
+            const isCatActive = selectedCategory === cat;
+            const catLabel = formatCategoryLabel(cat);
+            const count =
+              cat === 'all'
+                ? manifestTemplates.length
+                : manifestTemplates.filter((t) => t.category === cat).length;
+
+            return (
+              <button
+                key={cat}
+                type="button"
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-3 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer flex items-center gap-1.5 ${
+                  isCatActive
+                    ? 'bg-indigo-600 text-white shadow-xs font-semibold'
+                    : 'text-[var(--tx-2)] bg-[var(--bg-subtle)] hover:text-[var(--tx)] hover:bg-[var(--border)]/40 border border-[var(--border)]'
+                }`}
+              >
+                <span>{catLabel}</span>
+                <span
+                  className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
+                    isCatActive
+                      ? 'bg-white/20 text-white'
+                      : 'bg-[var(--border)] text-[var(--tx-3)]'
+                  }`}
+                >
+                  {count}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
         {/* Custom Uploaded Templates (if any) */}
         {customTemplates.length > 0 && (
-          <div className="space-y-1.5">
+          <div className="space-y-1.5 pt-1">
             <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-400">
               My Saved Templates ({customTemplates.length})
             </span>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
               {customTemplates.map((tmpl) => {
                 const isSelected = templateId === tmpl.id;
                 return (
@@ -431,10 +567,15 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
           </div>
         )}
 
-        {/* Built-in Templates */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-          {RESUME_TEMPLATES.map((tmpl) => {
+        {/* Built-in Templates Grid: Responsive Multi-Row (4 on desktop, 2 on tablet, 1 on mobile) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 transition-all duration-200">
+          {visibleTemplates.map((tmpl) => {
             const isSelected = templateId === tmpl.id;
+            const categoryLabel =
+              'tagline' in tmpl && tmpl.tagline
+                ? (tmpl.tagline as string)
+                : formatCategoryLabel(tmpl.category);
+
             return (
               <button
                 key={tmpl.id}
@@ -452,7 +593,7 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
                     {isSelected && <Check className="w-3.5 h-3.5 text-indigo-600" />}
                   </div>
                   <span className="text-[10px] text-indigo-500 font-medium block mt-0.5">
-                    {tmpl.tagline}
+                    {categoryLabel}
                   </span>
                 </div>
                 <p className="text-[10px] text-[var(--tx-3)] line-clamp-2 mt-1 leading-tight">
@@ -462,6 +603,29 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
             );
           })}
         </div>
+
+        {/* Show More / Show Fewer Button for "All" view with > 8 templates */}
+        {selectedCategory === 'all' && filteredTemplates.length > 8 && (
+          <div className="flex justify-center pt-1">
+            <button
+              type="button"
+              onClick={() => setIsExpanded((prev) => !prev)}
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/40 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 border border-indigo-200/60 dark:border-indigo-800/40 transition-all cursor-pointer shadow-2xs"
+            >
+              {isExpanded ? (
+                <>
+                  <span>Show Fewer Templates</span>
+                  <ChevronUp className="w-3.5 h-3.5" />
+                </>
+              ) : (
+                <>
+                  <span>Show All {filteredTemplates.length} Templates</span>
+                  <ChevronDown className="w-3.5 h-3.5" />
+                </>
+              )}
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Editor & Preview Split Workspace */}
@@ -1290,14 +1454,15 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
               )}
             </div>
 
-            {/* Pagination & Zoom Controls */}
-            <div className="flex items-center gap-2">
+            {/* Pagination Controls */}
+            {totalPages > 1 && (
               <div className="flex items-center gap-1 bg-[var(--bg-subtle)] p-0.5 rounded-lg border border-[var(--border)]">
                 <button
                   type="button"
                   disabled={currentPage <= 1}
                   onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                   className="p-1 rounded text-[var(--tx)] hover:bg-[var(--bg)] disabled:opacity-30 cursor-pointer"
+                  title="Previous Page"
                 >
                   <ChevronLeft className="w-3.5 h-3.5" />
                 </button>
@@ -1309,38 +1474,19 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
                   disabled={currentPage >= totalPages}
                   onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                   className="p-1 rounded text-[var(--tx)] hover:bg-[var(--bg)] disabled:opacity-30 cursor-pointer"
+                  title="Next Page"
                 >
                   <ChevronRight className="w-3.5 h-3.5" />
                 </button>
               </div>
-
-              <div className="flex items-center gap-1 bg-[var(--bg-subtle)] p-0.5 rounded-lg border border-[var(--border)]">
-                <button
-                  type="button"
-                  onClick={() => setScale((s) => Math.max(0.6, s - 0.1))}
-                  className="p-1 rounded text-[var(--tx)] hover:bg-[var(--bg)] cursor-pointer"
-                >
-                  <ZoomOut className="w-3.5 h-3.5" />
-                </button>
-                <span className="text-[10px] font-mono text-[var(--tx-3)] px-1">
-                  {Math.round(scale * 100)}%
-                </span>
-                <button
-                  type="button"
-                  onClick={() => setScale((s) => Math.min(1.4, s + 0.1))}
-                  className="p-1 rounded text-[var(--tx)] hover:bg-[var(--bg)] cursor-pointer"
-                >
-                  <ZoomIn className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            </div>
+            )}
           </div>
 
           {/* Canvas Scroll Area */}
-          <div className="flex-1 p-4 bg-neutral-900/5 flex items-start justify-center overflow-auto max-h-[620px]">
+          <div className="flex-1 p-4 bg-neutral-900/5 flex items-start justify-center overflow-auto max-h-[660px]">
             <canvas
               ref={canvasRef}
-              className="max-w-full h-auto bg-white rounded-lg shadow-md border border-neutral-200"
+              className="max-w-full h-auto bg-white rounded-lg shadow-md border border-neutral-200 block"
             />
           </div>
         </div>

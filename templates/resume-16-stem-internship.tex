@@ -1,17 +1,18 @@
 %----------------------------------------------------------------------------------------
-% Template: STEM Undergraduate (resume-16-stem-internship)
+% Template: STEM Research & Internship (resume-16-stem-internship)
 % Category: fresh-grad
-% Description: Engineering and STEM student layout highlighting lab skills, teams, and internships.
-% Packages: geometry, titlesec, enumitem, xcolor, helvet, hyperref
+% Description: STEM lab and research layout with laboratory skills and coursework.
+% Packages: geometry, titlesec, enumitem, xcolor, fontawesome5, helvet, hyperref
 %----------------------------------------------------------------------------------------
 
 \documentclass[10pt,letterpaper]{article}
 
 \usepackage[utf8]{inputenc}
-\usepackage[margin=0.65in]{geometry}
+\usepackage[margin=0.6in]{geometry}
 \usepackage[table]{xcolor}
 \usepackage{titlesec}
 \usepackage{enumitem}
+\usepackage{fontawesome5}
 \usepackage{helvet}
 \renewcommand{\familydefault}{\sfdefault}
 \usepackage[hidelinks]{hyperref}
@@ -19,51 +20,54 @@
 \pagestyle{empty}
 \raggedbottom
 \raggedright
+\setlength{\parindent}{0pt}
 
-\definecolor{stemblue}{HTML}{0284C7} % Sky Blue Accent
-\definecolor{darktext}{HTML}{0F172A}
+\definecolor{stemviolet}{HTML}{6D28D9} % Purple Accent
+\definecolor{darkslate}{HTML}{0F172A}
 
 \titleformat{\section}{
-  \vspace{4pt}\color{stemblue}\bfseries\normalsize
-}{}{0em}{}[\vspace{1pt}{\color{stemblue}\hrule height 0.8pt}\vspace{2pt}]
+  \vspace{4pt}\color{stemviolet}\bfseries\normalsize\uppercase
+}{}{0em}{}[\vspace{1pt}{\color{stemviolet}\hrule height 1.2pt}\vspace{3pt}]
 
-\setlist[itemize]{leftmargin=1.15em, label=$\blacktriangleright$, itemsep=2pt, parsep=0pt, topsep=1pt}
+\setlist[itemize]{leftmargin=1.15em, label={\color{stemviolet}$\blacktriangleright$}, itemsep=2pt, parsep=0pt, topsep=1pt}
 
 \begin{document}
 
 % Top Header
 \begin{minipage}[t]{0.65\textwidth}
-  {\LARGE \textbf{\color{darktext}{{FULL_NAME}}}} \\[2pt]
-  {\normalsize \textbf{\color{stemblue}{{JOB_TITLE}}}}
+  {\Huge \textbf{\color{darkslate}{{FULL_NAME}}}} \\[3pt]
+  {\normalsize \textbf{\color{stemviolet}{{JOB_TITLE}}}}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.33\textwidth}
   \raggedleft \small
-  {{LOCATION}} \\
-  {{PHONE}} \\
-  \href{mailto:{{EMAIL}}}{{{EMAIL}}} \\
-  \href{https://{{GITHUB}}}{github.com/{{GITHUB}}}
+  \faMapMarker* \ {{LOCATION}} \\
+  \faPhone \ {{PHONE}} \\
+  \faEnvelope \ \href{mailto:{{EMAIL}}}{{{EMAIL}}} \\
+  \faGithub \ \href{https://{{GITHUB}}}{{{GITHUB}}}
 \end{minipage}
 
 \vspace{6pt}
+{\color{stemviolet}\hrule height 2pt}
+\vspace{6pt}
 
-\section{Education \& Academic Honors}
+\section{Degree \& STEM Academic Background}
 \small
 {{EDUCATION_ITEMS}}
 
-\section{Laboratory \& Computational Skills}
+\section{Technical \& Laboratory Proficiencies}
 \small
 {{SKILLS_BLOCK}}
 
-\section{Engineering Projects \& Research}
+\section{STEM Research Projects \& Lab Investigations}
 \small
 {{PROJECTS_BLOCK}}
 
-\section{Internships \& Co-Op Experience}
+\section{Technical Internships \& Industry Experience}
 \small
 {{EXPERIENCE_ITEMS}}
 
-\section{Relevant Coursework \& Certifications}
+\section{Research Summary \& Specializations}
 \small
 {{SUMMARY}}
 
