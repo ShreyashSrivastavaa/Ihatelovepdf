@@ -8,7 +8,7 @@ import { useDictionary, useLocale } from '../i18n/LocaleProvider';
 import { SUPPORTED_LOCALES, localeLabels, type Locale } from '../i18n/config';
 import { getLocalizedAlternateMap, getRouteIdentifierForPath, getRoutePath } from '../i18n/routing';
 import ContactModal from './ContactModal';
-import { ShieldCheck, Globe, Menu, X, Sun, Moon, FileText, Shield, Mail } from 'lucide-react';
+import { ShieldCheck, Globe, Menu, X, Sun, Moon, FileText, Shield, Mail, Sparkles } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 
 export default function NavMenu() {
@@ -151,6 +151,19 @@ export default function NavMenu() {
                   }`}
                 >
                   ❤️ Support
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/products"
+                  prefetch={true}
+                  className={`px-2.5 py-1.5 rounded-md transition-colors ${
+                    isActive('/products')
+                      ? 'text-[var(--accent)] bg-[var(--accent-soft)] font-semibold'
+                      : 'text-[var(--tx-2)] hover:text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
+                  }`}
+                >
+                  Our Products
                 </Link>
               </li>
               <li>
@@ -313,6 +326,22 @@ export default function NavMenu() {
               <div className="flex items-center gap-2.5">
                 <span className="shrink-0">❤️</span>
                 <span>Support / Donate</span>
+              </div>
+            </Link>
+
+            <Link
+              href="/products"
+              prefetch={true}
+              onClick={() => setIsOpen(false)}
+              className={`flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold transition-colors min-h-[44px] w-full ${
+                isActive('/products')
+                  ? 'text-[var(--accent)] bg-[var(--accent-soft)]'
+                  : 'text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
+              }`}
+            >
+              <div className="flex items-center gap-2.5">
+                <Sparkles className="h-4 w-4 text-[var(--accent)] shrink-0" />
+                <span>Our Products</span>
               </div>
             </Link>
 

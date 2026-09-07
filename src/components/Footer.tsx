@@ -35,6 +35,9 @@ export default function Footer() {
               <Link href="/tools" prefetch={true} className="hover:text-[var(--tx)] transition-colors">
                 All Tools
               </Link>
+              <Link href="/products" prefetch={true} className="hover:text-[var(--tx)] transition-colors text-[var(--accent)] font-semibold">
+                Our Products
+              </Link>
               <Link href="/about" prefetch={true} className="hover:text-[var(--tx)] transition-colors">
                 About
               </Link>
@@ -77,16 +80,6 @@ export default function Footer() {
                     Shreyash Srivastava
                   </a>
                   <span className="opacity-50">·</span>
-                  <span className="opacity-70">UTS — Upscale Tech Solution</span>
-                </div>
-                <div className="flex flex-wrap items-center gap-x-2 gap-y-1 opacity-75">
-                  <a
-                    href="mailto:upscaletechsolution@gmail.com"
-                    className="hover:text-[var(--tx)] transition-colors"
-                  >
-                    upscaletechsolution@gmail.com
-                  </a>
-                  <span className="opacity-50">·</span>
                   <a
                     href="https://github.com/ShreyashSrivastavaa"
                     target="_blank"
@@ -103,25 +96,6 @@ export default function Footer() {
                     <p className="text-[11px] opacity-55 max-w-xl leading-relaxed">{footer.disclaimer}</p>
                   )}
                 </div>
-              </div>
-
-              {/* Right: Badges */}
-              <div className="shrink-0 flex flex-wrap items-center gap-3">
-                <a
-                  href="https://websitelaunches.com/site/ihatelovepdf.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block opacity-85 hover:opacity-100 transition-opacity"
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="https://websitelaunches.com/badge/ihatelovepdf.com.svg"
-                    alt="Established online - Public launch record"
-                    width={200}
-                    height={43}
-                    style={{ height: 'auto' }}
-                  />
-                </a>
               </div>
             </div>
           </div>

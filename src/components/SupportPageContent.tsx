@@ -66,6 +66,102 @@ export function SupportPageContent() {
           <DonationWidget />
         </section>
 
+        {/* Support Our Other Products Spotlight */}
+        <section className="my-20 surface-card rounded-3xl border border-[var(--border)] p-6 sm:p-10 space-y-6">
+          <div className="text-center space-y-2 max-w-xl mx-auto">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--accent)] block">
+              Developer Ecosystem
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
+              Explore Our Other Platforms
+            </h2>
+            <p className="text-xs sm:text-sm text-[var(--tx-2)] leading-relaxed">
+              Check out our companion platforms built for developers, computer science students, and distributed system architects:
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <a
+              href="https://gitfc.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-5 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] hover:border-amber-500/50 hover:bg-[var(--bg-subtle)] transition-all space-y-2 group"
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-bold text-sm text-[var(--tx)] group-hover:text-amber-400 transition-colors">
+                  GitFC ⚽
+                </span>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 font-bold">
+                  EA FC Cards
+                </span>
+              </div>
+              <p className="text-xs text-[var(--tx-2)] leading-relaxed">
+                Turn your GitHub into an authentic EA FC card with OVR ratings, radar stats, and 3D pack opening reveals.
+              </p>
+              <span className="text-xs font-semibold text-amber-400 flex items-center gap-1 pt-1">
+                <span>Visit gitfc.vercel.app</span>
+                <span className="group-hover:translate-x-0.5 transition-transform">&rarr;</span>
+              </span>
+            </a>
+
+            <a
+              href="https://www.snapdevcode.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-5 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] hover:border-cyan-500/50 hover:bg-[var(--bg-subtle)] transition-all space-y-2 group"
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-bold text-sm text-[var(--tx)] group-hover:text-cyan-400 transition-colors">
+                  SnapDevCode
+                </span>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 font-bold">
+                  OA Suite &amp; DSA
+                </span>
+              </div>
+              <p className="text-xs text-[var(--tx-2)] leading-relaxed">
+                4,200+ Company Online Assessment questions, Gemini AI vision screenshot extractor, and WebAudio DSA visualizers.
+              </p>
+              <span className="text-xs font-semibold text-cyan-400 flex items-center gap-1 pt-1">
+                <span>Visit snapdevcode.com</span>
+                <span className="group-hover:translate-x-0.5 transition-transform">&rarr;</span>
+              </span>
+            </a>
+
+            <a
+              href="https://systemdesign.website/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-5 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] hover:border-sky-500/50 hover:bg-[var(--bg-subtle)] transition-all space-y-2 group"
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-bold text-sm text-[var(--tx)] group-hover:text-sky-400 transition-colors">
+                  SystemDesign.website
+                </span>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-sky-500/10 text-sky-400 font-bold">
+                  HLD Masterclass
+                </span>
+              </div>
+              <p className="text-xs text-[var(--tx-2)] leading-relaxed">
+                61+ interactive modules mastering microservices, sharding, caching, and large-scale cloud architecture.
+              </p>
+              <span className="text-xs font-semibold text-sky-400 flex items-center gap-1 pt-1">
+                <span>Visit systemdesign.website</span>
+                <span className="group-hover:translate-x-0.5 transition-transform">&rarr;</span>
+              </span>
+            </a>
+          </div>
+
+          <div className="text-center pt-2">
+            <Link
+              href="/products"
+              className="text-xs font-semibold text-[var(--accent)] hover:underline inline-flex items-center gap-1"
+            >
+              <span>View full product ecosystem details</span>
+              <span>&rarr;</span>
+            </Link>
+          </div>
+        </section>
+
         {/* Transparency - simple list */}
   <section id="support-transparency" className="my-20 max-w-2xl mx-auto">
           <h2 className="text-xl font-semibold mb-6 text-center">{transparency.title}</h2>

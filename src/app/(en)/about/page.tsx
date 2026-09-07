@@ -93,7 +93,7 @@ export default function AboutPage() {
             About the Creator & Maintainers
           </h2>
           <p className="text-sm text-[var(--tx-2)] leading-relaxed">
-            ihatelovepdf was created by <strong>Shreyash Srivastava</strong> (UTS, Sydney, Australia) as an open, privacy-preserving alternative to ad-heavy, cloud-dependent PDF portals.
+            ihatelovepdf was created by <strong>Shreyash Srivastava</strong> as an open, privacy-preserving alternative to ad-heavy, cloud-dependent PDF portals.
           </p>
           <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-semibold">
             <Link

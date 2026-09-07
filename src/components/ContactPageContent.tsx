@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import ContactModal from './ContactModal';
-import { Mail, Bug, Sparkles, ShieldCheck, MessageSquare, ArrowRight } from 'lucide-react';
+import { Mail, Bug, Sparkles, ShieldCheck, MessageSquare, ArrowRight, MapPin } from 'lucide-react';
 
 export default function ContactPageContent() {
   const [isModalOpen, setIsModalOpen] = useState(true);
@@ -79,19 +79,46 @@ export default function ContactPageContent() {
           </div>
         </div>
 
-        {/* Direct Email Callout */}
-        <div className="surface-card p-6 text-center space-y-3">
-          <MessageSquare className="h-8 w-8 text-[var(--accent)] mx-auto" />
-          <h3 className="text-lg font-bold text-[var(--tx)]">Prefer Direct Email?</h3>
-          <p className="text-xs sm:text-sm text-[var(--tx-2)] max-w-md mx-auto">
-            You can email us anytime directly at{' '}
+        {/* Direct Email & Location Information */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="surface-card p-6 text-center space-y-3 flex flex-col justify-center">
+            <MessageSquare className="h-8 w-8 text-[var(--accent)] mx-auto" />
+            <h3 className="text-lg font-bold text-[var(--tx)]">Direct Email</h3>
+            <p className="text-xs sm:text-sm text-[var(--tx-2)] max-w-xs mx-auto">
+              Reach out directly for critical security, partnership, or maintainer inquiries:
+            </p>
             <a
               href="mailto:shreyashsr2004@gmail.com"
-              className="text-[var(--accent)] underline font-medium"
+              className="text-[var(--accent)] underline font-semibold text-sm block"
             >
               shreyashsr2004@gmail.com
             </a>
-          </p>
+          </div>
+
+          <div className="surface-card p-6 space-y-3.5 text-left text-xs text-[var(--tx-2)]">
+            <div className="flex items-center gap-2 text-sm font-bold text-[var(--tx)]">
+              <MapPin className="h-4 w-4 text-[var(--accent)]" />
+              <span>Registered Location & Operations</span>
+            </div>
+            <div className="space-y-2 border-t border-[var(--border)] pt-3 font-normal">
+              <div className="flex justify-between">
+                <span className="text-[var(--tx-3)]">Lead Maintainer:</span>
+                <span className="font-semibold text-[var(--tx)]">Shreyash Srivastava</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-[var(--tx-3)]">Headquarters / Base:</span>
+                <span className="font-semibold text-[var(--tx)]">Sydney, NSW, Australia</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-[var(--tx-3)]">Operations:</span>
+                <span className="font-semibold text-[var(--tx)]">Global Remote Web Services</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-[var(--tx-3)]">Guaranteed Response SLA:</span>
+                <span className="font-semibold text-emerald-500">Within 24 business hours</span>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
