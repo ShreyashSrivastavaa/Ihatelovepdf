@@ -29,6 +29,12 @@ const EXCLUDED_ORPHANED_ROUTES = new Set([
   "ai-summarize",
   "aiChat",
   "ai-chat",
+  "encrypt",
+  "encrypt-pdf",
+  "decrypt",
+  "decrypt-pdf",
+  "latexResume",
+  "latex-resume",
 ]);
 
 export default function sitemap(): MetadataRoute.Sitemap {

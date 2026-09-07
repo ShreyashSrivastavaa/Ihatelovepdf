@@ -21,8 +21,6 @@ import {
   Type,
   FileText,
   ShieldAlert,
-  Lock,
-  Unlock,
   Camera,
   Code,
   Table,
@@ -34,7 +32,6 @@ import {
   Archive,
   PenLine,
   CheckSquare,
-  GraduationCap,
 } from 'lucide-react';
 
 export const ICON_MAP: Record<string, React.ElementType> = {
@@ -55,8 +52,6 @@ export const ICON_MAP: Record<string, React.ElementType> = {
   redact: ShieldAlert,
   compare: SplitSquareVertical,
   pdfToZip: Archive,
-  encrypt: Lock,
-  decrypt: Unlock,
   editPdf: Type,
   scanToPdf: Camera,
   markdownToPdf: Code,
@@ -75,7 +70,6 @@ export const ICON_MAP: Record<string, React.ElementType> = {
   posBilling: Receipt,
   signPdf: PenLine,
   fillPdfForm: CheckSquare,
-  latexResume: GraduationCap,
 };
 
 export const TOOL_DESCRIPTIONS: Record<string, string> = {
@@ -96,8 +90,6 @@ export const TOOL_DESCRIPTIONS: Record<string, string> = {
   redact: "Permanently erase and sanitize sensitive text",
   compare: "Side-by-side visual difference viewer",
   pdfToZip: "Package PDF assets into a ZIP archive",
-  encrypt: "Protect PDF with password and AES-256 encryption",
-  decrypt: "Remove passwords and export unlocked PDF",
   editPdf: "Add text, signatures, and annotations",
   scanToPdf: "Scan paper documents using camera to PDF",
   markdownToPdf: "Compile markdown text and code blocks into PDF",
@@ -116,7 +108,6 @@ export const TOOL_DESCRIPTIONS: Record<string, string> = {
   posBilling: "Generate 58mm/80mm thermal receipts and bills",
   signPdf: "Draw, type, or upload electronic signatures on PDF",
   fillPdfForm: "Complete interactive PDF forms or click-to-type anywhere",
-  latexResume: "Build ATS-friendly resumes with authentic LaTeX code and live preview",
 };
 
 import { Search, X as CloseIcon } from 'lucide-react';

@@ -16,15 +16,13 @@ const RELATED_TOOLS: Record<string, string[]> = {
   reorder: ["merge", "split", "pageNumbers", "compress"],
   pdfToImages: ["compress", "merge", "imagesToPdf", "pdfToZip"],
   imagesToPdf: ["compress", "merge", "pdfToImages", "rotate"],
-  watermark: ["pageNumbers", "headersFooters", "decrypt", "compress"],
+  watermark: ["pageNumbers", "headersFooters", "extractText", "compress"],
   pageNumbers: ["headersFooters", "watermark", "reorder", "compress"],
   headersFooters: ["pageNumbers", "watermark", "compress", "merge"],
   extractText: ["pdfToExcel", "markdownToPdf", "compress", "invertColors"],
   invertColors: ["crop", "rotate", "extractText", "compress"],
-  redact: ["decrypt", "extractText", "compress", "watermark"],
+  redact: ["signPdf", "extractText", "compress", "watermark"],
   compare: ["redact", "extractText", "merge", "compress"],
-  encrypt: ["decrypt", "redact", "watermark", "compress"],
-  decrypt: ["encrypt", "compress", "extractText", "redact"],
   scanToPdf: ["compress", "crop", "imagesToPdf", "whiteboard"],
   markdownToPdf: ["htmlToPdf", "csvToPdf", "createPdf", "compress"],
   htmlToPdf: ["markdownToPdf", "pdfToHtml", "createPdf", "compress"],
@@ -42,7 +40,6 @@ const RELATED_TOOLS: Record<string, string[]> = {
   posBilling: ["gstInvoice", "createPdf", "compress", "scanToPdf"],
   signPdf: ["editPdf", "redact", "watermark", "compress"],
   fillPdfForm: ["signPdf", "editPdf", "watermark", "compress"],
-  latexResume: ["createPdf", "editPdf", "signPdf", "compress"],
 };
 
 export default function RelatedToolsClient({ currentMode }: { currentMode: string }) {

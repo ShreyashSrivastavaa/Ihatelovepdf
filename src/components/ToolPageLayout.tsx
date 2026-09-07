@@ -1,7 +1,9 @@
 'use client';
 
 import React from 'react';
+import Script from 'next/script';
 import type { OperationContent } from '../i18n/dictionaries/operation-types';
+import { OPERATIONS_CATALOG } from '../i18n/operations-catalog';
 import { ICON_MAP } from './ToolSwitcher';
 import ToolFirstVisitBanner from './ToolFirstVisitBanner';
 import OperationToolSwitcherClient from './OperationToolSwitcherClient';
@@ -31,6 +33,10 @@ export default function ToolPageLayout({ operation, children }: ToolPageLayoutPr
     })),
   };
 
+  const toolName = OPERATIONS_CATALOG[operation.key]?.label || operation.hero.title;
+  const toolDescription = operation.meta.description || operation.hero.description;
+  const toolUrl = `https://www.ihatelovepdf.com/${operation.slug}`;
+
   const breadcrumbStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -39,42 +45,19 @@ export default function ToolPageLayout({ operation, children }: ToolPageLayoutPr
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://ihatelovepdf.com',
+        item: 'https://www.ihatelovepdf.com',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'All PDF Tools',
-        item: 'https://ihatelovepdf.com/tools',
+        item: 'https://www.ihatelovepdf.com/tools',
       },
       {
         '@type': 'ListItem',
         position: 3,
-        name: operation.hero.title,
-        item: `https://ihatelovepdf.com/${operation.slug}`,
-      },
-    ],
-  };
-
-  const faqStructuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: `Is ${operation.hero.title} safe and private?`,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Yes. All processing executes 100% locally in your web browser via client-side WebAssembly. No files are ever uploaded to remote servers or third-party cloud storage.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Are there any file size caps or watermarks?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'No. ihatelovepdf adds zero watermarks and enforces no arbitrary server file size limits.',
-        },
+        name: toolName,
+        item: toolUrl,
       },
     ],
   };
@@ -82,23 +65,18 @@ export default function ToolPageLayout({ operation, children }: ToolPageLayoutPr
   const softwareApplicationStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
-    name: operation.meta.title,
-    description: operation.meta.description,
-    applicationCategory: 'UtilityApplication',
-    operatingSystem: 'All',
+    name: toolName,
+    description: toolDescription,
+    applicationCategory: 'Utility',
+    operatingSystem: 'Any (Web-based)',
     browserRequirements: 'Requires a modern web browser with JavaScript enabled',
     offers: {
       '@type': 'Offer',
-      price: '0',
+      price: 0,
       priceCurrency: 'USD',
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      ratingCount: '389',
-    },
+    url: toolUrl,
     featureList: operation.hero.bulletPoints,
-    url: 'https://ihatelovepdf.com',
   };
 
   return (
@@ -223,22 +201,21 @@ export default function ToolPageLayout({ operation, children }: ToolPageLayoutPr
         {/* 7. RELATED TOOLS CROSS-SELL */}
         <RelatedToolsClient currentMode={operation.mode} />
 
-        {/* JSON-LD STRUCTURED DATA */}
-        <script
+        {/* JSON-LD STRUCTURED DATA (next/script) */}
+        <Script
+          id={`schema-howto-${operation.key}`}
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(howToStructuredData) }}
         />
-        <script
+        <Script
+          id={`schema-software-${operation.key}`}
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareApplicationStructuredData) }}
         />
-        <script
+        <Script
+          id={`schema-breadcrumb-${operation.key}`}
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
         />
 
         {/* FAQ ACCORDION */}

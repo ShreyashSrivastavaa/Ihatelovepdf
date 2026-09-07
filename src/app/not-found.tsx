@@ -187,7 +187,7 @@ export default function NotFound() {
           }
           a:hover { opacity: 0.8; }
         `}</style>
-    </div>
+        </div>
       </body>
     </html>
   );

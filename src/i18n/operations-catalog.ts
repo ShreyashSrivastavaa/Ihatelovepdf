@@ -21,8 +21,6 @@ export const ALL_OPERATION_KEYS: OperationKey[] = [
   'redact',
   'compare',
   'pdfToZip',
-  'encrypt',
-  'decrypt',
   'editPdf',
   'scanToPdf',
   'markdownToPdf',
@@ -41,7 +39,6 @@ export const ALL_OPERATION_KEYS: OperationKey[] = [
   'posBilling',
   'signPdf',
   'fillPdfForm',
-  'latexResume',
 ];
 
 export interface OperationCatalogItem {

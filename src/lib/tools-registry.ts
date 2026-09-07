@@ -45,7 +45,6 @@ export const FEATURED_TOOLS: OperationKey[] = [
   'split',
   'signPdf',
   'redact',
-  'latexResume',
   'extractText',
   'scanToPdf',
 ];
@@ -109,13 +108,13 @@ export const TOOL_CATEGORIES: ToolCategory[] = [
   {
     id: 'security-privacy',
     name: 'Security & Privacy',
-    description: 'Permanent redaction, metadata sanitization, password encryption & forensic markers',
+    description: 'Permanent redaction, metadata sanitization, and digital signatures',
     icon: ShieldCheck,
     color: '#059669',
     bgSoft: 'rgba(5, 150, 105, 0.12)',
     borderAccent: 'rgba(5, 150, 105, 0.3)',
     tag: 'SECURITY',
-    toolKeys: ['encrypt', 'decrypt', 'signPdf', 'redact'],
+    toolKeys: ['signPdf', 'redact'],
   },
   {
     id: 'convert-to-pdf',
@@ -156,7 +155,7 @@ export const TOOL_CATEGORIES: ToolCategory[] = [
     bgSoft: 'rgba(79, 70, 229, 0.12)',
     borderAccent: 'rgba(79, 70, 229, 0.3)',
     tag: 'UTILITIES',
-    toolKeys: ['compare', 'createPdf', 'latexResume'],
+    toolKeys: ['compare', 'createPdf'],
   },
   {
     id: 'business',

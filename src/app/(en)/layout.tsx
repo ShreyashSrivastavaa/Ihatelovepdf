@@ -10,6 +10,7 @@ import { GoogleAnalyticsScripts } from "../../components/analytics/GoogleAnalyti
 import { GaPageViewTracker } from "../../components/analytics/GaPageViewTracker";
 import { WebVitalsReporter } from "../../components/analytics/WebVitalsReporter";
 import CookieBanner from "../../components/CookieBanner";
+import StickyMobileCta from "../../components/StickyMobileCta";
 import { SchemaOrg } from "../../components/SchemaOrg";
 import { BreadcrumbSchema } from "../../components/seo/BreadcrumbSchema";
 
@@ -85,6 +86,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
           <Footer />
           <CookieBanner />
+          <StickyMobileCta />
           <Analytics />
           <SpeedInsights />
         </LocaleProvider>
