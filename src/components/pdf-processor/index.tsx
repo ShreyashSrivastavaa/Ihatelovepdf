@@ -26,6 +26,7 @@ import {
   type PdfToImagesArchiveResult,
 } from '../../lib/pdf-processor';
 import * as PDFOps from '../../lib/pdf-operations';
+import { downloadBlob, openBlobInNewTab, isIOS } from '../../lib/download-helper';
 import { useDictionary } from '../../i18n/LocaleProvider';
 import CompressionPreviewCard, { PreviewStatus } from './CompressionPreviewCard';
 import CompressionSummaryCard from './CompressionSummaryCard';
@@ -943,24 +944,9 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
 
   const activeObjectUrlsRef = useRef<Set<string>>(new Set());
 
-  const triggerDownloadAction = useCallback((blob: Blob, fileName: string) => {
+  const triggerDownloadAction = useCallback((blob: Blob, fileName: string, isAutoTrigger: boolean = true) => {
     if (typeof window === 'undefined') return;
-    const url = URL.createObjectURL(blob);
-    activeObjectUrlsRef.current.add(url);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = fileName;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    setTimeout(() => {
-      try {
-        URL.revokeObjectURL(url);
-        activeObjectUrlsRef.current.delete(url);
-      } catch {
-        // ignore
-      }
-    }, 60000);
+    downloadBlob(blob, fileName, { isAutoTrigger });
   }, []);
 
   useEffect(() => {
@@ -1890,8 +1876,15 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
       download_count: statusDialogState.downloads.length,
     });
     statusDialogState.downloads.forEach(entry => {
-      triggerDownloadAction(entry.blob, entry.fileName);
+      triggerDownloadAction(entry.blob, entry.fileName, false);
     });
+  };
+
+  const handlePreviewFromDialog = () => {
+    const primary = statusDialogState.downloads[0];
+    if (primary?.blob) {
+      openBlobInNewTab(primary.blob, primary.fileName);
+    }
   };
 
   const handleRetry = () => {
@@ -2201,7 +2194,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
 
   const uploaderConfig = useMemo(() => {
     if (mode === 'imagesToPdf') {
-      return { multiple: true, acceptImages: true, acceptedFileTypes: '.jpg,.jpeg,.png,.webp,.tiff,.tif,.bmp' };
+      return { multiple: true, acceptImages: true, acceptedFileTypes: 'image/*,.jpg,.jpeg,.png,.webp,.heic,.heif,.tiff,.tif,.bmp' };
     }
     if (mode === 'signPdf' || mode === 'fillPdfForm') {
       return { multiple: false, acceptImages: false, acceptedFileTypes: 'application/pdf,.pdf' };
@@ -2284,11 +2277,27 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
   const dialogActions: DialogAction[] = [];
   if (statusDialogState.isOpen && statusDialogStrings) {
     if (statusDialogState.status === 'success' && statusDialogState.downloads.length > 0) {
+      const primary = statusDialogState.downloads[0];
+      const isIos = isIOS();
+      const primaryDownloadLabel = isIos
+        ? `Save / Share ${primary?.fileName || 'PDF'}`
+        : (statusDialogState.downloads.length === 1
+            ? `Download ${primary?.fileName || 'PDF'}`
+            : statusDialogStrings.downloadAgainLabel);
+
       dialogActions.push({
-        label: statusDialogStrings.downloadAgainLabel,
+        label: primaryDownloadLabel,
         onClick: handleDownloadAgain,
-        variant: 'secondary',
+        variant: 'primary',
       });
+
+      if (isIos && primary?.blob) {
+        dialogActions.push({
+          label: 'Open / View PDF',
+          onClick: handlePreviewFromDialog,
+          variant: 'secondary',
+        });
+      }
     }
 
     if (statusDialogState.status === 'error') {

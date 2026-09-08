@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Download, Archive, RotateCcw, Copy, Check, Sparkles, FileText, CheckCircle2, ArrowRight, SlidersHorizontal } from 'lucide-react';
+import { Download, Archive, RotateCcw, Copy, Check, Sparkles, FileText, CheckCircle2, ArrowRight, SlidersHorizontal, Eye } from 'lucide-react';
+import { downloadBlob, openBlobInNewTab, isIOS } from '../../lib/download-helper';
 
 export interface OutputFileItem {
   name: string;
@@ -62,35 +63,28 @@ export default function ResultPanel({
     }
   };
 
-  const handleDownloadPrimary = () => {
+  const handleDownloadPrimary = async () => {
     if (onDownloadPrimary) {
       onDownloadPrimary();
     } else if (primaryDownloadBlob) {
-      const url = URL.createObjectURL(primaryDownloadBlob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = primaryFileName;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+      await downloadBlob(primaryDownloadBlob, primaryFileName);
     }
   };
 
-  const handleDownloadSingleFile = (fileItem: OutputFileItem) => {
+  const handlePreviewPrimary = () => {
+    if (primaryDownloadBlob) {
+      openBlobInNewTab(primaryDownloadBlob, primaryFileName);
+    }
+  };
+
+  const handleDownloadSingleFile = async (fileItem: OutputFileItem) => {
     if (fileItem.blob) {
-      const url = URL.createObjectURL(fileItem.blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = fileItem.name;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+      await downloadBlob(fileItem.blob, fileItem.name);
     } else if (fileItem.url) {
       const a = document.createElement('a');
       a.href = fileItem.url;
       a.download = fileItem.name;
+      a.rel = 'noopener noreferrer';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -330,10 +324,22 @@ export default function ResultPanel({
             className="btn-primary flex-1 py-3.5 px-6 rounded-2xl font-bold text-white text-base shadow-md flex items-center justify-center gap-2 cursor-pointer hover:shadow-lg transition-all duration-200"
           >
             <Download className="h-5 w-5" />
-            <span>Download {primaryFileName}</span>
+            <span>{isIOS() ? `Save / Share ${primaryFileName}` : `Download ${primaryFileName}`}</span>
             {afterSizeBytes && (
               <span className="text-xs font-medium opacity-80">({formatBytes(afterSizeBytes)})</span>
             )}
+          </button>
+        )}
+
+        {primaryDownloadBlob && (
+          <button
+            type="button"
+            onClick={handlePreviewPrimary}
+            className="py-3.5 px-5 rounded-2xl font-semibold border border-[var(--border)] bg-[var(--bg-subtle)] text-[var(--tx)] text-sm flex items-center justify-center gap-2 hover:bg-[var(--border)] hover:text-[var(--accent)] transition-colors cursor-pointer"
+            title="Open and preview in browser"
+          >
+            <Eye className="h-4 w-4" />
+            <span>Open PDF</span>
           </button>
         )}
 
