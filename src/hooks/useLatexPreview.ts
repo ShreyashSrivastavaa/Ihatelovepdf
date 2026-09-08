@@ -155,7 +155,7 @@ export function useLatexPreview(
         console.error('useLatexPreview compilation error:', err);
         setStatus('error');
         setErrorMessage(
-          err instanceof Error ? err.message : "Couldn't render preview — check for unusual characters."
+          err instanceof Error ? err.message : "Couldn't render preview. Please check for unusual characters."
         );
       }
     }, DEBOUNCE_MS);

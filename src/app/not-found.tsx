@@ -3,7 +3,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "404 – Page Not Found | ihatelovepdf",
+  title: "404: Page Not Found | ihatelovepdf",
   description: "The page you were looking for doesn't exist. Go back to ihatelovepdf and continue working with your PDFs.",
 };
 

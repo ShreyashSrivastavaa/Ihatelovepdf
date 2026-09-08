@@ -81,12 +81,30 @@ export default function Footer() {
                   </a>
                   <span className="opacity-50">·</span>
                   <a
+                    href="https://linkedin.com/in/shreyashsrivastavaa"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-[var(--tx)] transition-colors"
+                  >
+                    LinkedIn
+                  </a>
+                  <span className="opacity-50">·</span>
+                  <a
                     href="https://github.com/ShreyashSrivastavaa"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-[var(--tx)] transition-colors"
                   >
                     GitHub
+                  </a>
+                  <span className="opacity-50">·</span>
+                  <a
+                    href="https://x.com/YesShrey"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-[var(--tx)] transition-colors"
+                  >
+                    Twitter/X
                   </a>
                 </div>
                 <div className="space-y-0.5 pt-1">

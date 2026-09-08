@@ -27,7 +27,7 @@ export function HomePageContent({ dictionary }: { dictionary: Dictionary }) {
         <section className="text-center space-y-6 max-w-4xl mx-auto">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[var(--success-border)] bg-[var(--success-soft)] text-xs sm:text-sm font-medium text-[var(--tx)] shadow-xs animate-fade-in">
             <ShieldCheck className="h-4 w-4 text-[var(--success)] shrink-0" />
-            <span>Your files never leave your browser &bull; 100% Client-Side</span>
+            <span>Your files never leave your browser &bull; Runs completely on your device</span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--tx)] leading-[1.1]">
@@ -86,7 +86,7 @@ export function HomePageContent({ dictionary }: { dictionary: Dictionary }) {
               {home.why.title}
             </h2>
             <p className="text-sm text-[var(--tx-2)]">
-              Designed for professionals who demand total data sovereignty, zero speed bottlenecks, and privacy guarantees across all {tools.length}+ client-side PDF tools.
+              Built for anyone who wants fast, reliable PDF tools without sending sensitive files to external servers.
             </p>
           </div>
 

@@ -446,7 +446,7 @@ export function createPdfBlob(bytes: Uint8Array): Blob {
   // producing blank PDFs. A detached ArrayBuffer (byteLength === 0) here means
   // the worker transferred ownership of the buffer before the main thread read it.
   if (bytes.byteLength === 0) {
-    console.error('[PDFPipeline] createPdfBlob received a zero-length Uint8Array — the ArrayBuffer may have been detached during Worker postMessage transfer.');
+    console.error('[PDFPipeline] createPdfBlob received a zero-length Uint8Array. The ArrayBuffer may have been detached during Worker postMessage transfer.');
     throw new Error('PDF output is empty (0 bytes). This usually means the processing result was lost during Worker transfer. Check the browser console for details.');
   }
   console.info(`[PDFPipeline] createPdfBlob: ${bytes.byteLength} bytes → Blob`);

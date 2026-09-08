@@ -118,7 +118,7 @@ export default function DashboardLayout({
             <div className="space-y-3">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--accent-soft)] border border-[var(--accent-border)] text-xs font-mono font-bold uppercase tracking-widest text-[var(--accent)]">
                 <span className="h-2 w-2 rounded-full bg-[var(--accent)] animate-pulse" />
-                <span>Client-Side WebAssembly Toolkit &bull; 45 Tools</span>
+                <span>Browser PDF Toolkit &bull; 45 Tools</span>
               </div>
 
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[var(--tx)] leading-[1.08]">
@@ -126,7 +126,7 @@ export default function DashboardLayout({
               </h1>
               
               <p className="text-base sm:text-lg text-[var(--tx-2)] max-w-2.5xl font-normal leading-relaxed">
-                {hero.subtitle || 'Complete suite of free, private, and client-side PDF tools running directly in your browser.'}
+                {hero.subtitle || 'Every tool runs directly in your browser. Fast, private, and free to use without uploading your files.'}
               </p>
             </div>
 
@@ -138,8 +138,8 @@ export default function DashboardLayout({
                     <Zap className="h-4 w-4 stroke-[2.2]" />
                   </div>
                   <div>
-                    <div className="text-xs font-bold text-[var(--tx)]">100% Local WASM</div>
-                    <div className="text-[11px] text-[var(--tx-3)]">Fast zero-wait engine</div>
+                    <div className="text-xs font-bold text-[var(--tx)]">Runs Locally</div>
+                    <div className="text-[11px] text-[var(--tx-3)]">Fast processing on your device</div>
                   </div>
                 </div>
 
@@ -148,8 +148,8 @@ export default function DashboardLayout({
                     <Shield className="h-4 w-4 stroke-[2.2]" />
                   </div>
                   <div>
-                    <div className="text-xs font-bold text-[var(--tx)]">Zero Network Uploads</div>
-                    <div className="text-[11px] text-[var(--tx-3)]">Strict local memory</div>
+                    <div className="text-xs font-bold text-[var(--tx)]">No File Uploads</div>
+                    <div className="text-[11px] text-[var(--tx-3)]">Files stay on your machine</div>
                   </div>
                 </div>
 
@@ -158,8 +158,8 @@ export default function DashboardLayout({
                     <InfinityIcon className="h-4 w-4 stroke-[2.2]" />
                   </div>
                   <div>
-                    <div className="text-xs font-bold text-[var(--tx)]">Unlimited Operations</div>
-                    <div className="text-[11px] text-[var(--tx-3)]">No size or page caps</div>
+                    <div className="text-xs font-bold text-[var(--tx)]">No Daily Limits</div>
+                    <div className="text-[11px] text-[var(--tx-3)]">Process as many files as you need</div>
                   </div>
                 </div>
 
@@ -168,8 +168,8 @@ export default function DashboardLayout({
                     <Sparkles className="h-4 w-4 stroke-[2.2]" />
                   </div>
                   <div>
-                    <div className="text-xs font-bold text-[var(--tx)]">Zero Watermarks</div>
-                    <div className="text-[11px] text-[var(--tx-3)]">100% free forever</div>
+                    <div className="text-xs font-bold text-[var(--tx)]">No Watermarks</div>
+                    <div className="text-[11px] text-[var(--tx-3)]">Free to use anytime</div>
                   </div>
                 </div>
               </div>
@@ -240,7 +240,7 @@ export default function DashboardLayout({
                 {why.title}
               </h2>
               <p className="text-xs sm:text-sm text-[var(--tx-2)] leading-relaxed">
-                Designed for professionals who demand total data sovereignty, zero speed bottlenecks, and privacy guarantees across 45+ PDF tools.
+                Built for anyone who needs quick, reliable PDF tools without sending private files to remote servers.
               </p>
             </div>
 

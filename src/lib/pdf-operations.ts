@@ -1444,7 +1444,7 @@ export async function convertPdfToImages(
 
     if (canvas.width <= 0 || canvas.height <= 0) {
       throw new Error(
-        `Page ${pageNum} viewport computed invalid dimensions (${canvas.width}x${canvas.height}) — cannot rasterize.`
+        `Page ${pageNum} viewport computed invalid dimensions (${canvas.width}x${canvas.height}). Cannot rasterize page.`
       );
     }
 

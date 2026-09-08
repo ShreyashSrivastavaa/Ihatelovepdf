@@ -46,7 +46,7 @@ export default function ToolFirstVisitBanner() {
             </span>
           </p>
           <p className="text-[var(--tx-2)] text-[11px] leading-snug">
-            Your files are processed directly on your device via client-side WebAssembly &amp; Web Workers. No files are ever uploaded to remote servers.
+            Your files are processed directly on your device inside your browser. No files are ever uploaded to remote servers.
           </p>
         </div>
       </div>

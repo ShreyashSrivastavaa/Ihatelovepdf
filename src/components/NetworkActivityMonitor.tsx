@@ -98,7 +98,7 @@ export default function NetworkActivityMonitor({
         </span>
         <span className="font-semibold flex items-center gap-1 text-[var(--tx)]">
           <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
-          Zero-Network Sandbox:
+          Network Isolated:
         </span>
         <span className="text-[var(--tx-2)]">
           {isProcessing
@@ -112,7 +112,7 @@ export default function NetworkActivityMonitor({
       <div className="flex items-center gap-4 text-[11px] text-[var(--tx-3)]">
         <span className="flex items-center gap-1 font-mono">
           <Cpu className="h-3 w-3 text-emerald-400" />
-          Local WebAssembly RAM
+          Local Memory
         </span>
         <span className="flex items-center gap-1 font-mono">
           <WifiOff className="h-3 w-3 text-emerald-400" />
@@ -120,7 +120,7 @@ export default function NetworkActivityMonitor({
         </span>
         <span className="flex items-center gap-1 font-mono text-emerald-400">
           <Lock className="h-3 w-3" />
-          Client-Isolated
+          Client Isolated
         </span>
       </div>
     </div>

@@ -124,7 +124,7 @@ export default async function GuideDetailPage({ params }: PageProps) {
                 Ready to try this in your browser?
               </span>
               <p className="text-xs text-[var(--tx-2)]">
-                Open our 100% client-side tool with zero server uploads and zero watermarks.
+                Open our browser tool with no server uploads and no watermarks.
               </p>
             </div>
             <Link
@@ -167,10 +167,10 @@ export default async function GuideDetailPage({ params }: PageProps) {
         {/* Bottom CTA */}
         <section className="pt-8 border-t border-[var(--border)] text-center space-y-4">
           <h3 className="text-lg font-bold text-[var(--tx)]">
-            Experience 100% Private, Zero-Upload PDF Processing
+            Private PDF Processing with No Server Uploads
           </h3>
           <p className="text-xs sm:text-sm text-[var(--tx-2)] max-w-lg mx-auto">
-            Try all 46 tools completely free with no file limits, no registration, and no tracking.
+            Try all 46 tools free with no file limits, no registration, and no tracking.
           </p>
           <div className="pt-2">
             <Link

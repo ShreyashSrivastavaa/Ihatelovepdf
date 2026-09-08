@@ -2,9 +2,9 @@ import TermsPageContent from "../../../components/TermsPageContent";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | ihatelovepdf — Free & Private PDF Toolkit",
+  title: "Terms of Service | ihatelovepdf: Free and Private PDF Tools",
   description:
-    "Read the ihatelovepdf Terms of Service. Free personal and commercial license, client-side execution guarantees, and intellectual property terms.",
+    "Read the ihatelovepdf Terms of Service. Free personal and commercial license, browser execution terms, and intellectual property information.",
   alternates: {
     canonical: "https://ihatelovepdf.com/terms",
   },

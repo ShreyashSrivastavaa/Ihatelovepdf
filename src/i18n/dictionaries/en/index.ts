@@ -29,9 +29,9 @@ export const enDictionary: Dictionary = {
   },
   metadata: {
     site: {
-      title: "ihatelovepdf — Powerful, Private & Free PDF Tools in Your Browser",
+      title: "ihatelovepdf: Fast, Private & Free PDF Tools in Your Browser",
       description:
-        "ihatelovepdf is a privacy-first web toolkit to merge, compress, split, extract, rotate, reorder, crop, and convert PDFs locally in your browser. No file uploads, no tracking, 100% private and free.",
+        "ihatelovepdf is a private, free web toolkit to merge, compress, split, extract, rotate, reorder, crop, and convert PDFs directly on your device. No file uploads, no tracking, and no accounts required.",
       keywords: [
         "merge pdf",
         "compress pdf",
@@ -51,9 +51,9 @@ export const enDictionary: Dictionary = {
       ],
       canonical: `${siteUrl}${homePath}`,
       openGraph: {
-        title: "ihatelovepdf — Merge, Compress, Split & Convert PDFs Privately",
+        title: "ihatelovepdf: Merge, Compress, Split & Convert PDFs Privately",
         description:
-          "Manipulate PDFs with total privacy. Process files directly inside your browser without server uploads — fast, free, and secure.",
+          "Work with PDFs privately. Files are processed right inside your browser with no server uploads. Fast, free, and completely private.",
         url: `${siteUrl}${homePath}`,
         locale: "en_US",
         type: "website",
@@ -106,7 +106,7 @@ export const enDictionary: Dictionary = {
     },
     footer: {
       privacy: "Local Processing • 100% Private • Open Licenses",
-      rights: "© 2026 ihatelovepdf — Fast, private PDF utilities with zero compromise on privacy",
+      rights: "© 2026 ihatelovepdf. Fast, private PDF utilities that keep your documents on your device.",
       links: {
         home: "Home",
         faq: "FAQ",
@@ -238,7 +238,7 @@ export const enDictionary: Dictionary = {
         original: "Original Size",
         result: "Estimated Size",
         notice:
-          "Preview calculation runs locally in your browser. Clicking Process reuses this result with zero file uploads.",
+          "Preview calculation runs locally in your browser. Clicking Process reuses this result with no file uploads.",
         error: "Compression preview could not be generated.",
         retry: "Retry Preview",
         universalBadge: "Universal Optimization Engine",
@@ -254,10 +254,10 @@ export const enDictionary: Dictionary = {
         clear: "Clear Summary",
       },
       donationReminder: {
-        message: "Did ihatelovepdf save you time today? Your support keeps this tool 100% free and private.",
+        message: "Did ihatelovepdf save you time today? Your support keeps this tool free and private.",
         actionLabel: "Support ihatelovepdf",
         withSavings: (percent: string, saved: string) =>
-          `Saved ${saved} (${percent}% reduction)? Help us keep ihatelovepdf private, ad-free, and open.`,
+          `Saved ${saved} (${percent}% reduction)? Help us keep ihatelovepdf private, ad free, and open.`,
       },
       statusDialog: {
         processingTitle: "Processing Locally",
@@ -273,8 +273,8 @@ export const enDictionary: Dictionary = {
         retryLabel: "Retry",
         closeLabel: "Close",
         sharePrompt: {
-          dialogMessage: "ihatelovepdf is completely free and privacy-focused. Help others discover it by sharing with friends or colleagues!",
-          shareText: "I just used ihatelovepdf to process my PDFs! It's a fast, free, and 100% private browser toolkit to compress, merge, split, and convert PDFs without server uploads.",
+          dialogMessage: "ihatelovepdf is completely free and private. Help others discover it by sharing with friends or colleagues!",
+          shareText: "I just used ihatelovepdf to process my PDFs! It is a fast, free, and private browser toolkit to compress, merge, split, and convert PDFs without server uploads.",
           actionLabel: "Share ihatelovepdf",
           copiedLabel: "Link Copied!",
         },
@@ -319,7 +319,7 @@ export const enDictionary: Dictionary = {
       loading: "Loading PDF pages...",
       error: "Unable to parse PDF page metadata",
       summary: (total: number, selected: number) =>
-        `${total} total pages — ${selected} selected`,
+        `${total} total pages (${selected} selected)`,
       selectAll: "Select All",
       deselectAll: "Deselect All",
       pageLabel: (pageNumber: number) => `Page ${pageNumber}`,
@@ -465,7 +465,7 @@ export const enDictionary: Dictionary = {
       },
     },
     cookieBanner: {
-      message: "We use essential privacy-friendly analytics to improve ihatelovepdf. We never sell or track personal data.",
+      message: "We use essential privacy friendly analytics to improve ihatelovepdf. We never sell or track personal data.",
       accept: "Accept",
       decline: "Decline",
     },
@@ -473,14 +473,14 @@ export const enDictionary: Dictionary = {
   pages: {
     home: {
       hero: {
-        title: "ihatelovepdf — Powerful, Private & Free PDF Tools in Your Browser",
+        title: "ihatelovepdf: Fast, Private & Free PDF Tools in Your Browser",
         subtitle:
-          "Merge, split, compress, crop, rotate, and convert PDFs directly inside your browser. Your files stay on your device — 100% private, lightning-fast, and completely free.",
+          "Merge, split, compress, crop, rotate, and convert PDFs directly inside your browser. Your files stay on your device: private, fast, and completely free.",
         badges: [
           "Fast PDF Compression",
           "Unlimited PDF Merging",
           "100% Local Privacy",
-          "Zero Server Uploads",
+          "No Server Uploads",
         ],
         imageAlt: "ihatelovepdf mascot icon illustration",
         ctaLinks: [
@@ -497,32 +497,32 @@ export const enDictionary: Dictionary = {
         ],
       },
       why: {
-        title: "Why Professionals Choose ihatelovepdf",
+        title: "Why People Use ihatelovepdf",
         cards: [
           {
             title: "Private by Default",
             description:
-              "Your files never leave your device. All processing is executed locally right inside your browser.",
+              "Your files never leave your device. All processing happens locally inside your browser.",
             icon: "🔒",
           },
           {
-            title: "Fast & Efficient",
+            title: "Fast and Direct",
             description:
-              "Instant performance powered by client-side WebAssembly and modern JavaScript engines — zero waiting in cloud server queues.",
+              "Processes your files right away using your device hardware. There are no server queues or upload delays.",
             icon: "⚡",
           },
           {
-            title: "Cross-Platform Simplicity",
+            title: "Works Everywhere",
             description:
-              "Works seamlessly across desktop, tablet, and mobile browsers with zero software installation required.",
+              "Runs directly in your browser on desktop, tablet, or phone without installing any software or app.",
             icon: "📱",
           },
         ],
       },
       callout: {
-        title: "Support Independent Privacy-First Tools",
+        title: "Support Independent Private Tools",
         description:
-          "Every contribution covers server infrastructure, maintenance, and ensures ihatelovepdf remains 100% free, private, and ad-free.",
+          "Every contribution covers server infrastructure, maintenance, and helps keep ihatelovepdf free, private, and ad free.",
         ctaLabel: "Support the Project",
         ctaUrl: getRoutePath(locale, "support"),
         secondaryLabel: "Learn How Funds Are Used",
@@ -531,21 +531,21 @@ export const enDictionary: Dictionary = {
     },
     faq: {
       title: "Frequently Asked Questions",
-      intro: "Everything you need to know about ihatelovepdf's privacy-first PDF toolkit.",
+      intro: "Everything you need to know about ihatelovepdf and how it works.",
       cta: {
         title: "Ready to process your PDFs?",
         description:
-          "Merge, compress, split, extract, rotate, and convert PDFs with guaranteed local privacy. No sign-ups or server uploads required.",
+          "Merge, compress, split, extract, rotate, and convert PDFs directly on your device. No sign ups or server uploads required.",
         ctaLabel: "Open ihatelovepdf Toolkit",
       },
     },
     support: {
       hero: {
         eyebrow: "Independent Open Source Project",
-        title: "Help Keep ihatelovepdf Free and Privacy-First",
+        title: "Help Keep ihatelovepdf Free and Private",
         subtitle:
-          "ihatelovepdf is an independent project dedicated to user privacy. Your support covers infrastructure costs and fuels continuous improvements.",
-        highlight: "Simple, powerful tools designed to respect your data privacy.",
+          "ihatelovepdf is an independent project built to respect user privacy. Your support covers hosting costs and continuous improvements.",
+        highlight: "Simple, powerful tools that keep your documents in your hands.",
       },
       reasons: {
         title: "Why Support ihatelovepdf?",

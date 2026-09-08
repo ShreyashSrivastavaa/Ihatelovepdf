@@ -56,9 +56,9 @@ export default function TermsPageContent() {
             <div className="w-9 h-9 rounded-lg bg-[var(--accent-soft)] text-[var(--accent)] flex items-center justify-center">
               <Scale className="h-5 w-5" />
             </div>
-            <h3 className="text-sm font-bold text-[var(--tx)]">Client Execution</h3>
+            <h3 className="text-sm font-bold text-[var(--tx)]">Local Execution</h3>
             <p className="text-xs text-[var(--tx-2)] leading-relaxed">
-              All computations execute locally in your client environment &quot;as is&quot; without server guarantees.
+              All processing runs locally in your browser &quot;as is&quot; without server guarantees.
             </p>
           </div>
         </div>
@@ -119,7 +119,7 @@ export default function TermsPageContent() {
               <li>Process content that violates applicable local, national, or international laws</li>
               <li>Infringe upon the intellectual property rights or copyright of third parties</li>
               <li>Inject malicious code, exploits, or harmful scripts into document streams</li>
-              <li>Attempt to reverse-engineer or overload site infrastructure through automated spam attacks</li>
+              <li>Attempt to reverse engineer or overload site infrastructure through automated spam attacks</li>
             </ul>
           </section>
 
@@ -128,7 +128,7 @@ export default function TermsPageContent() {
               <span className="text-[var(--accent)] font-mono text-base">6.</span> Intellectual Property & Open Source
             </h2>
             <p>
-              ihatelovepdf is built upon established open-source software libraries, including PDF-lib (MIT License), PDF.js (Apache License 2.0), and Next.js (MIT License). All trademarks, service marks, and brand names are the property of their respective owners.
+              ihatelovepdf is built upon established open source software libraries, including PDF-lib (MIT License), PDF.js (Apache License 2.0), and Next.js (MIT License). All trademarks, service marks, and brand names are the property of their respective owners.
             </p>
           </section>
 

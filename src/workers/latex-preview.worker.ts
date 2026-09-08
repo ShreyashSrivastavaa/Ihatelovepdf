@@ -75,7 +75,7 @@ async function getOrInitWasmEngine(): Promise<unknown> {
  */
 function extractFriendlyErrorMessage(rawLog: string): string {
   if (!rawLog) {
-    return "Couldn't render preview — check for unusual characters or formatting in your input.";
+    return "Couldn't render preview. Please check for unusual characters or formatting in your input.";
   }
   if (rawLog.includes('Missing $ inserted')) {
     return 'Formatting error: A math character or unescaped symbol was found in your text.';
@@ -89,7 +89,7 @@ function extractFriendlyErrorMessage(rawLog: string): string {
   if (rawLog.includes('Emergency stop')) {
     return 'Compilation stopped unexpectedly. Please review recent inputs.';
   }
-  return "Couldn't render preview — check for unusual characters in your input.";
+  return "Couldn't render preview. Please check for unusual characters in your input.";
 }
 
 /**

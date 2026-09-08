@@ -89,9 +89,9 @@ export default function FileUploader({
         return `Unsupported file format ("${invalidType.name}"). Please upload: ${acceptedFileTypes}`;
       }
       if (acceptImages) {
-        return `This tool requires image files (JPG, PNG, WebP) — you added a ${fileExt} file ("${invalidType.name}").`;
+        return `This tool requires image files (JPG, PNG, WebP), but you added a ${fileExt} file ("${invalidType.name}").`;
       }
-      return `This tool requires a PDF file — you added a ${fileExt} file ("${invalidType.name}").`;
+      return `This tool requires a PDF file, but you added a ${fileExt} file ("${invalidType.name}").`;
     }
 
     const oversizedFile = files.find(file => file.size > maxFileSize);

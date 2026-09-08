@@ -18,7 +18,7 @@ export function ToolsPageContent({ dictionary: propDictionary }: { dictionary?: 
     <DashboardLayout
       hero={{
         title: "All PDF Tools",
-        subtitle: "Complete suite of 45+ free, private, and client-side PDF tools running directly in your browser.",
+        subtitle: "A collection of 45+ free, private PDF tools that run directly in your browser.",
         badges: home.hero.badges,
       }}
       why={{

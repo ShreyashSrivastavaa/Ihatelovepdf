@@ -550,7 +550,7 @@ export default function CreateBlankPdfInterface({
               </span>
             </h2>
             <p className="text-xs text-[var(--tx-2)]">
-              Design pages with text, images, shapes, and tables — 100% private in-browser.
+              Design pages with text, images, shapes, and tables. 100% private in your browser.
             </p>
           </div>
         </div>

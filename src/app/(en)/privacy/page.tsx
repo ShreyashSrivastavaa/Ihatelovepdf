@@ -2,9 +2,9 @@ import PrivacyPageContent from "../../../components/PrivacyPageContent";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | ihatelovepdf — 100% Client-Side Private PDF Toolkit",
+  title: "Privacy Policy | ihatelovepdf: Private PDF Tools in Your Browser",
   description:
-    "Read the ihatelovepdf Privacy Policy. Zero file uploads, zero server tracking, 100% local browser processing. GDPR, HIPAA, and LGPD compliant by design.",
+    "Read the ihatelovepdf Privacy Policy. No file uploads, no server tracking, and local browser processing on your own device.",
   alternates: {
     canonical: "https://ihatelovepdf.com/privacy",
   },

@@ -31,7 +31,7 @@ export const metadata = {
   openGraph: SHARED_OPEN_GRAPH,
   twitter: SHARED_TWITTER,
   title: {
-    default: "ihatelovepdf - Free and Private PDF Tools in Your Browser",
+    default: "ihatelovepdf: Free and Private PDF Tools in Your Browser",
     template: "%s | ihatelovepdf",
   },
   description: "Merge, compress, split, extract, and convert PDFs locally in your browser. 100% private, no server uploads, free forever.",

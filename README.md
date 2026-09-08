@@ -53,4 +53,4 @@ Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for more details
 
 ---
 
-Crafted with ❤️ by **[Shreyash Srivastava (Ramboo)](https://github.com/ShreyashSrivastavaa)**
+Crafted with ❤️ by **[Shreyash Srivastava](https://shreyashsrivastava.vercel.app/)** · [GitHub](https://github.com/ShreyashSrivastavaa) · [LinkedIn](https://linkedin.com/in/shreyashsrivastavaa) · [Twitter/X](https://x.com/YesShrey)

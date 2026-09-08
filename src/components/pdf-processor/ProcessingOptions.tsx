@@ -362,7 +362,7 @@ export default function ProcessingOptions({
                 placeholder="e.g. 1-3, 4-6, 7-10"
               />
               <p className="text-[11px] text-[var(--tx-3)]">
-                Example: <code className="px-1 py-0.5 rounded bg-[var(--bg-card-hover)]">1-2, 3-5</code> will split into two PDF documents: one with pages 1–2 and one with pages 3–5.
+                Example: <code className="px-1 py-0.5 rounded bg-[var(--bg-card-hover)]">1-2, 3-5</code> will split into two PDF documents: one with pages 1 to 2 and one with pages 3 to 5.
               </p>
             </div>
           </div>

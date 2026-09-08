@@ -17,13 +17,13 @@ export default function PrivacyPageContent() {
         <header className="text-center space-y-4 pb-8 border-b border-[var(--border)]">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--success-soft)] border border-[var(--success-border)] text-xs font-semibold text-[var(--success)]">
             <ShieldCheck className="h-4 w-4" />
-            100% Client-Side Local Processing
+            100% Local Processing in Your Browser
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[var(--tx)]">
             Privacy Policy
           </h1>
           <p className="text-sm sm:text-base text-[var(--tx-2)] max-w-2xl mx-auto leading-relaxed">
-            Your privacy is our absolute core promise. ihatelovepdf operates completely inside your browser — your documents never touch a remote server.
+            Your privacy comes first. ihatelovepdf runs completely inside your browser, so your documents never touch a remote server.
           </p>
           <div className="text-xs text-[var(--tx-3)] pt-2">
             Last Updated: July 31, 2026
@@ -96,7 +96,7 @@ export default function PrivacyPageContent() {
               Traditional PDF tools send files over HTTP requests to cloud servers to be processed and returned. ihatelovepdf is built differently:
             </p>
             <p>
-              We leverage modern client-side technologies — Web Workers, WebAssembly (WASM), PDF-lib, and Mozilla PDF.js — to run all document algorithms right inside your web browser. File bytes never traverse the internet.
+              All file processing runs locally in your web browser using open source libraries like PDF-lib and PDF.js. Your document data never travels across the internet.
             </p>
           </section>
 
@@ -127,12 +127,12 @@ export default function PrivacyPageContent() {
             <h2 className="text-lg font-bold text-[var(--tx)] flex items-center gap-2">
               <span className="text-[var(--accent)] font-mono text-base">5.</span> Third-Party Libraries & Licenses
             </h2>
-            <p>ihatelovepdf relies on trusted open-source technology frameworks:</p>
+            <p>ihatelovepdf relies on trusted open source libraries:</p>
             <ul className="list-disc list-inside space-y-1.5 pl-2 font-mono text-xs">
-              <li>PDF-lib — MIT License (PDF manipulation and compilation)</li>
-              <li>PDF.js — Apache License 2.0 (Client-side rendering and page previews)</li>
-              <li>Lucide Icons — ISC License (UI icons)</li>
-              <li>Next.js / React — MIT License (Frontend framework)</li>
+              <li>PDF-lib: MIT License (PDF manipulation and compilation)</li>
+              <li>PDF.js: Apache License 2.0 (In-browser rendering and page previews)</li>
+              <li>Lucide Icons: ISC License (UI icons)</li>
+              <li>Next.js / React: MIT License (Frontend framework)</li>
             </ul>
           </section>
 

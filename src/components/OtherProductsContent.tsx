@@ -199,10 +199,10 @@ export default function OtherProductsContent() {
             <Heart className="h-4 w-4 fill-current" />
           </div>
           <h3 className="text-sm font-bold text-[var(--tx)]">
-            Privacy-First Developer Tools
+            Privacy Focused Developer Tools
           </h3>
           <p className="text-xs text-[var(--tx-2)] leading-relaxed max-w-lg mx-auto">
-            Built for developers, students, and engineers worldwide — zero trackers, high performance, and client compute.
+            Built for developers, students, and engineers around the world with no trackers, fast performance, and local processing.
           </p>
           <div className="pt-1">
             <Link

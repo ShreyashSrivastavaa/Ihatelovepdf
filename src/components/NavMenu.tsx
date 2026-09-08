@@ -81,7 +81,7 @@ export default function NavMenu() {
 
             <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-[var(--border)] bg-[var(--bg-subtle)] px-2.5 py-0.5 text-xs font-medium text-[var(--tx-2)]">
               <ShieldCheck className="h-3.5 w-3.5 text-[var(--success)]" />
-              100% Client-Side
+              Runs in Browser
             </span>
           </div>
 
