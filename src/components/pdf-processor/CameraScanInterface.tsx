@@ -51,14 +51,28 @@ export default function CameraScanInterface({ onScanComplete, onGenerated }: Cam
         throw new Error('Camera API is not supported in this browser environment.');
       }
 
-      const mediaStream = await navigator.mediaDevices.getUserMedia({
-        video: {
-          facingMode: { ideal: mode },
-          width: { ideal: 1920 },
-          height: { ideal: 1080 },
-        },
-        audio: false,
-      });
+      let mediaStream: MediaStream;
+      try {
+        mediaStream = await navigator.mediaDevices.getUserMedia({
+          video: {
+            facingMode: { ideal: mode },
+            width: { ideal: 1920 },
+            height: { ideal: 1080 },
+          },
+          audio: false,
+        });
+      } catch (constraintErr: unknown) {
+        const errName = (constraintErr as Error).name;
+        if (errName === 'OverconstrainedError' || errName === 'NotReadableError') {
+          console.warn('Falling back to default camera constraints...', constraintErr);
+          mediaStream = await navigator.mediaDevices.getUserMedia({
+            video: true,
+            audio: false,
+          });
+        } else {
+          throw constraintErr;
+        }
+      }
 
       streamRef.current = mediaStream;
       setIsCameraActive(true);
@@ -82,10 +96,20 @@ export default function CameraScanInterface({ onScanComplete, onGenerated }: Cam
     } catch (err: unknown) {
       console.error('Camera access failed:', err);
       stopCamera();
-      const message = err instanceof Error ? err.message : 'Camera access denied or unavailable.';
-      setCameraError(message.includes('Permission') || message.includes('denied')
-        ? 'Camera permission was denied. Please allow camera access in your browser settings and click Turn On Camera again.'
-        : `Could not access camera: ${message}`);
+      
+      const error = err as Error;
+      const errorName = error?.name || '';
+      const message = error?.message || String(err) || 'Camera access denied or unavailable.';
+
+      if (errorName === 'NotAllowedError' || message.toLowerCase().includes('permission') || message.toLowerCase().includes('denied')) {
+        setCameraError('Camera permission was denied. Please allow camera access in your browser settings and click Turn On Camera again.');
+      } else if (errorName === 'NotFoundError' || message.toLowerCase().includes('not found')) {
+        setCameraError('No camera found on this device. Please connect a camera and try again.');
+      } else if (errorName === 'NotReadableError' || message.toLowerCase().includes('in use') || message.toLowerCase().includes('start video source')) {
+        setCameraError('Camera is in use by another application or blocked by your OS privacy settings (e.g., Windows Camera Privacy). Please close other apps and try again.');
+      } else {
+        setCameraError(`Could not access camera: ${message} (${errorName})`);
+      }
     }
   };
 
