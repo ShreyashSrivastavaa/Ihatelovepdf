@@ -473,9 +473,9 @@ export const enDictionary: Dictionary = {
   pages: {
     home: {
       hero: {
-        title: "Your Files Never Leave Your Device. 100% Private PDF Tools.",
+        title: "Work on Private PDFs Without Sending Them to a Server",
         subtitle:
-          "Merge, split, compress, and convert PDFs instantly right inside your browser. No server uploads, no waiting, and completely secure.",
+          "Process, edit, and convert documents 100% locally in your browser. No server uploads, no queues, and your files never leave your device.",
         badges: [
           "Fast PDF Compression",
           "Unlimited PDF Merging",

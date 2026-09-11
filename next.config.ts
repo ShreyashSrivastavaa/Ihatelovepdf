@@ -9,11 +9,13 @@ const withBundleAnalyzer = bundleAnalyzer({
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   output: "export",
+  poweredByHeader: false,
+  compress: true,
   images: {
     unoptimized: true,
   },
   experimental: {
-    optimizePackageImports: ['lucide-react'],
+    optimizePackageImports: ['lucide-react', '@vercel/analytics', '@vercel/speed-insights'],
   },
   webpack: (config, { isServer, webpack }) => {
     config.resolve = {
