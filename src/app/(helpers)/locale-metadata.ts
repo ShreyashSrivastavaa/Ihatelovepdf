@@ -39,6 +39,7 @@ export function createHomeMetadata(locale: Locale) {
         ...(GOOGLE_SITE_VERIFICATION ? { google: GOOGLE_SITE_VERIFICATION } : {}),
         other: {
           "websitelaunches-verification": ["714e3c091b00f4a86f93e6be17c060fc"],
+          "foundereview-verification": ["frv1.eyJwIjoiZjI3YTA0OGYtOTgxMi00NDVlLWI1Y2EtNTQyMTA1MDQ3NjU0IiwiZCI6ImloYXRlbG92ZXBkZi5jb20iLCJleHAiOjE3ODkxNzc2NzJ9.ROHKtnVofKKw2MJ-tVvmDmmaTudfZ5Cq8q1EX-gDKxM"],
         },
       },
       alternates: {
@@ -81,6 +82,7 @@ export function createFaqMetadata(locale: Locale) {
         ...(GOOGLE_SITE_VERIFICATION ? { google: GOOGLE_SITE_VERIFICATION } : {}),
         other: {
           "websitelaunches-verification": ["714e3c091b00f4a86f93e6be17c060fc"],
+          "foundereview-verification": ["frv1.eyJwIjoiZjI3YTA0OGYtOTgxMi00NDVlLWI1Y2EtNTQyMTA1MDQ3NjU0IiwiZCI6ImloYXRlbG92ZXBkZi5jb20iLCJleHAiOjE3ODkxNzc2NzJ9.ROHKtnVofKKw2MJ-tVvmDmmaTudfZ5Cq8q1EX-gDKxM"],
         },
       },
       alternates: {
@@ -123,6 +125,7 @@ export function createSupportMetadata(locale: Locale) {
         ...(GOOGLE_SITE_VERIFICATION ? { google: GOOGLE_SITE_VERIFICATION } : {}),
         other: {
           "websitelaunches-verification": ["714e3c091b00f4a86f93e6be17c060fc"],
+          "foundereview-verification": ["frv1.eyJwIjoiZjI3YTA0OGYtOTgxMi00NDVlLWI1Y2EtNTQyMTA1MDQ3NjU0IiwiZCI6ImloYXRlbG92ZXBkZi5jb20iLCJleHAiOjE3ODkxNzc2NzJ9.ROHKtnVofKKw2MJ-tVvmDmmaTudfZ5Cq8q1EX-gDKxM"],
         },
       },
       robots: {

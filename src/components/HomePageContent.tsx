@@ -1,7 +1,7 @@
 import Link from "next/link";
 import DynamicPdfProcessor from "./DynamicPdfProcessor";
 import type { Dictionary } from "../i18n/dictionaries/dictionary-types";
-import { ShieldCheck, Zap, Laptop, Lock, CheckCircle2, Upload, ArrowRight } from "lucide-react";
+import { ShieldCheck, Zap, Laptop, Lock, CheckCircle2, Upload, ArrowRight, Combine, SplitSquareHorizontal, Minimize, ImageIcon, FileImage, Crop, RotateCcw, FileOutput } from "lucide-react";
 import FaqSection from "./faq-section";
 import ToolSwitcher, { type ToolLink } from "./ToolSwitcher";
 
@@ -66,6 +66,31 @@ export function HomePageContent({ dictionary }: { dictionary: Dictionary }) {
               <span>Explore All Tools</span>
               <ArrowRight className="h-4 w-4 text-[var(--tx-3)]" />
             </Link>
+          </div>
+          
+          {/* TOOL GRID (Quick Access) */}
+          <div className="pt-8 w-full max-w-4xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+              {[
+                { key: "merge", label: "Merge PDF", icon: Combine, href: routes.operations.merge },
+                { key: "split", label: "Split PDF", icon: SplitSquareHorizontal, href: routes.operations.split },
+                { key: "compress", label: "Compress PDF", icon: Minimize, href: routes.operations.compress },
+                { key: "pdf-to-image", label: "PDF to Images", icon: ImageIcon, href: routes.operations.pdfToImages },
+                { key: "image-to-pdf", label: "Images to PDF", icon: FileImage, href: routes.operations.imagesToPdf },
+                { key: "crop", label: "Crop PDF", icon: Crop, href: routes.operations.crop },
+                { key: "rotate", label: "Rotate PDF", icon: RotateCcw, href: routes.operations.rotate },
+                { key: "extract", label: "Extract Pages", icon: FileOutput, href: routes.operations.extract }
+              ].map((tool) => (
+                <Link
+                  key={tool.key}
+                  href={tool.href}
+                  className="flex flex-col items-center justify-center p-4 sm:p-5 gap-3 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] hover:border-[var(--accent-border)] hover:bg-[var(--bg-subtle)] hover:-translate-y-1 transition-all shadow-sm"
+                >
+                  <tool.icon className="h-6 w-6 sm:h-7 sm:w-7 text-[var(--accent)]" strokeWidth={1.5} />
+                  <span className="text-sm font-semibold text-[var(--tx)]">{tool.label}</span>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
 
