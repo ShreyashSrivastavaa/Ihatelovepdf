@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Copy, Check, Download, Search, FileText, Hash, BookOpen } from 'lucide-react';
 import { extractPdfText } from '../../lib/operations/text-extract';
 import type { ExtractedTextResult } from '../../lib/pdf-operations';
+import { downloadBlob } from '../../lib/download-helper';
 
 interface TextExtractionViewerProps {
   result?: ExtractedTextResult;
@@ -50,7 +51,7 @@ export default function TextExtractionViewer({ result: initialResult, file, file
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleDownload = (format: 'txt' | 'json' | 'md') => {
+  const handleDownload = async (format: 'txt' | 'json' | 'md') => {
     let content = '';
     let mimeType = 'text/plain';
     let ext = 'txt';
@@ -83,12 +84,7 @@ export default function TextExtractionViewer({ result: initialResult, file, file
     }
 
     const blob = new Blob([content], { type: mimeType });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `${baseName}_extracted.${ext}`;
-    a.click();
-    URL.revokeObjectURL(url);
+    await downloadBlob(blob, `${baseName}_extracted.${ext}`);
   };
 
   const displayedText =

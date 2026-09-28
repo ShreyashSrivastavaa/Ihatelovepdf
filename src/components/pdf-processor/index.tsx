@@ -1340,19 +1340,39 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
             processedSources += 1;
             latestMessage = `${sourceFile.name}: ${statusMessages.split(parts.length)}`;
 
-            const firstName = buildFileName('split', sourceFile.name, 0);
-            downloads.push({ blob: parts[0], fileName: firstName });
-            triggerDownloadAction(parts[0], firstName);
-
             if (parts.length > 1) {
-              const remainingParts = parts.slice(1);
-              remainingParts.forEach((blob, idx) => {
-                const partName = buildFileName('split', sourceFile.name, idx + 1);
-                downloads.push({ blob, fileName: partName });
-                window.setTimeout(() => {
-                  triggerDownloadAction(blob, partName);
-                }, 600);
-              });
+              if (isIOS()) {
+                // On iOS WebKit, multiple setTimeout downloads are blocked by Safari's popup blocker.
+                // Bundle parts into a single ZIP archive for seamless iOS Files saving.
+                const { default: JSZip } = await import('jszip');
+                const zip = new JSZip();
+                for (let i = 0; i < parts.length; i++) {
+                  const pName = buildFileName('split', sourceFile.name, i);
+                  zip.file(pName, await parts[i].arrayBuffer());
+                  downloads.push({ blob: parts[i], fileName: pName });
+                }
+                const zipBlob = await zip.generateAsync({ type: 'blob' });
+                const zipName = `${stripPdfExtension(sourceFile.name)}_split.zip`;
+                downloads.unshift({ blob: zipBlob, fileName: zipName });
+                triggerDownloadAction(zipBlob, zipName);
+              } else {
+                const firstName = buildFileName('split', sourceFile.name, 0);
+                downloads.push({ blob: parts[0], fileName: firstName });
+                triggerDownloadAction(parts[0], firstName);
+
+                const remainingParts = parts.slice(1);
+                remainingParts.forEach((blob, idx) => {
+                  const partName = buildFileName('split', sourceFile.name, idx + 1);
+                  downloads.push({ blob, fileName: partName });
+                  window.setTimeout(() => {
+                    triggerDownloadAction(blob, partName);
+                  }, 600 * (idx + 1));
+                });
+              }
+            } else {
+              const firstName = buildFileName('split', sourceFile.name, 0);
+              downloads.push({ blob: parts[0], fileName: firstName });
+              triggerDownloadAction(parts[0], firstName);
             }
           }
 
@@ -2200,22 +2220,22 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
       return { multiple: false, acceptImages: false, acceptedFileTypes: 'application/pdf,.pdf' };
     }
     if (mode === 'excelToPdf') {
-      return { multiple: false, acceptImages: false, acceptedFileTypes: '.xlsx,.xls,.csv' };
+      return { multiple: false, acceptImages: false, acceptedFileTypes: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel,.xlsx,.xls,.csv' };
     }
     if (mode === 'csvToPdf') {
-      return { multiple: false, acceptImages: false, acceptedFileTypes: '.csv' };
+      return { multiple: false, acceptImages: false, acceptedFileTypes: 'text/csv,text/comma-separated-values,application/vnd.ms-excel,.csv' };
     }
     if (mode === 'powerpointToPdf') {
-      return { multiple: false, acceptImages: false, acceptedFileTypes: '.pptx,.ppt' };
+      return { multiple: false, acceptImages: false, acceptedFileTypes: 'application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.ms-powerpoint,.pptx,.ppt' };
     }
     if (mode === 'markdownToPdf') {
-      return { multiple: false, acceptImages: false, acceptedFileTypes: '.md,.markdown,.txt' };
+      return { multiple: false, acceptImages: false, acceptedFileTypes: 'text/markdown,text/plain,.md,.markdown,.txt' };
     }
     if (mode === 'htmlToPdf') {
-      return { multiple: false, acceptImages: false, acceptedFileTypes: '.html,.htm' };
+      return { multiple: false, acceptImages: false, acceptedFileTypes: 'text/html,application/xhtml+xml,.html,.htm' };
     }
     if (mode === 'ebookToPdf') {
-      return { multiple: false, acceptImages: false, acceptedFileTypes: '.epub' };
+      return { multiple: false, acceptImages: false, acceptedFileTypes: 'application/epub+zip,.epub' };
     }
     return { multiple: true, acceptImages: false, acceptedFileTypes: 'application/pdf,.pdf' };
   }, [mode]);

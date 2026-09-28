@@ -35,6 +35,8 @@ import {
   generateResumePdf,
 } from '../../lib/latex/resume-compiler';
 import { createPdfBlob } from '../../lib/pdf-processor';
+import { downloadBlob } from '../../lib/download-helper';
+import { clampCanvasScale, cleanupPdfPage } from '../../lib/canvas-limits';
 import {
   getCustomTemplates,
   deleteCustomTemplate,
@@ -300,7 +302,9 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
         const page = await doc.getPage(pageNum);
         if (isCancelled) return;
 
-        const viewport = page.getViewport({ scale: 1.5 });
+        const baseViewport = page.getViewport({ scale: 1.0 });
+        const { scale: safeScale } = clampCanvasScale(baseViewport.width, baseViewport.height, 1.5);
+        const viewport = page.getViewport({ scale: safeScale });
         const canvas = canvasRef.current;
         if (!canvas) return;
 
@@ -331,6 +335,7 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
         try {
           await renderTask.promise;
         } finally {
+          cleanupPdfPage(page);
           if (activeRenderTaskRef.current === renderTask) {
             activeRenderTaskRef.current = null;
           }
@@ -363,13 +368,8 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
     if (onDone) {
       onDone(blob);
     } else {
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
       const cleanName = (data.personalInfo.name || 'Resume').replace(/\s+/g, '_');
-      a.download = `${cleanName}_Resume.pdf`;
-      a.click();
-      URL.revokeObjectURL(url);
+      void downloadBlob(blob, `${cleanName}_Resume.pdf`);
     }
   };
 
@@ -391,13 +391,8 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
   const handleDownloadTex = () => {
     const code = latexCode || generateLatexSource(data, templateId);
     const blob = new Blob([code], { type: 'text/x-tex;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
     const cleanName = (data.personalInfo.name || 'Resume').replace(/\s+/g, '_');
-    a.download = `${cleanName}_Resume.tex`;
-    a.click();
-    URL.revokeObjectURL(url);
+    void downloadBlob(blob, `${cleanName}_Resume.tex`);
   };
 
   // Copy LaTeX code
