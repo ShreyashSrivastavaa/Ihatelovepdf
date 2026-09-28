@@ -1,5 +1,6 @@
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
 import JSZip from 'jszip';
+import { clampCanvasScale, cleanupPdfPage, releaseCanvas } from '../canvas-limits';
 
 import type pptxgen from 'pptxgenjs';
 
@@ -433,28 +434,32 @@ export async function convertPdfToPowerpoint(
   // Inspect first page to determine slide aspect ratio
   try {
     const firstPage = await doc.getPage(1);
-    const unscaledVp = firstPage.getViewport({ scale: 1.0 });
-    const isPortrait = unscaledVp.height > unscaledVp.width;
-    const isStandard43 = !isPortrait && unscaledVp.width / unscaledVp.height < 1.5;
+    try {
+      const unscaledVp = firstPage.getViewport({ scale: 1.0 });
+      const isPortrait = unscaledVp.height > unscaledVp.width;
+      const isStandard43 = !isPortrait && unscaledVp.width / unscaledVp.height < 1.5;
 
-    if (isPortrait) {
-      // If defineLayout is supported on the instance, register portrait; otherwise fallback to LAYOUT_4x3 or LAYOUT_WIDE
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      if (typeof (pptx as any).defineLayout === 'function') {
-        try {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          (pptx as any).defineLayout({ name: 'PORTRAIT_PAGE', width: 8.5, height: 11.0 });
-          pptx.layout = 'PORTRAIT_PAGE';
-        } catch {
+      if (isPortrait) {
+        // If defineLayout is supported on the instance, register portrait; otherwise fallback to LAYOUT_4x3 or LAYOUT_WIDE
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        if (typeof (pptx as any).defineLayout === 'function') {
+          try {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (pptx as any).defineLayout({ name: 'PORTRAIT_PAGE', width: 8.5, height: 11.0 });
+            pptx.layout = 'PORTRAIT_PAGE';
+          } catch {
+            pptx.layout = 'LAYOUT_WIDE';
+          }
+        } else {
           pptx.layout = 'LAYOUT_WIDE';
         }
+      } else if (isStandard43) {
+        pptx.layout = 'LAYOUT_4x3';
       } else {
-        pptx.layout = 'LAYOUT_WIDE';
+        pptx.layout = 'LAYOUT_WIDE'; // Standard 16:9 widescreen
       }
-    } else if (isStandard43) {
-      pptx.layout = 'LAYOUT_4x3';
-    } else {
-      pptx.layout = 'LAYOUT_WIDE'; // Standard 16:9 widescreen
+    } finally {
+      cleanupPdfPage(firstPage);
     }
   } catch (layoutErr) {
     console.warn('Could not inspect initial page dimensions for layout, using standard widescreen:', layoutErr);
@@ -463,52 +468,58 @@ export async function convertPdfToPowerpoint(
 
   for (let i = 1; i <= doc.numPages; i++) {
     const page = await doc.getPage(i);
+    try {
+      if (typeof document === 'undefined') {
+        const textContent = await page.getTextContent();
+        const text = textContent.items
+          .map((item) => ('str' in item ? (item as { str: string }).str : ''))
+          .filter(Boolean)
+          .join(' ');
+        const slide = pptx.addSlide();
+        slide.addText(text || `Slide ${i}`, { x: 0.5, y: 0.5, w: '90%', h: '80%', fontSize: 16 });
+      } else {
+        const unscaledVp = page.getViewport({ scale: 1.0 });
+        // Crisp 150-200 DPI rendering with bounds to avoid canvas size overflow
+        const renderScale = Math.min(2.5, Math.max(1.5, 1800 / Math.max(unscaledVp.width, unscaledVp.height)));
+        const { scale: safeScale } = clampCanvasScale(unscaledVp.width, unscaledVp.height, renderScale);
+        const vp = page.getViewport({ scale: safeScale });
 
-    if (typeof document === 'undefined') {
-      const textContent = await page.getTextContent();
-      const text = textContent.items
-        .map((item) => ('str' in item ? (item as { str: string }).str : ''))
-        .filter(Boolean)
-        .join(' ');
-      const slide = pptx.addSlide();
-      slide.addText(text || `Slide ${i}`, { x: 0.5, y: 0.5, w: '90%', h: '80%', fontSize: 16 });
-    } else {
-      const unscaledVp = page.getViewport({ scale: 1.0 });
-      // Crisp 150-200 DPI rendering with bounds to avoid canvas size overflow
-      const renderScale = Math.min(2.5, Math.max(1.5, 1800 / Math.max(unscaledVp.width, unscaledVp.height)));
-      const vp = page.getViewport({ scale: renderScale });
+        const canvas = document.createElement('canvas');
+        canvas.width = Math.ceil(vp.width);
+        canvas.height = Math.ceil(vp.height);
+        const ctx = canvas.getContext('2d', { willReadFrequently: true });
+        if (!ctx) {
+          throw new Error('Failed to create 2D canvas context for slide rendering.');
+        }
 
-      const canvas = document.createElement('canvas');
-      canvas.width = Math.ceil(vp.width);
-      canvas.height = Math.ceil(vp.height);
-      const ctx = canvas.getContext('2d', { willReadFrequently: true });
-      if (!ctx) {
-        throw new Error('Failed to create 2D canvas context for slide rendering.');
+        try {
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+          await page.render({
+            canvasContext: ctx,
+            viewport: vp,
+            canvas,
+          } as Parameters<typeof page.render>[0]).promise;
+
+          const dataUrl = canvas.toDataURL('image/jpeg', 0.92);
+
+          const slide = pptx.addSlide();
+          slide.addImage({
+            data: dataUrl,
+            x: 0,
+            y: 0,
+            w: '100%',
+            h: '100%',
+            sizing: { type: 'contain', w: '100%', h: '100%' },
+          });
+        } finally {
+          releaseCanvas(canvas);
+        }
       }
-
-      ctx.fillStyle = '#ffffff';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      await page.render({
-        canvasContext: ctx,
-        viewport: vp,
-        canvas,
-      } as Parameters<typeof page.render>[0]).promise;
-
-      const dataUrl = canvas.toDataURL('image/jpeg', 0.92);
-
-      const slide = pptx.addSlide();
-      slide.addImage({
-        data: dataUrl,
-        x: 0,
-        y: 0,
-        w: '100%',
-        h: '100%',
-        sizing: { type: 'contain', w: '100%', h: '100%' },
-      });
+    } finally {
+      cleanupPdfPage(page);
     }
-
-    page.cleanup();
     if (onProgress) onProgress(i, doc.numPages);
   }
 

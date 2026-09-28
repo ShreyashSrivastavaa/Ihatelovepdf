@@ -23,6 +23,8 @@ import type { RedactionBox, RedactOptions } from './operations/redact';
 import type { GstInvoiceData, PosReceiptData } from './operations/business';
 import type { BlankPdfPageSize, BlankPdfOrientation } from './operations/converters';
 import type { DocumentModel } from './pdf-engine/creator-engine';
+import { clampCanvasScale, cleanupPdfPage, releaseCanvas } from './canvas-limits';
+import { normalizeImageForPdf as iosNormalizeImageForPdf } from './ios-support';
 
 export * from './operations/watermark';
 export * from './operations/page-numbers';
@@ -1256,42 +1258,7 @@ function parseBackgroundColor(color?: string) {
 }
 
 async function normalizeImageForPdf(fileOrData: File | ArrayBuffer | Uint8Array): Promise<{ bytes: Uint8Array; format: 'png' | 'jpeg' }> {
-  const data = fileOrData instanceof File ? fileOrData : new Blob([fileOrData as BlobPart]);
-  if (fileOrData instanceof File) {
-    const lowerName = fileOrData.name.toLowerCase();
-    const mime = (fileOrData.type || '').toLowerCase();
-    if (mime === 'image/png' || lowerName.endsWith('.png')) return { bytes: new Uint8Array(await fileOrData.arrayBuffer()), format: 'png' };
-    if (mime === 'image/jpeg' || mime === 'image/jpg' || lowerName.endsWith('.jpg') || lowerName.endsWith('.jpeg')) return { bytes: new Uint8Array(await fileOrData.arrayBuffer()), format: 'jpeg' };
-  }
-  const hasDocument = typeof document !== 'undefined';
-  let resultBuffer: ArrayBuffer;
-  if (typeof createImageBitmap === 'function') {
-    const bitmap = await createImageBitmap(data);
-    const w = bitmap.width, h = bitmap.height;
-    let canvas: HTMLCanvasElement | OffscreenCanvas;
-    if (typeof OffscreenCanvas !== 'undefined') {
-      canvas = new OffscreenCanvas(w, h);
-    } else if (typeof document !== 'undefined') {
-      canvas = document.createElement('canvas');
-      canvas.width = w; canvas.height = h;
-    } else {
-      throw new Error('Canvas support required for image processing');
-    }
-    const ctx = canvas.getContext('2d')! as CanvasRenderingContext2D;
-    ctx.drawImage(bitmap, 0, 0);
-    bitmap.close();
-    const blob = (canvas instanceof OffscreenCanvas) ? await canvas.convertToBlob({ type: 'image/png' }) : await new Promise<Blob>(r => (canvas as HTMLCanvasElement).toBlob(b => r(b!), 'image/png'));
-    resultBuffer = await blob.arrayBuffer();
-  } else {
-    if (!hasDocument) throw new Error('Image rendering requires a browser environment');
-    const img = await loadImageFromBlob(data);
-    const canvas = document.createElement('canvas');
-    canvas.width = img.width; canvas.height = img.height;
-    canvas.getContext('2d')!.drawImage(img, 0, 0);
-    const blob = await new Promise<Blob>(r => canvas.toBlob(b => r(b!), 'image/png'));
-    resultBuffer = await blob.arrayBuffer();
-  }
-  return { bytes: new Uint8Array(resultBuffer as ArrayBuffer), format: 'png' };
+  return iosNormalizeImageForPdf(fileOrData);
 }
 
 function resolvePageLayout(imageWidth: number, imageHeight: number, options: PDFProcessingOptions, fallbackMargin: number): PageLayout {
@@ -1427,75 +1394,83 @@ export async function convertPdfToImages(
     );
 
     const page = await doc.getPage(pageNum);
-    const vp = page.getViewport({ scale, rotation: page.rotate || 0 });
-    const w = Math.max(1, Math.ceil(vp.width || 595));
-    const h = Math.max(1, Math.ceil(vp.height || 842));
+    try {
+      const baseVp = page.getViewport({ scale: 1, rotation: page.rotate || 0 });
+      const { scale: safeScale } = clampCanvasScale(baseVp.width, baseVp.height, scale);
+      const vp = page.getViewport({ scale: safeScale, rotation: page.rotate || 0 });
+      const w = Math.max(1, Math.ceil(vp.width || 595));
+      const h = Math.max(1, Math.ceil(vp.height || 842));
 
-    let canvas: HTMLCanvasElement | OffscreenCanvas;
-    if (typeof OffscreenCanvas !== 'undefined') {
-      canvas = new OffscreenCanvas(w, h);
-    } else if (typeof document !== 'undefined') {
-      canvas = document.createElement('canvas');
-      canvas.width = w;
-      canvas.height = h;
-    } else {
-      throw new Error('Canvas support required for PDF processing');
+      let canvas: HTMLCanvasElement | OffscreenCanvas;
+      if (typeof OffscreenCanvas !== 'undefined') {
+        canvas = new OffscreenCanvas(w, h);
+      } else if (typeof document !== 'undefined') {
+        canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+      } else {
+        throw new Error('Canvas support required for PDF processing');
+      }
+
+      try {
+        if (canvas.width <= 0 || canvas.height <= 0) {
+          throw new Error(
+            `Page ${pageNum} viewport computed invalid dimensions (${canvas.width}x${canvas.height}). Cannot rasterize page.`
+          );
+        }
+
+        const ctx = canvas.getContext('2d', { alpha: false })! as CanvasRenderingContext2D;
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        await page.render({
+          canvasContext: ctx as unknown as CanvasRenderingContext2D,
+          viewport: vp,
+          canvasFactory: workerCanvasFactory,
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } as any).promise;
+
+        const borderWidth = options.imageBorderWidth ?? 0;
+        const borderColor = options.imageBorderColor ?? '#000000';
+        if (borderWidth > 0 && borderColor !== 'transparent') {
+          const scaledWidth = Math.max(1, Math.round(borderWidth * (safeScale / 2)));
+          ctx.strokeStyle = borderColor;
+          ctx.lineWidth = scaledWidth;
+          ctx.strokeRect(scaledWidth / 2, scaledWidth / 2, w - scaledWidth, h - scaledWidth);
+        }
+
+        let blob: Blob;
+        if (canvas instanceof OffscreenCanvas) {
+          blob =
+            extension === 'jpg'
+              ? await canvas.convertToBlob({ type: mimeType, quality })
+              : await canvas.convertToBlob({ type: mimeType });
+        } else {
+          blob = await new Promise<Blob>((resolve, reject) => {
+            (canvas as HTMLCanvasElement).toBlob(
+              (b) => (b ? resolve(b) : reject(new Error(`Failed to rasterize page ${pageNum} to blob`))),
+              mimeType,
+              extension === 'jpg' ? quality : undefined
+            );
+          });
+        }
+
+        const paddedNum = String(pageNum).padStart(String(doc.numPages).length, '0');
+        const entryName = `${base}_${paddedNum}.${extension}`;
+
+        if (zip) {
+          const buffer = await blob.arrayBuffer();
+          zip.file(entryName, buffer);
+        } else {
+          entries.push({ name: entryName, blob });
+        }
+      } finally {
+        releaseCanvas(canvas);
+      }
+    } finally {
+      cleanupPdfPage(page);
     }
-
-    if (canvas.width <= 0 || canvas.height <= 0) {
-      throw new Error(
-        `Page ${pageNum} viewport computed invalid dimensions (${canvas.width}x${canvas.height}). Cannot rasterize page.`
-      );
-    }
-
-    const ctx = canvas.getContext('2d', { alpha: false })! as CanvasRenderingContext2D;
-    ctx.fillStyle = '#ffffff';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    await page.render({
-      canvasContext: ctx as unknown as CanvasRenderingContext2D,
-      viewport: vp,
-      canvasFactory: workerCanvasFactory,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } as any).promise;
-
-    const borderWidth = options.imageBorderWidth ?? 0;
-    const borderColor = options.imageBorderColor ?? '#000000';
-    if (borderWidth > 0 && borderColor !== 'transparent') {
-      const scaledWidth = Math.max(1, Math.round(borderWidth * (scale / 2)));
-      ctx.strokeStyle = borderColor;
-      ctx.lineWidth = scaledWidth;
-      ctx.strokeRect(scaledWidth / 2, scaledWidth / 2, w - scaledWidth, h - scaledWidth);
-    }
-
-    let blob: Blob;
-    if (canvas instanceof OffscreenCanvas) {
-      blob =
-        extension === 'jpg'
-          ? await canvas.convertToBlob({ type: mimeType, quality })
-          : await canvas.convertToBlob({ type: mimeType });
-    } else {
-      blob = await new Promise<Blob>((resolve, reject) => {
-        (canvas as HTMLCanvasElement).toBlob(
-          (b) => (b ? resolve(b) : reject(new Error(`Failed to rasterize page ${pageNum} to blob`))),
-          mimeType,
-          extension === 'jpg' ? quality : undefined
-        );
-      });
-    }
-
-    const paddedNum = String(pageNum).padStart(String(doc.numPages).length, '0');
-    const entryName = `${base}_${paddedNum}.${extension}`;
-
-    if (zip) {
-      const buffer = await blob.arrayBuffer();
-      zip.file(entryName, buffer);
-    } else {
-      entries.push({ name: entryName, blob });
-    }
-
-    page.cleanup();
   }
 
   if (!zip) {
@@ -1531,56 +1506,63 @@ export async function renderPDFThumbnail(file: File, pageNumber: number, targetW
   try {
     const doc = await getCachedPdfDocument(file);
     const page = await doc.getPage(pageNumber);
-    const viewportAtScaleOne = page.getViewport({ scale: 1 });
-    const scale = viewportAtScaleOne.width > 0 ? resolvedTargetWidth / viewportAtScaleOne.width : 1;
-    const vp = page.getViewport({ scale, rotation: page.rotate || 0 });
-    const w = Math.max(1, Math.ceil(vp.width || resolvedTargetWidth));
-    const h = Math.max(1, Math.ceil(vp.height || resolvedTargetWidth * 1.414));
+    try {
+      const viewportAtScaleOne = page.getViewport({ scale: 1 });
+      const scale = viewportAtScaleOne.width > 0 ? resolvedTargetWidth / viewportAtScaleOne.width : 1;
+      const vp = page.getViewport({ scale, rotation: page.rotate || 0 });
+      const w = Math.max(1, Math.ceil(vp.width || resolvedTargetWidth));
+      const h = Math.max(1, Math.ceil(vp.height || resolvedTargetWidth * 1.414));
 
-    let canvas: HTMLCanvasElement | OffscreenCanvas;
-    if (typeof OffscreenCanvas !== 'undefined') {
-      canvas = new OffscreenCanvas(w, h);
-    } else if (typeof document !== 'undefined') {
-      canvas = document.createElement('canvas');
-      canvas.width = w;
-      canvas.height = h;
-    } else {
-      return FALLBACK_THUMBNAIL;
+      let canvas: HTMLCanvasElement | OffscreenCanvas;
+      if (typeof OffscreenCanvas !== 'undefined') {
+        canvas = new OffscreenCanvas(w, h);
+      } else if (typeof document !== 'undefined') {
+        canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+      } else {
+        return FALLBACK_THUMBNAIL;
+      }
+
+      try {
+        const ctx = canvas.getContext('2d')! as CanvasRenderingContext2D;
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, w, h);
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        await page.render({
+          canvasContext: ctx as unknown as CanvasRenderingContext2D,
+          viewport: vp,
+          canvasFactory: workerCanvasFactory,
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } as any).promise;
+
+        if (canvas.width <= 0 || canvas.height <= 0) {
+          return FALLBACK_THUMBNAIL;
+        }
+
+        // Convert to Data URL (OffscreenCanvas needs FileReader)
+        let url: string;
+        if (canvas instanceof OffscreenCanvas) {
+          const blob = await canvas.convertToBlob({ type: 'image/png' });
+          url = await new Promise<string>((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () => resolve((reader.result as string) || FALLBACK_THUMBNAIL);
+            reader.onerror = () => resolve(FALLBACK_THUMBNAIL);
+            reader.readAsDataURL(blob);
+          });
+        } else {
+          url = (canvas as HTMLCanvasElement).toDataURL('image/png');
+        }
+
+        cache.set(cacheKey, url);
+        return url;
+      } finally {
+        releaseCanvas(canvas);
+      }
+    } finally {
+      cleanupPdfPage(page);
     }
-
-    const ctx = canvas.getContext('2d')! as CanvasRenderingContext2D;
-    ctx.fillStyle = '#ffffff';
-    ctx.fillRect(0, 0, w, h);
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    await page.render({
-      canvasContext: ctx as unknown as CanvasRenderingContext2D,
-      viewport: vp,
-      canvasFactory: workerCanvasFactory,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } as any).promise;
-
-    if (canvas.width <= 0 || canvas.height <= 0) {
-      return FALLBACK_THUMBNAIL;
-    }
-
-    // Convert to Data URL (OffscreenCanvas needs FileReader)
-    let url: string;
-    if (canvas instanceof OffscreenCanvas) {
-      const blob = await canvas.convertToBlob({ type: 'image/png' });
-      url = await new Promise<string>((resolve) => {
-        const reader = new FileReader();
-        reader.onloadend = () => resolve((reader.result as string) || FALLBACK_THUMBNAIL);
-        reader.onerror = () => resolve(FALLBACK_THUMBNAIL);
-        reader.readAsDataURL(blob);
-      });
-    } else {
-      url = (canvas as HTMLCanvasElement).toDataURL('image/png');
-    }
-
-    cache.set(cacheKey, url);
-    page.cleanup();
-    return url;
   } catch {
     return FALLBACK_THUMBNAIL;
   }
