@@ -23,6 +23,8 @@ import {
 } from 'lucide-react';
 import { convertImagesToPdf } from '../../lib/pdf-operations';
 import { createPdfBlob } from '../../lib/pdf-processor';
+import { downloadBlob } from '../../lib/download-helper';
+import { clampCanvasScale, cleanupPdfPage, releaseCanvas } from '../../lib/canvas-limits';
 
 type ToolType = 'pen' | 'highlighter' | 'eraser' | 'rect' | 'circle' | 'arrow' | 'line' | 'text';
 type PaperGridType = 'plain' | 'grid' | 'dots' | 'lines';
@@ -544,8 +546,14 @@ export default function PdfWhiteboardInterface({ file, onDone, onGenerated }: Pd
             standardFontDataUrl: `${baseUrl}/standard_fonts/`,
           }).promise;
           const pdfPage = await doc.getPage(pageNum);
-          const vp = pdfPage.getViewport({ scale: 1.5 });
-          await pdfPage.render({ canvasContext: compCtx, viewport: vp, canvas: compositeCanvas } as Parameters<typeof pdfPage.render>[0]).promise;
+          const baseVp = pdfPage.getViewport({ scale: 1.0 });
+          const { scale: safeScale } = clampCanvasScale(baseVp.width, baseVp.height, 1.5);
+          const vp = pdfPage.getViewport({ scale: safeScale });
+          try {
+            await pdfPage.render({ canvasContext: compCtx, viewport: vp, canvas: compositeCanvas } as Parameters<typeof pdfPage.render>[0]).promise;
+          } finally {
+            cleanupPdfPage(pdfPage);
+          }
         }
 
         // Render strokes for this page
@@ -631,6 +639,7 @@ export default function PdfWhiteboardInterface({ file, onDone, onGenerated }: Pd
         const res = await fetch(dataUrl);
         const blob = await res.blob();
         generatedFiles.push(new File([blob], `whiteboard_page_${pageNum}.jpg`, { type: 'image/jpeg' }));
+        releaseCanvas(compositeCanvas);
       }
 
       // Convert page images back into a clean PDF
@@ -642,12 +651,8 @@ export default function PdfWhiteboardInterface({ file, onDone, onGenerated }: Pd
       } else if (onGenerated) {
         onGenerated(finalPdfBlob);
       } else {
-        const url = URL.createObjectURL(finalPdfBlob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = file ? `${file.name.replace(/\.[^/.]+$/, '')}_whiteboard.pdf` : `whiteboard_${Date.now()}.pdf`;
-        a.click();
-        URL.revokeObjectURL(url);
+        const outName = file ? `${file.name.replace(/\.[^/.]+$/, '')}_whiteboard.pdf` : `whiteboard_${Date.now()}.pdf`;
+        await downloadBlob(finalPdfBlob, outName);
       }
     } catch (err) {
       console.error('Failed to export whiteboard PDF:', err);

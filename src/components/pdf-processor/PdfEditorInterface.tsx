@@ -51,6 +51,8 @@ import {
   DocumentEditState,
   EditorPoint,
 } from '../../lib/operations/pdf-editor';
+import { downloadBlob } from '../../lib/download-helper';
+import { clampCanvasScale, cleanupPdfPage } from '../../lib/canvas-limits';
 
 type PdfJsModule = typeof import('pdfjs-dist/legacy/build/pdf');
 let pdfjsLibPromise: Promise<PdfJsModule> | null = null;
@@ -345,7 +347,9 @@ export default function PdfEditorInterface({ file, onDone }: PdfEditorInterfaceP
         const page = await doc.getPage(pageMeta.originalIndex + 1);
         if (isCancelled) return;
 
-        const vp = page.getViewport({ scale: zoomLevel, rotation: pageMeta.rotation });
+        const baseVp = page.getViewport({ scale: 1.0, rotation: pageMeta.rotation });
+        const { scale: safeScale } = clampCanvasScale(baseVp.width, baseVp.height, zoomLevel);
+        const vp = page.getViewport({ scale: safeScale, rotation: pageMeta.rotation });
 
         const canvas = canvasRef.current;
         if (!canvas) return;
@@ -376,6 +380,7 @@ export default function PdfEditorInterface({ file, onDone }: PdfEditorInterfaceP
         try {
           await renderTask.promise;
         } finally {
+          cleanupPdfPage(page);
           if (activeRenderTaskRef.current === renderTask) {
             activeRenderTaskRef.current = null;
           }
@@ -1392,14 +1397,7 @@ export default function PdfEditorInterface({ file, onDone }: PdfEditorInterfaceP
       if (onDone) {
         onDone(exportBlob);
       } else {
-        const url = URL.createObjectURL(exportBlob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `${file.name.replace(/\.[^/.]+$/, '')}_edited.pdf`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
+        await downloadBlob(exportBlob, `${file.name.replace(/\.[^/.]+$/, '')}_edited.pdf`);
       }
     } catch (err) {
       console.error('Failed to export edited PDF:', err);
@@ -1644,7 +1642,7 @@ export default function PdfEditorInterface({ file, onDone }: PdfEditorInterfaceP
           className="flex-1 bg-neutral-900/10 dark:bg-neutral-950/60 p-6 sm:p-10 overflow-auto flex items-start justify-center relative select-none"
         >
           <div
-            className="relative bg-white shadow-2xl rounded-sm transition-transform duration-75"
+            className="relative bg-white shadow-2xl rounded-sm transition-transform duration-75 touch-none"
             style={{
               width: (currentPageMeta?.width || 595) * zoomLevel,
               height: (currentPageMeta?.height || 842) * zoomLevel,
@@ -2164,7 +2162,7 @@ export default function PdfEditorInterface({ file, onDone }: PdfEditorInterfaceP
                         <div
                           key={handle}
                           onMouseDown={(e) => handleResizeHandleMouseDown(e, handle, elem)}
-                          className={`absolute w-3.5 h-3.5 bg-white border-2 border-[var(--accent)] rounded-full shadow-md z-30 cursor-${
+                          className={`absolute w-3.5 h-3.5 bg-white border-2 border-[var(--accent)] rounded-full shadow-md z-30 touch-none select-none cursor-${
                             handle === 'nw' || handle === 'se' ? 'nwse' : 'nesw'
                           }-resize`}
                           style={{
@@ -2183,7 +2181,7 @@ export default function PdfEditorInterface({ file, onDone }: PdfEditorInterfaceP
                           <div
                             key={handle}
                             onMouseDown={(e) => handleResizeHandleMouseDown(e, handle, elem)}
-                            className={`absolute bg-white border-2 border-[var(--accent)] rounded-xs shadow-md z-30 ${
+                            className={`absolute bg-white border-2 border-[var(--accent)] rounded-xs shadow-md z-30 touch-none select-none ${
                               isHorizontal ? 'w-2 h-4.5 cursor-ew-resize' : 'w-4.5 h-2 cursor-ns-resize'
                             }`}
                             style={{

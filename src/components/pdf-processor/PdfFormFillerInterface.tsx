@@ -23,6 +23,8 @@ import {
   FreeformTextPlacement,
 } from '../../lib/operations/form-filler';
 import { createPdfBlob } from '../../lib/pdf-processor';
+import { downloadBlob } from '../../lib/download-helper';
+import { clampCanvasScale, cleanupPdfPage } from '../../lib/canvas-limits';
 
 type PdfJsModule = typeof import('pdfjs-dist/legacy/build/pdf');
 let pdfjsLibPromise: Promise<PdfJsModule> | null = null;
@@ -193,7 +195,9 @@ export default function PdfFormFillerInterface({
         const page = await pdfDocument.getPage(currentPageIndex + 1);
         if (isCancelled) return;
 
-        const viewport = page.getViewport({ scale });
+        const baseViewport = page.getViewport({ scale: 1 });
+        const { scale: safeScale } = clampCanvasScale(baseViewport.width, baseViewport.height, scale);
+        const viewport = page.getViewport({ scale: safeScale });
         const canvas = pageCanvasRef.current;
         if (!canvas) return;
 
@@ -223,6 +227,7 @@ export default function PdfFormFillerInterface({
         try {
           await renderTask.promise;
         } finally {
+          cleanupPdfPage(page);
           if (activeRenderTaskRef.current === renderTask) {
             activeRenderTaskRef.current = null;
           }
@@ -357,14 +362,7 @@ export default function PdfFormFillerInterface({
         onDone(blob);
       } else {
         const outName = `${file.name.replace(/\.[^/.]+$/, '')}_filled.pdf`;
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = outName;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        setTimeout(() => URL.revokeObjectURL(url), 5000);
+        await downloadBlob(blob, outName);
       }
     } catch (err) {
       console.error('Failed to fill and export PDF form:', err);
@@ -808,7 +806,7 @@ export default function PdfFormFillerInterface({
             ) : (
               <div
                 onClick={handlePageClick}
-                className="relative bg-white shadow-2xl rounded-sm transition-all"
+                className="relative bg-white shadow-2xl rounded-sm transition-all touch-none select-none"
                 style={{
                   width: (pages[currentPageIndex]?.width || 595) * scale,
                   height: (pages[currentPageIndex]?.height || 842) * scale,
@@ -843,7 +841,7 @@ export default function PdfFormFillerInterface({
                         fontStyle: placement.italic ? 'italic' : 'normal',
                         cursor: 'move',
                       }}
-                      className={`text-placement-item px-1 py-0.5 rounded leading-tight whitespace-pre-wrap select-none ${
+                      className={`text-placement-item px-1 py-0.5 rounded leading-tight whitespace-pre-wrap select-none touch-none ${
                         isSelected
                           ? 'ring-2 ring-blue-500 bg-blue-500/10 z-30'
                           : 'hover:ring-1 hover:ring-blue-300 z-20'

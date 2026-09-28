@@ -17,6 +17,8 @@ import {
   type RedactionBox,
 } from '../../lib/operations/redact';
 import { createPdfBlob } from '../../lib/pdf-processor';
+import { downloadBlob } from '../../lib/download-helper';
+import { clampCanvasScale } from '../../lib/canvas-limits';
 
 type PdfJsModule = typeof import('pdfjs-dist/legacy/build/pdf');
 let pdfjsLibPromise: Promise<PdfJsModule> | null = null;
@@ -93,7 +95,9 @@ export default function PdfRedactionEditor({ file, onDone, onBurnRedactions }: P
 
         const page = await doc.getPage(currentPage);
         if (isCancelled) return;
-        const vp = page.getViewport({ scale: 1.5 });
+        const unscaledVp = page.getViewport({ scale: 1.0 });
+        const clamped = clampCanvasScale(unscaledVp.width, unscaledVp.height, 1.5);
+        const vp = page.getViewport({ scale: clamped.scale });
 
         const canvas = canvasRef.current;
         if (!canvas) return;
@@ -290,12 +294,7 @@ export default function PdfRedactionEditor({ file, onDone, onBurnRedactions }: P
       } else if (onDone) {
         onDone(blob);
       } else {
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = file.name.replace(/\.pdf$/i, '_redacted.pdf');
-        a.click();
-        URL.revokeObjectURL(url);
+        await downloadBlob(blob, file.name.replace(/\.pdf$/i, '_redacted.pdf'));
       }
     } catch (err) {
       console.error('Redaction failed:', err);
@@ -447,8 +446,8 @@ export default function PdfRedactionEditor({ file, onDone, onBurnRedactions }: P
           >
             {/* Page-Sized Relative Wrapper: wraps canvas tightly so percentages match canvas exactly */}
             <div
-              className="relative shadow-xl rounded-sm cursor-crosshair"
-              style={{ width: 'fit-content', height: 'fit-content' }}
+              className="relative shadow-xl rounded-sm cursor-crosshair touch-none"
+              style={{ width: 'fit-content', height: 'fit-content', touchAction: 'none' }}
               onPointerDown={handlePointerDown}
               onPointerMove={handlePointerMove}
               onPointerUp={handlePointerUp}

@@ -1,7 +1,23 @@
 'use client';
 
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { Camera, Trash2, Download, Image as ImageIcon, VideoOff, ShieldCheck, CheckCircle2, RefreshCw, SwitchCamera } from 'lucide-react';
+import {
+  Camera,
+  Trash2,
+  Download,
+  Image as ImageIcon,
+  VideoOff,
+  ShieldCheck,
+  CheckCircle2,
+  RefreshCw,
+  SwitchCamera,
+  AlertTriangle,
+  Settings,
+  HelpCircle,
+  Monitor,
+  Smartphone,
+  ChevronDown,
+} from 'lucide-react';
 import { convertImagesToPdf } from '../../lib/pdf-operations';
 import { createPdfBlob } from '../../lib/pdf-processor';
 
@@ -12,8 +28,11 @@ interface CameraScanInterfaceProps {
 
 export default function CameraScanInterface({ onScanComplete, onGenerated }: CameraScanInterfaceProps) {
   const [isCameraActive, setIsCameraActive] = useState(false);
-  const [facingMode, setFacingMode] = useState<'environment' | 'user'>('environment');
-  const [hasMultipleCameras, setHasMultipleCameras] = useState(true);
+  const [facingMode, setFacingMode] = useState<'environment' | 'user'>('user');
+  const [availableCameras, setAvailableCameras] = useState<MediaDeviceInfo[]>([]);
+  const [selectedDeviceId, setSelectedDeviceId] = useState<string>('');
+  const [permissionStatus, setPermissionStatus] = useState<'granted' | 'prompt' | 'denied' | 'unknown'>('unknown');
+  const [showPermissionGuide, setShowPermissionGuide] = useState(false);
   const [capturedPages, setCapturedPages] = useState<string[]>([]);
   const [cameraError, setCameraError] = useState<string | null>(null);
   const [filterMode, setFilterMode] = useState<'bw' | 'grayscale' | 'color'>('bw');
@@ -23,6 +42,53 @@ export default function CameraScanInterface({ onScanComplete, onGenerated }: Cam
   const videoRef = useRef<HTMLVideoElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
 
+  // Detect device type & query initial permission status
+  useEffect(() => {
+    if (typeof window !== 'undefined' && typeof navigator !== 'undefined') {
+      const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      if (mobile) {
+        setFacingMode('environment'); // default to rear document camera on mobile
+      } else {
+        setFacingMode('user'); // default to front/webcam on desktop/laptop
+      }
+
+      // Check permissions API if available
+      if (navigator.permissions?.query) {
+        navigator.permissions
+          .query({ name: 'camera' as PermissionName })
+          .then((res) => {
+            setPermissionStatus(res.state as 'granted' | 'prompt' | 'denied');
+            res.onchange = () => {
+              setPermissionStatus(res.state as 'granted' | 'prompt' | 'denied');
+              if (res.state === 'granted') {
+                setCameraError(null);
+                setShowPermissionGuide(false);
+              }
+            };
+          })
+          .catch(() => {
+            setPermissionStatus('unknown');
+          });
+      }
+    }
+  }, []);
+
+  // Enumerate cameras (available with labels once permission is granted)
+  const refreshDevices = useCallback(async () => {
+    if (typeof navigator === 'undefined' || !navigator.mediaDevices?.enumerateDevices) return;
+    try {
+      const devices = await navigator.mediaDevices.enumerateDevices();
+      const videoInputs = devices.filter((d) => d.kind === 'videoinput');
+      setAvailableCameras(videoInputs);
+      if (videoInputs.length > 0 && !selectedDeviceId) {
+        setSelectedDeviceId(videoInputs[0].deviceId);
+      }
+    } catch {
+      // ignore
+    }
+  }, [selectedDeviceId]);
+
+  // Stop camera tracks and release hardware back to the system OS
   const stopCamera = useCallback(() => {
     if (streamRef.current) {
       streamRef.current.getTracks().forEach((track) => {
@@ -40,96 +106,147 @@ export default function CameraScanInterface({ onScanComplete, onGenerated }: Cam
     setIsCameraActive(false);
   }, []);
 
-  const startCamera = async (targetFacing?: 'environment' | 'user') => {
+  // Error classifier for precise user feedback
+  const handleCameraError = useCallback((err: unknown) => {
+    stopCamera();
+    const error = err as Error;
+    const errorName = error?.name || '';
+    const message = error?.message || String(err) || 'Camera access denied or unavailable.';
+
+    if (
+      errorName === 'NotAllowedError' ||
+      errorName === 'PermissionDeniedError' ||
+      message.toLowerCase().includes('permission') ||
+      message.toLowerCase().includes('denied')
+    ) {
+      setPermissionStatus('denied');
+      setShowPermissionGuide(true);
+      setCameraError(
+        'Camera permission was blocked by your browser or operating system. Click below for step-by-step instructions to enable permission.'
+      );
+    } else if (errorName === 'NotFoundError' || errorName === 'DevicesNotFoundError') {
+      setCameraError('No camera found on this device. Please connect a webcam and click Turn On Camera.');
+    } else if (
+      errorName === 'NotReadableError' ||
+      errorName === 'TrackStartError' ||
+      message.toLowerCase().includes('in use') ||
+      message.toLowerCase().includes('start video source')
+    ) {
+      setCameraError(
+        'Camera is currently in use by another application (e.g. Zoom, Teams, Skype, Windows Camera) or blocked by Windows Camera Privacy. Close other apps and try again.'
+      );
+    } else if (errorName === 'OverconstrainedError') {
+      setCameraError('Requested camera resolution or constraints are not supported by this hardware.');
+    } else {
+      setCameraError(`Could not access camera: ${message} (${errorName || 'Error'})`);
+    }
+  }, [stopCamera]);
+
+  // Request camera stream with automatic fallback tiers
+  const startCamera = async (targetFacing?: 'environment' | 'user', targetDeviceId?: string) => {
     const mode = targetFacing || facingMode;
+    const devId = targetDeviceId !== undefined ? targetDeviceId : selectedDeviceId;
+
     try {
       setCameraError(null);
-      // Stop any existing stream first
       stopCamera();
+
+      if (typeof window !== 'undefined' && !window.isSecureContext) {
+        throw new Error('Camera access requires a secure HTTPS connection or localhost.');
+      }
 
       if (!navigator?.mediaDevices?.getUserMedia) {
         throw new Error('Camera API is not supported in this browser environment.');
       }
 
-      let mediaStream: MediaStream;
+      let mediaStream: MediaStream | null = null;
+
+      // Tier 1: Ideal HD scan resolution with preferred device/facing mode
       try {
+        const videoConstraints: MediaTrackConstraints = devId
+          ? { deviceId: { exact: devId }, width: { ideal: 1920 }, height: { ideal: 1080 } }
+          : { facingMode: { ideal: mode }, width: { ideal: 1920 }, height: { ideal: 1080 } };
+
         mediaStream = await navigator.mediaDevices.getUserMedia({
-          video: {
-            facingMode: { ideal: mode },
-            width: { ideal: 1920 },
-            height: { ideal: 1080 },
-          },
+          video: videoConstraints,
           audio: false,
         });
-      } catch (constraintErr: unknown) {
-        const errName = (constraintErr as Error).name;
-        if (errName === 'OverconstrainedError' || errName === 'NotReadableError') {
-          console.warn('Falling back to default camera constraints...', constraintErr);
+      } catch (tier1Err: unknown) {
+        const errorName = (tier1Err as Error)?.name;
+        if (errorName === 'NotAllowedError') {
+          handleCameraError(tier1Err);
+          return;
+        }
+        console.warn('Tier 1 constraints failed, attempting Tier 2...', tier1Err);
+      }
+
+      // Tier 2: Without strict resolution constraints
+      if (!mediaStream) {
+        try {
+          const fallbackConstraints: MediaTrackConstraints = devId
+            ? { deviceId: devId }
+            : { facingMode: { ideal: mode } };
+
           mediaStream = await navigator.mediaDevices.getUserMedia({
-            video: true,
+            video: fallbackConstraints,
             audio: false,
           });
-        } else {
-          throw constraintErr;
+        } catch (tier2Err: unknown) {
+          const errorName = (tier2Err as Error)?.name;
+          if (errorName === 'NotAllowedError') {
+            handleCameraError(tier2Err);
+            return;
+          }
+          console.warn('Tier 2 constraints failed, attempting Tier 3 standard video...', tier2Err);
         }
+      }
+
+      // Tier 3: Universal unconstrained video { video: true }
+      if (!mediaStream) {
+        mediaStream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+          audio: false,
+        });
       }
 
       streamRef.current = mediaStream;
       setIsCameraActive(true);
       setFacingMode(mode);
+      setPermissionStatus('granted');
+      setShowPermissionGuide(false);
 
       if (videoRef.current) {
         videoRef.current.srcObject = mediaStream;
         await videoRef.current.play().catch(() => {});
       }
 
-      // Check available video devices
-      if (navigator.mediaDevices.enumerateDevices) {
-        try {
-          const devices = await navigator.mediaDevices.enumerateDevices();
-          const videoInputs = devices.filter((d) => d.kind === 'videoinput');
-          setHasMultipleCameras(videoInputs.length > 1);
-        } catch {
-          // ignore
-        }
-      }
+      // Refresh camera devices with labels now that permission has been granted
+      await refreshDevices();
     } catch (err: unknown) {
       console.error('Camera access failed:', err);
-      stopCamera();
-      
-      const error = err as Error;
-      const errorName = error?.name || '';
-      const message = error?.message || String(err) || 'Camera access denied or unavailable.';
-
-      if (errorName === 'NotAllowedError' || message.toLowerCase().includes('permission') || message.toLowerCase().includes('denied')) {
-        setCameraError('Camera permission was denied. Please allow camera access in your browser settings and click Turn On Camera again.');
-      } else if (errorName === 'NotFoundError' || message.toLowerCase().includes('not found')) {
-        setCameraError('No camera found on this device. Please connect a camera and try again.');
-      } else if (errorName === 'NotReadableError' || message.toLowerCase().includes('in use') || message.toLowerCase().includes('start video source')) {
-        setCameraError('Camera is in use by another application or blocked by your OS privacy settings (e.g., Windows Camera Privacy). Please close other apps and try again.');
-      } else {
-        setCameraError(`Could not access camera: ${message} (${errorName})`);
-      }
+      handleCameraError(err);
     }
   };
 
+  // Flip front/rear camera
   const flipCamera = async () => {
     const nextMode = facingMode === 'environment' ? 'user' : 'environment';
     setFacingMode(nextMode);
+    setSelectedDeviceId(''); // clear exact device id to allow facing mode switch
     if (isCameraActive) {
-      await startCamera(nextMode);
+      await startCamera(nextMode, '');
     }
   };
 
-  // Re-attach video stream if ref mounts while camera is active
-  useEffect(() => {
-    if (isCameraActive && streamRef.current && videoRef.current && !videoRef.current.srcObject) {
-      videoRef.current.srcObject = streamRef.current;
-      videoRef.current.play().catch(() => {});
+  // Switch to specific camera device (e.g. laptop webcam vs external USB camera)
+  const handleDeviceChange = async (newDeviceId: string) => {
+    setSelectedDeviceId(newDeviceId);
+    if (isCameraActive) {
+      await startCamera(facingMode, newDeviceId);
     }
-  }, [isCameraActive]);
+  };
 
-  // Clean up all hardware camera streams when unmounting
+  // Clean up all hardware camera streams on component unmount
   useEffect(() => {
     return () => {
       stopCamera();
@@ -221,10 +338,31 @@ export default function CameraScanInterface({ onScanComplete, onGenerated }: Cam
       {/* Top Header & Responsive Toolbar */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-[var(--border)]">
         <div>
-          <h3 className="text-base sm:text-lg font-bold text-[var(--tx)] flex items-center gap-2">
-            <Camera className="h-5 w-5 text-[var(--accent)]" />
-            Camera Document Scanner
-          </h3>
+          <div className="flex items-center gap-2">
+            <h3 className="text-base sm:text-lg font-bold text-[var(--tx)] flex items-center gap-2">
+              <Camera className="h-5 w-5 text-[var(--accent)]" />
+              Camera Document Scanner
+            </h3>
+            {/* System Permission Badge */}
+            {permissionStatus === 'granted' && (
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                Permission Granted
+              </span>
+            )}
+            {permissionStatus === 'prompt' && (
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-500/10 text-amber-500 border border-amber-500/20">
+                <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+                Permission Needed
+              </span>
+            )}
+            {permissionStatus === 'denied' && (
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-rose-500/10 text-rose-500 border border-rose-500/20">
+                <span className="h-1.5 w-1.5 rounded-full bg-rose-500" />
+                Permission Blocked
+              </span>
+            )}
+          </div>
           <p className="text-xs text-[var(--tx-2)] mt-0.5">
             Capture multi-page documents directly with your camera, apply clean scan filters, and export to PDF.
           </p>
@@ -253,17 +391,36 @@ export default function CameraScanInterface({ onScanComplete, onGenerated }: Cam
             </button>
           )}
 
-          {/* Flip Camera Button */}
-          <button
-            type="button"
-            onClick={flipCamera}
-            title={facingMode === 'environment' ? 'Switch to Front Camera' : 'Switch to Back Camera'}
-            className="inline-flex items-center justify-center gap-1.5 px-3 py-2 min-h-[38px] rounded-xl border border-[var(--border)] bg-[var(--bg-subtle)] hover:border-[var(--accent-border)] text-xs font-semibold text-[var(--tx)] hover:text-[var(--accent)] transition-all shadow-xs cursor-pointer"
-          >
-            <SwitchCamera className="h-3.5 w-3.5" />
-            <span className="hidden sm:inline">{facingMode === 'environment' ? 'Back Cam' : 'Front Cam'}</span>
-            <span className="sm:hidden">Flip</span>
-          </button>
+          {/* Camera Selection Dropdown (if multiple video inputs exist) */}
+          {availableCameras.length > 1 ? (
+            <div className="relative">
+              <select
+                value={selectedDeviceId}
+                onChange={(e) => handleDeviceChange(e.target.value)}
+                aria-label="Select Camera Device"
+                className="appearance-none pl-3 pr-7 py-2 min-h-[38px] rounded-xl border border-[var(--border)] bg-[var(--bg-subtle)] text-xs font-semibold text-[var(--tx)] hover:border-[var(--accent-border)] focus:outline-none cursor-pointer"
+              >
+                {availableCameras.map((device, idx) => (
+                  <option key={device.deviceId || idx} value={device.deviceId}>
+                    {device.label || `Camera ${idx + 1}`}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 h-3.5 w-3.5 pointer-events-none opacity-50" />
+            </div>
+          ) : (
+            /* Flip Camera Button */
+            <button
+              type="button"
+              onClick={flipCamera}
+              title={facingMode === 'environment' ? 'Switch to Front Camera' : 'Switch to Back Camera'}
+              className="inline-flex items-center justify-center gap-1.5 px-3 py-2 min-h-[38px] rounded-xl border border-[var(--border)] bg-[var(--bg-subtle)] hover:border-[var(--accent-border)] text-xs font-semibold text-[var(--tx)] hover:text-[var(--accent)] transition-all shadow-xs cursor-pointer"
+            >
+              <SwitchCamera className="h-3.5 w-3.5" />
+              <span className="hidden sm:inline">{facingMode === 'environment' ? 'Back Cam' : 'Front Cam'}</span>
+              <span className="sm:hidden">Flip</span>
+            </button>
+          )}
 
           {/* Filter Mode Selector */}
           <div className="flex items-center gap-1 bg-[var(--bg-subtle)] p-1 rounded-xl border border-[var(--border)] shrink-0">
@@ -295,8 +452,75 @@ export default function CameraScanInterface({ onScanComplete, onGenerated }: Cam
               Original
             </button>
           </div>
+
+          {/* Help Toggle */}
+          <button
+            type="button"
+            onClick={() => setShowPermissionGuide((prev) => !prev)}
+            title="Permission Troubleshooting & Tips"
+            className={`p-2 min-h-[38px] min-w-[38px] rounded-xl border transition-colors cursor-pointer flex items-center justify-center ${
+              showPermissionGuide
+                ? 'border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--accent)]'
+                : 'border-[var(--border)] bg-[var(--bg-subtle)] text-[var(--tx-2)] hover:text-[var(--tx)]'
+            }`}
+          >
+            <HelpCircle className="h-4 w-4" />
+          </button>
         </div>
       </div>
+
+      {/* Permission Troubleshooting Guide Banner */}
+      {showPermissionGuide && (
+        <div className="p-4 sm:p-5 rounded-2xl bg-[var(--bg-subtle)] border border-[var(--border)] text-xs space-y-3 animate-fade-in">
+          <div className="flex items-start justify-between gap-2">
+            <div className="flex items-center gap-2 font-bold text-[var(--tx)]">
+              <Settings className="h-4 w-4 text-[var(--accent)]" />
+              <span>Camera Permission Troubleshooting Guide</span>
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowPermissionGuide(false)}
+              className="text-[var(--tx-3)] hover:text-[var(--tx)] cursor-pointer"
+            >
+              &times;
+            </button>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[var(--tx-2)] leading-relaxed">
+            <div className="p-3 rounded-xl bg-[var(--bg-card)] border border-[var(--border)] space-y-1.5">
+              <div className="font-semibold text-[var(--tx)] flex items-center gap-1.5">
+                <Monitor className="h-3.5 w-3.5 text-blue-500" />
+                <span>1. Browser Permission (Chrome / Edge / Firefox)</span>
+              </div>
+              <ul className="list-disc pl-4 space-y-1">
+                <li>Click the <strong>tune / lock icon 🔒</strong> at the left of the website address bar.</li>
+                <li>Find <strong>Camera</strong> and toggle it to <strong>Allow</strong> or <strong>Ask</strong>.</li>
+                <li>If set to &quot;Ask&quot;, your browser will prompt you for permission each time you turn on the camera.</li>
+              </ul>
+            </div>
+            <div className="p-3 rounded-xl bg-[var(--bg-card)] border border-[var(--border)] space-y-1.5">
+              <div className="font-semibold text-[var(--tx)] flex items-center gap-1.5">
+                <Smartphone className="h-3.5 w-3.5 text-emerald-500" />
+                <span>2. Windows System Privacy (Windows 10 / 11)</span>
+              </div>
+              <ul className="list-disc pl-4 space-y-1">
+                <li>Open <strong>Windows Settings</strong> &rarr; <strong>Privacy & security</strong> &rarr; <strong>Camera</strong>.</li>
+                <li>Ensure <strong>&quot;Camera access&quot;</strong> is switched <strong>ON</strong>.</li>
+                <li>Ensure <strong>&quot;Let desktop apps access your camera&quot;</strong> is switched <strong>ON</strong> for your browser.</li>
+              </ul>
+            </div>
+          </div>
+          <div className="flex items-center justify-end gap-2 pt-1">
+            <button
+              type="button"
+              onClick={() => startCamera()}
+              className="px-3.5 py-1.5 rounded-lg bg-[var(--accent)] text-white font-bold hover:bg-[var(--accent-hover)] transition-colors cursor-pointer flex items-center gap-1.5 text-xs shadow-xs"
+            >
+              <RefreshCw className="h-3 w-3" />
+              <span>Request System Permission Now</span>
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Main Viewport & Gallery Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-6">
@@ -308,16 +532,30 @@ export default function CameraScanInterface({ onScanComplete, onGenerated }: Cam
               <div className="absolute inset-0 bg-white z-30 pointer-events-none animate-out fade-out duration-200" />
             )}
 
-            {!isCameraActive ? (
-              /* Standby / Camera Off State */
-              <div className="p-6 sm:p-8 text-center space-y-4 max-w-sm mx-auto">
+            {/* Video Element (ALWAYS mounted to eliminate ref race conditions) */}
+            <video
+              ref={videoRef}
+              autoPlay
+              playsInline
+              muted
+              className={`w-full h-full object-cover transition-opacity duration-300 ${
+                isCameraActive && !cameraError ? 'opacity-100 block' : 'opacity-0 hidden'
+              } ${facingMode === 'user' ? 'scale-x-[-1]' : ''}`}
+              onLoadedMetadata={() => {
+                videoRef.current?.play().catch(() => {});
+              }}
+            />
+
+            {/* Standby / Camera Off State */}
+            {!isCameraActive && (
+              <div className="p-6 sm:p-8 text-center space-y-4 max-w-sm mx-auto z-10">
                 <div className="flex h-14 sm:h-16 w-14 sm:w-16 items-center justify-center rounded-2xl bg-[var(--accent-soft)] text-[var(--accent)] border border-[var(--accent-border)] mx-auto shadow-xs">
                   <Camera className="h-7 sm:h-8 w-7 sm:w-8 stroke-[1.75]" />
                 </div>
                 <div className="space-y-1">
-                  <h4 className="text-base font-bold text-white">Camera is Turned Off</h4>
+                  <h4 className="text-base font-bold text-white">Camera is Ready</h4>
                   <p className="text-xs text-neutral-400">
-                    Click the button below when you are ready to scan physical documents with your camera.
+                    Click Turn On Camera. Your system or browser will prompt you for camera permission.
                   </p>
                 </div>
 
@@ -341,48 +579,39 @@ export default function CameraScanInterface({ onScanComplete, onGenerated }: Cam
                     className="w-full sm:w-auto px-4 py-3 rounded-xl border border-white/20 bg-white/5 hover:bg-white/10 text-white text-xs font-semibold flex items-center justify-center gap-2 cursor-pointer min-h-[44px]"
                   >
                     <SwitchCamera className="h-4 w-4" />
-                    <span>Mode: {facingMode === 'environment' ? 'Back' : 'Front'}</span>
+                    <span>{facingMode === 'environment' ? 'Back Cam' : 'Front Cam'}</span>
                   </button>
                 </div>
 
                 {cameraError && (
                   <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-300 text-xs font-medium space-y-2 mt-2">
                     <p>{cameraError}</p>
-                    <button
-                      type="button"
-                      onClick={() => startCamera()}
-                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-rose-500 text-white text-[11px] font-bold hover:bg-rose-600 cursor-pointer"
-                    >
-                      <RefreshCw className="h-3 w-3" />
-                      <span>Retry Permissions</span>
-                    </button>
+                    <div className="flex items-center justify-center gap-2 pt-1">
+                      <button
+                        type="button"
+                        onClick={() => startCamera()}
+                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-rose-500 text-white text-[11px] font-bold hover:bg-rose-600 cursor-pointer"
+                      >
+                        <RefreshCw className="h-3 w-3" />
+                        <span>Retry Permission</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setShowPermissionGuide(true)}
+                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-white/20 bg-white/10 text-white text-[11px] font-bold hover:bg-white/20 cursor-pointer"
+                      >
+                        <Settings className="h-3 w-3" />
+                        <span>How to Allow</span>
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>
-            ) : cameraError ? (
-              /* Camera Error State */
-              <div className="p-6 text-center text-rose-400 space-y-3 max-w-sm">
-                <Camera className="h-10 w-10 mx-auto opacity-60" />
-                <p className="text-xs font-medium">{cameraError}</p>
-                <button
-                  type="button"
-                  onClick={() => startCamera()}
-                  className="px-4 py-2 rounded-xl bg-rose-500 text-white text-xs font-bold hover:bg-rose-600 transition-colors cursor-pointer"
-                >
-                  Retry Camera
-                </button>
-              </div>
-            ) : (
-              /* Active Live Camera Stream */
-              <>
-                <video
-                  ref={videoRef}
-                  autoPlay
-                  playsInline
-                  muted
-                  className={`w-full h-full object-cover ${facingMode === 'user' ? 'scale-x-[-1]' : ''}`}
-                />
+            )}
 
+            {/* Active Live Camera Stream Overlays */}
+            {isCameraActive && !cameraError && (
+              <>
                 {/* Document Target Framing Guidelines */}
                 <div className="absolute inset-6 sm:inset-8 border border-white/25 rounded-2xl pointer-events-none flex flex-col justify-between p-4">
                   <div className="flex justify-between">
@@ -396,26 +625,32 @@ export default function CameraScanInterface({ onScanComplete, onGenerated }: Cam
                 </div>
 
                 {/* Top Overlay Bar */}
-                <div className="absolute top-3 inset-x-3 flex items-center justify-between pointer-events-none">
+                <div className="absolute top-3 inset-x-3 flex items-center justify-between pointer-events-none z-20">
                   {/* Live Status Overlay Pill */}
                   <div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-white text-[11px] font-medium pointer-events-auto">
                     <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                    <span>{facingMode === 'environment' ? 'Back Camera' : 'Front Camera'}</span>
+                    <span>
+                      {selectedDeviceId && availableCameras.length > 0
+                        ? availableCameras.find((d) => d.deviceId === selectedDeviceId)?.label || 'Live Camera'
+                        : facingMode === 'environment'
+                        ? 'Back Camera'
+                        : 'Front Camera'}
+                    </span>
                   </div>
 
                   {/* Top Controls: Flip & Turn Off */}
                   <div className="flex items-center gap-1.5 pointer-events-auto">
-                    {hasMultipleCameras && (
+                    {availableCameras.length > 1 ? (
                       <button
                         type="button"
                         onClick={flipCamera}
-                        title="Flip Camera"
+                        title="Switch Camera"
                         className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/60 hover:bg-white/20 backdrop-blur-md border border-white/10 text-white text-[11px] font-medium transition-colors cursor-pointer"
                       >
                         <SwitchCamera className="h-3 w-3" />
-                        <span className="hidden sm:inline">Flip</span>
+                        <span className="hidden sm:inline">Switch</span>
                       </button>
-                    )}
+                    ) : null}
 
                     <button
                       type="button"
@@ -428,6 +663,30 @@ export default function CameraScanInterface({ onScanComplete, onGenerated }: Cam
                   </div>
                 </div>
               </>
+            )}
+
+            {/* In-Viewfinder Camera Error State */}
+            {isCameraActive && cameraError && (
+              <div className="p-6 text-center text-rose-400 space-y-3 max-w-sm z-20">
+                <AlertTriangle className="h-10 w-10 mx-auto opacity-70" />
+                <p className="text-xs font-medium">{cameraError}</p>
+                <div className="flex items-center justify-center gap-2 pt-2">
+                  <button
+                    type="button"
+                    onClick={() => startCamera()}
+                    className="px-4 py-2 rounded-xl bg-rose-500 text-white text-xs font-bold hover:bg-rose-600 transition-colors cursor-pointer"
+                  >
+                    Retry Permission
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setShowPermissionGuide(true)}
+                    className="px-4 py-2 rounded-xl border border-white/20 bg-white/10 text-white text-xs font-bold hover:bg-white/20 transition-colors cursor-pointer"
+                  >
+                    Settings Guide
+                  </button>
+                </div>
+              </div>
             )}
           </div>
 
@@ -521,5 +780,3 @@ export default function CameraScanInterface({ onScanComplete, onGenerated }: Cam
     </div>
   );
 }
-
-

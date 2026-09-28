@@ -25,6 +25,8 @@ import {
 } from 'lucide-react';
 import { signPdf, SignaturePlacement } from '../../lib/operations/sign';
 import { createPdfBlob } from '../../lib/pdf-processor';
+import { downloadBlob } from '../../lib/download-helper';
+import { clampCanvasScale, cleanupPdfPage } from '../../lib/canvas-limits';
 
 type PdfJsModule = typeof import('pdfjs-dist/legacy/build/pdf');
 let pdfjsLibPromise: Promise<PdfJsModule> | null = null;
@@ -215,7 +217,9 @@ export default function SignPdfInterface({
         const page = await pdfDocument.getPage(currentPageIndex + 1);
         if (isCancelled) return;
 
-        const viewport = page.getViewport({ scale });
+        const baseViewport = page.getViewport({ scale: 1 });
+        const { scale: safeScale } = clampCanvasScale(baseViewport.width, baseViewport.height, scale);
+        const viewport = page.getViewport({ scale: safeScale });
         const canvas = pageCanvasRef.current;
         if (!canvas) return;
 
@@ -245,6 +249,7 @@ export default function SignPdfInterface({
         try {
           await renderTask.promise;
         } finally {
+          cleanupPdfPage(page);
           if (activeRenderTaskRef.current === renderTask) {
             activeRenderTaskRef.current = null;
           }
@@ -764,14 +769,7 @@ export default function SignPdfInterface({
         onDone(blob);
       } else {
         const outName = `${file.name.replace(/\.[^/.]+$/, '')}_signed.pdf`;
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = outName;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        setTimeout(() => URL.revokeObjectURL(url), 5000);
+        await downloadBlob(blob, outName);
       }
     } catch (err) {
       console.error('Failed to sign and export PDF:', err);
@@ -1028,7 +1026,7 @@ export default function SignPdfInterface({
                         transformOrigin: 'center center',
                         cursor: 'move',
                       }}
-                      className={`group ${
+                      className={`group touch-none select-none ${
                         isSelected
                           ? 'ring-2 ring-blue-500 ring-offset-2 z-30 shadow-lg'
                           : 'hover:ring-1 hover:ring-blue-400 z-20'
@@ -1087,7 +1085,7 @@ export default function SignPdfInterface({
                       {isSelected && (
                         <div
                           onPointerDown={(e) => handlePointerDown(e, placement.id, 'resize')}
-                          className="absolute -bottom-1.5 -right-1.5 w-4 h-4 rounded-full bg-blue-600 border-2 border-white shadow-md cursor-se-resize z-40 hover:scale-125 transition-transform"
+                          className="absolute -bottom-1.5 -right-1.5 w-4 h-4 rounded-full bg-blue-600 border-2 border-white shadow-md cursor-se-resize z-40 hover:scale-125 transition-transform touch-none"
                           title="Resize Signature"
                         />
                       )}

@@ -48,6 +48,7 @@ import {
   buildPdfFromDocumentModel,
 } from '../../lib/pdf-engine/creator-engine';
 import { createPdfBlob } from '../../lib/pdf-processor';
+import { downloadBlob } from '../../lib/download-helper';
 import type { BlankPdfPageSize, BlankPdfOrientation } from '../../lib/operations/converters';
 
 export interface CreateBlankPdfInterfaceProps {
@@ -509,12 +510,7 @@ export default function CreateBlankPdfInterface({
         if (onDone) {
           onDone(blob);
         } else {
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url;
-          a.download = `${doc.title || 'document'}.pdf`;
-          a.click();
-          URL.revokeObjectURL(url);
+          await downloadBlob(blob, `${doc.title || 'document'}.pdf`);
         }
       }
     } catch (err) {
@@ -822,7 +818,7 @@ export default function CreateBlankPdfInterface({
                       height: el.type === 'shape' && (el as ShapeElement).shapeType === 'line' ? Math.max(12, height) : height,
                       cursor: dragInfo ? 'grabbing' : (editingElementId === el.id ? 'default' : (el.type === 'text' ? 'text' : 'grab')),
                     }}
-                    className={`group ${
+                    className={`group touch-none select-none ${
                       isSelected
                         ? 'ring-2 ring-[var(--accent)] ring-offset-1 z-30 shadow-md'
                         : 'hover:ring-1 hover:ring-blue-400/60 z-10'
@@ -1028,7 +1024,7 @@ export default function CreateBlankPdfInterface({
                     {isSelected && (
                       <div
                         onPointerDown={(e) => handlePointerDown(e, el.id, 'resize')}
-                        className="absolute -bottom-1.5 -right-1.5 w-3.5 h-3.5 bg-[var(--accent)] border-2 border-white rounded-xs cursor-nwse-resize z-40 shadow-xs"
+                        className="absolute -bottom-1.5 -right-1.5 w-3.5 h-3.5 bg-[var(--accent)] border-2 border-white rounded-xs cursor-nwse-resize z-40 shadow-xs touch-none"
                       />
                     )}
                   </div>
