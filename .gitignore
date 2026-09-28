@@ -90,3 +90,8 @@ next-env.d.ts
 # Legacy AWS specific assets (deprecated)
 .aws
 aws-exports.js
+
+# Agent and tool artifacts
+.agents/
+.claude/
+brag-output/
