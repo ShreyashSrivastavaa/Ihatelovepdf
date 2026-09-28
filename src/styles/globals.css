@@ -453,3 +453,29 @@ main, .main-content {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--tx-3);
 }
+
+/* iOS Safari / WebKit Optimizations */
+@media screen and (max-width: 768px) {
+  /* Prevent iOS automatic page zoom on form input focus when font-size < 16px */
+  input[type="text"],
+  input[type="number"],
+  input[type="password"],
+  input[type="email"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="url"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Smooth touch momentum scrolling on iOS */
+.touch-scroll {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent iOS gesture conflicts on canvas/drawing surfaces */
+.touch-none {
+  touch-action: none;
+}
