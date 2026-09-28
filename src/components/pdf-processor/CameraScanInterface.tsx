@@ -20,6 +20,20 @@ import {
 } from 'lucide-react';
 import { convertImagesToPdf } from '../../lib/pdf-operations';
 import { createPdfBlob } from '../../lib/pdf-processor';
+import { downloadBlob } from '../../lib/download-helper';
+
+function dataUrlToBlob(dataUrl: string): Blob {
+  const parts = dataUrl.split(',');
+  const mimeMatch = parts[0]?.match(/:(.*?);/);
+  const mime = mimeMatch ? mimeMatch[1] : 'image/jpeg';
+  const bstr = atob(parts[1] || '');
+  let n = bstr.length;
+  const u8arr = new Uint8Array(n);
+  while (n--) {
+    u8arr[n] = bstr.charCodeAt(n);
+  }
+  return new Blob([u8arr], { type: mime });
+}
 
 interface CameraScanInterfaceProps {
   onScanComplete?: (blob: Blob) => void;
@@ -35,6 +49,7 @@ export default function CameraScanInterface({ onScanComplete, onGenerated }: Cam
   const [showPermissionGuide, setShowPermissionGuide] = useState(false);
   const [capturedPages, setCapturedPages] = useState<string[]>([]);
   const [cameraError, setCameraError] = useState<string | null>(null);
+  const [compileError, setCompileError] = useState<string | null>(null);
   const [filterMode, setFilterMode] = useState<'bw' | 'grayscale' | 'color'>('bw');
   const [isCompiling, setIsCompiling] = useState(false);
   const [flashEffect, setFlashEffect] = useState(false);
@@ -301,33 +316,33 @@ export default function CameraScanInterface({ onScanComplete, onGenerated }: Cam
   };
 
   const handleCompile = async () => {
-    if (capturedPages.length === 0) return;
+    if (capturedPages.length === 0 || isCompiling) return;
     setIsCompiling(true);
+    setCompileError(null);
     try {
       const files: File[] = [];
       for (let i = 0; i < capturedPages.length; i++) {
-        const res = await fetch(capturedPages[i]);
-        const blob = await res.blob();
-        files.push(new File([blob], `scan_page_${i + 1}.jpg`, { type: 'image/jpeg' }));
+        const blob = dataUrlToBlob(capturedPages[i]);
+        files.push(new File([blob], `scan_page_${i + 1}.jpg`, { type: blob.type || 'image/jpeg' }));
       }
 
       const bytes = await convertImagesToPdf(files, { pageSize: 'a4', imageFit: 'contain' });
       const blob = createPdfBlob(bytes);
+      const downloadName = `camera_scan_${Date.now()}.pdf`;
+
+      // Trigger download using universal cross-platform downloadBlob (Web Share on iOS, anchor on desktop)
+      await downloadBlob(blob, downloadName, { isAutoTrigger: false });
 
       if (onScanComplete) {
         onScanComplete(blob);
-      } else if (onGenerated) {
-        onGenerated(blob);
-      } else {
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `document_scan_${Date.now()}.pdf`;
-        a.click();
-        URL.revokeObjectURL(url);
       }
-    } catch (err) {
+      if (onGenerated) {
+        onGenerated(blob);
+      }
+    } catch (err: unknown) {
       console.error('Failed to compile scans:', err);
+      const msg = err instanceof Error ? err.message : 'Error generating PDF';
+      setCompileError(`Could not generate PDF: ${msg}. Please try capturing again.`);
     } finally {
       setIsCompiling(false);
     }
@@ -765,6 +780,12 @@ export default function CameraScanInterface({ onScanComplete, onGenerated }: Cam
 
           {/* Compilation Download Button */}
           <div className="pt-4 border-t border-[var(--border)]">
+            {compileError && (
+              <div className="p-3 mb-3 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-500 text-xs flex items-center gap-2">
+                <AlertTriangle className="h-4 w-4 shrink-0" />
+                <span className="leading-tight">{compileError}</span>
+              </div>
+            )}
             <button
               type="button"
               onClick={handleCompile}

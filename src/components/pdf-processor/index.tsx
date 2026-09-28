@@ -2493,7 +2493,19 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           <div className="mb-6">
             <CameraScanInterface
               onScanComplete={(scannedPdf) => {
-                triggerDownloadAction(scannedPdf, 'camera_scan.pdf');
+                showSuccessDialog({
+                  highlights: [
+                    {
+                      label: statusDialogStrings?.resultsLabel || 'Status',
+                      value: 'Document scanned and compiled into PDF successfully',
+                    },
+                    {
+                      label: statusDialogStrings?.filesProcessedLabel?.(1) || '1 File',
+                    },
+                  ],
+                  downloads: [{ blob: scannedPdf, fileName: 'camera_scan.pdf' }],
+                  donationPrompt: buildDonationPrompt(),
+                });
               }}
             />
           </div>
@@ -3236,7 +3248,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
           </div>
         )}
 
-        {!completedResult && mode !== 'createPdf' && mode !== 'latexResume' && ((mode !== 'editPdf' && mode !== 'signPdf' && mode !== 'fillPdfForm' && mode !== 'redact') || files.length === 0) && (
+        {!completedResult && mode !== 'createPdf' && mode !== 'latexResume' && mode !== 'scanToPdf' && mode !== 'whiteboard' && mode !== 'compare' && mode !== 'posBilling' && ((mode !== 'editPdf' && mode !== 'signPdf' && mode !== 'fillPdfForm' && mode !== 'redact') || files.length === 0) && (
           <div className="flex justify-center pt-2" ref={actionButtonRef}>
             <button
               className="btn-primary w-full sm:w-auto px-8 py-3.5 rounded-xl font-semibold text-white shadow-md text-sm sm:text-base tracking-tight disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
