@@ -36,4 +36,8 @@ export interface OperationContent {
   howTo: OperationHowTo;
   useCasesTitle: string;
   useCases: string[];
+  faqs?: Array<{
+    question: string;
+    answer: string;
+  }>;
 }

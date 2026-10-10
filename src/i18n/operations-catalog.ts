@@ -2,6 +2,7 @@ import { OperationKey } from '../types/operations';
 import { OperationContent } from './dictionaries/operation-types';
 import { Locale } from './config';
 import { getOperationPath } from './routing';
+import { TOOL_FAQS } from '../lib/tool-faqs';
 
 export const ALL_OPERATION_KEYS: OperationKey[] = [
   'merge',
@@ -726,7 +727,7 @@ export const OPERATIONS_CATALOG: Record<OperationKey, OperationCatalogItem> = {
     key: 'fillPdfForm',
     label: 'Fill PDF Form',
     helper: 'Fill out PDF forms, check boxes, select dropdowns, and add custom text directly in your browser.',
-    title: 'Fill PDF Form Online Free - Complete & Flatten Interactive Forms',
+    title: 'Fill PDF Forms Online Free - Complete & Flatten AcroForms',
     description: 'Fill out interactive AcroForm PDF forms, checkboxes, and dropdowns, or type anywhere on standard PDFs. Flatten and save without watermark.',
     keywords: ['fill pdf form', 'fill out pdf form free', 'complete pdf forms online', 'edit pdf form fields', 'flatten pdf form'],
     bulletPoints: ['Auto-detects interactive AcroForm text fields and checkboxes', 'Click-to-type anywhere on non-interactive documents', 'Flatten form fields to prevent tampering', '100% private in-browser form completion'],
@@ -744,8 +745,8 @@ export const OPERATIONS_CATALOG: Record<OperationKey, OperationCatalogItem> = {
     key: 'latexResume',
     label: 'LaTeX Resume Builder',
     helper: 'Create ATS friendly resumes using authentic LaTeX templates, live PDF preview, and source code export.',
-    title: 'Free LaTeX Resume Builder Online - ATS Friendly CV Generator',
-    description: 'Build clean, ATS optimized resumes using authentic LaTeX templates (Jakes Resume, Classic Corporate, Modern Tech, Academic CV). Live in-browser PDF preview and .tex download.',
+    title: 'Free LaTeX Resume Builder Online - ATS Friendly CV Maker',
+    description: 'Build ATS friendly resumes with authentic LaTeX templates. Live in-browser vector PDF preview, form or code editing, and free .tex export.',
     keywords: ['latex resume builder', 'latex cv generator online', 'jakes resume online', 'ats friendly resume builder', 'free latex resume'],
     bulletPoints: ['4 ATS friendly templates including Jakes Resume and Classic Corporate', 'Dual editor: Visual form mode or direct raw LaTeX code mode', '100% private in-browser vector PDF compilation', 'Export both formatted PDF and compilable .tex source files'],
     benefitsTitle: 'Why build resumes with LaTeX',
@@ -791,6 +792,7 @@ export function getOperationsEnContent(): Record<OperationKey, OperationContent>
       },
       useCasesTitle: `When to use ${item.label}`,
       useCases: item.useCases,
+      faqs: TOOL_FAQS[key] || [],
     };
   }
   return result;

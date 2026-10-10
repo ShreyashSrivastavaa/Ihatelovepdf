@@ -10,7 +10,7 @@ import OperationToolSwitcherClient from './OperationToolSwitcherClient';
 import RelatedToolsClient from './RelatedToolsClient';
 import FaqSection from './faq-section';
 import NetworkActivityMonitor from './NetworkActivityMonitor';
-import { CheckCircle2, ShieldCheck, Sparkles, HelpCircle, Wrench } from 'lucide-react';
+import { CheckCircle2, ShieldCheck, Sparkles, HelpCircle, Wrench, ChevronDown } from 'lucide-react';
 
 interface ToolPageLayoutProps {
   operation: OperationContent;
@@ -18,6 +18,7 @@ interface ToolPageLayoutProps {
 }
 
 export default function ToolPageLayout({ operation, children }: ToolPageLayoutProps) {
+  const [openFaqIndex, setOpenFaqIndex] = React.useState<number | null>(null);
   const IconComponent = ICON_MAP[operation.mode] ?? Wrench;
 
   const howToStructuredData = {
@@ -79,6 +80,22 @@ export default function ToolPageLayout({ operation, children }: ToolPageLayoutPr
     featureList: operation.hero.bulletPoints,
   };
 
+  const faqStructuredData =
+    operation.faqs && operation.faqs.length > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: operation.faqs.map((faq) => ({
+            '@type': 'Question',
+            name: faq.question,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: faq.answer,
+            },
+          })),
+        }
+      : null;
+
   return (
     <div className="min-h-screen bg-[var(--bg)] text-[var(--tx)] transition-colors duration-200">
       <div className="mx-auto max-w-[1140px] px-4 sm:px-6 py-8 sm:py-12 space-y-10 sm:space-y-14">
@@ -137,30 +154,9 @@ export default function ToolPageLayout({ operation, children }: ToolPageLayoutPr
           {children}
         </section>
 
-        {/* 4. BENEFITS SECTION */}
-        <section className="pt-6 border-t border-[var(--border)] space-y-8">
-          <h2 className="text-2xl font-bold tracking-tight text-center text-[var(--tx)]">
-            {operation.benefitsTitle}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {operation.benefits.map((benefit) => (
-              <div
-                key={benefit.title}
-                className="surface-card p-6 space-y-2 hover:border-[var(--accent-border)] transition-colors"
-              >
-                <h3 className="text-base font-bold text-[var(--tx)] flex items-center gap-2">
-                  <Sparkles className="h-4 w-4 text-[var(--accent)] shrink-0" />
-                  {benefit.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-[var(--tx-2)] leading-relaxed">{benefit.description}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* 5. HOW TO SECTION */}
+        {/* 4. HOW TO USE SECTION */}
         <section className="surface-card p-6 sm:p-8 space-y-6">
-          <h2 className="text-xl font-bold tracking-tight text-[var(--tx)] flex items-center gap-2">
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--tx)] flex items-center gap-2">
             <HelpCircle className="h-5 w-5 text-[var(--accent)]" />
             {operation.howTo.title}
           </h2>
@@ -181,7 +177,87 @@ export default function ToolPageLayout({ operation, children }: ToolPageLayoutPr
           )}
         </section>
 
-        {/* 6. USE CASES SECTION */}
+        {/* 5. WHY USE I HATE LOVE PDF */}
+        <section className="pt-6 border-t border-[var(--border)] space-y-6">
+          <div className="text-center space-y-2 max-w-2xl mx-auto">
+            <h2 className="text-2xl font-bold tracking-tight text-[var(--tx)]">
+              Why use I Hate Love PDF
+            </h2>
+            <p className="text-sm text-[var(--tx-2)]">
+              Fast, private, and lightweight document utilities built directly for your browser.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div className="surface-card p-5 space-y-2 hover:border-[var(--accent-border)] transition-colors">
+              <div className="h-9 w-9 rounded-xl bg-[var(--accent-soft)] text-[var(--accent)] flex items-center justify-center font-bold text-sm">
+                Free
+              </div>
+              <h3 className="text-sm font-bold text-[var(--tx)]">100% Free</h3>
+              <p className="text-xs text-[var(--tx-2)] leading-relaxed">
+                Zero paywalls, no monthly subscription fees, and no artificial limits on document processing.
+              </p>
+            </div>
+            <div className="surface-card p-5 space-y-2 hover:border-[var(--accent-border)] transition-colors">
+              <div className="h-9 w-9 rounded-xl bg-[var(--accent-soft)] text-[var(--accent)] flex items-center justify-center">
+                <ShieldCheck className="h-5 w-5" />
+              </div>
+              <h3 className="text-sm font-bold text-[var(--tx)]">Completely Private</h3>
+              <p className="text-xs text-[var(--tx-2)] leading-relaxed">
+                Documents stay in your browser RAM. Your private files are never uploaded to any remote server.
+              </p>
+            </div>
+            <div className="surface-card p-5 space-y-2 hover:border-[var(--accent-border)] transition-colors">
+              <div className="h-9 w-9 rounded-xl bg-[var(--accent-soft)] text-[var(--accent)] flex items-center justify-center font-bold text-sm">
+                Zero
+              </div>
+              <h3 className="text-sm font-bold text-[var(--tx)]">No Signup Needed</h3>
+              <p className="text-xs text-[var(--tx-2)] leading-relaxed">
+                No email registration, passwords, or captchas required. Complete your document tasks immediately.
+              </p>
+            </div>
+            <div className="surface-card p-5 space-y-2 hover:border-[var(--accent-border)] transition-colors">
+              <div className="h-9 w-9 rounded-xl bg-[var(--accent-soft)] text-[var(--accent)] flex items-center justify-center font-bold text-sm">
+                Clean
+              </div>
+              <h3 className="text-sm font-bold text-[var(--tx)]">No Watermarks</h3>
+              <p className="text-xs text-[var(--tx-2)] leading-relaxed">
+                Downloaded documents are 100% clean and professional. We never stamp logos or promotional text.
+              </p>
+            </div>
+            <div className="surface-card p-5 space-y-2 hover:border-[var(--accent-border)] transition-colors">
+              <div className="h-9 w-9 rounded-xl bg-[var(--accent-soft)] text-[var(--accent)] flex items-center justify-center font-bold text-sm">
+                Mobile
+              </div>
+              <h3 className="text-sm font-bold text-[var(--tx)]">Works on Mobile</h3>
+              <p className="text-xs text-[var(--tx-2)] leading-relaxed">
+                Responsive touch controls designed for phones, tablets, and laptops without installing any apps.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* 6. TOOL BENEFITS SECTION */}
+        <section className="pt-6 border-t border-[var(--border)] space-y-8">
+          <h2 className="text-2xl font-bold tracking-tight text-center text-[var(--tx)]">
+            {operation.benefitsTitle}
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {operation.benefits.map((benefit) => (
+              <div
+                key={benefit.title}
+                className="surface-card p-6 space-y-2 hover:border-[var(--accent-border)] transition-colors"
+              >
+                <h3 className="text-base font-bold text-[var(--tx)] flex items-center gap-2">
+                  <Sparkles className="h-4 w-4 text-[var(--accent)] shrink-0" />
+                  {benefit.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-[var(--tx-2)] leading-relaxed">{benefit.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* 7. USE CASES SECTION */}
         <section className="pt-6 border-t border-[var(--border)] space-y-6">
           <h2 className="text-2xl font-bold tracking-tight text-center text-[var(--tx)]">
             {operation.useCasesTitle}
@@ -198,10 +274,57 @@ export default function ToolPageLayout({ operation, children }: ToolPageLayoutPr
           </div>
         </section>
 
-        {/* 7. RELATED TOOLS CROSS-SELL */}
+        {/* 8. RELATED TOOLS CROSS-SELL */}
         <RelatedToolsClient currentMode={operation.mode} />
 
-        {/* JSON-LD STRUCTURED DATA (next/script) */}
+        {/* 9. TOOL-SPECIFIC FAQ ACCORDION */}
+        {operation.faqs && operation.faqs.length > 0 ? (
+          <section className="surface-card p-6 sm:p-8 space-y-6">
+            <div className="space-y-1">
+              <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--tx)] flex items-center gap-2">
+                <HelpCircle className="h-5 w-5 text-[var(--accent)]" />
+                Frequently Asked Questions about {toolName}
+              </h2>
+              <p className="text-xs sm:text-sm text-[var(--tx-2)]">
+                Everything you need to know about processing files with {toolName} on I Hate Love PDF.
+              </p>
+            </div>
+            <div className="space-y-3 pt-2">
+              {operation.faqs.map((faq, idx) => {
+                const isOpen = openFaqIndex === idx;
+                return (
+                  <div
+                    key={`${operation.slug}-faq-${idx}`}
+                    className="border border-[var(--border)] rounded-2xl overflow-hidden transition-colors bg-[var(--bg-card)]"
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
+                      className="w-full text-left p-4 sm:p-5 flex justify-between items-center gap-4 font-semibold text-sm sm:text-base text-[var(--tx)] hover:bg-[var(--bg-subtle)] transition-colors"
+                      aria-expanded={isOpen}
+                    >
+                      <span>{faq.question}</span>
+                      <ChevronDown
+                        className={`h-4 w-4 shrink-0 text-[var(--tx-3)] transition-transform duration-200 ${
+                          isOpen ? 'rotate-180 text-[var(--accent)]' : ''
+                        }`}
+                      />
+                    </button>
+                    {isOpen && (
+                      <div className="px-4 pb-4 sm:px-5 sm:pb-5 text-xs sm:text-sm text-[var(--tx-2)] leading-relaxed border-t border-[var(--border)] pt-3">
+                        {faq.answer}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        ) : (
+          <FaqSection />
+        )}
+
+        {/* JSON-LD STRUCTURED DATA */}
         <Script
           id={`schema-howto-${operation.key}`}
           type="application/ld+json"
@@ -217,9 +340,13 @@ export default function ToolPageLayout({ operation, children }: ToolPageLayoutPr
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
         />
-
-        {/* FAQ ACCORDION */}
-        <FaqSection />
+        {faqStructuredData && (
+          <Script
+            id={`schema-faq-${operation.key}`}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
+          />
+        )}
       </div>
     </div>
   );

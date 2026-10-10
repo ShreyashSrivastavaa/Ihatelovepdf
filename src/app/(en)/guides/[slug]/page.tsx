@@ -4,6 +4,9 @@ import Link from 'next/link';
 import { ArrowLeft, CheckCircle2, ShieldCheck, Sparkles, Clock, Calendar, HelpCircle, ExternalLink } from 'lucide-react';
 import { GUIDES_DATA } from '../../../_data/guides-data';
 
+import { METADATA_BASE } from '../../../lib/metadata-shared';
+import { SITE_URL } from '../../../lib/site';
+
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
@@ -22,16 +25,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {};
   }
 
+  const canonicalUrl = `${SITE_URL}/guides/${guide.slug}/`;
+
   return {
+    metadataBase: METADATA_BASE,
     title: `${guide.title} | ihatelovepdf Guides`,
     description: guide.description,
     alternates: {
-      canonical: `https://ihatelovepdf.com/guides/${guide.slug}/`,
+      canonical: canonicalUrl,
     },
     openGraph: {
       title: guide.title,
       description: guide.description,
-      url: `https://ihatelovepdf.com/guides/${guide.slug}/`,
+      url: canonicalUrl,
       type: 'article',
     },
   };
