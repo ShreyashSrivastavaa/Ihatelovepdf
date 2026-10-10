@@ -44,6 +44,9 @@ export default function Footer() {
               <Link href="/guides" prefetch={true} className="hover:text-[var(--tx)] transition-colors">
                 Guides
               </Link>
+              <Link href="/blog" prefetch={true} className="hover:text-[var(--tx)] transition-colors">
+                Blog
+              </Link>
               <Link href={routes.faq} prefetch={true} className="hover:text-[var(--tx)] transition-colors">
                 {footer.links.faq}
               </Link>
@@ -68,6 +71,23 @@ export default function Footer() {
                 {footer.links.contact}
               </button>
             </div>
+          </div>
+
+          {/* Alternatives & Comparisons Links */}
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-6 gap-y-2 text-xs text-[var(--tx-3)]">
+            <span className="font-semibold text-[var(--tx-2)]">Alternatives:</span>
+            <Link href="/ilovepdf-alternative" className="hover:text-[var(--tx)] transition-colors">
+              iLovePDF Alternative
+            </Link>
+            <Link href="/smallpdf-alternative" className="hover:text-[var(--tx)] transition-colors">
+              Smallpdf Alternative
+            </Link>
+            <Link href="/free-pdf-tools-without-signup" className="hover:text-[var(--tx)] transition-colors">
+              Free Tools (No Signup)
+            </Link>
+            <Link href="/offline-pdf-tools" className="hover:text-[var(--tx)] transition-colors">
+              Offline PDF Tools
+            </Link>
           </div>
 
           <div className="pt-6 border-t border-[var(--border)]">
@@ -98,7 +118,7 @@ export default function Footer() {
                   <a
                     href="https://www.linkedin.com/in/shreyashsrivastavaa"
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="me noopener noreferrer"
                     className="hover:text-[var(--tx)] transition-colors"
                   >
                     LinkedIn
@@ -107,7 +127,7 @@ export default function Footer() {
                   <a
                     href="https://github.com/ShreyashSrivastavaa"
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="me noopener noreferrer"
                     className="hover:text-[var(--tx)] transition-colors"
                   >
                     GitHub

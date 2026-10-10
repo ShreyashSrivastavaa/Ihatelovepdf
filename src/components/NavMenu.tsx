@@ -129,6 +129,19 @@ export default function NavMenu() {
               </li>
               <li>
                 <Link
+                  href="/blog"
+                  prefetch={true}
+                  className={`px-2.5 py-1.5 rounded-md transition-colors ${
+                    isActive('/blog')
+                      ? 'text-[var(--accent)] bg-[var(--accent-soft)] font-semibold'
+                      : 'text-[var(--tx-2)] hover:text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
+                  }`}
+                >
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link
                   href={routes.faq}
                   prefetch={true}
                   className={`px-2.5 py-1.5 rounded-md transition-colors ${
@@ -299,6 +312,19 @@ export default function NavMenu() {
               }`}
             >
               <span>Guides & Tutorials</span>
+            </Link>
+
+            <Link
+              href="/blog"
+              prefetch={true}
+              onClick={() => setIsOpen(false)}
+              className={`flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-semibold transition-colors min-h-[44px] w-full ${
+                isActive('/blog')
+                  ? 'text-[var(--accent)] bg-[var(--accent-soft)]'
+                  : 'text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
+              }`}
+            >
+              <span>Blog & Articles</span>
             </Link>
 
             <Link

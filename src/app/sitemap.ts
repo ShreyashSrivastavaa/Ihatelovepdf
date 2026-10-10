@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { getRouteMap } from "../i18n/routing";
+import { BLOG_ARTICLES } from "./_data/blog-data";
 
 export const dynamic = "force-static";
 export const revalidate = false;
@@ -57,7 +58,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   addEntry(home.en || "/", weekly, 1.0);
 
   // 2. Active tool pages (priority 0.8, changefreq weekly)
-  // Dynamically pulled from existing route-map, excluding orphaned 404ing routes
   Object.entries(operations).forEach(([operationKey, perLocale]) => {
     if (EXCLUDED_ORPHANED_ROUTES.has(operationKey)) {
       return;
@@ -72,7 +72,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   });
 
-  // 3. Static pages at appropriate priorities
+  // 3. Comparison & Alternative Pages
+  addEntry("/ilovepdf-alternative", weekly, 0.8);
+  addEntry("/smallpdf-alternative", weekly, 0.8);
+  addEntry("/free-pdf-tools-without-signup", weekly, 0.8);
+  addEntry("/offline-pdf-tools", weekly, 0.8);
+
+  // 4. Blog & Articles
+  addEntry("/blog", weekly, 0.8);
+  Object.keys(BLOG_ARTICLES).forEach((slug) => {
+    addEntry(`/blog/${slug}`, weekly, 0.7);
+  });
+
+  // 5. Static trust pages
   addEntry("/tools", weekly, 0.9);
   addEntry("/buy-me-a-coffee", monthly, 0.7);
   addEntry("/about", monthly, 0.8);

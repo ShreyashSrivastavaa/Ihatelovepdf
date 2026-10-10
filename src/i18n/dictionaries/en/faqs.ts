@@ -21,6 +21,11 @@ export const faqsEn = {
         "Processing is very fast and usually takes only a few seconds. Most tasks finish almost instantly because files do not need to upload or download over the internet.",
     },
     {
+      question: "Who owns I Hate Love PDF?",
+      answer:
+        "I Hate Love PDF is owned and built by Shreyash Srivastava. Portfolio: https://www.shreyashsrivastava.in/",
+    },
+    {
       question: "Can I use ihatelovepdf on my phone or mobile device?",
       answer:
         "Yes! Our tool works on iPhones, iPads, Android phones, tablets, and desktop computers without installing any app.",
