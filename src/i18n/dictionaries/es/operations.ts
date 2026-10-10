@@ -483,7 +483,7 @@ const operationsEsContent: Partial<Record<OperationKey, OperationContent>> = {
     meta: {
       title: "Convertir PDF a Imágenes | Exportar a PNG/JPEG | ihatelovepdf",
       description:
-        "Convierte cada página de tu PDF en imágenes PNG o JPEG de alta calidad. Elige tu resolución y descarga todo como un archivo ZIP — 100% privado y seguro.",
+        "Convierte cada página de tu PDF en imágenes PNG o JPEG de alta calidad. Elige tu resolución y descarga todo como un archivo ZIP, 100% privado y seguro.",
       keywords: [
         "pdf a imagenes",
         "pdf a png",

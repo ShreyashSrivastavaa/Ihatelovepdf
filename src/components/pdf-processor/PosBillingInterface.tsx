@@ -218,7 +218,7 @@ export default function PosBillingInterface({ onCheckout }: PosBillingInterfaceP
       const blob = createPdfBlob(bytes);
       onCheckout?.(blob, `${receiptNumber}.pdf`);
 
-      // Sale closed — clear the counter for the next customer.
+      // Sale closed, clear the counter for the next customer.
       setCart([]);
       setCustomerName('');
       setCustomerPhone('');

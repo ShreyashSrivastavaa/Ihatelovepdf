@@ -20,7 +20,7 @@ const operationsPtContent: Partial<Record<OperationKey, OperationContent>> = {
       ],
       ogTitle: "Comprimir PDF Online Grátis - Reduzir Tamanho | ihatelovepdf",
       ogDescription:
-        "Arraste seu arquivo, escolha o nível de compressão ideal e baixe um PDF significativamente menor em segundos — totalmente seguro e sem uploads para servidores.",
+        "Arraste seu arquivo, escolha o nível de compressão ideal e baixe um PDF significativamente menor em segundos, totalmente seguro e sem uploads para servidores.",
       ogImageAlt: "Interface do ihatelovepdf comprimindo um documento",
     },
     hero: {
@@ -120,7 +120,7 @@ const operationsPtContent: Partial<Record<OperationKey, OperationContent>> = {
       {
         title: "Privado e sem cadastro",
         description:
-          "Não armazenamos cópias nem pedimos dados pessoais — ideal para informações confidenciais.",
+          "Não armazenamos cópias nem pedimos dados pessoais, ideal para informações confidenciais.",
       },
     ],
     howTo: {
@@ -455,7 +455,7 @@ const operationsPtContent: Partial<Record<OperationKey, OperationContent>> = {
       {
         title: "Sem rastros",
         description:
-          "Todo o processo fica no seu dispositivo — ideal para documentos sensíveis ou confidenciais.",
+          "Todo o processo fica no seu dispositivo, ideal para documentos sensíveis ou confidenciais.",
       },
     ],
     howTo: {
@@ -483,7 +483,7 @@ const operationsPtContent: Partial<Record<OperationKey, OperationContent>> = {
     meta: {
       title: "Converter PDF em Imagens | Exportar PNG/JPEG | ihatelovepdf",
       description:
-        "Converta cada página do seu PDF em imagens PNG ou JPEG de alta qualidade. Escolha sua resolução e baixe como um arquivo ZIP — 100% privado e seguro.",
+        "Converta cada página do seu PDF em imagens PNG ou JPEG de alta qualidade. Escolha sua resolução e baixe como um arquivo ZIP, 100% privado e seguro.",
       keywords: [
         "pdf para imagens",
         "pdf para png",
@@ -503,7 +503,7 @@ const operationsPtContent: Partial<Record<OperationKey, OperationContent>> = {
       bulletPoints: [
         "Selecione PNG ou JPEG e controle o DPI de exportação",
         "Baixe um único ZIP ou uma imagem por página",
-        "Processamento 100% local no seu navegador — nada é enviado",
+        "Processamento 100% local no seu navegador, nada é enviado",
       ],
       imageAlt: "Fluxo de PDF para imagens",
     },
@@ -560,7 +560,7 @@ const operationsPtContent: Partial<Record<OperationKey, OperationContent>> = {
       ],
       ogTitle: "Monte um PDF impecável com suas imagens | ihatelovepdf",
       ogDescription:
-        "Arraste suas imagens para o lugar, defina as configurações de layout e exporte um arquivo PDF pronto para impressão — sem uploads ou marcas d'água anexadas.",
+        "Arraste suas imagens para o lugar, defina as configurações de layout e exporte um arquivo PDF pronto para impressão, sem uploads ou marcas d'água anexadas.",
       ogImageAlt: "Criação de PDF a partir de imagens no ihatelovepdf",
     },
     hero: {

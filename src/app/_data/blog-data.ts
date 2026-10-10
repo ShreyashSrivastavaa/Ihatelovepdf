@@ -2,7 +2,7 @@ export interface BlogArticle {
   slug: string;
   title: string;
   description: string;
-  category: 'How-To' | 'Security' | 'Optimization' | 'Productivity';
+  category: 'How-To' | 'Security' | 'Optimization' | 'Productivity' | 'Organization';
   date: string;
   readTime: string;
   author: string;

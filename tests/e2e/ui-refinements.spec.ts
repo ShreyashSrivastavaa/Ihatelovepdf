@@ -45,11 +45,11 @@ test.describe('UI Refinements', () => {
         const clearAllButton = page.getByRole('button', { name: /Limpiar todo/i }).first();
         await expect(clearAllButton).toBeVisible();
 
-        // 5. Process 2 files — click the process button
+        // 5. Process 2 files, click the process button
         const processButton = page.getByRole('button', { name: /Procesar 2 archivos/i });
         await processButton.click();
 
-        // 6. Wait for compression to finish — look for "Ahorro total" (Total Savings)
+        // 6. Wait for compression to finish, look for "Ahorro total" (Total Savings)
         await expect(page.getByText('Ahorro total')).toBeVisible({ timeout: 60_000 });
 
         // 7. Verify Total Savings summary card elements
@@ -59,13 +59,13 @@ test.describe('UI Refinements', () => {
         await expect(page.getByText(/ahorrados en total/i)).toBeVisible();
 
         // 8. Close the ProcessingStatusDialog modal (it overlays the page)
-        // Press Escape to dismiss — avoids strict mode with 2 "Cerrar" buttons
+        // Press Escape to dismiss, avoids strict mode with 2 "Cerrar" buttons
         await page.keyboard.press('Escape');
         
         // Wait for the dialog to fully unmount to avoid intercepting clicks
         await expect(page.getByRole('dialog')).not.toBeVisible();
 
-        // 9. Clear All — reset the file list
+        // 9. Clear All, reset the file list
         await clearAllButton.click();
 
         // 9. Verify list is empty

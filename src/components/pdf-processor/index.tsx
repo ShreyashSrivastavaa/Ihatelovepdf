@@ -33,7 +33,7 @@ import CompressionSummaryCard from './CompressionSummaryCard';
 import type { OperationKey } from '../../types/operations';
 import { trackEvent } from '../../lib/analytics';
 
-// Heavy tool interfaces — lazy-loaded so only the active tool's bundle is fetched
+// Heavy tool interfaces, lazy-loaded so only the active tool's bundle is fetched
 const TextExtractionViewer = dynamic(() => import('./TextExtractionViewer'), { ssr: false });
 const PdfRedactionEditor = dynamic(() => import('./PdfRedactionEditor'), { ssr: false });
 const PdfCompareViewer = dynamic(() => import('./PdfCompareViewer'), { ssr: false });

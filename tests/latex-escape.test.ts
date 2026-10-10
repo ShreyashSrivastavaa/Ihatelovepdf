@@ -81,9 +81,9 @@ assertEqual(
   'Normalizes Unicode smart quotes to valid TeX quote pairs'
 );
 assertEqual(
-  escapeLatex('Engineering Lead — Platform Team – Systems'),
+  escapeLatex('Engineering Lead \u2014 Platform Team \u2013 Systems'),
   'Engineering Lead --- Platform Team -- Systems',
-  'Converts Unicode em-dash (—) and en-dash (–) to TeX dashes'
+  'Converts Unicode em-dash (\u2014) and en-dash (\u2013) to TeX dashes'
 );
 
 // 7. Stripping dangerous LaTeX commands (Defense-in-depth)

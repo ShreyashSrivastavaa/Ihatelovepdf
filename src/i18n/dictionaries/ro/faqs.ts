@@ -8,7 +8,7 @@ export const faqsRo = {
     {
       question: "Este ihatelovepdf sigur pentru documente confidenÈ›iale?",
       answer:
-        "Absolut. Totul rÄƒmâne pe dispozitivul tÄƒu, astfel încât fiÈ™ierele tale PDF nu îÈ›i pÄƒrÄƒsesc niciodatÄƒ controlul — nici mÄƒcar noi nu putem accesa conÈ›inutul lor.",
+        "Absolut. Totul rÄƒmâne pe dispozitivul tÄƒu, astfel încât fiÈ™ierele tale PDF nu îÈ›i pÄƒrÄƒsesc niciodatÄƒ controlul, nici mÄƒcar noi nu putem accesa conÈ›inutul lor.",
     },
     {
       question: "ExistÄƒ o limitÄƒ pentru dimensiunea sau numÄƒrul de PDF-uri pe care le pot procesa?",
@@ -52,7 +52,7 @@ export const faqsRo = {
     {
       question: "Ce browsere sunt compatibile cu ihatelovepdf?",
       answer:
-        "ihatelovepdf funcÈ›ioneazÄƒ cu browsere moderne precum Chrome, Firefox, Safari, Edge È™i Opera. Tot ce ai nevoie este un browser actualizat cu suport ES2020 — nu este necesar niciun runtime suplimentar.",
+        "ihatelovepdf funcÈ›ioneazÄƒ cu browsere moderne precum Chrome, Firefox, Safari, Edge È™i Opera. Tot ce ai nevoie este un browser actualizat cu suport ES2020, nu este necesar niciun runtime suplimentar.",
     },
     {
       question: "Pot converti un PDF în alte formate?",

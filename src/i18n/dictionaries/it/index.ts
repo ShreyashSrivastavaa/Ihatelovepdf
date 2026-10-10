@@ -26,7 +26,7 @@ export const itDictionary: Dictionary = {
   },
   metadata: {
     site: {
-      title: "ihatelovepdf – Unisci, comprimi e converti PDF gratuitamente, senza caricare file online",
+      title: "ihatelovepdf - Unisci, comprimi e converti PDF gratuitamente, senza caricare file online",
       description:
         "ihatelovepdf è un insieme di strumenti pensati per la privacy che ti permette di unire, comprimere, dividere, estrarre, riordinare e convertire PDF in immagini e viceversa direttamente nel browser. Tutto viene elaborato sul tuo dispositivo, quindi i tuoi file restano sempre sotto il tuo controllo.",
       keywords: [
@@ -47,7 +47,7 @@ export const itDictionary: Dictionary = {
       ],
       canonical: `${siteUrl}${homePath}`,
       openGraph: {
-        title: "ihatelovepdf – Unisci, comprimi, dividi e converti PDF in immagini e viceversa",
+        title: "ihatelovepdf - Unisci, comprimi, dividi e converti PDF in immagini e viceversa",
         description:
           "Unisci, comprimi, dividi, estrai, riordina e converti PDF senza caricare i file online. Gratis, privato e con elaborazione completamente locale.",
         url: `${siteUrl}${homePath}`,
@@ -58,7 +58,7 @@ export const itDictionary: Dictionary = {
       },
     },
     faq: {
-      title: "Domande frequenti | ihatelovepdf – Strumenti gratuiti per gestire i PDF",
+      title: "Domande frequenti | ihatelovepdf - Strumenti gratuiti per gestire i PDF",
       description:
         "Risposte alle domande più frequenti su ihatelovepdf. Scopri come unire, comprimere, dividere, estrarre e riordinare PDF senza caricare i tuoi file online.",
       keywords: [
@@ -104,7 +104,7 @@ export const itDictionary: Dictionary = {
 
     footer: {
       privacy: "Elaborazione locale • 100% privato • Licenza open source",
-      rights: `© ${new Date().getFullYear()} ihatelovepdf — Strumenti per gestire PDF senza compromettere la privacy`,
+      rights: `© ${new Date().getFullYear()} ihatelovepdf, Strumenti per gestire PDF senza compromettere la privacy`,
       links: {
         home: "Home",
         faq: "Domande frequenti",
@@ -131,7 +131,7 @@ export const itDictionary: Dictionary = {
       title:
         "Comprimi, ridimensiona o converti foto con FotoLince",
       description:
-        "Il nostro toolkit gemello gestisce JPG, PNG e WEBP in locale — perfetto per ridurre le immagini prima di creare un PDF.",
+        "Il nostro toolkit gemello gestisce JPG, PNG e WEBP in locale, perfetto per ridurre le immagini prima di creare un PDF.",
       ctaLabel: "Apri FotoLince",
       ctaHref: "https://fotolince.com",
       imageAlt: "Logo FotoLince",
@@ -367,7 +367,7 @@ export const itDictionary: Dictionary = {
       loading: "Caricamento pagine PDF...",
       error: "Impossibile caricare le informazioni del PDF",
       summary: (total: number, selected: number) =>
-        `${total} pagine rilevate — ${selected} selezionate`,
+        `${total} pagine rilevate, ${selected} selezionate`,
       selectAll: "Seleziona tutto",
       deselectAll: "Deseleziona tutto",
       pageLabel: (pageNumber: number) => `Pagina ${pageNumber}`,
@@ -577,7 +577,7 @@ export const itDictionary: Dictionary = {
             {
               title: "Funziona ovunque",
               description:
-                "Desktop, tablet o telefono — se hai un browser moderno, sei pronto.",
+                "Desktop, tablet o telefono, se hai un browser moderno, sei pronto.",
               icon: "📱",
             },
           ],

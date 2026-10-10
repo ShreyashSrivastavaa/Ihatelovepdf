@@ -26,9 +26,9 @@ export const deDictionary: Dictionary = {
   },
   metadata: {
     site: {
-      title: "ihatelovepdf – PDFs zusammenführen, komprimieren und konvertieren | Keine Uploads",
+      title: "ihatelovepdf - PDFs zusammenführen, komprimieren und konvertieren | Keine Uploads",
       description:
-        "ihatelovepdf ist ein datenschutzfreundliches PDF-Toolkit zum Zusammenführen, Komprimieren, Teilen, Extrahieren, Neuordnen und Konvertieren von PDFs in Bilder oder wieder zurück – alles direkt im Browser auf deinem Gerät, ganz ohne Uploads.",
+        "ihatelovepdf ist ein datenschutzfreundliches PDF-Toolkit zum Zusammenführen, Komprimieren, Teilen, Extrahieren, Neuordnen und Konvertieren von PDFs in Bilder oder wieder zurück - alles direkt im Browser auf deinem Gerät, ganz ohne Uploads.",
       keywords: [
         "pdf zusammenführen",
         "pdf komprimieren",
@@ -47,20 +47,20 @@ export const deDictionary: Dictionary = {
       ],
       canonical: `${siteUrl}${homePath}`,
       openGraph: {
-        title: "ihatelovepdf – Zusammenführen, Komprimieren, Teilen, PDF zu Bild & Bild zu PDF",
+        title: "ihatelovepdf - Zusammenführen, Komprimieren, Teilen, PDF zu Bild & Bild zu PDF",
         description:
-          "Zusammenführen, komprimieren, teilen, extrahieren, neu ordnen und in Bilder konvertieren – alles ohne Upload. Kostenlos, privat und mit vollständig lokaler Verarbeitung.",
+          "Zusammenführen, komprimieren, teilen, extrahieren, neu ordnen und in Bilder konvertieren - alles ohne Upload. Kostenlos, privat und mit vollständig lokaler Verarbeitung.",
         url: `${siteUrl}${homePath}`,
         locale: "de_DE",
         type: "website",
         imageUrl: "https://ihatelovepdf.com/og-images/og-image-de.png",
-        imageAlt: "ihatelovepdf – Private und kostenlose PDF-Bearbeitung",
+        imageAlt: "ihatelovepdf - Private und kostenlose PDF-Bearbeitung",
       },
     },
     faq: {
-      title: "Häufige Fragen | ihatelovepdf – Kostenloses PDF-Toolkit",
+      title: "Häufige Fragen | ihatelovepdf - Kostenloses PDF-Toolkit",
       description:
-        "Antworten auf die wichtigsten Fragen zu ihatelovepdf. Erfahre, wie du PDFs zusammenführst, komprimierst, teilst, Seiten extrahierst, neu ordnest und in Bilder oder PDFs umwandelst – ganz ohne Upload.",
+        "Antworten auf die wichtigsten Fragen zu ihatelovepdf. Erfahre, wie du PDFs zusammenführst, komprimierst, teilst, Seiten extrahierst, neu ordnest und in Bilder oder PDFs umwandelst - ganz ohne Upload.",
       keywords: [
         "ihatelovepdf faq",
         "pdf fragen",
@@ -104,7 +104,7 @@ export const deDictionary: Dictionary = {
     },
     footer: {
       privacy: "Lokale Verarbeitung • 100 % privat • Offene Lizenzen",
-      rights: `© ${new Date().getFullYear()} ihatelovepdf — Werkzeuge zur PDF-Bearbeitung ohne Datenschutzkompromisse`,
+      rights: `© ${new Date().getFullYear()} ihatelovepdf, Werkzeuge zur PDF-Bearbeitung ohne Datenschutzkompromisse`,
       links: {
         home: "Startseite",
         faq: "FAQ",
@@ -130,7 +130,7 @@ export const deDictionary: Dictionary = {
       eyebrow: "Bilder schnell optimieren?",
       title: "Komprimiere, skaliere oder konvertiere Fotos mit FotoLince",
       description:
-        "Unser Schwester-Tool verarbeitet JPG, PNG und WEBP direkt im Browser – ideal, bevor du sie in ein PDF einfügst.",
+        "Unser Schwester-Tool verarbeitet JPG, PNG und WEBP direkt im Browser - ideal, bevor du sie in ein PDF einfügst.",
       ctaLabel: "Zu FotoLince",
       ctaHref: "https://fotolince.com",
       imageAlt: "FotoLince Logo",
@@ -239,7 +239,7 @@ export const deDictionary: Dictionary = {
         original: "Original",
         result: "Geschätzt",
         notice:
-          "Die Vorschau läuft lokal. Beim Klick auf Verarbeiten nutzen wir dieses Ergebnis erneut – kein Upload nötig.",
+          "Die Vorschau läuft lokal. Beim Klick auf Verarbeiten nutzen wir dieses Ergebnis erneut - kein Upload nötig.",
         error: "Die Vorschau konnte nicht erstellt werden.",
         retry: "Vorschau erneut versuchen",
         universalBadge: "Universelle Optimierung",
@@ -472,7 +472,7 @@ export const deDictionary: Dictionary = {
       hero: {
         title: "ihatelovepdf: PDF zusammenführen, komprimieren und konvertieren online",
         subtitle:
-          "PDF komprimieren, PDFs zusammenführen, Dokumente teilen, Seiten extrahieren und PDF in Bilder oder Bilder in PDF umwandeln – direkt im Browser ohne Uploads.",
+          "PDF komprimieren, PDFs zusammenführen, Dokumente teilen, Seiten extrahieren und PDF in Bilder oder Bilder in PDF umwandeln - direkt im Browser ohne Uploads.",
         badges: [
           "PDF schnell komprimieren",
           "PDFs ohne Limit zusammenführen",
@@ -529,7 +529,7 @@ export const deDictionary: Dictionary = {
       cta: {
         title: "ihatelovepdf jetzt ausprobieren",
         description:
-          "PDFs zusammenfügen, komprimieren, teilen, extrahieren und neu ordnen – mit voller Privatsphäre. Keine Anmeldung, kein Hochladen.",
+          "PDFs zusammenfügen, komprimieren, teilen, extrahieren und neu ordnen - mit voller Privatsphäre. Keine Anmeldung, kein Hochladen.",
         ctaLabel: "Zum Toolkit",
       },
     },
@@ -547,7 +547,7 @@ export const deDictionary: Dictionary = {
           {
             title: "Kostenlos erhalten",
             description:
-              "Spenden ermöglichen es, ihatelovepdf für alle kostenlos zu lassen – ohne Premium-Stufen oder gesperrte Funktionen.",
+              "Spenden ermöglichen es, ihatelovepdf für alle kostenlos zu lassen - ohne Premium-Stufen oder gesperrte Funktionen.",
             icon: "💚",
           },
           {
@@ -621,7 +621,7 @@ export const deDictionary: Dictionary = {
           {
             question: "Wie kündige ich eine wiederkehrende Spende?",
             answer:
-              "Du kannst das im Stripe-Portal erledigen oder uns schreiben – wir beenden sie sofort und ohne Nachfragen.",
+              "Du kannst das im Stripe-Portal erledigen oder uns schreiben - wir beenden sie sofort und ohne Nachfragen.",
           },
         ],
       },

@@ -26,7 +26,7 @@ export const huDictionary: Dictionary = {
   },
   metadata: {
     site: {
-      title: "ihatelovepdf – PDF tömörítése, összefÅ±zése és konvertálása ingyen",
+      title: "ihatelovepdf - PDF tömörítése, összefÅ±zése és konvertálása ingyen",
       description:
         "A ihatelovepdf egy adatvédelemre összpontosító PDF-eszközkészlet, amely közvetlenül a böngészÅ‘dben összefÅ±zi, tömöríti, szétbontja, kinyeri, elforgatja és konvertálja a PDF-eket. Minden feldolgozás az eszközödön marad.",
       keywords: [
@@ -54,7 +54,7 @@ export const huDictionary: Dictionary = {
       ],
       canonical: `${siteUrl}${homePath}`,
       openGraph: {
-        title: "ihatelovepdf – PDF tömörítése, összefÅ±zése, szétbontása, képekbe konvertálása",
+        title: "ihatelovepdf - PDF tömörítése, összefÅ±zése, szétbontása, képekbe konvertálása",
         description:
           "FÅ±zd össze, tömörítsd, oszd fel, nyerd ki, rendezd át és konvertáld a PDF-eket szerverre való feltöltés nélkül. Ingyenes, privát, helyi feldolgozással.",
         url: `${siteUrl}${homePath}`,
@@ -65,7 +65,7 @@ export const huDictionary: Dictionary = {
       },
     },
     faq: {
-      title: "Gyakori kérdések | ihatelovepdf – Ingyenes PDF-eszközkészlet",
+      title: "Gyakori kérdések | ihatelovepdf - Ingyenes PDF-eszközkészlet",
       description:
         "Válaszok a ihatelovepdf-re vonatkozó leggyakoribb kérdésekre. Tudd meg, hogyan fÅ±zheted össze, tömörítheted, bonthatod szét, kinyerheted és rendezheted át a PDF-eket fájlok feltöltése nélkül.",
       keywords: [
@@ -110,7 +110,7 @@ export const huDictionary: Dictionary = {
     },
     footer: {
       privacy: "Helyi feldolgozás • 100% privát • Nyílt licencek",
-      rights: `© ${new Date().getFullYear()} ihatelovepdf — PDF-eszközök az adatvédelem kompromisszuma nélkül`,
+      rights: `© ${new Date().getFullYear()} ihatelovepdf, PDF-eszközök az adatvédelem kompromisszuma nélkül`,
       links: {
         home: "FÅ‘oldal",
         faq: "Gyakori kérdések",
@@ -137,7 +137,7 @@ export const huDictionary: Dictionary = {
       eyebrow: "Képeket kell optimalizálnod?",
       title: "Tömörítsd, méretezd át vagy konvertáld a FotoLince-szel",
       description:
-        "Eszközkészletünk helyben dolgozza fel a JPG, PNG és WEBP fájlokat – tökéletes a képek méretének csökkentéséhez, mielÅ‘tt PDF-be konvertálnád Å‘ket.",
+        "Eszközkészletünk helyben dolgozza fel a JPG, PNG és WEBP fájlokat - tökéletes a képek méretének csökkentéséhez, mielÅ‘tt PDF-be konvertálnád Å‘ket.",
       ctaLabel: "FotoLince megnyitása",
       ctaHref: "https://fotolince.com",
       imageAlt: "FotoLince logó",
@@ -326,7 +326,7 @@ export const huDictionary: Dictionary = {
       loading: "Oldalak betöltése...",
       error: "Nem sikerült betölteni a PDF adatait",
       summary: (total: number, selected: number) =>
-        `${total} oldal észlelve – ${selected} kiválasztva`,
+        `${total} oldal észlelve - ${selected} kiválasztva`,
       selectAll: "Összes kijelölése",
       deselectAll: "Összes kijelölés törlése",
       pageLabel: (pageNumber: number) => `${pageNumber}. oldal`,
@@ -521,7 +521,7 @@ export const huDictionary: Dictionary = {
           {
             title: "Bárhol működik",
             description:
-              "Számítógépen, tableten vagy okostelefonon – elegendő egy modern böngésző.",
+              "Számítógépen, tableten vagy okostelefonon - elegendő egy modern böngésző.",
             icon: "📱",
           },
         ],

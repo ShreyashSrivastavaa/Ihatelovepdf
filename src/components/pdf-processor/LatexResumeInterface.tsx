@@ -896,7 +896,7 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
                                 placeholder="Start"
                                 className="w-1/2 px-2.5 py-1 text-xs rounded-lg border border-[var(--border)] bg-[var(--bg)] text-[var(--tx)]"
                               />
-                              <span className="text-xs text-[var(--tx-3)]">–</span>
+                              <span className="text-xs text-[var(--tx-3)]"> - </span>
                               <input
                                 type="text"
                                 value={exp.endDate}
@@ -1084,7 +1084,7 @@ export default function LatexResumeInterface({ onDone }: LatexResumeInterfacePro
                                 placeholder="Start"
                                 className="w-1/2 px-2.5 py-1 text-xs rounded-lg border border-[var(--border)] bg-[var(--bg)] text-[var(--tx)]"
                               />
-                              <span className="text-xs text-[var(--tx-3)]">–</span>
+                              <span className="text-xs text-[var(--tx-3)]"> - </span>
                               <input
                                 type="text"
                                 value={edu.endDate}

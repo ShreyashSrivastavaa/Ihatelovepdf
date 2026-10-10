@@ -27,8 +27,8 @@ export function escapeLatex(text: string | undefined | null): string {
     .replace(/\\/g, '\\textbackslash{}')
     .replace(/[%&$#_{}~^]/g, (char) => LATEX_SPECIAL_CHARS[char] || char)
     .replace(/"/g, "''")
-    .replace(/—/g, '---')
-    .replace(/–/g, '--');
+    .replace(/\u2014/g, '---')
+    .replace(/\u2013/g, '--');
 }
 
 /**

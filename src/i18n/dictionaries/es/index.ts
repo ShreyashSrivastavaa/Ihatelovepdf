@@ -45,7 +45,7 @@ export const esDictionary: Dictionary = {
       ],
       canonical: `${siteUrl}`,
       openGraph: {
-        title: "ihatelovepdf – Unir, Comprimir, Dividir, PDF a Imagen e Imagen a PDF",
+        title: "ihatelovepdf - Unir, Comprimir, Dividir, PDF a Imagen e Imagen a PDF",
         description:
           "Une, comprime, divide, extrae, reordena y convierte PDFs sin subir archivos. Kit gratuito, privado y en español con procesamiento 100% local.",
         url: siteUrl,

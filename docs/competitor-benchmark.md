@@ -10,7 +10,7 @@ Independent competitive comparison between **ihatelovepdf.com (100% Client-Side)
 |---|---|---|---|---|---|---|
 | **Architecture** | **100% Client-Side (WASM/RAM)** | Cloud Upload | Cloud Upload | Cloud Upload | Hybrid/Cloud | Cloud Upload |
 | **Privacy / Zero Data Leak** | **Verified 0 Network Requests** | Server Processing | Server Processing | Server Processing | Server Processing | Server Processing |
-| **File Size / Page Limits** | **Unlimited (Hardware RAM)** | 10–25 MB / 20 pages (Free) | 2 docs/day (Free) | 1 task/day (Free) | Free with Ads | 3 tasks/hour, 50MB max |
+| **File Size / Page Limits** | **Unlimited (Hardware RAM)** | 10 - 25 MB / 20 pages (Free) | 2 docs/day (Free) | 1 task/day (Free) | Free with Ads | 3 tasks/hour, 50MB max |
 | **Hidden Redaction Leaks** | **Annotation & Stream Purged** | Visual Overlay Only | Visual Overlay Only | Full Sanitization | Visual Overlay | Visual Overlay |
 | **Watermarks on Free Tier** | **None (Zero)** | None | None | None | None | None |
 | **Pricing / Paywall** | **100% Free Forever** | $7/mo subscription | $12/mo subscription | $19.99/mo subscription | Free / Ad-Supported | $7.50/mo subscription |

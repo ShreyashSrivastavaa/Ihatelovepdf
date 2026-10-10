@@ -10,7 +10,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
     meta: {
       title: "PDF tömörítése ingyenesen online | Méret csökkentése | ihatelovepdf",
       description:
-        "Csökkentsd hatékonyan a PDF fájlok méretét minÅ‘ségveszteség nélkül. Ingyenes és bizalmas tömörítés közvetlenül a böngészÅ‘dben – szerverre feltöltés nélkül.",
+        "Csökkentsd hatékonyan a PDF fájlok méretét minÅ‘ségveszteség nélkül. Ingyenes és bizalmas tömörítés közvetlenül a böngészÅ‘dben - szerverre feltöltés nélkül.",
       keywords: [
         "pdf tömörítés",
         "pdf compress",
@@ -23,15 +23,15 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
       ],
       ogTitle: "PDF tömörítése minÅ‘ségveszteség nélkül | ihatelovepdf",
       ogDescription:
-        "Töltsd fel a fájlt, válaszd ki az optimális tömörítési szintet, és töltsd le a kisebb PDF-et másodpercek alatt – biztonságosan, idegen szerverre feltöltés nélkül.",
+        "Töltsd fel a fájlt, válaszd ki az optimális tömörítési szintet, és töltsd le a kisebb PDF-et másodpercek alatt - biztonságosan, idegen szerverre feltöltés nélkül.",
       ogImageAlt: "A ihatelovepdf PDF-tömörítÅ‘ eszköze",
     },
     hero: {
       title: "PDF tömörítése online, minÅ‘ség megÅ‘rzésével",
       description:
-        "Csökkentsd a dokumentumok méretét e-mail-mellékleti korlátok teljesítéséhez, oktatási platformokra való feltöltéshez vagy hatósági benyújtáshoz – az olvashatóság megÅ‘rzése mellett.",
+        "Csökkentsd a dokumentumok méretét e-mail-mellékleti korlátok teljesítéséhez, oktatási platformokra való feltöltéshez vagy hatósági benyújtáshoz - az olvashatóság megÅ‘rzése mellett.",
       bulletPoints: [
-        "100%-ban helyi feldolgozás – a fájlok soha nem hagyják el a böngészÅ‘t",
+        "100%-ban helyi feldolgozás - a fájlok soha nem hagyják el a böngészÅ‘t",
         "Válassz alacsony, közepes vagy magas tömörítési szintet az igényeidhez",
         "Szükség esetén Å‘rizd meg a metaadatokat és a dokumentumszerkezetet",
       ],
@@ -63,7 +63,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
         "Kattints a \"Feldolgozás\" gombra, és töltsd le a tömörített dokumentumot másodpercek alatt.",
       ],
       note:
-        "Több jelentéssel dolgozol? Tömörítsd Å‘ket egyenként – napi limit és vízjel nélkül.",
+        "Több jelentéssel dolgozol? Tömörítsd Å‘ket egyenként - napi limit és vízjel nélkül.",
     },
     useCasesTitle: "Mikor érdemes PDF-et tömöríteni?",
     useCases: [
@@ -80,7 +80,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
     meta: {
       title: "PDF összefÅ±zése online | PDF merge ingyen | ihatelovepdf",
       description:
-        "FÅ±zz össze több PDF-fájlt egyetlen rendezett dokumentumba oldalszám-korlát nélkül. Húzd át, rendezd és töltsd le azonnal – teljes bizalmassággal.",
+        "FÅ±zz össze több PDF-fájlt egyetlen rendezett dokumentumba oldalszám-korlát nélkül. Húzd át, rendezd és töltsd le azonnal - teljes bizalmassággal.",
       keywords: [
         "pdf összefÅ±zés",
         "pdf merge",
@@ -97,12 +97,12 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
       ogImageAlt: "Több PDF-fájl összefÅ±zése a ihatelovepdf-ben",
     },
     hero: {
-      title: "PDF összefÅ±zése online – gyorsan és biztonságosan",
+      title: "PDF összefÅ±zése online - gyorsan és biztonságosan",
       description:
-        "Készíts egyetlen összefÅ±zött fájlt szerzÅ‘désekbÅ‘l, elÅ‘adásjegyzetekbÅ‘l vagy belsÅ‘ szabályzatokból – beküldésre, aláírásra vagy archiválásra készen.",
+        "Készíts egyetlen összefÅ±zött fájlt szerzÅ‘désekbÅ‘l, elÅ‘adásjegyzetekbÅ‘l vagy belsÅ‘ szabályzatokból - beküldésre, aláírásra vagy archiválásra készen.",
       bulletPoints: [
         "Húzd át a fájlokat az oldalsorrend szabályozásához",
-        "Rejtett korlát nélkül – fÅ±zz össze terjedelmes dokumentumokat ingyen",
+        "Rejtett korlát nélkül - fÅ±zz össze terjedelmes dokumentumokat ingyen",
         "Szükség esetén Å‘rizd meg a könyvjelzÅ‘ket és a metaadatokat",
       ],
       imageAlt: "PDF dokumentumok összefÅ±zése a ihatelovepdf-ben",
@@ -122,7 +122,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
       {
         title: "Bizalmas és anonim",
         description:
-          "Nincs szerveres másolat, nincs személyes adat – ideális bizalmas információk kezeléséhez.",
+          "Nincs szerveres másolat, nincs személyes adat - ideális bizalmas információk kezeléséhez.",
       },
     ],
     howTo: {
@@ -150,7 +150,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
     meta: {
       title: "PDF szétbontása oldalak vagy fejezetek szerint | Ingyenes | ihatelovepdf",
       description:
-        "Bontsd fel a PDF-et több fájlra oldaltartomány vagy szakaszok szerint. Teljes kontroll a dokumentumszerkezet felett – szerverre feltöltés nélkül.",
+        "Bontsd fel a PDF-et több fájlra oldaltartomány vagy szakaszok szerint. Teljes kontroll a dokumentumszerkezet felett - szerverre feltöltés nélkül.",
       keywords: [
         "pdf split",
         "pdf szétbontása",
@@ -271,7 +271,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
         "Kattints a \"Feldolgozás\" gombra, és töltsd le a kiválasztott oldalakból álló PDF - et.",
       ],
       note:
-        "A kinyerést más mÅ±veletekkel is kombinálhatod – például összefÅ±zéssel vagy tömörítéssel – külön munkamenetekben.",
+        "A kinyerést más mÅ±veletekkel is kombinálhatod - például összefÅ±zéssel vagy tömörítéssel - külön munkamenetekben.",
     },
     useCasesTitle: "Ötletek PDF-oldalak kinyeréséhez",
     useCases: [
@@ -288,7 +288,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
     meta: {
       title: "PDF oldalak vágása online | Margók eltávolítása | ihatelovepdf",
       description:
-        "Vágd le a PDF oldalait és távolítsd el a felesleges margókat közvetlenül a böngészÅ‘dben. Válaszd ki az oldalakat, állítsd be a vágási területet – szerverre feltöltés nélkül.",
+        "Vágd le a PDF oldalait és távolítsd el a felesleges margókat közvetlenül a böngészÅ‘dben. Válaszd ki az oldalakat, állítsd be a vágási területet - szerverre feltöltés nélkül.",
       keywords: [
         "pdf körülvágás",
         "pdf levágás",
@@ -301,13 +301,13 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
       ],
       ogTitle: "Vágd le a PDF oldalait bizalmasan | ihatelovepdf",
       ogDescription:
-        "Távolítsd el a fehér margókat, és összpontosíts minden oldal lényeges tartalmára – minden feldolgozás helyben, az eszközödön zajlik.",
+        "Távolítsd el a fehér margókat, és összpontosíts minden oldal lényeges tartalmára - minden feldolgozás helyben, az eszközödön zajlik.",
       ogImageAlt: "PDF oldalak vágása a ihatelovepdf-ben",
     },
     hero: {
       title: "PDF oldalak vágása és margók eltávolítása",
       description:
-        "Távolítsd el a felesleges fehér területet, vagy szÅ±kítsd le a kiválasztott oldalak látható területét – anélkül, hogy a dokumentumot bárhova elküldened.",
+        "Távolítsd el a felesleges fehér területet, vagy szÅ±kítsd le a kiválasztott oldalak látható területét - anélkül, hogy a dokumentumot bárhova elküldened.",
       bulletPoints: [
         "Csak a vágni kívánt oldalakat válaszd ki",
         "Pontosan add meg a felsÅ‘, jobb, alsó és bal margókat pontokban",
@@ -330,7 +330,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
       {
         title: "Adatvédelem alapból",
         description:
-          "A vágás közvetlenül a böngészÅ‘dben fut – biztonságos számlák, beszkennelt dokumentumok és belsÅ‘ jelentések számára.",
+          "A vágás közvetlenül a böngészÅ‘dben fut - biztonságos számlák, beszkennelt dokumentumok és belsÅ‘ jelentések számára.",
       },
     ],
     howTo: {
@@ -381,7 +381,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
       bulletPoints: [
         "Csak a kiválasztott oldalakat forgasd el",
         "Válassz 90°-os jobbra, 180°-os vagy 90°-os balra forgatást",
-        "Minden a böngészÅ‘dben fut – feltöltés és várakozás nélkül",
+        "Minden a böngészÅ‘dben fut - feltöltés és várakozás nélkül",
       ],
       imageAlt: "PDF oldal-forgatási munkafolyamat a ihatelovepdf-ben",
     },
@@ -390,7 +390,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
       {
         title: "Pontos javítások",
         description:
-          "Csak a hibás tájolású oldalakat állítsd be – ideális vegyes szkennelt kötegekhez.",
+          "Csak a hibás tájolású oldalakat állítsd be - ideális vegyes szkennelt kötegekhez.",
       },
       {
         title: "Gyors javítás",
@@ -400,7 +400,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
       {
         title: "Teljes adatvédelem",
         description:
-          "A bizalmas dokumentumok az eszközödön maradnak – minden forgatás helyben hajtódik végre.",
+          "A bizalmas dokumentumok az eszközödön maradnak - minden forgatás helyben hajtódik végre.",
       },
     ],
     howTo: {
@@ -428,7 +428,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
     meta: {
       title: "PDF oldalak átrendezése | Sorrend módosítása | ihatelovepdf",
       description:
-        "Rendezd át könnyedén a PDF-oldalakat drag-and-drop módszerrel. Javítsd a sorrendet és mentsd el azonnal – teljesen helyi feldolgozással.",
+        "Rendezd át könnyedén a PDF-oldalakat drag-and-drop módszerrel. Javítsd a sorrendet és mentsd el azonnal - teljesen helyi feldolgozással.",
       keywords: [
         "pdf oldalak átrendezése",
         "pdf sorrend módosítása",
@@ -467,7 +467,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
       {
         title: "Nyom nélkül",
         description:
-          "Minden az eszközödön zajlik – ideális bizalmas dokumentumok esetén.",
+          "Minden az eszközödön zajlik - ideális bizalmas dokumentumok esetén.",
       },
     ],
     howTo: {
@@ -495,7 +495,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
     meta: {
       title: "PDF konvertálása képekké | PNG / JPEG exportálás | ihatelovepdf",
       description:
-        "Alakítsd át a PDF minden oldalát kiváló minÅ‘ségÅ± PNG vagy JPEG képpé. Válaszd ki a felbontást, és töltsd le ZIP-archívumban – 100%-ban privát módon.",
+        "Alakítsd át a PDF minden oldalát kiváló minÅ‘ségÅ± PNG vagy JPEG képpé. Válaszd ki a felbontást, és töltsd le ZIP-archívumban - 100%-ban privát módon.",
       keywords: [
         "pdf képekké konvertálása",
         "pdf-bÅ‘l png",
@@ -516,7 +516,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
       bulletPoints: [
         "Válassz PNG vagy JPEG formátumot, és állítsd be az exportálási felbontást (DPI)",
         "Töltsd le egy ZIP-archívumban vagy külön fájlonként",
-        "Teljes mértékben helyi renderelés – feltöltés és nyom nélkül",
+        "Teljes mértékben helyi renderelés - feltöltés és nyom nélkül",
       ],
       imageAlt: "PDF képekbe exportálási munkafolyamat",
     },
@@ -525,7 +525,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
       {
         title: "PrezentációminÅ‘ségÅ± képek",
         description:
-          "Válassz a diákodhoz illÅ‘ felbontást – találgatás nélkül, hogy az oldalak elég élések lesznek-e.",
+          "Válassz a diákodhoz illÅ‘ felbontást - találgatás nélkül, hogy az oldalak elég élések lesznek-e.",
       },
       {
         title: "Rugalmas letöltési lehetÅ‘ségek",
@@ -563,7 +563,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
     meta: {
       title: "PDF létrehozása képekbÅ‘l | JPG, PNG PDF-be | ihatelovepdf",
       description:
-        "Hozz létre professzionális PDF-et a képeidbÅ‘l. Rendezd a fotókat, szabd testre az elrendezést és a margókat – a dokumentum helyben, a böngészÅ‘dben jön létre.",
+        "Hozz létre professzionális PDF-et a képeidbÅ‘l. Rendezd a fotókat, szabd testre az elrendezést és a margókat - a dokumentum helyben, a böngészÅ‘dben jön létre.",
       keywords: [
         "képek pdf-be",
         "jpg pdf-be",
@@ -574,7 +574,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
       ],
       ogTitle: "Hozz létre rendezett PDF-et a képeidbÅ‘l | ihatelovepdf",
       ogDescription:
-        "Húzd át a képeket, állítsd be az oldalparamétereket, és exportálj nyomtatásra kész PDF-et – fájlfeltöltés és vízjel nélkül.",
+        "Húzd át a képeket, állítsd be az oldalparamétereket, és exportálj nyomtatásra kész PDF-et - fájlfeltöltés és vízjel nélkül.",
       ogImageAlt: "PDF létrehozása képekbÅ‘l a ihatelovepdf-ben",
     },
     hero: {
@@ -603,7 +603,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
       {
         title: "Biztonságos feldolgozás",
         description:
-          "A konverzió teljesen helyi – biztonságos személyigazolványok, nyugták és tanulási anyagok esetén.",
+          "A konverzió teljesen helyi - biztonságos személyigazolványok, nyugták és tanulási anyagok esetén.",
       },
     ],
     howTo: {

@@ -26,7 +26,7 @@ export const roDictionary: Dictionary = {
   },
   metadata: {
     site: {
-      title: "ihatelovepdf – UneÈ™te, comprimÄƒ È™i converteÈ™te PDF-uri gratuit",
+      title: "ihatelovepdf - UneÈ™te, comprimÄƒ È™i converteÈ™te PDF-uri gratuit",
       description:
         "ihatelovepdf este un set de instrumente axat pe confidenÈ›ialitate care uneÈ™te, comprimÄƒ, divide, extrage, roteÈ™te È™i converteÈ™te PDF-uri direct în browser. ToatÄƒ procesarea rÄƒmâne pe dispozitivul tÄƒu.",
       keywords: [
@@ -56,7 +56,7 @@ export const roDictionary: Dictionary = {
       ],
       canonical: `${siteUrl}${homePath}`,
       openGraph: {
-        title: "ihatelovepdf – UneÈ™te, ComprimÄƒ, Divide, PDF în Imagine",
+        title: "ihatelovepdf - UneÈ™te, ComprimÄƒ, Divide, PDF în Imagine",
         description:
           "UneÈ™te, comprimÄƒ, divide, extrage, reordoneazÄƒ È™i converteÈ™te PDF-uri fÄƒrÄƒ a încÄƒrca fiÈ™ierele pe server. Gratuit, privat È™i susÈ›inut de o procesare localÄƒ.",
         url: `${siteUrl}${homePath}`,
@@ -67,7 +67,7 @@ export const roDictionary: Dictionary = {
       },
     },
     faq: {
-      title: "FAQ | ihatelovepdf – Set de instrumente gratuit pentru procesare PDF",
+      title: "FAQ | ihatelovepdf - Set de instrumente gratuit pentru procesare PDF",
       description:
         "RÄƒspunsuri la întrebÄƒri frecvente despre ihatelovepdf. AflÄƒ cum sÄƒ uneÈ™ti, comprimi, divizezi, extragi È™i reordonezi PDF-uri fÄƒrÄƒ a-È›i încÄƒrca fiÈ™ierele.",
       keywords: [
@@ -112,7 +112,7 @@ export const roDictionary: Dictionary = {
     },
     footer: {
       privacy: "Procesare localÄƒ • 100% privatÄƒ • LicenÈ›e deschise",
-      rights: `© ${new Date().getFullYear()} ihatelovepdf — Instrumente pentru manipularea PDF-urilor fÄƒrÄƒ a compromite confidenÈ›ialitatea`,
+      rights: `© ${new Date().getFullYear()} ihatelovepdf, Instrumente pentru manipularea PDF-urilor fÄƒrÄƒ a compromite confidenÈ›ialitatea`,
       links: {
         home: "AcasÄƒ",
         faq: "ÎntrebÄƒri frecvente",
@@ -138,7 +138,7 @@ export const roDictionary: Dictionary = {
       eyebrow: "Ai nevoie sÄƒ optimizezi imagini?",
       title: "ComprimÄƒ, redimensioneazÄƒ sau converteÈ™te cu FotoLince",
       description:
-        "Setul nostru de instrumente proceseazÄƒ fiÈ™iere JPG, PNG È™i WEBP la nivel local — ideal pentru a reduce dimensiunea imaginilor înainte de a le transforma în PDF.",
+        "Setul nostru de instrumente proceseazÄƒ fiÈ™iere JPG, PNG È™i WEBP la nivel local, ideal pentru a reduce dimensiunea imaginilor înainte de a le transforma în PDF.",
       ctaLabel: "Deschide FotoLince",
       ctaHref: "https://fotolince.com",
       imageAlt: "Logo FotoLince",
@@ -327,7 +327,7 @@ export const roDictionary: Dictionary = {
       loading: "Se încarcÄƒ paginile...",
       error: "Nu s-au putut încÄƒrca informaÈ›iile PDF-ului",
       summary: (total: number, selected: number) =>
-        `${total} pagini detectate — ${selected} selectate`,
+        `${total} pagini detectate, ${selected} selectate`,
       selectAll: "SelecteazÄƒ tot",
       deselectAll: "DeselecteazÄƒ tot",
       pageLabel: (pageNumber: number) => `Pagina ${pageNumber}`,
@@ -522,7 +522,7 @@ export const roDictionary: Dictionary = {
           {
             title: "Funcționează oriunde",
             description:
-              "Pe computer, tabletă sau telefon — este suficient un browser modern.",
+              "Pe computer, tabletă sau telefon, este suficient un browser modern.",
             icon: "📱",
           },
         ],

@@ -30,7 +30,7 @@ PDFLince está disponible en 7 idiomas. Puedes acceder a la versión que prefier
 
 ## English Summary
 
-PDFLince is an open-source, free, private, client-side PDF tool. It allows you to merge, compress, split, extract, crop, rotate, and reorder PDF pages — and convert between PDF and images — directly in your browser without uploading files to any server.
+PDFLince is an open-source, free, private, client-side PDF tool. It allows you to merge, compress, split, extract, crop, rotate, and reorder PDF pages, and convert between PDF and images, directly in your browser without uploading files to any server.
 
 ### Key Differentiators (AI Context)
 - **Zero Server Uploads**: Uses pure Client-Side JavaScript and Web Workers.

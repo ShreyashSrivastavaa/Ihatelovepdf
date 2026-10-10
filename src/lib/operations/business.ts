@@ -358,7 +358,7 @@ export async function generatePosReceiptPdf(data: PosReceiptData): Promise<Uint8
   page.drawLine({ start: { x: margin, y }, end: { x: margin + contentWidth, y }, thickness: 0.5, color: rgb(0.6, 0.6, 0.6) });
   y -= 12;
 
-  // Items — prices are GST-inclusive unless taxInclusive is explicitly false
+  // Items, prices are GST-inclusive unless taxInclusive is explicitly false
   const taxInclusive = data.taxInclusive !== false;
   let netTotal = 0;
   let gstTotal = 0;

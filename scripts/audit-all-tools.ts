@@ -382,7 +382,7 @@ function generateMarkdownReport(results: ToolAuditResult[]) {
     const processIcon = r.processWorks ? '✅' : '❌';
     const downloadIcon = r.downloadWorks ? '✅' : '❌';
     const validIcon = r.outputValid ? '✅' : '❌';
-    const errorStr = r.error ? `\`${r.error.replace(/\|/g, '/')}\`` : '—';
+    const errorStr = r.error ? `\`${r.error.replace(/\|/g, '/')}\`` : ', ';
     const details = `${r.outputType} (${r.outputSize} B)`;
 
     md += `| **${r.key}** | ${r.category} | ${rendersIcon} | ${uploadIcon} | ${processIcon} | ${downloadIcon} | ${validIcon} | ${details} | ${errorStr} |\n`;

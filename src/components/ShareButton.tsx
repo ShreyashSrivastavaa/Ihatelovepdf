@@ -31,7 +31,7 @@ export function ShareButton({ url, variant = "inline", className = "" }: ShareBu
       try {
         await navigator.share({ title: "ihatelovepdf", text: shareText, url: shareUrl });
       } catch {
-        // User cancelled — no-op
+        // User cancelled, no-op
       }
     } else {
       setExpanded((prev) => !prev);

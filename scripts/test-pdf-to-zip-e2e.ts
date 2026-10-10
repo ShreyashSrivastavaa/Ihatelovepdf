@@ -112,7 +112,7 @@ async function runPdfToZipVerification() {
   console.log(`Result ZIP Size: ${(zip10MbResult.length / (1024 * 1024)).toFixed(2)} MB`);
 
   if (zip10MbResult.length > 15 * 1024 * 1024) {
-    throw new Error(`CRITICAL BUG: ZIP size is ${(zip10MbResult.length / (1024 * 1024)).toFixed(2)} MB (exceeds 15MB limit) — files are being rasterized!`);
+    throw new Error(`CRITICAL BUG: ZIP size is ${(zip10MbResult.length / (1024 * 1024)).toFixed(2)} MB (exceeds 15MB limit), files are being rasterized!`);
   }
 
   const unzipped10Mb = await JSZip.loadAsync(zip10MbResult);

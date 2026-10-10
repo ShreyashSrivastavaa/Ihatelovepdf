@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { ArrowLeft, CheckCircle2, ShieldCheck, Sparkles, Clock, Calendar, HelpCircle, ExternalLink } from 'lucide-react';
 import { GUIDES_DATA } from '../../../_data/guides-data';
 
-import { METADATA_BASE } from '../../../lib/metadata-shared';
-import { SITE_URL } from '../../../lib/site';
+import { METADATA_BASE } from '../../../../lib/metadata-shared';
+import { SITE_URL } from '../../../../lib/site';
 
 interface PageProps {
   params: Promise<{ slug: string }>;

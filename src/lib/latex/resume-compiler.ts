@@ -1047,7 +1047,7 @@ export function compileResumeToDocumentModel(
           color: profile.subtextColor,
         });
         leftY += 11;
-        const dates = [edu.startDate, edu.endDate].filter(Boolean).join(' – ');
+        const dates = [edu.startDate, edu.endDate].filter(Boolean).join(' - ');
         if (dates) {
           currentElements.push({
             id: `sb_edu_${edu.id}_dates`,
@@ -1095,7 +1095,7 @@ export function compileResumeToDocumentModel(
       addSectionHeader('Experience', colRightWidth, colRightX);
       for (const exp of data.experience) {
         ensureSpace(30);
-        const dates = [exp.startDate, exp.endDate].filter(Boolean).join(' – ');
+        const dates = [exp.startDate, exp.endDate].filter(Boolean).join(' - ');
 
         currentElements.push({
           id: `rc_exp_role_${exp.id}`,
@@ -1130,7 +1130,7 @@ export function compileResumeToDocumentModel(
         currentElements.push({
           id: `rc_exp_comp_${exp.id}`,
           type: 'text',
-          text: `${exp.company}${exp.location ? ` – ${exp.location}` : ''}`,
+          text: `${exp.company}${exp.location ? ` - ${exp.location}` : ''}`,
           x: colRightX,
           y: cursorY,
           width: colRightWidth,
@@ -1441,7 +1441,7 @@ export function compileResumeToDocumentModel(
       addSectionHeader('Experience', colLeftWidth, marginX);
       for (const exp of data.experience) {
         ensureSpace(28);
-        const dates = [exp.startDate, exp.endDate].filter(Boolean).join(' – ');
+        const dates = [exp.startDate, exp.endDate].filter(Boolean).join(' - ');
         currentElements.push({
           id: `lc_exp_role_${exp.id}`,
           type: 'text',
@@ -1666,7 +1666,7 @@ export function compileResumeToDocumentModel(
     currentElements.push({
       id: `fellowship_runhdr_${Date.now()}`,
       type: 'text',
-      text: `Curriculum Vitae  —  ${p.name || 'Candidate'}`,
+      text: `Curriculum Vitae, ${p.name || 'Candidate'}`,
       x: marginX,
       y: 14,
       width: contentWidth,
@@ -1749,7 +1749,7 @@ export function compileResumeToDocumentModel(
     addSectionHeader('Education', sWidth, sX);
     for (const edu of data.education) {
       ensureSpace(24);
-      const dates = [edu.startDate, edu.endDate].filter(Boolean).join(' – ');
+      const dates = [edu.startDate, edu.endDate].filter(Boolean).join(' - ');
 
       currentElements.push({
         id: `edu_inst_${edu.id}`,
@@ -1844,7 +1844,7 @@ export function compileResumeToDocumentModel(
 
     for (const exp of data.experience) {
       ensureSpace(28);
-      const dates = [exp.startDate, exp.endDate].filter(Boolean).join(' – ');
+      const dates = [exp.startDate, exp.endDate].filter(Boolean).join(' - ');
 
       // Timeline marker dot
       if (isTimeline) {
@@ -2086,7 +2086,7 @@ export function compileResumeToDocumentModel(
       currentElements.push({
         id: `cert_${cert.id}`,
         type: 'text',
-        text: `•  ${cert.name} – ${cert.issuer} (${cert.date})`,
+        text: `•  ${cert.name} - ${cert.issuer} (${cert.date})`,
         x: marginX + 4,
         y: cursorY,
         width: contentWidth - 4,

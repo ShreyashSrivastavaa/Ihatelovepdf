@@ -20,7 +20,7 @@ const operationsFrContent: Partial<Record<OperationKey, OperationContent>> = {
       ],
       ogTitle: "Compresser PDF en Ligne Gratuit - Réduire la Taille | ihatelovepdf",
       ogDescription:
-        "Déposez votre fichier, choisissez le niveau de compression optimal et téléchargez un PDF beaucoup plus petit en quelques secondes — en toute sécurité, sans téléchargement sur un serveur.",
+        "Déposez votre fichier, choisissez le niveau de compression optimal et téléchargez un PDF beaucoup plus petit en quelques secondes, en toute sécurité, sans téléchargement sur un serveur.",
       ogImageAlt: "Interface de l'outil de compression ihatelovepdf",
     },
     hero: {
@@ -89,7 +89,7 @@ const operationsFrContent: Partial<Record<OperationKey, OperationContent>> = {
       ],
       ogTitle: "Créez un PDF net à partir de vos images | ihatelovepdf",
       ogDescription:
-        "Faites glisser vos images à leur place, définissez les paramètres de mise en page et exportez un fichier PDF prêt à imprimer — sans téléchargement ni filigrane.",
+        "Faites glisser vos images à leur place, définissez les paramètres de mise en page et exportez un fichier PDF prêt à imprimer, sans téléchargement ni filigrane.",
       ogImageAlt: "Création d'un PDF à partir d'images dans ihatelovepdf",
     },
     hero: {
@@ -573,7 +573,7 @@ const operationsFrContent: Partial<Record<OperationKey, OperationContent>> = {
       bulletPoints: [
         "Sélectionnez PNG ou JPEG et contrôlez le DPI d'exportation",
         "Regroupez tout dans un seul ZIP ou téléchargez page par page",
-        "Rendu local uniquement — pas de téléchargements, pas de traces",
+        "Rendu local uniquement, pas de téléchargements, pas de traces",
       ],
       imageAlt: "Flux de travail de PDF vers des images",
     },

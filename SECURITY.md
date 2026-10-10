@@ -10,9 +10,9 @@
 
 PDFhelp processes all files **100% client-side** in your browser. No file data is ever uploaded to a server. This privacy-first design means:
 
-- **No server-side file processing** — zero risk of server-side data exposure
+- **No server-side file processing**, zero risk of server-side data exposure
 - **No API keys or credentials** stored in the codebase
-- **Static deployment** (`output: "export"`) — no Node.js runtime in production
+- **Static deployment** (`output: "export"`), no Node.js runtime in production
 
 ## Reporting a Vulnerability
 
@@ -20,7 +20,7 @@ If you discover a security vulnerability, please report it responsibly:
 
 1. **Email**: [info@pdfhelp.com](mailto:info@pdfhelp.com) with subject line `[SECURITY] <brief description>`
 2. **Do NOT** open a public GitHub issue for security vulnerabilities
-3. This is a solo-maintained project — reports are handled on a best-effort basis
+3. This is a solo-maintained project, reports are handled on a best-effort basis
 
 ### What to include
 

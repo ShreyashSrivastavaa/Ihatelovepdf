@@ -3,7 +3,7 @@ export const faqsDe = {
     {
       question: "Kann ich große PDF-Dateien kostenlos zusammenfügen?",
       answer:
-        "Ja! Es gibt keine Größenbeschränkung auf ihatelovepdf. Sie können PDFs jeder Größe kostenlos zusammenfügen, teilen oder komprimieren – direkt in Ihrem Browser ohne Upload auf Server.",
+        "Ja! Es gibt keine Größenbeschränkung auf ihatelovepdf. Sie können PDFs jeder Größe kostenlos zusammenfügen, teilen oder komprimieren - direkt in Ihrem Browser ohne Upload auf Server.",
     },
     {
       question: "Benötige ich ein Konto zur Verwendung?",

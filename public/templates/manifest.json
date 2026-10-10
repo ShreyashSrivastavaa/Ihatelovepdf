@@ -6,7 +6,7 @@
       "id": "resume-01-ats-plain",
       "name": "ATS Classic",
       "category": "ats-friendly",
-      "description": "Single-column, recruiter-safe layout with zero graphics or tables — maximizes ATS parsing accuracy.",
+      "description": "Single-column, recruiter-safe layout with zero graphics or tables, maximizes ATS parsing accuracy.",
       "file": "templates/resume-01-ats-plain.tex",
       "thumbnail": "templates/thumbnails/resume-01-ats-plain.webp",
       "colorAccent": "#1a1a1a",

@@ -21,7 +21,7 @@ const operationsRoContent: Partial<Record<OperationKey, OperationContent>> = {
       ],
       ogTitle: "ComprimÄƒ PDF-uri fÄƒrÄƒ a pierde din calitate | ihatelovepdf",
       ogDescription:
-        "AdaugÄƒ fiÈ™ierul, alege nivelul optim de compresie È™i descarcÄƒ un PDF mult mai mic în câteva secunde — în siguranÈ›Äƒ, fÄƒrÄƒ încÄƒrcare pe vreun server.",
+        "AdaugÄƒ fiÈ™ierul, alege nivelul optim de compresie È™i descarcÄƒ un PDF mult mai mic în câteva secunde, în siguranÈ›Äƒ, fÄƒrÄƒ încÄƒrcare pe vreun server.",
       ogImageAlt: "InterfaÈ›a instrumentului de compresie ihatelovepdf",
     },
     hero: {
@@ -29,7 +29,7 @@ const operationsRoContent: Partial<Record<OperationKey, OperationContent>> = {
       description:
         "Redu dimensiunea documentului pentru a respecta limitele de e-mail, de pe platformele educaÈ›ionale sau procedurile administrative, menÈ›inând în acelaÈ™i timp lizibilitatea fiecÄƒrei pagini.",
       bulletPoints: [
-        "Procesare 100% localÄƒ — fiÈ™ierele tale nu pÄƒrÄƒsesc niciodatÄƒ browserul",
+        "Procesare 100% localÄƒ, fiÈ™ierele tale nu pÄƒrÄƒsesc niciodatÄƒ browserul",
         "Alege o compresie de bazÄƒ, medie sau agresivÄƒ în funcÈ›ie de obiectivele tale",
         "PÄƒstreazÄƒ metadatele È™i structura documentului atunci când ai nevoie",
       ],
@@ -89,7 +89,7 @@ const operationsRoContent: Partial<Record<OperationKey, OperationContent>> = {
       ],
       ogTitle: "CreeazÄƒ un PDF clar din imaginile tale | ihatelovepdf",
       ogDescription:
-        "Trage imaginile la locul lor, configureazÄƒ setÄƒrile de paginÄƒ È™i exportÄƒ un fiÈ™ier PDF gata de imprimat — fÄƒrÄƒ încÄƒrcÄƒri È™i fÄƒrÄƒ filigrane.",
+        "Trage imaginile la locul lor, configureazÄƒ setÄƒrile de paginÄƒ È™i exportÄƒ un fiÈ™ier PDF gata de imprimat, fÄƒrÄƒ încÄƒrcÄƒri È™i fÄƒrÄƒ filigrane.",
       ogImageAlt: "Crearea unui PDF din imagini în ihatelovepdf",
     },
     hero: {
@@ -161,12 +161,12 @@ const operationsRoContent: Partial<Record<OperationKey, OperationContent>> = {
       ogImageAlt: "Combinarea mai multor PDF-uri în ihatelovepdf",
     },
     hero: {
-      title: "UneÈ™te PDF-uri online — rapid È™i sigur",
+      title: "UneÈ™te PDF-uri online, rapid È™i sigur",
       description:
         "CreeazÄƒ un singur fiÈ™ier îngrijit cu contracte, note de curs sau politici interne, gata de trimis, semnat sau arhivat.",
       bulletPoints: [
         "Trage È™i plaseazÄƒ pentru a controla ordinea finalÄƒ a paginilor",
-        "FÄƒrÄƒ limite ascunse — uneÈ™te documente lungi în mod complet gratuit",
+        "FÄƒrÄƒ limite ascunse, uneÈ™te documente lungi în mod complet gratuit",
         "PÄƒstreazÄƒ semnele de carte (bookmarks) È™i metadatele atunci când ai nevoie",
       ],
       imageAlt: "Fuziunea documentelor PDF",
@@ -575,7 +575,7 @@ const operationsRoContent: Partial<Record<OperationKey, OperationContent>> = {
       bulletPoints: [
         "SelecteazÄƒ PNG sau JPEG È™i controleazÄƒ rezoluÈ›ia de export (DPI)",
         "DescarcÄƒ totul grupate într-un ZIP sau descarcÄƒ paginile individual",
-        "Redare exclusiv localÄƒ — fÄƒrÄƒ încÄƒrcÄƒri, fÄƒrÄƒ urme pe servere",
+        "Redare exclusiv localÄƒ, fÄƒrÄƒ încÄƒrcÄƒri, fÄƒrÄƒ urme pe servere",
       ],
       imageAlt: "Fluxul de lucru pentru conversia PDF în imagini",
     },

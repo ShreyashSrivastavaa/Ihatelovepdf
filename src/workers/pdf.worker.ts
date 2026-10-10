@@ -122,7 +122,7 @@ self.onmessage = async (e: MessageEvent) => {
     // IMPORTANT: Do NOT add a Uint8Array's .buffer to the transfer list if that same
     // Uint8Array is also being sent as `result`. Transferring detaches the underlying
     // ArrayBuffer in-place, making result.buffer.byteLength === 0 on the main thread
-    // before createPdfBlob() can slice it — producing empty/blank PDF outputs.
+    // before createPdfBlob() can slice it, producing empty/blank PDF outputs.
     //
     // Safe rule: only transfer standalone ArrayBuffer objects, or ProcessingResult.data
     // buffers (accessed by named key after the message lands, not by .buffer reference
@@ -130,10 +130,10 @@ self.onmessage = async (e: MessageEvent) => {
     const transfer: Transferable[] = [];
 
     if (result && typeof result === 'object' && 'data' in result && (result as ProcessingResult).data instanceof Uint8Array) {
-      // ProcessingResult shape — main thread accesses .data directly, safe to transfer
+      // ProcessingResult shape, main thread accesses .data directly, safe to transfer
       transfer.push((result as ProcessingResult).data.buffer);
     }
-    // Uint8Array and Uint8Array[] results are NOT transferred — structured clone is used
+    // Uint8Array and Uint8Array[] results are NOT transferred, structured clone is used
     // so createPdfBlob() receives a valid, non-detached buffer on the main thread.
 
     (self as unknown as Worker).postMessage({ id, success: true, result }, transfer);

@@ -55,7 +55,7 @@ export const metadata = {
   },
   openGraph: {
     ...SHARED_OPEN_GRAPH,
-    images: [{ url: "https://ihatelovepdf.com/og-images/og-image-de.png", width: 1409, height: 736, alt: "ihatelovepdf – Private und kostenlose PDF-Bearbeitung" }],
+    images: [{ url: "https://ihatelovepdf.com/og-images/og-image-de.png", width: 1409, height: 736, alt: "ihatelovepdf - Private und kostenlose PDF-Bearbeitung" }],
     title: "ihatelovepdf - Kostenlose und private PDF-Tools in Ihrem Browser",
     description: "PDFs zusammenführen, komprimieren, teilen und konvertieren, ohne Dateien hochzuladen. Sichere und 100% private Verarbeitung.",
     url: "https://ihatelovepdf.com/de",

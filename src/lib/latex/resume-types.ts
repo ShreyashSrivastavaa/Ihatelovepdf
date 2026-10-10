@@ -214,7 +214,7 @@ export const SAMPLE_RESUME_DATA: ResumeData = {
   certifications: [
     {
       id: 'cert_1',
-      name: 'AWS Certified Solutions Architect – Associate',
+      name: 'AWS Certified Solutions Architect - Associate',
       issuer: 'Amazon Web Services',
       date: '2023',
     },

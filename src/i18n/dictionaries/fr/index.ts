@@ -26,7 +26,7 @@ export const frDictionary: Dictionary = {
   },
   metadata: {
     site: {
-      title: "ihatelovepdf – Fusionner, compresser et convertir des PDF gratuitement",
+      title: "ihatelovepdf - Fusionner, compresser et convertir des PDF gratuitement",
       description:
         "ihatelovepdf est une boîte à outils axée sur la confidentialité qui fusionne, compresse, divise, extrait, pivote et convertit des PDF directement dans votre navigateur. Tout le traitement reste sur l'appareil.",
       keywords: [
@@ -48,7 +48,7 @@ export const frDictionary: Dictionary = {
       ],
       canonical: `${siteUrl}${homePath}`,
       openGraph: {
-        title: "ihatelovepdf – Fusionner, Compresser, Diviser, PDF en Image",
+        title: "ihatelovepdf - Fusionner, Compresser, Diviser, PDF en Image",
         description:
           "Fusionnez, compressez, divisez, extrayez, réorganisez et convertissez des PDF sans télécharger de fichiers. Gratuit, privé et soutenu par un traitement entièrement local.",
         url: `${siteUrl}${homePath}`,
@@ -59,7 +59,7 @@ export const frDictionary: Dictionary = {
       },
     },
     faq: {
-      title: "FAQ | ihatelovepdf – Boîte à outils de traitement PDF gratuite",
+      title: "FAQ | ihatelovepdf - Boîte à outils de traitement PDF gratuite",
       description:
         "Réponses aux questions fréquentes sur ihatelovepdf. Apprenez comment fusionner, compresser, diviser, extraire et réorganiser des PDF sans télécharger vos fichiers.",
       keywords: [
@@ -104,7 +104,7 @@ export const frDictionary: Dictionary = {
     },
     footer: {
       privacy: "Traitement local • 100% privé • Licences ouvertes",
-      rights: `© ${new Date().getFullYear()} ihatelovepdf — Outils pour manipuler des PDF sans compromettre la confidentialité`,
+      rights: `© ${new Date().getFullYear()} ihatelovepdf, Outils pour manipuler des PDF sans compromettre la confidentialité`,
       links: {
         home: "Accueil",
         faq: "FAQ",
@@ -130,7 +130,7 @@ export const frDictionary: Dictionary = {
       eyebrow: "Besoin d'optimiser des images ?",
       title: "Compressez, redimensionnez ou convertissez avec FotoLince",
       description:
-        "Notre boîte à outils gère les JPG, PNG et WEBP localement — parfait pour réduire les visuels avant de créer un PDF.",
+        "Notre boîte à outils gère les JPG, PNG et WEBP localement, parfait pour réduire les visuels avant de créer un PDF.",
       ctaLabel: "Ouvrir FotoLince",
       ctaHref: "https://fotolince.com",
       imageAlt: "Logo FotoLince",
@@ -319,7 +319,7 @@ export const frDictionary: Dictionary = {
       loading: "Chargement des pages...",
       error: "Les informations du PDF n'ont pas pu être chargées",
       summary: (total: number, selected: number) =>
-        `${total} pages détectées — ${selected} sélectionnées`,
+        `${total} pages détectées, ${selected} sélectionnées`,
       selectAll: "Tout sélectionner",
       deselectAll: "Tout désélectionner",
       pageLabel: (pageNumber: number) => `Page ${pageNumber}`,
@@ -514,7 +514,7 @@ export const frDictionary: Dictionary = {
           {
             title: "Fonctionne partout",
             description:
-              "Ordinateur, tablette ou téléphone — un navigateur moderne suffit.",
+              "Ordinateur, tablette ou téléphone, un navigateur moderne suffit.",
             icon: "📱",
           },
         ],

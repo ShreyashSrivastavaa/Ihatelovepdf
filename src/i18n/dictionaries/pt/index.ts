@@ -26,7 +26,7 @@ export const ptDictionary: Dictionary = {
   },
   metadata: {
     site: {
-      title: "ihatelovepdf – Juntar, comprimir e converter PDFs grátis | Sem upload",
+      title: "ihatelovepdf - Juntar, comprimir e converter PDFs grátis | Sem upload",
       description:
         "ihatelovepdf é um kit de ferramentas focado em privacidade para juntar, comprimir, dividir, extrair, reorganizar e converter PDFs em imagens ou imagens em PDF direto no navegador. Todo o processamento acontece no seu dispositivo, sem uploads.",
       keywords: [
@@ -47,7 +47,7 @@ export const ptDictionary: Dictionary = {
       ],
       canonical: `${siteUrl}${homePath}`,
       openGraph: {
-        title: "ihatelovepdf – Juntar, Comprimir, Dividir, PDF para Imagem e Imagem para PDF",
+        title: "ihatelovepdf - Juntar, Comprimir, Dividir, PDF para Imagem e Imagem para PDF",
         description:
           "Juntar, comprimir, dividir, extrair, reorganizar e converter PDFs sem enviar arquivos. Gratuito, privado e com processamento 100% local.",
         url: `${siteUrl}${homePath}`,
@@ -58,7 +58,7 @@ export const ptDictionary: Dictionary = {
       },
     },
     faq: {
-      title: "Perguntas Frequentes | ihatelovepdf – Ferramenta para PDFs",
+      title: "Perguntas Frequentes | ihatelovepdf - Ferramenta para PDFs",
       description:
         "Perguntas e respostas sobre o ihatelovepdf. Aprenda a juntar, comprimir, dividir, extrair e reorganizar PDFs sem enviar seus arquivos.",
       keywords: [
@@ -102,7 +102,7 @@ export const ptDictionary: Dictionary = {
     },
     footer: {
       privacy: "Processamento local • 100% privado • Licenças abertas",
-      rights: `© ${new Date().getFullYear()} ihatelovepdf — Ferramentas para manipular PDFs sem comprometer a privacidade`,
+      rights: `© ${new Date().getFullYear()} ihatelovepdf, Ferramentas para manipular PDFs sem comprometer a privacidade`,
       links: {
         home: "Início",
         faq: "Perguntas frequentes",
@@ -128,7 +128,7 @@ export const ptDictionary: Dictionary = {
       eyebrow: "Precisa otimizar imagens?",
       title: "Comprimir, redimensionar ou converter fotos com o FotoLince",
       description:
-        "Nossa ferramenta irmã trata JPG, PNG e WEBP direto no navegador — perfeita para ajustar imagens antes de gerar um PDF.",
+        "Nossa ferramenta irmã trata JPG, PNG e WEBP direto no navegador, perfeita para ajustar imagens antes de gerar um PDF.",
       ctaLabel: "Abrir FotoLince",
       ctaHref: "https://fotolince.com",
       imageAlt: "Logotipo do FotoLince",
@@ -319,7 +319,7 @@ export const ptDictionary: Dictionary = {
       loading: "Carregando páginas do PDF...",
       error: "Não foi possível carregar as informações do PDF",
       summary: (total: number, selected: number) =>
-        `${total} páginas detectadas — ${selected} selecionadas`,
+        `${total} páginas detectadas, ${selected} selecionadas`,
       selectAll: "Selecionar todas",
       deselectAll: "Desmarcar todas",
       pageLabel: (pageNumber: number) => `Pág. ${pageNumber}`,
@@ -514,7 +514,7 @@ export const ptDictionary: Dictionary = {
           {
             title: "Funciona em qualquer tela",
             description:
-              "Desktop, tablet ou celular — basta um navegador moderno.",
+              "Desktop, tablet ou celular, basta um navegador moderno.",
             icon: "📱",
           },
         ],

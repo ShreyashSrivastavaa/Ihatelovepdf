@@ -20,7 +20,7 @@ const operationsDeContent: Partial<Record<OperationKey, OperationContent>> = {
       ],
       ogTitle: "PDF Komprimieren Online Kostenlos - Dateigröße Reduzieren | ihatelovepdf",
       ogDescription:
-        "Ziehe deine Datei in das Feld, wähle die optimale Kompressionsstufe und lade das verkleinerte PDF in Sekunden herunter – sicher und ohne Server-Upload.",
+        "Ziehe deine Datei in das Feld, wähle die optimale Kompressionsstufe und lade das verkleinerte PDF in Sekunden herunter - sicher und ohne Server-Upload.",
       ogImageAlt: "ihatelovepdf Oberfläche beim Komprimieren",
     },
     hero: {
@@ -51,7 +51,7 @@ const operationsDeContent: Partial<Record<OperationKey, OperationContent>> = {
       {
         title: "Datenschutz by Design",
         description:
-          "Keine Server-Uploads, keine Datenlecks – interne Datenschutzvorgaben lassen sich mühelos erfüllen.",
+          "Keine Server-Uploads, keine Datenlecks - interne Datenschutzvorgaben lassen sich mühelos erfüllen.",
       },
     ],
     howTo: {
@@ -62,7 +62,7 @@ const operationsDeContent: Partial<Record<OperationKey, OperationContent>> = {
         "\"Verarbeiten\" drücken und das verkleinerte Dokument nach wenigen Sekunden herunterladen.",
       ],
       note:
-        "Mehrere Berichte? Einfach nacheinander komprimieren – ohne Tageslimits oder Wasserzeichen.",
+        "Mehrere Berichte? Einfach nacheinander komprimieren - ohne Tageslimits oder Wasserzeichen.",
     },
     useCasesTitle: "Wann sich Komprimieren lohnt",
     useCases: [
@@ -120,7 +120,7 @@ const operationsDeContent: Partial<Record<OperationKey, OperationContent>> = {
       {
         title: "Privat & anonym",
         description:
-          "Keine Speicherung, keine persönlichen Daten – ideal für vertrauliche Inhalte.",
+          "Keine Speicherung, keine persönlichen Daten - ideal für vertrauliche Inhalte.",
       },
     ],
     howTo: {
@@ -158,13 +158,13 @@ const operationsDeContent: Partial<Record<OperationKey, OperationContent>> = {
       ],
       ogTitle: "PDF Online Teilen Kostenlos - Seiten Extrahieren | ihatelovepdf",
       ogDescription:
-        "Wähle deinen bevorzugten Teilungsmodus, generiere so viele Einzeldateien wie nötig und speichere sie direkt ab – schnell, einfach und sicher.",
+        "Wähle deinen bevorzugten Teilungsmodus, generiere so viele Einzeldateien wie nötig und speichere sie direkt ab - schnell, einfach und sicher.",
       ogImageAlt: "PDF aufteilen mit ihatelovepdf",
     },
     hero: {
       title: "PDF Online Teilen Kostenlos - Seiten Trennen und Extrahieren",
       description:
-        "Kapitel, Anhänge oder gezielte Abschnitte als eigenständige Dateien exportieren – bereit zum Teilen.",
+        "Kapitel, Anhänge oder gezielte Abschnitte als eigenständige Dateien exportieren - bereit zum Teilen.",
       bulletPoints: [
         "Teilungen nach Seitenanzahl oder Dateigröße konfigurieren",
         "Mehrere PDFs in einem Durchlauf erzeugen",
@@ -455,7 +455,7 @@ const operationsDeContent: Partial<Record<OperationKey, OperationContent>> = {
       {
         title: "Keine Spuren",
         description:
-          "Der komplette Vorgang bleibt auf dem eigenen Gerät – ideal für vertrauliche Unterlagen.",
+          "Der komplette Vorgang bleibt auf dem eigenen Gerät - ideal für vertrauliche Unterlagen.",
       },
     ],
     howTo: {
@@ -466,7 +466,7 @@ const operationsDeContent: Partial<Record<OperationKey, OperationContent>> = {
         "Auf \"Verarbeiten\" klicken, um das Dokument mit neuer Reihenfolge herunterzuladen.",
       ],
       note:
-        "Auch nach einem Export weiter anpassen – ohne die Datei erneut hochzuladen.",
+        "Auch nach einem Export weiter anpassen - ohne die Datei erneut hochzuladen.",
     },
     useCasesTitle: "Wann Seiten sortieren?",
     useCases: [
@@ -483,7 +483,7 @@ const operationsDeContent: Partial<Record<OperationKey, OperationContent>> = {
     meta: {
       title: "PDF in Bilder umwandeln | PNG/JPEG Export | ihatelovepdf",
       description:
-        "Wandle jede Seite deines PDFs in hochwertige PNG- oder JPEG-Bilder um. Bestimme die Auflösung selbst und lade alles als ZIP-Datei herunter – 100% privat.",
+        "Wandle jede Seite deines PDFs in hochwertige PNG- oder JPEG-Bilder um. Bestimme die Auflösung selbst und lade alles als ZIP-Datei herunter - 100% privat.",
       keywords: [
         "pdf zu bildern",
         "pdf zu png",
@@ -503,7 +503,7 @@ const operationsDeContent: Partial<Record<OperationKey, OperationContent>> = {
       bulletPoints: [
         "Zwischen PNG und JPEG wählen und die DPI exakt festlegen",
         "Alles als einzelnes ZIP bündeln oder Seiten einzeln herunterladen",
-        "Rendering läuft direkt im Browser – keine Uploads, keine Spuren",
+        "Rendering läuft direkt im Browser - keine Uploads, keine Spuren",
       ],
       imageAlt: "Workflow von PDF zu Bildern in ihatelovepdf",
     },
@@ -560,7 +560,7 @@ const operationsDeContent: Partial<Record<OperationKey, OperationContent>> = {
       ],
       ogTitle: "Ein ordentliches PDF aus Bildern bauen | ihatelovepdf",
       ogDescription:
-        "Ziehe deine Bilder in die Liste, lege die Reihenfolge fest und exportiere ein druckfertiges PDF – ganz ohne Uploads oder Wasserzeichen.",
+        "Ziehe deine Bilder in die Liste, lege die Reihenfolge fest und exportiere ein druckfertiges PDF - ganz ohne Uploads oder Wasserzeichen.",
       ogImageAlt: "ihatelovepdf erstellt ein PDF aus Bildern",
     },
     hero: {
@@ -589,7 +589,7 @@ const operationsDeContent: Partial<Record<OperationKey, OperationContent>> = {
       {
         title: "Sicherer Prozess",
         description:
-          "Die Umwandlung bleibt komplett im Browser – ideal für Belege, Ausweise oder Unterrichtsmaterial.",
+          "Die Umwandlung bleibt komplett im Browser - ideal für Belege, Ausweise oder Unterrichtsmaterial.",
       },
     ],
     howTo: {
@@ -600,7 +600,7 @@ const operationsDeContent: Partial<Record<OperationKey, OperationContent>> = {
         "Auf \"PDF erstellen\" klicken, um das Dokument herunterzuladen und direkt zu teilen oder zu archivieren.",
       ],
       note:
-        "Große Sammlungen? Das Ergebnis danach komprimieren oder aufteilen – ohne die Bilder erneut hochzuladen.",
+        "Große Sammlungen? Das Ergebnis danach komprimieren oder aufteilen - ohne die Bilder erneut hochzuladen.",
     },
     useCasesTitle: "Typische Einsätze für Bild-zu-PDF",
     useCases: [

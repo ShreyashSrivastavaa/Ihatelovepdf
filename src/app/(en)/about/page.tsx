@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Script from 'next/script';
-import { ShieldCheck, Cpu, Lock, Award, HeartHandshake, CheckCircle2, FileCheck, Code2, ExternalLink, HelpCircle, User } from 'lucide-react';
+import { ShieldCheck, Cpu, Lock, Award, CheckCircle2, FileCheck, Code2, ExternalLink, HelpCircle, User } from 'lucide-react';
 import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER } from '../../../lib/metadata-shared';
 import { SITE_URL } from '../../../lib/site';
 

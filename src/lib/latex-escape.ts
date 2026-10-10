@@ -67,7 +67,7 @@ export function sanitizeLatexInput(input: string | undefined | null, maxLen: num
  * Safely escapes user-supplied text for LaTeX compilation:
  * - Sanitizes dangerous raw macros
  * - Escapes reserved characters (% & $ # _ { } ~ ^ \)
- * - Normalizes Unicode smart quotes (“ ” ‘ ’) and dashes (—, –)
+ * - Normalizes Unicode smart quotes (“ ” ‘ ’) and dashes (\u2014, \u2013)
  */
 export function escapeLatex(text: string | undefined | null): string {
   if (!text) return '';
@@ -88,8 +88,8 @@ export function escapeLatex(text: string | undefined | null): string {
     .replace(/‘/g, "`")
     .replace(/’/g, "'")
     .replace(/"/g, "''")
-    .replace(/—/g, '---')
-    .replace(/–/g, '--');
+    .replace(/\u2014/g, '---')
+    .replace(/\u2013/g, '--');
 
   return escaped;
 }

@@ -20,7 +20,7 @@ const operationsItContent: Partial<Record<OperationKey, OperationContent>> = {
       ],
       ogTitle: "Comprimi PDF Online Gratis - Riduci Dimensione File | ihatelovepdf",
       ogDescription:
-        "Carica il tuo file, scegli il livello di compressione ottimale e scarica un PDF molto più leggero in pochi secondi — completamente sicuro senza caricamenti su server.",
+        "Carica il tuo file, scegli il livello di compressione ottimale e scarica un PDF molto più leggero in pochi secondi, completamente sicuro senza caricamenti su server.",
       ogImageAlt: "Interfaccia dello strumento di compressione ihatelovepdf",
     },
     hero: {
@@ -90,7 +90,7 @@ const operationsItContent: Partial<Record<OperationKey, OperationContent>> = {
       ],
       ogTitle: "Crea un PDF pulito dalle tue immagini | ihatelovepdf",
       ogDescription:
-        "Trascina le immagini, definisci il layout ed esporta un PDF pronto per la stampa — senza caricamenti o filigrane.",
+        "Trascina le immagini, definisci il layout ed esporta un PDF pronto per la stampa, senza caricamenti o filigrane.",
       ogImageAlt: "Creazione di un PDF da immagini in ihatelovepdf",
     },
     hero: {
