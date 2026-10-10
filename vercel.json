@@ -1,4 +1,16 @@
 {
+  "redirects": [
+    {
+      "source": "/support",
+      "destination": "/buy-me-a-coffee",
+      "permanent": true
+    },
+    {
+      "source": "/support/:path*",
+      "destination": "/buy-me-a-coffee",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

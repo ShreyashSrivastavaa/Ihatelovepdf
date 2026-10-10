@@ -35,6 +35,7 @@ const EXCLUDED_ORPHANED_ROUTES = new Set([
   "decrypt-pdf",
   "latexResume",
   "latex-resume",
+  "support",
 ]);
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -71,8 +72,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   });
 
-  // 3. Static pages (about, privacy, terms) at priority 0.5
-  addEntry("/about", monthly, 0.5);
+  // 3. Static pages at appropriate priorities
+  addEntry("/tools", weekly, 0.9);
+  addEntry("/buy-me-a-coffee", monthly, 0.7);
+  addEntry("/about", monthly, 0.8);
+  addEntry("/faq", monthly, 0.8);
+  addEntry("/guides", weekly, 0.8);
+  addEntry("/contact", monthly, 0.6);
   if (privacy?.en) {
     addEntry(privacy.en, monthly, 0.5);
   } else {

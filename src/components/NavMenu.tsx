@@ -8,7 +8,7 @@ import { useDictionary, useLocale } from '../i18n/LocaleProvider';
 import { SUPPORTED_LOCALES, localeLabels, type Locale } from '../i18n/config';
 import { getLocalizedAlternateMap, getRouteIdentifierForPath, getRoutePath } from '../i18n/routing';
 import ContactModal from './ContactModal';
-import { ShieldCheck, Globe, Menu, X, Sun, Moon, FileText, Shield, Mail, Sparkles } from 'lucide-react';
+import { ShieldCheck, Globe, Menu, X, Sun, Moon, FileText, Shield, Mail, Sparkles, Coffee } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 
 export default function NavMenu() {
@@ -142,15 +142,16 @@ export default function NavMenu() {
               </li>
               <li>
                 <Link
-                  href={routes.support || '/support'}
+                  href="/buy-me-a-coffee"
                   prefetch={true}
-                  className={`px-2.5 py-1.5 rounded-md transition-colors ${
-                    isActive(routes.support || '/support')
+                  className={`px-2.5 py-1.5 rounded-md transition-colors inline-flex items-center gap-1.5 ${
+                    isActive('/buy-me-a-coffee')
                       ? 'text-[var(--accent)] bg-[var(--accent-soft)] font-semibold text-[var(--accent)]'
                       : 'text-[var(--tx-2)] hover:text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
                   }`}
                 >
-                  ❤️ Support
+                  <Coffee className="h-4 w-4 text-amber-500" />
+                  <span>Buy Me a Coffee</span>
                 </Link>
               </li>
               <li>
@@ -314,18 +315,18 @@ export default function NavMenu() {
             </Link>
 
             <Link
-              href={routes.support || '/support'}
+              href="/buy-me-a-coffee"
               prefetch={true}
               onClick={() => setIsOpen(false)}
               className={`flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold transition-colors min-h-[44px] w-full ${
-                isActive(routes.support || '/support')
+                isActive('/buy-me-a-coffee')
                   ? 'text-[var(--accent)] bg-[var(--accent-soft)]'
                   : 'text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
               }`}
             >
               <div className="flex items-center gap-2.5">
-                <span className="shrink-0">❤️</span>
-                <span>Support / Donate</span>
+                <Coffee className="h-4 w-4 text-amber-500 shrink-0" />
+                <span>Buy Me a Coffee</span>
               </div>
             </Link>
 

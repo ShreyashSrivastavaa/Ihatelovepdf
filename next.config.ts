@@ -15,6 +15,7 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   experimental: {
+    cpus: 2,
     optimizePackageImports: ['lucide-react', '@vercel/analytics', '@vercel/speed-insights'],
   },
   webpack: (config, { isServer, webpack }) => {

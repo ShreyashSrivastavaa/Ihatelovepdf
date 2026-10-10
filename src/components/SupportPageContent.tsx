@@ -1,9 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Heart, Sparkles, ShieldCheck, Leaf } from "lucide-react";
+import { Heart, Sparkles, ShieldCheck, Leaf, Coffee, ExternalLink } from "lucide-react";
 import { useDictionary } from "../i18n/LocaleProvider";
-import DonationWidget from "./DonationWidget";
 
 const REASON_ICONS = [Heart, Sparkles, ShieldCheck];
 const REASON_COLORS = [
@@ -61,9 +60,30 @@ export function SupportPageContent() {
           </div>
         </section>
 
-        {/* Donation Widget section */}
-        <section className="my-20">
-          <DonationWidget />
+        {/* Buy Me a Coffee section */}
+        <section className="my-16 text-center surface-card rounded-3xl border border-[var(--border)] p-8 sm:p-12 space-y-6 bg-[var(--bg-card)]">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-xs font-semibold text-amber-500">
+            <Coffee className="h-4 w-4" />
+            <span>Support The Project</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--tx)]">
+            Buy Me a Coffee
+          </h2>
+          <p className="text-sm sm:text-base text-[var(--tx-2)] max-w-xl mx-auto leading-relaxed">
+            I Hate Love PDF is 100% free, private, and runs directly inside your web browser. Built and maintained by Shreyash Srivastava. Tips and coffees keep the platform free, fast, and ad-light.
+          </p>
+          <div>
+            <a
+              href="https://buymeacoffee.com/shreyashsrivastavaa"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-[#FFDD00] hover:bg-[#ffea40] text-neutral-900 font-extrabold text-base shadow-lg shadow-amber-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+            >
+              <Coffee className="h-5 w-5 text-neutral-900 stroke-[2.2]" />
+              <span>Buy me a coffee</span>
+              <ExternalLink className="h-4 w-4 text-neutral-800" />
+            </a>
+          </div>
         </section>
 
         {/* Support Our Other Products Spotlight */}

@@ -1,10 +1,18 @@
-import { SupportPageContent } from "../../../components/SupportPageContent";
-import { createSupportMetadata } from "../../(helpers)/locale-metadata";
+import type { Metadata } from 'next';
+import { PermanentRedirect } from '../../../components/PermanentRedirect';
 
-const LOCALE = "en" as const;
+export const metadata: Metadata = {
+  title: 'Redirecting to Buy Me a Coffee | I Hate Love PDF',
+  description: 'This page has moved permanently to /buy-me-a-coffee.',
+  robots: {
+    index: false,
+    follow: true,
+  },
+  alternates: {
+    canonical: 'https://www.ihatelovepdf.com/buy-me-a-coffee/',
+  },
+};
 
-export const generateMetadata = createSupportMetadata(LOCALE);
-
-export default function SupportPage() {
-  return <SupportPageContent />;
+export default function SupportRedirectPage() {
+  return <PermanentRedirect destination="/buy-me-a-coffee" />;
 }

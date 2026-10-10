@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useDictionary } from '../i18n/LocaleProvider';
 import ContactModal from './ContactModal';
-import { ShieldCheck } from 'lucide-react';
+import { ShieldCheck, Coffee } from 'lucide-react';
 
 export default function Footer() {
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -47,6 +47,14 @@ export default function Footer() {
               <Link href={routes.faq} prefetch={true} className="hover:text-[var(--tx)] transition-colors">
                 {footer.links.faq}
               </Link>
+              <Link
+                href="/buy-me-a-coffee"
+                prefetch={true}
+                className="inline-flex items-center gap-1.5 text-amber-500 hover:text-amber-400 font-semibold transition-colors"
+              >
+                <Coffee className="h-4 w-4" />
+                <span>Buy Me a Coffee</span>
+              </Link>
               <Link href={routes.privacy || '/privacy'} prefetch={true} className="hover:text-[var(--tx)] transition-colors">
                 Privacy Policy
               </Link>
@@ -62,26 +70,33 @@ export default function Footer() {
             </div>
           </div>
 
-
-
           <div className="pt-6 border-t border-[var(--border)]">
             {/* Top row: author info + badge */}
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
               {/* Left: author + links */}
               <div className="space-y-2 text-xs text-[var(--tx-3)]">
                 <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                  <span className="font-medium text-[var(--tx-2)]">Created &amp; maintained by</span>
+                  <span className="font-medium text-[var(--tx-2)]">Built by</span>
                   <a
-                    href="https://shreyashsrivastava.vercel.app/"
+                    href="https://www.shreyashsrivastava.in/"
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="me author noopener noreferrer"
                     className="font-semibold text-[var(--tx)] hover:underline transition-colors"
                   >
                     Shreyash Srivastava
                   </a>
                   <span className="opacity-50">·</span>
                   <a
-                    href="https://linkedin.com/in/shreyashsrivastavaa"
+                    href="https://www.shreyashsrivastava.in/"
+                    target="_blank"
+                    rel="me author noopener noreferrer"
+                    className="hover:text-[var(--tx)] transition-colors"
+                  >
+                    Portfolio
+                  </a>
+                  <span className="opacity-50">·</span>
+                  <a
+                    href="https://www.linkedin.com/in/shreyashsrivastavaa"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-[var(--tx)] transition-colors"
@@ -99,12 +114,12 @@ export default function Footer() {
                   </a>
                   <span className="opacity-50">·</span>
                   <a
-                    href="https://x.com/YesShrey"
+                    href="https://buymeacoffee.com/shreyashsrivastavaa"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-[var(--tx)] transition-colors"
+                    className="text-amber-500 hover:underline font-semibold transition-colors"
                   >
-                    Twitter/X
+                    Buy Me a Coffee
                   </a>
                 </div>
                 <div className="space-y-0.5 pt-1">

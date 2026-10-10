@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Download, Archive, RotateCcw, Copy, Check, Sparkles, FileText, CheckCircle2, ArrowRight, SlidersHorizontal, Eye } from 'lucide-react';
+import { Download, Archive, RotateCcw, Copy, Check, Sparkles, FileText, CheckCircle2, ArrowRight, SlidersHorizontal, Eye, Coffee } from 'lucide-react';
 import { downloadBlob, openBlobInNewTab, isIOS } from '../../lib/download-helper';
 
 export interface OutputFileItem {
@@ -362,6 +362,25 @@ export default function ResultPanel({
           <RotateCcw className="h-4 w-4" />
           <span>Process Another File</span>
         </button>
+      </div>
+
+      {/* Non-intrusive Buy Me a Coffee Tip Bar */}
+      <div className="pt-3 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[var(--tx-3)]">
+        <div className="flex items-center gap-2">
+          <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-amber-500/10 text-amber-500">
+            <Coffee className="h-3.5 w-3.5" />
+          </span>
+          <span>Found this useful? Tips keep this tool free, private, and ad-light.</span>
+        </div>
+        <a
+          href="https://buymeacoffee.com/shreyashsrivastavaa"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 font-bold text-amber-500 hover:text-amber-400 hover:underline transition-colors shrink-0"
+        >
+          <span>Buy me a coffee</span>
+          <span>&rarr;</span>
+        </a>
       </div>
     </div>
   );
