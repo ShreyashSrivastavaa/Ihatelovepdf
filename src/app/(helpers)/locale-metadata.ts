@@ -32,6 +32,7 @@ export function createHomeMetadata(locale: Locale) {
     const languages = buildLanguagesMap({ type: "static", key: "home" }, baseUrl);
 
     return {
+      metadataBase: new URL(baseUrl),
       title: siteMeta.title,
       description: siteMeta.description,
       keywords: siteMeta.keywords,
@@ -75,6 +76,7 @@ export function createFaqMetadata(locale: Locale) {
     const languages = buildLanguagesMap({ type: "static", key: "faq" }, baseUrl);
 
     return {
+      metadataBase: new URL(baseUrl),
       title: faqMeta.title,
       description: faqMeta.description,
       keywords: faqMeta.keywords,
@@ -118,6 +120,7 @@ export function createSupportMetadata(locale: Locale) {
     const languages = buildLanguagesMap({ type: "static", key: "support" }, baseUrl);
 
     return {
+      metadataBase: new URL(baseUrl),
       title: supportMeta.title,
       description: supportMeta.description,
       keywords: supportMeta.keywords,

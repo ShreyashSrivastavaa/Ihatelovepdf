@@ -9,6 +9,17 @@
       "source": "/support/:path*",
       "destination": "/buy-me-a-coffee",
       "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "ihatelovepdf.com"
+        }
+      ],
+      "destination": "https://www.ihatelovepdf.com/:path*",
+      "permanent": true
     }
   ],
   "headers": [

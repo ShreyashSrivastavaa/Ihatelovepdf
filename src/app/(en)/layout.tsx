@@ -30,35 +30,41 @@ export const metadata = {
   icons: SHARED_ICONS,
   openGraph: SHARED_OPEN_GRAPH,
   twitter: SHARED_TWITTER,
-  title: {
-    default: "ihatelovepdf: Free and Private PDF Tools in Your Browser",
-    template: "%s | ihatelovepdf",
+  robots: {
+    index: true,
+    follow: true,
   },
-  description: "Merge, compress, split, extract, and convert PDFs locally in your browser. 100% private, no server uploads, free forever.",
+  title: {
+    default: "I Hate Love PDF: Free and Private PDF Tools in Your Browser",
+    template: "%s | I Hate Love PDF",
+  },
+  description: "Merge, compress, split, extract, edit, redact, and convert PDFs locally in your browser. 100% private, zero server uploads, free forever.",
   keywords: [
     "PDF tools",
     "merge PDF",
     "compress PDF",
     "split PDF",
     "convert PDF",
+    "edit PDF",
+    "redact PDF",
     "local PDF processing",
     "private PDF tools",
     "free PDF editor",
     "PDF security",
   ],
   alternates: {
-    canonical: "https://ihatelovepdf.com",
+    canonical: "https://www.ihatelovepdf.com",
     languages: {
-      "x-default": "https://ihatelovepdf.com",
-      en: "https://ihatelovepdf.com",
-      es: "https://ihatelovepdf.com/es",
-      de: "https://ihatelovepdf.com/de",
-      fr: "https://ihatelovepdf.com/fr",
-      it: "https://ihatelovepdf.com/it",
-      pt: "https://ihatelovepdf.com/pt",
-      ru: "https://ihatelovepdf.com/ru",
-      ro: "https://ihatelovepdf.com/ro",
-      hu: "https://ihatelovepdf.com/hu",
+      "x-default": "https://www.ihatelovepdf.com",
+      en: "https://www.ihatelovepdf.com",
+      es: "https://www.ihatelovepdf.com/es",
+      de: "https://www.ihatelovepdf.com/de",
+      fr: "https://www.ihatelovepdf.com/fr",
+      it: "https://www.ihatelovepdf.com/it",
+      pt: "https://www.ihatelovepdf.com/pt",
+      ru: "https://www.ihatelovepdf.com/ru",
+      ro: "https://www.ihatelovepdf.com/ro",
+      hu: "https://www.ihatelovepdf.com/hu",
     },
   },
 };
@@ -68,6 +74,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang={LOCALE} suppressHydrationWarning>
       <head>
         <meta charSet="UTF-8" />
+        <meta name="author" content="Shreyash Srivastava" />
         <meta name="websitelaunches-verification" content="714e3c091b00f4a86f93e6be17c060fc" />
         <meta name="directree-verify" content="directree-verify=dfce967396d09deb8ea0daa79821f507" />
         <ThemeScript />

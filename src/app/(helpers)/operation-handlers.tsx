@@ -32,6 +32,7 @@ export function buildOperationMetadata(locale: Locale, operationKey: OperationKe
     const languages = buildLanguagesMap(operationKey, baseUrl);
 
     return {
+      metadataBase: new URL(baseUrl),
       title: operationMeta.meta.title,
       description: operationMeta.meta.description,
       keywords: operationMeta.meta.keywords,

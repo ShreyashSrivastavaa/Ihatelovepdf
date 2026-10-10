@@ -4,8 +4,8 @@ export const dynamic = 'force-static';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'ihatelovepdf: Private & Free PDF Tools',
-    short_name: 'ihatelovepdf',
+    name: 'I Hate Love PDF: Private and Free PDF Tools',
+    short_name: 'I Hate Love PDF',
     description:
       'Fast, private browser PDF tools to compress, merge, split, crop, rotate, and convert PDFs without server uploads.',
     start_url: '/',
