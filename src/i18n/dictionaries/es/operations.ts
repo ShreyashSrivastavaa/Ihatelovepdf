@@ -8,7 +8,7 @@ const operationsEsContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "comprimir",
     mode: "compress",
     meta: {
-      title: "Comprimir PDF Online Gratis - Reduce Tamaño de Archivo",
+      title: "Comprimir PDF Online Gratis - Reduce Tamaño de",
       description:
         "Comprime archivos PDF online sin perder calidad. Reduce el tamaño para email y almacenamiento.",
       keywords: [
@@ -24,7 +24,7 @@ const operationsEsContent: Partial<Record<OperationKey, OperationContent>> = {
       ogImageAlt: "Herramienta para comprimir PDF con ihatelovepdf",
     },
     hero: {
-      title: "Comprimir PDF Online Gratis - Reduce Tamaño del Archivo",
+      title: "Comprimir PDF Online Gratis - Reduce Tamaño del",
       description:
         "Optimiza el tamaño de tus documentos para enviarlos por correo, plataformas educativas o trámites oficiales sin sacrificar legibilidad.",
       bulletPoints: [
@@ -93,7 +93,7 @@ const operationsEsContent: Partial<Record<OperationKey, OperationContent>> = {
       ogImageAlt: "Unión de múltiples PDFs en la plataforma ihatelovepdf",
     },
     hero: {
-      title: "Unir PDF Online Gratis - Combina Múltiples Archivos PDF",
+      title: "Unir PDF Online Gratis - Combina Múltiples",
       description:
         "Combina contratos, notas de clase o pólizas en un único archivo listo para enviar, firmar o archivar.",
       bulletPoints: [
@@ -162,7 +162,7 @@ const operationsEsContent: Partial<Record<OperationKey, OperationContent>> = {
       ogImageAlt: "Proceso de división de un PDF en ihatelovepdf",
     },
     hero: {
-      title: "Dividir PDF Online Gratis - Extrae y Separa Páginas",
+      title: "Dividir PDF Online Gratis - Extrae y Separa",
       description:
         "Extrae capítulos, anexos o secciones concretas en archivos independientes listos para compartir.",
       bulletPoints: [
@@ -213,7 +213,7 @@ const operationsEsContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "extraer",
     mode: "extract",
     meta: {
-      title: "Extraer Páginas de un PDF | Guardar Sueltas | ihatelovepdf",
+      title: "Extraer Páginas de un PDF",
       description:
         "Selecciona páginas de cualquier PDF y crea un nuevo documento al instante. Procesamiento privado y sin límites en tu navegador.",
       keywords: [
@@ -280,7 +280,7 @@ const operationsEsContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "recortar",
     mode: "crop",
     meta: {
-      title: "Recortar páginas PDF online | Ajustar márgenes | ihatelovepdf",
+      title: "Recortar páginas PDF online",
       description:
         "Recorta páginas PDF y elimina márgenes sobrantes directamente en tu navegador. Todo el proceso ocurre en local y sin subidas al servidor.",
       keywords: [
@@ -347,7 +347,7 @@ const operationsEsContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "girar",
     mode: "rotate",
     meta: {
-      title: "Girar páginas PDF online | Girar hojas seleccionadas | ihatelovepdf",
+      title: "Girar páginas PDF online",
       description:
         "Rota páginas concretas de un PDF en 90 o 180 grados directamente en tu navegador. Gratis, privado y sin subir archivos.",
       keywords: [
@@ -414,7 +414,7 @@ const operationsEsContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "reordenar",
     mode: "reorder",
     meta: {
-      title: "Reordenar Páginas PDF | Cambiar Orden Rápido | ihatelovepdf",
+      title: "Reordenar Páginas PDF",
       description:
         "Reorganiza fácilmente las páginas de tu PDF arrastrando y soltando. Corrige el orden y guarda el resultado al instante, todo localmente.",
       keywords: [
@@ -481,7 +481,7 @@ const operationsEsContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "convertir-pdf-a-imagenes",
     mode: "pdfToImages",
     meta: {
-      title: "Convertir PDF a Imágenes | Exportar a PNG/JPEG | ihatelovepdf",
+      title: "Convertir PDF a Imágenes",
       description:
         "Convierte cada página de tu PDF en imágenes PNG o JPEG de alta calidad. Elige tu resolución y descarga todo como un archivo ZIP, 100% privado y seguro.",
       keywords: [
@@ -548,7 +548,7 @@ const operationsEsContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "crear-pdf-desde-imagenes",
     mode: "imagesToPdf",
     meta: {
-      title: "Crear PDF desde Imágenes | JPG, PNG a PDF | ihatelovepdf",
+      title: "Crear PDF desde Imágenes",
       description:
         "Crea un PDF profesional a partir de tus imágenes. Organiza fotos, personaliza el diseño y los márgenes, y genera tu documento localmente en tu navegador.",
       keywords: [

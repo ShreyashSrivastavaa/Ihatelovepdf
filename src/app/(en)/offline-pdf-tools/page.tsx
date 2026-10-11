@@ -7,7 +7,7 @@ import { SITE_URL } from '../../../lib/site';
 
 export const metadata: Metadata = {
   metadataBase: METADATA_BASE,
-  title: 'Offline PDF Tools: Process PDFs in Browser Without Internet',
+  title: 'PDF Tools That Work Offline in Browser',
   description: 'Process PDFs locally in your browser even without internet access. Client-side tools that work offline with zero server data transfer.',
   alternates: {
     canonical: `${SITE_URL}/offline-pdf-tools/`,
@@ -115,7 +115,7 @@ export default function OfflinePdfToolsPage() {
           </p>
           <div className="pt-4 flex flex-wrap gap-4">
             <Link
-              href="/merge-pdf"
+              href="/merge"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--accent)] text-white font-semibold text-sm hover:opacity-95 transition-opacity"
             >
               <span>Test Merge PDF Offline</span>

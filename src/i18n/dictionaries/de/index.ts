@@ -26,7 +26,7 @@ export const deDictionary: Dictionary = {
   },
   metadata: {
     site: {
-      title: "ihatelovepdf - PDFs zusammenführen, komprimieren und konvertieren | Keine Uploads",
+      title: "ihatelovepdf: Kostenlose PDF-Tools im Browser",
       description:
         "ihatelovepdf ist ein datenschutzfreundliches PDF-Toolkit zum Zusammenführen, Komprimieren, Teilen, Extrahieren, Neuordnen und Konvertieren von PDFs in Bilder oder wieder zurück - alles direkt im Browser auf deinem Gerät, ganz ohne Uploads.",
       keywords: [
@@ -58,7 +58,7 @@ export const deDictionary: Dictionary = {
       },
     },
     faq: {
-      title: "Häufige Fragen | ihatelovepdf - Kostenloses PDF-Toolkit",
+      title: "Häufige Fragen zu den PDF-Tools",
       description:
         "Antworten auf die wichtigsten Fragen zu ihatelovepdf. Erfahre, wie du PDFs zusammenführst, komprimierst, teilst, Seiten extrahierst, neu ordnest und in Bilder oder PDFs umwandelst - ganz ohne Upload.",
       keywords: [

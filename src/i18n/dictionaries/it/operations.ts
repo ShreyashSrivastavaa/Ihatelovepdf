@@ -8,7 +8,7 @@ const operationsItContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "compress",
     mode: "compress",
     meta: {
-      title: "Comprimi PDF Online Gratis - Riduci Dimensione File",
+      title: "Comprimi PDF Online Gratis - Riduci Dimensione",
       description:
         "Comprimi file PDF online senza perdere qualità. Riduci dimensioni per email o storage. Gratuito, veloce, sicuro.",
       keywords: [
@@ -78,7 +78,7 @@ const operationsItContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "images-to-pdf",
     mode: "imagesToPdf",
     meta: {
-      title: "Crea PDF da immagini | JPG, PNG in PDF | ihatelovepdf",
+      title: "Crea PDF da immagini",
       description:
         "Crea un PDF professionale dalle tue immagini. Ordina le foto, personalizza layout e margini e genera il documento localmente nel browser.",
       keywords: [
@@ -148,7 +148,7 @@ const operationsItContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "merge",
     mode: "merge",
     meta: {
-      title: "Unisci PDF Online Gratis - Combina File PDF Senza Registrazione",
+      title: "Unisci PDF Online Gratis - Combina File PDF Senza",
       description:
         "Unisci file PDF online gratuitamente in pochi secondi. Nessuna registrazione, nessun limite di file. Carica, combina e scarica.",
       keywords: [
@@ -229,7 +229,7 @@ const operationsItContent: Partial<Record<OperationKey, OperationContent>> = {
       ogImageAlt: "Divisione PDF",
     },
     hero: {
-      title: "Dividi PDF Online Gratis - Estrai e Separa Pagine PDF",
+      title: "Dividi PDF Online Gratis - Estrai e Separa Pagine",
       description:
         "Estrai sezioni specifiche.",
       bulletPoints: [
@@ -279,7 +279,7 @@ const operationsItContent: Partial<Record<OperationKey, OperationContent>> = {
     meta: {
       title: "Estrai pagine PDF | ihatelovepdf",
       description:
-        "Seleziona pagine specifiche e crea un nuovo PDF.",
+        "Seleziona pagine specifiche ed estraile in un nuovo file PDF. Elaborazione privata e veloce nel browser.",
       keywords: [
         "estrai pagine pdf",
       ],
@@ -337,7 +337,7 @@ const operationsItContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "ritaglia",
     mode: "crop",
     meta: {
-      title: "Ritaglia pagine PDF online | Riduci margini | ihatelovepdf",
+      title: "Ritaglia pagine PDF online",
       description:
         "Ritaglia pagine PDF e rimuovi i margini in eccesso direttamente nel browser. Tutto resta locale e privato.",
       keywords: [
@@ -402,7 +402,7 @@ const operationsItContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "ruota",
     mode: "rotate",
     meta: {
-      title: "Ruota pagine PDF online | Correggi orientamento | ihatelovepdf",
+      title: "Ruota pagine PDF online",
       description:
         "Ruota pagine PDF selezionate di 90 o 180 gradi direttamente nel browser. Gratis, privato e senza upload.",
       keywords: [
@@ -469,7 +469,7 @@ const operationsItContent: Partial<Record<OperationKey, OperationContent>> = {
     meta: {
       title: "Riordina pagine PDF | ihatelovepdf",
       description:
-        "Organizza le pagine facilmente.",
+        "Organizza e cambia l'ordine delle pagine PDF facilmente con anteprime visive nel browser, 100% privato.",
       keywords: [
         "riordina pdf",
       ],
@@ -528,7 +528,7 @@ const operationsItContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "pdf-to-images",
     mode: "pdfToImages",
     meta: {
-      title: "Convertire PDF in JPG Online Gratis - Estrai Immagini",
+      title: "Convertire PDF in JPG Online Gratis - Estrai",
       description:
         "Converti PDF a JPG gratuitamente. Estrai pagine come immagini ad alta qualità. Nessuna registrazione necessaria.",
       keywords: [
@@ -542,7 +542,7 @@ const operationsItContent: Partial<Record<OperationKey, OperationContent>> = {
       ogImageAlt: "PDF immagini",
     },
     hero: {
-      title: "Converti PDF in JPG Online Gratis - Estrai Pagine come Immagini",
+      title: "Converti PDF in JPG Online Gratis - Estrai Pagine",
       description:
         "Ottieni immagini di ogni pagina.",
       bulletPoints: [

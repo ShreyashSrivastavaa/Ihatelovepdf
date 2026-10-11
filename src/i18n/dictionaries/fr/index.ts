@@ -26,7 +26,7 @@ export const frDictionary: Dictionary = {
   },
   metadata: {
     site: {
-      title: "ihatelovepdf - Fusionner, compresser et convertir des PDF gratuitement",
+      title: "ihatelovepdf: Outils PDF Gratuits sur Navigateur",
       description:
         "ihatelovepdf est une boîte à outils axée sur la confidentialité qui fusionne, compresse, divise, extrait, pivote et convertit des PDF directement dans votre navigateur. Tout le traitement reste sur l'appareil.",
       keywords: [
@@ -59,7 +59,7 @@ export const frDictionary: Dictionary = {
       },
     },
     faq: {
-      title: "FAQ | ihatelovepdf - Boîte à outils de traitement PDF gratuite",
+      title: "Foire Aux Questions sur les Outils PDF",
       description:
         "Réponses aux questions fréquentes sur ihatelovepdf. Apprenez comment fusionner, compresser, diviser, extraire et réorganiser des PDF sans télécharger vos fichiers.",
       keywords: [
@@ -75,7 +75,7 @@ export const frDictionary: Dictionary = {
       canonical: `${siteUrl}${getRoutePath(locale, "faq")}`,
     },
     support: {
-      title: "Soutenir ihatelovepdf | Gardez la boîte à outils gratuite et privée",
+      title: "Soutenir ihatelovepdf | Outils gratuits et privés",
       description:
         "Votre don permet à ihatelovepdf de rester petit, indépendant et axé sur la confidentialité. Aidez à couvrir l'hébergement et les améliorations.",
       keywords: [

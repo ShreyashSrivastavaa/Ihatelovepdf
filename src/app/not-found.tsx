@@ -3,8 +3,12 @@ import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "404: Page Not Found | ihatelovepdf",
-  description: "The page you were looking for doesn't exist. Go back to ihatelovepdf and continue working with your PDFs.",
+  title: "404: Page Not Found | I Hate Love PDF",
+  description: "The page you were looking for doesn't exist. Explore our free and private browser PDF tools.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function NotFound() {
@@ -118,20 +122,31 @@ export default function NotFound() {
           >
 
             {/* English tools */}
-            <p style={{ color: "#4e2525", fontSize: "0.75rem", marginBottom: "0.5rem", opacity: 0.7 }}>🇬🇧 English</p>
+            <div style={{ display: "flex", gap: "0.75rem", justifyContent: "center", marginBottom: "1.5rem" }}>
+              <Link href="/" style={{ ...chipStyle, backgroundColor: "#e34e1c", color: "#ffffff", border: "none" }}>
+                Home
+              </Link>
+              <Link href="/tools" style={{ ...chipStyle, borderColor: "#e34e1c", color: "#e34e1c" }}>
+                All Tools
+              </Link>
+            </div>
+            <p style={{ color: "#4e2525", fontSize: "0.75rem", marginBottom: "0.5rem", opacity: 0.7 }}>Popular Tools</p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem", justifyContent: "center", marginBottom: "1rem" }}>
               {[
-                { label: "Merge PDF", href: "/en/merge" },
-                { label: "Compress PDF", href: "/en/compress" },
-                { label: "Split PDF", href: "/en/split" },
-                { label: "Extract Pages", href: "/en/extract" },
-                { label: "Reorder Pages", href: "/en/reorder" },
-                { label: "Rotate PDF", href: "/en/rotate" },
-                { label: "Crop PDF", href: "/en/crop" },
-                { label: "PDF to Images", href: "/en/pdf-to-images" },
-                { label: "Images to PDF", href: "/en/images-to-pdf" },
+                { label: "Merge PDF", href: "/merge" },
+                { label: "Compress PDF", href: "/compress" },
+                { label: "Split PDF", href: "/split" },
+                { label: "Extract Pages", href: "/extract" },
+                { label: "Reorder Pages", href: "/reorder" },
+                { label: "Rotate PDF", href: "/rotate" },
+                { label: "Crop and Resize", href: "/crop" },
+                { label: "PDF to Images", href: "/pdf-to-images" },
+                { label: "Images to PDF", href: "/images-to-pdf" },
+                { label: "Sign PDF", href: "/sign-pdf" },
+                { label: "Edit PDF", href: "/edit-pdf" },
+                { label: "Redact PDF", href: "/redact" },
               ].map((tool) => (
-                <a key={tool.href} href={tool.href} className="tool-card" style={chipStyle}>{tool.label}</a>
+                <Link key={tool.href} href={tool.href} className="tool-card" style={chipStyle}>{tool.label}</Link>
               ))}
             </div>
 
@@ -139,15 +154,15 @@ export default function NotFound() {
             <p style={{ color: "#4e2525", fontSize: "0.75rem", marginBottom: "0.5rem", opacity: 0.7 }}>🇪🇸 Español</p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", justifyContent: "center", marginBottom: "1.5rem" }}>
               {[
-                { label: "Unir PDF", href: "/unir" },
-                { label: "Comprimir PDF", href: "/comprimir" },
-                { label: "Dividir PDF", href: "/dividir" },
-                { label: "Extraer páginas", href: "/extraer" },
-                { label: "Reordenar páginas", href: "/reordenar" },
-                { label: "Girar PDF", href: "/girar" },
-                { label: "Recortar PDF", href: "/recortar" },
+                { label: "Unir PDF", href: "/es/unir" },
+                { label: "Comprimir PDF", href: "/es/comprimir" },
+                { label: "Dividir PDF", href: "/es/dividir" },
+                { label: "Extraer páginas", href: "/es/extraer" },
+                { label: "Reordenar páginas", href: "/es/reordenar" },
+                { label: "Girar PDF", href: "/es/girar" },
+                { label: "Recortar PDF", href: "/es/recortar" },
               ].map((tool) => (
-                <a key={tool.href} href={tool.href} className="tool-card" style={chipStyle}>{tool.label}</a>
+                <Link key={tool.href} href={tool.href} className="tool-card" style={chipStyle}>{tool.label}</Link>
               ))}
             </div>
 

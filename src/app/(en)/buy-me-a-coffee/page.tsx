@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { BuyMeACoffeePageContent } from '../../../components/BuyMeACoffeePageContent';
 
 export const metadata: Metadata = {
-  title: 'Buy Me a Coffee | I Hate Love PDF',
+  title: 'Buy Me a Coffee',
   description:
     'Support I Hate Love PDF, a free, private browser PDF suite built and maintained by Shreyash Srivastava. Tips keep it free and ad-light.',
   alternates: {

@@ -7,7 +7,7 @@ import { SITE_URL } from '../../../lib/site';
 
 export const metadata: Metadata = {
   metadataBase: METADATA_BASE,
-  title: 'PDF Guides & Tutorials: Free In-Browser Workflows | I Hate Love PDF',
+  title: 'PDF Guides and Tutorials Blog',
   description: 'In-depth, practical guides on merging, compressing, signing, redacting, and editing PDF files safely in your browser without software installations.',
   alternates: {
     canonical: `${SITE_URL}/blog/`,

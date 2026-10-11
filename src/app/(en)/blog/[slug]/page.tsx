@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
 
   return {
     metadataBase: METADATA_BASE,
-    title: `${article.title} | I Hate Love PDF`,
+    title: article.title,
     description: article.description,
     authors: [{ name: article.author, url: article.authorUrl }],
     alternates: {

@@ -8,7 +8,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "tomoriteni",
     mode: "compress",
     meta: {
-      title: "PDF tömörítése ingyenesen online | Méret csökkentése | ihatelovepdf",
+      title: "PDF tömörítése ingyenesen online",
       description:
         "Csökkentsd hatékonyan a PDF fájlok méretét minÅ‘ségveszteség nélkül. Ingyenes és bizalmas tömörítés közvetlenül a böngészÅ‘dben - szerverre feltöltés nélkül.",
       keywords: [
@@ -78,7 +78,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "osszefuzni",
     mode: "merge",
     meta: {
-      title: "PDF összefÅ±zése online | PDF merge ingyen | ihatelovepdf",
+      title: "PDF összefÅ±zése online",
       description:
         "FÅ±zz össze több PDF-fájlt egyetlen rendezett dokumentumba oldalszám-korlát nélkül. Húzd át, rendezd és töltsd le azonnal - teljes bizalmassággal.",
       keywords: [
@@ -148,7 +148,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "szetbontas",
     mode: "split",
     meta: {
-      title: "PDF szétbontása oldalak vagy fejezetek szerint | Ingyenes | ihatelovepdf",
+      title: "PDF szétbontása oldalak vagy fejezetek szerint",
       description:
         "Bontsd fel a PDF-et több fájlra oldaltartomány vagy szakaszok szerint. Teljes kontroll a dokumentumszerkezet felett - szerverre feltöltés nélkül.",
       keywords: [
@@ -218,7 +218,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "kivalasztani",
     mode: "extract",
     meta: {
-      title: "PDF oldalak kinyerése | Oldalak mentése külön | ihatelovepdf",
+      title: "PDF oldalak kinyerése",
       description:
         "Válassz ki egyes oldalakat bármely PDF-bÅ‘l, és azonnal hozz létre belÅ‘lük új dokumentumot. Korlátlan, privát feldolgozás közvetlenül a böngészÅ‘dben.",
       keywords: [
@@ -286,7 +286,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "korulvagas",
     mode: "crop",
     meta: {
-      title: "PDF oldalak vágása online | Margók eltávolítása | ihatelovepdf",
+      title: "PDF oldalak vágása online",
       description:
         "Vágd le a PDF oldalait és távolítsd el a felesleges margókat közvetlenül a böngészÅ‘dben. Válaszd ki az oldalakat, állítsd be a vágási területet - szerverre feltöltés nélkül.",
       keywords: [
@@ -334,7 +334,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
       },
     ],
     howTo: {
-      title: "Hogyan vágd le a PDF-oldalakat a ihatelovepdf-szel?",
+      title: "Hogyan vágd le a PDF-oldalakat a",
       steps: [
         "Töltsd fel a PDF-et, és válaszd ki a vágni kívánt oldalakat tartalmazó fájlt.",
         "Jelöld meg a módosítandó oldalakat, és állítsd be a vágási margókat.",
@@ -356,7 +356,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "forgatas",
     mode: "rotate",
     meta: {
-      title: "PDF oldalak forgatása online | Tájolás javítása | ihatelovepdf",
+      title: "PDF oldalak forgatása online",
       description:
         "Forgasd el a kiválasztott PDF-oldalakat 90 vagy 180 fokkal közvetlenül a böngészÅ‘dben. Ingyenes, bizalmas és teljesen helyi.",
       keywords: [
@@ -404,7 +404,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
       },
     ],
     howTo: {
-      title: "Hogyan forgasd el a PDF-oldalakat a ihatelovepdf-szel?",
+      title: "Hogyan forgasd el a PDF-oldalakat a",
       steps: [
         "Töltsd fel a PDF-et, és válaszd ki a javítani kívánt oldalakat tartalmazó dokumentumot.",
         "Jelöld meg a forgatni kívánt oldalakat, és válassz szöget: 90° jobbra, 180° vagy 90° balra.",
@@ -426,7 +426,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "atrendezni",
     mode: "reorder",
     meta: {
-      title: "PDF oldalak átrendezése | Sorrend módosítása | ihatelovepdf",
+      title: "PDF oldalak átrendezése",
       description:
         "Rendezd át könnyedén a PDF-oldalakat drag-and-drop módszerrel. Javítsd a sorrendet és mentsd el azonnal - teljesen helyi feldolgozással.",
       keywords: [
@@ -471,7 +471,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
       },
     ],
     howTo: {
-      title: "Hogyan rendezd át a PDF-oldalakat a ihatelovepdf-szel?",
+      title: "Hogyan rendezd át a PDF-oldalakat a",
       steps: [
         "Töltsd fel a PDF-et, és válaszd ki a szerkeszteni kívánt dokumentumot.",
         "Húzd az egyes elÅ‘nézeti képeket a kívánt helyre.",
@@ -493,7 +493,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "pdf-kepekbe",
     mode: "pdfToImages",
     meta: {
-      title: "PDF konvertálása képekké | PNG / JPEG exportálás | ihatelovepdf",
+      title: "PDF konvertálása képekké",
       description:
         "Alakítsd át a PDF minden oldalát kiváló minÅ‘ségÅ± PNG vagy JPEG képpé. Válaszd ki a felbontást, és töltsd le ZIP-archívumban - 100%-ban privát módon.",
       keywords: [
@@ -561,7 +561,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "kepek-pdf-be",
     mode: "imagesToPdf",
     meta: {
-      title: "PDF létrehozása képekbÅ‘l | JPG, PNG PDF-be | ihatelovepdf",
+      title: "PDF létrehozása képekbÅ‘l",
       description:
         "Hozz létre professzionális PDF-et a képeidbÅ‘l. Rendezd a fotókat, szabd testre az elrendezést és a margókat - a dokumentum helyben, a böngészÅ‘dben jön létre.",
       keywords: [
@@ -578,7 +578,7 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
       ogImageAlt: "PDF létrehozása képekbÅ‘l a ihatelovepdf-ben",
     },
     hero: {
-      title: "JPG vagy PNG képek összefÅ±zése professzionális PDF-be",
+      title: "JPG vagy PNG képek összefÅ±zése professzionális",
       description:
         "FÅ±zd össze a szkenneket, fotókat vagy grafikákat egyetlen dokumentumba, amely kész az átadásra a csapatnak, diákoknak vagy ügyfeleknek.",
       bulletPoints: [

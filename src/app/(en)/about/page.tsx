@@ -7,7 +7,7 @@ import { SITE_URL } from '../../../lib/site';
 
 export const metadata: Metadata = {
   metadataBase: METADATA_BASE,
-  title: 'About I Hate Love PDF: Built & Owned by Shreyash Srivastava',
+  title: 'About the Founder, Shreyash Srivastava',
   description: 'I Hate Love PDF is built and owned by Shreyash Srivastava, a full stack and backend developer from India. Learn about our private in-browser PDF tools.',
   alternates: {
     canonical: `${SITE_URL}/about/`,

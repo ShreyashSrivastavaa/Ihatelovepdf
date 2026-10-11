@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { PermanentRedirect } from '../../../components/PermanentRedirect';
 
 export const metadata: Metadata = {
-  title: 'Redirecting to Buy Me a Coffee | I Hate Love PDF',
+  title: 'Redirecting to Buy Me a Coffee',
   description: 'This page has moved permanently to /buy-me-a-coffee.',
   robots: {
     index: false,

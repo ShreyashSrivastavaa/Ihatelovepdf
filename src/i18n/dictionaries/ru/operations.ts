@@ -8,7 +8,7 @@ const operationsRuContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "szhat",
     mode: "compress",
     meta: {
-      title: "Сжать PDF онлайн бесплатно | Уменьшить размер | ihatelovepdf",
+      title: "Сжать PDF онлайн бесплатно",
       description:
         "Эффективно уменьшайте размер PDF-файлов без потери качества. Бесплатное и конфиденциальное сжатие прямо в браузере, без загрузки на сервер.",
       keywords: [
@@ -76,7 +76,7 @@ const operationsRuContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "obedinit",
     mode: "merge",
     meta: {
-      title: "Объединить PDF онлайн | Склеить несколько PDF бесплатно | ihatelovepdf",
+      title: "Объединить PDF онлайн",
       description:
         "Объедините несколько PDF в один документ без ограничений по количеству страниц. Перетащите, упорядочьте и скачайте результат мгновенно, полностью конфиденциально.",
       keywords: [
@@ -143,7 +143,7 @@ const operationsRuContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "razdelit",
     mode: "split",
     meta: {
-      title: "Разделить PDF по страницам или главам | Бесплатно | ihatelovepdf",
+      title: "Разделить PDF по страницам или главам",
       description:
         "Разбейте PDF на несколько файлов по диапазону страниц или разделам. Полный контроль над структурой документа, без загрузки на сервер.",
       keywords: [
@@ -210,7 +210,7 @@ const operationsRuContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "izvlech",
     mode: "extract",
     meta: {
-      title: "Извлечь страницы из PDF | Сохранить отдельно | ihatelovepdf",
+      title: "Извлечь страницы из PDF",
       description:
         "Выберите нужные страницы из любого PDF и мгновенно создайте новый документ. Приватная обработка без ограничений прямо в браузере.",
       keywords: [
@@ -277,7 +277,7 @@ const operationsRuContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "obrezat",
     mode: "crop",
     meta: {
-      title: "Обрезать страницы PDF онлайн | Убрать поля | ihatelovepdf",
+      title: "Обрезать страницы PDF онлайн",
       description:
         "Обрезайте страницы PDF и удаляйте лишние поля прямо в браузере. Выберите страницы, настройте область обрезки, без загрузки на сервер.",
       keywords: [
@@ -344,7 +344,7 @@ const operationsRuContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "povernut",
     mode: "rotate",
     meta: {
-      title: "Повернуть страницы PDF онлайн | Исправить ориентацию | ihatelovepdf",
+      title: "Повернуть страницы PDF онлайн",
       description:
         "Поворачивайте выбранные страницы PDF на 90 или 180 градусов прямо в браузере. Бесплатно, конфиденциально и полностью локально.",
       keywords: [
@@ -411,7 +411,7 @@ const operationsRuContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "pereupordochit",
     mode: "reorder",
     meta: {
-      title: "Переупорядочить страницы PDF | Изменить порядок | ihatelovepdf",
+      title: "Переупорядочить страницы PDF",
       description:
         "Легко переупорядочивайте страницы PDF перетаскиванием. Исправьте порядок и сохраните результат мгновенно, полностью локально.",
       keywords: [
@@ -456,7 +456,7 @@ const operationsRuContent: Partial<Record<OperationKey, OperationContent>> = {
       },
     ],
     howTo: {
-      title: "Как переупорядочить страницы PDF через ihatelovepdf",
+      title: "Как переупорядочить страницы PDF через",
       steps: [
         "Загрузите PDF и выберите документ для редактирования.",
         "Перетащите каждую миниатюру до нужного положения.",
@@ -478,7 +478,7 @@ const operationsRuContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "pdf-v-izobrazheniya",
     mode: "pdfToImages",
     meta: {
-      title: "Конвертировать PDF в изображения | Экспорт PNG / JPEG | ihatelovepdf",
+      title: "Конвертировать PDF в изображения",
       description:
         "Превращайте каждую страницу PDF в высококачественные PNG или JPEG изображения. Выберите разрешение и скачайте всё в ZIP, 100% приватно.",
       keywords: [
@@ -546,7 +546,7 @@ const operationsRuContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "izobrazheniya-v-pdf",
     mode: "imagesToPdf",
     meta: {
-      title: "Создать PDF из изображений | JPG, PNG в PDF | ihatelovepdf",
+      title: "Создать PDF из изображений",
       description:
         "Создавайте профессиональные PDF из ваших изображений. Организуйте фото, настройте макет и поля, документ генерируется локально в браузере.",
       keywords: [

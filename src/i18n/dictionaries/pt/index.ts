@@ -26,7 +26,7 @@ export const ptDictionary: Dictionary = {
   },
   metadata: {
     site: {
-      title: "ihatelovepdf - Juntar, comprimir e converter PDFs grátis | Sem upload",
+      title: "ihatelovepdf: Ferramentas PDF Grátis no Navegador",
       description:
         "ihatelovepdf é um kit de ferramentas focado em privacidade para juntar, comprimir, dividir, extrair, reorganizar e converter PDFs em imagens ou imagens em PDF direto no navegador. Todo o processamento acontece no seu dispositivo, sem uploads.",
       keywords: [
@@ -58,7 +58,7 @@ export const ptDictionary: Dictionary = {
       },
     },
     faq: {
-      title: "Perguntas Frequentes | ihatelovepdf - Ferramenta para PDFs",
+      title: "Perguntas Frequentes sobre Ferramentas PDF",
       description:
         "Perguntas e respostas sobre o ihatelovepdf. Aprenda a juntar, comprimir, dividir, extrair e reorganizar PDFs sem enviar seus arquivos.",
       keywords: [

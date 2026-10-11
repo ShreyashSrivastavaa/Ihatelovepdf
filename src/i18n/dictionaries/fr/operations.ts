@@ -8,7 +8,7 @@ const operationsFrContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "compresser",
     mode: "compress",
     meta: {
-      title: "Compresser PDF en Ligne Gratuit - Réduire la Taille",
+      title: "Compresser PDF en Ligne Gratuit - Réduire la",
       description:
         "Compressez les fichiers PDF en ligne sans perdre de qualité. Réduisez la taille PDF pour l'email.",
       keywords: [
@@ -24,7 +24,7 @@ const operationsFrContent: Partial<Record<OperationKey, OperationContent>> = {
       ogImageAlt: "Interface de l'outil de compression ihatelovepdf",
     },
     hero: {
-      title: "Compresser PDF en Ligne Gratuit - Réduire la Taille du Fichier",
+      title: "Compresser PDF en Ligne Gratuit - Réduire la",
       description:
         "Réduisez la taille du document pour respecter les limites des e-mails, des plateformes LMS ou des procédures publiques tout en gardant chaque page lisible.",
       bulletPoints: [
@@ -77,7 +77,7 @@ const operationsFrContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "creer-pdf-depuis-images",
     mode: "imagesToPdf",
     meta: {
-      title: "Créer un PDF à partir d'images | JPG, PNG en PDF | ihatelovepdf",
+      title: "Créer un PDF à partir d'images",
       description:
         "Créez un PDF professionnel à partir de vos images. Organisez les photos, personnalisez la mise en page et générez votre document localement dans votre navigateur.",
       keywords: [
@@ -146,7 +146,7 @@ const operationsFrContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "fusionner",
     mode: "merge",
     meta: {
-      title: "Fusionner PDF en Ligne Gratuitement - Sans Inscription",
+      title: "Fusionner PDF en Ligne Gratuitement - Sans",
       description:
         "Fusionnez plusieurs fichiers PDF en un seul en ligne, gratuitement. Aucune inscription requise, aucune limite.",
       keywords: [
@@ -162,7 +162,7 @@ const operationsFrContent: Partial<Record<OperationKey, OperationContent>> = {
       ogImageAlt: "Combinaison de plusieurs PDF dans ihatelovepdf",
     },
     hero: {
-      title: "Fusionner des PDF en Ligne - Gratuit et Sans Inscription",
+      title: "Fusionner des PDF en Ligne - Gratuit et Sans",
       description:
         "Créez un fichier soigné avec des contrats, des notes de cours ou des documents de politique prêts à être envoyés, signés ou archivés.",
       bulletPoints: [
@@ -231,7 +231,7 @@ const operationsFrContent: Partial<Record<OperationKey, OperationContent>> = {
       ogImageAlt: "Division d'un PDF dans ihatelovepdf",
     },
     hero: {
-      title: "Diviser PDF en Ligne Gratuit - Extraire et Séparer les Pages",
+      title: "Diviser PDF en Ligne Gratuit - Extraire et Séparer",
       description:
         "Extrayez des chapitres, des annexes ou des sections spécifiques dans des fichiers autonomes prêts à être partagés.",
       bulletPoints: [
@@ -282,7 +282,7 @@ const operationsFrContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "extraire",
     mode: "extract",
     meta: {
-      title: "Extraire des pages PDF | Sauvegarder pages sélectionnées | ihatelovepdf",
+      title: "Extraire des pages PDF",
       description:
         "Sélectionnez des pages spécifiques dans n'importe quel PDF et créez instantanément un nouveau document sur mesure. Traitement privé et illimité.",
       keywords: [
@@ -349,7 +349,7 @@ const operationsFrContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "recadrer",
     mode: "crop",
     meta: {
-      title: "Recadrer des pages PDF | Ajuster marges | ihatelovepdf",
+      title: "Recadrer des pages PDF",
       description:
         "Recadrez des pages PDF et réduisez les marges excédentaires directement dans votre navigateur. Sélectionnez les pages, définissez la zone de recadrage.",
       keywords: [
@@ -418,7 +418,7 @@ const operationsFrContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "faire-pivoter",
     mode: "rotate",
     meta: {
-      title: "Faire pivoter des pages PDF | Tourner les pages | ihatelovepdf",
+      title: "Faire pivoter des pages PDF",
       description:
         "Faites pivoter les pages PDF sélectionnées de 90 ou 180 degrés directement dans votre navigateur. Privé, gratuit et entièrement local.",
       keywords: [
@@ -485,7 +485,7 @@ const operationsFrContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "reorganiser",
     mode: "reorder",
     meta: {
-      title: "Réorganiser les pages PDF | Changer l'ordre | ihatelovepdf",
+      title: "Réorganiser les pages PDF",
       description:
         "Réorganisez facilement vos pages PDF avec une simple interface glisser-déposer. Corrigez l'ordre des documents et enregistrez instantanément.",
       keywords: [
@@ -551,7 +551,7 @@ const operationsFrContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "pdf-en-images",
     mode: "pdfToImages",
     meta: {
-      title: "Convertir des PDF en images | Exportation PNG ou JPEG | ihatelovepdf",
+      title: "Convertir des PDF en images",
       description:
         "Convertissez chaque page de votre PDF en images PNG ou JPEG de haute qualité. Choisissez votre résolution et téléchargez sous forme de ZIP.",
       keywords: [

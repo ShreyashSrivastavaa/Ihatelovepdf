@@ -14,7 +14,7 @@ export interface GuideItem {
 export const GUIDES_DATA: Record<string, GuideItem> = {
   'how-to-redact-pdf-free': {
     slug: 'how-to-redact-pdf-free',
-    title: 'How to Permanently Redact a PDF Online for Free with No Uploads',
+    title: 'How to Redact a PDF for Free',
     description: 'Learn how to black out sensitive information, personal details, and financial data from PDF files directly in your web browser without server uploads.',
     category: 'Security',
     date: '2026-08-20',
@@ -40,7 +40,7 @@ export const GUIDES_DATA: Record<string, GuideItem> = {
   },
   'how-to-merge-pdf-files': {
     slug: 'how-to-merge-pdf-files',
-    title: 'How to Merge Multiple PDF Files into One Combined Document',
+    title: 'How to Merge PDF Files for Free',
     description: 'Combine reports, contracts, invoices, and receipts into a single organized PDF with drag and drop page reordering.',
     category: 'Organization',
     date: '2026-08-21',
@@ -66,7 +66,7 @@ export const GUIDES_DATA: Record<string, GuideItem> = {
   },
   'how-to-compress-pdf-without-losing-quality': {
     slug: 'how-to-compress-pdf-without-losing-quality',
-    title: 'How to Compress Large PDFs for Email & Portals Without Quality Loss',
+    title: 'Compress PDF Without Losing Quality',
     description: 'Shrink oversized PDF files down to target megabyte limits while preserving crisp vector text, diagrams, and readable images.',
     category: 'Optimization',
     date: '2026-08-21',
@@ -92,7 +92,7 @@ export const GUIDES_DATA: Record<string, GuideItem> = {
   },
   'how-to-split-pdf-pages': {
     slug: 'how-to-split-pdf-pages',
-    title: 'How to Choose and Split Specific Pages or Ranges from a PDF',
+    title: 'How to Split a PDF by Pages',
     description: 'Visually select exact pages, enter custom ranges (such as 1-3, 4-6), or extract all single pages into individual PDF files.',
     category: 'Organization',
     date: '2026-08-22',
@@ -118,38 +118,38 @@ export const GUIDES_DATA: Record<string, GuideItem> = {
   },
   'how-to-ocr-scanned-pdf-offline': {
     slug: 'how-to-ocr-scanned-pdf-offline',
-    title: 'How to OCR Scanned PDFs & Receipts into Searchable Text',
-    description: 'Convert scanned documents, physical receipts, and images into searchable, copyable PDF text using OCR directly in your browser.',
+    title: 'How to OCR a Scanned PDF Offline',
+    description: 'Extract readable, selectable text from scanned PDF documents and receipts using client-side OCR in your browser without uploading files.',
     category: 'How-To',
     date: '2026-08-22',
     readTime: '5 min read',
-    toolSlug: 'extractText',
+    toolSlug: 'extract-text',
     keyTakeaways: [
-      'Optical Character Recognition (OCR) converts raster image scans into searchable, selectable text.',
-      'Loads Tesseract locally to perform text recognition without external API calls.',
-      'Export searchable PDF transcripts, structured markdown text, or raw text directly.'
+      'Optical Character Recognition converts image scans into selectable plain text.',
+      'Uses in-browser character recognition without sending documents to external servers.',
+      'Export extracted text transcripts cleanly for copying, editing, or archiving.'
     ],
     steps: [
-      'Navigate to the ihatelovepdf OCR tool.',
-      'Upload your scanned PDF, receipt image, or document photo.',
-      'Select your document language (English, Spanish, German, French, etc.).',
-      'Click "Run OCR" and watch the live recognition progress.',
-      'Download your searchable PDF document with full text indexing.'
+      'Open the Extract Text from PDF tool in ihatelovepdf.',
+      'Upload your scanned PDF document, receipt image, or paperwork photo.',
+      'Let the client-side engine read and parse characters directly on your machine.',
+      'Review the recognized text on screen.',
+      'Copy the extracted text to your clipboard or download a clean TXT file.'
     ],
     content: [
-      'Scanned documents and phone photos of paperwork contain image pixels instead of selectable characters. That stops you from searching or copying text.',
-      'Using Tesseract right inside your browser, ihatelovepdf reads text directly on your machine.',
-      'No third party cloud vision APIs or subscription keys are needed for OCR operations.'
+      'Scanned documents and smartphone photos of paperwork contain image pixels rather than selectable characters. That stops you from searching or copying text.',
+      'While standalone searchable PDF generation with invisible font layers is currently not available in client-side web tools, you can extract the raw text content cleanly into editable text using our Extract Text tool.',
+      'All text recognition processes run locally in your browser memory, keeping financial records and confidential contracts private.'
     ]
   },
   'how-to-convert-images-to-pdf': {
     slug: 'how-to-convert-images-to-pdf',
-    title: 'How to Convert Photos, PNGs, and JPEGs into a PDF Document',
+    title: 'How to Convert Images to PDF',
     description: 'Turn smartphone photos, ID cards, receipts, and graphic images into a clean PDF document in seconds.',
     category: 'How-To',
     date: '2026-08-22',
     readTime: '3 min read',
-    toolSlug: 'imagesToPdf',
+    toolSlug: 'images-to-pdf',
     keyTakeaways: [
       'Supports JPG, PNG, WEBP, TIFF, and BMP image formats.',
       'Drag and drop multiple images to arrange page order before conversion.',
@@ -167,31 +167,6 @@ export const GUIDES_DATA: Record<string, GuideItem> = {
       'Our in-browser converter preserves high image clarity while sizing pages cleanly.',
       'No files are uploaded to any server, making it safe for sensitive photos like passports and driving licenses.'
     ]
-  },
-  'how-to-ocr-scanned-pdf-free': {
-    slug: 'how-to-ocr-scanned-pdf-free',
-    title: 'How to Recognize and Extract Text from Scanned PDFs (Browser OCR)',
-    description: 'Convert scanned PDF documents and photo receipts into searchable PDFs and editable text using local OCR in your browser without uploading files.',
-    category: 'Optimization',
-    date: '2026-08-23',
-    readTime: '3 min read',
-    toolSlug: 'extractText',
-    keyTakeaways: [
-      'Runs completely in your browser on your own device.',
-      'Generates a dual-layer Searchable PDF with selectable, copyable text over original scans.',
-      'Provides an editable plain text transcript with word counts and confidence scoring.'
-    ],
-    steps: [
-      'Open the OCR PDF tool on ihatelovepdf.',
-      'Upload your scanned PDF document or photo scan.',
-      'Select your document language (English, Spanish, French, German, etc.).',
-      'Click "Run OCR Recognition" to process all pages locally.',
-      'Download your Searchable PDF or copy the extracted text transcript.'
-    ],
-    content: [
-      'Scanned documents, paper contracts, and photo receipts are saved as static images inside PDF containers, making text impossible to select, copy, or search.',
-      'Our browser OCR engine uses Tesseract to read text directly inside your device memory.',
-      'No documents or images are transmitted across the internet, ensuring full privacy for financial records, IDs, and agreements.'
-    ]
   }
 };
+

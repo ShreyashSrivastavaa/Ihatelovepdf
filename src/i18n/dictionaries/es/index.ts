@@ -24,7 +24,7 @@ export const esDictionary: Dictionary = {
   },
   metadata: {
     site: {
-      title: "ihatelovepdf - Unir, comprimir y convertir PDFs sin subir archivos",
+      title: "ihatelovepdf: Herramientas PDF en tu Navegador",
       description:
         "ihatelovepdf es un kit gratuito para unir, comprimir, dividir, extraer, reordenar y convertir PDFs a imágenes o viceversa directamente en tu navegador. Todo el procesamiento sucede de forma local, sin registros ni cargas.",
       keywords: [
@@ -56,7 +56,7 @@ export const esDictionary: Dictionary = {
       },
     },
     faq: {
-      title: "Preguntas frecuentes | ihatelovepdf - Herramienta para procesar PDFs",
+      title: "Preguntas Frecuentes sobre PDF",
       description:
         "Respuestas sobre cómo unir, comprimir, dividir, extraer y reordenar PDFs con ihatelovepdf sin subir tus archivos a servidores.",
       keywords: [

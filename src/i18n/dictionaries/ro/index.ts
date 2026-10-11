@@ -26,7 +26,7 @@ export const roDictionary: Dictionary = {
   },
   metadata: {
     site: {
-      title: "ihatelovepdf - UneÈ™te, comprimÄƒ È™i converteÈ™te PDF-uri gratuit",
+      title: "ihatelovepdf: Instrumente PDF Gratuite în Browser",
       description:
         "ihatelovepdf este un set de instrumente axat pe confidenÈ›ialitate care uneÈ™te, comprimÄƒ, divide, extrage, roteÈ™te È™i converteÈ™te PDF-uri direct în browser. ToatÄƒ procesarea rÄƒmâne pe dispozitivul tÄƒu.",
       keywords: [
@@ -67,7 +67,7 @@ export const roDictionary: Dictionary = {
       },
     },
     faq: {
-      title: "FAQ | ihatelovepdf - Set de instrumente gratuit pentru procesare PDF",
+      title: "Întrebări Frecvente despre Instrumente PDF",
       description:
         "RÄƒspunsuri la întrebÄƒri frecvente despre ihatelovepdf. AflÄƒ cum sÄƒ uneÈ™ti, comprimi, divizezi, extragi È™i reordonezi PDF-uri fÄƒrÄƒ a-È›i încÄƒrca fiÈ™ierele.",
       keywords: [
@@ -83,7 +83,7 @@ export const roDictionary: Dictionary = {
       canonical: `${siteUrl}${getRoutePath(locale, "faq")}`,
     },
     support: {
-      title: "SusÈ›ine ihatelovepdf | MenÈ›ine instrumentele gratuite È™i private",
+      title: "Susține ihatelovepdf | Instrumente gratuite",
       description:
         "DonaÈ›ia ta permite ca ihatelovepdf sÄƒ rÄƒmânÄƒ un proiect mic, independent È™i axat pe confidenÈ›ialitate. AjutÄƒ la acoperirea costurilor de gÄƒzduire È™i a îmbunÄƒtÄƒÈ›irilor.",
       keywords: [

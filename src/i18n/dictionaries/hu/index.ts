@@ -26,7 +26,7 @@ export const huDictionary: Dictionary = {
   },
   metadata: {
     site: {
-      title: "ihatelovepdf - PDF tömörítése, összefÅ±zése és konvertálása ingyen",
+      title: "ihatelovepdf: Ingyenes PDF-eszközök a böngészőben",
       description:
         "A ihatelovepdf egy adatvédelemre összpontosító PDF-eszközkészlet, amely közvetlenül a böngészÅ‘dben összefÅ±zi, tömöríti, szétbontja, kinyeri, elforgatja és konvertálja a PDF-eket. Minden feldolgozás az eszközödön marad.",
       keywords: [
@@ -65,7 +65,7 @@ export const huDictionary: Dictionary = {
       },
     },
     faq: {
-      title: "Gyakori kérdések | ihatelovepdf - Ingyenes PDF-eszközkészlet",
+      title: "Gyakori kérdések a PDF-eszközökről",
       description:
         "Válaszok a ihatelovepdf-re vonatkozó leggyakoribb kérdésekre. Tudd meg, hogyan fÅ±zheted össze, tömörítheted, bonthatod szét, kinyerheted és rendezheted át a PDF-eket fájlok feltöltése nélkül.",
       keywords: [
@@ -81,7 +81,7 @@ export const huDictionary: Dictionary = {
       canonical: `${siteUrl}${getRoutePath(locale, "faq")}`,
     },
     support: {
-      title: "Támogasd a ihatelovepdf-t | Tartsd fenn ingyenesen és privát módon",
+      title: "Támogasd a ihatelovepdf-t | Ingyenes eszközök",
       description:
         "A támogatásod lehetÅ‘vé teszi, hogy a ihatelovepdf kis, független és adatvédelemre összpontosító projekt maradjon. Segíts fedezni a tárhellyel és fejlesztéssel kapcsolatos költségeket.",
       keywords: [

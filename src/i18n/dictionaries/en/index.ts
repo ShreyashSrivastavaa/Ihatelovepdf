@@ -29,7 +29,7 @@ export const enDictionary: Dictionary = {
   },
   metadata: {
     site: {
-      title: "ihatelovepdf: Fast, Private & Free PDF Tools in Your Browser",
+      title: "I Hate Love PDF: Free and Private Browser PDF Tools",
       description:
         "ihatelovepdf is a private, free web toolkit to merge, compress, split, extract, rotate, reorder, crop, and convert PDFs directly on your device. No file uploads, no tracking, and no accounts required.",
       keywords: [

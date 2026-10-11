@@ -8,7 +8,7 @@ const operationsRoContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "comprima",
     mode: "compress",
     meta: {
-      title: "ComprimÄƒ PDF online gratuit | Redu dimensiunea | ihatelovepdf | Compress PDF",
+      title: "ComprimÄƒ PDF online gratuit",
       description:
         "Redu eficient dimensiunea fiÈ™ierului PDF fÄƒrÄƒ pierderi de calitate. Compresie gratuitÄƒ È™i privatÄƒ direct în browserul tÄƒu.",
       keywords: [
@@ -76,7 +76,7 @@ const operationsRoContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "imagini-in-pdf",
     mode: "imagesToPdf",
     meta: {
-      title: "CreeazÄƒ PDF din imagini | JPG, PNG în PDF | ihatelovepdf | Images to PDF",
+      title: "CreeazÄƒ PDF din imagini",
       description:
         "CreeazÄƒ un PDF profesional din imaginile tale. OrganizeazÄƒ fotografiile, personalizeazÄƒ aspectul paginii È™i genereazÄƒ documentul local în browser.",
       keywords: [
@@ -144,7 +144,7 @@ const operationsRoContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "uneste",
     mode: "merge",
     meta: {
-      title: "UneÈ™te PDF | CombinÄƒ mai multe PDF-uri gratuit | ihatelovepdf | Merge PDF",
+      title: "UneÈ™te PDF",
       description:
         "CombinÄƒ mai multe fiÈ™iere PDF într-un singur document organizat, fÄƒrÄƒ limitÄƒ de pagini. Trage, reordoneazÄƒ È™i descarcÄƒ fiÈ™ierul unit instant.",
       keywords: [
@@ -212,7 +212,7 @@ const operationsRoContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "divide",
     mode: "split",
     meta: {
-      title: "Divide un PDF pe pagini sau capitole | Gratuit | ihatelovepdf | Split PDF",
+      title: "Divide un PDF pe pagini sau capitole",
       description:
         "SeparÄƒ PDF-ul tÄƒu în mai multe fiÈ™iere dupÄƒ intervale de pagini sau capitole specifice. BucurÄƒ-te de control deplin asupra structurii documentului tÄƒu.",
       keywords: [
@@ -280,7 +280,7 @@ const operationsRoContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "extrage",
     mode: "extract",
     meta: {
-      title: "Extrage pagini PDF | SalveazÄƒ paginile selectate | ihatelovepdf | Extract PDF pages",
+      title: "Extrage pagini PDF",
       description:
         "SelecteazÄƒ pagini specifice din orice PDF È™i creeazÄƒ instantaneu un nou document personalizat. Procesare privatÄƒ È™i nelimitatÄƒ.",
       keywords: [
@@ -348,7 +348,7 @@ const operationsRoContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "decupeaza",
     mode: "crop",
     meta: {
-      title: "DecupeazÄƒ pagini PDF | AjusteazÄƒ marginile | ihatelovepdf | Crop PDF",
+      title: "DecupeazÄƒ pagini PDF",
       description:
         "DecupeazÄƒ pagini PDF È™i eliminÄƒ marginile inutile direct în browser. SelecteazÄƒ paginile È™i defineÈ™te zona de decupare.",
       keywords: [
@@ -417,7 +417,7 @@ const operationsRoContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "roteste",
     mode: "rotate",
     meta: {
-      title: "RoteÈ™te pagini PDF | Întoarce paginile online | ihatelovepdf | Rotate PDF",
+      title: "RoteÈ™te pagini PDF",
       description:
         "RoteÈ™te paginile selectate din PDF cu 90 sau 180 de grade direct în browser. Privat, gratuit È™i complet local.",
       keywords: [
@@ -485,7 +485,7 @@ const operationsRoContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "reordoneaza",
     mode: "reorder",
     meta: {
-      title: "ReordoneazÄƒ paginile PDF | SchimbÄƒ ordinea | ihatelovepdf | Reorder PDF",
+      title: "ReordoneazÄƒ paginile PDF",
       description:
         "ReordoneazÄƒ cu uÈ™urinÈ›Äƒ paginile PDF-ului tÄƒu printr-o interfaÈ›Äƒ simplÄƒ de tip drag-and-drop. CorecteazÄƒ ordinea documentelor È™i salveazÄƒ instant.",
       keywords: [
@@ -552,7 +552,7 @@ const operationsRoContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "pdf-in-imagini",
     mode: "pdfToImages",
     meta: {
-      title: "ConverteÈ™te PDF în imagini | Export PNG sau JPEG | ihatelovepdf | PDF to Images",
+      title: "ConverteÈ™te PDF în imagini",
       description:
         "ConverteÈ™te fiecare paginÄƒ a PDF-ului tÄƒu în imagini PNG sau JPEG de înaltÄƒ calitate. Alege rezoluÈ›ia È™i descarcÄƒ-le ca arhivÄƒ ZIP.",
       keywords: [

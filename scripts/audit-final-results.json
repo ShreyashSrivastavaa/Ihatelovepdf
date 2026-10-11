@@ -1,0 +1,4507 @@
+{
+  "results": [
+    {
+      "file": "404.html",
+      "route": "/404",
+      "titles": [
+        "404: Page Not Found | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "404: Page Not Found | I Hate Love PDF",
+      "titleLength": 37,
+      "desc": "The page you were looking for doesn&#x27;t exist. Explore our free and private browser PDF tools.",
+      "descLength": 97
+    },
+    {
+      "file": "about.html",
+      "route": "/about",
+      "titles": [
+        "About the Founder, Shreyash Srivastava | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "About the Founder, Shreyash Srivastava | I Hate Love PDF",
+      "titleLength": 56,
+      "desc": "I Hate Love PDF is built and owned by Shreyash Srivastava, a full stack and backend developer from India. Learn about our private in-browser PDF tools.",
+      "descLength": 151
+    },
+    {
+      "file": "blog/best-free-pdf-editors-no-watermark.html",
+      "route": "/blog/best-free-pdf-editors-no-watermark",
+      "titles": [
+        "Best Free PDF Editors With No Watermark | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Best Free PDF Editors With No Watermark | I Hate Love PDF",
+      "titleLength": 57,
+      "desc": "Discover the top free online PDF editors that let you edit text, add annotations, insert shapes, and sign documents without stamping ugly watermarks.",
+      "descLength": 149
+    },
+    {
+      "file": "blog/how-to-compress-pdf-to-under-100kb.html",
+      "route": "/blog/how-to-compress-pdf-to-under-100kb",
+      "titles": [
+        "Compress PDF to Under 100KB, Step by Step | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Compress PDF to Under 100KB, Step by Step | I Hate Love PDF",
+      "titleLength": 59,
+      "desc": "Step-by-step guide on how to shrink and compress large PDF files to under 100KB or 200KB for government job portals, university admissions, and visa uploads.",
+      "descLength": 157
+    },
+    {
+      "file": "blog/how-to-convert-pdf-to-jpg-on-phone.html",
+      "route": "/blog/how-to-convert-pdf-to-jpg-on-phone",
+      "titles": [
+        "How to Convert PDF to JPG on Phone | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "How to Convert PDF to JPG on Phone | I Hate Love PDF",
+      "titleLength": 52,
+      "desc": "Learn how to easily convert PDF pages into high-resolution JPG or PNG images directly on your smartphone without downloading third-party apps.",
+      "descLength": 142
+    },
+    {
+      "file": "blog/how-to-convert-scanned-pdf-to-text.html",
+      "route": "/blog/how-to-convert-scanned-pdf-to-text",
+      "titles": [
+        "Extract Scanned PDF Text Online Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Extract Scanned PDF Text Online Free | I Hate Love PDF",
+      "titleLength": 54,
+      "desc": "Learn how to extract readable, selectable text from PDF documents and scanned files directly in your web browser without manual retyping.",
+      "descLength": 137
+    },
+    {
+      "file": "blog/how-to-fill-pdf-forms-without-adobe-acrobat.html",
+      "route": "/blog/how-to-fill-pdf-forms-without-adobe-acrobat",
+      "titles": [
+        "Fill PDF Forms Online Free, No Acrobat | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Fill PDF Forms Online Free, No Acrobat | I Hate Love PDF",
+      "titleLength": 56,
+      "desc": "Learn how to easily complete interactive PDF forms, check boxes, select dropdowns, and flatten forms online without Adobe Acrobat Pro.",
+      "descLength": 134
+    },
+    {
+      "file": "blog/how-to-merge-pdf-files-without-software.html",
+      "route": "/blog/how-to-merge-pdf-files-without-software",
+      "titles": [
+        "How to Merge PDF Files for Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "How to Merge PDF Files for Free | I Hate Love PDF",
+      "titleLength": 49,
+      "desc": "Learn how to combine and merge multiple PDF documents into one file on Windows, Mac, or mobile without installing heavy desktop programs.",
+      "descLength": 137
+    },
+    {
+      "file": "blog/how-to-permanently-redact-sensitive-pdf-data.html",
+      "route": "/blog/how-to-permanently-redact-sensitive-pdf-data",
+      "titles": [
+        "Permanently Redact PDF Online Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Permanently Redact PDF Online Free | I Hate Love PDF",
+      "titleLength": 52,
+      "desc": "Learn the vital difference between blacking out text and permanent redaction, and how to safely purge confidential data from PDF files.",
+      "descLength": 135
+    },
+    {
+      "file": "blog/how-to-reduce-pdf-size-for-email.html",
+      "route": "/blog/how-to-reduce-pdf-size-for-email",
+      "titles": [
+        "Reduce PDF File Size for Email Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Reduce PDF File Size for Email Free | I Hate Love PDF",
+      "titleLength": 53,
+      "desc": "Simple methods to shrink oversized PDF documents to under 10MB or 25MB so they pass email attachment limits on Gmail, Outlook, and Yahoo.",
+      "descLength": 137
+    },
+    {
+      "file": "blog/how-to-sign-a-pdf-on-mobile.html",
+      "route": "/blog/how-to-sign-a-pdf-on-mobile",
+      "titles": [
+        "How to Sign a PDF on Mobile Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "How to Sign a PDF on Mobile Free | I Hate Love PDF",
+      "titleLength": 50,
+      "desc": "Learn how to easily draw, type, or place legal electronic signatures on PDF agreements, leases, and contracts using your smartphone screen.",
+      "descLength": 139
+    },
+    {
+      "file": "blog/how-to-split-a-pdf-by-pages.html",
+      "route": "/blog/how-to-split-a-pdf-by-pages",
+      "titles": [
+        "How to Split a PDF by Pages Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "How to Split a PDF by Pages Free | I Hate Love PDF",
+      "titleLength": 50,
+      "desc": "Learn how to separate, divide, and extract specific pages from large multi-page PDF files into individual documents quickly and privately.",
+      "descLength": 138
+    },
+    {
+      "file": "blog/how-to-unlock-pdf-forgotten-password.html",
+      "route": "/blog/how-to-unlock-pdf-forgotten-password",
+      "titles": [
+        "PDF Password Forgotten? Your Real Options | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF Password Forgotten? Your Real Options | I Hate Love PDF",
+      "titleLength": 59,
+      "desc": "Learn how to remove password protection and restrictions from PDF files you have legal permission to access for easier printing and sharing.",
+      "descLength": 140
+    },
+    {
+      "file": "blog/is-it-safe-to-use-online-pdf-tools.html",
+      "route": "/blog/is-it-safe-to-use-online-pdf-tools",
+      "titles": [
+        "Are Online PDF Tools Safe to Use? | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Are Online PDF Tools Safe to Use? | I Hate Love PDF",
+      "titleLength": 51,
+      "desc": "An honest look at the privacy risks of online PDF tools, cloud storage vulnerabilities, and why client-side browser processing is the safest choice.",
+      "descLength": 148
+    },
+    {
+      "file": "blog.html",
+      "route": "/blog",
+      "titles": [
+        "PDF Guides and Tutorials Blog | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF Guides and Tutorials Blog | I Hate Love PDF",
+      "titleLength": 47,
+      "desc": "In-depth, practical guides on merging, compressing, signing, redacting, and editing PDF files safely in your browser without software installations.",
+      "descLength": 148
+    },
+    {
+      "file": "buy-me-a-coffee.html",
+      "route": "/buy-me-a-coffee",
+      "titles": [
+        "Buy Me a Coffee | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Buy Me a Coffee | I Hate Love PDF",
+      "titleLength": 33,
+      "desc": "Support I Hate Love PDF, a free, private browser PDF suite built and maintained by Shreyash Srivastava. Tips keep it free and ad-light.",
+      "descLength": 135
+    },
+    {
+      "file": "compare.html",
+      "route": "/compare",
+      "titles": [
+        "Compare Two PDF Files Online Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Compare Two PDF Files Online Free | I Hate Love PDF",
+      "titleLength": 51,
+      "desc": "Compare two PDF documents side-by-side in your browser to spot visual differences and revisions.",
+      "descLength": 96
+    },
+    {
+      "file": "compress.html",
+      "route": "/compress",
+      "titles": [
+        "Compress PDF Online Free, No Upload | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Compress PDF Online Free, No Upload | I Hate Love PDF",
+      "titleLength": 53,
+      "desc": "Reduce PDF size up to 90% without compromising visual clarity. Runs completely in your browser on your device.",
+      "descLength": 110
+    },
+    {
+      "file": "contact.html",
+      "route": "/contact",
+      "titles": [
+        "Contact and Support | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Contact and Support | I Hate Love PDF",
+      "titleLength": 37,
+      "desc": "Contact the ihatelovepdf team for support, bug reports, feature requests, or privacy inquiries.",
+      "descLength": 95
+    },
+    {
+      "file": "create-pdf.html",
+      "route": "/create-pdf",
+      "titles": [
+        "Create PDF Online Free, No Signup | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Create PDF Online Free, No Signup | I Hate Love PDF",
+      "titleLength": 51,
+      "desc": "Create and design PDF documents from scratch in your browser. Add text, images, shapes, tables, and export to PDF instantly.",
+      "descLength": 124
+    },
+    {
+      "file": "crop.html",
+      "route": "/crop",
+      "titles": [
+        "Crop and Resize PDF Online Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Crop and Resize PDF Online Free | I Hate Love PDF",
+      "titleLength": 49,
+      "desc": "Crop margins and adjust page dimensions on your PDF pages visually in your browser.",
+      "descLength": 83
+    },
+    {
+      "file": "csv-to-pdf.html",
+      "route": "/csv-to-pdf",
+      "titles": [
+        "CSV to PDF Converter Online Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "CSV to PDF Converter Online Free | I Hate Love PDF",
+      "titleLength": 50,
+      "desc": "Transform comma separated and tab separated CSV datasets into formatted PDF tables.",
+      "descLength": 83
+    },
+    {
+      "file": "de/bilder-zu-pdf.html",
+      "route": "/de/bilder-zu-pdf",
+      "titles": [
+        "PDF aus Bildern erstellen"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF aus Bildern erstellen",
+      "titleLength": 25,
+      "desc": "Erstelle aus deinen Bildern ein professionelles PDF. Passe Layout, Ränder und Ausrichtung an und generiere dein Dokument sicher und lokal im Browser.",
+      "descLength": 149
+    },
+    {
+      "file": "de/csv-zu-pdf.html",
+      "route": "/de/csv-zu-pdf",
+      "titles": [
+        "CSV to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "CSV to PDF Converter Online Free",
+      "titleLength": 32,
+      "desc": "Transform comma separated and tab separated CSV datasets into formatted PDF tables.",
+      "descLength": 83
+    },
+    {
+      "file": "de/drehen.html",
+      "route": "/de/drehen",
+      "titles": [
+        "PDF-Seiten drehen"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF-Seiten drehen",
+      "titleLength": 17,
+      "desc": "Drehe ausgewahlte PDF-Seiten um 90 oder 180 Grad direkt im Browser. Kostenlos, privat und ohne Upload.",
+      "descLength": 102
+    },
+    {
+      "file": "de/ebook-zu-pdf.html",
+      "route": "/de/ebook-zu-pdf",
+      "titles": [
+        "EPUB to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "EPUB to PDF Converter Online Free",
+      "titleLength": 33,
+      "desc": "Convert EPUB and digital eBook files into formatted, printable PDF documents with custom margins and page sizes.",
+      "descLength": 112
+    },
+    {
+      "file": "de/excel-zu-pdf.html",
+      "route": "/de/excel-zu-pdf",
+      "titles": [
+        "Excel to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Excel to PDF Converter Online Free",
+      "titleLength": 34,
+      "desc": "Convert Microsoft Excel (.xlsx, .xls) spreadsheets into clean PDF documents directly in your browser.",
+      "descLength": 101
+    },
+    {
+      "file": "de/farben-invertieren.html",
+      "route": "/de/farben-invertieren",
+      "titles": [
+        "Invert PDF Colors for Dark Mode Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Invert PDF Colors for Dark Mode Free",
+      "titleLength": 36,
+      "desc": "Turn glaring white PDF documents into Dark Mode, Sepia, or High Contrast for comfortable reading and battery saving.",
+      "descLength": 116
+    },
+    {
+      "file": "de/gst-rechnungsgenerator.html",
+      "route": "/de/gst-rechnungsgenerator",
+      "titles": [
+        "Free GST Invoice Generator, PDF Download"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Free GST Invoice Generator, PDF Download",
+      "titleLength": 40,
+      "desc": "Create GST-compliant tax invoice PDFs with auto-calculated CGST, SGST, IGST, HSN/SAC codes, and bank details.",
+      "descLength": 109
+    },
+    {
+      "file": "de/haeufige-fragen.html",
+      "route": "/de/haeufige-fragen",
+      "titles": [
+        "Häufige Fragen zu den PDF-Tools"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Häufige Fragen zu den PDF-Tools",
+      "titleLength": 31,
+      "desc": "Antworten auf die wichtigsten Fragen zu ihatelovepdf. Erfahre, wie du PDFs zusammenführst, komprimierst, teilst, Seiten extrahierst, neu ordnest und in Bilder oder PDFs umwandelst - ganz ohne Upload.",
+      "descLength": 199
+    },
+    {
+      "file": "de/html-zu-pdf.html",
+      "route": "/de/html-zu-pdf",
+      "titles": [
+        "HTML to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "HTML to PDF Converter Online Free",
+      "titleLength": 33,
+      "desc": "Render HTML code and web content into clean PDF pages directly in your browser.",
+      "descLength": 79
+    },
+    {
+      "file": "de/kollaboratives-whiteboard.html",
+      "route": "/de/kollaboratives-whiteboard",
+      "titles": [
+        "Whiteboard Sketch to PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Whiteboard Sketch to PDF Online Free",
+      "titleLength": 36,
+      "desc": "Draw, sketch, annotate, and brainstorm directly over PDF pages with an interactive collaborative whiteboard.",
+      "descLength": 108
+    },
+    {
+      "file": "de/komprimieren.html",
+      "route": "/de/komprimieren",
+      "titles": [
+        "PDF Komprimieren Online Kostenlos - Dateigröße"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF Komprimieren Online Kostenlos - Dateigröße",
+      "titleLength": 46,
+      "desc": "PDF-Dateien online kostenlos verkleinern. Reduzieren Sie die PDF-Größe für E-Mail und Speicher.",
+      "descLength": 95
+    },
+    {
+      "file": "de/kopf-und-fusszeilen.html",
+      "route": "/de/kopf-und-fusszeilen",
+      "titles": [
+        "Add Headers and Footers to PDF Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Add Headers and Footers to PDF Free",
+      "titleLength": 35,
+      "desc": "Add header and footer text, page counters, and timestamps to any PDF with zero server uploads.",
+      "descLength": 94
+    },
+    {
+      "file": "de/markdown-zu-pdf.html",
+      "route": "/de/markdown-zu-pdf",
+      "titles": [
+        "Markdown to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Markdown to PDF Converter Online Free",
+      "titleLength": 37,
+      "desc": "Transform Markdown text into clean, beautifully formatted PDF documents with headings, lists, and code styling.",
+      "descLength": 111
+    },
+    {
+      "file": "de/pdf-bearbeiten.html",
+      "route": "/de/pdf-bearbeiten",
+      "titles": [
+        "Edit and Annotate PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Edit and Annotate PDF Online Free",
+      "titleLength": 33,
+      "desc": "Annotate and markup PDF pages directly in your browser. Add text boxes, highlights, and shapes easily.",
+      "descLength": 102
+    },
+    {
+      "file": "de/pdf-erstellen.html",
+      "route": "/de/pdf-erstellen",
+      "titles": [
+        "Create PDF Online Free, No Signup"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Create PDF Online Free, No Signup",
+      "titleLength": 33,
+      "desc": "Create and design PDF documents from scratch in your browser. Add text, images, shapes, tables, and export to PDF instantly.",
+      "descLength": 124
+    },
+    {
+      "file": "de/pdf-formular-ausfuellen.html",
+      "route": "/de/pdf-formular-ausfuellen",
+      "titles": [
+        "Fill PDF Forms Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Fill PDF Forms Online Free",
+      "titleLength": 26,
+      "desc": "Fill out interactive AcroForm PDF forms, checkboxes, and dropdowns, or type anywhere on standard PDFs. Flatten and save without watermark.",
+      "descLength": 138
+    },
+    {
+      "file": "de/pdf-unterschreiben.html",
+      "route": "/de/pdf-unterschreiben",
+      "titles": [
+        "Sign PDF Online Free, Private"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Sign PDF Online Free, Private",
+      "titleLength": 29,
+      "desc": "Sign PDF documents electronically with smooth handwriting draw pad, typed calligraphy fonts, or image stamps. 100% private in-browser signing.",
+      "descLength": 142
+    },
+    {
+      "file": "de/pdf-vergleichen.html",
+      "route": "/de/pdf-vergleichen",
+      "titles": [
+        "Compare Two PDF Files Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Compare Two PDF Files Online Free",
+      "titleLength": 33,
+      "desc": "Compare two PDF documents side-by-side in your browser to spot visual differences and revisions.",
+      "descLength": 96
+    },
+    {
+      "file": "de/pdf-zu-bildern.html",
+      "route": "/de/pdf-zu-bildern",
+      "titles": [
+        "PDF in Bilder umwandeln"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF in Bilder umwandeln",
+      "titleLength": 23,
+      "desc": "Wandle jede Seite deines PDFs in hochwertige PNG- oder JPEG-Bilder um. Bestimme die Auflösung selbst und lade alles als ZIP-Datei herunter - 100% privat.",
+      "descLength": 153
+    },
+    {
+      "file": "de/pdf-zu-epub.html",
+      "route": "/de/pdf-zu-epub",
+      "titles": [
+        "PDF to EPUB Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to EPUB Converter Online Free",
+      "titleLength": 33,
+      "desc": "Transform PDF documents into reflowable EPUB eBooks for comfortable reading on Kindle, Kobo, and Apple Books.",
+      "descLength": 109
+    },
+    {
+      "file": "de/pdf-zu-excel.html",
+      "route": "/de/pdf-zu-excel",
+      "titles": [
+        "PDF to Excel Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to Excel Converter Online Free",
+      "titleLength": 34,
+      "desc": "Extract tabular data from PDF files and convert them into editable Microsoft Excel (.xlsx) spreadsheets.",
+      "descLength": 104
+    },
+    {
+      "file": "de/pdf-zu-html.html",
+      "route": "/de/pdf-zu-html",
+      "titles": [
+        "PDF to HTML Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to HTML Converter Online Free",
+      "titleLength": 33,
+      "desc": "Convert PDF files into semantic, responsive HTML code that you can embed on websites or view in any browser.",
+      "descLength": 108
+    },
+    {
+      "file": "de/pdf-zu-powerpoint.html",
+      "route": "/de/pdf-zu-powerpoint",
+      "titles": [
+        "PDF to PowerPoint Converter Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to PowerPoint Converter Free",
+      "titleLength": 32,
+      "desc": "Transform PDF pages into Microsoft PowerPoint (.pptx) slides with high-resolution slide layouts.",
+      "descLength": 96
+    },
+    {
+      "file": "de/pdf-zu-zip.html",
+      "route": "/de/pdf-zu-zip",
+      "titles": [
+        "Convert PDF to ZIP Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Convert PDF to ZIP Online Free",
+      "titleLength": 30,
+      "desc": "Bundle single or multiple PDF documents directly into a clean ZIP archive with lossless quality and 100% private browser processing.",
+      "descLength": 132
+    },
+    {
+      "file": "de/pos-kassensystem.html",
+      "route": "/de/pos-kassensystem",
+      "titles": [
+        "Free POS Billing Receipt Generator PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Free POS Billing Receipt Generator PDF",
+      "titleLength": 38,
+      "desc": "Generate point-of-sale thermal receipts and retail bills in 58mm, 80mm, or A4 formats directly in your browser.",
+      "descLength": 111
+    },
+    {
+      "file": "de/powerpoint-zu-pdf.html",
+      "route": "/de/powerpoint-zu-pdf",
+      "titles": [
+        "PowerPoint to PDF Converter Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PowerPoint to PDF Converter Free",
+      "titleLength": 32,
+      "desc": "Convert Microsoft PowerPoint presentations (.pptx) into clean PDF slide handouts directly in your browser.",
+      "descLength": 106
+    },
+    {
+      "file": "de/scannen-zu-pdf.html",
+      "route": "/de/scannen-zu-pdf",
+      "titles": [
+        "Scan Documents to PDF with Your Camera"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Scan Documents to PDF with Your Camera",
+      "titleLength": 38,
+      "desc": "Capture document pages using your computer webcam or smartphone camera, apply clean scan filters, and export to PDF.",
+      "descLength": 116
+    },
+    {
+      "file": "de/schwaerzen.html",
+      "route": "/de/schwaerzen",
+      "titles": [
+        "Redact PDF Online Free, Private"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Redact PDF Online Free, Private",
+      "titleLength": 31,
+      "desc": "Permanently remove and black out sensitive data from your PDF. Solid opaque vector blocks are burned directly into the PDF stream.",
+      "descLength": 130
+    },
+    {
+      "file": "de/seiten-extrahieren.html",
+      "route": "/de/seiten-extrahieren",
+      "titles": [
+        "PDF-Seiten extrahieren"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF-Seiten extrahieren",
+      "titleLength": 22,
+      "desc": "Wähle einzelne Seiten aus und speichere sie als neues Dokument. Private Verarbeitung direkt im Browser.",
+      "descLength": 103
+    },
+    {
+      "file": "de/seiten-sortieren.html",
+      "route": "/de/seiten-sortieren",
+      "titles": [
+        "PDF-Seiten neu sortieren"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF-Seiten neu sortieren",
+      "titleLength": 24,
+      "desc": "Bringe deine PDF-Seiten per Drag &amp; Drop ganz einfach in die richtige Reihenfolge. Organisiere Dokumente neu und speichere das Ergebnis sofort und sicher ab.",
+      "descLength": 160
+    },
+    {
+      "file": "de/seitenzahlen.html",
+      "route": "/de/seitenzahlen",
+      "titles": [
+        "Add Page Numbers to PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Add Page Numbers to PDF Online Free",
+      "titleLength": 35,
+      "desc": "Insert dynamic page numbering to your PDF documents with customizable positions, formats, fonts, and skip-first-page options.",
+      "descLength": 125
+    },
+    {
+      "file": "de/teilen.html",
+      "route": "/de/teilen",
+      "titles": [
+        "PDF Online Teilen Kostenlos - Seiten Extrahieren"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF Online Teilen Kostenlos - Seiten Extrahieren",
+      "titleLength": 48,
+      "desc": "PDF online kostenlos teilen und Seiten extrahieren. Schnell, einfach, ohne Registrierung.",
+      "descLength": 89
+    },
+    {
+      "file": "de/text-extrahieren.html",
+      "route": "/de/text-extrahieren",
+      "titles": [
+        "Extract Text from PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Extract Text from PDF Online Free",
+      "titleLength": 33,
+      "desc": "Pull all readable text from any PDF document with line break preservation. Export as TXT, Markdown, or JSON.",
+      "descLength": 108
+    },
+    {
+      "file": "de/unterstuetzen.html",
+      "route": "/de/unterstuetzen",
+      "titles": [
+        "ihatelovepdf unterstützen | Halte das Tool privat und kostenlos"
+      ],
+      "titleCount": 1,
+      "finalTitle": "ihatelovepdf unterstützen | Halte das Tool privat und kostenlos",
+      "titleLength": 63,
+      "desc": "Deine Spende hält ihatelovepdf klein, unabhängig und datenschutzfreundlich. Hilf mit, Hosting und Weiterentwicklung zu finanzieren.",
+      "descLength": 131
+    },
+    {
+      "file": "de/wasserzeichen.html",
+      "route": "/de/wasserzeichen",
+      "titles": [
+        "Add Watermark to PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Add Watermark to PDF Online Free",
+      "titleLength": 32,
+      "desc": "Protect and brand your PDF documents with custom text or image watermarks. Set opacity, angle, and grid placement 100% in your browser.",
+      "descLength": 135
+    },
+    {
+      "file": "de/zusammenfuehren.html",
+      "route": "/de/zusammenfuehren",
+      "titles": [
+        "PDF Zusammenfügen Online Kostenlos - Keine"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF Zusammenfügen Online Kostenlos - Keine",
+      "titleLength": 42,
+      "desc": "PDF-Dateien online kostenlos zusammenfügen. Schnell, sicher und ohne Anmeldung. Mehrere PDFs hochladen und kombinieren.",
+      "descLength": 119
+    },
+    {
+      "file": "de/zuschneiden.html",
+      "route": "/de/zuschneiden",
+      "titles": [
+        "PDF-Seiten zuschneiden"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF-Seiten zuschneiden",
+      "titleLength": 22,
+      "desc": "Schneide PDF-Seiten direkt im Browser zu und entferne überflüssige Ränder. Alles läuft lokal und ohne Uploads.",
+      "descLength": 110
+    },
+    {
+      "file": "de.html",
+      "route": "/de",
+      "titles": [
+        "ihatelovepdf: Kostenlose PDF-Tools im Browser"
+      ],
+      "titleCount": 1,
+      "finalTitle": "ihatelovepdf: Kostenlose PDF-Tools im Browser",
+      "titleLength": 45,
+      "desc": "ihatelovepdf ist ein datenschutzfreundliches PDF-Toolkit zum Zusammenführen, Komprimieren, Teilen, Extrahieren, Neuordnen und Konvertieren von PDFs in Bilder oder wieder zurück - alles direkt im Browser auf deinem Gerät, ganz ohne Uploads.",
+      "descLength": 239
+    },
+    {
+      "file": "ebook-to-pdf.html",
+      "route": "/ebook-to-pdf",
+      "titles": [
+        "EPUB to PDF Converter Online Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "EPUB to PDF Converter Online Free | I Hate Love PDF",
+      "titleLength": 51,
+      "desc": "Convert EPUB and digital eBook files into formatted, printable PDF documents with custom margins and page sizes.",
+      "descLength": 112
+    },
+    {
+      "file": "edit-pdf.html",
+      "route": "/edit-pdf",
+      "titles": [
+        "Edit and Annotate PDF Online Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Edit and Annotate PDF Online Free | I Hate Love PDF",
+      "titleLength": 51,
+      "desc": "Annotate and markup PDF pages directly in your browser. Add text boxes, highlights, and shapes easily.",
+      "descLength": 102
+    },
+    {
+      "file": "es/apoya.html",
+      "route": "/es/apoya",
+      "titles": [
+        "Apoya ihatelovepdf | Mantén la herramienta privada y gratuita"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Apoya ihatelovepdf | Mantén la herramienta privada y gratuita",
+      "titleLength": 61,
+      "desc": "Tus donaciones financian el desarrollo de ihatelovepdf, cubren la infraestructura y garantizan que siga siendo 100% privado y sin anuncios.",
+      "descLength": 139
+    },
+    {
+      "file": "es/comparar-pdf.html",
+      "route": "/es/comparar-pdf",
+      "titles": [
+        "Compare Two PDF Files Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Compare Two PDF Files Online Free",
+      "titleLength": 33,
+      "desc": "Compare two PDF documents side-by-side in your browser to spot visual differences and revisions.",
+      "descLength": 96
+    },
+    {
+      "file": "es/comprimir.html",
+      "route": "/es/comprimir",
+      "titles": [
+        "Comprimir PDF Online Gratis - Reduce Tamaño de"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Comprimir PDF Online Gratis - Reduce Tamaño de",
+      "titleLength": 46,
+      "desc": "Comprime archivos PDF online sin perder calidad. Reduce el tamaño para email y almacenamiento.",
+      "descLength": 94
+    },
+    {
+      "file": "es/convertir-pdf-a-imagenes.html",
+      "route": "/es/convertir-pdf-a-imagenes",
+      "titles": [
+        "Convertir PDF a Imágenes"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Convertir PDF a Imágenes",
+      "titleLength": 24,
+      "desc": "Convierte cada página de tu PDF en imágenes PNG o JPEG de alta calidad. Elige tu resolución y descarga todo como un archivo ZIP, 100% privado y seguro.",
+      "descLength": 151
+    },
+    {
+      "file": "es/crear-pdf-desde-imagenes.html",
+      "route": "/es/crear-pdf-desde-imagenes",
+      "titles": [
+        "Crear PDF desde Imágenes"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Crear PDF desde Imágenes",
+      "titleLength": 24,
+      "desc": "Crea un PDF profesional a partir de tus imágenes. Organiza fotos, personaliza el diseño y los márgenes, y genera tu documento localmente en tu navegador.",
+      "descLength": 153
+    },
+    {
+      "file": "es/crear-pdf.html",
+      "route": "/es/crear-pdf",
+      "titles": [
+        "Create PDF Online Free, No Signup"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Create PDF Online Free, No Signup",
+      "titleLength": 33,
+      "desc": "Create and design PDF documents from scratch in your browser. Add text, images, shapes, tables, and export to PDF instantly.",
+      "descLength": 124
+    },
+    {
+      "file": "es/csv-a-pdf.html",
+      "route": "/es/csv-a-pdf",
+      "titles": [
+        "CSV to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "CSV to PDF Converter Online Free",
+      "titleLength": 32,
+      "desc": "Transform comma separated and tab separated CSV datasets into formatted PDF tables.",
+      "descLength": 83
+    },
+    {
+      "file": "es/dividir.html",
+      "route": "/es/dividir",
+      "titles": [
+        "Dividir PDF Online Gratis - Extrae Páginas"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Dividir PDF Online Gratis - Extrae Páginas",
+      "titleLength": 42,
+      "desc": "Divide archivos PDF online gratis. Extrae, separa y elimina páginas fácilmente, sin registro.",
+      "descLength": 93
+    },
+    {
+      "file": "es/ebook-a-pdf.html",
+      "route": "/es/ebook-a-pdf",
+      "titles": [
+        "EPUB to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "EPUB to PDF Converter Online Free",
+      "titleLength": 33,
+      "desc": "Convert EPUB and digital eBook files into formatted, printable PDF documents with custom margins and page sizes.",
+      "descLength": 112
+    },
+    {
+      "file": "es/editar-pdf.html",
+      "route": "/es/editar-pdf",
+      "titles": [
+        "Edit and Annotate PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Edit and Annotate PDF Online Free",
+      "titleLength": 33,
+      "desc": "Annotate and markup PDF pages directly in your browser. Add text boxes, highlights, and shapes easily.",
+      "descLength": 102
+    },
+    {
+      "file": "es/encabezados-y-pies.html",
+      "route": "/es/encabezados-y-pies",
+      "titles": [
+        "Add Headers and Footers to PDF Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Add Headers and Footers to PDF Free",
+      "titleLength": 35,
+      "desc": "Add header and footer text, page counters, and timestamps to any PDF with zero server uploads.",
+      "descLength": 94
+    },
+    {
+      "file": "es/escanear-a-pdf.html",
+      "route": "/es/escanear-a-pdf",
+      "titles": [
+        "Scan Documents to PDF with Your Camera"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Scan Documents to PDF with Your Camera",
+      "titleLength": 38,
+      "desc": "Capture document pages using your computer webcam or smartphone camera, apply clean scan filters, and export to PDF.",
+      "descLength": 116
+    },
+    {
+      "file": "es/excel-a-pdf.html",
+      "route": "/es/excel-a-pdf",
+      "titles": [
+        "Excel to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Excel to PDF Converter Online Free",
+      "titleLength": 34,
+      "desc": "Convert Microsoft Excel (.xlsx, .xls) spreadsheets into clean PDF documents directly in your browser.",
+      "descLength": 101
+    },
+    {
+      "file": "es/extraer-texto.html",
+      "route": "/es/extraer-texto",
+      "titles": [
+        "Extract Text from PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Extract Text from PDF Online Free",
+      "titleLength": 33,
+      "desc": "Pull all readable text from any PDF document with line break preservation. Export as TXT, Markdown, or JSON.",
+      "descLength": 108
+    },
+    {
+      "file": "es/extraer.html",
+      "route": "/es/extraer",
+      "titles": [
+        "Extraer Páginas de un PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Extraer Páginas de un PDF",
+      "titleLength": 25,
+      "desc": "Selecciona páginas de cualquier PDF y crea un nuevo documento al instante. Procesamiento privado y sin límites en tu navegador.",
+      "descLength": 127
+    },
+    {
+      "file": "es/facturacion-pos.html",
+      "route": "/es/facturacion-pos",
+      "titles": [
+        "Free POS Billing Receipt Generator PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Free POS Billing Receipt Generator PDF",
+      "titleLength": 38,
+      "desc": "Generate point-of-sale thermal receipts and retail bills in 58mm, 80mm, or A4 formats directly in your browser.",
+      "descLength": 111
+    },
+    {
+      "file": "es/firmar-pdf.html",
+      "route": "/es/firmar-pdf",
+      "titles": [
+        "Sign PDF Online Free, Private"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Sign PDF Online Free, Private",
+      "titleLength": 29,
+      "desc": "Sign PDF documents electronically with smooth handwriting draw pad, typed calligraphy fonts, or image stamps. 100% private in-browser signing.",
+      "descLength": 142
+    },
+    {
+      "file": "es/generador-factura-gst.html",
+      "route": "/es/generador-factura-gst",
+      "titles": [
+        "Free GST Invoice Generator, PDF Download"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Free GST Invoice Generator, PDF Download",
+      "titleLength": 40,
+      "desc": "Create GST-compliant tax invoice PDFs with auto-calculated CGST, SGST, IGST, HSN/SAC codes, and bank details.",
+      "descLength": 109
+    },
+    {
+      "file": "es/girar.html",
+      "route": "/es/girar",
+      "titles": [
+        "Girar páginas PDF online"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Girar páginas PDF online",
+      "titleLength": 24,
+      "desc": "Rota páginas concretas de un PDF en 90 o 180 grados directamente en tu navegador. Gratis, privado y sin subir archivos.",
+      "descLength": 119
+    },
+    {
+      "file": "es/html-a-pdf.html",
+      "route": "/es/html-a-pdf",
+      "titles": [
+        "HTML to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "HTML to PDF Converter Online Free",
+      "titleLength": 33,
+      "desc": "Render HTML code and web content into clean PDF pages directly in your browser.",
+      "descLength": 79
+    },
+    {
+      "file": "es/invertir-colores.html",
+      "route": "/es/invertir-colores",
+      "titles": [
+        "Invert PDF Colors for Dark Mode Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Invert PDF Colors for Dark Mode Free",
+      "titleLength": 36,
+      "desc": "Turn glaring white PDF documents into Dark Mode, Sepia, or High Contrast for comfortable reading and battery saving.",
+      "descLength": 116
+    },
+    {
+      "file": "es/marca-de-agua.html",
+      "route": "/es/marca-de-agua",
+      "titles": [
+        "Add Watermark to PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Add Watermark to PDF Online Free",
+      "titleLength": 32,
+      "desc": "Protect and brand your PDF documents with custom text or image watermarks. Set opacity, angle, and grid placement 100% in your browser.",
+      "descLength": 135
+    },
+    {
+      "file": "es/markdown-a-pdf.html",
+      "route": "/es/markdown-a-pdf",
+      "titles": [
+        "Markdown to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Markdown to PDF Converter Online Free",
+      "titleLength": 37,
+      "desc": "Transform Markdown text into clean, beautifully formatted PDF documents with headings, lists, and code styling.",
+      "descLength": 111
+    },
+    {
+      "file": "es/numeros-de-pagina.html",
+      "route": "/es/numeros-de-pagina",
+      "titles": [
+        "Add Page Numbers to PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Add Page Numbers to PDF Online Free",
+      "titleLength": 35,
+      "desc": "Insert dynamic page numbering to your PDF documents with customizable positions, formats, fonts, and skip-first-page options.",
+      "descLength": 125
+    },
+    {
+      "file": "es/pdf-a-epub.html",
+      "route": "/es/pdf-a-epub",
+      "titles": [
+        "PDF to EPUB Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to EPUB Converter Online Free",
+      "titleLength": 33,
+      "desc": "Transform PDF documents into reflowable EPUB eBooks for comfortable reading on Kindle, Kobo, and Apple Books.",
+      "descLength": 109
+    },
+    {
+      "file": "es/pdf-a-excel.html",
+      "route": "/es/pdf-a-excel",
+      "titles": [
+        "PDF to Excel Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to Excel Converter Online Free",
+      "titleLength": 34,
+      "desc": "Extract tabular data from PDF files and convert them into editable Microsoft Excel (.xlsx) spreadsheets.",
+      "descLength": 104
+    },
+    {
+      "file": "es/pdf-a-html.html",
+      "route": "/es/pdf-a-html",
+      "titles": [
+        "PDF to HTML Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to HTML Converter Online Free",
+      "titleLength": 33,
+      "desc": "Convert PDF files into semantic, responsive HTML code that you can embed on websites or view in any browser.",
+      "descLength": 108
+    },
+    {
+      "file": "es/pdf-a-powerpoint.html",
+      "route": "/es/pdf-a-powerpoint",
+      "titles": [
+        "PDF to PowerPoint Converter Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to PowerPoint Converter Free",
+      "titleLength": 32,
+      "desc": "Transform PDF pages into Microsoft PowerPoint (.pptx) slides with high-resolution slide layouts.",
+      "descLength": 96
+    },
+    {
+      "file": "es/pdf-a-zip.html",
+      "route": "/es/pdf-a-zip",
+      "titles": [
+        "Convert PDF to ZIP Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Convert PDF to ZIP Online Free",
+      "titleLength": 30,
+      "desc": "Bundle single or multiple PDF documents directly into a clean ZIP archive with lossless quality and 100% private browser processing.",
+      "descLength": 132
+    },
+    {
+      "file": "es/pizarra-colaborativa.html",
+      "route": "/es/pizarra-colaborativa",
+      "titles": [
+        "Whiteboard Sketch to PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Whiteboard Sketch to PDF Online Free",
+      "titleLength": 36,
+      "desc": "Draw, sketch, annotate, and brainstorm directly over PDF pages with an interactive collaborative whiteboard.",
+      "descLength": 108
+    },
+    {
+      "file": "es/powerpoint-a-pdf.html",
+      "route": "/es/powerpoint-a-pdf",
+      "titles": [
+        "PowerPoint to PDF Converter Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PowerPoint to PDF Converter Free",
+      "titleLength": 32,
+      "desc": "Convert Microsoft PowerPoint presentations (.pptx) into clean PDF slide handouts directly in your browser.",
+      "descLength": 106
+    },
+    {
+      "file": "es/preguntas-frecuentes.html",
+      "route": "/es/preguntas-frecuentes",
+      "titles": [
+        "Preguntas Frecuentes sobre PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Preguntas Frecuentes sobre PDF",
+      "titleLength": 30,
+      "desc": "Respuestas sobre cómo unir, comprimir, dividir, extraer y reordenar PDFs con ihatelovepdf sin subir tus archivos a servidores.",
+      "descLength": 126
+    },
+    {
+      "file": "es/recortar.html",
+      "route": "/es/recortar",
+      "titles": [
+        "Recortar páginas PDF online"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Recortar páginas PDF online",
+      "titleLength": 27,
+      "desc": "Recorta páginas PDF y elimina márgenes sobrantes directamente en tu navegador. Todo el proceso ocurre en local y sin subidas al servidor.",
+      "descLength": 137
+    },
+    {
+      "file": "es/redactar-censurar.html",
+      "route": "/es/redactar-censurar",
+      "titles": [
+        "Redact PDF Online Free, Private"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Redact PDF Online Free, Private",
+      "titleLength": 31,
+      "desc": "Permanently remove and black out sensitive data from your PDF. Solid opaque vector blocks are burned directly into the PDF stream.",
+      "descLength": 130
+    },
+    {
+      "file": "es/rellenar-formulario-pdf.html",
+      "route": "/es/rellenar-formulario-pdf",
+      "titles": [
+        "Fill PDF Forms Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Fill PDF Forms Online Free",
+      "titleLength": 26,
+      "desc": "Fill out interactive AcroForm PDF forms, checkboxes, and dropdowns, or type anywhere on standard PDFs. Flatten and save without watermark.",
+      "descLength": 138
+    },
+    {
+      "file": "es/reordenar.html",
+      "route": "/es/reordenar",
+      "titles": [
+        "Reordenar Páginas PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Reordenar Páginas PDF",
+      "titleLength": 21,
+      "desc": "Reorganiza fácilmente las páginas de tu PDF arrastrando y soltando. Corrige el orden y guarda el resultado al instante, todo localmente.",
+      "descLength": 136
+    },
+    {
+      "file": "es/unir.html",
+      "route": "/es/unir",
+      "titles": [
+        "Unir PDF Online Gratis - Sin Registro Ni Límites"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Unir PDF Online Gratis - Sin Registro Ni Límites",
+      "titleLength": 48,
+      "desc": "Combina archivos PDF online gratis. Sin registro, sin límites. Carga, une y descarga tus PDFs en segundos.",
+      "descLength": 106
+    },
+    {
+      "file": "es.html",
+      "route": "/es",
+      "titles": [
+        "ihatelovepdf: Herramientas PDF en tu Navegador"
+      ],
+      "titleCount": 1,
+      "finalTitle": "ihatelovepdf: Herramientas PDF en tu Navegador",
+      "titleLength": 46,
+      "desc": "ihatelovepdf es un kit gratuito para unir, comprimir, dividir, extraer, reordenar y convertir PDFs a imágenes o viceversa directamente en tu navegador. Todo el procesamiento sucede de forma local, sin registros ni cargas.",
+      "descLength": 221
+    },
+    {
+      "file": "excel-to-pdf.html",
+      "route": "/excel-to-pdf",
+      "titles": [
+        "Excel to PDF Converter Online Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Excel to PDF Converter Online Free | I Hate Love PDF",
+      "titleLength": 52,
+      "desc": "Convert Microsoft Excel (.xlsx, .xls) spreadsheets into clean PDF documents directly in your browser.",
+      "descLength": 101
+    },
+    {
+      "file": "extract-text.html",
+      "route": "/extract-text",
+      "titles": [
+        "Extract Text from PDF Online Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Extract Text from PDF Online Free | I Hate Love PDF",
+      "titleLength": 51,
+      "desc": "Pull all readable text from any PDF document with line break preservation. Export as TXT, Markdown, or JSON.",
+      "descLength": 108
+    },
+    {
+      "file": "extract.html",
+      "route": "/extract",
+      "titles": [
+        "Extract Pages from PDF Online Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Extract Pages from PDF Online Free | I Hate Love PDF",
+      "titleLength": 52,
+      "desc": "Pull individual pages or custom ranges out of any PDF document in seconds.",
+      "descLength": 74
+    },
+    {
+      "file": "faq.html",
+      "route": "/faq",
+      "titles": [
+        "Frequently Asked Questions | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Frequently Asked Questions | I Hate Love PDF",
+      "titleLength": 44,
+      "desc": "Find answers to common questions about ihatelovepdf. Learn how to merge, compress, split, extract, rotate, crop, and convert PDFs securely without uploading files.",
+      "descLength": 163
+    },
+    {
+      "file": "fill-pdf-form.html",
+      "route": "/fill-pdf-form",
+      "titles": [
+        "Fill PDF Forms Online Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Fill PDF Forms Online Free | I Hate Love PDF",
+      "titleLength": 44,
+      "desc": "Fill out interactive AcroForm PDF forms, checkboxes, and dropdowns, or type anywhere on standard PDFs. Flatten and save without watermark.",
+      "descLength": 138
+    },
+    {
+      "file": "fr/caviarder.html",
+      "route": "/fr/caviarder",
+      "titles": [
+        "Redact PDF Online Free, Private"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Redact PDF Online Free, Private",
+      "titleLength": 31,
+      "desc": "Permanently remove and black out sensitive data from your PDF. Solid opaque vector blocks are burned directly into the PDF stream.",
+      "descLength": 130
+    },
+    {
+      "file": "fr/comparer-pdf.html",
+      "route": "/fr/comparer-pdf",
+      "titles": [
+        "Compare Two PDF Files Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Compare Two PDF Files Online Free",
+      "titleLength": 33,
+      "desc": "Compare two PDF documents side-by-side in your browser to spot visual differences and revisions.",
+      "descLength": 96
+    },
+    {
+      "file": "fr/compresser.html",
+      "route": "/fr/compresser",
+      "titles": [
+        "Compresser PDF en Ligne Gratuit - Réduire la"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Compresser PDF en Ligne Gratuit - Réduire la",
+      "titleLength": 44,
+      "desc": "Compressez les fichiers PDF en ligne sans perdre de qualité. Réduisez la taille PDF pour l&#x27;email.",
+      "descLength": 102
+    },
+    {
+      "file": "fr/creer-pdf-depuis-images.html",
+      "route": "/fr/creer-pdf-depuis-images",
+      "titles": [
+        "Créer un PDF à partir d&#x27;images"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Créer un PDF à partir d&#x27;images",
+      "titleLength": 35,
+      "desc": "Créez un PDF professionnel à partir de vos images. Organisez les photos, personnalisez la mise en page et générez votre document localement dans votre navigateur.",
+      "descLength": 162
+    },
+    {
+      "file": "fr/creer-pdf.html",
+      "route": "/fr/creer-pdf",
+      "titles": [
+        "Create PDF Online Free, No Signup"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Create PDF Online Free, No Signup",
+      "titleLength": 33,
+      "desc": "Create and design PDF documents from scratch in your browser. Add text, images, shapes, tables, and export to PDF instantly.",
+      "descLength": 124
+    },
+    {
+      "file": "fr/csv-en-pdf.html",
+      "route": "/fr/csv-en-pdf",
+      "titles": [
+        "CSV to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "CSV to PDF Converter Online Free",
+      "titleLength": 32,
+      "desc": "Transform comma separated and tab separated CSV datasets into formatted PDF tables.",
+      "descLength": 83
+    },
+    {
+      "file": "fr/diviser.html",
+      "route": "/fr/diviser",
+      "titles": [
+        "Diviser PDF en Ligne Gratuit - Extraire les Pages"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Diviser PDF en Ligne Gratuit - Extraire les Pages",
+      "titleLength": 49,
+      "desc": "Divisez les fichiers PDF en ligne gratuitement. Extrayez et séparez les pages facilement, sans inscription.",
+      "descLength": 107
+    },
+    {
+      "file": "fr/ebook-en-pdf.html",
+      "route": "/fr/ebook-en-pdf",
+      "titles": [
+        "EPUB to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "EPUB to PDF Converter Online Free",
+      "titleLength": 33,
+      "desc": "Convert EPUB and digital eBook files into formatted, printable PDF documents with custom margins and page sizes.",
+      "descLength": 112
+    },
+    {
+      "file": "fr/editer-pdf.html",
+      "route": "/fr/editer-pdf",
+      "titles": [
+        "Edit and Annotate PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Edit and Annotate PDF Online Free",
+      "titleLength": 33,
+      "desc": "Annotate and markup PDF pages directly in your browser. Add text boxes, highlights, and shapes easily.",
+      "descLength": 102
+    },
+    {
+      "file": "fr/en-tetes-et-pieds-de-page.html",
+      "route": "/fr/en-tetes-et-pieds-de-page",
+      "titles": [
+        "Add Headers and Footers to PDF Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Add Headers and Footers to PDF Free",
+      "titleLength": 35,
+      "desc": "Add header and footer text, page counters, and timestamps to any PDF with zero server uploads.",
+      "descLength": 94
+    },
+    {
+      "file": "fr/excel-en-pdf.html",
+      "route": "/fr/excel-en-pdf",
+      "titles": [
+        "Excel to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Excel to PDF Converter Online Free",
+      "titleLength": 34,
+      "desc": "Convert Microsoft Excel (.xlsx, .xls) spreadsheets into clean PDF documents directly in your browser.",
+      "descLength": 101
+    },
+    {
+      "file": "fr/extraire-texte.html",
+      "route": "/fr/extraire-texte",
+      "titles": [
+        "Extract Text from PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Extract Text from PDF Online Free",
+      "titleLength": 33,
+      "desc": "Pull all readable text from any PDF document with line break preservation. Export as TXT, Markdown, or JSON.",
+      "descLength": 108
+    },
+    {
+      "file": "fr/extraire.html",
+      "route": "/fr/extraire",
+      "titles": [
+        "Extraire des pages PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Extraire des pages PDF",
+      "titleLength": 22,
+      "desc": "Sélectionnez des pages spécifiques dans n&#x27;importe quel PDF et créez instantanément un nouveau document sur mesure. Traitement privé et illimité.",
+      "descLength": 149
+    },
+    {
+      "file": "fr/facturation-pos.html",
+      "route": "/fr/facturation-pos",
+      "titles": [
+        "Free POS Billing Receipt Generator PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Free POS Billing Receipt Generator PDF",
+      "titleLength": 38,
+      "desc": "Generate point-of-sale thermal receipts and retail bills in 58mm, 80mm, or A4 formats directly in your browser.",
+      "descLength": 111
+    },
+    {
+      "file": "fr/faire-pivoter.html",
+      "route": "/fr/faire-pivoter",
+      "titles": [
+        "Faire pivoter des pages PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Faire pivoter des pages PDF",
+      "titleLength": 27,
+      "desc": "Faites pivoter les pages PDF sélectionnées de 90 ou 180 degrés directement dans votre navigateur. Privé, gratuit et entièrement local.",
+      "descLength": 134
+    },
+    {
+      "file": "fr/faq.html",
+      "route": "/fr/faq",
+      "titles": [
+        "Foire Aux Questions sur les Outils PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Foire Aux Questions sur les Outils PDF",
+      "titleLength": 38,
+      "desc": "Réponses aux questions fréquentes sur ihatelovepdf. Apprenez comment fusionner, compresser, diviser, extraire et réorganiser des PDF sans télécharger vos fichiers.",
+      "descLength": 163
+    },
+    {
+      "file": "fr/filigrane.html",
+      "route": "/fr/filigrane",
+      "titles": [
+        "Add Watermark to PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Add Watermark to PDF Online Free",
+      "titleLength": 32,
+      "desc": "Protect and brand your PDF documents with custom text or image watermarks. Set opacity, angle, and grid placement 100% in your browser.",
+      "descLength": 135
+    },
+    {
+      "file": "fr/fusionner.html",
+      "route": "/fr/fusionner",
+      "titles": [
+        "Fusionner PDF en Ligne Gratuitement - Sans"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Fusionner PDF en Ligne Gratuitement - Sans",
+      "titleLength": 42,
+      "desc": "Fusionnez plusieurs fichiers PDF en un seul en ligne, gratuitement. Aucune inscription requise, aucune limite.",
+      "descLength": 110
+    },
+    {
+      "file": "fr/generateur-facture-gst.html",
+      "route": "/fr/generateur-facture-gst",
+      "titles": [
+        "Free GST Invoice Generator, PDF Download"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Free GST Invoice Generator, PDF Download",
+      "titleLength": 40,
+      "desc": "Create GST-compliant tax invoice PDFs with auto-calculated CGST, SGST, IGST, HSN/SAC codes, and bank details.",
+      "descLength": 109
+    },
+    {
+      "file": "fr/html-en-pdf.html",
+      "route": "/fr/html-en-pdf",
+      "titles": [
+        "HTML to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "HTML to PDF Converter Online Free",
+      "titleLength": 33,
+      "desc": "Render HTML code and web content into clean PDF pages directly in your browser.",
+      "descLength": 79
+    },
+    {
+      "file": "fr/inverser-couleurs.html",
+      "route": "/fr/inverser-couleurs",
+      "titles": [
+        "Invert PDF Colors for Dark Mode Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Invert PDF Colors for Dark Mode Free",
+      "titleLength": 36,
+      "desc": "Turn glaring white PDF documents into Dark Mode, Sepia, or High Contrast for comfortable reading and battery saving.",
+      "descLength": 116
+    },
+    {
+      "file": "fr/markdown-en-pdf.html",
+      "route": "/fr/markdown-en-pdf",
+      "titles": [
+        "Markdown to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Markdown to PDF Converter Online Free",
+      "titleLength": 37,
+      "desc": "Transform Markdown text into clean, beautifully formatted PDF documents with headings, lists, and code styling.",
+      "descLength": 111
+    },
+    {
+      "file": "fr/numerotation-pages.html",
+      "route": "/fr/numerotation-pages",
+      "titles": [
+        "Add Page Numbers to PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Add Page Numbers to PDF Online Free",
+      "titleLength": 35,
+      "desc": "Insert dynamic page numbering to your PDF documents with customizable positions, formats, fonts, and skip-first-page options.",
+      "descLength": 125
+    },
+    {
+      "file": "fr/pdf-en-epub.html",
+      "route": "/fr/pdf-en-epub",
+      "titles": [
+        "PDF to EPUB Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to EPUB Converter Online Free",
+      "titleLength": 33,
+      "desc": "Transform PDF documents into reflowable EPUB eBooks for comfortable reading on Kindle, Kobo, and Apple Books.",
+      "descLength": 109
+    },
+    {
+      "file": "fr/pdf-en-excel.html",
+      "route": "/fr/pdf-en-excel",
+      "titles": [
+        "PDF to Excel Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to Excel Converter Online Free",
+      "titleLength": 34,
+      "desc": "Extract tabular data from PDF files and convert them into editable Microsoft Excel (.xlsx) spreadsheets.",
+      "descLength": 104
+    },
+    {
+      "file": "fr/pdf-en-html.html",
+      "route": "/fr/pdf-en-html",
+      "titles": [
+        "PDF to HTML Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to HTML Converter Online Free",
+      "titleLength": 33,
+      "desc": "Convert PDF files into semantic, responsive HTML code that you can embed on websites or view in any browser.",
+      "descLength": 108
+    },
+    {
+      "file": "fr/pdf-en-images.html",
+      "route": "/fr/pdf-en-images",
+      "titles": [
+        "Convertir des PDF en images"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Convertir des PDF en images",
+      "titleLength": 27,
+      "desc": "Convertissez chaque page de votre PDF en images PNG ou JPEG de haute qualité. Choisissez votre résolution et téléchargez sous forme de ZIP.",
+      "descLength": 139
+    },
+    {
+      "file": "fr/pdf-en-powerpoint.html",
+      "route": "/fr/pdf-en-powerpoint",
+      "titles": [
+        "PDF to PowerPoint Converter Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to PowerPoint Converter Free",
+      "titleLength": 32,
+      "desc": "Transform PDF pages into Microsoft PowerPoint (.pptx) slides with high-resolution slide layouts.",
+      "descLength": 96
+    },
+    {
+      "file": "fr/pdf-en-zip.html",
+      "route": "/fr/pdf-en-zip",
+      "titles": [
+        "Convert PDF to ZIP Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Convert PDF to ZIP Online Free",
+      "titleLength": 30,
+      "desc": "Bundle single or multiple PDF documents directly into a clean ZIP archive with lossless quality and 100% private browser processing.",
+      "descLength": 132
+    },
+    {
+      "file": "fr/powerpoint-en-pdf.html",
+      "route": "/fr/powerpoint-en-pdf",
+      "titles": [
+        "PowerPoint to PDF Converter Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PowerPoint to PDF Converter Free",
+      "titleLength": 32,
+      "desc": "Convert Microsoft PowerPoint presentations (.pptx) into clean PDF slide handouts directly in your browser.",
+      "descLength": 106
+    },
+    {
+      "file": "fr/recadrer.html",
+      "route": "/fr/recadrer",
+      "titles": [
+        "Recadrer des pages PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Recadrer des pages PDF",
+      "titleLength": 22,
+      "desc": "Recadrez des pages PDF et réduisez les marges excédentaires directement dans votre navigateur. Sélectionnez les pages, définissez la zone de recadrage.",
+      "descLength": 151
+    },
+    {
+      "file": "fr/remplir-formulaire-pdf.html",
+      "route": "/fr/remplir-formulaire-pdf",
+      "titles": [
+        "Fill PDF Forms Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Fill PDF Forms Online Free",
+      "titleLength": 26,
+      "desc": "Fill out interactive AcroForm PDF forms, checkboxes, and dropdowns, or type anywhere on standard PDFs. Flatten and save without watermark.",
+      "descLength": 138
+    },
+    {
+      "file": "fr/reorganiser.html",
+      "route": "/fr/reorganiser",
+      "titles": [
+        "Réorganiser les pages PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Réorganiser les pages PDF",
+      "titleLength": 25,
+      "desc": "Réorganisez facilement vos pages PDF avec une simple interface glisser-déposer. Corrigez l&#x27;ordre des documents et enregistrez instantanément.",
+      "descLength": 146
+    },
+    {
+      "file": "fr/scanner-en-pdf.html",
+      "route": "/fr/scanner-en-pdf",
+      "titles": [
+        "Scan Documents to PDF with Your Camera"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Scan Documents to PDF with Your Camera",
+      "titleLength": 38,
+      "desc": "Capture document pages using your computer webcam or smartphone camera, apply clean scan filters, and export to PDF.",
+      "descLength": 116
+    },
+    {
+      "file": "fr/signer-pdf.html",
+      "route": "/fr/signer-pdf",
+      "titles": [
+        "Sign PDF Online Free, Private"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Sign PDF Online Free, Private",
+      "titleLength": 29,
+      "desc": "Sign PDF documents electronically with smooth handwriting draw pad, typed calligraphy fonts, or image stamps. 100% private in-browser signing.",
+      "descLength": 142
+    },
+    {
+      "file": "fr/soutenir.html",
+      "route": "/fr/soutenir",
+      "titles": [
+        "Soutenir ihatelovepdf | Outils gratuits et privés"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Soutenir ihatelovepdf | Outils gratuits et privés",
+      "titleLength": 49,
+      "desc": "Votre don permet à ihatelovepdf de rester petit, indépendant et axé sur la confidentialité. Aidez à couvrir l&#x27;hébergement et les améliorations.",
+      "descLength": 148
+    },
+    {
+      "file": "fr/tableau-blanc-collaboratif.html",
+      "route": "/fr/tableau-blanc-collaboratif",
+      "titles": [
+        "Whiteboard Sketch to PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Whiteboard Sketch to PDF Online Free",
+      "titleLength": 36,
+      "desc": "Draw, sketch, annotate, and brainstorm directly over PDF pages with an interactive collaborative whiteboard.",
+      "descLength": 108
+    },
+    {
+      "file": "fr.html",
+      "route": "/fr",
+      "titles": [
+        "ihatelovepdf: Outils PDF Gratuits sur Navigateur"
+      ],
+      "titleCount": 1,
+      "finalTitle": "ihatelovepdf: Outils PDF Gratuits sur Navigateur",
+      "titleLength": 48,
+      "desc": "ihatelovepdf est une boîte à outils axée sur la confidentialité qui fusionne, compresse, divise, extrait, pivote et convertit des PDF directement dans votre navigateur. Tout le traitement reste sur l&#x27;appareil.",
+      "descLength": 214
+    },
+    {
+      "file": "free-pdf-tools-without-signup.html",
+      "route": "/free-pdf-tools-without-signup",
+      "titles": [
+        "Free PDF Tools Without Signup | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Free PDF Tools Without Signup | I Hate Love PDF",
+      "titleLength": 47,
+      "desc": "Use 35+ free PDF tools online without creating an account or entering your email. Merge, split, compress, sign, and edit PDFs with zero signup.",
+      "descLength": 143
+    },
+    {
+      "file": "gst-invoice.html",
+      "route": "/gst-invoice",
+      "titles": [
+        "Free GST Invoice Generator, PDF Download | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Free GST Invoice Generator, PDF Download | I Hate Love PDF",
+      "titleLength": 58,
+      "desc": "Create GST-compliant tax invoice PDFs with auto-calculated CGST, SGST, IGST, HSN/SAC codes, and bank details.",
+      "descLength": 109
+    },
+    {
+      "file": "guides/how-to-compress-pdf-without-losing-quality.html",
+      "route": "/guides/how-to-compress-pdf-without-losing-quality",
+      "titles": [
+        "Compress PDF Without Losing Quality | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Compress PDF Without Losing Quality | I Hate Love PDF",
+      "titleLength": 53,
+      "desc": "Shrink oversized PDF files down to target megabyte limits while preserving crisp vector text, diagrams, and readable images.",
+      "descLength": 124
+    },
+    {
+      "file": "guides/how-to-convert-images-to-pdf.html",
+      "route": "/guides/how-to-convert-images-to-pdf",
+      "titles": [
+        "How to Convert Images to PDF | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "How to Convert Images to PDF | I Hate Love PDF",
+      "titleLength": 46,
+      "desc": "Turn smartphone photos, ID cards, receipts, and graphic images into a clean PDF document in seconds.",
+      "descLength": 100
+    },
+    {
+      "file": "guides/how-to-merge-pdf-files.html",
+      "route": "/guides/how-to-merge-pdf-files",
+      "titles": [
+        "How to Merge PDF Files for Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "How to Merge PDF Files for Free | I Hate Love PDF",
+      "titleLength": 49,
+      "desc": "Combine reports, contracts, invoices, and receipts into a single organized PDF with drag and drop page reordering.",
+      "descLength": 114
+    },
+    {
+      "file": "guides/how-to-ocr-scanned-pdf-offline.html",
+      "route": "/guides/how-to-ocr-scanned-pdf-offline",
+      "titles": [
+        "How to OCR a Scanned PDF Offline | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "How to OCR a Scanned PDF Offline | I Hate Love PDF",
+      "titleLength": 50,
+      "desc": "Extract readable, selectable text from scanned PDF documents and receipts using client-side OCR in your browser without uploading files.",
+      "descLength": 136
+    },
+    {
+      "file": "guides/how-to-redact-pdf-free.html",
+      "route": "/guides/how-to-redact-pdf-free",
+      "titles": [
+        "How to Redact a PDF for Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "How to Redact a PDF for Free | I Hate Love PDF",
+      "titleLength": 46,
+      "desc": "Learn how to black out sensitive information, personal details, and financial data from PDF files directly in your web browser without server uploads.",
+      "descLength": 150
+    },
+    {
+      "file": "guides/how-to-split-pdf-pages.html",
+      "route": "/guides/how-to-split-pdf-pages",
+      "titles": [
+        "How to Split a PDF by Pages | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "How to Split a PDF by Pages | I Hate Love PDF",
+      "titleLength": 45,
+      "desc": "Visually select exact pages, enter custom ranges (such as 1-3, 4-6), or extract all single pages into individual PDF files.",
+      "descLength": 123
+    },
+    {
+      "file": "guides.html",
+      "route": "/guides",
+      "titles": [
+        "PDF How-To Guides and Tutorials | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF How-To Guides and Tutorials | I Hate Love PDF",
+      "titleLength": 49,
+      "desc": "Step by step tutorials and practical guides for merging, compressing, splitting, redacting, and converting PDFs with private in-browser tools.",
+      "descLength": 142
+    },
+    {
+      "file": "headers-footers.html",
+      "route": "/headers-footers",
+      "titles": [
+        "Add Headers and Footers to PDF Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Add Headers and Footers to PDF Free | I Hate Love PDF",
+      "titleLength": 53,
+      "desc": "Add header and footer text, page counters, and timestamps to any PDF with zero server uploads.",
+      "descLength": 94
+    },
+    {
+      "file": "html-to-pdf.html",
+      "route": "/html-to-pdf",
+      "titles": [
+        "HTML to PDF Converter Online Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "HTML to PDF Converter Online Free | I Hate Love PDF",
+      "titleLength": 51,
+      "desc": "Render HTML code and web content into clean PDF pages directly in your browser.",
+      "descLength": 79
+    },
+    {
+      "file": "hu/atrendezni.html",
+      "route": "/hu/atrendezni",
+      "titles": [
+        "PDF oldalak átrendezése"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF oldalak átrendezése",
+      "titleLength": 23,
+      "desc": "Rendezd át könnyedén a PDF-oldalakat drag-and-drop módszerrel. Javítsd a sorrendet és mentsd el azonnal - teljesen helyi feldolgozással.",
+      "descLength": 136
+    },
+    {
+      "file": "hu/csv-bol-pdf.html",
+      "route": "/hu/csv-bol-pdf",
+      "titles": [
+        "CSV to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "CSV to PDF Converter Online Free",
+      "titleLength": 32,
+      "desc": "Transform comma separated and tab separated CSV datasets into formatted PDF tables.",
+      "descLength": 83
+    },
+    {
+      "file": "hu/ebook-bol-pdf.html",
+      "route": "/hu/ebook-bol-pdf",
+      "titles": [
+        "EPUB to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "EPUB to PDF Converter Online Free",
+      "titleLength": 33,
+      "desc": "Convert EPUB and digital eBook files into formatted, printable PDF documents with custom margins and page sizes.",
+      "descLength": 112
+    },
+    {
+      "file": "hu/excel-bol-pdf.html",
+      "route": "/hu/excel-bol-pdf",
+      "titles": [
+        "Excel to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Excel to PDF Converter Online Free",
+      "titleLength": 34,
+      "desc": "Convert Microsoft Excel (.xlsx, .xls) spreadsheets into clean PDF documents directly in your browser.",
+      "descLength": 101
+    },
+    {
+      "file": "hu/fejlec-es-lablec.html",
+      "route": "/hu/fejlec-es-lablec",
+      "titles": [
+        "Add Headers and Footers to PDF Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Add Headers and Footers to PDF Free",
+      "titleLength": 35,
+      "desc": "Add header and footer text, page counters, and timestamps to any PDF with zero server uploads.",
+      "descLength": 94
+    },
+    {
+      "file": "hu/forgatas.html",
+      "route": "/hu/forgatas",
+      "titles": [
+        "PDF oldalak forgatása online"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF oldalak forgatása online",
+      "titleLength": 28,
+      "desc": "Forgasd el a kiválasztott PDF-oldalakat 90 vagy 180 fokkal közvetlenül a böngészÅ‘dben. Ingyenes, bizalmas és teljesen helyi.",
+      "descLength": 125
+    },
+    {
+      "file": "hu/gst-szamlakeszito.html",
+      "route": "/hu/gst-szamlakeszito",
+      "titles": [
+        "Free GST Invoice Generator, PDF Download"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Free GST Invoice Generator, PDF Download",
+      "titleLength": 40,
+      "desc": "Create GST-compliant tax invoice PDFs with auto-calculated CGST, SGST, IGST, HSN/SAC codes, and bank details.",
+      "descLength": 109
+    },
+    {
+      "file": "hu/gyakran-ismetelt-kerdesek.html",
+      "route": "/hu/gyakran-ismetelt-kerdesek",
+      "titles": [
+        "Gyakori kérdések a PDF-eszközökről"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Gyakori kérdések a PDF-eszközökről",
+      "titleLength": 34,
+      "desc": "Válaszok a ihatelovepdf-re vonatkozó leggyakoribb kérdésekre. Tudd meg, hogyan fÅ±zheted össze, tömörítheted, bonthatod szét, kinyerheted és rendezheted át a PDF-eket fájlok feltöltése nélkül.",
+      "descLength": 192
+    },
+    {
+      "file": "hu/html-bol-pdf.html",
+      "route": "/hu/html-bol-pdf",
+      "titles": [
+        "HTML to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "HTML to PDF Converter Online Free",
+      "titleLength": 33,
+      "desc": "Render HTML code and web content into clean PDF pages directly in your browser.",
+      "descLength": 79
+    },
+    {
+      "file": "hu/kepek-pdf-be.html",
+      "route": "/hu/kepek-pdf-be",
+      "titles": [
+        "PDF létrehozása képekbÅ‘l"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF létrehozása képekbÅ‘l",
+      "titleLength": 25,
+      "desc": "Hozz létre professzionális PDF-et a képeidbÅ‘l. Rendezd a fotókat, szabd testre az elrendezést és a margókat - a dokumentum helyben, a böngészÅ‘dben jön létre.",
+      "descLength": 159
+    },
+    {
+      "file": "hu/kitakaras.html",
+      "route": "/hu/kitakaras",
+      "titles": [
+        "Redact PDF Online Free, Private"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Redact PDF Online Free, Private",
+      "titleLength": 31,
+      "desc": "Permanently remove and black out sensitive data from your PDF. Solid opaque vector blocks are burned directly into the PDF stream.",
+      "descLength": 130
+    },
+    {
+      "file": "hu/kivalasztani.html",
+      "route": "/hu/kivalasztani",
+      "titles": [
+        "PDF oldalak kinyerése"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF oldalak kinyerése",
+      "titleLength": 21,
+      "desc": "Válassz ki egyes oldalakat bármely PDF-bÅ‘l, és azonnal hozz létre belÅ‘lük új dokumentumot. Korlátlan, privát feldolgozás közvetlenül a böngészÅ‘dben.",
+      "descLength": 151
+    },
+    {
+      "file": "hu/korulvagas.html",
+      "route": "/hu/korulvagas",
+      "titles": [
+        "PDF oldalak vágása online"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF oldalak vágása online",
+      "titleLength": 25,
+      "desc": "Vágd le a PDF oldalait és távolítsd el a felesleges margókat közvetlenül a böngészÅ‘dben. Válaszd ki az oldalakat, állítsd be a vágási területet - szerverre feltöltés nélkül.",
+      "descLength": 174
+    },
+    {
+      "file": "hu/kozos-rajztabla.html",
+      "route": "/hu/kozos-rajztabla",
+      "titles": [
+        "Whiteboard Sketch to PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Whiteboard Sketch to PDF Online Free",
+      "titleLength": 36,
+      "desc": "Draw, sketch, annotate, and brainstorm directly over PDF pages with an interactive collaborative whiteboard.",
+      "descLength": 108
+    },
+    {
+      "file": "hu/markdown-bol-pdf.html",
+      "route": "/hu/markdown-bol-pdf",
+      "titles": [
+        "Markdown to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Markdown to PDF Converter Online Free",
+      "titleLength": 37,
+      "desc": "Transform Markdown text into clean, beautifully formatted PDF documents with headings, lists, and code styling.",
+      "descLength": 111
+    },
+    {
+      "file": "hu/oldalszamozas.html",
+      "route": "/hu/oldalszamozas",
+      "titles": [
+        "Add Page Numbers to PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Add Page Numbers to PDF Online Free",
+      "titleLength": 35,
+      "desc": "Insert dynamic page numbering to your PDF documents with customizable positions, formats, fonts, and skip-first-page options.",
+      "descLength": 125
+    },
+    {
+      "file": "hu/osszefuzni.html",
+      "route": "/hu/osszefuzni",
+      "titles": [
+        "PDF összefÅ±zése online"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF összefÅ±zése online",
+      "titleLength": 23,
+      "desc": "FÅ±zz össze több PDF-fájlt egyetlen rendezett dokumentumba oldalszám-korlát nélkül. Húzd át, rendezd és töltsd le azonnal - teljes bizalmassággal.",
+      "descLength": 146
+    },
+    {
+      "file": "hu/pdf-alairasa.html",
+      "route": "/hu/pdf-alairasa",
+      "titles": [
+        "Sign PDF Online Free, Private"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Sign PDF Online Free, Private",
+      "titleLength": 29,
+      "desc": "Sign PDF documents electronically with smooth handwriting draw pad, typed calligraphy fonts, or image stamps. 100% private in-browser signing.",
+      "descLength": 142
+    },
+    {
+      "file": "hu/pdf-bol-epub.html",
+      "route": "/hu/pdf-bol-epub",
+      "titles": [
+        "PDF to EPUB Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to EPUB Converter Online Free",
+      "titleLength": 33,
+      "desc": "Transform PDF documents into reflowable EPUB eBooks for comfortable reading on Kindle, Kobo, and Apple Books.",
+      "descLength": 109
+    },
+    {
+      "file": "hu/pdf-bol-excel.html",
+      "route": "/hu/pdf-bol-excel",
+      "titles": [
+        "PDF to Excel Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to Excel Converter Online Free",
+      "titleLength": 34,
+      "desc": "Extract tabular data from PDF files and convert them into editable Microsoft Excel (.xlsx) spreadsheets.",
+      "descLength": 104
+    },
+    {
+      "file": "hu/pdf-bol-html.html",
+      "route": "/hu/pdf-bol-html",
+      "titles": [
+        "PDF to HTML Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to HTML Converter Online Free",
+      "titleLength": 33,
+      "desc": "Convert PDF files into semantic, responsive HTML code that you can embed on websites or view in any browser.",
+      "descLength": 108
+    },
+    {
+      "file": "hu/pdf-bol-powerpoint.html",
+      "route": "/hu/pdf-bol-powerpoint",
+      "titles": [
+        "PDF to PowerPoint Converter Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to PowerPoint Converter Free",
+      "titleLength": 32,
+      "desc": "Transform PDF pages into Microsoft PowerPoint (.pptx) slides with high-resolution slide layouts.",
+      "descLength": 96
+    },
+    {
+      "file": "hu/pdf-bol-zip.html",
+      "route": "/hu/pdf-bol-zip",
+      "titles": [
+        "Convert PDF to ZIP Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Convert PDF to ZIP Online Free",
+      "titleLength": 30,
+      "desc": "Bundle single or multiple PDF documents directly into a clean ZIP archive with lossless quality and 100% private browser processing.",
+      "descLength": 132
+    },
+    {
+      "file": "hu/pdf-kepekbe.html",
+      "route": "/hu/pdf-kepekbe",
+      "titles": [
+        "PDF konvertálása képekké"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF konvertálása képekké",
+      "titleLength": 24,
+      "desc": "Alakítsd át a PDF minden oldalát kiváló minÅ‘ségÅ± PNG vagy JPEG képpé. Válaszd ki a felbontást, és töltsd le ZIP-archívumban - 100%-ban privát módon.",
+      "descLength": 150
+    },
+    {
+      "file": "hu/pdf-letrehozasa.html",
+      "route": "/hu/pdf-letrehozasa",
+      "titles": [
+        "Create PDF Online Free, No Signup"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Create PDF Online Free, No Signup",
+      "titleLength": 33,
+      "desc": "Create and design PDF documents from scratch in your browser. Add text, images, shapes, tables, and export to PDF instantly.",
+      "descLength": 124
+    },
+    {
+      "file": "hu/pdf-osszehasonlitasa.html",
+      "route": "/hu/pdf-osszehasonlitasa",
+      "titles": [
+        "Compare Two PDF Files Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Compare Two PDF Files Online Free",
+      "titleLength": 33,
+      "desc": "Compare two PDF documents side-by-side in your browser to spot visual differences and revisions.",
+      "descLength": 96
+    },
+    {
+      "file": "hu/pdf-szerkesztese.html",
+      "route": "/hu/pdf-szerkesztese",
+      "titles": [
+        "Edit and Annotate PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Edit and Annotate PDF Online Free",
+      "titleLength": 33,
+      "desc": "Annotate and markup PDF pages directly in your browser. Add text boxes, highlights, and shapes easily.",
+      "descLength": 102
+    },
+    {
+      "file": "hu/pdf-urlap-kitoltese.html",
+      "route": "/hu/pdf-urlap-kitoltese",
+      "titles": [
+        "Fill PDF Forms Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Fill PDF Forms Online Free",
+      "titleLength": 26,
+      "desc": "Fill out interactive AcroForm PDF forms, checkboxes, and dropdowns, or type anywhere on standard PDFs. Flatten and save without watermark.",
+      "descLength": 138
+    },
+    {
+      "file": "hu/pos-szamlazas.html",
+      "route": "/hu/pos-szamlazas",
+      "titles": [
+        "Free POS Billing Receipt Generator PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Free POS Billing Receipt Generator PDF",
+      "titleLength": 38,
+      "desc": "Generate point-of-sale thermal receipts and retail bills in 58mm, 80mm, or A4 formats directly in your browser.",
+      "descLength": 111
+    },
+    {
+      "file": "hu/powerpoint-bol-pdf.html",
+      "route": "/hu/powerpoint-bol-pdf",
+      "titles": [
+        "PowerPoint to PDF Converter Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PowerPoint to PDF Converter Free",
+      "titleLength": 32,
+      "desc": "Convert Microsoft PowerPoint presentations (.pptx) into clean PDF slide handouts directly in your browser.",
+      "descLength": 106
+    },
+    {
+      "file": "hu/szetbontas.html",
+      "route": "/hu/szetbontas",
+      "titles": [
+        "PDF szétbontása oldalak vagy fejezetek szerint"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF szétbontása oldalak vagy fejezetek szerint",
+      "titleLength": 46,
+      "desc": "Bontsd fel a PDF-et több fájlra oldaltartomány vagy szakaszok szerint. Teljes kontroll a dokumentumszerkezet felett - szerverre feltöltés nélkül.",
+      "descLength": 145
+    },
+    {
+      "file": "hu/szinek-invertalasa.html",
+      "route": "/hu/szinek-invertalasa",
+      "titles": [
+        "Invert PDF Colors for Dark Mode Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Invert PDF Colors for Dark Mode Free",
+      "titleLength": 36,
+      "desc": "Turn glaring white PDF documents into Dark Mode, Sepia, or High Contrast for comfortable reading and battery saving.",
+      "descLength": 116
+    },
+    {
+      "file": "hu/szkenneles-pdf-be.html",
+      "route": "/hu/szkenneles-pdf-be",
+      "titles": [
+        "Scan Documents to PDF with Your Camera"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Scan Documents to PDF with Your Camera",
+      "titleLength": 38,
+      "desc": "Capture document pages using your computer webcam or smartphone camera, apply clean scan filters, and export to PDF.",
+      "descLength": 116
+    },
+    {
+      "file": "hu/szoveg-kivalasztasa.html",
+      "route": "/hu/szoveg-kivalasztasa",
+      "titles": [
+        "Extract Text from PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Extract Text from PDF Online Free",
+      "titleLength": 33,
+      "desc": "Pull all readable text from any PDF document with line break preservation. Export as TXT, Markdown, or JSON.",
+      "descLength": 108
+    },
+    {
+      "file": "hu/tamogatas.html",
+      "route": "/hu/tamogatas",
+      "titles": [
+        "Támogasd a ihatelovepdf-t | Ingyenes eszközök"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Támogasd a ihatelovepdf-t | Ingyenes eszközök",
+      "titleLength": 45,
+      "desc": "A támogatásod lehetÅ‘vé teszi, hogy a ihatelovepdf kis, független és adatvédelemre összpontosító projekt maradjon. Segíts fedezni a tárhellyel és fejlesztéssel kapcsolatos költségeket.",
+      "descLength": 184
+    },
+    {
+      "file": "hu/tomoriteni.html",
+      "route": "/hu/tomoriteni",
+      "titles": [
+        "PDF tömörítése ingyenesen online"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF tömörítése ingyenesen online",
+      "titleLength": 32,
+      "desc": "Csökkentsd hatékonyan a PDF fájlok méretét minÅ‘ségveszteség nélkül. Ingyenes és bizalmas tömörítés közvetlenül a böngészÅ‘dben - szerverre feltöltés nélkül.",
+      "descLength": 157
+    },
+    {
+      "file": "hu/vizjel.html",
+      "route": "/hu/vizjel",
+      "titles": [
+        "Add Watermark to PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Add Watermark to PDF Online Free",
+      "titleLength": 32,
+      "desc": "Protect and brand your PDF documents with custom text or image watermarks. Set opacity, angle, and grid placement 100% in your browser.",
+      "descLength": 135
+    },
+    {
+      "file": "hu.html",
+      "route": "/hu",
+      "titles": [
+        "ihatelovepdf: Ingyenes PDF-eszközök a böngészőben"
+      ],
+      "titleCount": 1,
+      "finalTitle": "ihatelovepdf: Ingyenes PDF-eszközök a böngészőben",
+      "titleLength": 49,
+      "desc": "A ihatelovepdf egy adatvédelemre összpontosító PDF-eszközkészlet, amely közvetlenül a böngészÅ‘dben összefÅ±zi, tömöríti, szétbontja, kinyeri, elforgatja és konvertálja a PDF-eket. Minden feldolgozás az eszközödön marad.",
+      "descLength": 220
+    },
+    {
+      "file": "ilovepdf-alternative.html",
+      "route": "/ilovepdf-alternative",
+      "titles": [
+        "iLovePDF Alternative, Free and Private | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "iLovePDF Alternative, Free and Private | I Hate Love PDF",
+      "titleLength": 56,
+      "desc": "Looking for an honest iLovePDF alternative? Discover why I Hate Love PDF is completely free, runs locally in your browser, and never uploads files.",
+      "descLength": 147
+    },
+    {
+      "file": "images-to-pdf.html",
+      "route": "/images-to-pdf",
+      "titles": [
+        "Images to PDF Converter, Free and Private | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Images to PDF Converter, Free and Private | I Hate Love PDF",
+      "titleLength": 59,
+      "desc": "Combine multiple JPG, PNG, and WebP images into a single multi-page PDF document.",
+      "descLength": 81
+    },
+    {
+      "file": "index.html",
+      "route": "/",
+      "titles": [
+        "I Hate Love PDF: Free and Private Browser PDF Tools"
+      ],
+      "titleCount": 1,
+      "finalTitle": "I Hate Love PDF: Free and Private Browser PDF Tools",
+      "titleLength": 51,
+      "desc": "ihatelovepdf is a private, free web toolkit to merge, compress, split, extract, rotate, reorder, crop, and convert PDFs directly on your device. No file uploads, no tracking, and no accounts required.",
+      "descLength": 200
+    },
+    {
+      "file": "invert-colors.html",
+      "route": "/invert-colors",
+      "titles": [
+        "Invert PDF Colors for Dark Mode Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Invert PDF Colors for Dark Mode Free | I Hate Love PDF",
+      "titleLength": 54,
+      "desc": "Turn glaring white PDF documents into Dark Mode, Sepia, or High Contrast for comfortable reading and battery saving.",
+      "descLength": 116
+    },
+    {
+      "file": "it/compila-modulo-pdf.html",
+      "route": "/it/compila-modulo-pdf",
+      "titles": [
+        "Fill PDF Forms Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Fill PDF Forms Online Free",
+      "titleLength": 26,
+      "desc": "Fill out interactive AcroForm PDF forms, checkboxes, and dropdowns, or type anywhere on standard PDFs. Flatten and save without watermark.",
+      "descLength": 138
+    },
+    {
+      "file": "it/comprimi.html",
+      "route": "/it/comprimi",
+      "titles": [
+        "Comprimi PDF Online Gratis - Riduci Dimensione"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Comprimi PDF Online Gratis - Riduci Dimensione",
+      "titleLength": 46,
+      "desc": "Comprimi file PDF online senza perdere qualità. Riduci dimensioni per email o storage. Gratuito, veloce, sicuro.",
+      "descLength": 112
+    },
+    {
+      "file": "it/confronta-pdf.html",
+      "route": "/it/confronta-pdf",
+      "titles": [
+        "Compare Two PDF Files Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Compare Two PDF Files Online Free",
+      "titleLength": 33,
+      "desc": "Compare two PDF documents side-by-side in your browser to spot visual differences and revisions.",
+      "descLength": 96
+    },
+    {
+      "file": "it/crea-pdf.html",
+      "route": "/it/crea-pdf",
+      "titles": [
+        "Create PDF Online Free, No Signup"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Create PDF Online Free, No Signup",
+      "titleLength": 33,
+      "desc": "Create and design PDF documents from scratch in your browser. Add text, images, shapes, tables, and export to PDF instantly.",
+      "descLength": 124
+    },
+    {
+      "file": "it/da-csv-a-pdf.html",
+      "route": "/it/da-csv-a-pdf",
+      "titles": [
+        "CSV to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "CSV to PDF Converter Online Free",
+      "titleLength": 32,
+      "desc": "Transform comma separated and tab separated CSV datasets into formatted PDF tables.",
+      "descLength": 83
+    },
+    {
+      "file": "it/da-ebook-a-pdf.html",
+      "route": "/it/da-ebook-a-pdf",
+      "titles": [
+        "EPUB to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "EPUB to PDF Converter Online Free",
+      "titleLength": 33,
+      "desc": "Convert EPUB and digital eBook files into formatted, printable PDF documents with custom margins and page sizes.",
+      "descLength": 112
+    },
+    {
+      "file": "it/da-excel-a-pdf.html",
+      "route": "/it/da-excel-a-pdf",
+      "titles": [
+        "Excel to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Excel to PDF Converter Online Free",
+      "titleLength": 34,
+      "desc": "Convert Microsoft Excel (.xlsx, .xls) spreadsheets into clean PDF documents directly in your browser.",
+      "descLength": 101
+    },
+    {
+      "file": "it/da-html-a-pdf.html",
+      "route": "/it/da-html-a-pdf",
+      "titles": [
+        "HTML to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "HTML to PDF Converter Online Free",
+      "titleLength": 33,
+      "desc": "Render HTML code and web content into clean PDF pages directly in your browser.",
+      "descLength": 79
+    },
+    {
+      "file": "it/da-immagini-a-pdf.html",
+      "route": "/it/da-immagini-a-pdf",
+      "titles": [
+        "Crea PDF da immagini"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Crea PDF da immagini",
+      "titleLength": 20,
+      "desc": "Crea un PDF professionale dalle tue immagini. Ordina le foto, personalizza layout e margini e genera il documento localmente nel browser.",
+      "descLength": 137
+    },
+    {
+      "file": "it/da-markdown-a-pdf.html",
+      "route": "/it/da-markdown-a-pdf",
+      "titles": [
+        "Markdown to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Markdown to PDF Converter Online Free",
+      "titleLength": 37,
+      "desc": "Transform Markdown text into clean, beautifully formatted PDF documents with headings, lists, and code styling.",
+      "descLength": 111
+    },
+    {
+      "file": "it/da-pdf-a-epub.html",
+      "route": "/it/da-pdf-a-epub",
+      "titles": [
+        "PDF to EPUB Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to EPUB Converter Online Free",
+      "titleLength": 33,
+      "desc": "Transform PDF documents into reflowable EPUB eBooks for comfortable reading on Kindle, Kobo, and Apple Books.",
+      "descLength": 109
+    },
+    {
+      "file": "it/da-pdf-a-excel.html",
+      "route": "/it/da-pdf-a-excel",
+      "titles": [
+        "PDF to Excel Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to Excel Converter Online Free",
+      "titleLength": 34,
+      "desc": "Extract tabular data from PDF files and convert them into editable Microsoft Excel (.xlsx) spreadsheets.",
+      "descLength": 104
+    },
+    {
+      "file": "it/da-pdf-a-html.html",
+      "route": "/it/da-pdf-a-html",
+      "titles": [
+        "PDF to HTML Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to HTML Converter Online Free",
+      "titleLength": 33,
+      "desc": "Convert PDF files into semantic, responsive HTML code that you can embed on websites or view in any browser.",
+      "descLength": 108
+    },
+    {
+      "file": "it/da-pdf-a-immagini.html",
+      "route": "/it/da-pdf-a-immagini",
+      "titles": [
+        "Convertire PDF in JPG Online Gratis - Estrai"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Convertire PDF in JPG Online Gratis - Estrai",
+      "titleLength": 44,
+      "desc": "Converti PDF a JPG gratuitamente. Estrai pagine come immagini ad alta qualità. Nessuna registrazione necessaria.",
+      "descLength": 112
+    },
+    {
+      "file": "it/da-pdf-a-powerpoint.html",
+      "route": "/it/da-pdf-a-powerpoint",
+      "titles": [
+        "PDF to PowerPoint Converter Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to PowerPoint Converter Free",
+      "titleLength": 32,
+      "desc": "Transform PDF pages into Microsoft PowerPoint (.pptx) slides with high-resolution slide layouts.",
+      "descLength": 96
+    },
+    {
+      "file": "it/da-pdf-a-zip.html",
+      "route": "/it/da-pdf-a-zip",
+      "titles": [
+        "Convert PDF to ZIP Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Convert PDF to ZIP Online Free",
+      "titleLength": 30,
+      "desc": "Bundle single or multiple PDF documents directly into a clean ZIP archive with lossless quality and 100% private browser processing.",
+      "descLength": 132
+    },
+    {
+      "file": "it/da-powerpoint-a-pdf.html",
+      "route": "/it/da-powerpoint-a-pdf",
+      "titles": [
+        "PowerPoint to PDF Converter Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PowerPoint to PDF Converter Free",
+      "titleLength": 32,
+      "desc": "Convert Microsoft PowerPoint presentations (.pptx) into clean PDF slide handouts directly in your browser.",
+      "descLength": 106
+    },
+    {
+      "file": "it/dividi.html",
+      "route": "/it/dividi",
+      "titles": [
+        "Dividi PDF Online Gratis - Estrai e Separa Pagine"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Dividi PDF Online Gratis - Estrai e Separa Pagine",
+      "titleLength": 49,
+      "desc": "Dividi file PDF online gratuitamente. Estrai pagine singole o separa PDF in secondi. Nessun account richiesto.",
+      "descLength": 110
+    },
+    {
+      "file": "it/estrai-testo.html",
+      "route": "/it/estrai-testo",
+      "titles": [
+        "Extract Text from PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Extract Text from PDF Online Free",
+      "titleLength": 33,
+      "desc": "Pull all readable text from any PDF document with line break preservation. Export as TXT, Markdown, or JSON.",
+      "descLength": 108
+    },
+    {
+      "file": "it/estrai.html",
+      "route": "/it/estrai",
+      "titles": [
+        "Estrai pagine PDF | ihatelovepdf"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Estrai pagine PDF | ihatelovepdf",
+      "titleLength": 32,
+      "desc": "Seleziona pagine specifiche ed estraile in un nuovo file PDF. Elaborazione privata e veloce nel browser.",
+      "descLength": 104
+    },
+    {
+      "file": "it/faq.html",
+      "route": "/it/faq",
+      "titles": [
+        "Domande Frequenti sugli Strumenti PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Domande Frequenti sugli Strumenti PDF",
+      "titleLength": 37,
+      "desc": "Risposte alle domande più frequenti su ihatelovepdf. Scopri come unire, comprimere, dividere, estrarre e riordinare PDF senza caricare i tuoi file online.",
+      "descLength": 154
+    },
+    {
+      "file": "it/fatturazione-pos.html",
+      "route": "/it/fatturazione-pos",
+      "titles": [
+        "Free POS Billing Receipt Generator PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Free POS Billing Receipt Generator PDF",
+      "titleLength": 38,
+      "desc": "Generate point-of-sale thermal receipts and retail bills in 58mm, 80mm, or A4 formats directly in your browser.",
+      "descLength": 111
+    },
+    {
+      "file": "it/filigrana.html",
+      "route": "/it/filigrana",
+      "titles": [
+        "Add Watermark to PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Add Watermark to PDF Online Free",
+      "titleLength": 32,
+      "desc": "Protect and brand your PDF documents with custom text or image watermarks. Set opacity, angle, and grid placement 100% in your browser.",
+      "descLength": 135
+    },
+    {
+      "file": "it/firma-pdf.html",
+      "route": "/it/firma-pdf",
+      "titles": [
+        "Sign PDF Online Free, Private"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Sign PDF Online Free, Private",
+      "titleLength": 29,
+      "desc": "Sign PDF documents electronically with smooth handwriting draw pad, typed calligraphy fonts, or image stamps. 100% private in-browser signing.",
+      "descLength": 142
+    },
+    {
+      "file": "it/generatore-fattura-gst.html",
+      "route": "/it/generatore-fattura-gst",
+      "titles": [
+        "Free GST Invoice Generator, PDF Download"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Free GST Invoice Generator, PDF Download",
+      "titleLength": 40,
+      "desc": "Create GST-compliant tax invoice PDFs with auto-calculated CGST, SGST, IGST, HSN/SAC codes, and bank details.",
+      "descLength": 109
+    },
+    {
+      "file": "it/intestazioni-e-pie-di-pagina.html",
+      "route": "/it/intestazioni-e-pie-di-pagina",
+      "titles": [
+        "Add Headers and Footers to PDF Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Add Headers and Footers to PDF Free",
+      "titleLength": 35,
+      "desc": "Add header and footer text, page counters, and timestamps to any PDF with zero server uploads.",
+      "descLength": 94
+    },
+    {
+      "file": "it/inverti-colori.html",
+      "route": "/it/inverti-colori",
+      "titles": [
+        "Invert PDF Colors for Dark Mode Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Invert PDF Colors for Dark Mode Free",
+      "titleLength": 36,
+      "desc": "Turn glaring white PDF documents into Dark Mode, Sepia, or High Contrast for comfortable reading and battery saving.",
+      "descLength": 116
+    },
+    {
+      "file": "it/lavagna-collaborativa.html",
+      "route": "/it/lavagna-collaborativa",
+      "titles": [
+        "Whiteboard Sketch to PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Whiteboard Sketch to PDF Online Free",
+      "titleLength": 36,
+      "desc": "Draw, sketch, annotate, and brainstorm directly over PDF pages with an interactive collaborative whiteboard.",
+      "descLength": 108
+    },
+    {
+      "file": "it/modifica-pdf.html",
+      "route": "/it/modifica-pdf",
+      "titles": [
+        "Edit and Annotate PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Edit and Annotate PDF Online Free",
+      "titleLength": 33,
+      "desc": "Annotate and markup PDF pages directly in your browser. Add text boxes, highlights, and shapes easily.",
+      "descLength": 102
+    },
+    {
+      "file": "it/numeri-di-pagina.html",
+      "route": "/it/numeri-di-pagina",
+      "titles": [
+        "Add Page Numbers to PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Add Page Numbers to PDF Online Free",
+      "titleLength": 35,
+      "desc": "Insert dynamic page numbering to your PDF documents with customizable positions, formats, fonts, and skip-first-page options.",
+      "descLength": 125
+    },
+    {
+      "file": "it/oscura-testo.html",
+      "route": "/it/oscura-testo",
+      "titles": [
+        "Redact PDF Online Free, Private"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Redact PDF Online Free, Private",
+      "titleLength": 31,
+      "desc": "Permanently remove and black out sensitive data from your PDF. Solid opaque vector blocks are burned directly into the PDF stream.",
+      "descLength": 130
+    },
+    {
+      "file": "it/riordina.html",
+      "route": "/it/riordina",
+      "titles": [
+        "Riordina pagine PDF | ihatelovepdf"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Riordina pagine PDF | ihatelovepdf",
+      "titleLength": 34,
+      "desc": "Organizza e cambia l&#x27;ordine delle pagine PDF facilmente con anteprime visive nel browser, 100% privato.",
+      "descLength": 108
+    },
+    {
+      "file": "it/ritaglia.html",
+      "route": "/it/ritaglia",
+      "titles": [
+        "Ritaglia pagine PDF online"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Ritaglia pagine PDF online",
+      "titleLength": 26,
+      "desc": "Ritaglia pagine PDF e rimuovi i margini in eccesso direttamente nel browser. Tutto resta locale e privato.",
+      "descLength": 106
+    },
+    {
+      "file": "it/ruota.html",
+      "route": "/it/ruota",
+      "titles": [
+        "Ruota pagine PDF online"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Ruota pagine PDF online",
+      "titleLength": 23,
+      "desc": "Ruota pagine PDF selezionate di 90 o 180 gradi direttamente nel browser. Gratis, privato e senza upload.",
+      "descLength": 104
+    },
+    {
+      "file": "it/scansiona-in-pdf.html",
+      "route": "/it/scansiona-in-pdf",
+      "titles": [
+        "Scan Documents to PDF with Your Camera"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Scan Documents to PDF with Your Camera",
+      "titleLength": 38,
+      "desc": "Capture document pages using your computer webcam or smartphone camera, apply clean scan filters, and export to PDF.",
+      "descLength": 116
+    },
+    {
+      "file": "it/supporto.html",
+      "route": "/it/supporto",
+      "titles": [
+        "Supporta ihatelovepdf | Mantieni il toolkit gratuito e privato"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Supporta ihatelovepdf | Mantieni il toolkit gratuito e privato",
+      "titleLength": 62,
+      "desc": "La tua donazione aiuta ihatelovepdf a restare piccolo, indipendente e attento alla privacy. Contribuisci a coprire hosting e miglioramenti continui.",
+      "descLength": 148
+    },
+    {
+      "file": "it/unisci.html",
+      "route": "/it/unisci",
+      "titles": [
+        "Unisci PDF Online Gratis - Combina File PDF Senza"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Unisci PDF Online Gratis - Combina File PDF Senza",
+      "titleLength": 49,
+      "desc": "Unisci file PDF online gratuitamente in pochi secondi. Nessuna registrazione, nessun limite di file. Carica, combina e scarica.",
+      "descLength": 127
+    },
+    {
+      "file": "it.html",
+      "route": "/it",
+      "titles": [
+        "ihatelovepdf: Strumenti PDF Gratuiti nel Browser"
+      ],
+      "titleCount": 1,
+      "finalTitle": "ihatelovepdf: Strumenti PDF Gratuiti nel Browser",
+      "titleLength": 48,
+      "desc": "ihatelovepdf è un insieme di strumenti pensati per la privacy che ti permette di unire, comprimere, dividere, estrarre, riordinare e convertire PDF in immagini e viceversa direttamente nel browser. Tutto viene elaborato sul tuo dispositivo, quindi i tuoi file restano sempre sotto il tuo controllo.",
+      "descLength": 298
+    },
+    {
+      "file": "markdown-to-pdf.html",
+      "route": "/markdown-to-pdf",
+      "titles": [
+        "Markdown to PDF Converter Online Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Markdown to PDF Converter Online Free | I Hate Love PDF",
+      "titleLength": 55,
+      "desc": "Transform Markdown text into clean, beautifully formatted PDF documents with headings, lists, and code styling.",
+      "descLength": 111
+    },
+    {
+      "file": "merge.html",
+      "route": "/merge",
+      "titles": [
+        "Merge PDF Online Free, No Signup | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Merge PDF Online Free, No Signup | I Hate Love PDF",
+      "titleLength": 50,
+      "desc": "Combine multiple PDF files into one document directly in your browser. Fast, private, and free with no server uploads.",
+      "descLength": 118
+    },
+    {
+      "file": "offline-pdf-tools.html",
+      "route": "/offline-pdf-tools",
+      "titles": [
+        "PDF Tools That Work Offline in Browser | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF Tools That Work Offline in Browser | I Hate Love PDF",
+      "titleLength": 56,
+      "desc": "Process PDFs locally in your browser even without internet access. Client-side tools that work offline with zero server data transfer.",
+      "descLength": 134
+    },
+    {
+      "file": "page-numbers.html",
+      "route": "/page-numbers",
+      "titles": [
+        "Add Page Numbers to PDF Online Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Add Page Numbers to PDF Online Free | I Hate Love PDF",
+      "titleLength": 53,
+      "desc": "Insert dynamic page numbering to your PDF documents with customizable positions, formats, fonts, and skip-first-page options.",
+      "descLength": 125
+    },
+    {
+      "file": "pdf-to-epub.html",
+      "route": "/pdf-to-epub",
+      "titles": [
+        "PDF to EPUB Converter Online Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to EPUB Converter Online Free | I Hate Love PDF",
+      "titleLength": 51,
+      "desc": "Transform PDF documents into reflowable EPUB eBooks for comfortable reading on Kindle, Kobo, and Apple Books.",
+      "descLength": 109
+    },
+    {
+      "file": "pdf-to-excel.html",
+      "route": "/pdf-to-excel",
+      "titles": [
+        "PDF to Excel Converter Online Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to Excel Converter Online Free | I Hate Love PDF",
+      "titleLength": 52,
+      "desc": "Extract tabular data from PDF files and convert them into editable Microsoft Excel (.xlsx) spreadsheets.",
+      "descLength": 104
+    },
+    {
+      "file": "pdf-to-html.html",
+      "route": "/pdf-to-html",
+      "titles": [
+        "PDF to HTML Converter Online Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to HTML Converter Online Free | I Hate Love PDF",
+      "titleLength": 51,
+      "desc": "Convert PDF files into semantic, responsive HTML code that you can embed on websites or view in any browser.",
+      "descLength": 108
+    },
+    {
+      "file": "pdf-to-images.html",
+      "route": "/pdf-to-images",
+      "titles": [
+        "PDF to JPG and Images, Free Converter | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to JPG and Images, Free Converter | I Hate Love PDF",
+      "titleLength": 55,
+      "desc": "Render every PDF page into crisp PNG or JPEG images. Export individually or as a ZIP archive.",
+      "descLength": 93
+    },
+    {
+      "file": "pdf-to-powerpoint.html",
+      "route": "/pdf-to-powerpoint",
+      "titles": [
+        "PDF to PowerPoint Converter Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to PowerPoint Converter Free | I Hate Love PDF",
+      "titleLength": 50,
+      "desc": "Transform PDF pages into Microsoft PowerPoint (.pptx) slides with high-resolution slide layouts.",
+      "descLength": 96
+    },
+    {
+      "file": "pdf-to-zip.html",
+      "route": "/pdf-to-zip",
+      "titles": [
+        "Convert PDF to ZIP Online Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Convert PDF to ZIP Online Free | I Hate Love PDF",
+      "titleLength": 48,
+      "desc": "Bundle single or multiple PDF documents directly into a clean ZIP archive with lossless quality and 100% private browser processing.",
+      "descLength": 132
+    },
+    {
+      "file": "pos-billing.html",
+      "route": "/pos-billing",
+      "titles": [
+        "Free POS Billing Receipt Generator PDF | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Free POS Billing Receipt Generator PDF | I Hate Love PDF",
+      "titleLength": 56,
+      "desc": "Generate point-of-sale thermal receipts and retail bills in 58mm, 80mm, or A4 formats directly in your browser.",
+      "descLength": 111
+    },
+    {
+      "file": "powerpoint-to-pdf.html",
+      "route": "/powerpoint-to-pdf",
+      "titles": [
+        "PowerPoint to PDF Converter Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PowerPoint to PDF Converter Free | I Hate Love PDF",
+      "titleLength": 50,
+      "desc": "Convert Microsoft PowerPoint presentations (.pptx) into clean PDF slide handouts directly in your browser.",
+      "descLength": 106
+    },
+    {
+      "file": "privacy.html",
+      "route": "/privacy",
+      "titles": [
+        "Privacy Policy | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Privacy Policy | I Hate Love PDF",
+      "titleLength": 32,
+      "desc": "Read the ihatelovepdf Privacy Policy. No file uploads, no server tracking, and local browser processing on your own device.",
+      "descLength": 123
+    },
+    {
+      "file": "products.html",
+      "route": "/products",
+      "titles": [
+        "More Free Tools by Shreyash Srivastava | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "More Free Tools by Shreyash Srivastava | I Hate Love PDF",
+      "titleLength": 56,
+      "desc": "Discover developer tools built by Shreyash Srivastava: GitFC, SnapDevCode, and SystemDesign.website.",
+      "descLength": 100
+    },
+    {
+      "file": "pt/apoie.html",
+      "route": "/pt/apoie",
+      "titles": [
+        "Apoie o ihatelovepdf | Mantenha a ferramenta privada e gratuita"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Apoie o ihatelovepdf | Mantenha a ferramenta privada e gratuita",
+      "titleLength": 63,
+      "desc": "Sua doação mantém o ihatelovepdf pequeno, independente e focado em privacidade. Ajude a cobrir hospedagem e evoluções contínuas.",
+      "descLength": 128
+    },
+    {
+      "file": "pt/assinar-pdf.html",
+      "route": "/pt/assinar-pdf",
+      "titles": [
+        "Sign PDF Online Free, Private"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Sign PDF Online Free, Private",
+      "titleLength": 29,
+      "desc": "Sign PDF documents electronically with smooth handwriting draw pad, typed calligraphy fonts, or image stamps. 100% private in-browser signing.",
+      "descLength": 142
+    },
+    {
+      "file": "pt/cabecalhos-e-rodapes.html",
+      "route": "/pt/cabecalhos-e-rodapes",
+      "titles": [
+        "Add Headers and Footers to PDF Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Add Headers and Footers to PDF Free",
+      "titleLength": 35,
+      "desc": "Add header and footer text, page counters, and timestamps to any PDF with zero server uploads.",
+      "descLength": 94
+    },
+    {
+      "file": "pt/comparar-pdf.html",
+      "route": "/pt/comparar-pdf",
+      "titles": [
+        "Compare Two PDF Files Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Compare Two PDF Files Online Free",
+      "titleLength": 33,
+      "desc": "Compare two PDF documents side-by-side in your browser to spot visual differences and revisions.",
+      "descLength": 96
+    },
+    {
+      "file": "pt/comprimir.html",
+      "route": "/pt/comprimir",
+      "titles": [
+        "Comprimir PDF Online Grátis - Reduzir Tamanho"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Comprimir PDF Online Grátis - Reduzir Tamanho",
+      "titleLength": 45,
+      "desc": "Comprima arquivos PDF online sem perder qualidade. Reduza o tamanho para email e armazenamento.",
+      "descLength": 95
+    },
+    {
+      "file": "pt/criar-pdf.html",
+      "route": "/pt/criar-pdf",
+      "titles": [
+        "Create PDF Online Free, No Signup"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Create PDF Online Free, No Signup",
+      "titleLength": 33,
+      "desc": "Create and design PDF documents from scratch in your browser. Add text, images, shapes, tables, and export to PDF instantly.",
+      "descLength": 124
+    },
+    {
+      "file": "pt/csv-para-pdf.html",
+      "route": "/pt/csv-para-pdf",
+      "titles": [
+        "CSV to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "CSV to PDF Converter Online Free",
+      "titleLength": 32,
+      "desc": "Transform comma separated and tab separated CSV datasets into formatted PDF tables.",
+      "descLength": 83
+    },
+    {
+      "file": "pt/dividir.html",
+      "route": "/pt/dividir",
+      "titles": [
+        "Dividir PDF Online Grátis - Extrair Páginas"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Dividir PDF Online Grátis - Extrair Páginas",
+      "titleLength": 43,
+      "desc": "Divida arquivos PDF online gratuitamente. Extraia e separe páginas facilmente, sem cadastro.",
+      "descLength": 92
+    },
+    {
+      "file": "pt/ebook-para-pdf.html",
+      "route": "/pt/ebook-para-pdf",
+      "titles": [
+        "EPUB to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "EPUB to PDF Converter Online Free",
+      "titleLength": 33,
+      "desc": "Convert EPUB and digital eBook files into formatted, printable PDF documents with custom margins and page sizes.",
+      "descLength": 112
+    },
+    {
+      "file": "pt/editar-pdf.html",
+      "route": "/pt/editar-pdf",
+      "titles": [
+        "Edit and Annotate PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Edit and Annotate PDF Online Free",
+      "titleLength": 33,
+      "desc": "Annotate and markup PDF pages directly in your browser. Add text boxes, highlights, and shapes easily.",
+      "descLength": 102
+    },
+    {
+      "file": "pt/escanear-para-pdf.html",
+      "route": "/pt/escanear-para-pdf",
+      "titles": [
+        "Scan Documents to PDF with Your Camera"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Scan Documents to PDF with Your Camera",
+      "titleLength": 38,
+      "desc": "Capture document pages using your computer webcam or smartphone camera, apply clean scan filters, and export to PDF.",
+      "descLength": 116
+    },
+    {
+      "file": "pt/excel-para-pdf.html",
+      "route": "/pt/excel-para-pdf",
+      "titles": [
+        "Excel to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Excel to PDF Converter Online Free",
+      "titleLength": 34,
+      "desc": "Convert Microsoft Excel (.xlsx, .xls) spreadsheets into clean PDF documents directly in your browser.",
+      "descLength": 101
+    },
+    {
+      "file": "pt/extrair-texto.html",
+      "route": "/pt/extrair-texto",
+      "titles": [
+        "Extract Text from PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Extract Text from PDF Online Free",
+      "titleLength": 33,
+      "desc": "Pull all readable text from any PDF document with line break preservation. Export as TXT, Markdown, or JSON.",
+      "descLength": 108
+    },
+    {
+      "file": "pt/extrair.html",
+      "route": "/pt/extrair",
+      "titles": [
+        "Extrair Páginas de um PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Extrair Páginas de um PDF",
+      "titleLength": 25,
+      "desc": "Selecione páginas de qualquer PDF e crie um novo documento na hora. Processamento privado e ilimitado direto no navegador.",
+      "descLength": 122
+    },
+    {
+      "file": "pt/faturamento-pos.html",
+      "route": "/pt/faturamento-pos",
+      "titles": [
+        "Free POS Billing Receipt Generator PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Free POS Billing Receipt Generator PDF",
+      "titleLength": 38,
+      "desc": "Generate point-of-sale thermal receipts and retail bills in 58mm, 80mm, or A4 formats directly in your browser.",
+      "descLength": 111
+    },
+    {
+      "file": "pt/gerador-fatura-gst.html",
+      "route": "/pt/gerador-fatura-gst",
+      "titles": [
+        "Free GST Invoice Generator, PDF Download"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Free GST Invoice Generator, PDF Download",
+      "titleLength": 40,
+      "desc": "Create GST-compliant tax invoice PDFs with auto-calculated CGST, SGST, IGST, HSN/SAC codes, and bank details.",
+      "descLength": 109
+    },
+    {
+      "file": "pt/girar.html",
+      "route": "/pt/girar",
+      "titles": [
+        "Girar paginas PDF online"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Girar paginas PDF online",
+      "titleLength": 24,
+      "desc": "Gire paginas selecionadas de um PDF em 90 ou 180 graus direto no navegador. Gratis, privado e sem upload.",
+      "descLength": 105
+    },
+    {
+      "file": "pt/html-para-pdf.html",
+      "route": "/pt/html-para-pdf",
+      "titles": [
+        "HTML to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "HTML to PDF Converter Online Free",
+      "titleLength": 33,
+      "desc": "Render HTML code and web content into clean PDF pages directly in your browser.",
+      "descLength": 79
+    },
+    {
+      "file": "pt/imagens-para-pdf.html",
+      "route": "/pt/imagens-para-pdf",
+      "titles": [
+        "Criar PDF de Imagens"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Criar PDF de Imagens",
+      "titleLength": 20,
+      "desc": "Crie um PDF profissional a partir de suas imagens. Organize fotos, personalize o layout e as margens, e gere seu documento localmente no seu navegador.",
+      "descLength": 151
+    },
+    {
+      "file": "pt/inverter-cores.html",
+      "route": "/pt/inverter-cores",
+      "titles": [
+        "Invert PDF Colors for Dark Mode Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Invert PDF Colors for Dark Mode Free",
+      "titleLength": 36,
+      "desc": "Turn glaring white PDF documents into Dark Mode, Sepia, or High Contrast for comfortable reading and battery saving.",
+      "descLength": 116
+    },
+    {
+      "file": "pt/juntar.html",
+      "route": "/pt/juntar",
+      "titles": [
+        "Mesclar PDF Online Grátis - Sem Cadastro"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Mesclar PDF Online Grátis - Sem Cadastro",
+      "titleLength": 40,
+      "desc": "Mescle arquivos PDF online gratuitamente. Sem cadastro, sem limites. Carregue, mescle e baixe em segundos.",
+      "descLength": 106
+    },
+    {
+      "file": "pt/marca-dagua.html",
+      "route": "/pt/marca-dagua",
+      "titles": [
+        "Add Watermark to PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Add Watermark to PDF Online Free",
+      "titleLength": 32,
+      "desc": "Protect and brand your PDF documents with custom text or image watermarks. Set opacity, angle, and grid placement 100% in your browser.",
+      "descLength": 135
+    },
+    {
+      "file": "pt/markdown-para-pdf.html",
+      "route": "/pt/markdown-para-pdf",
+      "titles": [
+        "Markdown to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Markdown to PDF Converter Online Free",
+      "titleLength": 37,
+      "desc": "Transform Markdown text into clean, beautifully formatted PDF documents with headings, lists, and code styling.",
+      "descLength": 111
+    },
+    {
+      "file": "pt/numeros-de-pagina.html",
+      "route": "/pt/numeros-de-pagina",
+      "titles": [
+        "Add Page Numbers to PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Add Page Numbers to PDF Online Free",
+      "titleLength": 35,
+      "desc": "Insert dynamic page numbering to your PDF documents with customizable positions, formats, fonts, and skip-first-page options.",
+      "descLength": 125
+    },
+    {
+      "file": "pt/pdf-para-epub.html",
+      "route": "/pt/pdf-para-epub",
+      "titles": [
+        "PDF to EPUB Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to EPUB Converter Online Free",
+      "titleLength": 33,
+      "desc": "Transform PDF documents into reflowable EPUB eBooks for comfortable reading on Kindle, Kobo, and Apple Books.",
+      "descLength": 109
+    },
+    {
+      "file": "pt/pdf-para-excel.html",
+      "route": "/pt/pdf-para-excel",
+      "titles": [
+        "PDF to Excel Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to Excel Converter Online Free",
+      "titleLength": 34,
+      "desc": "Extract tabular data from PDF files and convert them into editable Microsoft Excel (.xlsx) spreadsheets.",
+      "descLength": 104
+    },
+    {
+      "file": "pt/pdf-para-html.html",
+      "route": "/pt/pdf-para-html",
+      "titles": [
+        "PDF to HTML Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to HTML Converter Online Free",
+      "titleLength": 33,
+      "desc": "Convert PDF files into semantic, responsive HTML code that you can embed on websites or view in any browser.",
+      "descLength": 108
+    },
+    {
+      "file": "pt/pdf-para-imagens.html",
+      "route": "/pt/pdf-para-imagens",
+      "titles": [
+        "Converter PDF em Imagens"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Converter PDF em Imagens",
+      "titleLength": 24,
+      "desc": "Converta cada página do seu PDF em imagens PNG ou JPEG de alta qualidade. Escolha sua resolução e baixe como um arquivo ZIP, 100% privado e seguro.",
+      "descLength": 147
+    },
+    {
+      "file": "pt/pdf-para-powerpoint.html",
+      "route": "/pt/pdf-para-powerpoint",
+      "titles": [
+        "PDF to PowerPoint Converter Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to PowerPoint Converter Free",
+      "titleLength": 32,
+      "desc": "Transform PDF pages into Microsoft PowerPoint (.pptx) slides with high-resolution slide layouts.",
+      "descLength": 96
+    },
+    {
+      "file": "pt/pdf-para-zip.html",
+      "route": "/pt/pdf-para-zip",
+      "titles": [
+        "Convert PDF to ZIP Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Convert PDF to ZIP Online Free",
+      "titleLength": 30,
+      "desc": "Bundle single or multiple PDF documents directly into a clean ZIP archive with lossless quality and 100% private browser processing.",
+      "descLength": 132
+    },
+    {
+      "file": "pt/perguntas-frequentes.html",
+      "route": "/pt/perguntas-frequentes",
+      "titles": [
+        "Perguntas Frequentes sobre Ferramentas PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Perguntas Frequentes sobre Ferramentas PDF",
+      "titleLength": 42,
+      "desc": "Perguntas e respostas sobre o ihatelovepdf. Aprenda a juntar, comprimir, dividir, extrair e reorganizar PDFs sem enviar seus arquivos.",
+      "descLength": 134
+    },
+    {
+      "file": "pt/powerpoint-para-pdf.html",
+      "route": "/pt/powerpoint-para-pdf",
+      "titles": [
+        "PowerPoint to PDF Converter Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PowerPoint to PDF Converter Free",
+      "titleLength": 32,
+      "desc": "Convert Microsoft PowerPoint presentations (.pptx) into clean PDF slide handouts directly in your browser.",
+      "descLength": 106
+    },
+    {
+      "file": "pt/preencher-formulario-pdf.html",
+      "route": "/pt/preencher-formulario-pdf",
+      "titles": [
+        "Fill PDF Forms Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Fill PDF Forms Online Free",
+      "titleLength": 26,
+      "desc": "Fill out interactive AcroForm PDF forms, checkboxes, and dropdowns, or type anywhere on standard PDFs. Flatten and save without watermark.",
+      "descLength": 138
+    },
+    {
+      "file": "pt/quadro-colaborativo.html",
+      "route": "/pt/quadro-colaborativo",
+      "titles": [
+        "Whiteboard Sketch to PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Whiteboard Sketch to PDF Online Free",
+      "titleLength": 36,
+      "desc": "Draw, sketch, annotate, and brainstorm directly over PDF pages with an interactive collaborative whiteboard.",
+      "descLength": 108
+    },
+    {
+      "file": "pt/recortar.html",
+      "route": "/pt/recortar",
+      "titles": [
+        "Recortar páginas PDF online"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Recortar páginas PDF online",
+      "titleLength": 27,
+      "desc": "Recorte páginas PDF e remova margens extras diretamente no navegador. Tudo acontece localmente e sem uploads.",
+      "descLength": 109
+    },
+    {
+      "file": "pt/redigir-censurar.html",
+      "route": "/pt/redigir-censurar",
+      "titles": [
+        "Redact PDF Online Free, Private"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Redact PDF Online Free, Private",
+      "titleLength": 31,
+      "desc": "Permanently remove and black out sensitive data from your PDF. Solid opaque vector blocks are burned directly into the PDF stream.",
+      "descLength": 130
+    },
+    {
+      "file": "pt/reordenar.html",
+      "route": "/pt/reordenar",
+      "titles": [
+        "Reordenar Páginas PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Reordenar Páginas PDF",
+      "titleLength": 21,
+      "desc": "Reorganize facilmente as páginas do seu PDF arrastando e soltando. Corrija a ordem e salve o resultado instantaneamente, tudo localmente.",
+      "descLength": 137
+    },
+    {
+      "file": "pt.html",
+      "route": "/pt",
+      "titles": [
+        "ihatelovepdf: Ferramentas PDF Grátis no Navegador"
+      ],
+      "titleCount": 1,
+      "finalTitle": "ihatelovepdf: Ferramentas PDF Grátis no Navegador",
+      "titleLength": 49,
+      "desc": "ihatelovepdf é um kit de ferramentas focado em privacidade para juntar, comprimir, dividir, extrair, reorganizar e converter PDFs em imagens ou imagens em PDF direto no navegador. Todo o processamento acontece no seu dispositivo, sem uploads.",
+      "descLength": 242
+    },
+    {
+      "file": "redact.html",
+      "route": "/redact",
+      "titles": [
+        "Redact PDF Online Free, Private | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Redact PDF Online Free, Private | I Hate Love PDF",
+      "titleLength": 49,
+      "desc": "Permanently remove and black out sensitive data from your PDF. Solid opaque vector blocks are burned directly into the PDF stream.",
+      "descLength": 130
+    },
+    {
+      "file": "reorder.html",
+      "route": "/reorder",
+      "titles": [
+        "Reorder and Organize PDF Pages Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Reorder and Organize PDF Pages Free | I Hate Love PDF",
+      "titleLength": 53,
+      "desc": "Drag and drop PDF page thumbnails to change their order easily. Organize pages locally without server uploads.",
+      "descLength": 110
+    },
+    {
+      "file": "ro/antete-si-subsoluri.html",
+      "route": "/ro/antete-si-subsoluri",
+      "titles": [
+        "Add Headers and Footers to PDF Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Add Headers and Footers to PDF Free",
+      "titleLength": 35,
+      "desc": "Add header and footer text, page counters, and timestamps to any PDF with zero server uploads.",
+      "descLength": 94
+    },
+    {
+      "file": "ro/cenzureaza.html",
+      "route": "/ro/cenzureaza",
+      "titles": [
+        "Redact PDF Online Free, Private"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Redact PDF Online Free, Private",
+      "titleLength": 31,
+      "desc": "Permanently remove and black out sensitive data from your PDF. Solid opaque vector blocks are burned directly into the PDF stream.",
+      "descLength": 130
+    },
+    {
+      "file": "ro/compara-pdf.html",
+      "route": "/ro/compara-pdf",
+      "titles": [
+        "Compare Two PDF Files Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Compare Two PDF Files Online Free",
+      "titleLength": 33,
+      "desc": "Compare two PDF documents side-by-side in your browser to spot visual differences and revisions.",
+      "descLength": 96
+    },
+    {
+      "file": "ro/completeaza-formular-pdf.html",
+      "route": "/ro/completeaza-formular-pdf",
+      "titles": [
+        "Fill PDF Forms Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Fill PDF Forms Online Free",
+      "titleLength": 26,
+      "desc": "Fill out interactive AcroForm PDF forms, checkboxes, and dropdowns, or type anywhere on standard PDFs. Flatten and save without watermark.",
+      "descLength": 138
+    },
+    {
+      "file": "ro/comprima.html",
+      "route": "/ro/comprima",
+      "titles": [
+        "ComprimÄƒ PDF online gratuit"
+      ],
+      "titleCount": 1,
+      "finalTitle": "ComprimÄƒ PDF online gratuit",
+      "titleLength": 28,
+      "desc": "Redu eficient dimensiunea fiÈ™ierului PDF fÄƒrÄƒ pierderi de calitate. Compresie gratuitÄƒ È™i privatÄƒ direct în browserul tÄƒu.",
+      "descLength": 129
+    },
+    {
+      "file": "ro/creeaza-pdf.html",
+      "route": "/ro/creeaza-pdf",
+      "titles": [
+        "Create PDF Online Free, No Signup"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Create PDF Online Free, No Signup",
+      "titleLength": 33,
+      "desc": "Create and design PDF documents from scratch in your browser. Add text, images, shapes, tables, and export to PDF instantly.",
+      "descLength": 124
+    },
+    {
+      "file": "ro/csv-in-pdf.html",
+      "route": "/ro/csv-in-pdf",
+      "titles": [
+        "CSV to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "CSV to PDF Converter Online Free",
+      "titleLength": 32,
+      "desc": "Transform comma separated and tab separated CSV datasets into formatted PDF tables.",
+      "descLength": 83
+    },
+    {
+      "file": "ro/decupeaza.html",
+      "route": "/ro/decupeaza",
+      "titles": [
+        "DecupeazÄƒ pagini PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "DecupeazÄƒ pagini PDF",
+      "titleLength": 21,
+      "desc": "DecupeazÄƒ pagini PDF È™i eliminÄƒ marginile inutile direct în browser. SelecteazÄƒ paginile È™i defineÈ™te zona de decupare.",
+      "descLength": 125
+    },
+    {
+      "file": "ro/divide.html",
+      "route": "/ro/divide",
+      "titles": [
+        "Divide un PDF pe pagini sau capitole"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Divide un PDF pe pagini sau capitole",
+      "titleLength": 36,
+      "desc": "SeparÄƒ PDF-ul tÄƒu în mai multe fiÈ™iere dupÄƒ intervale de pagini sau capitole specifice. BucurÄƒ-te de control deplin asupra structurii documentului tÄƒu.",
+      "descLength": 157
+    },
+    {
+      "file": "ro/ebook-in-pdf.html",
+      "route": "/ro/ebook-in-pdf",
+      "titles": [
+        "EPUB to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "EPUB to PDF Converter Online Free",
+      "titleLength": 33,
+      "desc": "Convert EPUB and digital eBook files into formatted, printable PDF documents with custom margins and page sizes.",
+      "descLength": 112
+    },
+    {
+      "file": "ro/editeaza-pdf.html",
+      "route": "/ro/editeaza-pdf",
+      "titles": [
+        "Edit and Annotate PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Edit and Annotate PDF Online Free",
+      "titleLength": 33,
+      "desc": "Annotate and markup PDF pages directly in your browser. Add text boxes, highlights, and shapes easily.",
+      "descLength": 102
+    },
+    {
+      "file": "ro/excel-in-pdf.html",
+      "route": "/ro/excel-in-pdf",
+      "titles": [
+        "Excel to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Excel to PDF Converter Online Free",
+      "titleLength": 34,
+      "desc": "Convert Microsoft Excel (.xlsx, .xls) spreadsheets into clean PDF documents directly in your browser.",
+      "descLength": 101
+    },
+    {
+      "file": "ro/extrage.html",
+      "route": "/ro/extrage",
+      "titles": [
+        "Extrage pagini PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Extrage pagini PDF",
+      "titleLength": 18,
+      "desc": "SelecteazÄƒ pagini specifice din orice PDF È™i creeazÄƒ instantaneu un nou document personalizat. Procesare privatÄƒ È™i nelimitatÄƒ.",
+      "descLength": 133
+    },
+    {
+      "file": "ro/extragere-text.html",
+      "route": "/ro/extragere-text",
+      "titles": [
+        "Extract Text from PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Extract Text from PDF Online Free",
+      "titleLength": 33,
+      "desc": "Pull all readable text from any PDF document with line break preservation. Export as TXT, Markdown, or JSON.",
+      "descLength": 108
+    },
+    {
+      "file": "ro/facturare-pos.html",
+      "route": "/ro/facturare-pos",
+      "titles": [
+        "Free POS Billing Receipt Generator PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Free POS Billing Receipt Generator PDF",
+      "titleLength": 38,
+      "desc": "Generate point-of-sale thermal receipts and retail bills in 58mm, 80mm, or A4 formats directly in your browser.",
+      "descLength": 111
+    },
+    {
+      "file": "ro/filigran.html",
+      "route": "/ro/filigran",
+      "titles": [
+        "Add Watermark to PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Add Watermark to PDF Online Free",
+      "titleLength": 32,
+      "desc": "Protect and brand your PDF documents with custom text or image watermarks. Set opacity, angle, and grid placement 100% in your browser.",
+      "descLength": 135
+    },
+    {
+      "file": "ro/generator-facturi-gst.html",
+      "route": "/ro/generator-facturi-gst",
+      "titles": [
+        "Free GST Invoice Generator, PDF Download"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Free GST Invoice Generator, PDF Download",
+      "titleLength": 40,
+      "desc": "Create GST-compliant tax invoice PDFs with auto-calculated CGST, SGST, IGST, HSN/SAC codes, and bank details.",
+      "descLength": 109
+    },
+    {
+      "file": "ro/html-in-pdf.html",
+      "route": "/ro/html-in-pdf",
+      "titles": [
+        "HTML to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "HTML to PDF Converter Online Free",
+      "titleLength": 33,
+      "desc": "Render HTML code and web content into clean PDF pages directly in your browser.",
+      "descLength": 79
+    },
+    {
+      "file": "ro/imagini-in-pdf.html",
+      "route": "/ro/imagini-in-pdf",
+      "titles": [
+        "CreeazÄƒ PDF din imagini"
+      ],
+      "titleCount": 1,
+      "finalTitle": "CreeazÄƒ PDF din imagini",
+      "titleLength": 24,
+      "desc": "CreeazÄƒ un PDF profesional din imaginile tale. OrganizeazÄƒ fotografiile, personalizeazÄƒ aspectul paginii È™i genereazÄƒ documentul local în browser.",
+      "descLength": 151
+    },
+    {
+      "file": "ro/intrebari-frecvente.html",
+      "route": "/ro/intrebari-frecvente",
+      "titles": [
+        "Întrebări Frecvente despre Instrumente PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Întrebări Frecvente despre Instrumente PDF",
+      "titleLength": 42,
+      "desc": "RÄƒspunsuri la întrebÄƒri frecvente despre ihatelovepdf. AflÄƒ cum sÄƒ uneÈ™ti, comprimi, divizezi, extragi È™i reordonezi PDF-uri fÄƒrÄƒ a-È›i încÄƒrca fiÈ™ierele.",
+      "descLength": 164
+    },
+    {
+      "file": "ro/inversare-culori.html",
+      "route": "/ro/inversare-culori",
+      "titles": [
+        "Invert PDF Colors for Dark Mode Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Invert PDF Colors for Dark Mode Free",
+      "titleLength": 36,
+      "desc": "Turn glaring white PDF documents into Dark Mode, Sepia, or High Contrast for comfortable reading and battery saving.",
+      "descLength": 116
+    },
+    {
+      "file": "ro/markdown-in-pdf.html",
+      "route": "/ro/markdown-in-pdf",
+      "titles": [
+        "Markdown to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Markdown to PDF Converter Online Free",
+      "titleLength": 37,
+      "desc": "Transform Markdown text into clean, beautifully formatted PDF documents with headings, lists, and code styling.",
+      "descLength": 111
+    },
+    {
+      "file": "ro/numerotare-pagini.html",
+      "route": "/ro/numerotare-pagini",
+      "titles": [
+        "Add Page Numbers to PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Add Page Numbers to PDF Online Free",
+      "titleLength": 35,
+      "desc": "Insert dynamic page numbering to your PDF documents with customizable positions, formats, fonts, and skip-first-page options.",
+      "descLength": 125
+    },
+    {
+      "file": "ro/pdf-in-epub.html",
+      "route": "/ro/pdf-in-epub",
+      "titles": [
+        "PDF to EPUB Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to EPUB Converter Online Free",
+      "titleLength": 33,
+      "desc": "Transform PDF documents into reflowable EPUB eBooks for comfortable reading on Kindle, Kobo, and Apple Books.",
+      "descLength": 109
+    },
+    {
+      "file": "ro/pdf-in-excel.html",
+      "route": "/ro/pdf-in-excel",
+      "titles": [
+        "PDF to Excel Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to Excel Converter Online Free",
+      "titleLength": 34,
+      "desc": "Extract tabular data from PDF files and convert them into editable Microsoft Excel (.xlsx) spreadsheets.",
+      "descLength": 104
+    },
+    {
+      "file": "ro/pdf-in-html.html",
+      "route": "/ro/pdf-in-html",
+      "titles": [
+        "PDF to HTML Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to HTML Converter Online Free",
+      "titleLength": 33,
+      "desc": "Convert PDF files into semantic, responsive HTML code that you can embed on websites or view in any browser.",
+      "descLength": 108
+    },
+    {
+      "file": "ro/pdf-in-imagini.html",
+      "route": "/ro/pdf-in-imagini",
+      "titles": [
+        "ConverteÈ™te PDF în imagini"
+      ],
+      "titleCount": 1,
+      "finalTitle": "ConverteÈ™te PDF în imagini",
+      "titleLength": 27,
+      "desc": "ConverteÈ™te fiecare paginÄƒ a PDF-ului tÄƒu în imagini PNG sau JPEG de înaltÄƒ calitate. Alege rezoluÈ›ia È™i descarcÄƒ-le ca arhivÄƒ ZIP.",
+      "descLength": 139
+    },
+    {
+      "file": "ro/pdf-in-powerpoint.html",
+      "route": "/ro/pdf-in-powerpoint",
+      "titles": [
+        "PDF to PowerPoint Converter Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to PowerPoint Converter Free",
+      "titleLength": 32,
+      "desc": "Transform PDF pages into Microsoft PowerPoint (.pptx) slides with high-resolution slide layouts.",
+      "descLength": 96
+    },
+    {
+      "file": "ro/pdf-in-zip.html",
+      "route": "/ro/pdf-in-zip",
+      "titles": [
+        "Convert PDF to ZIP Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Convert PDF to ZIP Online Free",
+      "titleLength": 30,
+      "desc": "Bundle single or multiple PDF documents directly into a clean ZIP archive with lossless quality and 100% private browser processing.",
+      "descLength": 132
+    },
+    {
+      "file": "ro/powerpoint-in-pdf.html",
+      "route": "/ro/powerpoint-in-pdf",
+      "titles": [
+        "PowerPoint to PDF Converter Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PowerPoint to PDF Converter Free",
+      "titleLength": 32,
+      "desc": "Convert Microsoft PowerPoint presentations (.pptx) into clean PDF slide handouts directly in your browser.",
+      "descLength": 106
+    },
+    {
+      "file": "ro/reordoneaza.html",
+      "route": "/ro/reordoneaza",
+      "titles": [
+        "ReordoneazÄƒ paginile PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "ReordoneazÄƒ paginile PDF",
+      "titleLength": 25,
+      "desc": "ReordoneazÄƒ cu uÈ™urinÈ›Äƒ paginile PDF-ului tÄƒu printr-o interfaÈ›Äƒ simplÄƒ de tip drag-and-drop. CorecteazÄƒ ordinea documentelor È™i salveazÄƒ instant.",
+      "descLength": 157
+    },
+    {
+      "file": "ro/roteste.html",
+      "route": "/ro/roteste",
+      "titles": [
+        "RoteÈ™te pagini PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "RoteÈ™te pagini PDF",
+      "titleLength": 19,
+      "desc": "RoteÈ™te paginile selectate din PDF cu 90 sau 180 de grade direct în browser. Privat, gratuit È™i complet local.",
+      "descLength": 112
+    },
+    {
+      "file": "ro/scaneaza-in-pdf.html",
+      "route": "/ro/scaneaza-in-pdf",
+      "titles": [
+        "Scan Documents to PDF with Your Camera"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Scan Documents to PDF with Your Camera",
+      "titleLength": 38,
+      "desc": "Capture document pages using your computer webcam or smartphone camera, apply clean scan filters, and export to PDF.",
+      "descLength": 116
+    },
+    {
+      "file": "ro/semneaza-pdf.html",
+      "route": "/ro/semneaza-pdf",
+      "titles": [
+        "Sign PDF Online Free, Private"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Sign PDF Online Free, Private",
+      "titleLength": 29,
+      "desc": "Sign PDF documents electronically with smooth handwriting draw pad, typed calligraphy fonts, or image stamps. 100% private in-browser signing.",
+      "descLength": 142
+    },
+    {
+      "file": "ro/sustine.html",
+      "route": "/ro/sustine",
+      "titles": [
+        "Susține ihatelovepdf | Instrumente gratuite"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Susține ihatelovepdf | Instrumente gratuite",
+      "titleLength": 43,
+      "desc": "DonaÈ›ia ta permite ca ihatelovepdf sÄƒ rÄƒmânÄƒ un proiect mic, independent È™i axat pe confidenÈ›ialitate. AjutÄƒ la acoperirea costurilor de gÄƒzduire È™i a îmbunÄƒtÄƒÈ›irilor.",
+      "descLength": 179
+    },
+    {
+      "file": "ro/tabla-colaborativa.html",
+      "route": "/ro/tabla-colaborativa",
+      "titles": [
+        "Whiteboard Sketch to PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Whiteboard Sketch to PDF Online Free",
+      "titleLength": 36,
+      "desc": "Draw, sketch, annotate, and brainstorm directly over PDF pages with an interactive collaborative whiteboard.",
+      "descLength": 108
+    },
+    {
+      "file": "ro/uneste.html",
+      "route": "/ro/uneste",
+      "titles": [
+        "UneÈ™te PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "UneÈ™te PDF",
+      "titleLength": 11,
+      "desc": "CombinÄƒ mai multe fiÈ™iere PDF într-un singur document organizat, fÄƒrÄƒ limitÄƒ de pagini. Trage, reordoneazÄƒ È™i descarcÄƒ fiÈ™ierul unit instant.",
+      "descLength": 150
+    },
+    {
+      "file": "ro.html",
+      "route": "/ro",
+      "titles": [
+        "ihatelovepdf: Instrumente PDF Gratuite în Browser"
+      ],
+      "titleCount": 1,
+      "finalTitle": "ihatelovepdf: Instrumente PDF Gratuite în Browser",
+      "titleLength": 49,
+      "desc": "ihatelovepdf este un set de instrumente axat pe confidenÈ›ialitate care uneÈ™te, comprimÄƒ, divide, extrage, roteÈ™te È™i converteÈ™te PDF-uri direct în browser. ToatÄƒ procesarea rÄƒmâne pe dispozitivul tÄƒu.",
+      "descLength": 209
+    },
+    {
+      "file": "rotate.html",
+      "route": "/rotate",
+      "titles": [
+        "Rotate PDF Pages Online Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Rotate PDF Pages Online Free | I Hate Love PDF",
+      "titleLength": 46,
+      "desc": "Rotate PDF pages clockwise or counter-clockwise permanently in your browser.",
+      "descLength": 76
+    },
+    {
+      "file": "ru/chasto-zadavaemye-voprosy.html",
+      "route": "/ru/chasto-zadavaemye-voprosy",
+      "titles": [
+        "Часто Задаваемые Вопросы о PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Часто Задаваемые Вопросы о PDF",
+      "titleLength": 30,
+      "desc": "Ответы на часто задаваемые вопросы о ihatelovepdf. Узнайте, как объединять, сжимать, делить, извлекать и переупорядочивать PDF без загрузки файлов.",
+      "descLength": 147
+    },
+    {
+      "file": "ru/csv-v-pdf.html",
+      "route": "/ru/csv-v-pdf",
+      "titles": [
+        "CSV to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "CSV to PDF Converter Online Free",
+      "titleLength": 32,
+      "desc": "Transform comma separated and tab separated CSV datasets into formatted PDF tables.",
+      "descLength": 83
+    },
+    {
+      "file": "ru/ebook-v-pdf.html",
+      "route": "/ru/ebook-v-pdf",
+      "titles": [
+        "EPUB to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "EPUB to PDF Converter Online Free",
+      "titleLength": 33,
+      "desc": "Convert EPUB and digital eBook files into formatted, printable PDF documents with custom margins and page sizes.",
+      "descLength": 112
+    },
+    {
+      "file": "ru/excel-v-pdf.html",
+      "route": "/ru/excel-v-pdf",
+      "titles": [
+        "Excel to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Excel to PDF Converter Online Free",
+      "titleLength": 34,
+      "desc": "Convert Microsoft Excel (.xlsx, .xls) spreadsheets into clean PDF documents directly in your browser.",
+      "descLength": 101
+    },
+    {
+      "file": "ru/generator-schetov-gst.html",
+      "route": "/ru/generator-schetov-gst",
+      "titles": [
+        "Free GST Invoice Generator, PDF Download"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Free GST Invoice Generator, PDF Download",
+      "titleLength": 40,
+      "desc": "Create GST-compliant tax invoice PDFs with auto-calculated CGST, SGST, IGST, HSN/SAC codes, and bank details.",
+      "descLength": 109
+    },
+    {
+      "file": "ru/html-v-pdf.html",
+      "route": "/ru/html-v-pdf",
+      "titles": [
+        "HTML to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "HTML to PDF Converter Online Free",
+      "titleLength": 33,
+      "desc": "Render HTML code and web content into clean PDF pages directly in your browser.",
+      "descLength": 79
+    },
+    {
+      "file": "ru/invertirovat-tsveta.html",
+      "route": "/ru/invertirovat-tsveta",
+      "titles": [
+        "Invert PDF Colors for Dark Mode Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Invert PDF Colors for Dark Mode Free",
+      "titleLength": 36,
+      "desc": "Turn glaring white PDF documents into Dark Mode, Sepia, or High Contrast for comfortable reading and battery saving.",
+      "descLength": 116
+    },
+    {
+      "file": "ru/izobrazheniya-v-pdf.html",
+      "route": "/ru/izobrazheniya-v-pdf",
+      "titles": [
+        "Создать PDF из изображений"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Создать PDF из изображений",
+      "titleLength": 26,
+      "desc": "Создавайте профессиональные PDF из ваших изображений. Организуйте фото, настройте макет и поля, документ генерируется локально в браузере.",
+      "descLength": 138
+    },
+    {
+      "file": "ru/izvlech.html",
+      "route": "/ru/izvlech",
+      "titles": [
+        "Извлечь страницы из PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Извлечь страницы из PDF",
+      "titleLength": 23,
+      "desc": "Выберите нужные страницы из любого PDF и мгновенно создайте новый документ. Приватная обработка без ограничений прямо в браузере.",
+      "descLength": 129
+    },
+    {
+      "file": "ru/izvlechenie-teksta.html",
+      "route": "/ru/izvlechenie-teksta",
+      "titles": [
+        "Extract Text from PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Extract Text from PDF Online Free",
+      "titleLength": 33,
+      "desc": "Pull all readable text from any PDF document with line break preservation. Export as TXT, Markdown, or JSON.",
+      "descLength": 108
+    },
+    {
+      "file": "ru/kolontituly.html",
+      "route": "/ru/kolontituly",
+      "titles": [
+        "Add Headers and Footers to PDF Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Add Headers and Footers to PDF Free",
+      "titleLength": 35,
+      "desc": "Add header and footer text, page counters, and timestamps to any PDF with zero server uploads.",
+      "descLength": 94
+    },
+    {
+      "file": "ru/markdown-v-pdf.html",
+      "route": "/ru/markdown-v-pdf",
+      "titles": [
+        "Markdown to PDF Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Markdown to PDF Converter Online Free",
+      "titleLength": 37,
+      "desc": "Transform Markdown text into clean, beautifully formatted PDF documents with headings, lists, and code styling.",
+      "descLength": 111
+    },
+    {
+      "file": "ru/nomera-stranic.html",
+      "route": "/ru/nomera-stranic",
+      "titles": [
+        "Add Page Numbers to PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Add Page Numbers to PDF Online Free",
+      "titleLength": 35,
+      "desc": "Insert dynamic page numbering to your PDF documents with customizable positions, formats, fonts, and skip-first-page options.",
+      "descLength": 125
+    },
+    {
+      "file": "ru/obedinit.html",
+      "route": "/ru/obedinit",
+      "titles": [
+        "Объединить PDF онлайн"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Объединить PDF онлайн",
+      "titleLength": 21,
+      "desc": "Объедините несколько PDF в один документ без ограничений по количеству страниц. Перетащите, упорядочьте и скачайте результат мгновенно, полностью конфиденциально.",
+      "descLength": 162
+    },
+    {
+      "file": "ru/obrezat.html",
+      "route": "/ru/obrezat",
+      "titles": [
+        "Обрезать страницы PDF онлайн"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Обрезать страницы PDF онлайн",
+      "titleLength": 28,
+      "desc": "Обрезайте страницы PDF и удаляйте лишние поля прямо в браузере. Выберите страницы, настройте область обрезки, без загрузки на сервер.",
+      "descLength": 133
+    },
+    {
+      "file": "ru/pdf-v-epub.html",
+      "route": "/ru/pdf-v-epub",
+      "titles": [
+        "PDF to EPUB Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to EPUB Converter Online Free",
+      "titleLength": 33,
+      "desc": "Transform PDF documents into reflowable EPUB eBooks for comfortable reading on Kindle, Kobo, and Apple Books.",
+      "descLength": 109
+    },
+    {
+      "file": "ru/pdf-v-excel.html",
+      "route": "/ru/pdf-v-excel",
+      "titles": [
+        "PDF to Excel Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to Excel Converter Online Free",
+      "titleLength": 34,
+      "desc": "Extract tabular data from PDF files and convert them into editable Microsoft Excel (.xlsx) spreadsheets.",
+      "descLength": 104
+    },
+    {
+      "file": "ru/pdf-v-html.html",
+      "route": "/ru/pdf-v-html",
+      "titles": [
+        "PDF to HTML Converter Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to HTML Converter Online Free",
+      "titleLength": 33,
+      "desc": "Convert PDF files into semantic, responsive HTML code that you can embed on websites or view in any browser.",
+      "descLength": 108
+    },
+    {
+      "file": "ru/pdf-v-izobrazheniya.html",
+      "route": "/ru/pdf-v-izobrazheniya",
+      "titles": [
+        "Конвертировать PDF в изображения"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Конвертировать PDF в изображения",
+      "titleLength": 32,
+      "desc": "Превращайте каждую страницу PDF в высококачественные PNG или JPEG изображения. Выберите разрешение и скачайте всё в ZIP, 100% приватно.",
+      "descLength": 135
+    },
+    {
+      "file": "ru/pdf-v-powerpoint.html",
+      "route": "/ru/pdf-v-powerpoint",
+      "titles": [
+        "PDF to PowerPoint Converter Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PDF to PowerPoint Converter Free",
+      "titleLength": 32,
+      "desc": "Transform PDF pages into Microsoft PowerPoint (.pptx) slides with high-resolution slide layouts.",
+      "descLength": 96
+    },
+    {
+      "file": "ru/pdf-v-zip.html",
+      "route": "/ru/pdf-v-zip",
+      "titles": [
+        "Convert PDF to ZIP Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Convert PDF to ZIP Online Free",
+      "titleLength": 30,
+      "desc": "Bundle single or multiple PDF documents directly into a clean ZIP archive with lossless quality and 100% private browser processing.",
+      "descLength": 132
+    },
+    {
+      "file": "ru/pereupordochit.html",
+      "route": "/ru/pereupordochit",
+      "titles": [
+        "Переупорядочить страницы PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Переупорядочить страницы PDF",
+      "titleLength": 28,
+      "desc": "Легко переупорядочивайте страницы PDF перетаскиванием. Исправьте порядок и сохраните результат мгновенно, полностью локально.",
+      "descLength": 125
+    },
+    {
+      "file": "ru/podderzhka.html",
+      "route": "/ru/podderzhka",
+      "titles": [
+        "Поддержать ihatelovepdf | Бесплатные инструменты"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Поддержать ihatelovepdf | Бесплатные инструменты",
+      "titleLength": 48,
+      "desc": "Ваша поддержка позволяет ihatelovepdf оставаться небольшим, независимым проектом с упором на конфиденциальность. Помогите покрыть расходы на хостинг и развитие.",
+      "descLength": 160
+    },
+    {
+      "file": "ru/podpisat-pdf.html",
+      "route": "/ru/podpisat-pdf",
+      "titles": [
+        "Sign PDF Online Free, Private"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Sign PDF Online Free, Private",
+      "titleLength": 29,
+      "desc": "Sign PDF documents electronically with smooth handwriting draw pad, typed calligraphy fonts, or image stamps. 100% private in-browser signing.",
+      "descLength": 142
+    },
+    {
+      "file": "ru/pos-kassovyy-chek.html",
+      "route": "/ru/pos-kassovyy-chek",
+      "titles": [
+        "Free POS Billing Receipt Generator PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Free POS Billing Receipt Generator PDF",
+      "titleLength": 38,
+      "desc": "Generate point-of-sale thermal receipts and retail bills in 58mm, 80mm, or A4 formats directly in your browser.",
+      "descLength": 111
+    },
+    {
+      "file": "ru/povernut.html",
+      "route": "/ru/povernut",
+      "titles": [
+        "Повернуть страницы PDF онлайн"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Повернуть страницы PDF онлайн",
+      "titleLength": 29,
+      "desc": "Поворачивайте выбранные страницы PDF на 90 или 180 градусов прямо в браузере. Бесплатно, конфиденциально и полностью локально.",
+      "descLength": 126
+    },
+    {
+      "file": "ru/powerpoint-v-pdf.html",
+      "route": "/ru/powerpoint-v-pdf",
+      "titles": [
+        "PowerPoint to PDF Converter Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "PowerPoint to PDF Converter Free",
+      "titleLength": 32,
+      "desc": "Convert Microsoft PowerPoint presentations (.pptx) into clean PDF slide handouts directly in your browser.",
+      "descLength": 106
+    },
+    {
+      "file": "ru/razdelit.html",
+      "route": "/ru/razdelit",
+      "titles": [
+        "Разделить PDF по страницам или главам"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Разделить PDF по страницам или главам",
+      "titleLength": 37,
+      "desc": "Разбейте PDF на несколько файлов по диапазону страниц или разделам. Полный контроль над структурой документа, без загрузки на сервер.",
+      "descLength": 133
+    },
+    {
+      "file": "ru/redaktirovat-pdf.html",
+      "route": "/ru/redaktirovat-pdf",
+      "titles": [
+        "Edit and Annotate PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Edit and Annotate PDF Online Free",
+      "titleLength": 33,
+      "desc": "Annotate and markup PDF pages directly in your browser. Add text boxes, highlights, and shapes easily.",
+      "descLength": 102
+    },
+    {
+      "file": "ru/skanirovat-v-pdf.html",
+      "route": "/ru/skanirovat-v-pdf",
+      "titles": [
+        "Scan Documents to PDF with Your Camera"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Scan Documents to PDF with Your Camera",
+      "titleLength": 38,
+      "desc": "Capture document pages using your computer webcam or smartphone camera, apply clean scan filters, and export to PDF.",
+      "descLength": 116
+    },
+    {
+      "file": "ru/sovmestnaya-doska.html",
+      "route": "/ru/sovmestnaya-doska",
+      "titles": [
+        "Whiteboard Sketch to PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Whiteboard Sketch to PDF Online Free",
+      "titleLength": 36,
+      "desc": "Draw, sketch, annotate, and brainstorm directly over PDF pages with an interactive collaborative whiteboard.",
+      "descLength": 108
+    },
+    {
+      "file": "ru/sozdat-pdf.html",
+      "route": "/ru/sozdat-pdf",
+      "titles": [
+        "Create PDF Online Free, No Signup"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Create PDF Online Free, No Signup",
+      "titleLength": 33,
+      "desc": "Create and design PDF documents from scratch in your browser. Add text, images, shapes, tables, and export to PDF instantly.",
+      "descLength": 124
+    },
+    {
+      "file": "ru/sravnit-pdf.html",
+      "route": "/ru/sravnit-pdf",
+      "titles": [
+        "Compare Two PDF Files Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Compare Two PDF Files Online Free",
+      "titleLength": 33,
+      "desc": "Compare two PDF documents side-by-side in your browser to spot visual differences and revisions.",
+      "descLength": 96
+    },
+    {
+      "file": "ru/szhat.html",
+      "route": "/ru/szhat",
+      "titles": [
+        "Сжать PDF онлайн бесплатно"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Сжать PDF онлайн бесплатно",
+      "titleLength": 26,
+      "desc": "Эффективно уменьшайте размер PDF-файлов без потери качества. Бесплатное и конфиденциальное сжатие прямо в браузере, без загрузки на сервер.",
+      "descLength": 139
+    },
+    {
+      "file": "ru/vodyanoj-znak.html",
+      "route": "/ru/vodyanoj-znak",
+      "titles": [
+        "Add Watermark to PDF Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Add Watermark to PDF Online Free",
+      "titleLength": 32,
+      "desc": "Protect and brand your PDF documents with custom text or image watermarks. Set opacity, angle, and grid placement 100% in your browser.",
+      "descLength": 135
+    },
+    {
+      "file": "ru/zamazat-tekst.html",
+      "route": "/ru/zamazat-tekst",
+      "titles": [
+        "Redact PDF Online Free, Private"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Redact PDF Online Free, Private",
+      "titleLength": 31,
+      "desc": "Permanently remove and black out sensitive data from your PDF. Solid opaque vector blocks are burned directly into the PDF stream.",
+      "descLength": 130
+    },
+    {
+      "file": "ru/zapolnit-formu-pdf.html",
+      "route": "/ru/zapolnit-formu-pdf",
+      "titles": [
+        "Fill PDF Forms Online Free"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Fill PDF Forms Online Free",
+      "titleLength": 26,
+      "desc": "Fill out interactive AcroForm PDF forms, checkboxes, and dropdowns, or type anywhere on standard PDFs. Flatten and save without watermark.",
+      "descLength": 138
+    },
+    {
+      "file": "ru.html",
+      "route": "/ru",
+      "titles": [
+        "ihatelovepdf: Бесплатные PDF инструменты онлайн"
+      ],
+      "titleCount": 1,
+      "finalTitle": "ihatelovepdf: Бесплатные PDF инструменты онлайн",
+      "titleLength": 47,
+      "desc": "ihatelovepdf, набор инструментов для работы с PDF с упором на конфиденциальность. Объединяйте, сжимайте, делите, извлекайте, поворачивайте и конвертируйте PDF прямо в браузере. Вся обработка остаётся на вашем устройстве.",
+      "descLength": 220
+    },
+    {
+      "file": "scan-to-pdf.html",
+      "route": "/scan-to-pdf",
+      "titles": [
+        "Scan Documents to PDF with Your Camera | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Scan Documents to PDF with Your Camera | I Hate Love PDF",
+      "titleLength": 56,
+      "desc": "Capture document pages using your computer webcam or smartphone camera, apply clean scan filters, and export to PDF.",
+      "descLength": 116
+    },
+    {
+      "file": "sign-pdf.html",
+      "route": "/sign-pdf",
+      "titles": [
+        "Sign PDF Online Free, Private | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Sign PDF Online Free, Private | I Hate Love PDF",
+      "titleLength": 47,
+      "desc": "Sign PDF documents electronically with smooth handwriting draw pad, typed calligraphy fonts, or image stamps. 100% private in-browser signing.",
+      "descLength": 142
+    },
+    {
+      "file": "smallpdf-alternative.html",
+      "route": "/smallpdf-alternative",
+      "titles": [
+        "Smallpdf Alternative, Free and No Limits | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Smallpdf Alternative, Free and No Limits | I Hate Love PDF",
+      "titleLength": 58,
+      "desc": "Tired of Smallpdf daily limits and paywalls? Try I Hate Love PDF for unlimited, free client-side PDF processing without uploading documents.",
+      "descLength": 140
+    },
+    {
+      "file": "split.html",
+      "route": "/split",
+      "titles": [
+        "Split PDF Pages Online, Free and Private | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Split PDF Pages Online, Free and Private | I Hate Love PDF",
+      "titleLength": 58,
+      "desc": "Split PDF into individual pages or page ranges easily. 100% private in-browser processing.",
+      "descLength": 90
+    },
+    {
+      "file": "support.html",
+      "route": "/support",
+      "titles": [
+        "Redirecting to Buy Me a Coffee | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Redirecting to Buy Me a Coffee | I Hate Love PDF",
+      "titleLength": 48,
+      "desc": "This page has moved permanently to /buy-me-a-coffee.",
+      "descLength": 52
+    },
+    {
+      "file": "terms.html",
+      "route": "/terms",
+      "titles": [
+        "Terms of Use | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Terms of Use | I Hate Love PDF",
+      "titleLength": 30,
+      "desc": "Read the ihatelovepdf Terms of Service. Free personal and commercial license, browser execution terms, and intellectual property information.",
+      "descLength": 141
+    },
+    {
+      "file": "thank-you.html",
+      "route": "/thank-you",
+      "titles": [
+        "Thank You | ihatelovepdf | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Thank You | ihatelovepdf | I Hate Love PDF",
+      "titleLength": 42,
+      "desc": "Thank you for using ihatelovepdf. Your privacy is always protected with 100% local in-browser processing.",
+      "descLength": 105
+    },
+    {
+      "file": "tools.html",
+      "route": "/tools",
+      "titles": [
+        "All Free PDF Tools | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "All Free PDF Tools | I Hate Love PDF",
+      "titleLength": 36,
+      "desc": "Browse all free and private PDF tools. Merge, compress, split, redact, edit, and convert PDFs directly in your browser without uploading files.",
+      "descLength": 143
+    },
+    {
+      "file": "watermark.html",
+      "route": "/watermark",
+      "titles": [
+        "Add Watermark to PDF Online Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Add Watermark to PDF Online Free | I Hate Love PDF",
+      "titleLength": 50,
+      "desc": "Protect and brand your PDF documents with custom text or image watermarks. Set opacity, angle, and grid placement 100% in your browser.",
+      "descLength": 135
+    },
+    {
+      "file": "whiteboard.html",
+      "route": "/whiteboard",
+      "titles": [
+        "Whiteboard Sketch to PDF Online Free | I Hate Love PDF"
+      ],
+      "titleCount": 1,
+      "finalTitle": "Whiteboard Sketch to PDF Online Free | I Hate Love PDF",
+      "titleLength": 54,
+      "desc": "Draw, sketch, annotate, and brainstorm directly over PDF pages with an interactive collaborative whiteboard.",
+      "descLength": 108
+    }
+  ],
+  "linkIssues": [],
+  "over70": [],
+  "over65": []
+}

@@ -26,7 +26,7 @@ export const ruDictionary: Dictionary = {
   },
   metadata: {
     site: {
-      title: "ihatelovepdf - Сжать, объединить и конвертировать PDF бесплатно",
+      title: "ihatelovepdf: Бесплатные PDF инструменты онлайн",
       description:
         "ihatelovepdf, набор инструментов для работы с PDF с упором на конфиденциальность. Объединяйте, сжимайте, делите, извлекайте, поворачивайте и конвертируйте PDF прямо в браузере. Вся обработка остаётся на вашем устройстве.",
       keywords: [
@@ -59,7 +59,7 @@ export const ruDictionary: Dictionary = {
       },
     },
     faq: {
-      title: "FAQ | ihatelovepdf - Бесплатный набор инструментов для PDF",
+      title: "Часто Задаваемые Вопросы о PDF",
       description:
         "Ответы на часто задаваемые вопросы о ihatelovepdf. Узнайте, как объединять, сжимать, делить, извлекать и переупорядочивать PDF без загрузки файлов.",
       keywords: [
@@ -75,7 +75,7 @@ export const ruDictionary: Dictionary = {
       canonical: `${siteUrl}${getRoutePath(locale, "faq")}`,
     },
     support: {
-      title: "Поддержать ihatelovepdf | Сохраните инструменты бесплатными и конфиденциальными",
+      title: "Поддержать ihatelovepdf | Бесплатные инструменты",
       description:
         "Ваша поддержка позволяет ihatelovepdf оставаться небольшим, независимым проектом с упором на конфиденциальность. Помогите покрыть расходы на хостинг и развитие.",
       keywords: [

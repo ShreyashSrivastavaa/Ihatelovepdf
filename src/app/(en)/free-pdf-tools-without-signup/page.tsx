@@ -7,7 +7,7 @@ import { SITE_URL } from '../../../lib/site';
 
 export const metadata: Metadata = {
   metadataBase: METADATA_BASE,
-  title: 'Free PDF Tools Without Signup: No Email, No Watermark',
+  title: 'Free PDF Tools Without Signup',
   description: 'Use 35+ free PDF tools online without creating an account or entering your email. Merge, split, compress, sign, and edit PDFs with zero signup.',
   alternates: {
     canonical: `${SITE_URL}/free-pdf-tools-without-signup/`,
@@ -55,11 +55,11 @@ export default function FreePdfToolsWithoutSignupPage() {
   };
 
   const toolHighlights = [
-    { name: 'Merge PDF', href: '/merge-pdf', desc: 'Combine multiple documents into one without account registration.' },
-    { name: 'Compress PDF', href: '/compress-pdf', desc: 'Reduce file size by up to 90% without entering an email address.' },
-    { name: 'Split PDF', href: '/split-pdf', desc: 'Extract pages and split documents with zero signups or queues.' },
+    { name: 'Merge PDF', href: '/merge', desc: 'Combine multiple documents into one without account registration.' },
+    { name: 'Compress PDF', href: '/compress', desc: 'Reduce file size by up to 90% without entering an email address.' },
+    { name: 'Split PDF', href: '/split', desc: 'Extract pages and split documents with zero signups or queues.' },
     { name: 'Sign PDF', href: '/sign-pdf', desc: 'Draw or type legal electronic signatures directly in your browser.' },
-    { name: 'Redact PDF', href: '/redact-pdf', desc: 'Permanently erase private numbers and confidential data.' },
+    { name: 'Redact PDF', href: '/redact', desc: 'Permanently erase private numbers and confidential data.' },
     { name: 'Fill PDF Form', href: '/fill-pdf-form', desc: 'Complete interactive AcroForms or type text anywhere on pages.' },
   ];
 

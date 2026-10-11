@@ -24,7 +24,7 @@ const operationsPtContent: Partial<Record<OperationKey, OperationContent>> = {
       ogImageAlt: "Interface do ihatelovepdf comprimindo um documento",
     },
     hero: {
-      title: "Comprimir PDF Online Grátis - Reduzir Tamanho do Arquivo",
+      title: "Comprimir PDF Online Grátis - Reduzir Tamanho do",
       description:
         "Reduza o tamanho de documentos para caber em limites de e-mail, plataformas educacionais ou portais públicos mantendo a legibilidade.",
       bulletPoints: [
@@ -93,7 +93,7 @@ const operationsPtContent: Partial<Record<OperationKey, OperationContent>> = {
       ogImageAlt: "Junção de arquivos PDF no ihatelovepdf",
     },
     hero: {
-      title: "Mesclar PDF Online Grátis - Combine Arquivos PDF Sem Limite",
+      title: "Mesclar PDF Online Grátis - Combine Arquivos PDF",
       description:
         "Crie um arquivo polido com contratos, notas de aula ou políticas prontas para enviar, assinar ou arquivar.",
       bulletPoints: [
@@ -162,7 +162,7 @@ const operationsPtContent: Partial<Record<OperationKey, OperationContent>> = {
       ogImageAlt: "Processo de divisão de PDF",
     },
     hero: {
-      title: "Dividir PDF Online Grátis - Extrair e Separar Páginas",
+      title: "Dividir PDF Online Grátis - Extrair e Separar",
       description:
         "Extraia capítulos, anexos ou seções específicas em arquivos independentes prontos para compartilhar.",
       bulletPoints: [
@@ -213,7 +213,7 @@ const operationsPtContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "extrair",
     mode: "extract",
     meta: {
-      title: "Extrair Páginas de um PDF | Salvar Seleção | ihatelovepdf",
+      title: "Extrair Páginas de um PDF",
       description:
         "Selecione páginas de qualquer PDF e crie um novo documento na hora. Processamento privado e ilimitado direto no navegador.",
       keywords: [
@@ -280,7 +280,7 @@ const operationsPtContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "girar",
     mode: "rotate",
     meta: {
-      title: "Girar paginas PDF online | Corrigir orientacao | ihatelovepdf",
+      title: "Girar paginas PDF online",
       description:
         "Gire paginas selecionadas de um PDF em 90 ou 180 graus direto no navegador. Gratis, privado e sem upload.",
       keywords: [
@@ -347,7 +347,7 @@ const operationsPtContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "recortar",
     mode: "crop",
     meta: {
-      title: "Recortar páginas PDF online | Ajustar margens | ihatelovepdf",
+      title: "Recortar páginas PDF online",
       description:
         "Recorte páginas PDF e remova margens extras diretamente no navegador. Tudo acontece localmente e sem uploads.",
       keywords: [
@@ -414,7 +414,7 @@ const operationsPtContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "reordenar",
     mode: "reorder",
     meta: {
-      title: "Reordenar Páginas PDF | Mudar Ordem Rápido | ihatelovepdf",
+      title: "Reordenar Páginas PDF",
       description:
         "Reorganize facilmente as páginas do seu PDF arrastando e soltando. Corrija a ordem e salve o resultado instantaneamente, tudo localmente.",
       keywords: [
@@ -481,7 +481,7 @@ const operationsPtContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "pdf-para-imagens",
     mode: "pdfToImages",
     meta: {
-      title: "Converter PDF em Imagens | Exportar PNG/JPEG | ihatelovepdf",
+      title: "Converter PDF em Imagens",
       description:
         "Converta cada página do seu PDF em imagens PNG ou JPEG de alta qualidade. Escolha sua resolução e baixe como um arquivo ZIP, 100% privado e seguro.",
       keywords: [
@@ -548,7 +548,7 @@ const operationsPtContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "imagens-para-pdf",
     mode: "imagesToPdf",
     meta: {
-      title: "Criar PDF de Imagens | JPG, PNG para PDF | ihatelovepdf",
+      title: "Criar PDF de Imagens",
       description:
         "Crie um PDF profissional a partir de suas imagens. Organize fotos, personalize o layout e as margens, e gere seu documento localmente no seu navegador.",
       keywords: [

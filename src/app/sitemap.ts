@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { getRouteMap } from "../i18n/routing";
 import { BLOG_ARTICLES } from "./_data/blog-data";
+import { GUIDES_DATA } from "./_data/guides-data";
 
 export const dynamic = "force-static";
 export const revalidate = false;
@@ -115,11 +116,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     addEntry(`/blog/${slug}`, weekly, 0.7);
   });
 
-  // 6. Static trust pages
+  // 6. Static trust pages and Guides
   addEntry("/tools", weekly, 0.9);
   addEntry("/buy-me-a-coffee", monthly, 0.7);
   addEntry("/about", monthly, 0.8);
   addEntry("/guides", weekly, 0.8);
+  Object.keys(GUIDES_DATA).forEach((slug) => {
+    addEntry(`/guides/${slug}`, weekly, 0.7);
+  });
   addEntry("/contact", monthly, 0.6);
   if (privacy?.en) {
     addEntry(privacy.en, monthly, 0.5);

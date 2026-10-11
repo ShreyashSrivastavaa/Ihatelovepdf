@@ -8,7 +8,7 @@ const operationsDeContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "komprimieren",
     mode: "compress",
     meta: {
-      title: "PDF Komprimieren Online Kostenlos - Dateigröße Reduzieren",
+      title: "PDF Komprimieren Online Kostenlos - Dateigröße",
       description:
         "PDF-Dateien online kostenlos verkleinern. Reduzieren Sie die PDF-Größe für E-Mail und Speicher.",
       keywords: [
@@ -24,7 +24,7 @@ const operationsDeContent: Partial<Record<OperationKey, OperationContent>> = {
       ogImageAlt: "ihatelovepdf Oberfläche beim Komprimieren",
     },
     hero: {
-      title: "PDF Komprimieren Online Kostenlos - Dateigröße Reduzieren",
+      title: "PDF Komprimieren Online Kostenlos - Dateigröße",
       description:
         "Reduziere die Dateigröße, damit Dokumente in E-Mails, Lernplattformen oder Behördenportale passen und trotzdem gut lesbar bleiben.",
       bulletPoints: [
@@ -77,7 +77,7 @@ const operationsDeContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "zusammenfuehren",
     mode: "merge",
     meta: {
-      title: "PDF Zusammenfügen Online Kostenlos - Keine Anmeldung Erforderlich",
+      title: "PDF Zusammenfügen Online Kostenlos - Keine",
       description:
         "PDF-Dateien online kostenlos zusammenfügen. Schnell, sicher und ohne Anmeldung. Mehrere PDFs hochladen und kombinieren.",
       keywords: [
@@ -93,7 +93,7 @@ const operationsDeContent: Partial<Record<OperationKey, OperationContent>> = {
       ogImageAlt: "Zusammenführen von PDFs mit ihatelovepdf",
     },
     hero: {
-      title: "PDF-Dateien Online Zusammenfügen - Kostenlos und ohne Registrierung",
+      title: "PDF-Dateien Online Zusammenfügen - Kostenlos und",
       description:
         "Erstelle eine saubere Datei mit Verträgen, Kursunterlagen oder Richtlinien, bereit zum Versenden, Signieren oder Archivieren.",
       bulletPoints: [
@@ -162,7 +162,7 @@ const operationsDeContent: Partial<Record<OperationKey, OperationContent>> = {
       ogImageAlt: "PDF aufteilen mit ihatelovepdf",
     },
     hero: {
-      title: "PDF Online Teilen Kostenlos - Seiten Trennen und Extrahieren",
+      title: "PDF Online Teilen Kostenlos - Seiten Trennen und",
       description:
         "Kapitel, Anhänge oder gezielte Abschnitte als eigenständige Dateien exportieren - bereit zum Teilen.",
       bulletPoints: [
@@ -213,7 +213,7 @@ const operationsDeContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "seiten-extrahieren",
     mode: "extract",
     meta: {
-      title: "PDF-Seiten extrahieren | Seiten speichern | ihatelovepdf",
+      title: "PDF-Seiten extrahieren",
       description:
         "Wähle einzelne Seiten aus und speichere sie als neues Dokument. Private Verarbeitung direkt im Browser.",
       keywords: [
@@ -280,7 +280,7 @@ const operationsDeContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "zuschneiden",
     mode: "crop",
     meta: {
-      title: "PDF-Seiten zuschneiden | Ränder entfernen | ihatelovepdf",
+      title: "PDF-Seiten zuschneiden",
       description:
         "Schneide PDF-Seiten direkt im Browser zu und entferne überflüssige Ränder. Alles läuft lokal und ohne Uploads.",
       keywords: [
@@ -347,7 +347,7 @@ const operationsDeContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "drehen",
     mode: "rotate",
     meta: {
-      title: "PDF-Seiten drehen | Ausrichtung korrigieren | ihatelovepdf",
+      title: "PDF-Seiten drehen",
       description:
         "Drehe ausgewahlte PDF-Seiten um 90 oder 180 Grad direkt im Browser. Kostenlos, privat und ohne Upload.",
       keywords: [
@@ -414,7 +414,7 @@ const operationsDeContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "seiten-sortieren",
     mode: "reorder",
     meta: {
-      title: "PDF-Seiten neu sortieren | Ordnung ändern | ihatelovepdf",
+      title: "PDF-Seiten neu sortieren",
       description:
         "Bringe deine PDF-Seiten per Drag & Drop ganz einfach in die richtige Reihenfolge. Organisiere Dokumente neu und speichere das Ergebnis sofort und sicher ab.",
       keywords: [
@@ -481,7 +481,7 @@ const operationsDeContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "pdf-zu-bildern",
     mode: "pdfToImages",
     meta: {
-      title: "PDF in Bilder umwandeln | PNG/JPEG Export | ihatelovepdf",
+      title: "PDF in Bilder umwandeln",
       description:
         "Wandle jede Seite deines PDFs in hochwertige PNG- oder JPEG-Bilder um. Bestimme die Auflösung selbst und lade alles als ZIP-Datei herunter - 100% privat.",
       keywords: [
@@ -548,7 +548,7 @@ const operationsDeContent: Partial<Record<OperationKey, OperationContent>> = {
     slug: "bilder-zu-pdf",
     mode: "imagesToPdf",
     meta: {
-      title: "PDF aus Bildern erstellen | JPG, PNG zu PDF | ihatelovepdf",
+      title: "PDF aus Bildern erstellen",
       description:
         "Erstelle aus deinen Bildern ein professionelles PDF. Passe Layout, Ränder und Ausrichtung an und generiere dein Dokument sicher und lokal im Browser.",
       keywords: [

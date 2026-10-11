@@ -11,6 +11,131 @@
       "permanent": true
     },
     {
+      "source": "/merge-pdf",
+      "destination": "/merge",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-merge",
+      "destination": "/merge",
+      "permanent": true
+    },
+    {
+      "source": "/compress-pdf",
+      "destination": "/compress",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-compress",
+      "destination": "/compress",
+      "permanent": true
+    },
+    {
+      "source": "/split-pdf",
+      "destination": "/split",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-split",
+      "destination": "/split",
+      "permanent": true
+    },
+    {
+      "source": "/imagesToPdf",
+      "destination": "/images-to-pdf",
+      "permanent": true
+    },
+    {
+      "source": "/jpg-to-pdf",
+      "destination": "/images-to-pdf",
+      "permanent": true
+    },
+    {
+      "source": "/pdfToImages",
+      "destination": "/pdf-to-images",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-to-jpg",
+      "destination": "/pdf-to-images",
+      "permanent": true
+    },
+    {
+      "source": "/extractText",
+      "destination": "/extract-text",
+      "permanent": true
+    },
+    {
+      "source": "/extract-text-from-pdf",
+      "destination": "/extract-text",
+      "permanent": true
+    },
+    {
+      "source": "/redact-pdf",
+      "destination": "/redact",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-redact",
+      "destination": "/redact",
+      "permanent": true
+    },
+    {
+      "source": "/rotate-pdf",
+      "destination": "/rotate",
+      "permanent": true
+    },
+    {
+      "source": "/watermark-pdf",
+      "destination": "/watermark",
+      "permanent": true
+    },
+    {
+      "source": "/add-watermark",
+      "destination": "/watermark",
+      "permanent": true
+    },
+    {
+      "source": "/crop-pdf",
+      "destination": "/crop-resize",
+      "permanent": true
+    },
+    {
+      "source": "/resize-pdf",
+      "destination": "/crop-resize",
+      "permanent": true
+    },
+    {
+      "source": "/compare-pdf",
+      "destination": "/compare",
+      "permanent": true
+    },
+    {
+      "source": "/edit-pdf-online",
+      "destination": "/edit-pdf",
+      "permanent": true
+    },
+    {
+      "source": "/extract-pages",
+      "destination": "/extract",
+      "permanent": true
+    },
+    {
+      "source": "/reorder-pages",
+      "destination": "/reorder",
+      "permanent": true
+    },
+    {
+      "source": "/crop-resize",
+      "destination": "/crop",
+      "permanent": true
+    },
+    {
+      "source": "/guides/how-to-ocr-scanned-pdf-free",
+      "destination": "/guides/how-to-ocr-scanned-pdf-offline",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {

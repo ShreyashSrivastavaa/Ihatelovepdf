@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     metadataBase: METADATA_BASE,
-    title: `${guide.title} | ihatelovepdf Guides`,
+    title: guide.title,
     description: guide.description,
     alternates: {
       canonical: canonicalUrl,

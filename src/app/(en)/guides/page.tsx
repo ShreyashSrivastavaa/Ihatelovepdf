@@ -4,7 +4,7 @@ import { ArrowRight, Clock, Calendar, BookOpen } from 'lucide-react';
 import { GUIDES_DATA } from '../../_data/guides-data';
 
 export const metadata: Metadata = {
-  title: 'PDF How-To Guides & Tutorials | ihatelovepdf',
+  title: 'PDF How-To Guides and Tutorials',
   description:
     'Step by step tutorials and practical guides for merging, compressing, splitting, redacting, and converting PDFs with private in-browser tools.',
   alternates: {

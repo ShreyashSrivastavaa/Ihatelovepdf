@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import OtherProductsContent from '../../../components/OtherProductsContent';
 
 export const metadata: Metadata = {
-  title: 'Our Other Products | GitFC, SnapDevCode & SystemDesign.website | ihatelovepdf',
+  title: 'More Free Tools by Shreyash Srivastava',
   description:
-    'Discover our other developer tools: GitFC (Turn GitHub stats into EA FC cards), SnapDevCode (Company OA questions and DSA visualizer), and SystemDesign.website (Distributed systems masterclass).',
+    'Discover developer tools built by Shreyash Srivastava: GitFC, SnapDevCode, and SystemDesign.website.',
   keywords: [
     'GitFC',
     'GitHub EA FC card',

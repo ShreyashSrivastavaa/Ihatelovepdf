@@ -26,7 +26,7 @@ export const itDictionary: Dictionary = {
   },
   metadata: {
     site: {
-      title: "ihatelovepdf - Unisci, comprimi e converti PDF gratuitamente, senza caricare file online",
+      title: "ihatelovepdf: Strumenti PDF Gratuiti nel Browser",
       description:
         "ihatelovepdf è un insieme di strumenti pensati per la privacy che ti permette di unire, comprimere, dividere, estrarre, riordinare e convertire PDF in immagini e viceversa direttamente nel browser. Tutto viene elaborato sul tuo dispositivo, quindi i tuoi file restano sempre sotto il tuo controllo.",
       keywords: [
@@ -58,7 +58,7 @@ export const itDictionary: Dictionary = {
       },
     },
     faq: {
-      title: "Domande frequenti | ihatelovepdf - Strumenti gratuiti per gestire i PDF",
+      title: "Domande Frequenti sugli Strumenti PDF",
       description:
         "Risposte alle domande più frequenti su ihatelovepdf. Scopri come unire, comprimere, dividere, estrarre e riordinare PDF senza caricare i tuoi file online.",
       keywords: [

@@ -7,7 +7,7 @@ import { SITE_URL } from '../../../lib/site';
 
 export const metadata: Metadata = {
   metadataBase: METADATA_BASE,
-  title: 'Smallpdf Alternative: Truly Free, Unlimited, No Paywall',
+  title: 'Smallpdf Alternative, Free and No Limits',
   description: 'Tired of Smallpdf daily limits and paywalls? Try I Hate Love PDF for unlimited, free client-side PDF processing without uploading documents.',
   alternates: {
     canonical: `${SITE_URL}/smallpdf-alternative/`,
@@ -166,7 +166,7 @@ export default function SmallpdfAlternativePage() {
           </p>
           <div className="pt-4 flex flex-wrap gap-4">
             <Link
-              href="/compress-pdf"
+              href="/compress"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--accent)] text-white font-semibold text-sm hover:opacity-95 transition-opacity"
             >
               <span>Compress PDF Without Limits</span>

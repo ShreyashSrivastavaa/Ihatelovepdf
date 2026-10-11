@@ -33,7 +33,7 @@ export function createHomeMetadata(locale: Locale) {
 
     return {
       metadataBase: new URL(baseUrl),
-      title: siteMeta.title,
+      title: locale === "en" ? { absolute: siteMeta.title } : siteMeta.title,
       description: siteMeta.description,
       keywords: siteMeta.keywords,
       verification: {
@@ -77,7 +77,7 @@ export function createFaqMetadata(locale: Locale) {
 
     return {
       metadataBase: new URL(baseUrl),
-      title: faqMeta.title,
+      title: locale === "en" ? "Frequently Asked Questions" : faqMeta.title,
       description: faqMeta.description,
       keywords: faqMeta.keywords,
       verification: {

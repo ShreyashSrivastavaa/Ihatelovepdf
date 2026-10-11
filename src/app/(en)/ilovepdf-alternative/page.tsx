@@ -7,7 +7,7 @@ import { SITE_URL } from '../../../lib/site';
 
 export const metadata: Metadata = {
   metadataBase: METADATA_BASE,
-  title: 'iLovePDF Alternative: 100% Free, Private, No Uploads',
+  title: 'iLovePDF Alternative, Free and Private',
   description: 'Looking for an honest iLovePDF alternative? Discover why I Hate Love PDF is completely free, runs locally in your browser, and never uploads files.',
   alternates: {
     canonical: `${SITE_URL}/ilovepdf-alternative/`,
@@ -193,7 +193,7 @@ export default function ILovePdfAlternativePage() {
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
-              href="/merge-pdf"
+              href="/merge"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-[var(--border)] surface-card font-semibold text-sm text-[var(--tx)] hover:border-[var(--accent-border)] transition-colors"
             >
               <span>Try Merge PDF Online</span>
