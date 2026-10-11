@@ -40,7 +40,7 @@ export default function OfflinePdfToolsPage() {
         name: 'How do PDF tools work without internet access?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Modern web standards like WebAssembly and HTML5 canvas allow complex software to run directly inside web browsers. Your device CPU and GPU handle the document parsing and rendering.',
+          text: 'Modern web standards like client-side JavaScript engines and HTML5 canvas allow complex software to run directly inside web browsers. Your device CPU and GPU handle the document parsing and rendering.',
         },
       },
       {

@@ -39,7 +39,7 @@ export const BLOG_ARTICLES: Record<string, BlogArticle> = {
         heading: 'Why You Do Not Need Heavy Desktop Software Anymore',
         paragraphs: [
           'For many years, manipulating PDF files required proprietary native software. Portable Document Format files are complex binary documents containing vector coordinate systems, embedded typography fonts, rasterized images, and object tables. Early web browsers lacked the raw computing performance to parse and rewrite these binary streams.',
-          'That equation has changed completely over the past few years. Thanks to modern JavaScript engines and hardware accelerated WebAssembly runtimes, your web browser is effectively an operating system inside an operating system. Open source libraries such as pdf-lib and PDF.js can now parse, splice, and reconstruct multi-page PDF files directly in your device random access memory (RAM).',
+          'That equation has changed completely over the past few years. Thanks to modern JavaScript engines and hardware accelerated browser runtimes, your web browser is effectively an operating system inside an operating system. Open source libraries such as pdf-lib and PDF.js can now parse, splice, and reconstruct multi-page PDF files directly in your device random access memory (RAM).',
           'This means you no longer need to download shady freeware programs from unknown websites or register for recurring commercial licenses just to assemble five pages into a single document.',
         ],
       },
@@ -437,7 +437,7 @@ export const BLOG_ARTICLES: Record<string, BlogArticle> = {
         heading: 'The Modern Solution: Zero-Knowledge Client-Side Processing',
         paragraphs: [
           'Recognizing these fundamental flaws, a new generation of privacy-first web tools has emerged. I Hate Love PDF was engineered from day one to operate on a zero-knowledge, client-side paradigm.',
-          'Instead of sending your document to our servers, our website sends the software to your browser. Libraries like pdf-lib, PDF.js, and WebAssembly run directly inside your computer RAM.',
+          'Instead of sending your document to our servers, our website sends the software to your browser. Libraries like pdf-lib and PDF.js run directly inside your computer RAM.',
           'When you drag and drop a 50-page financial statement onto our page, your browser reads the binary data into local memory. The merge, split, compression, or redaction code executes right on your device CPU. When finished, the output is saved directly to your disk.',
           'Zero bytes of your document ever leave your machine. You can verify this independently by inspecting your browser Network tab in DevTools (F12). You will observe zero upload requests.',
         ],

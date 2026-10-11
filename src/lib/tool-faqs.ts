@@ -9,7 +9,7 @@ export const TOOL_FAQS: Record<OperationKey, ToolFaqItem[]> = {
   merge: [
     {
       question: 'How does merging PDFs in the browser protect my privacy?',
-      answer: 'Your files are merged entirely inside your web browser using WebAssembly and client-side JavaScript. They are never uploaded to any remote server or cloud bucket.',
+      answer: 'Your files are merged entirely inside your web browser using client-side JavaScript. They are never uploaded to any remote server or cloud bucket.',
     },
     {
       question: 'Is there a limit on how many PDF files I can combine at once?',

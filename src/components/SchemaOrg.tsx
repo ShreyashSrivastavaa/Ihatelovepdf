@@ -110,7 +110,7 @@ export function SchemaOrg() {
             name: "Are files uploaded to a server on I Hate Love PDF?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "No. All files are processed locally inside your web browser memory using client-side WebAssembly and JavaScript. No document data is ever uploaded to any remote server.",
+              text: "No. All files are processed locally inside your web browser memory using client-side JavaScript. No document data is ever uploaded to any remote server.",
             },
           },
         ],

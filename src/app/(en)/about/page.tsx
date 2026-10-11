@@ -92,7 +92,7 @@ export default function AboutPage() {
             name: 'Do files leave my browser when using I Hate Love PDF?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'No. All PDF processing happens directly in your device browser RAM using client-side WebAssembly and JavaScript. Zero files are uploaded to any server.',
+              text: 'No. All PDF processing happens directly in your device browser RAM using client-side JavaScript. Zero files are uploaded to any server.',
             },
           },
         ],

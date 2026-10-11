@@ -26,7 +26,7 @@ const comparisonPoints = [
   {
     feature: 'File Privacy & Security',
     ilovepdf: 'Files are uploaded to external cloud servers and stored temporarily before deletion.',
-    ourSite: 'Zero server uploads. Everything runs locally in your browser RAM using WebAssembly.',
+    ourSite: 'Zero server uploads. Everything runs locally in your browser RAM using client-side JavaScript.',
     winner: 'I Hate Love PDF',
   },
   {
@@ -87,7 +87,7 @@ export default function ILovePdfAlternativePage() {
         name: 'Are my files uploaded to your servers when I merge or compress?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'No. All PDF operations run locally in your web browser using client-side JavaScript and WebAssembly. No document data is transmitted over the network.',
+          text: 'No. All PDF operations run locally in your web browser using client-side JavaScript. No document data is transmitted over the network.',
         },
       },
     ],

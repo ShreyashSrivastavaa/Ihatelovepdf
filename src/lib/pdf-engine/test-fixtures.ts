@@ -199,7 +199,7 @@ export async function createTestFixture(type: FixtureType): Promise<Uint8Array> 
     // Table Rows
     const rows = [
       { item: 'Zero-Knowledge PDF Processing Engine', qty: '1', price: '$450.00', total: '$450.00' },
-      { item: 'Local WebAssembly OCR Accelerator', qty: '2', price: '$150.00', total: '$300.00' },
+      { item: 'Local Optical OCR Accelerator', qty: '2', price: '$150.00', total: '$300.00' },
       { item: 'Extractive TextRank AI Summarizer', qty: '1', price: '$200.00', total: '$200.00' },
       { item: 'Spatial Layout Reconstruction Pass', qty: '1', price: '$180.00', total: '$180.00' },
     ];
