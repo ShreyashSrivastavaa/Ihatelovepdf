@@ -223,7 +223,7 @@ export default function AboutPage() {
             </div>
             <h3 className="text-base font-bold">Built with Open Source</h3>
             <p className="text-xs text-[var(--tx-2)] leading-relaxed">
-              Built on reliable open source projects including <code className="text-xs bg-[var(--bg-subtle)] px-1 py-0.5 rounded">pdf-lib</code>, <code className="text-xs bg-[var(--bg-subtle)] px-1 py-0.5 rounded">PDF.js</code>, and <code className="text-xs bg-[var(--bg-subtle)] px-1 py-0.5 rounded">Tesseract.js</code>.
+              Built on reliable open source projects including <code className="text-xs bg-[var(--bg-subtle)] px-1 py-0.5 rounded">pdf-lib</code>, <code className="text-xs bg-[var(--bg-subtle)] px-1 py-0.5 rounded">PDF.js</code>, and <code className="text-xs bg-[var(--bg-subtle)] px-1 py-0.5 rounded">JSZip</code>.
             </p>
           </div>
         </section>
