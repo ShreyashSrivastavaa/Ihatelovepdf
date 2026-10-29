@@ -46,14 +46,15 @@ export default function PdfRedactionEditor({ file, onDone, onBurnRedactions }: P
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [redactions, setRedactions] = useState<RedactionBox[]>([]);
-  const [isDrawing, setIsDrawing] = useState(false);
-  const [startPos, setStartPos] = useState<{ x: number; y: number } | null>(null);
   const [currentRect, setCurrentRect] = useState<{ x: number; y: number; w: number; h: number } | null>(null);
   const [colorMode, setColorMode] = useState<'black' | 'white'>('black');
   const [redactionMode, setRedactionMode] = useState<'true' | 'vector'>('true');
   const [isProcessing, setIsProcessing] = useState(false);
   const [processingStatus, setProcessingStatus] = useState<string>('');
 
+  const isDrawingRef = useRef(false);
+  const startPosRef = useRef<{ x: number; y: number } | null>(null);
+  const currentRectRef = useRef<{ x: number; y: number; w: number; h: number } | null>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const activeRenderTaskRef = useRef<{ cancel: () => void; promise: Promise<unknown> } | null>(null);
@@ -172,22 +173,26 @@ export default function PdfRedactionEditor({ file, onDone, onBurnRedactions }: P
     e.currentTarget.setPointerCapture(e.pointerId);
     const pos = getNormalizedPos(e);
     if (!pos) return;
-    setIsDrawing(true);
-    setStartPos(pos);
+    isDrawingRef.current = true;
+    startPosRef.current = pos;
+    currentRectRef.current = null;
     setCurrentRect(null);
   };
 
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (!isDrawing || !startPos) return;
+    if (!isDrawingRef.current || !startPosRef.current) return;
     const pos = getNormalizedPos(e);
     if (!pos) return;
 
-    const x = Math.min(startPos.x, pos.x);
-    const y = Math.min(startPos.y, pos.y);
-    const w = Math.abs(pos.x - startPos.x);
-    const h = Math.abs(pos.y - startPos.y);
+    const sp = startPosRef.current;
+    const x = Math.min(sp.x, pos.x);
+    const y = Math.min(sp.y, pos.y);
+    const w = Math.abs(pos.x - sp.x);
+    const h = Math.abs(pos.y - sp.y);
 
-    setCurrentRect({ x, y, w, h });
+    const rect = { x, y, w, h };
+    currentRectRef.current = rect;
+    setCurrentRect(rect);
   };
 
   const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
@@ -197,14 +202,15 @@ export default function PdfRedactionEditor({ file, onDone, onBurnRedactions }: P
       // ignore
     }
 
-    if (isDrawing && currentRect && currentRect.w > 0.005 && currentRect.h > 0.005) {
+    const rect = currentRectRef.current;
+    if (isDrawingRef.current && rect && rect.w > 0.005 && rect.h > 0.005) {
       // Store normalized (0-1) coordinates
       const normalizedBox: RedactionBox = {
         pageNumber: currentPage,
-        x: currentRect.x,
-        y: currentRect.y,
-        width: currentRect.w,
-        height: currentRect.h,
+        x: rect.x,
+        y: rect.y,
+        width: rect.w,
+        height: rect.h,
         color: colorMode,
         isNormalized: true,
         isTopLeftOrigin: true,
@@ -212,8 +218,9 @@ export default function PdfRedactionEditor({ file, onDone, onBurnRedactions }: P
 
       setRedactions((prev) => [...prev, normalizedBox]);
     }
-    setIsDrawing(false);
-    setStartPos(null);
+    isDrawingRef.current = false;
+    startPosRef.current = null;
+    currentRectRef.current = null;
     setCurrentRect(null);
   };
 
