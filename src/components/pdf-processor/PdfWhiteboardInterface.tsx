@@ -634,19 +634,26 @@ export default function PdfWhiteboardInterface({ file, onDone, onGenerated }: Pd
           compCtx.restore();
         }
 
-        // Convert composite page canvas to blob
-        const dataUrl = compositeCanvas.toDataURL('image/jpeg', 0.95);
-        const res = await fetch(dataUrl);
-        const blob = await res.blob();
+        // Convert composite page canvas to blob directly via toBlob
+        const blob = await new Promise<Blob>((resolve, reject) => {
+          compositeCanvas.toBlob(
+            (b) => (b ? resolve(b) : reject(new Error('Canvas toBlob failed'))),
+            'image/jpeg',
+            0.95
+          );
+        });
         generatedFiles.push(new File([blob], `whiteboard_page_${pageNum}.jpg`, { type: 'image/jpeg' }));
         releaseCanvas(compositeCanvas);
       }
 
+      console.info(`[Whiteboard] Generated ${generatedFiles.length} page image(s), building PDF...`);
       // Convert page images back into a clean PDF
       const pdfBytes = await convertImagesToPdf(generatedFiles, { pageSize: 'a4', imageFit: 'contain' });
+      console.info(`[Whiteboard] PDF generated successfully: ${pdfBytes.byteLength} bytes`);
       const finalPdfBlob = createPdfBlob(pdfBytes);
 
       if (onDone) {
+        console.info('[Whiteboard] Invoking onDone callback with final blob');
         onDone(finalPdfBlob);
       } else if (onGenerated) {
         onGenerated(finalPdfBlob);
