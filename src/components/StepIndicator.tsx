@@ -107,6 +107,7 @@ export default function StepIndicator({
                   }
                 }}
                 role={isClickable ? 'button' : undefined}
+                aria-label={isClickable ? `Go to step ${index + 1}: ${step.label}` : undefined}
                 tabIndex={isClickable ? 0 : undefined}
                 onKeyDown={(e) => {
                   if (isClickable && onStepClick && (e.key === 'Enter' || e.key === ' ')) {

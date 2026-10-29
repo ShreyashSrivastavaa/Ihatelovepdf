@@ -59,7 +59,7 @@ export default function CookieBanner() {
             <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-2">
                     <ShieldCheck className="h-4 w-4 text-[var(--success)] shrink-0" />
-                    <h4 className="text-xs font-bold text-[var(--tx)] uppercase tracking-wider">Privacy Notice</h4>
+                    <p className="text-xs font-bold text-[var(--tx)] uppercase tracking-wider">Privacy Notice</p>
                 </div>
                 <p className="text-xs text-[var(--tx-2)] leading-relaxed">
                     {t.message}
