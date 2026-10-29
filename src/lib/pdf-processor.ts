@@ -95,18 +95,36 @@ export async function processPDF(
       return convertImagesToPdfAsBlob(files, options);
 
     case 'watermark': {
-      const bytes = await PDFOps.applyWatermarkToPdf(primaryFile, options.watermark || {});
-      return createPdfBlob(bytes);
+      try {
+        const bytes = (await pdfWorkerClient.run('watermark', [primaryFile], options, undefined, onProgress)) as Uint8Array;
+        return createPdfBlob(bytes);
+      } catch (err) {
+        console.warn('Worker watermark failed, falling back to main thread', err);
+        const bytes = await PDFOps.applyWatermarkToPdf(primaryFile, options.watermark || {});
+        return createPdfBlob(bytes);
+      }
     }
 
     case 'pageNumbers': {
-      const bytes = await PDFOps.addPageNumbersToPdf(primaryFile, options.pageNumbers || {});
-      return createPdfBlob(bytes);
+      try {
+        const bytes = (await pdfWorkerClient.run('pageNumbers', [primaryFile], options, undefined, onProgress)) as Uint8Array;
+        return createPdfBlob(bytes);
+      } catch (err) {
+        console.warn('Worker pageNumbers failed, falling back to main thread', err);
+        const bytes = await PDFOps.addPageNumbersToPdf(primaryFile, options.pageNumbers || {});
+        return createPdfBlob(bytes);
+      }
     }
 
     case 'headersFooters': {
-      const bytes = await PDFOps.addHeadersFootersToPdf(primaryFile, options.headersFooters || {});
-      return createPdfBlob(bytes);
+      try {
+        const bytes = (await pdfWorkerClient.run('headersFooters', [primaryFile], options, undefined, onProgress)) as Uint8Array;
+        return createPdfBlob(bytes);
+      } catch (err) {
+        console.warn('Worker headersFooters failed, falling back to main thread', err);
+        const bytes = await PDFOps.addHeadersFootersToPdf(primaryFile, options.headersFooters || {});
+        return createPdfBlob(bytes);
+      }
     }
 
     case 'extractText':
