@@ -472,3 +472,99 @@ Maintainers can copy-paste these directly into GitHub or bulk-create them using 
 - **Relevant Files**:
   - `src/lib/pdf-loader.ts`
   - `tests/tool-verification.test.ts`
+
+---
+
+### Issue #19: Drag-and-Drop Visual Page Reordering with Animated Thumbnails
+- **Title**: `ux(reorder): add native touch & pointer drag-and-drop page tile reordering with animations`
+- **Labels**: `type: enhancement`, `type: a11y`, `tool: core-pdf`, `difficulty: intermediate`
+- **Difficulty**: Intermediate
+- **Description**:
+  Users reordering or merging multi-page PDFs currently use sequential move-left / move-right arrow buttons or page selection checkboxes. Adding smooth pointer and touch drag-and-drop tile sorting (e.g. `@dnd-kit/core` or HTML5 native drag-drop) will provide an intuitive tactile experience.
+- **Proposed Solution**:
+  1. Wrap page thumbnail tiles in drag-and-drop container.
+  2. Provide live ghost preview while dragging.
+  3. Include accessible keyboard reordering (arrow keys + Space to drop) for screen-reader and keyboard users.
+- **Acceptance Criteria**:
+  - [ ] Drag tiles with mouse or touch to reorder pages in real-time.
+  - [ ] Keyboard accessible navigation with ARIA live announcements.
+  - [ ] Verified on mobile touchscreens and desktop viewports.
+- **Relevant Files**:
+  - `src/components/pdf-processor/PageOrderer.tsx`
+  - `src/components/pdf-processor/FileList.tsx`
+
+---
+
+### Issue #20: Interactive Live Dual-Split Preview with Real-Time Margin & Dimension Guides
+- **Title**: `ux(crop): interactive visual rulers and millimeter dimension indicators for crop and margins`
+- **Labels**: `type: enhancement`, `tool: core-pdf`, `difficulty: starter`
+- **Difficulty**: Starter
+- **Description**:
+  The crop interface provides numerical inputs and drag handles. Showing live millimeter / inch rulers alongside points will help users preparing documents for official passport, visa, or print requirements.
+- **Proposed Solution**:
+  1. Add optional unit selector (points, mm, inches, cm).
+  2. Show dynamic dimensions overlay on the active crop rectangle.
+  3. Provide quick preset buttons (Trim Margins 5mm, Remove 10mm Header, Standard Letter to A4).
+- **Acceptance Criteria**:
+  - [ ] Unit toggle updates dimensions dynamically in real-time.
+  - [ ] Standard print presets apply calibrated margins.
+- **Relevant Files**:
+  - `src/components/pdf-processor/UnifiedCropInterface.tsx`
+
+---
+
+### Issue #21: Before/After Visual Document Comparison Slider for Compression & Color Inversion
+- **Title**: `ux(compress): split-pane comparison slider to preview compression quality before download`
+- **Labels**: `type: enhancement`, `tool: core-pdf`, `difficulty: intermediate`
+- **Difficulty**: Intermediate
+- **Description**:
+  Users compressing high-resolution PDFs want to verify image clarity and font legibility before downloading. A side-by-side or curtain slider comparing original vs compressed thumbnails gives immediate confidence.
+- **Proposed Solution**:
+  1. Render page 1 thumbnail of both original and compressed preview.
+  2. Provide an interactive swipe slider revealing original on left and compressed on right.
+  3. Highlight exact file size delta (e.g., `-68% (14.2 MB → 4.5 MB)`).
+- **Acceptance Criteria**:
+  - [ ] Interactive slider reveals image comparison.
+  - [ ] Smooth 60fps gesture response on touch devices.
+- **Relevant Files**:
+  - `src/components/pdf-processor/CompressionPreviewCard.tsx`
+  - `src/components/pdf-processor/OptionLivePreview.tsx`
+
+---
+
+### Issue #22: Smart Default Detection for Document Orientation and Paper Size
+- **Title**: `ux(smart-defaults): auto-detect source PDF orientation and dimensions for conversion tools`
+- **Labels**: `type: enhancement`, `tool: conversion`, `difficulty: starter`
+- **Difficulty**: Starter
+- **Description**:
+  When converting spreadsheets, presentations, or images to PDF, users frequently have to guess whether landscape or portrait will fit better. Inspecting the input aspect ratio and setting the initial orientation accordingly saves time.
+- **Proposed Solution**:
+  1. For `.xlsx` with > 6 columns, default orientation to `landscape`.
+  2. For images wider than tall, default page format to matching landscape aspect ratio.
+  3. For PowerPoint decks, match 16:9 widescreen geometry automatically.
+- **Acceptance Criteria**:
+  - [ ] Auto-orientation selected upon file analysis.
+  - [ ] User can still override the suggested preset with 1 click.
+- **Relevant Files**:
+  - `src/components/pdf-processor/ProcessingOptions.tsx`
+  - `src/lib/pdf-processor.ts`
+
+---
+
+### Issue #23: Contextual Tooltips and Rich Empty States across All 35 Tools
+- **Title**: `ux(a11y): add accessible tooltips for specialized compression and PDF standard settings`
+- **Labels**: `type: a11y`, `type: enhancement`, `difficulty: starter`
+- **Difficulty**: Starter
+- **Description**:
+  Specialized options like `Downscale DPI`, `Flatten Form Fields`, `Bypass OffscreenCanvas`, and `Linearize PDF` need concise explanatory tooltips for non-technical users.
+- **Proposed Solution**:
+  1. Add `<HelpTooltip text="..." />` component to non-obvious form labels.
+  2. Implement keyboard focusable info triggers with `role="tooltip"`.
+  3. Provide illustrative empty states when no files or items are present.
+- **Acceptance Criteria**:
+  - [ ] Tooltips accessible via mouse hover, keyboard focus, and mobile tap.
+  - [ ] Compliant with WCAG 2.1 AA focusable/hoverable guidelines.
+- **Relevant Files**:
+  - `src/components/pdf-processor/ProcessingOptions.tsx`
+  - `src/components/ui/Tooltip.tsx`
+
