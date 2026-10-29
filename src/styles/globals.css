@@ -15,10 +15,10 @@
   --border-hover: #D0C6B8;
   --border-focus: #E24A24;
 
-  /* Typography (High-Contrast Warm Charcoal) */
+  /* Typography (High-Contrast Warm Charcoal - WCAG AA compliant >= 4.5:1) */
   --tx: #14110F;
   --tx-2: #574F4A;
-  --tx-3: #8C827A;
+  --tx-3: #6B625B;
 
   /* Primary & Accent Palette (Warm Coral / Crimson Flame) */
   --accent: #E24A24;
@@ -91,7 +91,7 @@
 
   --tx: #F8FAFC;
   --tx-2: #94A3B8;
-  --tx-3: #64748B;
+  --tx-3: #8292A6;
 
   --accent: #FF5733;
   --accent-hover: #FF704D;

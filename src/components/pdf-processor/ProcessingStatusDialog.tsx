@@ -240,12 +240,13 @@ export function ProcessingStatusDialog({
       <div
         role="dialog"
         aria-modal="true"
+        aria-labelledby="dialog-title"
         className="relative w-full max-w-xl rounded-xl bg-[var(--bg-elevated)] border border-[var(--border)] text-[var(--tx)] shadow-2xl overflow-hidden transition-colors"
       >
         <div className="flex items-center justify-between border-b border-[var(--border)] px-6 py-4">
           <div className={`flex items-center gap-2.5 rounded-lg border px-3 py-1.5 text-sm font-medium ${statusAccent[status]}`}>
             {statusIcon(status)}
-            <span>{title}</span>
+            <span id="dialog-title">{title}</span>
           </div>
           <button
             ref={closeButtonRef}

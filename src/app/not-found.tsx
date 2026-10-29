@@ -1,8 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
+import { METADATA_BASE } from "../lib/metadata-shared";
 
 export const metadata: Metadata = {
+  metadataBase: METADATA_BASE,
   title: "404: Page Not Found | I Hate Love PDF",
   description: "The page you were looking for doesn't exist. Explore our free and private browser PDF tools.",
   robots: {

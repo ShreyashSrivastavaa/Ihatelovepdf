@@ -1,8 +1,10 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { CheckCircle2, Heart, ShieldCheck, ArrowRight, Sparkles, Layers, FileDown, ScissorsLineDashed } from 'lucide-react';
+import { METADATA_BASE } from '../../../lib/metadata-shared';
 
 export const metadata: Metadata = {
+  metadataBase: METADATA_BASE,
   title: 'Thank You | ihatelovepdf',
   description: 'Thank you for using ihatelovepdf. Your privacy is always protected with 100% local in-browser processing.',
   alternates: {

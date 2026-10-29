@@ -35,6 +35,7 @@ export default function ProcessingProgress({
       aria-valuenow={calculatedPercentage ?? 0}
       aria-valuemin={0}
       aria-valuemax={100}
+      aria-live="polite"
       className="rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] p-5 space-y-3.5 shadow-sm animate-in fade-in duration-200"
     >
       <div className="flex items-center justify-between gap-3">
