@@ -49,6 +49,11 @@ Every tool is driven through real browser sessions using the production build (`
 | **Fill PDF Form** | `/fill-pdf-form`, `/es/rellenar-formulario-pdf` | ✅ PASS | Interactive AcroForm inputs (`fullName`), flatten toggle | None | N/A | Correctly detects interactive PDF form fields and exports cleanly filled document |
 | **Edit PDF** | `/edit-pdf`, `/es/editar-pdf` | ✅ PASS | Full vector studio, text, shape, image additions, undo/redo | None | N/A | Vector PDF edits applied and exported without visual or font degradation |
 | **Compare PDF** | `/compare`, `/es/comparar-pdf` | ✅ PASS | Dual document loading, synchronized multi-page navigation | None | N/A | Confirmed side-by-side rendering and sync page navigation controls |
+| **Extract Text** | `/extract-text`, `/es/extraer-texto` | ✅ PASS | Parses PDF text stream into plain text `.txt` | None | N/A | Extracted text matches document strings accurately without OCR dependency |
+| **PDF to Excel** | `/pdf-to-excel`, `/es/pdf-a-excel` | ✅ PASS | Tabular text matrix conversion to `.xlsx` | None | N/A | Generates valid OpenXML `.xlsx` workbook with standard PK header |
+| **PDF to PowerPoint** | `/pdf-to-powerpoint`, `/es/pdf-a-powerpoint` | ✅ PASS | Slide deck synthesis into `.pptx` presentation | None | N/A | Generates valid OpenXML `.pptx` presentation with slide layouts |
+| **PDF to HTML** | `/pdf-to-html`, `/es/pdf-a-html` | ✅ PASS | Converts PDF document to standalone responsive HTML | None | N/A | Generates clean semantic HTML with intact typography and paragraph blocks |
+| **PDF to ePub** | `/pdf-to-epub`, `/es/pdf-a-epub` | ✅ PASS | Converts PDF into eBook standard `.epub` container | None | N/A | Generates compliant EPUB archive readable across e-readers |
 
 ---
 
