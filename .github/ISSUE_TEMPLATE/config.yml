@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Community Discussions & Questions
+    url: https://github.com/ShreyashSrivastavaa/Ihatelovepdf/discussions
+    about: Ask questions, share ideas, or get help with ihatelovepdf.
+  - name: 🔒 Report a Security Vulnerability
+    url: https://github.com/ShreyashSrivastavaa/Ihatelovepdf/security/advisories/new
+    about: Privately report a security issue or vulnerability.

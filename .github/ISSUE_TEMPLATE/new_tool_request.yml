@@ -1,0 +1,58 @@
+name: 🛠️ New PDF Tool Proposal
+description: Propose a completely new client-side PDF utility tool.
+title: "[New Tool]: "
+labels: ["new-tool", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        We are always excited to expand our client-side PDF toolbox!
+        Remember: tools must be able to execute 100% locally in the browser with zero server uploads.
+
+  - type: input
+    id: tool-name
+    attributes:
+      label: Tool Name
+      description: What is the name of the tool? (e.g., "PDF Metadata Editor", "Bates Numbering", "PDF Grayscale Converter")
+      placeholder: PDF Metadata Editor
+    validations:
+      required: true
+
+  - type: textarea
+    id: tool-description
+    attributes:
+      label: What does this tool do?
+      description: Describe the inputs, the operations performed on the PDF, and the resulting output.
+      placeholder: The user uploads a PDF, can view/edit Author, Title, Subject, Keywords, and Creator metadata, and downloads the updated PDF without modifying pages.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tool-category
+    attributes:
+      label: Suggested Tool Category
+      options:
+        - Page Management
+        - Edit & Annotate
+        - Extract & View
+        - Security & Privacy
+        - Convert to PDF
+        - Convert from PDF
+        - Document Utility
+        - Business
+    validations:
+      required: true
+
+  - type: textarea
+    id: library-feasibility
+    attributes:
+      label: Technical Feasibility
+      description: Can this be implemented using `pdf-lib`, `pdfjs-dist`, or standard Web APIs without heavy external servers?
+      placeholder: pdf-lib natively supports reading and setting document metadata via PDFDocument.setTitle(), setAuthor(), etc.
+
+  - type: checkboxes
+    id: contributor
+    attributes:
+      label: Contribution
+      options:
+        - label: I would like to implement this tool! (Refer to CONTRIBUTING.md for instructions)

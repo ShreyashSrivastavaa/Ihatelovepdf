@@ -1,0 +1,83 @@
+name: 🐛 Bug Report
+description: Report a broken PDF tool, UI glitch, or unexpected error.
+title: "[Bug]: "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report an issue!
+        Please ensure you do not share sensitive or private documents in publicly attached files.
+
+  - type: dropdown
+    id: tool
+    attributes:
+      label: Affected PDF Tool
+      description: Which tool did the issue occur on?
+      options:
+        - Merge PDF
+        - Compress PDF
+        - Split PDF
+        - Crop & Resize
+        - Rotate PDF
+        - Reorder / Organize Pages
+        - PDF to Images / Images to PDF
+        - Watermark PDF
+        - Page Numbers
+        - Headers & Footers
+        - Extract Text
+        - Invert Colors (Dark Mode)
+        - Redact PDF
+        - Compare PDFs
+        - Sign PDF
+        - Fill PDF Form
+        - Document Converters (Word/Excel/PowerPoint/Markdown/HTML/CSV)
+        - Navigation / Home / General UI
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is.
+      placeholder: When I try to compress this PDF, the operation fails with...
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: How can we reproduce this behavior?
+      value: |
+        1. Go to '...'
+        2. Upload a PDF with '...'
+        3. Click on '...'
+        4. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen instead?
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser & Operating System
+      description: e.g. Chrome 124 on macOS 14, Firefox 125 on Windows 11, iOS Safari 17.4
+      placeholder: Chrome 124 on Windows 11
+    validations:
+      required: true
+
+  - type: textarea
+    id: console-log
+    attributes:
+      label: Browser Console Log (if applicable)
+      description: Please copy any red error traces from DevTools Console.
+      render: shell
