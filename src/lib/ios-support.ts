@@ -100,8 +100,9 @@ export async function normalizeImageForPdf(
       bitmap.close();
 
       let blob: Blob;
-      if (canvas instanceof OffscreenCanvas) {
-        blob = await canvas.convertToBlob({ type: 'image/jpeg', quality: 0.92 });
+      const isOffscreen = typeof OffscreenCanvas !== 'undefined' && canvas instanceof OffscreenCanvas;
+      if (isOffscreen) {
+        blob = await (canvas as OffscreenCanvas).convertToBlob({ type: 'image/jpeg', quality: 0.92 });
       } else {
         blob = await new Promise<Blob>((resolve, reject) => {
           (canvas as HTMLCanvasElement).toBlob(

@@ -1441,11 +1441,13 @@ export async function convertPdfToImages(
         }
 
         let blob: Blob;
-        if (canvas instanceof OffscreenCanvas) {
+        const isOffscreen = typeof OffscreenCanvas !== 'undefined' && canvas instanceof OffscreenCanvas;
+        if (isOffscreen) {
+          const offscreen = canvas as OffscreenCanvas;
           blob =
             extension === 'jpg'
-              ? await canvas.convertToBlob({ type: mimeType, quality })
-              : await canvas.convertToBlob({ type: mimeType });
+              ? await offscreen.convertToBlob({ type: mimeType, quality })
+              : await offscreen.convertToBlob({ type: mimeType });
         } else {
           blob = await new Promise<Blob>((resolve, reject) => {
             (canvas as HTMLCanvasElement).toBlob(
@@ -1543,8 +1545,10 @@ export async function renderPDFThumbnail(file: File, pageNumber: number, targetW
 
         // Convert to Data URL (OffscreenCanvas needs FileReader)
         let url: string;
-        if (canvas instanceof OffscreenCanvas) {
-          const blob = await canvas.convertToBlob({ type: 'image/png' });
+        const isOffscreen = typeof OffscreenCanvas !== 'undefined' && canvas instanceof OffscreenCanvas;
+        if (isOffscreen) {
+          const offscreen = canvas as OffscreenCanvas;
+          const blob = await offscreen.convertToBlob({ type: 'image/png' });
           url = await new Promise<string>((resolve) => {
             const reader = new FileReader();
             reader.onloadend = () => resolve((reader.result as string) || FALLBACK_THUMBNAIL);

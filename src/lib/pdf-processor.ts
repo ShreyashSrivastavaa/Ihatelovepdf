@@ -88,8 +88,14 @@ export async function processPDF(
       return reorderViaExtract(primaryFile, options.pageOrder, options);
     }
 
-    case 'pdfToImages':
-      return (await pdfWorkerClient.run('pdfToImages', [primaryFile], options, undefined, onProgress)) as Promise<PdfToImagesArchiveResult>;
+    case 'pdfToImages': {
+      try {
+        return (await pdfWorkerClient.run('pdfToImages', [primaryFile], options, undefined, onProgress)) as Promise<PdfToImagesArchiveResult>;
+      } catch (err) {
+        console.warn('Worker pdfToImages failed, falling back to main thread', err);
+        return PDFOps.convertPdfToImages(primaryFile, options, onProgress);
+      }
+    }
 
     case 'imagesToPdf':
       return convertImagesToPdfAsBlob(files, options);
