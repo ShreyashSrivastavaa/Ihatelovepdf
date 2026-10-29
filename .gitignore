@@ -6,6 +6,7 @@ package-lock.json
 
 # Testing
 /coverage
+tests/fixtures/large-50mb.pdf
 
 # Next.js build output
 /.next/
