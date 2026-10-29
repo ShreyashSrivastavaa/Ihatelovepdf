@@ -2,6 +2,14 @@
 
 All notable changes to **PDFhelp** will be documented in this file.
 
+## [1.1.0](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/compare/v1.0.0...v1.1.0) (2026-10-29)
+
+
+### Features
+
+* add comprehensive PDF operations library and multilingual tool support ([c07b088](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/c07b08835860fb655a8fe213105967d495af25b4))
+* implement core PDF operations, processing workers, and tool audit documentation ([89a4b33](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/89a4b3367ae058c5e04365409d807b8c00ab0ed4))
+
 ## 1.0.0 (2026-10-29)
 
 
