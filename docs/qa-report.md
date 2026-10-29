@@ -44,6 +44,11 @@ Every tool is driven through real browser sessions using the production build (`
 | **Headers & Footers** | `/headers-footers` | ✅ PASS | Running headers & footers with page tokens (`{page}`, `{total}`) | None | N/A | Generates clean header/footer annotations in output PDF |
 | **Invert Colors** | `/invert-colors` | ✅ PASS | Dark mode high-contrast inversion, graphics/text | None | N/A | Generates inverted PDF with preserved page count and layout geometry |
 | **Whiteboard** | `/whiteboard` | ✅ PASS | Interactive drawing canvas, pen/shape markings, export | DataURL to fetch blob roundtrip was slow and stalled download pipeline | ✅ YES (commit `edd091f`) | Refactored to direct canvas `toBlob` export; exports valid PDF with all annotations intact |
+| **Redact PDF** | `/redact`, `/es/redactar-censurar` | ✅ PASS | Zero-leakage raster burn, vector box overlay, multi-page | Drag event closure staleness dropped redaction boxes during fast pointer gestures | ✅ YES (commit `7983821`) | Converted gesture tracking to synchronous refs; verified redactions permanently burned into PDF with 0 leakage |
+| **Sign PDF** | `/sign-pdf`, `/es/firmar-pdf` | ✅ PASS | Official stamps, cursive typed signatures, drawn ink | Modal placement button was blocked by fixed bottom viewport element | ✅ YES | Added forceful modal z-index click and verified signature stamps placed and signed PDF downloaded |
+| **Fill PDF Form** | `/fill-pdf-form`, `/es/rellenar-formulario-pdf` | ✅ PASS | Interactive AcroForm inputs (`fullName`), flatten toggle | None | N/A | Correctly detects interactive PDF form fields and exports cleanly filled document |
+| **Edit PDF** | `/edit-pdf`, `/es/editar-pdf` | ✅ PASS | Full vector studio, text, shape, image additions, undo/redo | None | N/A | Vector PDF edits applied and exported without visual or font degradation |
+| **Compare PDF** | `/compare`, `/es/comparar-pdf` | ✅ PASS | Dual document loading, synchronized multi-page navigation | None | N/A | Confirmed side-by-side rendering and sync page navigation controls |
 
 ---
 
