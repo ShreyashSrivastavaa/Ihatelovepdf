@@ -53,7 +53,7 @@ import StickyActionBar from './StickyActionBar';
 import ResultPanel, { type OutputFileItem } from './ResultPanel';
 import ErrorState from './ErrorState';
 import { ICON_MAP } from '../ToolSwitcher';
-import { Layers } from 'lucide-react';
+import { Layers, ShieldCheck } from 'lucide-react';
 
 type ProcessingMode = OperationKey;
 
@@ -2422,6 +2422,10 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
               <h2 className="text-base sm:text-lg font-extrabold text-[var(--tx)] leading-tight">
                 {activeToolName}
               </h2>
+              <div className="flex items-center gap-1.5 text-[11px] font-medium text-emerald-600 dark:text-emerald-400 pt-0.5">
+                <ShieldCheck className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
+                <span>100% Client-Side &bull; Your files never leave your device</span>
+              </div>
             </div>
           </div>
 
