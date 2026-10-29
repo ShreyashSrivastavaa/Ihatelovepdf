@@ -167,6 +167,31 @@ export const GUIDES_DATA: Record<string, GuideItem> = {
       'Our in-browser converter preserves high image clarity while sizing pages cleanly.',
       'No files are uploaded to any server, making it safe for sensitive photos like passports and driving licenses.'
     ]
+  },
+  'how-to-convert-pdf-to-word-free': {
+    slug: 'how-to-convert-pdf-to-word-free',
+    title: 'How to Convert PDF to Word for Free',
+    description: 'Convert PDF files into fully editable Microsoft Word (.docx) documents in your browser with headings, bullet lists, and images preserved.',
+    category: 'How-To',
+    date: '2026-09-02',
+    readTime: '4 min read',
+    toolSlug: 'pdf-to-word',
+    keyTakeaways: [
+      'Reconstructs structured Word documents (.docx) with headings, body paragraphs, and lists.',
+      'Embedded images and photos are extracted and placed inline automatically.',
+      '100% private in-browser conversion ensures contracts, CVs, and financial data never leave your device.'
+    ],
+    steps: [
+      'Navigate to the ihatelovepdf PDF to Word tool at /pdf-to-word.',
+      'Drag and drop your PDF document into the upload area.',
+      'Review document options and click "Convert to Word".',
+      'Download your editable .docx file ready for Microsoft Word, Google Docs, or Pages.'
+    ],
+    content: [
+      'PDF documents are designed for static viewing and printing, making them difficult to update without expensive proprietary editing suites.',
+      'Converting PDF to Word allows you to edit text, update employment resumes, amend contract clauses, or repurpose research reports with ease.',
+      'With ihatelovepdf, text coordinate matrices, font sizes, weights, and embedded graphics are analyzed directly in client browser memory, generating clean .docx files without transmitting a single byte to external cloud servers.'
+    ]
   }
 };
 

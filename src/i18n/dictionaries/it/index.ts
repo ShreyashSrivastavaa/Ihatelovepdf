@@ -114,7 +114,7 @@ export const itDictionary: Dictionary = {
       },
       capabilitiesLabel: "Azioni principali",
       operations: getOperationsFooterLabels(locale),
-      license: "PDF Processing: PDF-lib (MIT), PDF.js (Apache 2.0) • Font: Geist (MIT)",
+      license: "PDF Processing: PDF-lib (MIT), PDF.js (Apache 2.0), docx (MIT) • Font: Geist (MIT)",
       disclaimer: "Il servizio è fornito così com'è senza alcuna garanzia. L'utente è responsabile dell'uso dei file generati.",
     },
     notifications: {

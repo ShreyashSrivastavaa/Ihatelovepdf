@@ -108,7 +108,7 @@ export default function OfflinePdfToolsPage() {
             Traditional PDF websites act as file relays: you select a file on your computer, your browser uploads it over the internet to their web server, their server processes the file using command-line utilities, and you wait to download the output.
           </p>
           <p>
-            I Hate Love PDF uses a modern architecture built on open-source libraries like pdf-lib and PDF.js. When you visit a tool page, the processing code is compiled into your browser memory. When you select a document, it is read into an ArrayBuffer in your browser tab. All page manipulation, compression, and watermarking happen right there on your CPU.
+            I Hate Love PDF uses a modern architecture built on open-source libraries like pdf-lib, PDF.js, and docx. When you visit a tool page, the processing code is compiled into your browser memory. When you select a document, it is read into an ArrayBuffer in your browser tab. All page manipulation, compression, and PDF to Word conversions happen right there on your CPU.
           </p>
           <p>
             You can verify this yourself anytime: open your browser developer tools (F12), check the Network tab, and process a document. You will see zero file upload requests.

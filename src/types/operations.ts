@@ -26,6 +26,8 @@ export type OperationKey =
 	| "createPdf"
 	| "excelToPdf"
 	| "pdfToExcel"
+	| "pdfToWord"
+	| "wordToPdf"
 	| "powerpointToPdf"
 	| "pdfToPowerpoint"
 	| "pdfToHtml"

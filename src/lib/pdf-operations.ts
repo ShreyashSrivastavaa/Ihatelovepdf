@@ -34,6 +34,7 @@ export * from './operations/color-inversion';
 export * from './operations/redact';
 export * from './operations/security';
 export * from './operations/converters';
+export * from './operations/pdf-to-word';
 export * from './operations/business';
 export * from './operations/pdf-editor';
 export * from './operations/sign';
@@ -128,6 +129,7 @@ export type PDFProcessingOptions = {
   imageBorderColor?: string;
   zipMode?: 'direct' | 'images' | 'splitPdf';
   documentEditState?: import('./operations/pdf-editor').DocumentEditState;
+  extractImages?: boolean;
 
   // New tool options (nested & flat)
   watermark?: WatermarkOptions;

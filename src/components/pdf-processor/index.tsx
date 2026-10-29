@@ -188,6 +188,7 @@ const MODE_DEFAULTS: Record<ProcessingMode, PDFProcessingOptions> = {
   },
   excelToPdf: {},
   pdfToExcel: {},
+  pdfToWord: {},
   powerpointToPdf: {},
   pdfToPowerpoint: {},
   pdfToHtml: {},
@@ -1785,6 +1786,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
 
             let ext = '.pdf';
             if (mode === 'pdfToExcel') ext = '.xlsx';
+            else if (mode === 'pdfToWord') ext = '.docx';
             else if (mode === 'pdfToPowerpoint') ext = '.pptx';
             else if (mode === 'pdfToHtml') ext = '.html';
             else if (mode === 'pdfToEpub') ext = '.epub';
@@ -1803,7 +1805,9 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
                 : result instanceof Uint8Array || result instanceof ArrayBuffer
                 ? new Blob([result as BlobPart], {
                     type:
-                      mode === 'pdfToExcel'
+                      mode === 'pdfToWord'
+                        ? 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+                        : mode === 'pdfToExcel'
                         ? 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
                         : mode === 'pdfToPowerpoint'
                         ? 'application/vnd.openxmlformats-officedocument.presentationml.presentation'

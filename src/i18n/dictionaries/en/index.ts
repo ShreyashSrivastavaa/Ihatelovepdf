@@ -115,7 +115,7 @@ export const enDictionary: Dictionary = {
       },
       capabilitiesLabel: "Popular Actions",
       operations: getOperationsFooterLabels(locale),
-      license: "PDF Processing: PDF-lib (MIT), PDF.js (Apache 2.0) • Font: Geist (MIT)",
+      license: "PDF Processing: PDF-lib (MIT), PDF.js (Apache 2.0), docx (MIT) • Font: Geist (MIT)",
       disclaimer: "This service is provided 'as is' without warranty of any kind. The user accepts full responsibility for using generated files.",
     },
     notifications: {

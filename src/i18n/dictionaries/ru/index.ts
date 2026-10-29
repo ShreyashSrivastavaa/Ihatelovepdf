@@ -114,7 +114,7 @@ export const ruDictionary: Dictionary = {
       },
       capabilitiesLabel: "Популярные действия",
       operations: getOperationsFooterLabels(locale),
-      license: "Обработка PDF: PDF-lib (MIT), PDF.js (Apache 2.0) • Шрифт: Geist (MIT)",
+      license: "Обработка PDF: PDF-lib (MIT), PDF.js (Apache 2.0), docx (MIT) • Шрифт: Geist (MIT)",
       disclaimer:
         "Сервис предоставляется «как есть», без каких-либо гарантий. Пользователь несёт полную ответственность за использование файлов.",
     },

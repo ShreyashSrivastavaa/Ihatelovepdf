@@ -120,7 +120,7 @@ export const huDictionary: Dictionary = {
       },
       capabilitiesLabel: "NépszerÅ± mÅ±veletek",
       operations: getOperationsFooterLabels(locale),
-      license: "PDF-feldolgozás: PDF-lib (MIT), PDF.js (Apache 2.0) • BetÅ±készlet: Geist (MIT)",
+      license: "PDF-feldolgozás: PDF-lib (MIT), PDF.js (Apache 2.0), docx (MIT) • BetÅ±készlet: Geist (MIT)",
       disclaimer:
         "A szolgáltatás \"jelenlegi állapotában\" kerül átadásra, mindenféle garancia nélkül. A fájlok felhasználásáért kizárólag a felhasználó felel.",
     },

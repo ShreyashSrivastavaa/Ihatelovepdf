@@ -114,7 +114,7 @@ export const frDictionary: Dictionary = {
       },
       capabilitiesLabel: "Actions populaires",
       operations: getOperationsFooterLabels(locale),
-      license: "Traitement PDF: PDF-lib (MIT), PDF.js (Apache 2.0) • Police: Geist (MIT)",
+      license: "Traitement PDF: PDF-lib (MIT), PDF.js (Apache 2.0), docx (MIT) • Police: Geist (MIT)",
       disclaimer: "Le service est fourni « tel quel » sans garantie d'aucune sorte. L'utilisateur est responsable de l'utilisation des fichiers.",
     },
     notifications: {

@@ -126,6 +126,7 @@ export const TOOL_CATEGORIES: ToolCategory[] = [
     borderAccent: 'rgba(234, 88, 12, 0.3)',
     tag: 'IMPORT',
     toolKeys: [
+      'wordToPdf',
       'imagesToPdf',
       'csvToPdf',
       'excelToPdf',
@@ -138,13 +139,13 @@ export const TOOL_CATEGORIES: ToolCategory[] = [
   {
     id: 'convert-from-pdf',
     name: 'Convert from PDF',
-    description: 'Export PDF files into structured Excel, PowerPoint, HTML & EPUB formats',
+    description: 'Export PDF files into structured Word, Excel, PowerPoint, HTML & EPUB formats',
     icon: FileText,
     color: '#2563EB',
     bgSoft: 'rgba(37, 99, 235, 0.12)',
     borderAccent: 'rgba(37, 99, 235, 0.3)',
     tag: 'EXPORT',
-    toolKeys: ['pdfToImages', 'pdfToExcel', 'pdfToPowerpoint', 'pdfToHtml', 'pdfToEpub'],
+    toolKeys: ['pdfToImages', 'pdfToWord', 'pdfToExcel', 'pdfToPowerpoint', 'pdfToHtml', 'pdfToEpub'],
   },
   {
     id: 'document-utility',
@@ -198,6 +199,8 @@ export const TOOL_NAMES: Record<OperationKey, string> = {
   createPdf: 'Create PDF',
   excelToPdf: 'Excel to PDF',
   pdfToExcel: 'PDF to Excel',
+  pdfToWord: 'PDF to Word',
+  wordToPdf: 'Word to PDF',
   powerpointToPdf: 'PowerPoint to PDF',
   pdfToPowerpoint: 'PDF to PowerPoint',
   pdfToHtml: 'PDF to HTML',

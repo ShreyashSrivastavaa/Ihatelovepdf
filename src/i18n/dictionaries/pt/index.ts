@@ -112,7 +112,7 @@ export const ptDictionary: Dictionary = {
       },
       capabilitiesLabel: "Operações populares",
       operations: getOperationsFooterLabels(locale),
-      license: "Processamento de PDF: PDF-lib (MIT), PDF.js (Apache 2.0) • Fonte: Geist (MIT)",
+      license: "Processamento de PDF: PDF-lib (MIT), PDF.js (Apache 2.0), docx (MIT) • Fonte: Geist (MIT)",
       disclaimer: "O serviço é fornecido 'como está', sem garantia de qualquer tipo. O usuário é responsável pelo uso dos arquivos gerados.",
     },
     notifications: {

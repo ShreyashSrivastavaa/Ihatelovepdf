@@ -235,6 +235,16 @@ export async function processPDF(
       return PDFOps.convertPdfToExcel(primaryFile);
     }
 
+    case 'pdfToWord': {
+      try {
+        const result = (await pdfWorkerClient.run('pdfToWord', [primaryFile], options, undefined, onProgress)) as Blob;
+        return result;
+      } catch (err) {
+        console.warn('Worker pdfToWord failed, falling back to main thread', err);
+        return PDFOps.convertPdfToWord(primaryFile, options, onProgress);
+      }
+    }
+
     case 'powerpointToPdf': {
       const bytes = await PDFOps.convertPowerpointToPdf(primaryFile);
       return createPdfBlob(bytes);

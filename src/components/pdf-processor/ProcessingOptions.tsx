@@ -25,6 +25,7 @@ import {
   Scissors,
   Layers,
   CheckSquare,
+  FileText,
 } from 'lucide-react';
 
 type ProcessingOptionsProps = {
@@ -1700,6 +1701,61 @@ export default function ProcessingOptions({
               <option value="landscape">Landscape</option>
             </select>
           </div>
+        </div>
+      </div>
+    );
+  }
+
+  // 17. PDF TO WORD MODE
+  if (mode === 'pdfToWord') {
+    const extractImages = options.extractImages !== false;
+
+    return (
+      <div className="mt-6 space-y-6 pt-4 border-t border-[var(--border)]">
+        <div>
+          <h3 className="text-xs font-semibold text-[var(--tx-3)] uppercase tracking-wider flex items-center gap-2">
+            <FileText className="h-4 w-4 text-[var(--accent)]" />
+            Word (.docx) Document Options
+          </h3>
+          <p className="mt-1 text-xs text-[var(--tx-2)]">
+            Configure how your PDF text and embedded visual assets are converted into an editable Word document.
+          </p>
+        </div>
+
+        {/* Note Alert Banner */}
+        <div className="rounded-2xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs text-amber-700 dark:text-amber-300 flex items-start gap-3">
+          <Info className="h-4 w-4 shrink-0 mt-0.5 text-amber-500" />
+          <div className="space-y-1">
+            <p className="font-semibold">Local Layout Reconstruction Notice</p>
+            <p className="opacity-90 leading-relaxed">
+              Layout is rebuilt locally in your browser, so complex layouts (multi-column, tables, forms) may not match the original exactly.
+            </p>
+          </div>
+        </div>
+
+        {/* Image extraction toggle */}
+        <div className="surface-card p-4 rounded-2xl border border-[var(--border)] flex items-center justify-between">
+          <div className="space-y-0.5">
+            <span className="text-sm font-bold text-[var(--tx)]">Extract Embedded Images</span>
+            <p className="text-xs text-[var(--tx-2)]">
+              Automatically extract photos, logos, and illustrations and embed them inline in the generated Word document.
+            </p>
+          </div>
+          <label className="relative inline-flex items-center cursor-pointer">
+            <input
+              type="checkbox"
+              className="sr-only peer"
+              checked={extractImages}
+              onChange={(e) => update('extractImages', e.target.checked)}
+            />
+            <div className="w-11 h-6 bg-[var(--border)] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--accent)]"></div>
+          </label>
+        </div>
+
+        {/* Privacy badge */}
+        <div className="flex items-center gap-2 text-xs font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3.5 py-2.5 rounded-xl">
+          <ShieldCheck className="h-4 w-4 shrink-0 text-emerald-500" />
+          <span>100% Client-Side &bull; Documents are parsed and serialized in browser RAM with zero server transfers.</span>
         </div>
       </div>
     );

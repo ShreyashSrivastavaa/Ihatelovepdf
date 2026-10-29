@@ -608,6 +608,28 @@ export const TOOL_FAQS: Record<OperationKey, ToolFaqItem[]> = {
       answer: 'No. Table recognition and workbook assembly run entirely in your local browser sandbox.',
     },
   ],
+  pdfToWord: [
+    {
+      question: 'How does in-browser PDF to Word conversion work?',
+      answer: 'Our client-side engine parses text coordinate matrices, font sizes, weights, and embedded graphics from your PDF directly in your browser, reconstructing headings, body paragraphs, bullet points, and images into a native Microsoft Word (.docx) file.',
+    },
+    {
+      question: 'Does it produce an editable .docx file?',
+      answer: 'Yes. The generated file is a standard Microsoft Word (.docx) document compatible with Microsoft Office, Google Docs, Apple Pages, and LibreOffice with full editing capabilities.',
+    },
+    {
+      question: 'Can I convert scanned or image-only PDFs?',
+      answer: 'This tool extracts vector-selectable text. If your PDF contains scanned images or photos of documents without selectable text, the converter will alert you that selectable text is required.',
+    },
+    {
+      question: 'Are embedded images and photos preserved in Word?',
+      answer: 'Yes. Images extracted from the PDF pages are automatically converted and embedded directly into the Word document at their respective locations.',
+    },
+    {
+      question: 'Are my confidential documents uploaded to any remote server?',
+      answer: 'Never. Unlike traditional online converters, all processing executes 100% locally on your computer or smartphone using Web Workers. Zero bytes of document data leave your device.',
+    },
+  ],
   powerpointToPdf: [
     {
       question: 'How do I convert PowerPoint slides (.pptx) to PDF?',

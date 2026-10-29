@@ -341,6 +341,17 @@
       "ru": "/ru/pdf-v-excel",
       "hu": "/hu/pdf-bol-excel"
     },
+    "pdfToWord": {
+      "en": "/pdf-to-word",
+      "es": "/es/pdf-a-word",
+      "pt": "/pt/pdf-para-word",
+      "de": "/de/pdf-zu-word",
+      "it": "/it/da-pdf-a-word",
+      "fr": "/fr/pdf-en-word",
+      "ro": "/ro/pdf-in-word",
+      "ru": "/ru/pdf-v-word",
+      "hu": "/hu/pdf-bol-word"
+    },
     "powerpointToPdf": {
       "en": "/powerpoint-to-pdf",
       "es": "/es/powerpoint-a-pdf",

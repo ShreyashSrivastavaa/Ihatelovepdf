@@ -122,7 +122,7 @@ export const roDictionary: Dictionary = {
       },
       capabilitiesLabel: "AcÈ›iuni populare",
       operations: getOperationsFooterLabels(locale),
-      license: "Procesare PDF: PDF-lib (MIT), PDF.js (Apache 2.0) • Font: Geist (MIT)",
+      license: "Procesare PDF: PDF-lib (MIT), PDF.js (Apache 2.0), docx (MIT) • Font: Geist (MIT)",
       disclaimer: "Serviciul este furnizat „ca atare”, fÄƒrÄƒ garanÈ›ii de niciun fel. Utilizatorul este singurul responsabil pentru utilizarea fiÈ™ierelor.",
     },
     notifications: {

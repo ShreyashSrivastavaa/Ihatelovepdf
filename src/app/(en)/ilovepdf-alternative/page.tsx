@@ -48,10 +48,10 @@ const comparisonPoints = [
     winner: 'I Hate Love PDF',
   },
   {
-    feature: 'Server-side OCR & Office conversion',
-    ilovepdf: 'Extensive server-side OCR and cloud Office conversions powered by dedicated server clusters.',
-    ourSite: 'Focused on client-side conversions and instant PDF manipulation without cloud reliance.',
-    winner: 'iLovePDF',
+    feature: 'Office Document Conversions (Word, Excel, PowerPoint)',
+    ilovepdf: 'Converts documents via remote cloud server clusters with data retention risks.',
+    ourSite: 'Native in-browser conversion: PDF to Word (.docx), PDF to Excel (.xlsx), and PowerPoint with zero server uploads.',
+    winner: 'I Hate Love PDF',
   },
   {
     feature: 'Advertisements & Popups',

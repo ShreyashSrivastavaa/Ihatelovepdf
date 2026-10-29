@@ -210,6 +210,9 @@ async function runFullAudit(): Promise<ToolAuditResult[]> {
         case 'pdfToExcel':
           output = await PDFOps.convertPdfToExcel(testPdf1);
           break;
+        case 'pdfToWord':
+          output = await PDFOps.convertPdfToWord(testPdf1);
+          break;
         case 'pdfToPowerpoint':
           output = await PDFOps.convertPdfToPowerpoint(testPdf1);
           break;

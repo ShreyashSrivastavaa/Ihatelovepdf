@@ -114,7 +114,7 @@ export const deDictionary: Dictionary = {
       },
       capabilitiesLabel: "Beliebte Aktionen",
       operations: getOperationsFooterLabels(locale),
-      license: "PDF-Verarbeitung: PDF-lib (MIT), PDF.js (Apache 2.0) • Schriftart: Geist (MIT)",
+      license: "PDF-Verarbeitung: PDF-lib (MIT), PDF.js (Apache 2.0), docx (MIT) • Schriftart: Geist (MIT)",
       disclaimer: "Der Dienst wird 'wie besehen' ohne jegliche Gewährleistung bereitgestellt. Der Benutzer ist für die Verwendung der generierten Dateien verantwortlich.",
     },
     notifications: {

@@ -110,7 +110,7 @@ export const esDictionary: Dictionary = {
       },
       capabilitiesLabel: "Operaciones populares",
       operations: getOperationsFooterLabels(locale),
-      license: "Procesamiento de PDF: PDF-lib (MIT), PDF.js (Apache 2.0) • Fuente: Geist (MIT)",
+      license: "Procesamiento de PDF: PDF-lib (MIT), PDF.js (Apache 2.0), docx (MIT) • Fuente: Geist (MIT)",
       disclaimer: "El servicio se proporciona 'tal cual' sin garantía de ningún tipo. El usuario es responsable del uso de los archivos generados.",
     },
     notifications: {
