@@ -2,7 +2,7 @@
 
 **Date**: 2026-08-23  
 **Status**: 🟢 100% HEALTHY  
-**Overall Pass Rate**: **36/36 Tools Verified (100.0%)**
+**Overall Pass Rate**: **37/37 Tools Verified (100.0%)**
 
 ---
 
@@ -20,32 +20,33 @@
 | Tool | Category | Renders? | Upload works? | Process works? | Download works? | Output valid? | Output Details | Error (if any) |
 |---|---|:---:|:---:|:---:|:---:|:---:|---|---|
 | **scanToPdf** | Scan & Workflow | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (1178 B) | ,  |
-| **whiteboard** | Scan & Workflow | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (2659 B) | ,  |
+| **whiteboard** | Scan & Workflow | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (2660 B) | ,  |
 | **merge** | Page Management | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (2273 B) | ,  |
 | **compress** | Page Management | ✅ | ✅ | ✅ | ✅ | ✅ | object with data bytes (1491 B) | ,  |
 | **split** | Page Management | ✅ | ✅ | ✅ | ✅ | ✅ | Array of 3 items (3 B) | ,  |
-| **extract** | Page Management | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (1309 B) | ,  |
+| **extract** | Page Management | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (1308 B) | ,  |
 | **rotate** | Page Management | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (1642 B) | ,  |
 | **crop** | Page Management | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (1669 B) | ,  |
 | **reorder** | Page Management | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (1635 B) | ,  |
 | **pdfToImages** | Page Management | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (1515 B) | ,  |
 | **imagesToPdf** | Page Management | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (1178 B) | ,  |
 | **pdfToZip** | Page Management | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (1515 B) | ,  |
-| **editPdf** | Edit & Annotate | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (2636 B) | ,  |
-| **fillPdfForm** | Edit & Annotate | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (2050 B) | ,  |
-| **watermark** | Edit & Annotate | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (2630 B) | ,  |
+| **editPdf** | Edit & Annotate | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (2637 B) | ,  |
+| **fillPdfForm** | Edit & Annotate | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (2051 B) | ,  |
+| **watermark** | Edit & Annotate | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (2628 B) | ,  |
 | **pageNumbers** | Edit & Annotate | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (2458 B) | ,  |
 | **headersFooters** | Edit & Annotate | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (2462 B) | ,  |
 | **extractText** | Extract & View | ✅ | ✅ | ✅ | ✅ | ✅ | structured report (1 B) | ,  |
 | **invertColors** | Extract & View | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (2319 B) | ,  |
 | **signPdf** | Security & Privacy | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (2445 B) | ,  |
-| **redact** | Security & Privacy | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (2027 B) | ,  |
+| **redact** | Security & Privacy | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (2028 B) | ,  |
+| **wordToPdf** | Convert to PDF | ✅ | ✅ | ✅ | ✅ | ✅ | object with data bytes (1491 B) | ,  |
 | **csvToPdf** | Convert to PDF | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (1373 B) | ,  |
-| **excelToPdf** | Convert to PDF | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (1086 B) | ,  |
+| **excelToPdf** | Convert to PDF | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (1087 B) | ,  |
 | **powerpointToPdf** | Convert to PDF | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (1806 B) | ,  |
-| **markdownToPdf** | Convert to PDF | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (1042 B) | ,  |
+| **markdownToPdf** | Convert to PDF | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (1041 B) | ,  |
 | **htmlToPdf** | Convert to PDF | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (982 B) | ,  |
-| **ebookToPdf** | Convert to PDF | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (1272 B) | ,  |
+| **ebookToPdf** | Convert to PDF | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (1273 B) | ,  |
 | **pdfToWord** | Convert from PDF | ✅ | ✅ | ✅ | ✅ | ✅ | structured report (1 B) | ,  |
 | **pdfToExcel** | Convert from PDF | ✅ | ✅ | ✅ | ✅ | ✅ | structured report (1 B) | ,  |
 | **pdfToPowerpoint** | Convert from PDF | ✅ | ✅ | ✅ | ✅ | ✅ | structured report (1 B) | ,  |
@@ -54,7 +55,7 @@
 | **compare** | Document Utility | ✅ | ✅ | ✅ | ✅ | ✅ | structured report (1 B) | ,  |
 | **createPdf** | Document Utility | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (1184 B) | ,  |
 | **gstInvoice** | Business | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (2349 B) | ,  |
-| **posBilling** | Business | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (1391 B) | ,  |
+| **posBilling** | Business | ✅ | ✅ | ✅ | ✅ | ✅ | application/pdf (bytes) (1390 B) | ,  |
 
 ---
 

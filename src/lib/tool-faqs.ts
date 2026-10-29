@@ -630,6 +630,24 @@ export const TOOL_FAQS: Record<OperationKey, ToolFaqItem[]> = {
       answer: 'Never. Unlike traditional online converters, all processing executes 100% locally on your computer or smartphone using Web Workers. Zero bytes of document data leave your device.',
     },
   ],
+  wordToPdf: [
+    {
+      question: 'How do I convert Word documents (.docx) to PDF?',
+      answer: 'Upload your Microsoft Word (.docx) file. Our client-side conversion engine parses document styles, headings, tables, and images directly in your browser and outputs a standardized PDF file.',
+    },
+    {
+      question: 'Are formatting, headings, and tables preserved?',
+      answer: 'Yes. Headings, paragraphs, bold/italic formatting, bullet and numbered lists, tables, and images are accurately converted into styled PDF pages.',
+    },
+    {
+      question: 'Are older Word (.doc) files supported?',
+      answer: 'Modern .docx files are supported. If you have an older .doc file, simply open it in Microsoft Word, Google Docs, or LibreOffice and save as .docx before uploading.',
+    },
+    {
+      question: 'Are my confidential documents uploaded to any remote server?',
+      answer: 'Never. All conversion runs entirely within your browser sandbox. Your private files are never uploaded or transmitted to any server.',
+    },
+  ],
   powerpointToPdf: [
     {
       question: 'How do I convert PowerPoint slides (.pptx) to PDF?',

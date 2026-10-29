@@ -333,16 +333,31 @@ export function groupLinesIntoBlocks(lines: ExtractedLine[], bodyFontSize: numbe
   return blocks;
 }
 
+interface PdfImageObject {
+  data?: Uint8ClampedArray | Uint8Array;
+  width?: number;
+  height?: number;
+}
+
+interface PdfPageForImageExtraction {
+  getOperatorList(): Promise<{ fnArray: number[]; argsArray: unknown[][] }>;
+  objs: {
+    has(name: string): boolean;
+    get(name: string, callback: (obj: PdfImageObject | null) => void): void;
+  };
+}
+
 /**
  * Extracts embedded images from a PDF.js page operator list.
  */
-async function extractPageImages(page: any): Promise<ExtractedImage[]> {
+async function extractPageImages(page: unknown): Promise<ExtractedImage[]> {
   const images: ExtractedImage[] = [];
 
   try {
-    const operatorList = await page.getOperatorList();
+    const pageWithObjs = page as PdfPageForImageExtraction;
+    const operatorList = await pageWithObjs.getOperatorList();
     const pdfjs = await getPdfJs();
-    const ops = (pdfjs as any).OPS || {};
+    const ops = (pdfjs as unknown as { OPS?: Record<string, number> }).OPS || {};
     const imageOps = new Set([
       ops.paintImageXObject,
       ops.paintJpegXObject,
@@ -353,13 +368,13 @@ async function extractPageImages(page: any): Promise<ExtractedImage[]> {
       const fn = operatorList.fnArray[i];
       if (!imageOps.has(fn)) continue;
 
-      const imgName = operatorList.argsArray[i][0];
+      const imgName = String(operatorList.argsArray[i]?.[0] || '');
       if (!imgName) continue;
 
       try {
-        const imgObj = await new Promise<any>((resolve) => {
-          if (page.objs.has(imgName)) {
-            page.objs.get(imgName, (obj: any) => resolve(obj));
+        const imgObj = await new Promise<PdfImageObject | null>((resolve) => {
+          if (pageWithObjs.objs.has(imgName)) {
+            pageWithObjs.objs.get(imgName, (obj: PdfImageObject | null) => resolve(obj));
           } else {
             resolve(null);
           }
@@ -460,7 +475,7 @@ export async function convertPdfToWord(
 
   onProgress?.(5, 'Loading PDF document...');
 
-  let doc: any;
+  let doc: Awaited<ReturnType<PdfJsModule['getDocument']>['promise']>;
   try {
     const loadingTask = pdfjs.getDocument({
       data: rawData,
@@ -471,16 +486,17 @@ export async function convertPdfToWord(
     });
 
     doc = await loadingTask.promise;
-  } catch (err: any) {
-    if (err?.name === 'PasswordException' || err?.message?.includes('password')) {
+  } catch (err: unknown) {
+    const errorObj = err as { name?: string; message?: string } | null | undefined;
+    if (errorObj?.name === 'PasswordException' || errorObj?.message?.includes('password')) {
       throw new Error(
         'This PDF is password-protected. Please unlock it using the Unlock PDF tool first or provide the password.'
       );
     }
-    if (err?.name === 'InvalidPDFException' || err?.message?.includes('corrupted') || err?.message?.includes('Invalid PDF')) {
+    if (errorObj?.name === 'InvalidPDFException' || errorObj?.message?.includes('corrupted') || errorObj?.message?.includes('Invalid PDF')) {
       throw new Error('Unable to parse this PDF document. The file may be corrupted or unreadable.');
     }
-    throw new Error(err?.message || 'Failed to open PDF document.');
+    throw new Error(errorObj?.message || 'Failed to open PDF document.');
   }
 
   const numPages = doc.numPages;
@@ -565,7 +581,6 @@ export async function convertPdfToWord(
   // Pass 2: Calculate body font size and group into structured blocks
   const bodyFontSize = calculateBodyFontSize(allLinesForBodySize);
 
-  let currentLineIndex = 0;
   for (let p = 0; p < numPages; p++) {
     const page = await doc.getPage(p + 1);
     const textContent = await page.getTextContent();

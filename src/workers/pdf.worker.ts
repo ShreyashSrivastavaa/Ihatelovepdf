@@ -16,6 +16,7 @@ import {
   encryptPdf,
   pdfToZip,
   convertPdfToWord,
+  convertWordToPdf,
   ProcessingResult,
 } from '../lib/pdf-operations';
 
@@ -92,6 +93,9 @@ self.onmessage = async (e: MessageEvent) => {
         break;
       case 'pdfToWord':
         result = await convertPdfToWord(files[0], options, reportProgress);
+        break;
+      case 'wordToPdf':
+        result = await convertWordToPdf(files[0], { onProgress: reportProgress });
         break;
       case 'imagesToPdf':
         result = await convertImagesToPdf(files, options);

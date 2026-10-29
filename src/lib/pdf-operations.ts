@@ -35,6 +35,7 @@ export * from './operations/redact';
 export * from './operations/security';
 export * from './operations/converters';
 export * from './operations/pdf-to-word';
+export * from './operations/word-to-pdf';
 export * from './operations/business';
 export * from './operations/pdf-editor';
 export * from './operations/sign';

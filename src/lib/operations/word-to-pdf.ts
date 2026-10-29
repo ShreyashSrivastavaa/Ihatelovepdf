@@ -355,10 +355,25 @@ export async function convertWordToPdf(
   onProgress?.(15, 'Extracting document structure...');
   if (signal?.aborted) throw new Error('Operation was canceled by user.');
 
-  let htmlResult: { value: string; messages: any[] };
+  let htmlResult: { value: string; messages: unknown[] };
   try {
+    interface MammothImage {
+      read(encoding: string): Promise<string>;
+      contentType: string;
+    }
+    interface MammothModule {
+      images?: {
+        imgElement?: (callback: (image: MammothImage) => Promise<{ src: string }>) => unknown;
+      };
+      convertToHtml: (
+        input: { buffer: Buffer | Uint8Array },
+        options?: unknown
+      ) => Promise<{ value: string; messages: unknown[] }>;
+    }
+
+    const mammothModule = mammoth as unknown as MammothModule;
     const mammothOptions = {
-      convertImage: (mammoth as any).images?.imgElement?.((image: any) => {
+      convertImage: mammothModule.images?.imgElement?.((image: MammothImage) => {
         return image.read('base64').then((imageBuffer: string) => {
           return {
             src: `data:${image.contentType};base64,${imageBuffer}`,
@@ -367,19 +382,20 @@ export async function convertWordToPdf(
       }),
     };
 
-    htmlResult = await (mammoth as any).convertToHtml(
+    htmlResult = await mammothModule.convertToHtml(
       { buffer: Buffer.isBuffer(uint8Data) ? uint8Data : Buffer.from(uint8Data) },
       mammothOptions
     );
-  } catch (err: any) {
-    const msg = (err?.message || '').toLowerCase();
+  } catch (err: unknown) {
+    const errorObj = err as { message?: string } | null | undefined;
+    const msg = (errorObj?.message || '').toLowerCase();
     if (msg.includes('encrypted') || msg.includes('password')) {
       throw new Error('The Word document is password-protected. Please remove password protection before converting.');
     }
     if (msg.includes('end of central directory') || msg.includes('corrupted') || msg.includes('zip')) {
       throw new Error('The Word file appears corrupted or invalid.');
     }
-    throw new Error(`Failed to read Word document: ${err?.message || 'Unknown format error'}`);
+    throw new Error(`Failed to read Word document: ${errorObj?.message || 'Unknown format error'}`);
   }
 
   const rawHtml = htmlResult.value.trim();

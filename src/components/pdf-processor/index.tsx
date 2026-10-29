@@ -189,6 +189,7 @@ const MODE_DEFAULTS: Record<ProcessingMode, PDFProcessingOptions> = {
   excelToPdf: {},
   pdfToExcel: {},
   pdfToWord: {},
+  wordToPdf: {},
   powerpointToPdf: {},
   pdfToPowerpoint: {},
   pdfToHtml: {},
@@ -2222,6 +2223,9 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
     }
     if (mode === 'signPdf' || mode === 'fillPdfForm') {
       return { multiple: false, acceptImages: false, acceptedFileTypes: 'application/pdf,.pdf' };
+    }
+    if (mode === 'wordToPdf') {
+      return { multiple: false, acceptImages: false, acceptedFileTypes: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx' };
     }
     if (mode === 'excelToPdf') {
       return { multiple: false, acceptImages: false, acceptedFileTypes: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel,.xlsx,.xls,.csv' };

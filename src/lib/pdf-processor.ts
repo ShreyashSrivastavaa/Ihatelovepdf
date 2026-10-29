@@ -245,6 +245,17 @@ export async function processPDF(
       }
     }
 
+    case 'wordToPdf': {
+      try {
+        const result = (await pdfWorkerClient.run('wordToPdf', [primaryFile], options, undefined, onProgress)) as Uint8Array;
+        return createPdfBlob(result);
+      } catch (err) {
+        console.warn('Worker wordToPdf failed, falling back to main thread', err);
+        const bytes = await PDFOps.convertWordToPdf(primaryFile, { onProgress });
+        return createPdfBlob(bytes);
+      }
+    }
+
     case 'powerpointToPdf': {
       const bytes = await PDFOps.convertPowerpointToPdf(primaryFile);
       return createPdfBlob(bytes);
