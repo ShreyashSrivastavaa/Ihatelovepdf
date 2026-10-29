@@ -54,6 +54,12 @@ Every tool is driven through real browser sessions using the production build (`
 | **PDF to PowerPoint** | `/pdf-to-powerpoint`, `/es/pdf-a-powerpoint` | ✅ PASS | Slide deck synthesis into `.pptx` presentation | None | N/A | Generates valid OpenXML `.pptx` presentation with slide layouts |
 | **PDF to HTML** | `/pdf-to-html`, `/es/pdf-a-html` | ✅ PASS | Converts PDF document to standalone responsive HTML | None | N/A | Generates clean semantic HTML with intact typography and paragraph blocks |
 | **PDF to ePub** | `/pdf-to-epub`, `/es/pdf-a-epub` | ✅ PASS | Converts PDF into eBook standard `.epub` container | None | N/A | Generates compliant EPUB archive readable across e-readers |
+| **Excel to PDF** | `/excel-to-pdf`, `/es/excel-a-pdf` | ✅ PASS | Compiles `.xlsx` spreadsheet into multi-column vector PDF | None | N/A | Correctly parses sheet rows and columns; verified generated PDF page count |
+| **PowerPoint to PDF** | `/powerpoint-to-pdf`, `/es/powerpoint-a-pdf` | ✅ PASS | Transforms `.pptx` slides into sequential presentation PDF | None | N/A | Slide geometry and text boxes preserved accurately |
+| **Markdown to PDF** | `/markdown-to-pdf`, `/es/markdown-a-pdf` | ✅ PASS | Compiles `#` headers, lists, and code blocks into PDF | None | N/A | Clean font typography and margins; verified downloadable PDF |
+| **HTML to PDF** | `/html-to-pdf`, `/es/html-a-pdf` | ✅ PASS | Renders raw HTML markup into print-ready PDF | None | N/A | Document structure and styling rendered cleanly |
+| **CSV to PDF** | `/csv-to-pdf`, `/es/csv-a-pdf` | ✅ PASS | Converts CSV comma-separated data into paginated PDF table | None | N/A | Automatic table cell formatting with responsive column widths |
+| **eBook to PDF** | `/ebook-to-pdf`, `/es/ebook-a-pdf` | ✅ PASS | Unpacks EPUB XHTML chapters into continuous reader PDF | None | N/A | EPUB archive parsed in browser and converted to clean reading document |
 
 ---
 
