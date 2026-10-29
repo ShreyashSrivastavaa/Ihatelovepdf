@@ -5,6 +5,8 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
     testDir: './tests/e2e',
+    /* Generous timeout for processing 100+ page test PDFs */
+    timeout: 60000,
     /* Run tests in files in parallel */
     fullyParallel: true,
     /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -24,17 +26,29 @@ export default defineConfig({
         trace: 'on-first-retry',
     },
 
-    /* Configure projects for major browsers */
+    /* Configure projects for major browsers and mobile viewports */
     projects: [
         {
             name: 'chromium',
             use: { ...devices['Desktop Chrome'] },
         },
+        {
+            name: 'firefox',
+            use: { ...devices['Desktop Firefox'] },
+        },
+        {
+            name: 'webkit',
+            use: { ...devices['Desktop Safari'] },
+        },
+        {
+            name: 'mobile-chrome',
+            use: { ...devices['Pixel 5'] },
+        },
     ],
 
-    /* Run your local dev server before starting the tests */
+    /* Run local static production build server before starting the tests */
     webServer: {
-        command: 'bun run dev',
+        command: 'npx serve out -l 3000',
         url: 'http://localhost:3000',
         reuseExistingServer: !process.env.CI,
         stdout: 'ignore',

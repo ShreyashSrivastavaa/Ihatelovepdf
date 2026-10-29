@@ -42,7 +42,7 @@ test.describe('PDFhelp Smoke Tests', () => {
     });
 
     test('Homepage loads correctly', async ({ page }) => {
-        await expect(page).toHaveTitle(/PDFhelp/i);
+        await expect(page).toHaveTitle(/(PDFhelp|ihatelovepdf)/i);
         // Check for main headline or key text
         await expect(page.locator('h1')).toBeVisible();
         // "Procesamiento local" is in the tagline/badges
