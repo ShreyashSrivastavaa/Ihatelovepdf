@@ -60,6 +60,10 @@ Every tool is driven through real browser sessions using the production build (`
 | **HTML to PDF** | `/html-to-pdf`, `/es/html-a-pdf` | ✅ PASS | Renders raw HTML markup into print-ready PDF | None | N/A | Document structure and styling rendered cleanly |
 | **CSV to PDF** | `/csv-to-pdf`, `/es/csv-a-pdf` | ✅ PASS | Converts CSV comma-separated data into paginated PDF table | None | N/A | Automatic table cell formatting with responsive column widths |
 | **eBook to PDF** | `/ebook-to-pdf`, `/es/ebook-a-pdf` | ✅ PASS | Unpacks EPUB XHTML chapters into continuous reader PDF | None | N/A | EPUB archive parsed in browser and converted to clean reading document |
+| **Scan to PDF** | `/scan-to-pdf`, `/es/escanear-a-pdf` | ✅ PASS | Live camera feed capture, multi-page snapping, B&W/grayscale filters | None | N/A | Synthetic stream capture verified; compiled into clean multi-page document |
+| **Create PDF** | `/create-pdf`, `/es/crear-pdf` | ✅ PASS | Preset templates (Commercial Invoice, Letterhead), vector text/shapes | Selector matched navbar select | Fixed | Target `#pdf-processor select`; verified generated vector invoice PDF |
+| **POS Billing** | `/pos-billing`, `/es/facturacion-pos` | ✅ PASS | Product catalog selection, cart calculation, Indian GST slabs | None | N/A | Generates compliant thermal receipt PDF with store metadata and totals |
+| **GST Invoice** | `/gst-invoice`, `/es/factura-gst` | ✅ PASS | Indian tax invoice form, HSN/SAC codes, CGST/SGST/IGST calculation | None | N/A | Generates official tax invoice PDF with all statutory buyer/seller fields |
 
 ---
 
