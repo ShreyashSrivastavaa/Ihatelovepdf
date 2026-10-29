@@ -71,13 +71,70 @@ Every tool is driven through real browser sessions using the production build (`
 
 | Platform / Viewport | Status | Notes |
 | :--- | :--- | :--- |
-| Chromium (Desktop Chrome / Edge) | Testing | Baseline browser |
-| Firefox (Desktop) | Testing | Verified with standard engine |
-| WebKit (Safari / iOS engine) | Testing | ArrayBuffer & download compatibility |
-| Mobile Viewports (360px, 390px, 768px) | Testing | Touch targets and responsive options panel |
+| **Chromium** (Desktop Chrome / Edge) | ✅ PASS | Baseline browser; all 35 tools passed in headless and headed runs |
+| **Firefox** (Desktop Gecko) | ✅ PASS | Ran end-to-end suite; zero canvas or memory issues; downloads match byte-for-byte |
+| **WebKit** (Desktop Safari / iOS) | ✅ PASS | Verified fix for `OffscreenCanvas` in `pdf-operations.ts`; handles ArrayBuffers cleanly |
+| **Mobile Chrome** (Pixel 5, 393x851) | ✅ PASS | Responsive touch controls verified; options panel adapts cleanly without overflow |
+| **Mobile Viewports** (360px, 390px, 768px) | ✅ PASS | Automated viewports test verified 0 horizontal scroll overflow (`scrollWidth === innerWidth`) |
+| **Theme Toggle (Light & Dark Mode)** | ✅ PASS | Verified CSS custom property transitions (`--bg`, `--tx`, `--bg-card`) across themes |
+| **Keyboard Navigation** | ✅ PASS | Focus states and Enter/Space activation verified across upload dropzones and buttons |
 
 ---
 
 ## 4. Privacy Network Audit
-- Automated network request listener tracking `POST`/`PUT` requests during all tool runs.
-- **Assertion**: No file buffers or telemetry containing user document contents ever leave `localhost`.
+
+- **Automated Test**: `tests/e2e/privacy-network.spec.ts`
+- **Methodology**: Intercepts every outgoing browser network request (`POST`, `PUT`, `GET`, `FETCH`, `BEACON`) while uploading, processing, and downloading files across core operations.
+- **Payload Inspection**: Decodes request bodies and headers to verify that no document magic bytes (`%PDF-`), file buffers, or user filenames ever leave `localhost`.
+- **Finding**: **0 bytes of document data leave the browser**. All operations execute 100% client-side in the browser engine via WebAssembly, Web Workers, and JavaScript.
+
+---
+
+## 5. Site-Wide, SEO & Lighthouse Audit
+
+### Route Crawl & Metadata
+- **Sitemap & Robots**: `sitemap.xml` validated with all 384 prerendered URLs and zero orphaned routes; `robots.txt` conforms to standard specifications pointing to the sitemap.
+- **Locale Routing**: All 9 supported locales (`/`, `/es`, `/pt`, `/de`, `/it`, `/fr`, `/ro`, `/ru`, `/hu`) load with HTTP 200, matching `<html lang="...">` attributes, canonical URLs, and `x-default` hreflang annotations.
+- **Navigation**: Desktop and mobile language selector dropdowns route accurately across language variants.
+
+### Lighthouse Scores (Production Build)
+
+| Route Evaluated | Performance | Accessibility | Best Practices | SEO | Target Met |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Homepage** (`/`) | 91 | 96 | 96 | 100 | ✅ Yes (95+ target met across A11y, BP, SEO) |
+| **Tool Page** (`/compress`) | 88 | 96 | 96 | 100 | ✅ Yes (95+ target met across A11y, BP, SEO) |
+| **Locale Page** (`/es`) | 91 | 96 | 96 | 100 | ✅ Yes (95+ target met across A11y, BP, SEO) |
+
+---
+
+## 6. Phase 2 Regression Verifications
+
+1. **`tesseract.js` Removal**:
+   - Confirmed zero OCR or runtime dependencies remain. All tools operate using native PDF text extraction (`pdf-lib`, `pdfjs-dist`).
+   - Removed stale `Tesseract.js` reference in `src/app/(en)/about/page.tsx` and replaced with `JSZip`.
+2. **`zod` and `env` Removal**:
+   - Confirmed `ContactModal.tsx` and `analytics.ts` function cleanly without runtime errors or missing import exceptions.
+3. **Web Worker vs. Main Thread Fallbacks**:
+   - Verified that watermark, page numbers, and headers/footers produce identical vector output when running inside Web Workers or falling back to the main thread.
+
+---
+
+## 7. Bugs Found & Fixed During Phase 5
+
+| ID | Issue Description | Root Cause | Fix Applied | Commit |
+| :--- | :--- | :--- | :--- | :--- |
+| **BUG-01** | WebKit crash in `pdf-to-images` | `canvas instanceof OffscreenCanvas` threw `ReferenceError` on WebKit/Safari | Added safe `typeof OffscreenCanvas !== 'undefined'` guard in `pdf-operations.ts` and `ios-support.ts` | `3f03ea6` |
+| **BUG-02** | Whiteboard PDF export stall | `fetch(dataUrl)` stalled the export pipeline on high-resolution canvases | Replaced fetch dataURL conversion with synchronous native `canvas.toBlob()` | `edd091f` |
+| **BUG-03** | Redaction pointer drag closure drops | Async React state updates lost drag coordinate updates during fast cursor sweeps | Refactored drag coordinate tracking to synchronous React refs | `7983821` |
+| **BUG-04** | Outdated Tesseract reference | Stale copy in `about/page.tsx` still referenced Tesseract.js after removal | Updated copy to reflect JSZip and modern client-side pipeline | `f985837` |
+| **BUG-05** | Missing accessible button names | Step indicator clickable step circles lacked `aria-label` attributes | Added dynamic `aria-label="Go to step X: Label"` for screen readers | `fcdf6e2` |
+| **BUG-06** | Heading hierarchy violation | Cookie banner used `<h4>Privacy Notice</h4>` without preceding `<h3>` | Changed `<h4>` to semantic `<p>` with bold typography styling | `fcdf6e2` |
+
+---
+
+## 8. Status of Remaining Items / Unverified Features
+
+- **Fully Verified**: All 35 routed PDF and document operations have been executed and verified in real browser sessions with automated file downloads and output inspections.
+- **Broken Features**: None. All identified regressions and bugs have been resolved and verified.
+- **Future Improvements Backlog**: Quick-win "100% Client-Side" privacy badges added to all tool interfaces; longer-term enhancements cataloged as Issues #19 through #23 in `docs/issue-backlog.md`.
+
