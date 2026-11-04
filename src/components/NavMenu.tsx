@@ -3,19 +3,35 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { useMemo, useState, useEffect, type ChangeEvent } from 'react';
+import { useMemo, useState, useEffect, useRef, type ChangeEvent } from 'react';
 import { useDictionary, useLocale } from '../i18n/LocaleProvider';
 import { SUPPORTED_LOCALES, localeLabels, type Locale } from '../i18n/config';
 import { getLocalizedAlternateMap, getRouteIdentifierForPath, getRoutePath } from '../i18n/routing';
 import ContactModal from './ContactModal';
-import { ShieldCheck, Globe, Menu, X, Sun, Moon, FileText, Shield, Mail, Sparkles, Coffee } from 'lucide-react';
+import {
+  Globe,
+  Menu,
+  X,
+  Sun,
+  Moon,
+  ChevronDown,
+  Coffee,
+  ArrowRight,
+  ShieldCheck,
+} from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 
 export default function NavMenu() {
   const pathname = usePathname();
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  const [isConvertOpen, setIsConvertOpen] = useState(false);
+  const [isAllToolsOpen, setIsAllToolsOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
+
+  const convertDropdownRef = useRef<HTMLDivElement>(null);
+  const allToolsDropdownRef = useRef<HTMLDivElement>(null);
+
   const dictionary = useDictionary();
   const locale = useLocale();
   const { theme, toggleTheme } = useTheme();
@@ -23,6 +39,39 @@ export default function NavMenu() {
   const routes = dictionary.routes;
 
   const isActive = (path: string) => pathname === path;
+
+  // Close dropdowns on outside click or escape key
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        convertDropdownRef.current &&
+        !convertDropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsConvertOpen(false);
+      }
+      if (
+        allToolsDropdownRef.current &&
+        !allToolsDropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsAllToolsOpen(false);
+      }
+    }
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        setIsConvertOpen(false);
+        setIsAllToolsOpen(false);
+        setIsOpen(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
 
   // Lock body scroll when mobile drawer is open
   useEffect(() => {
@@ -36,405 +85,641 @@ export default function NavMenu() {
     };
   }, [isOpen]);
 
-  const routeIdentifier = useMemo(() => getRouteIdentifierForPath(locale, pathname), [locale, pathname]);
-
-  const languageOptions = useMemo(
-    () => {
-      const alternates = routeIdentifier ? getLocalizedAlternateMap(routeIdentifier) : null;
-      return SUPPORTED_LOCALES.map(candidateLocale => ({
-        locale: candidateLocale,
-        href: alternates?.[candidateLocale] ?? getRoutePath(candidateLocale, 'home'),
-      }));
-    },
-    [routeIdentifier]
+  const routeIdentifier = useMemo(
+    () => getRouteIdentifierForPath(locale, pathname),
+    [locale, pathname]
   );
+
+  const languageOptions = useMemo(() => {
+    const alternates = routeIdentifier ? getLocalizedAlternateMap(routeIdentifier) : null;
+    return SUPPORTED_LOCALES.map((candidateLocale) => ({
+      locale: candidateLocale,
+      href: alternates?.[candidateLocale] ?? getRoutePath(candidateLocale, 'home'),
+    }));
+  }, [routeIdentifier]);
 
   const handleLocaleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const nextLocale = event.target.value as Locale;
-    const target = languageOptions.find(option => option.locale === nextLocale)?.href;
+    const target = languageOptions.find((option) => option.locale === nextLocale)?.href;
     setIsOpen(false);
     router.push(target ?? getRoutePath(nextLocale, 'home'));
   };
 
+  const closeDropdowns = () => {
+    setIsConvertOpen(false);
+    setIsAllToolsOpen(false);
+    setIsOpen(false);
+  };
+
   return (
     <>
-      <header className="sticky top-0 z-40 w-full border-b border-[var(--border)] bg-[var(--bg)]/80 backdrop-blur-md transition-colors duration-200 header-safe-area">
-        <div className="mx-auto flex h-[56px] md:h-auto max-w-[1200px] items-center justify-between px-3 sm:px-6 py-2 sm:py-3.5">
+      <header className="sticky top-0 z-40 w-full border-b border-[var(--color-border)] bg-[var(--color-main)] transition-colors duration-150">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-8 h-14 flex items-center justify-between gap-2">
           
-          <div className="flex items-center gap-2 sm:gap-3">
-            {/* Mobile Hamburger Button (top-left on < 768px) */}
-            <button
-              type="button"
-              className="md:hidden flex h-11 w-11 items-center justify-center rounded-lg text-[var(--tx-2)] hover:bg-[var(--bg-subtle)] transition-colors focus:outline-none"
-              onClick={() => setIsOpen((open) => !open)}
-              aria-label={nav.menuLabel}
+          {/* LEFT: Logo & Wordmark */}
+          <div className="flex shrink-0 items-center gap-3">
+            <Link
+              href={routes.home}
+              onClick={closeDropdowns}
+              aria-label="ihatelovepdf home"
+              className="flex shrink-0 items-center gap-2 text-base sm:text-lg font-bold text-primary tracking-tight"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-
-            <Link href={routes.home} onClick={() => setIsOpen(false)} className="flex items-center gap-2.5 group">
-              <div className="relative flex h-10 w-10 items-center justify-center rounded-xl transition-transform duration-200 group-hover:scale-105">
-                <Image src="/images/stickers/ihatelove.png" alt="ihatelovepdf logo" width={40} height={40} className="object-contain h-10 w-10" unoptimized />
+              <div className="relative flex h-7 w-7 items-center justify-center">
+                <Image
+                  src="/images/stickers/ihatelove.png"
+                  alt="ihatelovepdf"
+                  width={28}
+                  height={28}
+                  className="object-contain"
+                  unoptimized
+                />
               </div>
-              <span className="text-lg font-extrabold tracking-tight text-[var(--tx)]">ihatelovepdf</span>
+              <span className="font-extrabold tracking-tight text-primary">ihatelovepdf</span>
             </Link>
-
-            <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-[var(--border)] bg-[var(--bg-subtle)] px-2.5 py-0.5 text-xs font-medium text-[var(--tx-2)]">
-              <ShieldCheck className="h-3.5 w-3.5 text-[var(--success)]" />
-              Runs in Browser
-            </span>
           </div>
 
-          {/* Desktop Navigation Links (>= 768px) */}
-          <nav className="hidden md:flex md:flex-row md:items-center md:gap-6">
-            <ul className="flex flex-row items-center gap-6 text-sm font-medium">
-              <li>
+          {/* CENTER / DESKTOP NAV */}
+          <div className="flex min-w-0 items-center gap-1">
+            <nav aria-label="Main navigation" className="flex min-w-0 shrink-0 items-center gap-1">
+              {/* Quick links: Merge, Split, Compress */}
+              <div className="hidden items-center lg:flex">
                 <Link
-                  href={routes.home}
-                  prefetch={true}
-                  className={`px-2.5 py-1.5 rounded-md transition-colors ${
-                    isActive(routes.home)
-                      ? 'text-[var(--accent)] bg-[var(--accent-soft)] font-semibold'
-                      : 'text-[var(--tx-2)] hover:text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
+                  href={routes.operations.merge || '/merge'}
+                  className={`inline-flex min-h-10 shrink-0 items-center gap-1.5 rounded-lg px-2 sm:px-3 text-[13px] font-medium transition-colors ${
+                    isActive(routes.operations.merge || '/merge')
+                      ? 'bg-alt text-primary font-semibold'
+                      : 'text-secondary hover:bg-alt hover:text-primary'
                   }`}
                 >
-                  {nav.home}
+                  Merge PDF
                 </Link>
-              </li>
-              <li>
                 <Link
-                  href="/tools"
-                  prefetch={true}
-                  className={`px-2.5 py-1.5 rounded-md transition-colors ${
-                    isActive('/tools')
-                      ? 'text-[var(--accent)] bg-[var(--accent-soft)] font-semibold'
-                      : 'text-[var(--tx-2)] hover:text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
+                  href={routes.operations.split || '/split'}
+                  className={`inline-flex min-h-10 shrink-0 items-center gap-1.5 rounded-lg px-2 sm:px-3 text-[13px] font-medium transition-colors ${
+                    isActive(routes.operations.split || '/split')
+                      ? 'bg-alt text-primary font-semibold'
+                      : 'text-secondary hover:bg-alt hover:text-primary'
                   }`}
                 >
-                  All Tools
+                  Split PDF
                 </Link>
-              </li>
-              <li>
+                <Link
+                  href={routes.operations.compress || '/compress'}
+                  className={`inline-flex min-h-10 shrink-0 items-center gap-1.5 rounded-lg px-2 sm:px-3 text-[13px] font-medium transition-colors ${
+                    isActive(routes.operations.compress || '/compress')
+                      ? 'bg-alt text-primary font-semibold'
+                      : 'text-secondary hover:bg-alt hover:text-primary'
+                  }`}
+                >
+                  Compress PDF
+                </Link>
+              </div>
+
+              {/* "Convert" Dropdown */}
+              <div ref={convertDropdownRef} className="relative hidden md:block">
+                <button
+                  type="button"
+                  aria-label="Convert PDF"
+                  aria-expanded={isConvertOpen}
+                  onClick={() => {
+                    setIsConvertOpen(!isConvertOpen);
+                    setIsAllToolsOpen(false);
+                  }}
+                  className={`inline-flex min-h-10 shrink-0 items-center gap-1.5 rounded-lg px-2 sm:px-3 text-[13px] font-medium transition-colors cursor-pointer ${
+                    isConvertOpen
+                      ? 'bg-alt text-primary'
+                      : 'text-secondary hover:bg-alt hover:text-primary'
+                  }`}
+                >
+                  <span>Convert</span>
+                  <ChevronDown
+                    className={`h-3.5 w-3.5 transition-transform duration-150 ${
+                      isConvertOpen ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+
+                {isConvertOpen && (
+                  <div className="absolute left-0 top-full mt-1.5 w-[420px] rounded-[12px] border border-border bg-main p-4 shadow-xl z-50 animate-fade-in grid grid-cols-2 gap-4">
+                    <div>
+                      <p className="text-[11px] font-bold uppercase tracking-wider text-secondary/70 mb-2 px-2">
+                        Convert to PDF
+                      </p>
+                      <div className="space-y-0.5">
+                        <Link
+                          href={routes.operations.imagesToPdf || '/images-to-pdf'}
+                          onClick={closeDropdowns}
+                          className="flex items-center px-2 py-1.5 rounded-md text-xs font-medium text-secondary hover:bg-alt hover:text-primary transition-colors"
+                        >
+                          Images to PDF
+                        </Link>
+                        <Link
+                          href={routes.operations.wordToPdf || '/word-to-pdf'}
+                          onClick={closeDropdowns}
+                          className="flex items-center px-2 py-1.5 rounded-md text-xs font-medium text-secondary hover:bg-alt hover:text-primary transition-colors"
+                        >
+                          Word to PDF
+                        </Link>
+                        <Link
+                          href={routes.operations.excelToPdf || '/excel-to-pdf'}
+                          onClick={closeDropdowns}
+                          className="flex items-center px-2 py-1.5 rounded-md text-xs font-medium text-secondary hover:bg-alt hover:text-primary transition-colors"
+                        >
+                          Excel to PDF
+                        </Link>
+                        <Link
+                          href={routes.operations.powerpointToPdf || '/powerpoint-to-pdf'}
+                          onClick={closeDropdowns}
+                          className="flex items-center px-2 py-1.5 rounded-md text-xs font-medium text-secondary hover:bg-alt hover:text-primary transition-colors"
+                        >
+                          PowerPoint to PDF
+                        </Link>
+                        <Link
+                          href={routes.operations.htmlToPdf || '/html-to-pdf'}
+                          onClick={closeDropdowns}
+                          className="flex items-center px-2 py-1.5 rounded-md text-xs font-medium text-secondary hover:bg-alt hover:text-primary transition-colors"
+                        >
+                          HTML to PDF
+                        </Link>
+                        <Link
+                          href={routes.operations.markdownToPdf || '/markdown-to-pdf'}
+                          onClick={closeDropdowns}
+                          className="flex items-center px-2 py-1.5 rounded-md text-xs font-medium text-secondary hover:bg-alt hover:text-primary transition-colors"
+                        >
+                          Markdown to PDF
+                        </Link>
+                      </div>
+                    </div>
+
+                    <div>
+                      <p className="text-[11px] font-bold uppercase tracking-wider text-secondary/70 mb-2 px-2">
+                        Convert from PDF
+                      </p>
+                      <div className="space-y-0.5">
+                        <Link
+                          href={routes.operations.pdfToWord || '/pdf-to-word'}
+                          onClick={closeDropdowns}
+                          className="flex items-center px-2 py-1.5 rounded-md text-xs font-medium text-secondary hover:bg-alt hover:text-primary transition-colors"
+                        >
+                          PDF to Word
+                        </Link>
+                        <Link
+                          href={routes.operations.pdfToImages || '/pdf-to-images'}
+                          onClick={closeDropdowns}
+                          className="flex items-center px-2 py-1.5 rounded-md text-xs font-medium text-secondary hover:bg-alt hover:text-primary transition-colors"
+                        >
+                          PDF to Images
+                        </Link>
+                        <Link
+                          href={routes.operations.pdfToExcel || '/pdf-to-excel'}
+                          onClick={closeDropdowns}
+                          className="flex items-center px-2 py-1.5 rounded-md text-xs font-medium text-secondary hover:bg-alt hover:text-primary transition-colors"
+                        >
+                          PDF to Excel
+                        </Link>
+                        <Link
+                          href={routes.operations.pdfToPowerpoint || '/pdf-to-powerpoint'}
+                          onClick={closeDropdowns}
+                          className="flex items-center px-2 py-1.5 rounded-md text-xs font-medium text-secondary hover:bg-alt hover:text-primary transition-colors"
+                        >
+                          PDF to PowerPoint
+                        </Link>
+                        <Link
+                          href={routes.operations.pdfToHtml || '/pdf-to-html'}
+                          onClick={closeDropdowns}
+                          className="flex items-center px-2 py-1.5 rounded-md text-xs font-medium text-secondary hover:bg-alt hover:text-primary transition-colors"
+                        >
+                          PDF to HTML
+                        </Link>
+                        <Link
+                          href={routes.operations.pdfToEpub || '/pdf-to-epub'}
+                          onClick={closeDropdowns}
+                          className="flex items-center px-2 py-1.5 rounded-md text-xs font-medium text-secondary hover:bg-alt hover:text-primary transition-colors"
+                        >
+                          PDF to EPUB
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* "All tools" Dropdown */}
+              <div ref={allToolsDropdownRef} className="relative shrink-0">
+                <button
+                  type="button"
+                  aria-label="All tools"
+                  aria-expanded={isAllToolsOpen}
+                  onClick={() => {
+                    setIsAllToolsOpen(!isAllToolsOpen);
+                    setIsConvertOpen(false);
+                  }}
+                  className={`inline-flex min-h-10 shrink-0 items-center gap-1.5 rounded-lg px-2 sm:px-3 text-[13px] font-medium transition-colors cursor-pointer ${
+                    isAllToolsOpen
+                      ? 'bg-alt text-primary'
+                      : 'text-secondary hover:bg-alt hover:text-primary'
+                  }`}
+                >
+                  <span className="sm:hidden">Tools</span>
+                  <span className="hidden sm:inline">All tools</span>
+                  <ChevronDown
+                    className={`h-3.5 w-3.5 transition-transform duration-150 ${
+                      isAllToolsOpen ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+
+                {isAllToolsOpen && (
+                  <div className="absolute right-0 sm:left-0 top-full mt-1.5 w-[320px] sm:w-[520px] rounded-[12px] border border-border bg-main p-4 shadow-xl z-50 animate-fade-in">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pb-3 border-b border-border">
+                      <div>
+                        <p className="text-[11px] font-bold uppercase tracking-wider text-secondary/70 mb-1.5 px-2">
+                          Organize & Optimize
+                        </p>
+                        <div className="space-y-0.5">
+                          <Link
+                            href={routes.operations.merge || '/merge'}
+                            onClick={closeDropdowns}
+                            className="flex items-center justify-between px-2 py-1 rounded-md text-xs text-secondary hover:bg-alt hover:text-primary"
+                          >
+                            <span>Merge PDF</span>
+                            <span className="text-[10px] text-secondary/60">Combine</span>
+                          </Link>
+                          <Link
+                            href={routes.operations.split || '/split'}
+                            onClick={closeDropdowns}
+                            className="flex items-center justify-between px-2 py-1 rounded-md text-xs text-secondary hover:bg-alt hover:text-primary"
+                          >
+                            <span>Split PDF</span>
+                            <span className="text-[10px] text-secondary/60">Separate</span>
+                          </Link>
+                          <Link
+                            href={routes.operations.compress || '/compress'}
+                            onClick={closeDropdowns}
+                            className="flex items-center justify-between px-2 py-1 rounded-md text-xs text-secondary hover:bg-alt hover:text-primary"
+                          >
+                            <span>Compress PDF</span>
+                            <span className="text-[10px] text-secondary/60">Shrink size</span>
+                          </Link>
+                          <Link
+                            href={routes.operations.extract || '/extract'}
+                            onClick={closeDropdowns}
+                            className="flex items-center justify-between px-2 py-1 rounded-md text-xs text-secondary hover:bg-alt hover:text-primary"
+                          >
+                            <span>Extract Pages</span>
+                            <span className="text-[10px] text-secondary/60">Save range</span>
+                          </Link>
+                          <Link
+                            href={routes.operations.crop || '/crop'}
+                            onClick={closeDropdowns}
+                            className="flex items-center justify-between px-2 py-1 rounded-md text-xs text-secondary hover:bg-alt hover:text-primary"
+                          >
+                            <span>Crop PDF</span>
+                            <span className="text-[10px] text-secondary/60">Trim area</span>
+                          </Link>
+                        </div>
+                      </div>
+
+                      <div>
+                        <p className="text-[11px] font-bold uppercase tracking-wider text-secondary/70 mb-1.5 px-2">
+                          Edit & Security
+                        </p>
+                        <div className="space-y-0.5">
+                          <Link
+                            href={routes.operations.editPdf || '/edit-pdf'}
+                            onClick={closeDropdowns}
+                            className="flex items-center justify-between px-2 py-1 rounded-md text-xs text-secondary hover:bg-alt hover:text-primary"
+                          >
+                            <span>Edit PDF</span>
+                            <span className="text-[10px] text-secondary/60">Annotate</span>
+                          </Link>
+                          <Link
+                            href={routes.operations.signPdf || '/sign-pdf'}
+                            onClick={closeDropdowns}
+                            className="flex items-center justify-between px-2 py-1 rounded-md text-xs text-secondary hover:bg-alt hover:text-primary"
+                          >
+                            <span>Sign PDF</span>
+                            <span className="text-[10px] text-secondary/60">Signatures</span>
+                          </Link>
+                          <Link
+                            href={routes.operations.redact || '/redact'}
+                            onClick={closeDropdowns}
+                            className="flex items-center justify-between px-2 py-1 rounded-md text-xs text-secondary hover:bg-alt hover:text-primary"
+                          >
+                            <span>Redact PDF</span>
+                            <span className="text-[10px] text-secondary/60">Sanitize</span>
+                          </Link>
+                          <Link
+                            href={routes.operations.watermark || '/watermark'}
+                            onClick={closeDropdowns}
+                            className="flex items-center justify-between px-2 py-1 rounded-md text-xs text-secondary hover:bg-alt hover:text-primary"
+                          >
+                            <span>Watermark PDF</span>
+                            <span className="text-[10px] text-secondary/60">Stamp text</span>
+                          </Link>
+                          <Link
+                            href={routes.operations.compare || '/compare'}
+                            onClick={closeDropdowns}
+                            className="flex items-center justify-between px-2 py-1 rounded-md text-xs text-secondary hover:bg-alt hover:text-primary"
+                          >
+                            <span>Compare PDFs</span>
+                            <span className="text-[10px] text-secondary/60">Diff check</span>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="pt-2.5 flex items-center justify-between px-2">
+                      <Link
+                        href="/guides"
+                        onClick={closeDropdowns}
+                        className="text-xs text-secondary hover:text-primary transition-colors"
+                      >
+                        Guides
+                      </Link>
+                      <Link
+                        href="/blog"
+                        onClick={closeDropdowns}
+                        className="text-xs text-secondary hover:text-primary transition-colors"
+                      >
+                        Blog
+                      </Link>
+                      <Link
+                        href="/tools"
+                        onClick={closeDropdowns}
+                        className="inline-flex items-center gap-1 text-xs font-semibold text-brand hover:underline"
+                      >
+                        <span>Explore all 36 tools</span>
+                        <ArrowRight className="h-3 w-3" />
+                      </Link>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Direct links for Guides & Blog on wide desktop */}
+              <div className="hidden xl:flex items-center">
                 <Link
                   href="/guides"
-                  prefetch={true}
-                  className={`px-2.5 py-1.5 rounded-md transition-colors ${
+                  className={`inline-flex min-h-10 shrink-0 items-center gap-1.5 rounded-lg px-2 sm:px-3 text-[13px] font-medium transition-colors ${
                     isActive('/guides')
-                      ? 'text-[var(--accent)] bg-[var(--accent-soft)] font-semibold'
-                      : 'text-[var(--tx-2)] hover:text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
+                      ? 'bg-alt text-primary font-semibold'
+                      : 'text-secondary hover:bg-alt hover:text-primary'
                   }`}
                 >
                   Guides
                 </Link>
-              </li>
-              <li>
                 <Link
                   href="/blog"
-                  prefetch={true}
-                  className={`px-2.5 py-1.5 rounded-md transition-colors ${
+                  className={`inline-flex min-h-10 shrink-0 items-center gap-1.5 rounded-lg px-2 sm:px-3 text-[13px] font-medium transition-colors ${
                     isActive('/blog')
-                      ? 'text-[var(--accent)] bg-[var(--accent-soft)] font-semibold'
-                      : 'text-[var(--tx-2)] hover:text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
+                      ? 'bg-alt text-primary font-semibold'
+                      : 'text-secondary hover:bg-alt hover:text-primary'
                   }`}
                 >
                   Blog
                 </Link>
-              </li>
-              <li>
-                <Link
-                  href={routes.faq}
-                  prefetch={true}
-                  className={`px-2.5 py-1.5 rounded-md transition-colors ${
-                    isActive(routes.faq)
-                      ? 'text-[var(--accent)] bg-[var(--accent-soft)] font-semibold'
-                      : 'text-[var(--tx-2)] hover:text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
-                  }`}
-                >
-                  {nav.faq}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/buy-me-a-coffee"
-                  prefetch={true}
-                  className={`px-2.5 py-1.5 rounded-md transition-colors inline-flex items-center gap-1.5 ${
-                    isActive('/buy-me-a-coffee')
-                      ? 'text-[var(--accent)] bg-[var(--accent-soft)] font-semibold text-[var(--accent)]'
-                      : 'text-[var(--tx-2)] hover:text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
-                  }`}
-                >
-                  <Coffee className="h-4 w-4 text-amber-500" />
-                  <span>Buy Me a Coffee</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/products"
-                  prefetch={true}
-                  className={`px-2.5 py-1.5 rounded-md transition-colors ${
-                    isActive('/products')
-                      ? 'text-[var(--accent)] bg-[var(--accent-soft)] font-semibold'
-                      : 'text-[var(--tx-2)] hover:text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
-                  }`}
-                >
-                  Our Products
-                </Link>
-              </li>
-              <li>
-                <button
-                  onClick={() => setIsContactOpen(true)}
-                  className="px-2.5 py-1.5 rounded-md text-[var(--tx-2)] hover:text-[var(--tx)] hover:bg-[var(--bg-subtle)] transition-colors text-left cursor-pointer"
-                >
-                  Contact
-                </button>
-              </li>
-            </ul>
+              </div>
+            </nav>
 
-            <div className="flex items-center gap-2">
-              {/* Theme Toggle Button */}
-              <button
-                type="button"
-                onClick={toggleTheme}
-                className="flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--bg-card)] text-[var(--tx-2)] hover:text-[var(--tx)] hover:border-[var(--border-hover)] transition-all cursor-pointer shadow-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
-                aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
-                title={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+            {/* RIGHT CONTROLS: Coffee, Language, Theme Switch */}
+            <div className="flex items-center gap-1.5 sm:gap-2 ml-2 pl-2 border-l border-border">
+              {/* Buy Me a Coffee */}
+              <Link
+                href="/buy-me-a-coffee"
+                className="hidden sm:inline-flex items-center gap-1.5 rounded-lg px-2 sm:px-2.5 py-1.5 text-[13px] font-medium text-secondary hover:bg-alt hover:text-accent transition-colors"
+                title="Support this project"
               >
-                {theme === 'dark' ? (
-                  <Sun className="h-5 w-5 text-amber-400 stroke-[2] transition-transform duration-200 hover:rotate-45" />
-                ) : (
-                  <Moon className="h-5 w-5 text-slate-600 stroke-[2] transition-transform duration-200 hover:-rotate-12" />
-                )}
-              </button>
+                <Coffee className="h-3.5 w-3.5 text-accent" />
+                <span className="hidden xl:inline">Coffee</span>
+              </Link>
 
-              {/* Desktop Language Selector */}
-              <div className="relative inline-flex items-center gap-1.5 rounded-lg border border-[var(--border)] bg-[var(--bg-card)] px-2.5 py-1.5 text-xs text-[var(--tx-2)] shadow-xs transition-colors hover:border-[var(--border-hover)]">
-                <Globe className="h-3.5 w-3.5 text-[var(--tx-3)]" />
+              {/* Language Switcher */}
+              <div className="relative inline-flex items-center gap-1 rounded-lg border border-border bg-main px-2 py-1 text-xs text-secondary shadow-xs hover:border-hover">
+                <Globe className="h-3.5 w-3.5 text-secondary shrink-0" />
                 <label className="sr-only" htmlFor="nav-language-select-desktop">
                   {nav.languageLabel}
                 </label>
                 <select
                   id="nav-language-select-desktop"
-                  className="bg-transparent font-medium text-[var(--tx)] focus:outline-none cursor-pointer pr-1"
+                  className="bg-transparent font-medium text-primary text-xs focus:outline-none cursor-pointer pr-1"
                   value={locale}
                   onChange={handleLocaleChange}
                 >
-                  {languageOptions.map(option => (
-                    <option key={option.locale} value={option.locale} className="bg-[var(--bg-card)] text-[var(--tx)]">
-                      {localeLabels[option.locale].nativeName}
+                  {languageOptions.map((option) => (
+                    <option
+                      key={option.locale}
+                      value={option.locale}
+                      className="bg-main text-primary"
+                    >
+                      {option.locale.toUpperCase()}
                     </option>
                   ))}
                 </select>
               </div>
+
+              {/* BoringPDF-Style Dark Mode Switch */}
+              <button
+                type="button"
+                role="switch"
+                aria-checked={theme === 'dark'}
+                aria-label="Dark mode"
+                title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+                onClick={toggleTheme}
+                className="group inline-flex min-h-10 min-w-10 shrink-0 items-center justify-center rounded-lg px-1 cursor-pointer focus:outline-none"
+              >
+                <span className="flex h-7 w-12 items-center rounded-full border border-border bg-alt p-[3px] transition-colors group-hover:border-secondary dark:border-primary dark:bg-primary">
+                  <span
+                    className={`flex h-5 w-5 items-center justify-center rounded-full bg-main text-primary shadow-xs transition-transform duration-200 ${
+                      theme === 'dark' ? 'translate-x-5' : 'translate-x-0'
+                    }`}
+                  >
+                    <Sun className="h-3 w-3 dark:hidden" />
+                    <Moon className="h-3 w-3 hidden dark:block" />
+                  </span>
+                </span>
+              </button>
+
+              {/* Mobile Hamburger Toggle (< lg) */}
+              <button
+                type="button"
+                className="lg:hidden flex h-10 w-10 items-center justify-center rounded-lg text-secondary hover:bg-alt hover:text-primary transition-colors focus:outline-none"
+                onClick={() => setIsOpen((prev) => !prev)}
+                aria-label={nav.menuLabel}
+              >
+                {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </button>
             </div>
-          </nav>
-
-          {/* Mobile Right Controls: Theme Toggle Button (always visible on mobile header) */}
-          <div className="flex md:hidden items-center gap-2">
-            <button
-              type="button"
-              onClick={toggleTheme}
-              className="flex h-11 w-11 items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--bg-card)] text-[var(--tx-2)] hover:text-[var(--tx)] transition-all cursor-pointer shadow-xs"
-              aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
-            >
-              {theme === 'dark' ? (
-                <Sun className="h-5 w-5 text-amber-400 stroke-[2]" />
-              ) : (
-                <Moon className="h-5 w-5 text-slate-600 stroke-[2]" />
-              )}
-            </button>
           </div>
-
         </div>
       </header>
 
-      {/* Mobile Backdrop Overlay */}
+      {/* MOBILE BACKDROP OVERLAY */}
       {isOpen && (
         <div
-          className="fixed inset-0 top-[56px] z-40 bg-black/60 backdrop-blur-xs md:hidden animate-fade-in"
+          className="fixed inset-0 top-14 z-40 bg-black/50 backdrop-blur-xs lg:hidden"
           onClick={() => setIsOpen(false)}
           aria-hidden="true"
         />
       )}
 
-      {/* Mobile Slide-In Left Drawer Navigation Menu */}
+      {/* MOBILE SLIDE-DOWN / DRAWER MENU */}
       <div
-        className={`fixed top-[56px] left-0 bottom-0 z-50 w-full bg-[var(--bg-card)] border-b border-[var(--border)] shadow-2xl transition-transform duration-300 ease-in-out md:hidden flex flex-col justify-between overflow-y-auto ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
+        className={`fixed top-14 left-0 right-0 bottom-0 z-50 bg-main border-b border-border shadow-2xl transition-transform duration-200 ease-in-out lg:hidden flex flex-col justify-between overflow-y-auto ${
+          isOpen ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
-        <div className="p-4 space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-[var(--border)]">
-            <span className="text-xs font-bold uppercase tracking-wider text-[var(--tx-3)]">Navigation Menu</span>
-            <button
-              onClick={() => setIsOpen(false)}
-              className="p-1 rounded-md text-[var(--tx-3)] hover:text-[var(--tx)] hover:bg-[var(--bg-subtle)]"
-              aria-label="Close menu"
-            >
-              <X className="h-5 w-5" />
-            </button>
+        <div className="p-4 sm:p-6 space-y-6">
+          <div className="flex items-center justify-between pb-3 border-b border-border">
+            <span className="text-xs font-bold uppercase tracking-wider text-secondary">
+              PDF Toolkit
+            </span>
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-border bg-alt text-[11px] font-medium text-secondary">
+              <ShieldCheck className="h-3.5 w-3.5 text-success shrink-0" />
+              <span>100% Private · Runs in Browser</span>
+            </div>
           </div>
 
-          <nav className="space-y-1.5">
-            <Link
-              href={routes.home}
-              prefetch={true}
-              onClick={() => setIsOpen(false)}
-              className={`flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-semibold transition-colors min-h-[44px] w-full ${
-                isActive(routes.home)
-                  ? 'text-[var(--accent)] bg-[var(--accent-soft)]'
-                  : 'text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
-              }`}
-            >
-              <span>{nav.home}</span>
-            </Link>
+          {/* Quick Tools */}
+          <div className="space-y-1">
+            <p className="text-[11px] font-bold uppercase tracking-wider text-secondary/70 px-1 mb-1">
+              Popular Tools
+            </p>
+            <div className="grid grid-cols-3 gap-2">
+              <Link
+                href={routes.operations.merge || '/merge'}
+                onClick={closeDropdowns}
+                className="flex flex-col items-center justify-center p-3 rounded-lg border border-border bg-alt text-xs font-medium text-primary hover:border-hover transition-colors"
+              >
+                <span>Merge</span>
+              </Link>
+              <Link
+                href={routes.operations.split || '/split'}
+                onClick={closeDropdowns}
+                className="flex flex-col items-center justify-center p-3 rounded-lg border border-border bg-alt text-xs font-medium text-primary hover:border-hover transition-colors"
+              >
+                <span>Split</span>
+              </Link>
+              <Link
+                href={routes.operations.compress || '/compress'}
+                onClick={closeDropdowns}
+                className="flex flex-col items-center justify-center p-3 rounded-lg border border-border bg-alt text-xs font-medium text-primary hover:border-hover transition-colors"
+              >
+                <span>Compress</span>
+              </Link>
+            </div>
+          </div>
 
+          {/* Conversion Links */}
+          <div className="space-y-1">
+            <p className="text-[11px] font-bold uppercase tracking-wider text-secondary/70 px-1 mb-1">
+              Conversions
+            </p>
+            <div className="grid grid-cols-2 gap-2 text-xs">
+              <Link
+                href={routes.operations.pdfToWord || '/pdf-to-word'}
+                onClick={closeDropdowns}
+                className="p-2.5 rounded-lg border border-border bg-main text-secondary hover:text-primary hover:border-hover transition-colors"
+              >
+                PDF to Word
+              </Link>
+              <Link
+                href={routes.operations.wordToPdf || '/word-to-pdf'}
+                onClick={closeDropdowns}
+                className="p-2.5 rounded-lg border border-border bg-main text-secondary hover:text-primary hover:border-hover transition-colors"
+              >
+                Word to PDF
+              </Link>
+              <Link
+                href={routes.operations.pdfToImages || '/pdf-to-images'}
+                onClick={closeDropdowns}
+                className="p-2.5 rounded-lg border border-border bg-main text-secondary hover:text-primary hover:border-hover transition-colors"
+              >
+                PDF to JPG/PNG
+              </Link>
+              <Link
+                href={routes.operations.imagesToPdf || '/images-to-pdf'}
+                onClick={closeDropdowns}
+                className="p-2.5 rounded-lg border border-border bg-main text-secondary hover:text-primary hover:border-hover transition-colors"
+              >
+                JPG/PNG to PDF
+              </Link>
+            </div>
+          </div>
+
+          {/* Site Navigation Links */}
+          <div className="space-y-1 border-t border-border pt-4">
             <Link
               href="/tools"
-              prefetch={true}
-              onClick={() => setIsOpen(false)}
-              className={`flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-semibold transition-colors min-h-[44px] w-full ${
-                isActive('/tools')
-                  ? 'text-[var(--accent)] bg-[var(--accent-soft)]'
-                  : 'text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
-              }`}
+              onClick={closeDropdowns}
+              className="flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold text-primary hover:bg-alt transition-colors"
             >
-              <span>All Tools (45+)</span>
+              <span>Explore All 36 Tools</span>
+              <ArrowRight className="h-4 w-4 text-secondary" />
             </Link>
-
             <Link
               href="/guides"
-              prefetch={true}
-              onClick={() => setIsOpen(false)}
-              className={`flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-semibold transition-colors min-h-[44px] w-full ${
-                isActive('/guides')
-                  ? 'text-[var(--accent)] bg-[var(--accent-soft)]'
-                  : 'text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
-              }`}
+              onClick={closeDropdowns}
+              className="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-secondary hover:text-primary hover:bg-alt transition-colors"
             >
-              <span>Guides & Tutorials</span>
+              <span>Guides & Documentation</span>
             </Link>
-
             <Link
               href="/blog"
-              prefetch={true}
-              onClick={() => setIsOpen(false)}
-              className={`flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-semibold transition-colors min-h-[44px] w-full ${
-                isActive('/blog')
-                  ? 'text-[var(--accent)] bg-[var(--accent-soft)]'
-                  : 'text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
-              }`}
+              onClick={closeDropdowns}
+              className="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-secondary hover:text-primary hover:bg-alt transition-colors"
             >
               <span>Blog & Articles</span>
             </Link>
-
             <Link
               href={routes.faq}
-              prefetch={true}
-              onClick={() => setIsOpen(false)}
-              className={`flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-semibold transition-colors min-h-[44px] w-full ${
-                isActive(routes.faq)
-                  ? 'text-[var(--accent)] bg-[var(--accent-soft)]'
-                  : 'text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
-              }`}
+              onClick={closeDropdowns}
+              className="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-secondary hover:text-primary hover:bg-alt transition-colors"
             >
               <span>{nav.faq}</span>
             </Link>
-
-            <Link
-              href="/buy-me-a-coffee"
-              prefetch={true}
-              onClick={() => setIsOpen(false)}
-              className={`flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold transition-colors min-h-[44px] w-full ${
-                isActive('/buy-me-a-coffee')
-                  ? 'text-[var(--accent)] bg-[var(--accent-soft)]'
-                  : 'text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
-              }`}
-            >
-              <div className="flex items-center gap-2.5">
-                <Coffee className="h-4 w-4 text-amber-500 shrink-0" />
-                <span>Buy Me a Coffee</span>
-              </div>
-            </Link>
-
             <Link
               href="/products"
-              prefetch={true}
-              onClick={() => setIsOpen(false)}
-              className={`flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold transition-colors min-h-[44px] w-full ${
-                isActive('/products')
-                  ? 'text-[var(--accent)] bg-[var(--accent-soft)]'
-                  : 'text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
-              }`}
+              onClick={closeDropdowns}
+              className="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-secondary hover:text-primary hover:bg-alt transition-colors"
             >
-              <div className="flex items-center gap-2.5">
-                <Sparkles className="h-4 w-4 text-[var(--accent)] shrink-0" />
-                <span>Our Products</span>
-              </div>
+              <span>Our Products</span>
             </Link>
-
             <Link
-              href={routes.privacy || '/privacy'}
-              prefetch={true}
-              onClick={() => setIsOpen(false)}
-              className={`flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold transition-colors min-h-[44px] w-full ${
-                isActive(routes.privacy || '/privacy')
-                  ? 'text-[var(--accent)] bg-[var(--accent-soft)]'
-                  : 'text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
-              }`}
+              href="/buy-me-a-coffee"
+              onClick={closeDropdowns}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-accent hover:bg-alt transition-colors"
             >
-              <div className="flex items-center gap-2.5">
-                <Shield className="h-4 w-4 text-[var(--tx-3)] shrink-0" />
-                <span>Privacy Policy</span>
-              </div>
+              <Coffee className="h-4 w-4" />
+              <span>Buy Me a Coffee</span>
             </Link>
-
-            <Link
-              href={routes.terms || '/terms'}
-              prefetch={true}
-              onClick={() => setIsOpen(false)}
-              className={`flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold transition-colors min-h-[44px] w-full ${
-                isActive(routes.terms || '/terms')
-                  ? 'text-[var(--accent)] bg-[var(--accent-soft)]'
-                  : 'text-[var(--tx)] hover:bg-[var(--bg-subtle)]'
-              }`}
-            >
-              <div className="flex items-center gap-2.5">
-                <FileText className="h-4 w-4 text-[var(--tx-3)] shrink-0" />
-                <span>Terms of Service</span>
-              </div>
-            </Link>
-
             <button
+              type="button"
               onClick={() => {
                 setIsOpen(false);
                 setIsContactOpen(true);
               }}
-              className="flex items-center gap-3 w-full text-left px-3.5 py-3 rounded-xl text-sm font-semibold text-[var(--tx)] hover:bg-[var(--bg-subtle)] transition-colors min-h-[44px]"
+              className="w-full text-left px-3 py-2 rounded-lg text-sm text-secondary hover:text-primary hover:bg-alt transition-colors cursor-pointer"
             >
-              <div className="flex items-center gap-2.5">
-                <Mail className="h-4 w-4 text-[var(--tx-3)] shrink-0" />
-                <span>Contact Us</span>
-              </div>
+              Contact Us
             </button>
-          </nav>
+          </div>
         </div>
 
         {/* Mobile Drawer Bottom: Language Selector */}
-        <div className="p-4 border-t border-[var(--border)] bg-[var(--bg-subtle)] space-y-2">
-          <label htmlFor="nav-language-select-mobile" className="block text-xs font-semibold text-[var(--tx-3)]">
-            {nav.languageLabel}
-          </label>
-          <div className="relative flex items-center rounded-lg border border-[var(--border)] bg-[var(--bg-card)] px-3 py-2.5 text-sm text-[var(--tx)] shadow-xs">
-            <Globe className="h-4 w-4 text-[var(--tx-3)] shrink-0 mr-2" />
+        <div className="p-4 border-t border-border bg-alt flex items-center justify-between">
+          <span className="text-xs font-medium text-secondary">{nav.languageLabel}</span>
+          <div className="relative inline-flex items-center rounded-md border border-border bg-main px-2.5 py-1 text-xs text-primary shadow-xs">
+            <Globe className="h-3.5 w-3.5 text-secondary mr-1.5" />
             <select
               id="nav-language-select-mobile"
-              className="w-full bg-transparent font-medium text-[var(--tx)] focus:outline-none cursor-pointer text-sm"
+              className="bg-transparent font-medium text-primary text-xs focus:outline-none cursor-pointer"
               value={locale}
               onChange={handleLocaleChange}
             >
-              {languageOptions.map(option => (
-                <option key={option.locale} value={option.locale} className="bg-[var(--bg-card)] text-[var(--tx)]">
-                  {localeLabels[option.locale].nativeName}
+              {languageOptions.map((option) => (
+                <option key={option.locale} value={option.locale} className="bg-main text-primary">
+                  {localeLabels[option.locale].nativeName} ({option.locale.toUpperCase()})
                 </option>
               ))}
             </select>
