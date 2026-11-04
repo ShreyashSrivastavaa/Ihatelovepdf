@@ -13,7 +13,7 @@ export const localeLabels: Record<Locale, { label: string; nativeName: string; h
   it: { label: "Italiano", nativeName: "Italiano", htmlLang: "it", hrefLang: "it" },
   fr: { label: "Français", nativeName: "Français", htmlLang: "fr", hrefLang: "fr" },
   hu: { label: "Magyar", nativeName: "Magyar", htmlLang: "hu", hrefLang: "hu" },
-  ro: { label: "RomânÄƒ", nativeName: "RomânÄƒ", htmlLang: "ro", hrefLang: "ro" },
+  ro: { label: "Română", nativeName: "Română", htmlLang: "ro", hrefLang: "ro" },
   ru: { label: "Русский", nativeName: "Русский", htmlLang: "ru", hrefLang: "ru" },
 };
 

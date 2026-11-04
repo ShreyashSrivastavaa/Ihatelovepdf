@@ -21,8 +21,8 @@ const LOCALE = "ro" as const;
 
 export const metadata = {
   metadataBase: METADATA_BASE,
-  title: "ihatelovepdf - UneÈ™te, ComprimÄƒ, Divide È™i ConverteÈ™te PDF-uri",
-  description: "Instrumente PDF gratuite, online, pentru a uni, comprima, divide, extrage È™i converti. 100% privat, procesare localÄƒ în browserul tÄƒu.",
+  title: "ihatelovepdf - Unește, Comprimă, Divide și Convertește PDF-uri",
+  description: "Instrumente PDF gratuite, online, pentru a uni, comprima, divide, extrage și converti. 100% privat, procesare locală în browserul tău.",
   icons: SHARED_ICONS,
   alternates: {
     canonical: "https://ihatelovepdf.com/ro/",
@@ -54,9 +54,9 @@ export const metadata = {
   },
   openGraph: {
     ...SHARED_OPEN_GRAPH,
-    images: [{ url: "https://ihatelovepdf.com/og-images/og-image-ro.png", width: 1409, height: 736, alt: "ihatelovepdf - Procesare PDF privatÄƒ È™i gratuitÄƒ" }],
-    title: "ihatelovepdf - Instrumente PDF gratuite È™i private în browserul tÄƒu",
-    description: "UneÈ™te, comprimÄƒ, divide È™i converteÈ™te PDF-uri fÄƒrÄƒ a încÄƒrca fiÈ™ierele pe server. Securizat È™i 100% privat.",
+    images: [{ url: "https://ihatelovepdf.com/og-images/og-image-ro.png", width: 1409, height: 736, alt: "ihatelovepdf - Procesare PDF privată și gratuită" }],
+    title: "ihatelovepdf - Instrumente PDF gratuite și private în browserul tău",
+    description: "Unește, comprimă, divide și convertește PDF-uri fără a încărca fișierele pe server. Securizat și 100% privat.",
     url: "https://ihatelovepdf.com/ro/",
     locale: "ro_RO",
     type: "website",
