@@ -1,6 +1,3 @@
-"use client";
-
-import Script from "next/script";
 import type { OperationContent } from "../../i18n/dictionaries/operation-types";
 
 interface HowToSchemaProps {
@@ -26,7 +23,7 @@ export function HowToSchema({ operation }: HowToSchemaProps) {
   };
 
   return (
-    <Script
+    <script
       id={`howto-schema-${operation.key}`}
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJson) }}

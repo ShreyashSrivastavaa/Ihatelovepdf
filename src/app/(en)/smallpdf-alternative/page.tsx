@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Script from 'next/script';
 import { ShieldCheck, CheckCircle2, ArrowRight, Lock, Zap, Sparkles } from 'lucide-react';
 import { METADATA_BASE, SHARED_ICONS } from '../../../lib/metadata-shared';
 import { SITE_URL } from '../../../lib/site';
@@ -55,6 +54,25 @@ const comparisonPoints = [
 ];
 
 export default function SmallpdfAlternativePage() {
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: SITE_URL,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Smallpdf Alternative',
+        item: `${SITE_URL}/smallpdf-alternative`,
+      },
+    ],
+  };
+
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -190,10 +208,13 @@ export default function SmallpdfAlternativePage() {
           </div>
         </section>
 
-        <Script
-          id="schema-faq-smallpdf"
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
         />
       </div>
     </div>

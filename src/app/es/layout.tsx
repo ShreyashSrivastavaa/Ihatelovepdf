@@ -12,7 +12,6 @@ import { GaPageViewTracker } from "../../components/analytics/GaPageViewTracker"
 import { WebVitalsReporter } from "../../components/analytics/WebVitalsReporter";
 import CookieBanner from "../../components/CookieBanner";
 import { SchemaOrg } from "../../components/SchemaOrg";
-import { BreadcrumbSchema } from "../../components/seo/BreadcrumbSchema";
 
 import { METADATA_BASE, SHARED_ICONS, SHARED_AUTHORS, SHARED_CREATOR, SHARED_PUBLISHER, BRAND_NAME, getAlternateOgLocales } from "../../lib/metadata-shared";
 import { Analytics } from "@vercel/analytics/next";
@@ -76,7 +75,6 @@ export default function EsLayout({ children }: { children: ReactNode }) {
         <meta name="directree-verify" content="directree-verify=dfce967396d09deb8ea0daa79821f507" />
         <ThemeScript />
         <SchemaOrg />
-        <BreadcrumbSchema />
       </head>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
         <GoogleAnalyticsScripts />

@@ -12,7 +12,6 @@ import { WebVitalsReporter } from "../../components/analytics/WebVitalsReporter"
 import CookieBanner from "../../components/CookieBanner";
 import StickyMobileCta from "../../components/StickyMobileCta";
 import { SchemaOrg } from "../../components/SchemaOrg";
-import { BreadcrumbSchema } from "../../components/seo/BreadcrumbSchema";
 
 import { PagePulseScript } from "../../components/analytics/PagePulseScript";
 import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER, SHARED_AUTHORS, SHARED_CREATOR, SHARED_PUBLISHER } from "../../lib/metadata-shared";
@@ -66,7 +65,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <meta name="directree-verify" content="directree-verify=dfce967396d09deb8ea0daa79821f507" />
         <ThemeScript />
         <SchemaOrg />
-        <BreadcrumbSchema />
       </head>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
         <GoogleAnalyticsScripts />

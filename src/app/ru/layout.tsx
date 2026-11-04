@@ -60,7 +60,6 @@ export const metadata = {
 };
 
 import { ThemeScript } from "../../components/ThemeScript";
-import { BreadcrumbSchema } from "../../components/seo/BreadcrumbSchema";
 
 export default function RuLayout({ children }: { children: ReactNode }) {
   return (
@@ -69,7 +68,6 @@ export default function RuLayout({ children }: { children: ReactNode }) {
         <meta charSet="UTF-8" />
         <ThemeScript />
         <SchemaOrg />
-        <BreadcrumbSchema />
       </head>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
         <GoogleAnalyticsScripts />

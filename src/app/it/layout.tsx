@@ -12,7 +12,6 @@ import { GaPageViewTracker } from "../../components/analytics/GaPageViewTracker"
 import { WebVitalsReporter } from "../../components/analytics/WebVitalsReporter";
 import CookieBanner from "../../components/CookieBanner";
 import { SchemaOrg } from "../../components/SchemaOrg";
-import { BreadcrumbSchema } from "../../components/seo/BreadcrumbSchema";
 
 import { METADATA_BASE, SHARED_ICONS, BRAND_NAME, getAlternateOgLocales } from "../../lib/metadata-shared";
 import { Analytics } from "@vercel/analytics/next";
@@ -69,7 +68,6 @@ export default function ItLayout({ children }: { children: ReactNode }) {
         <meta charSet="UTF-8" />
         <ThemeScript />
         <SchemaOrg />
-        <BreadcrumbSchema />
       </head>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
         <GoogleAnalyticsScripts />

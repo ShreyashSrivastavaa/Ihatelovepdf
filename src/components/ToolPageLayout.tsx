@@ -1,8 +1,9 @@
 'use client';
 
 import React from 'react';
-import Script from 'next/script';
+import Link from 'next/link';
 import type { OperationContent } from '../i18n/dictionaries/operation-types';
+import type { Locale } from '../i18n/config';
 import { OPERATIONS_CATALOG } from '../i18n/operations-catalog';
 import { ICON_MAP } from './ToolSwitcher';
 import ToolFirstVisitBanner from './ToolFirstVisitBanner';
@@ -12,7 +13,75 @@ import FaqSection from './faq-section';
 import NetworkActivityMonitor from './NetworkActivityMonitor';
 import { useLocale } from '../i18n/LocaleProvider';
 import { getOperationPath } from '../i18n/routing';
-import { CheckCircle2, ShieldCheck, Sparkles, HelpCircle, Wrench, ChevronDown } from 'lucide-react';
+import { CheckCircle2, ShieldCheck, Sparkles, HelpCircle, Wrench, ChevronDown, ChevronRight, ArrowRight, BookOpen } from 'lucide-react';
+
+const BREADCRUMB_HOME_LABELS: Record<Locale, string> = {
+  en: 'Home',
+  es: 'Inicio',
+  pt: 'Início',
+  de: 'Startseite',
+  fr: 'Accueil',
+  it: 'Home',
+  ro: 'Acasă',
+  ru: 'Главная',
+  hu: 'Kezdőlap',
+};
+
+const BREADCRUMB_TOOLS_LABELS: Record<Locale, string> = {
+  en: 'All Tools',
+  es: 'Herramientas',
+  pt: 'Ferramentas',
+  de: 'Werkzeuge',
+  fr: 'Outils',
+  it: 'Strumenti',
+  ro: 'Instrumente',
+  ru: 'Инструменты',
+  hu: 'Eszközök',
+};
+
+const RELATED_RESOURCES_MAP: Record<string, Array<{ title: string; href: string; type: 'Guide' | 'Article'; desc: string }>> = {
+  merge: [
+    { title: 'How to Merge PDF Files for Free', href: '/guides/how-to-merge-pdf-files', type: 'Guide', desc: 'Step-by-step tutorial on combining reports, invoices, and forms in browser.' },
+    { title: 'Merge PDF Files Without Installing Software', href: '/blog/how-to-merge-pdf-files-without-software', type: 'Article', desc: 'Why browser-based merging is faster and more private than desktop software.' },
+  ],
+  compress: [
+    { title: 'Compress PDF Without Losing Quality', href: '/guides/how-to-compress-pdf-without-losing-quality', type: 'Guide', desc: 'Optimize DPI, downsample high-res photos, and maintain crisp text.' },
+    { title: 'Compress PDF to Under 100KB Step by Step', href: '/blog/how-to-compress-pdf-to-under-100kb', type: 'Article', desc: 'Practical tips for government, university, and job application size limits.' },
+  ],
+  split: [
+    { title: 'How to Split a PDF by Pages', href: '/guides/how-to-split-pdf-pages', type: 'Guide', desc: 'Extract custom page ranges and burst documents into separate single pages.' },
+    { title: 'Split a PDF Document Online Free', href: '/blog/how-to-split-a-pdf-by-pages', type: 'Article', desc: 'Separate multi-page contracts and invoices in seconds without signups.' },
+  ],
+  redact: [
+    { title: 'How to Redact a PDF for Free', href: '/guides/how-to-redact-pdf-free', type: 'Guide', desc: 'Permanently remove personal data, SSNs, and account numbers from documents.' },
+    { title: 'Permanently Redact PDF Online Without Cloud Storage', href: '/blog/how-to-permanently-redact-sensitive-pdf-data', type: 'Article', desc: 'Understand the difference between visual blackouts and permanent vector sanitization.' },
+  ],
+  signPdf: [
+    { title: 'How to Sign a PDF on Mobile Free', href: '/blog/how-to-sign-a-pdf-on-mobile', type: 'Article', desc: 'Create and stamp valid electronic signatures right on your smartphone touchscreen.' },
+    { title: 'Fill and Sign Interactive PDF Forms', href: '/fill-pdf-form', type: 'Guide', desc: 'Complete form fields and apply your signature directly in your browser.' },
+  ],
+  extractText: [
+    { title: 'How to OCR a Scanned PDF Offline', href: '/guides/how-to-ocr-scanned-pdf-offline', type: 'Guide', desc: 'Extract editable text from scanned documents using local browser models.' },
+    { title: 'Extract Scanned PDF Text Online Free', href: '/blog/how-to-convert-scanned-pdf-to-text', type: 'Article', desc: 'Copy tables and text from read-only PDF pages without retyping.' },
+  ],
+  pdfToImages: [
+    { title: 'How to Convert PDF to JPG on Phone', href: '/blog/how-to-convert-pdf-to-jpg-on-phone', type: 'Article', desc: 'Export high-resolution JPG or PNG images from PDF pages without watermarks.' },
+  ],
+  imagesToPdf: [
+    { title: 'How to Convert Images to PDF', href: '/guides/how-to-convert-images-to-pdf', type: 'Guide', desc: 'Turn photos, scans, and screenshot collections into a single organized PDF document.' },
+  ],
+  pdfToWord: [
+    { title: 'How to Convert PDF to Word for Free', href: '/guides/how-to-convert-pdf-to-word-free', type: 'Guide', desc: 'Convert read-only documents into fully editable Microsoft Word (.docx) files.' },
+  ],
+  fillPdfForm: [
+    { title: 'Fill PDF Forms Without Adobe Acrobat', href: '/blog/how-to-fill-pdf-forms-without-adobe-acrobat', type: 'Article', desc: 'Type into form fields, checkboxes, and radio buttons with zero subscription fees.' },
+  ],
+};
+
+const DEFAULT_RELATED_RESOURCES = [
+  { title: 'Explore All 36 Free PDF Tools', href: '/tools', type: 'Guide' as const, desc: 'Browse the full suite of client-side PDF utilities with zero file uploads.' },
+  { title: 'Offline PDF Processing Architecture', href: '/offline-pdf-tools', type: 'Article' as const, desc: 'How in-browser PDF manipulation protects your privacy and document security.' },
+];
 
 interface ToolPageLayoutProps {
   operation: OperationContent;
@@ -42,6 +111,14 @@ export default function ToolPageLayout({ operation, children }: ToolPageLayoutPr
   const cleanOpPath = relativeOpPath === '/' ? '' : relativeOpPath.replace(/\/$/, '');
   const toolUrl = `https://www.ihatelovepdf.com${cleanOpPath.startsWith('/') ? cleanOpPath : '/' + cleanOpPath}`;
 
+  const homePath = locale === 'en' ? '/' : `/${locale}`;
+  const homeUrl = `https://www.ihatelovepdf.com${homePath === '/' ? '' : homePath}`;
+  const toolsPath = locale === 'en' ? '/tools' : `/${locale}/tools`;
+  const toolsUrl = `https://www.ihatelovepdf.com${toolsPath}`;
+  const homeLabel = BREADCRUMB_HOME_LABELS[locale] || 'Home';
+  const toolsLabel = BREADCRUMB_TOOLS_LABELS[locale] || 'All Tools';
+  const localizedToolLabel = operation.hero.title || toolName;
+
   const breadcrumbStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -49,19 +126,19 @@ export default function ToolPageLayout({ operation, children }: ToolPageLayoutPr
       {
         '@type': 'ListItem',
         position: 1,
-        name: 'Home',
-        item: 'https://www.ihatelovepdf.com',
+        name: homeLabel,
+        item: homeUrl,
       },
       {
         '@type': 'ListItem',
         position: 2,
-        name: 'All PDF Tools',
-        item: 'https://www.ihatelovepdf.com/tools',
+        name: toolsLabel,
+        item: toolsUrl,
       },
       {
         '@type': 'ListItem',
         position: 3,
-        name: toolName,
+        name: localizedToolLabel,
         item: toolUrl,
       },
     ],
@@ -70,10 +147,10 @@ export default function ToolPageLayout({ operation, children }: ToolPageLayoutPr
   const softwareApplicationStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
-    name: toolName,
+    name: `${localizedToolLabel} | ihatelovepdf`,
     description: toolDescription,
-    applicationCategory: 'Utility',
-    operatingSystem: 'Any (Web-based)',
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'Any (Web-based, Windows, macOS, Linux, iOS, Android)',
     browserRequirements: 'Requires a modern web browser with JavaScript enabled',
     offers: {
       '@type': 'Offer',
@@ -83,6 +160,11 @@ export default function ToolPageLayout({ operation, children }: ToolPageLayoutPr
     url: toolUrl,
     featureList: operation.hero.bulletPoints,
   };
+
+  const relatedResources =
+    RELATED_RESOURCES_MAP[operation.key] ||
+    RELATED_RESOURCES_MAP[operation.slug] ||
+    DEFAULT_RELATED_RESOURCES;
 
   const faqStructuredData =
     operation.faqs && operation.faqs.length > 0
@@ -108,6 +190,21 @@ export default function ToolPageLayout({ operation, children }: ToolPageLayoutPr
         <section className="space-y-4 max-w-4xl">
           {/* First-time privacy notice strip */}
           <ToolFirstVisitBanner />
+
+          {/* Visible Semantic Breadcrumbs for UX and SEO */}
+          <nav aria-label="Breadcrumb" className="text-xs text-[var(--text-muted)] flex items-center gap-1.5 flex-wrap pt-1">
+            <Link href={homePath} className="hover:text-[var(--text-main)] transition-colors">
+              {homeLabel}
+            </Link>
+            <ChevronRight className="h-3 w-3 text-[var(--border)] shrink-0" />
+            <Link href={toolsPath} className="hover:text-[var(--text-main)] transition-colors">
+              {toolsLabel}
+            </Link>
+            <ChevronRight className="h-3 w-3 text-[var(--border)] shrink-0" />
+            <span className="text-[var(--text-main)] font-semibold truncate max-w-[240px] sm:max-w-none" aria-current="page">
+              {localizedToolLabel}
+            </span>
+          </nav>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-1">
             <div className="flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-xl bg-[var(--brand-soft)] text-[var(--brand)] border border-[var(--brand)]/20 shadow-xs">
@@ -314,24 +411,62 @@ export default function ToolPageLayout({ operation, children }: ToolPageLayoutPr
           <FaqSection />
         )}
 
+        {/* 10. RELATED GUIDES & DOCUMENTATION */}
+        <section className="pt-6 border-t border-[var(--border)] space-y-4">
+          <div className="flex items-center justify-between">
+            <h2 className="text-lg sm:text-xl font-bold tracking-tight text-[var(--text-main)] flex items-center gap-2">
+              <BookOpen className="h-4 w-4 text-[var(--brand)]" />
+              Related Guides &amp; Tutorials
+            </h2>
+            <Link href="/guides" className="text-xs text-[var(--brand)] hover:underline font-semibold flex items-center gap-1">
+              <span>All Guides</span>
+              <ArrowRight className="h-3 w-3" />
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            {relatedResources.map((res) => (
+              <Link
+                key={res.href}
+                href={res.href}
+                className="p-4 rounded-xl border border-[var(--border)] bg-[var(--card)] hover:border-[var(--brand)] hover:shadow-xs transition-all group flex flex-col justify-between"
+              >
+                <div className="space-y-1.5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--brand)] bg-[var(--brand-soft)] px-2 py-0.5 rounded-md border border-[var(--brand)]/20">
+                      {res.type}
+                    </span>
+                    <ArrowRight className="h-3.5 w-3.5 text-[var(--text-muted)] group-hover:text-[var(--brand)] group-hover:translate-x-0.5 transition-all" />
+                  </div>
+                  <h3 className="font-semibold text-xs sm:text-sm text-[var(--text-main)] group-hover:text-[var(--brand)] transition-colors">
+                    {res.title}
+                  </h3>
+                  <p className="text-xs text-[var(--text-muted)] leading-relaxed">
+                    {res.desc}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
         {/* JSON-LD STRUCTURED DATA */}
-        <Script
+        <script
           id={`schema-howto-${operation.key}`}
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(howToStructuredData) }}
         />
-        <Script
+        <script
           id={`schema-software-${operation.key}`}
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareApplicationStructuredData) }}
         />
-        <Script
+        <script
           id={`schema-breadcrumb-${operation.key}`}
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
         />
         {faqStructuredData && (
-          <Script
+          <script
             id={`schema-faq-${operation.key}`}
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}

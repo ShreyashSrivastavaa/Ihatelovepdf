@@ -12,7 +12,6 @@ import { GaPageViewTracker } from "../../components/analytics/GaPageViewTracker"
 import { WebVitalsReporter } from "../../components/analytics/WebVitalsReporter";
 import CookieBanner from "../../components/CookieBanner";
 import { SchemaOrg } from "../../components/SchemaOrg";
-import { BreadcrumbSchema } from "../../components/seo/BreadcrumbSchema";
 
 import { METADATA_BASE, SHARED_ICONS, BRAND_NAME, getAlternateOgLocales } from "../../lib/metadata-shared";
 import { Analytics } from "@vercel/analytics/next";
@@ -70,7 +69,6 @@ export default function DeLayout({ children }: { children: ReactNode }) {
         <meta name="websitelaunches-verification" content="714e3c091b00f4a86f93e6be17c060fc" />
         <ThemeScript />
         <SchemaOrg />
-        <BreadcrumbSchema />
       </head>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
         <GoogleAnalyticsScripts />

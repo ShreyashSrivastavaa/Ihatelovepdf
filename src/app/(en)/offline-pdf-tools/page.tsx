@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Script from 'next/script';
 import { ArrowRight, WifiOff, Cpu, Lock } from 'lucide-react';
 import { METADATA_BASE, SHARED_ICONS } from '../../../lib/metadata-shared';
 import { SITE_URL } from '../../../lib/site';
@@ -163,7 +162,7 @@ export default function OfflinePdfToolsPage() {
           </div>
         </section>
 
-        <Script
+        <script
           id="schema-faq-offline"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

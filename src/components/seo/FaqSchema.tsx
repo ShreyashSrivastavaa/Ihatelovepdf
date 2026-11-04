@@ -1,6 +1,3 @@
-"use client";
-
-import Script from "next/script";
 import { FAQItem } from "../../i18n/dictionaries/dictionary-types";
 
 interface FaqSchemaProps {
@@ -24,7 +21,7 @@ export function FaqSchema({ data }: FaqSchemaProps) {
     };
 
     return (
-        <Script
+        <script
             id="faq-schema"
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJson) }}

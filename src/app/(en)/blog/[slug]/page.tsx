@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import Script from 'next/script';
 import { Calendar, Clock, ArrowLeft, ArrowRight, ShieldCheck, HelpCircle, Sparkles } from 'lucide-react';
 import { BLOG_ARTICLES } from '../../../_data/blog-data';
 import { METADATA_BASE, SHARED_ICONS } from '../../../../lib/metadata-shared';
@@ -294,18 +293,15 @@ export default async function BlogDetailPage({ params }: ArticlePageProps) {
         )}
 
         {/* Structured Data */}
-        <Script
-          id={`schema-article-${article.slug}`}
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
         />
-        <Script
-          id={`schema-breadcrumb-${article.slug}`}
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
         />
-        <Script
-          id={`schema-faq-${article.slug}`}
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
