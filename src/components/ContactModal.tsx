@@ -31,25 +31,25 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   if (!isFormAvailable) {
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-fade-in">
-        <div className="relative w-full max-w-md bg-[var(--bg-card)] border border-[var(--border)] rounded-2xl shadow-xl p-6 sm:p-8 text-[var(--tx)] animate-fade-in">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
+        <div className="relative w-full max-w-md bg-[var(--card)] border border-[var(--border)] rounded-2xl shadow-xl p-6 sm:p-8 text-[var(--text-main)] animate-fade-in">
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-1.5 text-[var(--tx-3)] hover:text-[var(--tx)] rounded-lg hover:bg-[var(--bg-subtle)] transition-colors"
+            className="absolute top-4 right-4 p-1.5 text-[var(--text-muted)] hover:text-[var(--text-main)] rounded-lg hover:bg-[var(--subtle)] transition-colors cursor-pointer"
             aria-label="Close contact modal"
           >
-            <X className="h-5 w-5" />
+            <X className="h-4 w-4" />
           </button>
           <div className="py-6 text-center space-y-3">
-            <div className="w-12 h-12 bg-[var(--bg-subtle)] border border-[var(--border)] rounded-2xl flex items-center justify-center mx-auto text-[var(--accent)]">
-              <Mail className="h-6 w-6" />
+            <div className="w-10 h-10 bg-[var(--brand-soft)] border border-[var(--brand)]/20 rounded-xl flex items-center justify-center mx-auto text-[var(--brand)]">
+              <Mail className="h-5 w-5" />
             </div>
-            <h3 className="text-lg font-bold text-[var(--tx)]">Contact via Email</h3>
-            <p className="text-xs sm:text-sm text-[var(--tx-2)] max-w-sm mx-auto leading-relaxed">
+            <h3 className="text-base font-bold text-[var(--text-main)]">Contact via Email</h3>
+            <p className="text-xs sm:text-sm text-[var(--text-muted)] max-w-sm mx-auto leading-relaxed">
               Please reach out directly to our maintainer at{' '}
               <a
                 href={`mailto:${OWNER_EMAIL}?subject=[ihatelovepdf]%20Inquiry`}
-                className="text-[var(--accent)] underline underline-offset-2 hover:opacity-80 transition-opacity font-semibold"
+                className="text-[var(--brand)] underline font-medium"
               >
                 {OWNER_EMAIL}
               </a>
@@ -57,7 +57,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             </p>
             <button
               onClick={onClose}
-              className="mt-2 btn-secondary px-5 py-2 text-xs sm:text-sm font-medium"
+              className="mt-2 px-4 py-2 rounded-lg border border-[var(--border)] bg-[var(--subtle)] text-xs font-medium text-[var(--text-main)] hover:border-[var(--brand)] transition-colors cursor-pointer"
             >
               Close
             </button>
@@ -115,33 +115,33 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-fade-in">
-      <div className="relative w-full max-w-lg bg-[var(--bg-card)] border border-[var(--border)] rounded-2xl shadow-xl p-6 sm:p-8 text-[var(--tx)] animate-fade-in max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
+      <div className="relative w-full max-w-lg bg-[var(--card)] border border-[var(--border)] rounded-2xl shadow-xl p-6 sm:p-8 text-[var(--text-main)] animate-fade-in max-h-[90vh] overflow-y-auto">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-1.5 text-[var(--tx-3)] hover:text-[var(--tx)] rounded-lg hover:bg-[var(--bg-subtle)] transition-colors"
+          className="absolute top-4 right-4 p-1.5 text-[var(--text-muted)] hover:text-[var(--text-main)] rounded-lg hover:bg-[var(--subtle)] transition-colors cursor-pointer"
           aria-label="Close contact modal"
         >
-          <X className="h-5 w-5" />
+          <X className="h-4 w-4" />
         </button>
 
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 rounded-xl bg-[var(--accent-soft)] border border-[var(--accent-border)] flex items-center justify-center text-[var(--accent)]">
-            <Mail className="h-5 w-5 stroke-[1.75]" />
+          <div className="w-9 h-9 rounded-xl bg-[var(--brand-soft)] border border-[var(--brand)]/20 flex items-center justify-center text-[var(--brand)]">
+            <Mail className="h-4 w-4 stroke-[1.75]" />
           </div>
           <div>
-            <h3 className="text-lg font-bold text-[var(--tx)]">Contact ihatelovepdf</h3>
-            <p className="text-xs text-[var(--tx-3)]">We respond directly to your email address!</p>
+            <h3 className="text-base font-bold text-[var(--text-main)]">Contact ihatelovepdf</h3>
+            <p className="text-xs text-[var(--text-muted)]">We respond directly to your email address!</p>
           </div>
         </div>
 
         {status === 'success' ? (
           <div className="py-6 text-center space-y-4">
-            <div className="w-12 h-12 bg-[var(--success-soft)] border border-[var(--success-border)] text-[var(--success)] rounded-2xl flex items-center justify-center mx-auto">
-              <CheckCircle2 className="h-6 w-6" />
+            <div className="w-10 h-10 bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 rounded-xl flex items-center justify-center mx-auto">
+              <CheckCircle2 className="h-5 w-5" />
             </div>
-            <h4 className="text-base font-bold text-[var(--tx)]">Message Sent Successfully!</h4>
-            <p className="text-xs sm:text-sm text-[var(--tx-2)] max-w-sm mx-auto leading-relaxed">
+            <h4 className="text-base font-bold text-[var(--text-main)]">Message Sent Successfully!</h4>
+            <p className="text-xs sm:text-sm text-[var(--text-muted)] max-w-sm mx-auto leading-relaxed">
               Thank you for reaching out! We&apos;ve received your message and will reply directly to your email.
             </p>
             <button
@@ -149,7 +149,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 setStatus('idle');
                 onClose();
               }}
-              className="btn-primary px-6 py-2 text-xs sm:text-sm font-semibold"
+              className="px-5 py-2 rounded-lg bg-[var(--brand)] text-white text-xs font-semibold hover:opacity-95 transition-opacity cursor-pointer"
             >
               Close
             </button>
@@ -157,16 +157,16 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
             {status === 'error' && (
-              <div className="p-3 bg-[var(--err-soft)] border border-[var(--err)]/20 text-[var(--err)] rounded-xl text-xs font-medium flex items-center gap-2">
+              <div className="p-3 bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 rounded-lg text-xs font-medium flex items-center gap-2">
                 <AlertCircle className="h-4 w-4 shrink-0" />
                 <span>{errorMessage}</span>
               </div>
             )}
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
               <div className="space-y-1">
-                <label htmlFor="contact-name" className="block text-xs font-medium text-[var(--tx-2)]">
-                  Your Name <span className="text-[var(--err)]">*</span>
+                <label htmlFor="contact-name" className="block text-xs font-medium text-[var(--text-muted)]">
+                  Your Name <span className="text-rose-500">*</span>
                 </label>
                 <input
                   id="contact-name"
@@ -175,13 +175,13 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="Your Name"
-                  className="input-modern w-full"
+                  className="w-full px-3 py-2 text-xs rounded-lg border border-[var(--border)] bg-[var(--subtle)] text-[var(--text-main)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-[var(--brand)] transition-colors"
                 />
               </div>
 
               <div className="space-y-1">
-                <label htmlFor="contact-email" className="block text-xs font-medium text-[var(--tx-2)]">
-                  Your Email Address <span className="text-[var(--err)]">*</span>
+                <label htmlFor="contact-email" className="block text-xs font-medium text-[var(--text-muted)]">
+                  Your Email Address <span className="text-rose-500">*</span>
                 </label>
                 <input
                   id="contact-email"
@@ -190,20 +190,20 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="you@example.com"
-                  className="input-modern w-full"
+                  className="w-full px-3 py-2 text-xs rounded-lg border border-[var(--border)] bg-[var(--subtle)] text-[var(--text-main)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-[var(--brand)] transition-colors"
                 />
               </div>
             </div>
 
             <div className="space-y-1">
-              <label htmlFor="contact-category" className="block text-xs font-medium text-[var(--tx-2)]">
-                Category <span className="text-[var(--err)]">*</span>
+              <label htmlFor="contact-category" className="block text-xs font-medium text-[var(--text-muted)]">
+                Category <span className="text-rose-500">*</span>
               </label>
               <select
                 id="contact-category"
                 value={formData.category}
                 onChange={(e) => setFormData({ ...formData, category: e.target.value as ContactCategory })}
-                className="input-modern w-full cursor-pointer bg-[var(--bg-elevated)]"
+                className="w-full px-3 py-2 text-xs rounded-lg border border-[var(--border)] bg-[var(--subtle)] text-[var(--text-main)] focus:outline-none focus:border-[var(--brand)] cursor-pointer"
               >
                 <option value="General Inquiry">General Inquiry</option>
                 <option value="Bug Report">Bug Report</option>
@@ -213,8 +213,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             </div>
 
             <div className="space-y-1">
-              <label htmlFor="contact-subject" className="block text-xs font-medium text-[var(--tx-2)]">
-                Subject <span className="text-[var(--err)]">*</span>
+              <label htmlFor="contact-subject" className="block text-xs font-medium text-[var(--text-muted)]">
+                Subject <span className="text-rose-500">*</span>
               </label>
               <input
                 id="contact-subject"
@@ -223,16 +223,16 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 value={formData.subject}
                 onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                 placeholder="Brief summary of your inquiry"
-                className="input-modern w-full"
+                className="w-full px-3 py-2 text-xs rounded-lg border border-[var(--border)] bg-[var(--subtle)] text-[var(--text-main)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-[var(--brand)] transition-colors"
               />
             </div>
 
             <div className="space-y-1">
               <div className="flex justify-between items-center">
-                <label htmlFor="contact-message" className="block text-xs font-medium text-[var(--tx-2)]">
-                  Message <span className="text-[var(--err)]">*</span>
+                <label htmlFor="contact-message" className="block text-xs font-medium text-[var(--text-muted)]">
+                  Message <span className="text-rose-500">*</span>
                 </label>
-                <span className="text-[11px] text-[var(--tx-3)]">Min 20 characters</span>
+                <span className="text-[11px] text-[var(--text-muted)]">Min 20 characters</span>
               </div>
               <textarea
                 id="contact-message"
@@ -241,22 +241,22 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 placeholder="How can we help you today?"
-                className="input-modern w-full resize-none"
+                className="w-full px-3 py-2 text-xs rounded-lg border border-[var(--border)] bg-[var(--subtle)] text-[var(--text-main)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-[var(--brand)] transition-colors resize-none"
               />
             </div>
 
-            <div className="flex justify-end gap-3 pt-3 border-t border-[var(--border)]">
+            <div className="flex justify-end gap-2.5 pt-3 border-t border-[var(--border)]">
               <button
                 type="button"
                 onClick={onClose}
-                className="btn-secondary px-4 py-2 text-xs sm:text-sm font-medium"
+                className="px-4 py-2 rounded-lg border border-[var(--border)] bg-[var(--subtle)] text-xs font-medium text-[var(--text-main)] hover:border-[var(--brand)] transition-colors cursor-pointer"
               >
                 Cancel
               </button>
               <button
                 type="submit"
                 disabled={status === 'submitting'}
-                className="btn-primary px-5 py-2 text-xs sm:text-sm font-semibold flex items-center gap-2"
+                className="px-4 py-2 rounded-lg bg-[var(--brand)] text-white text-xs font-medium hover:opacity-95 transition-opacity flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
               >
                 {status === 'submitting' ? (
                   <span>Sending...</span>
