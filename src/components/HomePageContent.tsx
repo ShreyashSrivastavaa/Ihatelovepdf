@@ -1,123 +1,198 @@
-import Link from "next/link";
-import DynamicPdfProcessor from "./DynamicPdfProcessor";
-import type { Dictionary } from "../i18n/dictionaries/dictionary-types";
-import { ShieldCheck, Zap, Laptop, Lock, CheckCircle2, Upload, ArrowRight } from "lucide-react";
-import FaqSection from "./faq-section";
-import ToolSwitcher, { type ToolLink } from "./ToolSwitcher";
-import { CategoryHeroGrid } from "./CategoryHeroGrid";
+import React from 'react';
+import Image from 'next/image';
+import type { Dictionary } from '../i18n/dictionaries/dictionary-types';
+import { TOOL_DESCRIPTIONS } from './ToolSwitcher';
+import { OPERATIONS_CATALOG } from '../i18n/operations-catalog';
+import FaqSection from './faq-section';
+import DynamicPdfProcessor from './DynamicPdfProcessor';
+import HomeToolsExplorer, { type ToolExplorerItem } from './HomeToolsExplorer';
+import { Lock, Zap, ShieldCheck, Upload } from 'lucide-react';
 
-export function HomePageContent({ dictionary }: { dictionary: Dictionary }) {
-  const {
-    pages: { home },
-    routes,
-  } = dictionary;
+interface HomePageContentProps {
+  dictionary: Dictionary;
+}
 
-  const tools: ToolLink[] = Object.keys(routes.operations).map((key) => ({
-    key,
-    label:
-      dictionary.components.footer.operations[
-        key as keyof typeof dictionary.components.footer.operations
-      ] || key,
-    href: routes.operations[key as keyof typeof routes.operations],
-  }));
+const CATEGORY_MAP: Record<string, string[]> = {
+  Organize: ['merge', 'split', 'compress', 'extract', 'crop', 'rotate', 'reorder', 'pdfToZip'],
+  Optimize: ['compress', 'crop', 'invertColors'],
+  Convert: [
+    'pdfToWord',
+    'wordToPdf',
+    'imagesToPdf',
+    'pdfToImages',
+    'excelToPdf',
+    'pdfToExcel',
+    'powerpointToPdf',
+    'pdfToPowerpoint',
+    'htmlToPdf',
+    'pdfToHtml',
+    'markdownToPdf',
+    'csvToPdf',
+    'pdfToEpub',
+    'ebookToPdf',
+  ],
+  Edit: ['editPdf', 'fillPdfForm', 'watermark', 'pageNumbers', 'headersFooters'],
+  Security: ['signPdf', 'redact', 'compare'],
+  'AI-Powered': ['extractText', 'latexResume'],
+  Workflows: ['scanToPdf', 'whiteboard', 'createPdf', 'gstInvoice', 'posBilling'],
+};
+
+const TOOL_BADGES: Record<string, string> = {
+  extractText: 'AI · BYOK',
+  latexResume: 'CLIENT-SIDE',
+  merge: 'POPULAR',
+  compress: 'POPULAR',
+  split: 'POPULAR',
+  pdfToWord: 'POPULAR',
+  signPdf: 'SECURITY',
+  redact: 'PRIVACY',
+  scanToPdf: 'CAMERA',
+  gstInvoice: 'BUSINESS',
+  posBilling: 'RECEIPT',
+};
+
+export function HomePageContent({ dictionary }: HomePageContentProps) {
+  const { routes, components } = dictionary;
+
+  // Prepare serializable tool items for the client explorer
+  const operationKeys = Object.keys(routes.operations);
+
+  const allTools: ToolExplorerItem[] = operationKeys.map((key) => {
+    const name =
+      components.footer.operations[key as keyof typeof components.footer.operations] ||
+      OPERATIONS_CATALOG[key as keyof typeof OPERATIONS_CATALOG]?.label ||
+      key;
+    const description =
+      TOOL_DESCRIPTIONS[key] ||
+      OPERATIONS_CATALOG[key as keyof typeof OPERATIONS_CATALOG]?.description ||
+      'Free, private client-side PDF utility';
+    const href = routes.operations[key as keyof typeof routes.operations] || `/${key}`;
+    const badge = TOOL_BADGES[key];
+
+    let category = 'Other';
+    for (const [catName, keys] of Object.entries(CATEGORY_MAP)) {
+      if (keys.includes(key)) {
+        category = catName;
+        break;
+      }
+    }
+
+    return {
+      key,
+      name,
+      description,
+      href,
+      category,
+      badge,
+    };
+  });
 
   return (
-    <div className="min-h-screen bg-[var(--bg)] text-[var(--tx)]">
-      <div className="mx-auto max-w-[1140px] px-4 sm:px-6 py-10 sm:py-16 space-y-12 sm:space-y-16">
-        {/* HERO SECTION */}
-        <section className="text-center space-y-6 max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[var(--success-border)] bg-[var(--success-soft)] text-xs sm:text-sm font-medium text-[var(--tx)] shadow-xs animate-fade-in">
-            <ShieldCheck className="h-4 w-4 text-[var(--success)] shrink-0" />
-            <span>Your files never leave your browser &bull; Runs completely on your device</span>
+    <div className="w-full">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-8 py-8 md:py-16">
+        
+        {/* 1. HERO SECTION: Minimal, text-first, utilitarian */}
+        <section className="text-center pt-2 sm:pt-6 lg:pt-12 mb-8 md:mb-12">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <Image
+              src="/images/stickers/ihatelove.png"
+              alt="ihatelovepdf"
+              width={48}
+              height={48}
+              className="object-contain w-10 h-10 sm:w-12 sm:h-12"
+              unoptimized
+            />
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--tx)] leading-[1.1]">
-            {home.hero.title}
+          <h1 className="text-4xl md:text-5xl font-black text-primary tracking-tight mb-2">
+            ihatelovepdf
           </h1>
 
-          <p className="text-lg sm:text-xl text-[var(--tx-2)] max-w-2.5xl mx-auto font-normal leading-relaxed">
-            {home.hero.subtitle}
+          <p className="text-secondary text-base md:text-lg max-w-xl mx-auto">
+            Free PDF tools that run entirely in your browser.
           </p>
 
-          <div className="pt-2 grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-2">
-            {home.hero.badges.map((badge) => (
-              <span
-                key={badge}
-                className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-md border border-[var(--border)] bg-[var(--bg-card)] text-xs font-medium text-[var(--tx-2)] shadow-xs"
-              >
-                <CheckCircle2 className="h-3.5 w-3.5 text-[var(--accent)]" />
-                {badge}
-              </span>
-            ))}
+          <p className="text-xs text-secondary/70 mt-2">
+            100% Client-Side · Zero Server Uploads · No Paywalls
+          </p>
+        </section>
+
+        {/* 2. TOOLS EXPLORER (Toolbar, Filters & Grid) */}
+        <HomeToolsExplorer tools={allTools} />
+
+        {/* 3. QUICK IN-BROWSER PROCESSOR CONTAINER */}
+        <section id="processor-main" className="mb-14 md:mb-20">
+          <div className="border border-border rounded-[12px] bg-main p-6 sm:p-8">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-border">
+              <div>
+                <h3 className="text-base sm:text-lg font-bold text-primary tracking-tight">
+                  Quick In-Browser Processor
+                </h3>
+                <p className="text-xs sm:text-sm text-secondary mt-0.5">
+                  Drop your files here to start working directly, or choose from any tool above.
+                </p>
+              </div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-border bg-alt text-xs font-medium text-secondary">
+                <Upload className="w-3.5 h-3.5 text-brand" />
+                <span>Runs 100% locally</span>
+              </div>
+            </div>
+
+            <div className="pt-6">
+              <DynamicPdfProcessor />
+            </div>
           </div>
-
-          {/* ABOVE-THE-FOLD PRIMARY CALLS TO ACTION */}
-          <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
-            <a
-              href="#processor-main"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white font-bold text-sm shadow-lg shadow-[var(--accent-soft)] hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
-            >
-              <Upload className="h-4 w-4 stroke-[2.5]" />
-              <span>Select PDF Files</span>
-            </a>
-            <Link
-              href="/tools"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] hover:border-[var(--accent-border)] hover:bg-[var(--bg-subtle)] text-[var(--tx)] font-semibold text-sm transition-all shadow-xs"
-            >
-              <span>Explore All Tools</span>
-              <ArrowRight className="h-4 w-4 text-[var(--tx-3)]" />
-            </Link>
-          </div>
-          
-          {/* CATEGORY EXPLORER GRID WITH HOVER & TAP FLYOUT */}
-          <CategoryHeroGrid routes={routes} footerOperations={dictionary.components.footer.operations} />
         </section>
 
-        {/* TOOL SWITCHER (45+ Tools) */}
-        <section className="max-w-4xl mx-auto">
-          <ToolSwitcher tools={tools} activeKey="merge" />
-        </section>
-
-        {/* CENTERPIECE PDF PROCESSOR UI CONTAINER */}
-        <section id="processor-main" className="relative">
-          <DynamicPdfProcessor />
-        </section>
-
-        {/* WHY ihatelovepdf / VALUE PROPOSITION */}
-        <section className="py-8 border-t border-[var(--border)]">
-          <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--tx)]">
-              {home.why.title}
+        {/* 4. VALUE PROPOSITION: Understated 3-column cards */}
+        <section className="mb-14 md:mb-20 border-t border-border pt-12">
+          <div className="text-center max-w-xl mx-auto mb-10">
+            <h2 className="text-2xl font-bold tracking-tight text-primary">
+              Why ihatelovepdf?
             </h2>
-            <p className="text-sm text-[var(--tx-2)]">
-              Built for anyone who wants fast, reliable PDF tools without sending sensitive files to external servers.
+            <p className="text-sm text-secondary mt-1">
+              A toolkit built for privacy, simplicity, and speed.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {home.why.cards.map((card, idx) => {
-              const icons = [Lock, Zap, Laptop];
-              const CardIcon = icons[idx % icons.length];
-              return (
-                <div
-                  key={card.title}
-                  className="surface-card p-6 sm:p-8 space-y-4 hover:border-[var(--accent-border)] transition-all duration-200"
-                >
-                  <div className="h-10 w-10 rounded-xl bg-[var(--accent-soft)] text-[var(--accent)] flex items-center justify-center border border-[var(--accent-border)]">
-                    <CardIcon className="h-5 w-5 stroke-[1.75]" />
-                  </div>
-                  <h3 className="text-lg font-bold text-[var(--tx)]">{card.title}</h3>
-                  <p className="text-sm text-[var(--tx-2)] leading-relaxed">{card.description}</p>
-                </div>
-              );
-            })}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+            <div className="p-6 border border-border rounded-[12px] bg-main hover:border-hover transition-colors">
+              <div className="w-8 h-8 rounded-lg bg-alt border border-border flex items-center justify-center text-primary mb-3">
+                <Lock className="w-4 h-4 text-brand" />
+              </div>
+              <h3 className="text-sm font-bold text-primary mb-1">100% Client-Side Privacy</h3>
+              <p className="text-xs sm:text-sm text-secondary leading-relaxed">
+                Your PDF files never leave your computer. All processing happens entirely within your browser memory via WebAssembly.
+              </p>
+            </div>
+
+            <div className="p-6 border border-border rounded-[12px] bg-main hover:border-hover transition-colors">
+              <div className="w-8 h-8 rounded-lg bg-alt border border-border flex items-center justify-center text-primary mb-3">
+                <Zap className="w-4 h-4 text-accent" />
+              </div>
+              <h3 className="text-sm font-bold text-primary mb-1">Zero Paywalls or Limits</h3>
+              <p className="text-xs sm:text-sm text-secondary leading-relaxed">
+                No subscription upsells, no document caps, and no email sign-ups. Free tools meant to get out of your way.
+              </p>
+            </div>
+
+            <div className="p-6 border border-border rounded-[12px] bg-main hover:border-hover transition-colors">
+              <div className="w-8 h-8 rounded-lg bg-alt border border-border flex items-center justify-center text-primary mb-3">
+                <ShieldCheck className="w-4 h-4 text-success" />
+              </div>
+              <h3 className="text-sm font-bold text-primary mb-1">Instant & Works Offline</h3>
+              <p className="text-xs sm:text-sm text-secondary leading-relaxed">
+                No waiting in upload queues. Once cached, the tools work even on flaky internet connections.
+              </p>
+            </div>
           </div>
         </section>
 
-        {/* FAQ ACCORDION */}
-        <section className="py-8 border-t border-[var(--border)]">
+        {/* 5. FAQ ACCORDION */}
+        <section className="border-t border-border pt-10">
           <FaqSection />
         </section>
+
       </div>
     </div>
   );
