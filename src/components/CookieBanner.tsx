@@ -55,25 +55,25 @@ export default function CookieBanner() {
     if (!isVisible) return null;
 
     return (
-        <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:max-w-md z-50 p-4 bg-[var(--bg-card)]/90 backdrop-blur-lg border border-[var(--border)] rounded-2xl shadow-xl animate-fade-in">
-            <div className="flex flex-col gap-3">
+        <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:max-w-md z-50 p-4 bg-[var(--card)]/95 backdrop-blur-md border border-[var(--border)] rounded-xl shadow-xl animate-fade-in">
+            <div className="flex flex-col gap-2.5">
                 <div className="flex items-center gap-2">
-                    <ShieldCheck className="h-4 w-4 text-[var(--success)] shrink-0" />
-                    <p className="text-xs font-bold text-[var(--tx)] uppercase tracking-wider">Privacy Notice</p>
+                    <ShieldCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                    <p className="text-xs font-semibold text-[var(--text-main)] uppercase tracking-wider">Privacy Notice</p>
                 </div>
-                <p className="text-xs text-[var(--tx-2)] leading-relaxed">
+                <p className="text-xs text-[var(--text-muted)] leading-relaxed">
                     {t.message}
                 </p>
-                <div className="flex items-center justify-end gap-2 pt-1 border-t border-[var(--border)]">
+                <div className="flex items-center justify-end gap-2 pt-2 border-t border-[var(--border)]">
                     <button
                         onClick={handleDecline}
-                        className="btn-secondary px-3 py-1.5 text-xs font-medium"
+                        className="px-3 py-1.5 rounded-lg border border-[var(--border)] bg-[var(--subtle)] text-xs font-medium text-[var(--text-main)] hover:border-[var(--brand)] transition-colors cursor-pointer"
                     >
                         {t.decline}
                     </button>
                     <button
                         onClick={handleAccept}
-                        className="btn-primary px-4 py-1.5 text-xs font-semibold"
+                        className="px-3.5 py-1.5 rounded-lg bg-[var(--brand)] text-white text-xs font-semibold hover:opacity-95 transition-opacity cursor-pointer"
                     >
                         {t.accept}
                     </button>

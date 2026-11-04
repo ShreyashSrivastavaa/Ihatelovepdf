@@ -63,24 +63,24 @@ export function FeedbackWidget({ operation }: { operation?: string }) {
     }
 
     return (
-        <div className="mt-6 flex flex-col items-center gap-3 animate-in fade-in slide-in-from-bottom-2">
-            <p className="text-sm text-[var(--tx-2)]">{t.question}</p>
-            <div className="flex gap-3">
+        <div className="mt-6 flex flex-col items-center gap-2.5 animate-in fade-in slide-in-from-bottom-2">
+            <p className="text-xs text-[var(--text-muted)]">{t.question}</p>
+            <div className="flex gap-2">
                 <button
                     onClick={() => handleFeedback('positive')}
-                    className="p-2 rounded-full hover:bg-[var(--bg-2)] text-[var(--tx-2)] hover:text-green-500 transition-colors ring-1 ring-transparent hover:ring-green-500/20"
+                    className="p-1.5 rounded-lg border border-[var(--border)] bg-[var(--card)] hover:border-emerald-500 hover:text-emerald-500 text-[var(--text-muted)] transition-colors cursor-pointer"
                     aria-label="Thumbs up"
                 >
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
                     </svg>
                 </button>
                 <button
                     onClick={() => handleFeedback('negative')}
-                    className="p-2 rounded-full hover:bg-[var(--bg-2)] text-[var(--tx-2)] hover:text-red-500 transition-colors ring-1 ring-transparent hover:ring-red-500/20"
+                    className="p-1.5 rounded-lg border border-[var(--border)] bg-[var(--card)] hover:border-rose-500 hover:text-rose-500 text-[var(--text-muted)] transition-colors cursor-pointer"
                     aria-label="Thumbs down"
                 >
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 14H5.236a2 2 0 01-1.789-2.894l3.5-7A2 2 0 018.736 3h4.018a2 2 0 01.485.06l3.76.94m-7 10v5a2 2 0 002 2h.095c.5 0 .905-.405.905-.905 0-.714.211-1.412.608-2.006L17 13V4m-7 10h2m5-10h2a2 2 0 012 2v6a2 2 0 01-2 2h-2.5" />
                     </svg>
                 </button>
