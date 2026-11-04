@@ -61,14 +61,14 @@ export function ShareButton({ url, variant = "inline", className = "" }: ShareBu
 
   if (variant === "banner") {
     return (
-      <div className={`surface-card p-5 sm:p-6 space-y-4 border border-[var(--accent-border)] ${className}`}>
+      <div className={`p-4 sm:p-5 space-y-3.5 rounded-xl border border-[var(--border)] bg-[var(--card)] ${className}`}>
         <div className="flex items-start gap-3">
-          <div className="h-9 w-9 shrink-0 rounded-xl bg-[var(--accent-soft)] border border-[var(--accent-border)] flex items-center justify-center">
-            <Share2 className="h-4 w-4 text-[var(--accent)]" />
+          <div className="h-8 w-8 shrink-0 rounded-lg bg-[var(--brand-soft)] border border-[var(--brand)]/20 flex items-center justify-center">
+            <Share2 className="h-4 w-4 text-[var(--brand)]" />
           </div>
           <div className="space-y-0.5 min-w-0">
-            <p className="text-sm font-semibold text-[var(--tx)]">{sharePrompt.actionLabel}</p>
-            <p className="text-xs text-[var(--tx-2)] leading-relaxed">{sharePrompt.dialogMessage}</p>
+            <p className="text-sm font-semibold text-[var(--text-main)]">{sharePrompt.actionLabel}</p>
+            <p className="text-xs text-[var(--text-muted)] leading-relaxed">{sharePrompt.dialogMessage}</p>
           </div>
         </div>
 
@@ -76,14 +76,14 @@ export function ShareButton({ url, variant = "inline", className = "" }: ShareBu
           {/* Copy link */}
           <button
             onClick={handleCopy}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[var(--border)] bg-[var(--bg-card)] text-xs font-medium text-[var(--tx-2)] hover:border-[var(--accent-border)] hover:text-[var(--tx)] transition-all duration-150 cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[var(--border)] bg-[var(--subtle)] text-xs font-medium text-[var(--text-main)] hover:border-[var(--brand)] transition-all duration-150 cursor-pointer"
             aria-label="Copy link to clipboard"
             id="share-copy-link-btn"
           >
             {copied ? (
               <>
-                <Check className="h-3.5 w-3.5 text-[var(--success)]" />
-                <span className="text-[var(--success)]">{sharePrompt.copiedLabel}</span>
+                <Check className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+                <span className="text-emerald-600 dark:text-emerald-400 font-medium">{sharePrompt.copiedLabel}</span>
               </>
             ) : (
               <>
@@ -99,7 +99,7 @@ export function ShareButton({ url, variant = "inline", className = "" }: ShareBu
             target="_blank"
             rel="noopener noreferrer"
             id="share-twitter-btn"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[var(--border)] bg-[var(--bg-card)] text-xs font-medium text-[var(--tx-2)] hover:border-[#1d9bf0] hover:text-[#1d9bf0] transition-all duration-150"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[var(--border)] bg-[var(--subtle)] text-xs font-medium text-[var(--text-muted)] hover:border-[#1d9bf0] hover:text-[#1d9bf0] transition-all duration-150"
             aria-label="Share on Twitter/X"
           >
             <Twitter className="h-3.5 w-3.5" />
@@ -112,7 +112,7 @@ export function ShareButton({ url, variant = "inline", className = "" }: ShareBu
             target="_blank"
             rel="noopener noreferrer"
             id="share-whatsapp-btn"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[var(--border)] bg-[var(--bg-card)] text-xs font-medium text-[var(--tx-2)] hover:border-[#25d366] hover:text-[#25d366] transition-all duration-150"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[var(--border)] bg-[var(--subtle)] text-xs font-medium text-[var(--text-muted)] hover:border-[#25d366] hover:text-[#25d366] transition-all duration-150"
             aria-label="Share on WhatsApp"
           >
             <MessageCircle className="h-3.5 w-3.5" />
