@@ -2,119 +2,164 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Design System Tokens */
-/* Light Mode Defaults */
+/* ==========================================================================
+   Design System Tokens (ihatelovepdf - Premium Utilitarian Redesign)
+   Palette: Primary Rose (#BE123C / #FB7185), Accent Gold (#B45309 / #FBBF24), 
+            Background Light (#FAFAF9) / Dark (#0C0A09)
+   Contrast: WCAG AA & AAA compliant
+   ========================================================================== */
+
 :root {
-  --bg: #FBF9F6;
-  --bg-card: #FFFFFF;
-  --bg-subtle: #F2ECE4;
-  --bg-elevated: #FFFFFF;
+  /* Utilitarian Base Colors (Light Theme: #FAFAF9 Warm Alabaster) */
+  --color-main: #FAFAF9;
+  --color-card: #FFFFFF;
+  --color-alt: #F5F5F4;
+  --color-subtle: #F5F5F4;
+  --color-muted: #E7E5E4;
+  --color-border: #E7E5E4;
+  --color-hover: #78716C;
+  --color-primary: #1C1917;
+  --color-secondary: #57534E;
+  --color-tertiary: #78716C;
 
-  /* Borders & Dividers */
-  --border: #E4DDD3;
-  --border-hover: #D0C6B8;
-  --border-focus: #E24A24;
+  /* Premium Brand Palette (Primary Deep Velvet Rose, Accent Antique Bullion Gold) */
+  --color-brand: #BE123C;
+  --color-brand-hover: #9F1239;
+  --color-brand-active: #881337;
+  --color-brand-soft: rgba(190, 18, 60, 0.08);
+  --color-brand-border: rgba(190, 18, 60, 0.22);
 
-  /* Typography (High-Contrast Warm Charcoal - WCAG AA compliant >= 4.5:1) */
-  --tx: #14110F;
-  --tx-2: #574F4A;
-  --tx-3: #6B625B;
+  --color-accent: #B45309;
+  --color-accent-hover: #92400E;
+  --color-accent-soft: rgba(180, 83, 9, 0.12);
+  --color-accent-border: rgba(180, 83, 9, 0.25);
 
-  /* Primary & Accent Palette (Warm Coral / Crimson Flame) */
-  --accent: #E24A24;
-  --accent-hover: #C93815;
-  --accent-active: #A82C0E;
-  --accent-soft: rgba(226, 74, 36, 0.08);
-  --accent-border: rgba(226, 74, 36, 0.22);
-  --accent-secondary: #F59E0B;
+  /* Semantic Mappings & Backwards Compatibility */
+  --bg: var(--color-main);
+  --bg-card: var(--color-card);
+  --bg-subtle: var(--color-alt);
+  --bg-elevated: var(--color-card);
 
-  /* Functional Colors */
-  --success: #059669;
-  --success-soft: #ECFDF5;
-  --success-border: #A7F3D0;
+  --border: var(--color-border);
+  --border-hover: var(--color-hover);
+  --border-focus: var(--color-brand);
+
+  --tx: var(--color-primary);
+  --tx-2: var(--color-secondary);
+  --tx-3: var(--color-tertiary);
+
+  --accent: var(--color-brand);
+  --accent-hover: var(--color-brand-hover);
+  --accent-active: var(--color-brand-active);
+  --accent-soft: var(--color-brand-soft);
+  --accent-border: var(--color-brand-border);
+  --accent-secondary: var(--color-accent);
+
+  /* Functional Status Colors */
+  --success: #15803D;
+  --success-soft: #F0FDF4;
+  --success-border: #BBF7D0;
   
-  --warning: #D97706;
+  --warning: #B45309;
   --warning-soft: #FFFBEB;
   
   --err: #DC2626;
   --err-soft: #FEF2F2;
 
-  /* Deprecated alias mapping for backwards compatibility */
   --ui: var(--border);
-  --ui-2: #F7F4EF;
-  --ui-3: #E4DDD3;
+  --ui-2: var(--color-alt);
+  --ui-3: var(--color-muted);
   --bg-2: var(--bg-card);
-  --re: var(--accent);
-  --or: var(--warning);
-  --gr: var(--success);
-  --bl: #0284C7;
-  --pu: #7C3AED;
-  --ma: #DB2777;
-  
-  --btn-bg: var(--accent);
-  --btn-border: var(--accent);
-  --btn-hover: var(--accent-hover);
-  --btn-hover-border: var(--accent-hover);
-  --btn-active: var(--accent-active);
-  --btn-active-border: var(--accent-active);
-  --btn-disabled: #FCA5A5;
+
+  --btn-bg: var(--color-brand);
+  --btn-border: var(--color-brand);
+  --btn-hover: var(--color-brand-hover);
+  --btn-hover-border: var(--color-brand-hover);
+  --btn-active: var(--color-brand-active);
+  --btn-active-border: var(--color-brand-active);
+  --btn-disabled: #FECDD3;
   --btn-text: #FFFFFF;
 
-  /* Layout & Geometry */
+  /* Layout, Spacing & Geometry (boring-on-purpose precision) */
+  --app-header-height: 56px;
   --max-width: 840px;
   --max-width-wide-page: 1040px;
-  --max-width-extra-wide-page: 1200px;
-  --radius-sm: 0.375rem;
-  --radius-md: 0.75rem;
-  --radius-lg: 1rem;
-  --radius-xl: 1.25rem;
+  --max-width-extra-wide-page: 1280px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
   --radius-full: 9999px;
 
-  /* Elevation & Shadows */
-  --shadow-xs: 0 1px 2px 0 rgba(20, 17, 15, 0.03);
-  --shadow-sm: 0 1px 3px 0 rgba(20, 17, 15, 0.06), 0 1px 2px -1px rgba(20, 17, 15, 0.04);
-  --shadow-md: 0 4px 6px -1px rgba(20, 17, 15, 0.05), 0 2px 4px -2px rgba(20, 17, 15, 0.04);
-  --shadow-lg: 0 10px 15px -3px rgba(20, 17, 15, 0.05), 0 4px 6px -4px rgba(20, 17, 15, 0.03);
-  --shadow-xl: 0 20px 25px -5px rgba(20, 17, 15, 0.06), 0 8px 10px -6px rgba(20, 17, 15, 0.03);
+  /* Elevation: Subtle & Understated */
+  --shadow-xs: 0 1px 2px 0 rgba(28, 25, 23, 0.03);
+  --shadow-sm: 0 1px 3px 0 rgba(28, 25, 23, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(28, 25, 23, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(28, 25, 23, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(28, 25, 23, 0.06);
 }
 
-/* Explicit Dark Mode Override Class */
-.dark {
-  --bg: #0B0E14;
-  --bg-card: #131720;
-  --bg-subtle: #1C222E;
-  --bg-elevated: #181E29;
+/* Explicit Dark Theme (.dark & [data-theme="dark"]) */
+.dark,
+[data-theme="dark"] {
+  --color-main: #0C0A09;
+  --color-card: #141210;
+  --color-alt: #1C1917;
+  --color-subtle: #181615;
+  --color-muted: #292524;
+  --color-border: #292524;
+  --color-hover: #57534E;
+  --color-primary: #FAFAF9;
+  --color-secondary: #A8A29E;
+  --color-tertiary: #78716C;
 
-  --border: #27303E;
-  --border-hover: #344053;
-  --border-focus: #FF5733;
+  /* Premium Brand Palette: Luminous Champagne Rose & Polished Golden Glow */
+  --color-brand: #FB7185;
+  --color-brand-hover: #FDA4AF;
+  --color-brand-active: #F43F5E;
+  --color-brand-soft: rgba(251, 113, 133, 0.12);
+  --color-brand-border: rgba(251, 113, 133, 0.28);
 
-  --tx: #F8FAFC;
-  --tx-2: #94A3B8;
-  --tx-3: #8292A6;
+  --color-accent: #FBBF24;
+  --color-accent-hover: #FCD34D;
+  --color-accent-soft: rgba(251, 191, 36, 0.15);
+  --color-accent-border: rgba(251, 191, 36, 0.3);
 
-  --accent: #FF5733;
-  --accent-hover: #FF704D;
-  --accent-active: #E04522;
-  --accent-soft: rgba(255, 87, 51, 0.14);
-  --accent-border: rgba(255, 87, 51, 0.32);
-  --accent-secondary: #FBBF24;
+  --bg: var(--color-main);
+  --bg-card: var(--color-card);
+  --bg-subtle: var(--color-alt);
+  --bg-elevated: #191715;
 
-  --success: #10B981;
-  --success-soft: rgba(16, 185, 129, 0.15);
-  --success-border: rgba(16, 185, 129, 0.35);
+  --border: var(--color-border);
+  --border-hover: var(--color-hover);
+  --border-focus: var(--color-brand);
 
-  --warning: #F59E0B;
-  --warning-soft: rgba(245, 158, 11, 0.15);
+  --tx: var(--color-primary);
+  --tx-2: var(--color-secondary);
+  --tx-3: var(--color-tertiary);
+
+  --accent: var(--color-brand);
+  --accent-hover: var(--color-brand-hover);
+  --accent-active: var(--color-brand-active);
+  --accent-soft: var(--color-brand-soft);
+  --accent-border: var(--color-brand-border);
+  --accent-secondary: var(--color-accent);
+
+  --success: #22C55E;
+  --success-soft: rgba(34, 197, 94, 0.12);
+  --success-border: rgba(34, 197, 94, 0.25);
+
+  --warning: #FBBF24;
+  --warning-soft: rgba(251, 191, 36, 0.15);
 
   --err: #EF4444;
   --err-soft: rgba(239, 68, 68, 0.15);
 
   --ui: var(--border);
-  --ui-2: #191F2B;
-  --ui-3: #27303E;
+  --ui-2: #191715;
+  --ui-3: #292524;
   --bg-2: var(--bg-card);
-  --btn-disabled: #7F1D1D;
+  --btn-disabled: #881337;
 
   --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
   --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
@@ -123,64 +168,85 @@
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.7);
 }
 
-/* Explicit Light Mode Override Class */
-.light {
-  --bg: #FBF9F6;
-  --bg-card: #FFFFFF;
-  --bg-subtle: #F2ECE4;
-  --bg-elevated: #FFFFFF;
+/* Explicit Light Theme (.light & [data-theme="light"]) */
+.light,
+[data-theme="light"] {
+  --color-main: #FAFAF9;
+  --color-card: #FFFFFF;
+  --color-alt: #F5F5F4;
+  --color-subtle: #F5F5F4;
+  --color-muted: #E7E5E4;
+  --color-border: #E7E5E4;
+  --color-hover: #78716C;
+  --color-primary: #1C1917;
+  --color-secondary: #57534E;
+  --color-tertiary: #78716C;
 
-  --border: #E4DDD3;
-  --border-hover: #D0C6B8;
-  --border-focus: #E24A24;
+  --color-brand: #BE123C;
+  --color-brand-hover: #9F1239;
+  --color-brand-active: #881337;
+  --color-brand-soft: rgba(190, 18, 60, 0.08);
+  --color-brand-border: rgba(190, 18, 60, 0.22);
 
-  --tx: #14110F;
-  --tx-2: #574F4A;
-  --tx-3: #8C827A;
+  --color-accent: #B45309;
+  --color-accent-hover: #92400E;
+  --color-accent-soft: rgba(180, 83, 9, 0.12);
+  --color-accent-border: rgba(180, 83, 9, 0.25);
 
-  --accent: #E24A24;
-  --accent-hover: #C93815;
-  --accent-active: #A82C0E;
-  --accent-soft: rgba(226, 74, 36, 0.08);
-  --accent-border: rgba(226, 74, 36, 0.22);
-  --accent-secondary: #F59E0B;
+  --bg: var(--color-main);
+  --bg-card: var(--color-card);
+  --bg-subtle: var(--color-alt);
+  --bg-elevated: var(--color-card);
 
-  --success: #16A34A;
+  --border: var(--color-border);
+  --border-hover: var(--color-hover);
+  --border-focus: var(--color-brand);
+
+  --tx: var(--color-primary);
+  --tx-2: var(--color-secondary);
+  --tx-3: var(--color-tertiary);
+
+  --accent: var(--color-brand);
+  --accent-hover: var(--color-brand-hover);
+  --accent-active: var(--color-brand-active);
+  --accent-soft: var(--color-brand-soft);
+  --accent-border: var(--color-brand-border);
+  --accent-secondary: var(--color-accent);
+
+  --success: #15803D;
   --success-soft: #F0FDF4;
   --success-border: #BBF7D0;
   
-  --warning: #D97706;
+  --warning: #B45309;
   --warning-soft: #FFFBEB;
   
   --err: #DC2626;
   --err-soft: #FEF2F2;
 
   --ui: var(--border);
-  --ui-2: #F1F5F9;
-  --ui-3: #E2E8F0;
+  --ui-2: var(--color-alt);
+  --ui-3: var(--color-muted);
   --bg-2: var(--bg-card);
-  --btn-disabled: #93C5FD;
+  --btn-disabled: #FECDD3;
 }
 
-/* Global Theme Transition Rules (0.3s smooth transitions) */
+/* Understated Theme Transition Rules (matching BoringPDF's snappy 0.15s) */
 html,
 body,
 header,
 footer,
-main,
 nav,
-div,
-section,
-article,
-aside,
 button,
 input,
 select,
 textarea,
 .surface-card,
 .glass-card,
-.upload-area-container {
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, fill 0.3s ease, stroke 0.3s ease;
+.tool-card {
+  transition: background-color 0.15s cubic-bezier(0.4, 0, 0.2, 1), 
+              border-color 0.15s cubic-bezier(0.4, 0, 0.2, 1), 
+              color 0.15s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Respect user's motion preferences */
@@ -409,7 +475,7 @@ main, .main-content {
 .upload-area-container:hover {
   border-color: var(--accent);
   background: var(--accent-soft);
-  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.08);
+  box-shadow: 0 8px 30px var(--color-brand-soft);
 }
 
 .upload-area-active {
