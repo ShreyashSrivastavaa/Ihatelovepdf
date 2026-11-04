@@ -66,13 +66,13 @@ export default async function GuideDetailPage({ params }: PageProps) {
     : null;
 
   return (
-    <div className="min-h-screen bg-[var(--bg)] text-[var(--tx)]">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 py-10 sm:py-14 space-y-10">
+    <div className="min-h-screen bg-[var(--bg-main)] text-[var(--text-main)]">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 py-10 sm:py-14 space-y-8">
         {/* Back Link */}
         <div>
           <Link
             href="/guides"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--tx-2)] hover:text-[var(--tx)] transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--text-muted)] hover:text-[var(--brand)] transition-colors"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             <span>Back to All Guides</span>
@@ -80,9 +80,9 @@ export default async function GuideDetailPage({ params }: PageProps) {
         </div>
 
         {/* Article Header */}
-        <header className="space-y-4">
-          <div className="flex items-center gap-3 text-xs text-[var(--tx-3)]">
-            <span className="px-3 py-1 rounded-full bg-[var(--accent-soft)] text-[var(--accent)] font-semibold border border-[var(--accent-border)]">
+        <header className="space-y-3.5">
+          <div className="flex items-center gap-2.5 text-xs text-[var(--text-muted)]">
+            <span className="px-2.5 py-0.5 rounded-full bg-[var(--brand-soft)] text-[var(--brand)] font-semibold border border-[var(--brand)]/20">
               {guide.category}
             </span>
             <span className="flex items-center gap-1">
@@ -100,21 +100,21 @@ export default async function GuideDetailPage({ params }: PageProps) {
             {guide.title}
           </h1>
 
-          <p className="text-base sm:text-lg text-[var(--tx-2)] leading-relaxed">
+          <p className="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
             {guide.description}
           </p>
         </header>
 
         {/* Key Takeaways Box */}
-        <section className="surface-card p-6 rounded-2xl border border-[var(--accent-border)] bg-[var(--accent-soft)]/20 space-y-3">
-          <h2 className="text-sm font-bold text-[var(--tx)] flex items-center gap-2">
+        <section className="p-5 sm:p-6 rounded-xl border border-[var(--border)] bg-[var(--card)] space-y-2.5">
+          <h2 className="text-xs sm:text-sm font-semibold text-[var(--text-main)] flex items-center gap-2">
             <Sparkles className="h-4 w-4 text-[var(--accent)]" />
             Key Takeaways
           </h2>
-          <ul className="space-y-2">
+          <ul className="space-y-1.5">
             {guide.keyTakeaways.map((takeaway, idx) => (
-              <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[var(--tx-2)]">
-                <CheckCircle2 className="h-4 w-4 text-[var(--accent)] shrink-0 mt-0.5" />
+              <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-[var(--text-muted)]">
+                <CheckCircle2 className="h-3.5 w-3.5 text-[var(--brand)] shrink-0 mt-0.5" />
                 <span className="leading-relaxed">{takeaway}</span>
               </li>
             ))}
@@ -123,37 +123,37 @@ export default async function GuideDetailPage({ params }: PageProps) {
 
         {/* Interactive Tool Banner if applicable */}
         {guide.toolSlug && (
-          <section className="p-5 rounded-2xl border border-[var(--success-border)] bg-[var(--success-soft)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div className="space-y-1">
-              <span className="text-xs font-bold text-[var(--tx)] flex items-center gap-1.5">
-                <ShieldCheck className="h-4 w-4 text-[var(--success)]" />
+          <section className="p-4 sm:p-5 rounded-xl border border-emerald-500/20 bg-emerald-500/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="space-y-0.5">
+              <span className="text-xs font-semibold text-[var(--text-main)] flex items-center gap-1.5">
+                <ShieldCheck className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
                 Ready to try this in your browser?
               </span>
-              <p className="text-xs text-[var(--tx-2)]">
+              <p className="text-xs text-[var(--text-muted)]">
                 Open our browser tool with no server uploads and no watermarks.
               </p>
             </div>
             <Link
               href={`/${guide.toolSlug}`}
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white text-xs font-bold shadow-sm transition-colors shrink-0"
+              className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg bg-[var(--brand)] text-white text-xs font-medium hover:opacity-95 transition-opacity shrink-0"
             >
               <span>Launch Tool</span>
-              <ExternalLink className="h-3.5 w-3.5" />
+              <ExternalLink className="h-3 w-3" />
             </Link>
           </section>
         )}
 
         {/* Step-by-Step Walkthrough if applicable */}
         {guide.steps && guide.steps.length > 0 && (
-          <section className="surface-card p-6 sm:p-8 space-y-6">
-            <h2 className="text-xl font-bold flex items-center gap-2">
-              <HelpCircle className="h-5 w-5 text-[var(--accent)]" />
+          <section className="p-5 sm:p-6 rounded-xl border border-[var(--border)] bg-[var(--card)] space-y-4">
+            <h2 className="text-base sm:text-lg font-bold flex items-center gap-2 text-[var(--text-main)]">
+              <HelpCircle className="h-4 w-4 text-[var(--brand)]" />
               Step-by-Step Instructions
             </h2>
-            <ol className="space-y-4">
+            <ol className="space-y-3">
               {guide.steps.map((step, idx) => (
-                <li key={idx} className="flex items-start gap-3 text-sm text-[var(--tx-2)]">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[var(--accent-soft)] text-xs font-bold text-[var(--accent)] border border-[var(--accent-border)]">
+                <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-[var(--text-muted)]">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--brand-soft)] text-xs font-bold text-[var(--brand)] border border-[var(--brand)]/20">
                     {idx + 1}
                   </span>
                   <span className="pt-0.5 leading-relaxed">{step}</span>
@@ -164,24 +164,24 @@ export default async function GuideDetailPage({ params }: PageProps) {
         )}
 
         {/* Main Content Paragraphs */}
-        <section className="space-y-6 text-sm sm:text-base text-[var(--tx-2)] leading-relaxed">
+        <section className="space-y-4 text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
           {guide.content.map((paragraph, idx) => (
             <p key={idx}>{paragraph}</p>
           ))}
         </section>
 
         {/* Bottom CTA */}
-        <section className="pt-8 border-t border-[var(--border)] text-center space-y-4">
-          <h3 className="text-lg font-bold text-[var(--tx)]">
+        <section className="pt-6 border-t border-[var(--border)] text-center space-y-3">
+          <h3 className="text-base sm:text-lg font-bold text-[var(--text-main)]">
             Private PDF Processing with No Server Uploads
           </h3>
-          <p className="text-xs sm:text-sm text-[var(--tx-2)] max-w-lg mx-auto">
+          <p className="text-xs sm:text-sm text-[var(--text-muted)] max-w-lg mx-auto">
             Try all 46 tools free with no file limits, no registration, and no tracking.
           </p>
-          <div className="pt-2">
+          <div className="pt-1">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white text-xs font-bold shadow-md transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--brand)] text-white text-xs font-medium hover:opacity-95 transition-opacity"
             >
               <span>Explore All PDF Tools</span>
             </Link>
