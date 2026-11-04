@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 import { getRouteMap } from "../i18n/routing";
 import { BLOG_ARTICLES } from "./_data/blog-data";
-import { GUIDES_DATA } from "./_data/guides-data";
+import { ALL_GUIDE_SLUGS } from "./_data/localized-guides-data";
 import { SUPPORTED_LOCALES } from "../i18n/config";
 
 export const dynamic = "force-static";
@@ -153,11 +153,40 @@ export default function sitemap(): MetadataRoute.Sitemap {
     addEntry(`/blog/${slug}`, weekly, 0.7);
   });
 
-  // 7. Guides & Tutorials (English only)
-  addEntry("/guides", weekly, 0.8);
-  Object.keys(GUIDES_DATA).forEach((slug) => {
-    addEntry(`/guides/${slug}`, weekly, 0.7);
-  });
+  // 7. Guides & Tutorials across all 9 languages with reciprocal hreflangs
+  const guidesHubMap: Record<string, string> = {
+    en: "/guides",
+    es: "/es/guides",
+    pt: "/pt/guides",
+    de: "/de/guides",
+    it: "/it/guides",
+    fr: "/fr/guides",
+    ro: "/ro/guides",
+    ru: "/ru/guides",
+    hu: "/hu/guides",
+  };
+  const guidesHubAlternates = buildAlternates(guidesHubMap);
+  for (const locale of SUPPORTED_LOCALES) {
+    addEntry(guidesHubMap[locale], weekly, 0.8, guidesHubAlternates);
+  }
+
+  for (const slug of ALL_GUIDE_SLUGS) {
+    const guideAlternatesMap: Record<string, string> = {
+      en: `/guides/${slug}`,
+      es: `/es/guides/${slug}`,
+      pt: `/pt/guides/${slug}`,
+      de: `/de/guides/${slug}`,
+      it: `/it/guides/${slug}`,
+      fr: `/fr/guides/${slug}`,
+      ro: `/ro/guides/${slug}`,
+      ru: `/ru/guides/${slug}`,
+      hu: `/hu/guides/${slug}`,
+    };
+    const guideAlternates = buildAlternates(guideAlternatesMap);
+    for (const locale of SUPPORTED_LOCALES) {
+      addEntry(guideAlternatesMap[locale], weekly, 0.7, guideAlternates);
+    }
+  }
 
   // 8. Static trust & company pages (English only)
   addEntry("/about", monthly, 0.8);

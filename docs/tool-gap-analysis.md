@@ -85,3 +85,4 @@ All recommended tools adhere strictly to our **core architectural guarantee**: *
 - **Primary Search Queries**: "chat with pdf private", "summarize pdf without uploading to server", "ai pdf tool byok"
 - **Implementation**: Extracts text via `pdf.js` and sends prompt directly from the user's browser to OpenAI / Google Gemini using the user's own API key stored in `localStorage`, or local WebLLM for devices with WebGPU.
 - **Privacy Impact**: True zero-server-upload model (no intermediate backend proxy).
+
