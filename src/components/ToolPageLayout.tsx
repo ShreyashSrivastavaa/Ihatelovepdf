@@ -11,6 +11,8 @@ import OperationToolSwitcherClient from './OperationToolSwitcherClient';
 import RelatedToolsClient from './RelatedToolsClient';
 import FaqSection from './faq-section';
 import NetworkActivityMonitor from './NetworkActivityMonitor';
+import { QuickAnswerBox } from './QuickAnswerBox';
+import { ToolComparisonTable } from './ToolComparisonTable';
 import { useLocale } from '../i18n/LocaleProvider';
 import { getOperationPath } from '../i18n/routing';
 import { CheckCircle2, ShieldCheck, Sparkles, HelpCircle, Wrench, ChevronDown, ChevronRight, ArrowRight, BookOpen } from 'lucide-react';
@@ -255,6 +257,13 @@ export default function ToolPageLayout({ operation, children }: ToolPageLayoutPr
           {children}
         </section>
 
+        {/* 3.5 QUICK ANSWER-FIRST DEFINITION (FOR GEO & FEATURED SNIPPETS) */}
+        <QuickAnswerBox
+          operationKey={operation.key}
+          toolName={toolName}
+          locale={locale}
+        />
+
         {/* 4. HOW TO USE SECTION */}
         <section className="p-6 sm:p-7 rounded-2xl border border-[var(--border)] bg-[var(--card)] space-y-5">
           <h2 className="text-lg sm:text-xl font-bold tracking-tight text-[var(--text-main)] flex items-center gap-2">
@@ -374,6 +383,12 @@ export default function ToolPageLayout({ operation, children }: ToolPageLayoutPr
             ))}
           </div>
         </section>
+
+        {/* 7.5 FACTUAL ARCHITECTURAL COMPARISON (GEO & COMPETITOR CONTRAST) */}
+        <ToolComparisonTable
+          toolName={toolName}
+          locale={locale}
+        />
 
         {/* 8. RELATED TOOLS CROSS-SELL */}
         <RelatedToolsClient currentMode={operation.mode} />

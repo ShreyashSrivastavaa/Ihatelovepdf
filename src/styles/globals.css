@@ -545,3 +545,9 @@ main, .main-content {
 .touch-none {
   touch-action: none;
 }
+
+/* International & Cyrillic Typography Support (Eliminates FOUT / missing glyphs) */
+:lang(ru) {
+  font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
