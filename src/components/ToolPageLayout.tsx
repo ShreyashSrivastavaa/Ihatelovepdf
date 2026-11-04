@@ -20,7 +20,6 @@ interface ToolPageLayoutProps {
 }
 
 export default function ToolPageLayout({ operation, children }: ToolPageLayoutProps) {
-  const [openFaqIndex, setOpenFaqIndex] = React.useState<number | null>(null);
   const IconComponent = ICON_MAP[operation.mode] ?? Wrench;
 
   const howToStructuredData = {
@@ -295,34 +294,20 @@ export default function ToolPageLayout({ operation, children }: ToolPageLayoutPr
               </p>
             </div>
             <div className="space-y-2.5 pt-1">
-              {operation.faqs.map((faq, idx) => {
-                const isOpen = openFaqIndex === idx;
-                return (
-                  <div
-                    key={`${operation.slug}-faq-${idx}`}
-                    className="border border-[var(--border)] rounded-xl overflow-hidden transition-colors bg-[var(--card)]"
-                  >
-                    <button
-                      type="button"
-                      onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
-                      className="w-full text-left p-3.5 sm:p-4 flex justify-between items-center gap-4 font-semibold text-xs sm:text-sm text-[var(--text-main)] hover:bg-[var(--subtle)] transition-colors cursor-pointer"
-                      aria-expanded={isOpen}
-                    >
-                      <span>{faq.question}</span>
-                      <ChevronDown
-                        className={`h-4 w-4 shrink-0 text-[var(--text-muted)] transition-transform duration-150 ${
-                          isOpen ? 'rotate-180 text-[var(--brand)]' : ''
-                        }`}
-                      />
-                    </button>
-                    {isOpen && (
-                      <div className="px-3.5 pb-3.5 sm:px-4 sm:pb-4 text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed border-t border-[var(--border)] pt-2.5">
-                        {faq.answer}
-                      </div>
-                    )}
+              {operation.faqs.map((faq, idx) => (
+                <details
+                  key={`${operation.slug}-faq-${idx}`}
+                  className="group border border-[var(--border)] rounded-xl overflow-hidden transition-colors bg-[var(--card)]"
+                >
+                  <summary className="w-full text-left p-3.5 sm:p-4 flex justify-between items-center gap-4 font-semibold text-xs sm:text-sm text-[var(--text-main)] hover:bg-[var(--subtle)] transition-colors cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
+                    <span>{faq.question}</span>
+                    <ChevronDown className="h-4 w-4 shrink-0 text-[var(--text-muted)] transition-transform duration-150 group-open:rotate-180 group-open:text-[var(--brand)]" />
+                  </summary>
+                  <div className="px-3.5 pb-3.5 sm:px-4 sm:pb-4 text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed border-t border-[var(--border)] pt-2.5">
+                    {faq.answer}
                   </div>
-                );
-              })}
+                </details>
+              ))}
             </div>
           </section>
         ) : (

@@ -163,6 +163,30 @@ export default function FreePdfToolsWithoutSignupPage() {
           </div>
         </section>
 
+        {/* Visible FAQ Section */}
+        <section className="space-y-4">
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-main)] text-center">
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-2.5 max-w-3xl mx-auto">
+            {faqSchema.mainEntity.map((item, idx) => (
+              <details
+                key={`faq-nosignup-${idx}`}
+                className="group border border-[var(--border)] rounded-xl overflow-hidden transition-colors bg-[var(--card)]"
+              >
+                <summary className="w-full text-left p-4 flex justify-between items-center gap-4 font-semibold text-xs sm:text-sm text-[var(--text-main)] hover:bg-[var(--subtle)] transition-colors cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
+                  <span>{item.name}</span>
+                  <span className="text-base text-secondary font-mono group-open:hidden">+</span>
+                  <span className="text-base text-secondary font-mono hidden group-open:inline">−</span>
+                </summary>
+                <div className="px-4 pb-4 text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed border-t border-[var(--border)] pt-2.5">
+                  <p>{item.acceptedAnswer.text}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+
         <Script
           id="schema-faq-nosignup"
           type="application/ld+json"
