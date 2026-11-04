@@ -174,6 +174,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     addEntry(ihatepdfAlternatesMap[locale], weekly, 0.8, ihatepdfAlternates);
   }
 
+  // 5.5 High-Intent Search Landing Pages (all 9 languages)
+  const searchIntentSlugs = [
+    'merge-pdf-without-uploading',
+    'pdf-tools-no-watermark',
+    'edit-pdf-for-resume',
+    'is-it-safe-to-merge-pdf-online',
+  ];
+  for (const sSlug of searchIntentSlugs) {
+    const sMap: Record<string, string> = {};
+    for (const loc of SUPPORTED_LOCALES) {
+      sMap[loc] = loc === 'en' ? `/${sSlug}` : `/${loc}/${sSlug}`;
+    }
+    const sAlternates = buildAlternates(sMap);
+    for (const loc of SUPPORTED_LOCALES) {
+      addEntry(sMap[loc], weekly, 0.8, sAlternates);
+    }
+  }
+
   addEntry("/ilovepdf-alternative", weekly, 0.8);
   addEntry("/smallpdf-alternative", weekly, 0.8);
   addEntry("/free-pdf-tools-without-signup", weekly, 0.8);

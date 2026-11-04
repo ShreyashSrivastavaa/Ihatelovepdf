@@ -111,6 +111,26 @@ export default function Footer() {
             </Link>
           </div>
 
+          {/* Privacy & High-Intent Search Guides */}
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs text-secondary/70 border-t border-border/40 pt-3 w-full">
+            <span className="font-semibold text-secondary">Privacy Guides:</span>
+            <Link href="/merge-pdf-without-uploading" className="hover:text-primary transition-colors">
+              Merge PDF Without Uploading
+            </Link>
+            <span>·</span>
+            <Link href="/pdf-tools-no-watermark" className="hover:text-primary transition-colors">
+              PDF Tools No Watermark
+            </Link>
+            <span>·</span>
+            <Link href="/edit-pdf-for-resume" className="hover:text-primary transition-colors">
+              Edit Resume PDF
+            </Link>
+            <span>·</span>
+            <Link href="/is-it-safe-to-merge-pdf-online" className="hover:text-primary transition-colors">
+              Is Online Merging Safe?
+            </Link>
+          </div>
+
           {/* Copyright, Author & One-line witty sign-off */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-secondary/80 w-full pt-2">
             <p>

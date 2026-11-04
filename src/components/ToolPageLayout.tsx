@@ -43,16 +43,22 @@ const BREADCRUMB_TOOLS_LABELS: Record<Locale, string> = {
 
 const RELATED_RESOURCES_MAP: Record<string, Array<{ title: string; href: string; type: 'Guide' | 'Article'; desc: string }>> = {
   merge: [
+    { title: 'Merge PDF Without Uploading to Cloud Servers', href: '/merge-pdf-without-uploading', type: 'Guide', desc: 'Why in-browser RAM merging protects your sensitive financial & personal documents.' },
+    { title: 'Is It Safe to Merge PDF Online?', href: '/is-it-safe-to-merge-pdf-online', type: 'Article', desc: 'The technical security facts about cloud uploads vs client-side WebAssembly.' },
     { title: 'How to Merge PDF Files for Free', href: '/guides/how-to-merge-pdf-files', type: 'Guide', desc: 'Step-by-step tutorial on combining reports, invoices, and forms in browser.' },
-    { title: 'Merge PDF Files Without Installing Software', href: '/blog/how-to-merge-pdf-files-without-software', type: 'Article', desc: 'Why browser-based merging is faster and more private than desktop software.' },
   ],
   compress: [
+    { title: 'Free PDF Tools With No Watermark', href: '/pdf-tools-no-watermark', type: 'Article', desc: 'Why ihatelovepdf will never watermark your compressed documents.' },
     { title: 'Compress PDF Without Losing Quality', href: '/guides/how-to-compress-pdf-without-losing-quality', type: 'Guide', desc: 'Optimize DPI, downsample high-res photos, and maintain crisp text.' },
     { title: 'Compress PDF to Under 100KB Step by Step', href: '/blog/how-to-compress-pdf-to-under-100kb', type: 'Article', desc: 'Practical tips for government, university, and job application size limits.' },
   ],
   split: [
     { title: 'How to Split a PDF by Pages', href: '/guides/how-to-split-pdf-pages', type: 'Guide', desc: 'Extract custom page ranges and burst documents into separate single pages.' },
     { title: 'Split a PDF Document Online Free', href: '/blog/how-to-split-a-pdf-by-pages', type: 'Article', desc: 'Separate multi-page contracts and invoices in seconds without signups.' },
+  ],
+  editPdf: [
+    { title: 'How to Edit a PDF Resume or CV Free', href: '/edit-pdf-for-resume', type: 'Guide', desc: 'Update dates, fix typos, and tweak career details without paying for Adobe Acrobat.' },
+    { title: 'Free PDF Tools With No Watermark', href: '/pdf-tools-no-watermark', type: 'Article', desc: 'Clean, professional PDF edits with zero promotional branding.' },
   ],
   redact: [
     { title: 'How to Redact a PDF for Free', href: '/guides/how-to-redact-pdf-free', type: 'Guide', desc: 'Permanently remove personal data, SSNs, and account numbers from documents.' },
@@ -81,7 +87,9 @@ const RELATED_RESOURCES_MAP: Record<string, Array<{ title: string; href: string;
 };
 
 const DEFAULT_RELATED_RESOURCES = [
-  { title: 'Explore All 36 Free PDF Tools', href: '/tools', type: 'Guide' as const, desc: 'Browse the full suite of client-side PDF utilities with zero file uploads.' },
+  { title: 'Explore All 37 Free PDF Tools', href: '/tools', type: 'Guide' as const, desc: 'Browse the full suite of client-side PDF utilities with zero file uploads.' },
+  { title: 'Merge PDF Without Uploading', href: '/merge-pdf-without-uploading', type: 'Guide' as const, desc: 'Why in-browser RAM merging protects your sensitive documents.' },
+  { title: 'Free PDF Tools With No Watermark', href: '/pdf-tools-no-watermark', type: 'Guide' as const, desc: 'Clean, watermark-free PDF exports with zero subscriptions.' },
   { title: 'Offline PDF Processing Architecture', href: '/offline-pdf-tools', type: 'Article' as const, desc: 'How in-browser PDF manipulation protects your privacy and document security.' },
 ];
 
