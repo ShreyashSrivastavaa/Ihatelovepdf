@@ -15,145 +15,130 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="w-full border-t border-[var(--border)] bg-[var(--bg)] text-[var(--tx-2)] py-12 transition-colors duration-200">
-        <div className="mx-auto max-w-[1140px] px-4 sm:px-6 space-y-8">
+      <footer className="w-full shrink-0 border-t border-border bg-main py-10 mt-auto transition-colors duration-150">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-8 flex flex-col items-center gap-6 text-sm text-secondary">
           
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-6 border-b border-[var(--border)]">
-            <div className="flex items-center gap-2.5">
-              <Image src="/images/stickers/ihatelove.png" alt="ihatelovepdf logo" width={32} height={32} className="object-contain h-8 w-8" unoptimized />
-              <span className="text-lg font-extrabold text-[var(--tx)]">ihatelovepdf</span>
-              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full border border-[var(--success-border)] bg-[var(--success-soft)] text-xs font-medium text-[var(--tx)]">
-                <ShieldCheck className="h-3.5 w-3.5 text-[var(--success)]" />
-                100% Private
-              </span>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-sm font-medium">
-              <Link href={routes.home} prefetch={true} className="hover:text-[var(--tx)] transition-colors">
-                {footer.links.home}
-              </Link>
-              <Link href="/tools" prefetch={true} className="hover:text-[var(--tx)] transition-colors">
-                All Tools
-              </Link>
-              <Link href="/products" prefetch={true} className="hover:text-[var(--tx)] transition-colors text-[var(--accent)] font-semibold">
-                Our Products
-              </Link>
-              <Link href="/about" prefetch={true} className="hover:text-[var(--tx)] transition-colors">
-                About
-              </Link>
-              <Link href="/guides" prefetch={true} className="hover:text-[var(--tx)] transition-colors">
-                Guides
-              </Link>
-              <Link href="/blog" prefetch={true} className="hover:text-[var(--tx)] transition-colors">
-                Blog
-              </Link>
-              <Link href={routes.faq} prefetch={true} className="hover:text-[var(--tx)] transition-colors">
-                {footer.links.faq}
-              </Link>
-              <Link
-                href="/buy-me-a-coffee"
-                prefetch={true}
-                className="inline-flex items-center gap-1.5 text-amber-500 hover:text-amber-400 font-semibold transition-colors"
-              >
-                <Coffee className="h-4 w-4" />
-                <span>Buy Me a Coffee</span>
-              </Link>
-              <Link href={routes.privacy || '/privacy'} prefetch={true} className="hover:text-[var(--tx)] transition-colors">
-                Privacy Policy
-              </Link>
-              <Link href={routes.terms || '/terms'} prefetch={true} className="hover:text-[var(--tx)] transition-colors">
-                Terms of Service
-              </Link>
-              <button
-                onClick={() => setIsContactOpen(true)}
-                className="hover:text-[var(--tx)] transition-colors cursor-pointer"
-              >
-                {footer.links.contact}
-              </button>
+          {/* Brand & Privacy Pill */}
+          <div className="flex flex-col sm:flex-row items-center gap-3">
+            <Link href={routes.home} className="flex items-center gap-2 text-primary font-bold tracking-tight">
+              <Image
+                src="/images/stickers/ihatelove.png"
+                alt="ihatelovepdf"
+                width={24}
+                height={24}
+                className="object-contain"
+                unoptimized
+              />
+              <span className="font-extrabold text-base">ihatelovepdf</span>
+            </Link>
+            <span className="hidden sm:inline-block text-border">·</span>
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-border bg-alt text-xs font-medium text-secondary">
+              <ShieldCheck className="h-3.5 w-3.5 text-success shrink-0" />
+              <span>100% Private · Runs in Your Browser</span>
             </div>
           </div>
 
-          {/* Alternatives & Comparisons Links */}
-          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-6 gap-y-2 text-xs text-[var(--tx-3)]">
-            <span className="font-semibold text-[var(--tx-2)]">Alternatives:</span>
-            <Link href="/ilovepdf-alternative" className="hover:text-[var(--tx)] transition-colors">
+          {/* Primary Navigation Links */}
+          <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 text-xs sm:text-sm">
+            <Link href="/tools" prefetch={true} className="hover:text-primary transition-colors">
+              All Tools
+            </Link>
+            <Link href={routes.privacy || '/privacy'} prefetch={true} className="hover:text-primary transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href={routes.terms || '/terms'} prefetch={true} className="hover:text-primary transition-colors">
+              Terms of Service
+            </Link>
+            <Link href="/guides" prefetch={true} className="hover:text-primary transition-colors">
+              Guides
+            </Link>
+            <Link href="/blog" prefetch={true} className="hover:text-primary transition-colors">
+              Blog
+            </Link>
+            <Link href="/about" prefetch={true} className="hover:text-primary transition-colors">
+              About
+            </Link>
+            <Link href="/products" prefetch={true} className="hover:text-primary transition-colors font-medium text-brand">
+              Our Products
+            </Link>
+            <Link href={routes.faq} prefetch={true} className="hover:text-primary transition-colors">
+              {footer.links.faq}
+            </Link>
+            <Link
+              href="/buy-me-a-coffee"
+              prefetch={true}
+              className="inline-flex items-center gap-1 text-accent hover:opacity-85 font-medium transition-opacity"
+            >
+              <Coffee className="h-3.5 w-3.5" />
+              <span>Buy Me a Coffee</span>
+            </Link>
+            <button
+              type="button"
+              onClick={() => setIsContactOpen(true)}
+              className="hover:text-primary transition-colors cursor-pointer"
+            >
+              {footer.links.contact}
+            </button>
+          </div>
+
+          {/* Alternatives & Comparisons */}
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs text-secondary/70 border-t border-border/60 pt-4 w-full">
+            <span className="font-semibold text-secondary">Alternatives:</span>
+            <Link href="/ilovepdf-alternative" className="hover:text-primary transition-colors">
               iLovePDF Alternative
             </Link>
-            <Link href="/smallpdf-alternative" className="hover:text-[var(--tx)] transition-colors">
+            <span>·</span>
+            <Link href="/smallpdf-alternative" className="hover:text-primary transition-colors">
               Smallpdf Alternative
             </Link>
-            <Link href="/free-pdf-tools-without-signup" className="hover:text-[var(--tx)] transition-colors">
+            <span>·</span>
+            <Link href="/free-pdf-tools-without-signup" className="hover:text-primary transition-colors">
               Free Tools (No Signup)
             </Link>
-            <Link href="/offline-pdf-tools" className="hover:text-[var(--tx)] transition-colors">
+            <span>·</span>
+            <Link href="/offline-pdf-tools" className="hover:text-primary transition-colors">
               Offline PDF Tools
             </Link>
           </div>
 
-          <div className="pt-6 border-t border-[var(--border)]">
-            {/* Top row: author info + badge */}
-            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
-              {/* Left: author + links */}
-              <div className="space-y-2 text-xs text-[var(--tx-3)]">
-                <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                  <span className="font-medium text-[var(--tx-2)]">Built by</span>
-                  <a
-                    href="https://www.shreyashsrivastava.in/"
-                    target="_blank"
-                    rel="me author noopener noreferrer"
-                    className="font-semibold text-[var(--tx)] hover:underline transition-colors"
-                  >
-                    Shreyash Srivastava
-                  </a>
-                  <span className="opacity-50">·</span>
-                  <a
-                    href="https://www.shreyashsrivastava.in/"
-                    target="_blank"
-                    rel="me author noopener noreferrer"
-                    className="hover:text-[var(--tx)] transition-colors"
-                  >
-                    Portfolio
-                  </a>
-                  <span className="opacity-50">·</span>
-                  <a
-                    href="https://www.linkedin.com/in/shreyashsrivastavaa"
-                    target="_blank"
-                    rel="me noopener noreferrer"
-                    className="hover:text-[var(--tx)] transition-colors"
-                  >
-                    LinkedIn
-                  </a>
-                  <span className="opacity-50">·</span>
-                  <a
-                    href="https://github.com/ShreyashSrivastavaa"
-                    target="_blank"
-                    rel="me noopener noreferrer"
-                    className="hover:text-[var(--tx)] transition-colors"
-                  >
-                    GitHub
-                  </a>
-                  <span className="opacity-50">·</span>
-                  <a
-                    href="https://buymeacoffee.com/shreyashsrivastavaa"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-amber-500 hover:underline font-semibold transition-colors"
-                  >
-                    Buy Me a Coffee
-                  </a>
-                </div>
-                <div className="space-y-0.5 pt-1">
-                  <p className="text-[11px] text-[var(--tx-3)]">{footer.rights}</p>
-                  <p className="text-[11px] opacity-65">{footer.license}</p>
-                  {footer.disclaimer && (
-                    <p className="text-[11px] opacity-55 max-w-xl leading-relaxed">{footer.disclaimer}</p>
-                  )}
-                </div>
-              </div>
+          {/* Copyright, Author & One-line witty sign-off */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-secondary/80 w-full pt-2">
+            <p>
+              Made with quiet irritation © {new Date().getFullYear()} ihatelovepdf · All files processed locally.
+            </p>
+            <div className="flex items-center gap-3">
+              <span>Built by</span>
+              <a
+                href="https://www.shreyashsrivastava.in/"
+                target="_blank"
+                rel="me author noopener noreferrer"
+                className="font-semibold text-primary hover:underline"
+              >
+                Shreyash Srivastava
+              </a>
+              <span>·</span>
+              <a
+                href="https://github.com/ShreyashSrivastavaa"
+                target="_blank"
+                rel="me noopener noreferrer"
+                className="hover:text-primary transition-colors"
+              >
+                GitHub
+              </a>
+              <span>·</span>
+              <a
+                href="https://www.linkedin.com/in/shreyashsrivastavaa"
+                target="_blank"
+                rel="me noopener noreferrer"
+                className="hover:text-primary transition-colors"
+              >
+                LinkedIn
+              </a>
             </div>
           </div>
         </div>
       </footer>
+
       <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
     </>
   );
