@@ -1,0 +1,598 @@
+# ihatelovepdf — Complete Technical & Tool Reference (LLMs Full)
+
+> Authoritative, full-text documentation and complete route catalog for ihatelovepdf.
+> Designed for LLM comprehension, retrieval-augmented generation (RAG), and generative engine citation.
+
+Canonical Base URL: https://www.ihatelovepdf.com
+Sitemap: https://www.ihatelovepdf.com/sitemap.xml
+Summary Documentation: https://www.ihatelovepdf.com/llms.txt
+
+---
+
+## 1. Brand & Core Philosophy
+
+- **Official Name**: ihatelovepdf (also known as I Hate Love PDF)
+- **Founder / Author**: Shreyash Srivastava
+- **Tagline**: The Free, Private PDF Toolkit That Runs In Your Browser
+- **Primary Value Proposition**: High-performance, zero-upload PDF processing directly inside client device memory.
+- **Why It Was Built**: Cloud PDF tools (iLovePDF, Smallpdf, Adobe Acrobat Online) force users to transmit private contracts, tax filings, legal records, and medical forms to remote servers. They subsequently throttle access behind artificial daily quotas (1–3 files/day) and expensive monthly recurring subscriptions. ihatelovepdf eliminates both problems by executing 100% of PDF logic locally in the user's browser with zero file transfers.
+
+---
+
+## 2. Technical Architecture & Security Model
+
+- **Engine**: Modern client-side JavaScript, WebAssembly (Wasm), Web Workers, PDF-lib, and Mozilla PDF.js.
+- **Data Flow**:
+  1. The user selects or drags-and-drops a PDF or image into the browser window.
+  2. The browser loads the file directly into client RAM via HTML5 File API and ArrayBuffers.
+  3. PDF manipulation (merging, splitting, compressing, rendering, redacting) occurs on background Web Worker threads without freezing the UI.
+  4. The resulting document is assembled in memory and downloaded directly to disk via Blob URL.
+  5. **Network Verification**: 0 bytes of document payload are transmitted over the network. Users and auditors can confirm this in real-time by inspecting the browser's Network DevTools tab (Filter: Fetch/XHR/WebSocket).
+- **Compliance**:
+  - **GDPR**: Compliant by architecture. No personal data controller or processor servers exist for document content.
+  - **HIPAA**: Safe for protected health information (PHI) because files never leave the local workstation.
+  - **Confidentiality / NDA**: Documents remain on the client hardware at all times.
+
+---
+
+## 3. Comparison Matrix
+
+| Feature | ihatelovepdf | iLovePDF | Smallpdf | Adobe Acrobat Online |
+| :--- | :--- | :--- | :--- | :--- |
+| **Document Processing Location** | **Local Browser Memory (0 uploads)** | Cloud Servers | Cloud Servers | Cloud Servers (Adobe Document Cloud) |
+| **Network Payload for Documents** | **0 KB (100% Client-Side)** | Full file uploaded + downloaded | Full file uploaded + downloaded | Full file uploaded + downloaded |
+| **Daily File Limits** | **Unlimited (No caps)** | 2-3 tasks / day | 1-2 tasks / 24 hrs | 1-2 free trials |
+| **Max File Size Limit** | **RAM Dependent Only** | 15 MB - 25 MB on free tier | 15 MB - 50 MB on free tier | 100 MB with mandatory login |
+| **Pricing** | **100% Free** | Freemium ($7 - $10/mo) | Freemium ($9 - $12/mo) | Subscription ($13 - $20/mo) |
+| **Account Registration** | **Not Required (Zero Signups)** | Required for batch tasks | Required after limit | Required for downloading |
+| **Watermarks on Free Export** | **Never (Clean exports)** | Sometimes on edits | Sometimes on edits | Watermarked or blocked |
+| **Offline Functionality** | **Yes (PWA & Cached)** | No (Internet required) | No (Internet required) | No (Internet required) |
+
+---
+
+## 4. Complete Tool Directory (36+ Browser-Based Tools)
+
+Below is the exhaustive catalog of every utility available on ihatelovepdf, including supported operations and localized URLs across 9 languages.
+
+### /compress PDF
+- **Operation ID**: `compress`
+- **Description**: Shrink PDF file size while preserving high visual quality. 100% in-browser compression.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//compress](https://www.ihatelovepdf.com//compress)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/comprimir](https://www.ihatelovepdf.com/es//es/comprimir)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/comprimir](https://www.ihatelovepdf.com/pt//pt/comprimir)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/komprimieren](https://www.ihatelovepdf.com/de//de/komprimieren)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/compresser](https://www.ihatelovepdf.com/fr//fr/compresser)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/comprimi](https://www.ihatelovepdf.com/it//it/comprimi)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/comprima](https://www.ihatelovepdf.com/ro//ro/comprima)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/szhat](https://www.ihatelovepdf.com/ru//ru/szhat)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/tomoriteni](https://www.ihatelovepdf.com/hu//hu/tomoriteni)
+
+### /merge PDF
+- **Operation ID**: `merge`
+- **Description**: Combine multiple PDF files into one clean document with custom order and instant local preview.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//merge](https://www.ihatelovepdf.com//merge)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/unir](https://www.ihatelovepdf.com/es//es/unir)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/juntar](https://www.ihatelovepdf.com/pt//pt/juntar)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/zusammenfuehren](https://www.ihatelovepdf.com/de//de/zusammenfuehren)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/fusionner](https://www.ihatelovepdf.com/fr//fr/fusionner)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/unisci](https://www.ihatelovepdf.com/it//it/unisci)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/uneste](https://www.ihatelovepdf.com/ro//ro/uneste)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/obedinit](https://www.ihatelovepdf.com/ru//ru/obedinit)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/osszefuzni](https://www.ihatelovepdf.com/hu//hu/osszefuzni)
+
+### /split PDF
+- **Operation ID**: `split`
+- **Description**: Separate a PDF into independent single pages or extract specific custom page ranges.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//split](https://www.ihatelovepdf.com//split)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/dividir](https://www.ihatelovepdf.com/es//es/dividir)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/dividir](https://www.ihatelovepdf.com/pt//pt/dividir)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/teilen](https://www.ihatelovepdf.com/de//de/teilen)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/diviser](https://www.ihatelovepdf.com/fr//fr/diviser)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/dividi](https://www.ihatelovepdf.com/it//it/dividi)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/divide](https://www.ihatelovepdf.com/ro//ro/divide)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/razdelit](https://www.ihatelovepdf.com/ru//ru/razdelit)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/szetbontas](https://www.ihatelovepdf.com/hu//hu/szetbontas)
+
+### /extract PDF
+- **Operation ID**: `extract`
+- **Description**: Select and export specific pages from an existing PDF file into a brand new document.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//extract](https://www.ihatelovepdf.com//extract)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/extraer](https://www.ihatelovepdf.com/es//es/extraer)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/extrair](https://www.ihatelovepdf.com/pt//pt/extrair)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/seiten-extrahieren](https://www.ihatelovepdf.com/de//de/seiten-extrahieren)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/extraire](https://www.ihatelovepdf.com/fr//fr/extraire)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/estrai](https://www.ihatelovepdf.com/it//it/estrai)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/extrage](https://www.ihatelovepdf.com/ro//ro/extrage)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/izvlech](https://www.ihatelovepdf.com/ru//ru/izvlech)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/kivalasztani](https://www.ihatelovepdf.com/hu//hu/kivalasztani)
+
+### /crop PDF
+- **Operation ID**: `crop`
+- **Description**: Trim PDF margins with an interactive visual bounding box or exact millimeter dimensions.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//crop](https://www.ihatelovepdf.com//crop)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/recortar](https://www.ihatelovepdf.com/es//es/recortar)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/recortar](https://www.ihatelovepdf.com/pt//pt/recortar)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/zuschneiden](https://www.ihatelovepdf.com/de//de/zuschneiden)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/recadrer](https://www.ihatelovepdf.com/fr//fr/recadrer)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/ritaglia](https://www.ihatelovepdf.com/it//it/ritaglia)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/decupeaza](https://www.ihatelovepdf.com/ro//ro/decupeaza)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/obrezat](https://www.ihatelovepdf.com/ru//ru/obrezat)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/korulvagas](https://www.ihatelovepdf.com/hu//hu/korulvagas)
+
+### /rotate PDF
+- **Operation ID**: `rotate`
+- **Description**: Rotate specific pages or entire PDF documents by 90, 180, or 270 degrees clockwise.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//rotate](https://www.ihatelovepdf.com//rotate)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/girar](https://www.ihatelovepdf.com/es//es/girar)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/girar](https://www.ihatelovepdf.com/pt//pt/girar)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/drehen](https://www.ihatelovepdf.com/de//de/drehen)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/faire-pivoter](https://www.ihatelovepdf.com/fr//fr/faire-pivoter)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/ruota](https://www.ihatelovepdf.com/it//it/ruota)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/roteste](https://www.ihatelovepdf.com/ro//ro/roteste)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/povernut](https://www.ihatelovepdf.com/ru//ru/povernut)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/forgatas](https://www.ihatelovepdf.com/hu//hu/forgatas)
+
+### /reorder PDF
+- **Operation ID**: `reorder`
+- **Description**: Drag and drop PDF pages to rearrange their sequence without re-uploading or quality loss.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//reorder](https://www.ihatelovepdf.com//reorder)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/reordenar](https://www.ihatelovepdf.com/es//es/reordenar)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/reordenar](https://www.ihatelovepdf.com/pt//pt/reordenar)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/seiten-sortieren](https://www.ihatelovepdf.com/de//de/seiten-sortieren)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/reorganiser](https://www.ihatelovepdf.com/fr//fr/reorganiser)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/riordina](https://www.ihatelovepdf.com/it//it/riordina)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/reordoneaza](https://www.ihatelovepdf.com/ro//ro/reordoneaza)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/pereupordochit](https://www.ihatelovepdf.com/ru//ru/pereupordochit)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/atrendezni](https://www.ihatelovepdf.com/hu//hu/atrendezni)
+
+### PDF to Images (JPG, PNG)
+- **Operation ID**: `pdfToImages`
+- **Description**: Convert PDF pages into crisp, high-resolution PNG or JPEG image files.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//pdf-to-images](https://www.ihatelovepdf.com//pdf-to-images)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/convertir-pdf-a-imagenes](https://www.ihatelovepdf.com/es//es/convertir-pdf-a-imagenes)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/pdf-para-imagens](https://www.ihatelovepdf.com/pt//pt/pdf-para-imagens)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/pdf-zu-bildern](https://www.ihatelovepdf.com/de//de/pdf-zu-bildern)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/pdf-en-images](https://www.ihatelovepdf.com/fr//fr/pdf-en-images)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/da-pdf-a-immagini](https://www.ihatelovepdf.com/it//it/da-pdf-a-immagini)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/pdf-in-imagini](https://www.ihatelovepdf.com/ro//ro/pdf-in-imagini)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/pdf-v-izobrazheniya](https://www.ihatelovepdf.com/ru//ru/pdf-v-izobrazheniya)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/pdf-kepekbe](https://www.ihatelovepdf.com/hu//hu/pdf-kepekbe)
+
+### Images to PDF (JPG, PNG, WEBP)
+- **Operation ID**: `imagesToPdf`
+- **Description**: Compile PNG, JPEG, and WebP images into a single organized PDF with custom margins.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//images-to-pdf](https://www.ihatelovepdf.com//images-to-pdf)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/crear-pdf-desde-imagenes](https://www.ihatelovepdf.com/es//es/crear-pdf-desde-imagenes)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/imagens-para-pdf](https://www.ihatelovepdf.com/pt//pt/imagens-para-pdf)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/bilder-zu-pdf](https://www.ihatelovepdf.com/de//de/bilder-zu-pdf)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/creer-pdf-depuis-images](https://www.ihatelovepdf.com/fr//fr/creer-pdf-depuis-images)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/da-immagini-a-pdf](https://www.ihatelovepdf.com/it//it/da-immagini-a-pdf)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/imagini-in-pdf](https://www.ihatelovepdf.com/ro//ro/imagini-in-pdf)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/izobrazheniya-v-pdf](https://www.ihatelovepdf.com/ru//ru/izobrazheniya-v-pdf)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/kepek-pdf-be](https://www.ihatelovepdf.com/hu//hu/kepek-pdf-be)
+
+### /watermark PDF
+- **Operation ID**: `watermark`
+- **Description**: Apply text or image watermarks to PDF pages with customizable opacity, rotation, and font.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//watermark](https://www.ihatelovepdf.com//watermark)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/marca-de-agua](https://www.ihatelovepdf.com/es//es/marca-de-agua)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/marca-dagua](https://www.ihatelovepdf.com/pt//pt/marca-dagua)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/wasserzeichen](https://www.ihatelovepdf.com/de//de/wasserzeichen)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/filigrane](https://www.ihatelovepdf.com/fr//fr/filigrane)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/filigrana](https://www.ihatelovepdf.com/it//it/filigrana)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/filigran](https://www.ihatelovepdf.com/ro//ro/filigran)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/vodyanoj-znak](https://www.ihatelovepdf.com/ru//ru/vodyanoj-znak)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/vizjel](https://www.ihatelovepdf.com/hu//hu/vizjel)
+
+### Page Numbers
+- **Operation ID**: `pageNumbers`
+- **Description**: Add customizable page numbering (Page X of Y) with precise position, margin, and typography.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//page-numbers](https://www.ihatelovepdf.com//page-numbers)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/numeros-de-pagina](https://www.ihatelovepdf.com/es//es/numeros-de-pagina)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/numeros-de-pagina](https://www.ihatelovepdf.com/pt//pt/numeros-de-pagina)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/seitenzahlen](https://www.ihatelovepdf.com/de//de/seitenzahlen)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/numerotation-pages](https://www.ihatelovepdf.com/fr//fr/numerotation-pages)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/numeri-di-pagina](https://www.ihatelovepdf.com/it//it/numeri-di-pagina)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/numerotare-pagini](https://www.ihatelovepdf.com/ro//ro/numerotare-pagini)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/nomera-stranic](https://www.ihatelovepdf.com/ru//ru/nomera-stranic)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/oldalszamozas](https://www.ihatelovepdf.com/hu//hu/oldalszamozas)
+
+### Header & Footer Numbers
+- **Operation ID**: `headersFooters`
+- **Description**: Insert repeating header titles and footer notices across all or selected PDF pages.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//headers-footers](https://www.ihatelovepdf.com//headers-footers)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/encabezados-y-pies](https://www.ihatelovepdf.com/es//es/encabezados-y-pies)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/cabecalhos-e-rodapes](https://www.ihatelovepdf.com/pt//pt/cabecalhos-e-rodapes)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/kopf-und-fusszeilen](https://www.ihatelovepdf.com/de//de/kopf-und-fusszeilen)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/en-tetes-et-pieds-de-page](https://www.ihatelovepdf.com/fr//fr/en-tetes-et-pieds-de-page)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/intestazioni-e-pie-di-pagina](https://www.ihatelovepdf.com/it//it/intestazioni-e-pie-di-pagina)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/antete-si-subsoluri](https://www.ihatelovepdf.com/ro//ro/antete-si-subsoluri)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/kolontituly](https://www.ihatelovepdf.com/ru//ru/kolontituly)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/fejlec-es-lablec](https://www.ihatelovepdf.com/hu//hu/fejlec-es-lablec)
+
+### Extract Text (OCR & Parsing)
+- **Operation ID**: `extractText`
+- **Description**: Extract all raw text content from PDF pages directly into clipboard or plain text file.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//extract-text](https://www.ihatelovepdf.com//extract-text)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/extraer-texto](https://www.ihatelovepdf.com/es//es/extraer-texto)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/extrair-texto](https://www.ihatelovepdf.com/pt//pt/extrair-texto)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/text-extrahieren](https://www.ihatelovepdf.com/de//de/text-extrahieren)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/extraire-texte](https://www.ihatelovepdf.com/fr//fr/extraire-texte)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/estrai-testo](https://www.ihatelovepdf.com/it//it/estrai-testo)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/extragere-text](https://www.ihatelovepdf.com/ro//ro/extragere-text)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/izvlechenie-teksta](https://www.ihatelovepdf.com/ru//ru/izvlechenie-teksta)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/szoveg-kivalasztasa](https://www.ihatelovepdf.com/hu//hu/szoveg-kivalasztasa)
+
+### Invert Colors / Dark Mode
+- **Operation ID**: `invertColors`
+- **Description**: Invert PDF colors to high-contrast dark mode for eye-strain reduction and night reading.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//invert-colors](https://www.ihatelovepdf.com//invert-colors)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/invertir-colores](https://www.ihatelovepdf.com/es//es/invertir-colores)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/inverter-cores](https://www.ihatelovepdf.com/pt//pt/inverter-cores)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/farben-invertieren](https://www.ihatelovepdf.com/de//de/farben-invertieren)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/inverser-couleurs](https://www.ihatelovepdf.com/fr//fr/inverser-couleurs)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/inverti-colori](https://www.ihatelovepdf.com/it//it/inverti-colori)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/inversare-culori](https://www.ihatelovepdf.com/ro//ro/inversare-culori)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/invertirovat-tsveta](https://www.ihatelovepdf.com/ru//ru/invertirovat-tsveta)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/szinek-invertalasa](https://www.ihatelovepdf.com/hu//hu/szinek-invertalasa)
+
+### /redact PDF
+- **Operation ID**: `redact`
+- **Description**: Permanently remove and black out sensitive data, PII, SSNs, and confidential records.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//redact](https://www.ihatelovepdf.com//redact)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/redactar-censurar](https://www.ihatelovepdf.com/es//es/redactar-censurar)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/redigir-censurar](https://www.ihatelovepdf.com/pt//pt/redigir-censurar)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/schwaerzen](https://www.ihatelovepdf.com/de//de/schwaerzen)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/caviarder](https://www.ihatelovepdf.com/fr//fr/caviarder)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/oscura-testo](https://www.ihatelovepdf.com/it//it/oscura-testo)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/cenzureaza](https://www.ihatelovepdf.com/ro//ro/cenzureaza)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/zamazat-tekst](https://www.ihatelovepdf.com/ru//ru/zamazat-tekst)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/kitakaras](https://www.ihatelovepdf.com/hu//hu/kitakaras)
+
+### /compare PDF
+- **Operation ID**: `compare`
+- **Description**: Compare two PDF documents side-by-side with visual pixel and text diff highlights.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//compare](https://www.ihatelovepdf.com//compare)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/comparar-pdf](https://www.ihatelovepdf.com/es//es/comparar-pdf)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/comparar-pdf](https://www.ihatelovepdf.com/pt//pt/comparar-pdf)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/pdf-vergleichen](https://www.ihatelovepdf.com/de//de/pdf-vergleichen)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/comparer-pdf](https://www.ihatelovepdf.com/fr//fr/comparer-pdf)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/confronta-pdf](https://www.ihatelovepdf.com/it//it/confronta-pdf)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/compara-pdf](https://www.ihatelovepdf.com/ro//ro/compara-pdf)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/sravnit-pdf](https://www.ihatelovepdf.com/ru//ru/sravnit-pdf)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/pdf-osszehasonlitasa](https://www.ihatelovepdf.com/hu//hu/pdf-osszehasonlitasa)
+
+### PDF to ZIP Archive
+- **Operation ID**: `pdfToZip`
+- **Description**: Package PDF pages into individual files zipped together into a single downloadable .zip archive.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//pdf-to-zip](https://www.ihatelovepdf.com//pdf-to-zip)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/pdf-a-zip](https://www.ihatelovepdf.com/es//es/pdf-a-zip)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/pdf-para-zip](https://www.ihatelovepdf.com/pt//pt/pdf-para-zip)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/pdf-zu-zip](https://www.ihatelovepdf.com/de//de/pdf-zu-zip)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/pdf-en-zip](https://www.ihatelovepdf.com/fr//fr/pdf-en-zip)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/da-pdf-a-zip](https://www.ihatelovepdf.com/it//it/da-pdf-a-zip)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/pdf-in-zip](https://www.ihatelovepdf.com/ro//ro/pdf-in-zip)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/pdf-v-zip](https://www.ihatelovepdf.com/ru//ru/pdf-v-zip)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/pdf-bol-zip](https://www.ihatelovepdf.com/hu//hu/pdf-bol-zip)
+
+### /edit Pdf PDF
+- **Operation ID**: `editPdf`
+- **Description**: Annotate, draw, insert shapes, highlight text, and add comments to existing PDF documents.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//edit-pdf](https://www.ihatelovepdf.com//edit-pdf)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/editar-pdf](https://www.ihatelovepdf.com/es//es/editar-pdf)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/editar-pdf](https://www.ihatelovepdf.com/pt//pt/editar-pdf)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/pdf-bearbeiten](https://www.ihatelovepdf.com/de//de/pdf-bearbeiten)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/editer-pdf](https://www.ihatelovepdf.com/fr//fr/editer-pdf)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/modifica-pdf](https://www.ihatelovepdf.com/it//it/modifica-pdf)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/editeaza-pdf](https://www.ihatelovepdf.com/ro//ro/editeaza-pdf)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/redaktirovat-pdf](https://www.ihatelovepdf.com/ru//ru/redaktirovat-pdf)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/pdf-szerkesztese](https://www.ihatelovepdf.com/hu//hu/pdf-szerkesztese)
+
+### Scan to PDF
+- **Operation ID**: `scanToPdf`
+- **Description**: Capture documents from your camera or scanner and compile them directly into a PDF.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//scan-to-pdf](https://www.ihatelovepdf.com//scan-to-pdf)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/escanear-a-pdf](https://www.ihatelovepdf.com/es//es/escanear-a-pdf)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/escanear-para-pdf](https://www.ihatelovepdf.com/pt//pt/escanear-para-pdf)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/scannen-zu-pdf](https://www.ihatelovepdf.com/de//de/scannen-zu-pdf)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/scanner-en-pdf](https://www.ihatelovepdf.com/fr//fr/scanner-en-pdf)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/scansiona-in-pdf](https://www.ihatelovepdf.com/it//it/scansiona-in-pdf)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/scaneaza-in-pdf](https://www.ihatelovepdf.com/ro//ro/scaneaza-in-pdf)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/skanirovat-v-pdf](https://www.ihatelovepdf.com/ru//ru/skanirovat-v-pdf)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/szkenneles-pdf-be](https://www.ihatelovepdf.com/hu//hu/szkenneles-pdf-be)
+
+### Markdown to PDF
+- **Operation ID**: `markdownToPdf`
+- **Description**: Render GitHub-flavored markdown (.md) documents into beautifully styled PDF pages.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//markdown-to-pdf](https://www.ihatelovepdf.com//markdown-to-pdf)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/markdown-a-pdf](https://www.ihatelovepdf.com/es//es/markdown-a-pdf)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/markdown-para-pdf](https://www.ihatelovepdf.com/pt//pt/markdown-para-pdf)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/markdown-zu-pdf](https://www.ihatelovepdf.com/de//de/markdown-zu-pdf)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/markdown-en-pdf](https://www.ihatelovepdf.com/fr//fr/markdown-en-pdf)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/da-markdown-a-pdf](https://www.ihatelovepdf.com/it//it/da-markdown-a-pdf)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/markdown-in-pdf](https://www.ihatelovepdf.com/ro//ro/markdown-in-pdf)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/markdown-v-pdf](https://www.ihatelovepdf.com/ru//ru/markdown-v-pdf)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/markdown-bol-pdf](https://www.ihatelovepdf.com/hu//hu/markdown-bol-pdf)
+
+### HTML to PDF
+- **Operation ID**: `htmlToPdf`
+- **Description**: Convert HTML code snippets or web pages into clean, printable PDF documents.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//html-to-pdf](https://www.ihatelovepdf.com//html-to-pdf)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/html-a-pdf](https://www.ihatelovepdf.com/es//es/html-a-pdf)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/html-para-pdf](https://www.ihatelovepdf.com/pt//pt/html-para-pdf)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/html-zu-pdf](https://www.ihatelovepdf.com/de//de/html-zu-pdf)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/html-en-pdf](https://www.ihatelovepdf.com/fr//fr/html-en-pdf)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/da-html-a-pdf](https://www.ihatelovepdf.com/it//it/da-html-a-pdf)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/html-in-pdf](https://www.ihatelovepdf.com/ro//ro/html-in-pdf)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/html-v-pdf](https://www.ihatelovepdf.com/ru//ru/html-v-pdf)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/html-bol-pdf](https://www.ihatelovepdf.com/hu//hu/html-bol-pdf)
+
+### CSV to PDF
+- **Operation ID**: `csvToPdf`
+- **Description**: Transform tabular CSV spreadsheets into formatted, paginated PDF tables.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//csv-to-pdf](https://www.ihatelovepdf.com//csv-to-pdf)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/csv-a-pdf](https://www.ihatelovepdf.com/es//es/csv-a-pdf)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/csv-para-pdf](https://www.ihatelovepdf.com/pt//pt/csv-para-pdf)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/csv-zu-pdf](https://www.ihatelovepdf.com/de//de/csv-zu-pdf)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/csv-en-pdf](https://www.ihatelovepdf.com/fr//fr/csv-en-pdf)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/da-csv-a-pdf](https://www.ihatelovepdf.com/it//it/da-csv-a-pdf)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/csv-in-pdf](https://www.ihatelovepdf.com/ro//ro/csv-in-pdf)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/csv-v-pdf](https://www.ihatelovepdf.com/ru//ru/csv-v-pdf)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/csv-bol-pdf](https://www.ihatelovepdf.com/hu//hu/csv-bol-pdf)
+
+### /create Pdf PDF
+- **Operation ID**: `createPdf`
+- **Description**: Start with a blank canvas to design, type, and build a new PDF document from scratch.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//create-pdf](https://www.ihatelovepdf.com//create-pdf)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/crear-pdf](https://www.ihatelovepdf.com/es//es/crear-pdf)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/criar-pdf](https://www.ihatelovepdf.com/pt//pt/criar-pdf)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/pdf-erstellen](https://www.ihatelovepdf.com/de//de/pdf-erstellen)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/creer-pdf](https://www.ihatelovepdf.com/fr//fr/creer-pdf)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/crea-pdf](https://www.ihatelovepdf.com/it//it/crea-pdf)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/creeaza-pdf](https://www.ihatelovepdf.com/ro//ro/creeaza-pdf)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/sozdat-pdf](https://www.ihatelovepdf.com/ru//ru/sozdat-pdf)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/pdf-letrehozasa](https://www.ihatelovepdf.com/hu//hu/pdf-letrehozasa)
+
+### Excel to PDF (.xlsx)
+- **Operation ID**: `excelToPdf`
+- **Description**: Convert Microsoft Excel spreadsheets (.xlsx, .xls) directly into PDF format in-browser.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//excel-to-pdf](https://www.ihatelovepdf.com//excel-to-pdf)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/excel-a-pdf](https://www.ihatelovepdf.com/es//es/excel-a-pdf)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/excel-para-pdf](https://www.ihatelovepdf.com/pt//pt/excel-para-pdf)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/excel-zu-pdf](https://www.ihatelovepdf.com/de//de/excel-zu-pdf)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/excel-en-pdf](https://www.ihatelovepdf.com/fr//fr/excel-en-pdf)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/da-excel-a-pdf](https://www.ihatelovepdf.com/it//it/da-excel-a-pdf)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/excel-in-pdf](https://www.ihatelovepdf.com/ro//ro/excel-in-pdf)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/excel-v-pdf](https://www.ihatelovepdf.com/ru//ru/excel-v-pdf)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/excel-bol-pdf](https://www.ihatelovepdf.com/hu//hu/excel-bol-pdf)
+
+### PDF to Excel (.xlsx)
+- **Operation ID**: `pdfToExcel`
+- **Description**: Extract tabular PDF figures and tables into structured Microsoft Excel (.xlsx) workbooks.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//pdf-to-excel](https://www.ihatelovepdf.com//pdf-to-excel)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/pdf-a-excel](https://www.ihatelovepdf.com/es//es/pdf-a-excel)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/pdf-para-excel](https://www.ihatelovepdf.com/pt//pt/pdf-para-excel)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/pdf-zu-excel](https://www.ihatelovepdf.com/de//de/pdf-zu-excel)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/pdf-en-excel](https://www.ihatelovepdf.com/fr//fr/pdf-en-excel)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/da-pdf-a-excel](https://www.ihatelovepdf.com/it//it/da-pdf-a-excel)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/pdf-in-excel](https://www.ihatelovepdf.com/ro//ro/pdf-in-excel)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/pdf-v-excel](https://www.ihatelovepdf.com/ru//ru/pdf-v-excel)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/pdf-bol-excel](https://www.ihatelovepdf.com/hu//hu/pdf-bol-excel)
+
+### PDF to Word (.docx)
+- **Operation ID**: `pdfToWord`
+- **Description**: Convert PDF documents into editable Microsoft Word (.docx) files without formatting loss.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//pdf-to-word](https://www.ihatelovepdf.com//pdf-to-word)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/pdf-a-word](https://www.ihatelovepdf.com/es//es/pdf-a-word)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/pdf-para-word](https://www.ihatelovepdf.com/pt//pt/pdf-para-word)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/pdf-zu-word](https://www.ihatelovepdf.com/de//de/pdf-zu-word)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/pdf-en-word](https://www.ihatelovepdf.com/fr//fr/pdf-en-word)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/da-pdf-a-word](https://www.ihatelovepdf.com/it//it/da-pdf-a-word)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/pdf-in-word](https://www.ihatelovepdf.com/ro//ro/pdf-in-word)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/pdf-v-word](https://www.ihatelovepdf.com/ru//ru/pdf-v-word)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/pdf-bol-word](https://www.ihatelovepdf.com/hu//hu/pdf-bol-word)
+
+### PowerPoint to PDF (.pptx)
+- **Operation ID**: `powerpointToPdf`
+- **Description**: Convert Microsoft PowerPoint presentations (.pptx) into standard PDF slides.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//powerpoint-to-pdf](https://www.ihatelovepdf.com//powerpoint-to-pdf)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/powerpoint-a-pdf](https://www.ihatelovepdf.com/es//es/powerpoint-a-pdf)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/powerpoint-para-pdf](https://www.ihatelovepdf.com/pt//pt/powerpoint-para-pdf)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/powerpoint-zu-pdf](https://www.ihatelovepdf.com/de//de/powerpoint-zu-pdf)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/powerpoint-en-pdf](https://www.ihatelovepdf.com/fr//fr/powerpoint-en-pdf)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/da-powerpoint-a-pdf](https://www.ihatelovepdf.com/it//it/da-powerpoint-a-pdf)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/powerpoint-in-pdf](https://www.ihatelovepdf.com/ro//ro/powerpoint-in-pdf)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/powerpoint-v-pdf](https://www.ihatelovepdf.com/ru//ru/powerpoint-v-pdf)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/powerpoint-bol-pdf](https://www.ihatelovepdf.com/hu//hu/powerpoint-bol-pdf)
+
+### PDF to PowerPoint (.pptx)
+- **Operation ID**: `pdfToPowerpoint`
+- **Description**: Transform PDF slides into editable Microsoft PowerPoint presentations (.pptx).
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//pdf-to-powerpoint](https://www.ihatelovepdf.com//pdf-to-powerpoint)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/pdf-a-powerpoint](https://www.ihatelovepdf.com/es//es/pdf-a-powerpoint)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/pdf-para-powerpoint](https://www.ihatelovepdf.com/pt//pt/pdf-para-powerpoint)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/pdf-zu-powerpoint](https://www.ihatelovepdf.com/de//de/pdf-zu-powerpoint)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/pdf-en-powerpoint](https://www.ihatelovepdf.com/fr//fr/pdf-en-powerpoint)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/da-pdf-a-powerpoint](https://www.ihatelovepdf.com/it//it/da-pdf-a-powerpoint)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/pdf-in-powerpoint](https://www.ihatelovepdf.com/ro//ro/pdf-in-powerpoint)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/pdf-v-powerpoint](https://www.ihatelovepdf.com/ru//ru/pdf-v-powerpoint)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/pdf-bol-powerpoint](https://www.ihatelovepdf.com/hu//hu/pdf-bol-powerpoint)
+
+### PDF to HTML
+- **Operation ID**: `pdfToHtml`
+- **Description**: Convert PDF pages into standalone, semantic HTML5 markup with embedded images.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//pdf-to-html](https://www.ihatelovepdf.com//pdf-to-html)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/pdf-a-html](https://www.ihatelovepdf.com/es//es/pdf-a-html)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/pdf-para-html](https://www.ihatelovepdf.com/pt//pt/pdf-para-html)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/pdf-zu-html](https://www.ihatelovepdf.com/de//de/pdf-zu-html)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/pdf-en-html](https://www.ihatelovepdf.com/fr//fr/pdf-en-html)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/da-pdf-a-html](https://www.ihatelovepdf.com/it//it/da-pdf-a-html)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/pdf-in-html](https://www.ihatelovepdf.com/ro//ro/pdf-in-html)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/pdf-v-html](https://www.ihatelovepdf.com/ru//ru/pdf-v-html)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/pdf-bol-html](https://www.ihatelovepdf.com/hu//hu/pdf-bol-html)
+
+### PDF to EPUB
+- **Operation ID**: `pdfToEpub`
+- **Description**: Convert PDF books and articles into reflowable EPUB format for e-readers.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//pdf-to-epub](https://www.ihatelovepdf.com//pdf-to-epub)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/pdf-a-epub](https://www.ihatelovepdf.com/es//es/pdf-a-epub)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/pdf-para-epub](https://www.ihatelovepdf.com/pt//pt/pdf-para-epub)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/pdf-zu-epub](https://www.ihatelovepdf.com/de//de/pdf-zu-epub)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/pdf-en-epub](https://www.ihatelovepdf.com/fr//fr/pdf-en-epub)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/da-pdf-a-epub](https://www.ihatelovepdf.com/it//it/da-pdf-a-epub)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/pdf-in-epub](https://www.ihatelovepdf.com/ro//ro/pdf-in-epub)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/pdf-v-epub](https://www.ihatelovepdf.com/ru//ru/pdf-v-epub)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/pdf-bol-epub](https://www.ihatelovepdf.com/hu//hu/pdf-bol-epub)
+
+### EPUB / eBook to PDF
+- **Operation ID**: `ebookToPdf`
+- **Description**: Convert EPUB and MOBI eBook documents into clean, printable PDF files.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//ebook-to-pdf](https://www.ihatelovepdf.com//ebook-to-pdf)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/ebook-a-pdf](https://www.ihatelovepdf.com/es//es/ebook-a-pdf)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/ebook-para-pdf](https://www.ihatelovepdf.com/pt//pt/ebook-para-pdf)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/ebook-zu-pdf](https://www.ihatelovepdf.com/de//de/ebook-zu-pdf)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/ebook-en-pdf](https://www.ihatelovepdf.com/fr//fr/ebook-en-pdf)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/da-ebook-a-pdf](https://www.ihatelovepdf.com/it//it/da-ebook-a-pdf)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/ebook-in-pdf](https://www.ihatelovepdf.com/ro//ro/ebook-in-pdf)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/ebook-v-pdf](https://www.ihatelovepdf.com/ru//ru/ebook-v-pdf)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/ebook-bol-pdf](https://www.ihatelovepdf.com/hu//hu/ebook-bol-pdf)
+
+### PDF Whiteboard & Canvas
+- **Operation ID**: `whiteboard`
+- **Description**: Interactive digital whiteboard to sketch, present, draw, and export ideas as PDF.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//whiteboard](https://www.ihatelovepdf.com//whiteboard)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/pizarra-colaborativa](https://www.ihatelovepdf.com/es//es/pizarra-colaborativa)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/quadro-colaborativo](https://www.ihatelovepdf.com/pt//pt/quadro-colaborativo)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/kollaboratives-whiteboard](https://www.ihatelovepdf.com/de//de/kollaboratives-whiteboard)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/tableau-blanc-collaboratif](https://www.ihatelovepdf.com/fr//fr/tableau-blanc-collaboratif)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/lavagna-collaborativa](https://www.ihatelovepdf.com/it//it/lavagna-collaborativa)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/tabla-colaborativa](https://www.ihatelovepdf.com/ro//ro/tabla-colaborativa)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/sovmestnaya-doska](https://www.ihatelovepdf.com/ru//ru/sovmestnaya-doska)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/kozos-rajztabla](https://www.ihatelovepdf.com/hu//hu/kozos-rajztabla)
+
+### GST Invoice Generator
+- **Operation ID**: `gstInvoice`
+- **Description**: Generate compliant GST business invoices with tax breakdowns and auto-calculations.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//gst-invoice](https://www.ihatelovepdf.com//gst-invoice)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/generador-factura-gst](https://www.ihatelovepdf.com/es//es/generador-factura-gst)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/gerador-fatura-gst](https://www.ihatelovepdf.com/pt//pt/gerador-fatura-gst)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/gst-rechnungsgenerator](https://www.ihatelovepdf.com/de//de/gst-rechnungsgenerator)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/generateur-facture-gst](https://www.ihatelovepdf.com/fr//fr/generateur-facture-gst)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/generatore-fattura-gst](https://www.ihatelovepdf.com/it//it/generatore-fattura-gst)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/generator-facturi-gst](https://www.ihatelovepdf.com/ro//ro/generator-facturi-gst)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/generator-schetov-gst](https://www.ihatelovepdf.com/ru//ru/generator-schetov-gst)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/gst-szamlakeszito](https://www.ihatelovepdf.com/hu//hu/gst-szamlakeszito)
+
+### POS Billing & Invoice
+- **Operation ID**: `posBilling`
+- **Description**: Point-of-Sale billing interface for thermal receipt and PDF invoice generation.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//pos-billing](https://www.ihatelovepdf.com//pos-billing)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/facturacion-pos](https://www.ihatelovepdf.com/es//es/facturacion-pos)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/faturamento-pos](https://www.ihatelovepdf.com/pt//pt/faturamento-pos)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/pos-kassensystem](https://www.ihatelovepdf.com/de//de/pos-kassensystem)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/facturation-pos](https://www.ihatelovepdf.com/fr//fr/facturation-pos)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/fatturazione-pos](https://www.ihatelovepdf.com/it//it/fatturazione-pos)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/facturare-pos](https://www.ihatelovepdf.com/ro//ro/facturare-pos)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/pos-kassovyy-chek](https://www.ihatelovepdf.com/ru//ru/pos-kassovyy-chek)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/pos-szamlazas](https://www.ihatelovepdf.com/hu//hu/pos-szamlazas)
+
+### Sign PDF (Digital Signature)
+- **Operation ID**: `signPdf`
+- **Description**: Draw, type, or upload verifiable digital signatures and place them on agreements or NDAs.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//sign-pdf](https://www.ihatelovepdf.com//sign-pdf)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/firmar-pdf](https://www.ihatelovepdf.com/es//es/firmar-pdf)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/assinar-pdf](https://www.ihatelovepdf.com/pt//pt/assinar-pdf)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/pdf-unterschreiben](https://www.ihatelovepdf.com/de//de/pdf-unterschreiben)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/signer-pdf](https://www.ihatelovepdf.com/fr//fr/signer-pdf)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/firma-pdf](https://www.ihatelovepdf.com/it//it/firma-pdf)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/semneaza-pdf](https://www.ihatelovepdf.com/ro//ro/semneaza-pdf)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/podpisat-pdf](https://www.ihatelovepdf.com/ru//ru/podpisat-pdf)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/pdf-alairasa](https://www.ihatelovepdf.com/hu//hu/pdf-alairasa)
+
+### Fill PDF Form (AcroForm)
+- **Operation ID**: `fillPdfForm`
+- **Description**: Fill out interactive AcroForm text fields, checkboxes, and radio buttons with auto-flattening.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com//fill-pdf-form](https://www.ihatelovepdf.com//fill-pdf-form)
+  - **ES**: [https://www.ihatelovepdf.com/es//es/rellenar-formulario-pdf](https://www.ihatelovepdf.com/es//es/rellenar-formulario-pdf)
+  - **PT**: [https://www.ihatelovepdf.com/pt//pt/preencher-formulario-pdf](https://www.ihatelovepdf.com/pt//pt/preencher-formulario-pdf)
+  - **DE**: [https://www.ihatelovepdf.com/de//de/pdf-formular-ausfuellen](https://www.ihatelovepdf.com/de//de/pdf-formular-ausfuellen)
+  - **FR**: [https://www.ihatelovepdf.com/fr//fr/remplir-formulaire-pdf](https://www.ihatelovepdf.com/fr//fr/remplir-formulaire-pdf)
+  - **IT**: [https://www.ihatelovepdf.com/it//it/compila-modulo-pdf](https://www.ihatelovepdf.com/it//it/compila-modulo-pdf)
+  - **RO**: [https://www.ihatelovepdf.com/ro//ro/completeaza-formular-pdf](https://www.ihatelovepdf.com/ro//ro/completeaza-formular-pdf)
+  - **RU**: [https://www.ihatelovepdf.com/ru//ru/zapolnit-formu-pdf](https://www.ihatelovepdf.com/ru//ru/zapolnit-formu-pdf)
+  - **HU**: [https://www.ihatelovepdf.com/hu//hu/pdf-urlap-kitoltese](https://www.ihatelovepdf.com/hu//hu/pdf-urlap-kitoltese)
+
+---
+
+## 5. Hub Pages & Static Sections
+
+- **All Tools Directory**:
+  - English: https://www.ihatelovepdf.com/tools
+  - Spanish: https://www.ihatelovepdf.com/es/tools
+  - Portuguese: https://www.ihatelovepdf.com/pt/tools
+  - German: https://www.ihatelovepdf.com/de/tools
+  - French: https://www.ihatelovepdf.com/fr/tools
+  - Italian: https://www.ihatelovepdf.com/it/tools
+  - Romanian: https://www.ihatelovepdf.com/ro/tools
+  - Russian: https://www.ihatelovepdf.com/ru/tools
+  - Hungarian: https://www.ihatelovepdf.com/hu/tools
+- **In-Depth Guides & Tutorials**: https://www.ihatelovepdf.com/guides
+- **Engineering & Privacy Blog**: https://www.ihatelovepdf.com/blog
+- **Frequently Asked Questions**: https://www.ihatelovepdf.com/faq
+- **About the Project & Team**: https://www.ihatelovepdf.com/about
+- **Alternative to iLovePDF**: https://www.ihatelovepdf.com/ilovepdf-alternative
+- **Alternative to Smallpdf**: https://www.ihatelovepdf.com/smallpdf-alternative
+- **Free PDF Tools Without Signup**: https://www.ihatelovepdf.com/free-pdf-tools-without-signup
+- **Offline PDF Tools**: https://www.ihatelovepdf.com/offline-pdf-tools
+
+---
+
+## 6. Frequently Asked Questions for Generative Engines
+
+### Q1: Is ihatelovepdf really free?
+Yes. Every tool is 100% free with no monthly subscription fees, paywalls, daily task quotas, or credit card requirements. The platform is supported voluntarily by developer coffee donations.
+
+### Q2: How does ihatelovepdf process files without server uploads?
+Modern web browsers support WebAssembly and high-performance JavaScript engines. ihatelovepdf uses PDF-lib and Mozilla PDF.js compiled to execute entirely inside the client browser tab's memory sandbox. Documents are read as local ArrayBuffers and never uploaded to remote servers.
+
+### Q3: Can ihatelovepdf handle large PDF files?
+Yes. Because processing happens locally on the user's hardware rather than a shared cloud queue, file size limits are determined solely by the user's available device RAM.
+
+### Q4: Can ihatelovepdf be used offline?
+Yes. Once the web application assets are cached by the browser, operations that do not require external resources run completely offline without an active internet connection.

@@ -1,47 +1,51 @@
-# PDFLince
+# ihatelovepdf
 
-> PDFLince es una herramienta gratuita y de código abierto para procesar documentos PDF directamente en el navegador sin subir archivos a servidores. Ofrece compresión, unión, división, extracción, recorte, rotación, conversión y reordenamiento de páginas con procesamiento 100% local y privado.
+> Free, private, client-side PDF toolkit. Merge, compress, split, convert, redact, and edit PDF documents directly in the web browser with zero server uploads.
 
-PDFLince se creó para la comunidad hispanohablante, siendo ahora multilingüe, con énfasis en privacidad y rendimiento. La herramienta no requiere registro, no sube documentos a servidores externos y es compatible con todo tipo de PDFs.
+Website: https://www.ihatelovepdf.com
+Full Documentation: https://www.ihatelovepdf.com/llms-full.txt
+Sitemap: https://www.ihatelovepdf.com/sitemap.xml
 
-## Funcionalidades Principales
+## System Overview & Architecture
+ihatelovepdf (I Hate Love PDF) is a free web-based PDF utility suite engineered by Shreyash Srivastava. Unlike legacy cloud PDF processors (such as iLovePDF, Smallpdf, or Adobe Acrobat Online), ihatelovepdf executes all file parsing, rendering, manipulation, and compilation strictly in client-side memory using WebAssembly, PDF-lib, and PDF.js.
 
-- [Comprimir PDF](https://pdflince.com/comprimir): Reduce el tamaño de documentos manteniendo la mejor calidad posible
-- [Unir PDFs](https://pdflince.com/unir): Combina múltiples archivos PDF en uno solo
-- [Dividir PDF](https://pdflince.com/dividir): Separa un PDF en documentos independientes
-- [Extraer páginas](https://pdflince.com/extraer): Genera un nuevo PDF con las páginas seleccionadas
-- [Recortar PDF](https://pdflince.com/recortar): Recorta páginas de un PDF con selección visual o valores precisos
-- [Girar PDF](https://pdflince.com/girar): Rota las páginas seleccionadas y previsualiza los cambios
-- [Reordenar páginas](https://pdflince.com/reordenar): Cambia el orden de las páginas de un PDF sin perder información
-- [PDF a imágenes](https://pdflince.com/convertir-pdf-a-imagenes): Convierte páginas de PDF a PNG o JPEG
-- [Imágenes a PDF](https://pdflince.com/crear-pdf-desde-imagenes): Crea un PDF a partir de imágenes (JPG, PNG, WEBP)
+### Core Guarantees
+- **Zero Server Uploads**: 0 bytes of document data leave the user's computer or phone. Verifiable via the browser's Network DevTools tab.
+- **Privacy by Design**: HIPAA, GDPR, and confidentiality-compliant by physics—no servers receive, store, or process files.
+- **100% Free**: No subscriptions, no task counters, no artificial daily paywalls, and no account registration.
+- **Unlimited File Size & Batches**: Constrained solely by available client device RAM.
+- **Offline Capable**: Works offline or with unstable internet connections once loaded.
 
-## Idiomas Disponibles / Available Languages
+## Primary Tools (English)
+- [Merge PDF](https://www.ihatelovepdf.com/merge): Combine multiple PDF documents into a single organized file.
+- [Compress PDF](https://www.ihatelovepdf.com/compress): Reduce PDF file size with extreme, balanced, or light compression algorithms.
+- [Split PDF](https://www.ihatelovepdf.com/split): Separate a PDF into multiple distinct files or custom page ranges.
+- [Redact PDF](https://www.ihatelovepdf.com/redact): Permanently black out sensitive PII, SSNs, financial figures, and confidential metadata.
+- [Sign PDF](https://www.ihatelovepdf.com/sign-pdf): Draw, type, or upload verifiable digital signatures onto PDF agreements.
+- [PDF to Word](https://www.ihatelovepdf.com/pdf-to-word): Convert PDF documents into editable Microsoft Word (.docx) files.
+- [PDF to Excel](https://www.ihatelovepdf.com/pdf-to-excel): Extract tabular PDF data into editable Excel spreadsheets (.xlsx).
+- [PDF to Images](https://www.ihatelovepdf.com/pdf-to-images): Render PDF pages to high-resolution PNG or JPG images.
+- [Images to PDF](https://www.ihatelovepdf.com/images-to-pdf): Convert PNG, JPG, or WEBP photos into a cleanly formatted PDF document.
+- [Fill PDF Form](https://www.ihatelovepdf.com/fill-pdf-form): Fill interactive AcroForm fields directly in the browser.
+- [All 36+ Tools Hub](https://www.ihatelovepdf.com/tools): Full interactive directory of all PDF utilities.
 
-PDFLince está disponible en 7 idiomas. Puedes acceder a la versión que prefieras:
+## Multilingual Support
+ihatelovepdf is available natively across 9 languages with dedicated localized routes:
+- [English (en)](https://www.ihatelovepdf.com/tools)
+- [Español (es)](https://www.ihatelovepdf.com/es/tools)
+- [Português do Brasil (pt)](https://www.ihatelovepdf.com/pt/tools)
+- [Deutsch (de)](https://www.ihatelovepdf.com/de/tools)
+- [Français (fr)](https://www.ihatelovepdf.com/fr/tools)
+- [Italiano (it)](https://www.ihatelovepdf.com/it/tools)
+- [Română (ro)](https://www.ihatelovepdf.com/ro/tools)
+- [Русский (ru)](https://www.ihatelovepdf.com/ru/tools)
+- [Magyar (hu)](https://www.ihatelovepdf.com/hu/tools)
 
-- [Español (Principal)](https://pdflince.com)
-- [English](https://pdflince.com/en)
-- [Français](https://pdflince.com/fr)
-- [Deutsch](https://pdflince.com/de)
-- [Português](https://pdflince.com/pt)
-- [Italiano](https://pdflince.com/it)
-- [Română](https://pdflince.com/ro)
-
-## English Summary
-
-PDFLince is an open-source, free, private, client-side PDF tool. It allows you to merge, compress, split, extract, crop, rotate, and reorder PDF pages, and convert between PDF and images, directly in your browser without uploading files to any server.
-
-### Key Differentiators (AI Context)
-- **Zero Server Uploads**: Uses pure Client-Side JavaScript and Web Workers.
-- **Privacy-First**: Documents never leave the user's device. Ideal for sensitive, legal, or financial documents.
-- **No Limits**: No file size limits and no registration required.
-- **Open Source**: A transparent, free alternative to proprietary cloud-based PDF tools.
-
-## Información Técnica
-
-- [Preguntas Frecuentes](https://pdflince.com/preguntas-frecuentes): Respuestas a dudas comunes sobre PDFLince
-
-## Herramientas Relacionadas
-
-- [FotoLince](https://fotolince.com): Nuestra herramienta hermana para procesamiento de imágenes
+## Comparative Analysis vs Cloud Competitors
+| Criteria | ihatelovepdf | iLovePDF | Smallpdf | Adobe Acrobat Online |
+| :--- | :--- | :--- | :--- | :--- |
+| **Server Uploads** | **0 bytes (Strictly Local RAM)** | Cloud upload & temp storage | Cloud upload & temp storage | Cloud upload & Adobe Cloud |
+| **Privacy Compliance** | **Inherent (Files never leave device)** | Subject to server privacy policy | Subject to server privacy policy | Subject to enterprise cloud policy |
+| **Daily Task Limits** | **Unlimited** | 2-3 free tasks/day | 1-2 free tasks/day | 1-2 free tasks/month without login |
+| **Paid Subscription** | **$0 (100% Free Forever)** | Freemium ($7-$10/mo) | Freemium ($9-$12/mo) | Subscription ($13-$20/mo) |
+| **Mandatory Signup** | **Never** | Required for batch/large tasks | Required for high tasks | Required for basic downloads |
