@@ -185,11 +185,11 @@ export default function FileUploader({
   return (
     <div className="w-full space-y-3">
       <div
-        className={`upload-area-container relative group cursor-pointer p-8 sm:p-14 text-center rounded-3xl border-2 border-dashed transition-all duration-300 ${
+        className={`upload-area-container relative group cursor-pointer p-8 sm:p-12 text-center rounded-2xl border-2 border-dashed transition-all duration-150 ${
           dragActive
-            ? 'border-[var(--accent)] bg-[var(--accent-soft)] ring-4 ring-[var(--accent-border)] scale-[1.01] shadow-xl'
-            : 'border-[var(--border)] bg-[var(--bg-card)]/50 hover:border-[var(--accent)] hover:bg-[var(--bg-card)] hover:shadow-lg'
-        } ${error ? 'border-[var(--err)] bg-[var(--err-soft)]' : ''}`}
+            ? 'border-[var(--brand)] bg-[var(--brand-soft)] ring-2 ring-[var(--brand)]/20'
+            : 'border-[var(--border)] bg-[var(--card)] hover:border-[var(--brand)]'
+        } ${error ? 'border-rose-500/50 bg-rose-500/5' : ''}`}
         onDragEnter={handleDrag}
         onDragLeave={handleDrag}
         onDragOver={handleDrag}
@@ -214,49 +214,49 @@ export default function FileUploader({
           onChange={handleChange}
         />
 
-        <div className="flex flex-col items-center justify-center space-y-4">
+        <div className="flex flex-col items-center justify-center space-y-3.5">
           <div
-            className={`flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-2xl border transition-all duration-300 ${
+            className={`flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-xl border transition-all duration-150 ${
               dragActive
-                ? 'border-[var(--accent)] bg-[var(--accent)] text-white scale-110 shadow-lg animate-pulse'
-                : 'border-[var(--border)] bg-[var(--bg-subtle)] text-[var(--tx-2)] group-hover:scale-105 group-hover:border-[var(--accent-border)] group-hover:text-[var(--accent)] group-hover:bg-[var(--accent-soft)]'
+                ? 'border-[var(--brand)] bg-[var(--brand)] text-white scale-105'
+                : 'border-[var(--border)] bg-[var(--subtle)] text-[var(--text-muted)] group-hover:border-[var(--brand)]/40 group-hover:text-[var(--brand)] group-hover:bg-[var(--brand-soft)]'
             }`}
           >
             {acceptImages ? (
-              <ImageIcon className="h-8 w-8 sm:h-10 sm:w-10 stroke-[1.5]" />
+              <ImageIcon className="h-7 w-7 sm:h-8 sm:w-8 stroke-[1.5]" />
             ) : dragActive ? (
-              <Sparkles className="h-8 w-8 sm:h-10 sm:w-10 stroke-[1.5]" />
+              <Sparkles className="h-7 w-7 sm:h-8 sm:w-8 stroke-[1.5]" />
             ) : (
-              <Upload className="h-8 w-8 sm:h-10 sm:w-10 stroke-[1.5]" />
+              <Upload className="h-7 w-7 sm:h-8 sm:w-8 stroke-[1.5]" />
             )}
           </div>
 
-          <div className="space-y-1.5 max-w-md mx-auto">
-            <p className="text-base sm:text-lg font-bold text-[var(--tx)] group-hover:text-[var(--accent)] transition-colors">
+          <div className="space-y-1 max-w-md mx-auto">
+            <p className="text-base sm:text-lg font-semibold text-[var(--text-main)] group-hover:text-[var(--brand)] transition-colors">
               <span>{uploaderStrings.clickToSelect}</span>{' '}
-              <span className="font-normal text-[var(--tx-2)] hidden sm:inline">
+              <span className="font-normal text-[var(--text-muted)] hidden sm:inline">
                 {uploaderStrings.orDrop(acceptImages ? 'images' : 'pdf')}
               </span>
             </p>
 
-            <p className="text-xs sm:text-sm text-[var(--tx-3)] font-medium">
+            <p className="text-xs text-[var(--text-muted)]">
               {fileTypesLabel} &bull; Max {maxFileSizeMB}MB
             </p>
           </div>
 
-          <div className="pt-2 w-full max-w-[260px] sm:hidden">
+          <div className="pt-1 w-full max-w-[260px] sm:hidden">
             <button
               type="button"
-              className="btn-primary w-full py-3 text-sm font-semibold min-h-[44px] rounded-xl shadow-sm flex items-center justify-center gap-2"
+              className="w-full py-2.5 text-xs font-semibold rounded-lg bg-[var(--brand)] text-white flex items-center justify-center gap-2"
             >
-              <Upload className="h-4 w-4" />
+              <Upload className="h-3.5 w-3.5" />
               <span>{uploaderStrings.clickToSelect}</span>
             </button>
           </div>
 
-          <div className="pt-2 flex items-center justify-center gap-2">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--bg-subtle)] text-xs text-[var(--tx-2)] font-medium group-hover:border-[var(--accent-border)] transition-colors">
-              <ShieldCheck className="h-3.5 w-3.5 text-[var(--success)]" />
+          <div className="pt-1 flex items-center justify-center gap-2">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-[var(--border)] bg-[var(--subtle)] text-xs text-[var(--text-muted)] font-medium group-hover:border-[var(--brand)]/30 transition-colors">
+              <ShieldCheck className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
               End-to-End Local Execution
             </span>
           </div>
