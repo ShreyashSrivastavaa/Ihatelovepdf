@@ -175,18 +175,18 @@ export default function ToolSwitcher({ tools, activeKey = null }: ToolSwitcherPr
       <Link
         href="/"
         prefetch={true}
-        className="flex items-center gap-2 px-3.5 py-3 rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] hover:border-[var(--accent-border)] hover:bg-[var(--accent-soft)] transition-all duration-200 shadow-xs shrink-0 group cursor-pointer"
+        className="flex items-center gap-2 px-3 py-2.5 rounded-xl border border-[var(--border)] bg-[var(--card)] hover:border-[var(--brand)] transition-all duration-150 shrink-0 group cursor-pointer"
         title="Go to Home"
       >
         <Image
           src="/images/stickers/ihatelove.png"
           alt="ihatelovepdf logo"
-          width={28}
-          height={28}
-          className="object-contain h-7 w-7 transition-transform group-hover:scale-110"
+          width={24}
+          height={24}
+          className="object-contain h-6 w-6 transition-transform group-hover:scale-105"
           unoptimized
         />
-        <span className="hidden sm:inline text-xs font-bold text-[var(--tx)]">Home</span>
+        <span className="hidden sm:inline text-xs font-semibold text-[var(--text-main)]">Home</span>
       </Link>
 
       {/* Main Switcher Dropdown Container */}
@@ -197,17 +197,17 @@ export default function ToolSwitcher({ tools, activeKey = null }: ToolSwitcherPr
           onClick={() => setIsOpen((p) => !p)}
           aria-expanded={isOpen}
           aria-label="Switch PDF tool"
-          className="flex w-full items-center justify-between rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] px-4 py-3 text-left shadow-xs transition-all duration-200 hover:border-[var(--accent-border)] hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] cursor-pointer group"
+          className="flex w-full items-center justify-between rounded-xl border border-[var(--border)] bg-[var(--card)] px-3.5 py-2.5 text-left transition-all duration-150 hover:border-[var(--brand)] focus:outline-none focus-visible:ring-1 focus-visible:ring-[var(--brand)] cursor-pointer group"
         >
-          <div className="flex items-center gap-3 min-w-0">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[var(--accent-soft)] text-[var(--accent)] border border-[var(--accent-border)] transition-transform duration-200 group-hover:scale-105">
-              <ActiveIcon className="h-4 w-4 stroke-[2]" />
+          <div className="flex items-center gap-2.5 min-w-0">
+            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[var(--brand-soft)] text-[var(--brand)] border border-[var(--brand)]/20 transition-transform duration-150 group-hover:scale-105">
+              <ActiveIcon className="h-3.5 w-3.5 stroke-[2]" />
             </div>
             <div className="min-w-0">
-              <span className="block truncate text-xs sm:text-sm font-bold text-[var(--tx)]">
+              <span className="block truncate text-xs sm:text-sm font-semibold text-[var(--text-main)]">
                 {activeTool ? activeTool.label : 'Select a PDF tool'}
               </span>
-              <span className="block text-[11px] text-[var(--tx-3)] truncate hidden sm:block">
+              <span className="block text-[11px] text-[var(--text-muted)] truncate hidden sm:block">
                 {activeTool && TOOL_DESCRIPTIONS[activeTool.key]
                   ? TOOL_DESCRIPTIONS[activeTool.key]
                   : `All ${tools.length}+ tools 100% free & private in your browser`}
@@ -215,31 +215,31 @@ export default function ToolSwitcher({ tools, activeKey = null }: ToolSwitcherPr
             </div>
           </div>
           <ChevronDown
-            className={`h-4 w-4 shrink-0 text-[var(--tx-3)] transition-transform duration-200 ${
-              isOpen ? 'rotate-180 text-[var(--accent)]' : ''
+            className={`h-4 w-4 shrink-0 text-[var(--text-muted)] transition-transform duration-150 ${
+              isOpen ? 'rotate-180 text-[var(--brand)]' : ''
             }`}
           />
         </button>
 
         {/* Dropdown Menu Popover */}
         {isOpen && (
-          <div className="absolute left-0 right-0 top-full z-50 mt-2 rounded-3xl border border-[var(--border)] bg-[var(--bg-card)] p-3 shadow-2xl backdrop-blur-xl animate-in fade-in slide-in-from-top-2 duration-150 space-y-2.5">
+          <div className="absolute left-0 right-0 top-full z-50 mt-2 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-3 shadow-xl animate-in fade-in slide-in-from-top-1 duration-150 space-y-2.5">
             {/* Search and Category Filter Bar */}
             <div className="space-y-2">
               <div className="relative flex items-center">
-                <Search className="absolute left-3 h-3.5 w-3.5 text-[var(--tx-3)] pointer-events-none" />
+                <Search className="absolute left-3 h-3.5 w-3.5 text-[var(--text-muted)] pointer-events-none" />
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder={`Search ${tools.length}+ PDF tools...`}
                   autoFocus
-                  className="w-full pl-9 pr-8 py-2 rounded-xl text-xs bg-[var(--bg-subtle)] border border-[var(--border)] text-[var(--tx)] placeholder:text-[var(--tx-3)] focus:outline-none focus:border-[var(--accent-border)] focus:ring-1 focus:ring-[var(--accent)]"
+                  className="w-full pl-9 pr-8 py-1.5 rounded-lg text-xs bg-[var(--subtle)] border border-[var(--border)] text-[var(--text-main)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-[var(--brand)] focus:ring-1 focus:ring-[var(--brand)]"
                 />
                 {searchQuery && (
                   <button
                     onClick={() => setSearchQuery('')}
-                    className="absolute right-2.5 text-[var(--tx-3)] hover:text-[var(--tx)]"
+                    className="absolute right-2.5 text-[var(--text-muted)] hover:text-[var(--text-main)]"
                   >
                     <CloseIcon className="h-3 w-3" />
                   </button>
@@ -253,10 +253,10 @@ export default function ToolSwitcher({ tools, activeKey = null }: ToolSwitcherPr
                     <button
                       key={cat}
                       onClick={() => setSelectedCategory(cat)}
-                      className={`px-2.5 py-1 rounded-lg shrink-0 font-medium transition-colors cursor-pointer ${
+                      className={`px-2.5 py-0.5 rounded-md shrink-0 font-medium transition-colors cursor-pointer text-xs ${
                         selectedCategory === cat
-                          ? 'bg-[var(--accent)] text-white font-bold'
-                          : 'bg-[var(--bg-subtle)] text-[var(--tx-2)] hover:text-[var(--tx)] hover:bg-[var(--border)]'
+                          ? 'bg-[var(--brand)] text-white font-semibold'
+                          : 'bg-[var(--subtle)] text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--border)]'
                       }`}
                     >
                       {cat}
@@ -269,7 +269,7 @@ export default function ToolSwitcher({ tools, activeKey = null }: ToolSwitcherPr
             {/* Scrollable Tool Grid */}
             <div className="max-h-80 overflow-y-auto pr-1 scrollbar-thin">
               {filteredTools.length === 0 ? (
-                <div className="py-8 text-center text-xs text-[var(--tx-3)]">
+                <div className="py-8 text-center text-xs text-[var(--text-muted)]">
                   No tools found matching &quot;{searchQuery}&quot;
                 </div>
               ) : (
@@ -285,30 +285,30 @@ export default function ToolSwitcher({ tools, activeKey = null }: ToolSwitcherPr
                         type="button"
                         onClick={() => handleSelect(tool)}
                         onMouseEnter={() => router.prefetch(tool.href)}
-                        className={`flex items-start gap-3 rounded-2xl p-2.5 text-left transition-all duration-150 cursor-pointer ${
+                        className={`flex items-start gap-2.5 rounded-xl p-2 text-left transition-all duration-150 cursor-pointer ${
                           isSelected
-                            ? 'bg-[var(--accent-soft)] text-[var(--accent)] font-bold border border-[var(--accent-border)] shadow-xs'
-                            : 'text-[var(--tx)] hover:bg-[var(--bg-subtle)] hover:text-[var(--accent)]'
+                            ? 'bg-[var(--brand-soft)] text-[var(--brand)] font-semibold border border-[var(--brand)]/30'
+                            : 'text-[var(--text-main)] hover:bg-[var(--subtle)] hover:text-[var(--brand)] border border-transparent'
                         }`}
                       >
                         <div
-                          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border transition-colors ${
+                          className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border transition-colors ${
                             isSelected
-                              ? 'border-[var(--accent-border)] bg-[var(--accent)] text-white shadow-xs'
-                              : 'border-[var(--border)] bg-[var(--bg-subtle)] text-[var(--tx-2)]'
+                              ? 'border-[var(--brand)]/30 bg-[var(--brand)] text-white'
+                              : 'border-[var(--border)] bg-[var(--subtle)] text-[var(--text-muted)]'
                           }`}
                         >
-                          <Icon className="h-4 w-4" />
+                          <Icon className="h-3.5 w-3.5" />
                         </div>
                         <div className="min-w-0 flex-1">
                           <div className="flex items-center justify-between gap-1">
-                            <span className="truncate text-xs font-bold block text-[var(--tx)]">
+                            <span className="truncate text-xs font-semibold block text-[var(--text-main)]">
                               {tool.label}
                             </span>
-                            {isSelected && <Check className="h-3.5 w-3.5 shrink-0 text-[var(--accent)]" />}
+                            {isSelected && <Check className="h-3.5 w-3.5 shrink-0 text-[var(--brand)]" />}
                           </div>
                           {description && (
-                            <span className="block text-[10px] text-[var(--tx-3)] truncate leading-tight mt-0.5">
+                            <span className="block text-[11px] text-[var(--text-muted)] truncate leading-tight mt-0.5">
                               {description}
                             </span>
                           )}
