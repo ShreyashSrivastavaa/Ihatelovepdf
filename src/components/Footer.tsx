@@ -86,6 +86,14 @@ export default function Footer() {
           {/* Alternatives & Comparisons */}
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs text-secondary/70 border-t border-border/60 pt-4 w-full">
             <span className="font-semibold text-secondary">Alternatives:</span>
+            <Link href="/adobe-acrobat-alternative" className="hover:text-primary transition-colors">
+              Adobe Acrobat Alternative
+            </Link>
+            <span>·</span>
+            <Link href="/ihatepdf-alternative" className="hover:text-primary transition-colors">
+              ihatepdf vs ihatelovepdf
+            </Link>
+            <span>·</span>
             <Link href="/ilovepdf-alternative" className="hover:text-primary transition-colors">
               iLovePDF Alternative
             </Link>

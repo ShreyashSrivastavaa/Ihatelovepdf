@@ -141,7 +141,39 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
-  // 5. Comparison & Alternative Pages (English only)
+  // 5. Comparison & Alternative Pages
+  const adobeAlternatesMap: Record<string, string> = {
+    en: "/adobe-acrobat-alternative",
+    es: "/es/adobe-acrobat-alternative",
+    pt: "/pt/adobe-acrobat-alternative",
+    de: "/de/adobe-acrobat-alternative",
+    it: "/it/adobe-acrobat-alternative",
+    fr: "/fr/adobe-acrobat-alternative",
+    ro: "/ro/adobe-acrobat-alternative",
+    ru: "/ru/adobe-acrobat-alternative",
+    hu: "/hu/adobe-acrobat-alternative",
+  };
+  const adobeAlternates = buildAlternates(adobeAlternatesMap);
+  for (const locale of SUPPORTED_LOCALES) {
+    addEntry(adobeAlternatesMap[locale], weekly, 0.8, adobeAlternates);
+  }
+
+  const ihatepdfAlternatesMap: Record<string, string> = {
+    en: "/ihatepdf-alternative",
+    es: "/es/ihatepdf-alternative",
+    pt: "/pt/ihatepdf-alternative",
+    de: "/de/ihatepdf-alternative",
+    it: "/it/ihatepdf-alternative",
+    fr: "/fr/ihatepdf-alternative",
+    ro: "/ro/ihatepdf-alternative",
+    ru: "/ru/ihatepdf-alternative",
+    hu: "/hu/ihatepdf-alternative",
+  };
+  const ihatepdfAlternates = buildAlternates(ihatepdfAlternatesMap);
+  for (const locale of SUPPORTED_LOCALES) {
+    addEntry(ihatepdfAlternatesMap[locale], weekly, 0.8, ihatepdfAlternates);
+  }
+
   addEntry("/ilovepdf-alternative", weekly, 0.8);
   addEntry("/smallpdf-alternative", weekly, 0.8);
   addEntry("/free-pdf-tools-without-signup", weekly, 0.8);
