@@ -87,7 +87,7 @@ export default function NetworkActivityMonitor({
 
   return (
     <div
-      className={`flex flex-wrap items-center justify-between gap-3 px-4 py-2.5 rounded-xl border border-emerald-500/20 bg-emerald-500/5 text-xs text-emerald-300 shadow-sm backdrop-blur-sm ${className}`}
+      className={`flex flex-wrap items-center justify-between gap-3 px-4 py-2 rounded-xl border border-emerald-500/20 bg-emerald-500/5 text-xs text-[var(--text-muted)] ${className}`}
       role="status"
       aria-label="Privacy & Network Isolation Monitor"
     >
@@ -96,11 +96,11 @@ export default function NetworkActivityMonitor({
           <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${isProcessing ? 'bg-amber-400 opacity-75' : 'bg-emerald-400 opacity-75'}`}></span>
           <span className={`relative inline-flex rounded-full h-2 w-2 ${isProcessing ? 'bg-amber-500' : 'bg-emerald-500'}`}></span>
         </span>
-        <span className="font-semibold flex items-center gap-1 text-[var(--tx)]">
-          <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
+        <span className="font-semibold flex items-center gap-1.5 text-[var(--text-main)]">
+          <ShieldCheck className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
           Network Isolated:
         </span>
-        <span className="text-[var(--tx-2)]">
+        <span className="text-[var(--text-muted)]">
           {isProcessing
             ? 'Processing in local RAM...'
             : networkRequestsCount === 0
@@ -109,16 +109,16 @@ export default function NetworkActivityMonitor({
         </span>
       </div>
 
-      <div className="flex items-center gap-4 text-[11px] text-[var(--tx-3)]">
+      <div className="flex items-center gap-4 text-[11px] text-[var(--text-muted)]">
         <span className="flex items-center gap-1 font-mono">
-          <Cpu className="h-3 w-3 text-emerald-400" />
+          <Cpu className="h-3 w-3 text-emerald-600 dark:text-emerald-400" />
           Local Memory
         </span>
         <span className="flex items-center gap-1 font-mono">
-          <WifiOff className="h-3 w-3 text-emerald-400" />
+          <WifiOff className="h-3 w-3 text-emerald-600 dark:text-emerald-400" />
           {bytesSent} Bytes Uploaded
         </span>
-        <span className="flex items-center gap-1 font-mono text-emerald-400">
+        <span className="flex items-center gap-1 font-mono text-emerald-700 dark:text-emerald-400 font-medium">
           <Lock className="h-3 w-3" />
           Client Isolated
         </span>
