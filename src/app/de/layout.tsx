@@ -14,7 +14,7 @@ import CookieBanner from "../../components/CookieBanner";
 import { SchemaOrg } from "../../components/SchemaOrg";
 import { BreadcrumbSchema } from "../../components/seo/BreadcrumbSchema";
 
-import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER } from "../../lib/metadata-shared";
+import { METADATA_BASE, SHARED_ICONS, BRAND_NAME, getAlternateOgLocales } from "../../lib/metadata-shared";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -22,7 +22,7 @@ const LOCALE = "de" as const;
 
 export const metadata = {
   metadataBase: METADATA_BASE,
-  title: "ihatelovepdf - PDFs zusammenführen, komprimieren, teilen und konvertieren",
+  title: "ihatelovepdf | PDFs zusammenführen, komprimieren, teilen und konvertieren",
   description: "Kostenlose Online-PDF-Tools zum Zusammenführen, Komprimieren, Teilen, Extrahieren und Konvertieren von PDFs. 100% privat, lokale Verarbeitung in Ihrem Browser.",
   icons: SHARED_ICONS,
   alternates: {
@@ -41,15 +41,23 @@ export const metadata = {
     },
   },
   openGraph: {
-    ...SHARED_OPEN_GRAPH,
-    images: [{ url: "https://www.ihatelovepdf.com/og-images/og-image-de.png", width: 1409, height: 736, alt: "ihatelovepdf - Private und kostenlose PDF-Bearbeitung" }],
-    title: "ihatelovepdf - Kostenlose und private PDF-Tools in Ihrem Browser",
-    description: "PDFs zusammenführen, komprimieren, teilen und konvertieren, ohne Dateien hochzuladen. Sichere und 100% private Verarbeitung.",
+    siteName: BRAND_NAME,
+    images: [{ url: "https://www.ihatelovepdf.com/og-images/og-image-de.png", width: 1200, height: 630, alt: "ihatelovepdf | PDFs zusammenführen, komprimieren, teilen und konvertieren" }],
+    title: "ihatelovepdf | PDFs zusammenführen, komprimieren, teilen und konvertieren",
+    description: "Kostenlose Online-PDF-Tools zum Zusammenführen, Komprimieren, Teilen, Extrahieren und Konvertieren von PDFs. 100% privat, lokale Verarbeitung in Ihrem Browser.",
     url: "https://www.ihatelovepdf.com/de",
     locale: "de_DE",
+    alternateLocale: getAlternateOgLocales("de"),
     type: "website",
   },
-  twitter: SHARED_TWITTER,
+  twitter: {
+    card: "summary_large_image",
+    title: "ihatelovepdf | PDFs zusammenführen, komprimieren, teilen und konvertieren",
+    description: "Kostenlose Online-PDF-Tools zum Zusammenführen, Komprimieren, Teilen, Extrahieren und Konvertieren von PDFs. 100% privat, lokale Verarbeitung in Ihrem Browser.",
+    creator: "@YesShrey",
+    site: "@YesShrey",
+    images: ["https://www.ihatelovepdf.com/og-images/og-image-de.png"],
+  },
 };
 
 import { ThemeScript } from "../../components/ThemeScript";

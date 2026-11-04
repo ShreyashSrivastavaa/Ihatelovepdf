@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { getRouteMap } from "../i18n/routing";
 import { BLOG_ARTICLES } from "./_data/blog-data";
 import { GUIDES_DATA } from "./_data/guides-data";
+import { SUPPORTED_LOCALES } from "../i18n/config";
 
 export const dynamic = "force-static";
 export const revalidate = false;
@@ -12,7 +13,7 @@ const BASE_URL = "https://www.ihatelovepdf.com";
 const weekly: ChangeFrequency = "weekly";
 const monthly: ChangeFrequency = "monthly";
 
-// 11 orphaned 404ing routes explicitly excluded from sitemap
+// Orphaned or non-operation routes explicitly excluded from sitemap
 const EXCLUDED_ORPHANED_ROUTES = new Set([
   "flatten",
   "fingerprint",
@@ -41,7 +42,7 @@ const EXCLUDED_ORPHANED_ROUTES = new Set([
 ]);
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const { home, privacy, terms, operations } = getRouteMap();
+  const { home, faq, operations } = getRouteMap();
   const lastModified = new Date();
   const entries: MetadataRoute.Sitemap = [];
   const seen = new Set<string>();
@@ -86,62 +87,85 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   };
 
-  // 1. Homepage with all 9 locales + x-default
+  // 1. Homepage in all 9 languages (dedicated <loc> for each language)
   const homeAlternates = buildAlternates(home);
-  addEntry(home.en || "/", weekly, 1.0, homeAlternates);
+  for (const locale of SUPPORTED_LOCALES) {
+    const path = home[locale] || (locale === "en" ? "/" : `/${locale}`);
+    addEntry(path, weekly, 1.0, homeAlternates);
+  }
 
-  // 2. Active tool pages with all 9 locales + x-default
+  // 2. Localized /tools hub page in all 9 languages
+  const toolsAlternatesMap: Record<string, string> = {
+    en: "/tools",
+    es: "/es/tools",
+    pt: "/pt/tools",
+    de: "/de/tools",
+    it: "/it/tools",
+    fr: "/fr/tools",
+    ro: "/ro/tools",
+    ru: "/ru/tools",
+    hu: "/hu/tools",
+  };
+  const toolsAlternates = buildAlternates(toolsAlternatesMap);
+  for (const locale of SUPPORTED_LOCALES) {
+    addEntry(toolsAlternatesMap[locale], weekly, 0.9, toolsAlternates);
+  }
+
+  // 3. Active tool pages across all 9 languages (dedicated <loc> for each language)
   Object.entries(operations).forEach(([operationKey, perLocale]) => {
     if (EXCLUDED_ORPHANED_ROUTES.has(operationKey)) {
       return;
     }
 
     const enPath = perLocale.en;
-    if (enPath) {
-      const slug = enPath.replace(/^\//, "");
-      if (!EXCLUDED_ORPHANED_ROUTES.has(slug)) {
-        const opAlternates = buildAlternates(perLocale);
-        addEntry(enPath, weekly, 0.8, opAlternates);
+    if (!enPath) return;
+
+    const slug = enPath.replace(/^\//, "");
+    if (EXCLUDED_ORPHANED_ROUTES.has(slug)) return;
+
+    const opAlternates = buildAlternates(perLocale);
+    for (const locale of SUPPORTED_LOCALES) {
+      const localizedPath = perLocale[locale];
+      if (localizedPath) {
+        addEntry(localizedPath, weekly, 0.8, opAlternates);
       }
     }
   });
 
-  // 3. FAQ with all 9 locales + x-default
-  const faqAlternates = buildAlternates(getRouteMap().faq);
-  addEntry("/faq", monthly, 0.8, faqAlternates);
+  // 4. FAQ in all 9 languages (dedicated <loc> for each language)
+  const faqAlternates = buildAlternates(faq);
+  for (const locale of SUPPORTED_LOCALES) {
+    const faqPath = faq[locale];
+    if (faqPath) {
+      addEntry(faqPath, monthly, 0.8, faqAlternates);
+    }
+  }
 
-  // 4. Comparison & Alternative Pages
+  // 5. Comparison & Alternative Pages (English only)
   addEntry("/ilovepdf-alternative", weekly, 0.8);
   addEntry("/smallpdf-alternative", weekly, 0.8);
   addEntry("/free-pdf-tools-without-signup", weekly, 0.8);
   addEntry("/offline-pdf-tools", weekly, 0.8);
 
-  // 5. Blog & Articles
+  // 6. Blog & Articles (English only)
   addEntry("/blog", weekly, 0.8);
   Object.keys(BLOG_ARTICLES).forEach((slug) => {
     addEntry(`/blog/${slug}`, weekly, 0.7);
   });
 
-  // 6. Static trust pages and Guides
-  addEntry("/tools", weekly, 0.9);
-  addEntry("/buy-me-a-coffee", monthly, 0.7);
-  addEntry("/about", monthly, 0.8);
+  // 7. Guides & Tutorials (English only)
   addEntry("/guides", weekly, 0.8);
   Object.keys(GUIDES_DATA).forEach((slug) => {
     addEntry(`/guides/${slug}`, weekly, 0.7);
   });
-  addEntry("/contact", monthly, 0.6);
-  if (privacy?.en) {
-    addEntry(privacy.en, monthly, 0.5);
-  } else {
-    addEntry("/privacy", monthly, 0.5);
-  }
 
-  if (terms?.en) {
-    addEntry(terms.en, monthly, 0.5);
-  } else {
-    addEntry("/terms", monthly, 0.5);
-  }
+  // 8. Static trust & company pages (English only)
+  addEntry("/about", monthly, 0.8);
+  addEntry("/products", monthly, 0.7);
+  addEntry("/contact", monthly, 0.6);
+  addEntry("/privacy", monthly, 0.5);
+  addEntry("/terms", monthly, 0.5);
+  addEntry("/buy-me-a-coffee", monthly, 0.7);
 
   return entries;
 }

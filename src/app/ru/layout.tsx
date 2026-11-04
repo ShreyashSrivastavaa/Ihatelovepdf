@@ -13,7 +13,7 @@ import { WebVitalsReporter } from "../../components/analytics/WebVitalsReporter"
 import CookieBanner from "../../components/CookieBanner";
 import { SchemaOrg } from "../../components/SchemaOrg";
 
-import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER } from "../../lib/metadata-shared";
+import { METADATA_BASE, SHARED_ICONS, BRAND_NAME, getAlternateOgLocales } from "../../lib/metadata-shared";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -21,7 +21,7 @@ const LOCALE = "ru" as const;
 
 export const metadata = {
   metadataBase: METADATA_BASE,
-  title: "ihatelovepdf - Сжать, объединить, разделить и конвертировать PDF",
+  title: "ihatelovepdf | Сжать, объединить, разделить и конвертировать PDF",
   description: "Бесплатные онлайн-инструменты для PDF: сжатие, объединение, разделение, извлечение и конвертация. 100% конфиденциально, локальная обработка в браузере.",
   icons: SHARED_ICONS,
   alternates: {
@@ -40,15 +40,23 @@ export const metadata = {
     },
   },
   openGraph: {
-    ...SHARED_OPEN_GRAPH,
-    images: [{ url: "https://www.ihatelovepdf.com/og-images/og-image-ru.png", width: 1409, height: 736, alt: "ihatelovepdf - Конфиденциальная и бесплатная обработка PDF" }],
-    title: "ihatelovepdf - Бесплатные и конфиденциальные инструменты для PDF в браузере",
-    description: "Объединяйте, сжимайте, делите и конвертируйте PDF без загрузки на сервер. Безопасно и 100% конфиденциально.",
+    siteName: BRAND_NAME,
+    images: [{ url: "https://www.ihatelovepdf.com/og-images/og-image-ru.png", width: 1200, height: 630, alt: "ihatelovepdf | Сжать, объединить, разделить и конвертировать PDF" }],
+    title: "ihatelovepdf | Сжать, объединить, разделить и конвертировать PDF",
+    description: "Бесплатные онлайн-инструменты для PDF: сжатие, объединение, разделение, извлечение и конвертация. 100% конфиденциально, локальная обработка в браузере.",
     url: "https://www.ihatelovepdf.com/ru",
     locale: "ru_RU",
+    alternateLocale: getAlternateOgLocales("ru"),
     type: "website",
   },
-  twitter: SHARED_TWITTER,
+  twitter: {
+    card: "summary_large_image",
+    title: "ihatelovepdf | Сжать, объединить, разделить и конвертировать PDF",
+    description: "Бесплатные онлайн-инструменты для PDF: сжатие, объединение, разделение, извлечение и конвертация. 100% конфиденциально, локальная обработка в браузере.",
+    creator: "@YesShrey",
+    site: "@YesShrey",
+    images: ["https://www.ihatelovepdf.com/og-images/og-image-ru.png"],
+  },
 };
 
 import { ThemeScript } from "../../components/ThemeScript";

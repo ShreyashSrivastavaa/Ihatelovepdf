@@ -14,7 +14,7 @@ import CookieBanner from "../../components/CookieBanner";
 import { SchemaOrg } from "../../components/SchemaOrg";
 import { BreadcrumbSchema } from "../../components/seo/BreadcrumbSchema";
 
-import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER } from "../../lib/metadata-shared";
+import { METADATA_BASE, SHARED_ICONS, BRAND_NAME, getAlternateOgLocales } from "../../lib/metadata-shared";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -22,7 +22,7 @@ const LOCALE = "pt" as const;
 
 export const metadata = {
   metadataBase: METADATA_BASE,
-  title: "ihatelovepdf - Juntar, Comprimir, Dividir e Converter PDFs Online",
+  title: "ihatelovepdf | Juntar, Comprimir, Dividir e Converter PDFs Online",
   description: "Ferramentas de PDF online gratuitas para juntar, comprimir, dividir, extrair e converter PDFs. 100% privado, processamento local no seu navegador.",
   icons: SHARED_ICONS,
   alternates: {
@@ -41,15 +41,23 @@ export const metadata = {
     },
   },
   openGraph: {
-    ...SHARED_OPEN_GRAPH,
-    images: [{ url: "https://www.ihatelovepdf.com/og-images/og-image-pt.png", width: 1409, height: 736, alt: "ihatelovepdf - Processamento de PDFs privado e gratuito" }],
-    title: "ihatelovepdf - Ferramentas de PDF gratuitas e privadas no seu navegador",
-    description: "Combine, comprima, divida e converta PDFs sem carregar arquivos. Processamento seguro e 100% privado.",
+    siteName: BRAND_NAME,
+    images: [{ url: "https://www.ihatelovepdf.com/og-images/og-image-pt.png", width: 1200, height: 630, alt: "ihatelovepdf | Juntar, Comprimir, Dividir e Converter PDFs Online" }],
+    title: "ihatelovepdf | Juntar, Comprimir, Dividir e Converter PDFs Online",
+    description: "Ferramentas de PDF online gratuitas para juntar, comprimir, dividir, extrair e converter PDFs. 100% privado, processamento local no seu navegador.",
     url: "https://www.ihatelovepdf.com/pt",
     locale: "pt_BR",
+    alternateLocale: getAlternateOgLocales("pt"),
     type: "website",
   },
-  twitter: SHARED_TWITTER,
+  twitter: {
+    card: "summary_large_image",
+    title: "ihatelovepdf | Juntar, Comprimir, Dividir e Converter PDFs Online",
+    description: "Ferramentas de PDF online gratuitas para juntar, comprimir, dividir, extrair e converter PDFs. 100% privado, processamento local no seu navegador.",
+    creator: "@YesShrey",
+    site: "@YesShrey",
+    images: ["https://www.ihatelovepdf.com/og-images/og-image-pt.png"],
+  },
 };
 
 import { ThemeScript } from "../../components/ThemeScript";

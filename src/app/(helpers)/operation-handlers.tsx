@@ -6,6 +6,7 @@ import { getLocalizedAlternateMap, getOperationSlug, matchOperationKeyBySlug } f
 import type { OperationKey } from "../../types/operations";
 import { OperationPageContent } from "../../components/OperationPageContent";
 import { SITE_URL, GOOGLE_SITE_VERIFICATION } from "../../lib/site";
+import { getSocialMetadata } from "../../lib/metadata-shared";
 
 function toAbsoluteUrl(baseUrl: string, rawPath: string): string {
   const cleanPath = rawPath === "/" ? "" : rawPath.replace(/\/$/, "");
@@ -33,12 +34,15 @@ export function buildOperationMetadata(locale: Locale, operationKey: OperationKe
     const canonicalPath = dictionary.routes.operations[operationKey];
     const canonicalUrl = toAbsoluteUrl(baseUrl, canonicalPath);
     const languages = buildLanguagesMap(operationKey, baseUrl);
+    const rawTitle = operationMeta.meta.title;
+    const title = rawTitle.includes("ihatelovepdf") ? rawTitle : `${rawTitle} | ihatelovepdf`;
+    const description = operationMeta.meta.description;
+    const social = getSocialMetadata(locale, title, description, canonicalUrl);
 
     return {
       metadataBase: new URL(baseUrl),
-      title: operationMeta.meta.title,
-      description: operationMeta.meta.description,
-      keywords: operationMeta.meta.keywords,
+      title: { absolute: title },
+      description,
       verification: {
         ...(GOOGLE_SITE_VERIFICATION ? { google: GOOGLE_SITE_VERIFICATION } : {}),
         other: {
@@ -49,20 +53,7 @@ export function buildOperationMetadata(locale: Locale, operationKey: OperationKe
         canonical: canonicalUrl,
         languages,
       },
-      openGraph: {
-        title: operationMeta.meta.ogTitle ?? operationMeta.meta.title,
-        description: operationMeta.meta.ogDescription ?? operationMeta.meta.description,
-        url: canonicalUrl,
-        locale: dictionary.metadata.site.openGraph.locale,
-        images: [
-          {
-            url: `${baseUrl}/og-images/og-image-${locale}.png`,
-            width: 1409,
-            height: 736,
-            alt: operationMeta.meta.ogImageAlt ?? operationMeta.hero.imageAlt,
-          },
-        ],
-      },
+      ...social,
     };
   };
 }

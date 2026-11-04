@@ -2,24 +2,33 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Script from 'next/script';
 import { ShieldCheck, Cpu, Lock, Award, CheckCircle2, FileCheck, Code2, ExternalLink, HelpCircle, User } from 'lucide-react';
-import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER } from '../../../lib/metadata-shared';
+import { METADATA_BASE, SHARED_ICONS } from '../../../lib/metadata-shared';
 import { SITE_URL } from '../../../lib/site';
 
 export const metadata: Metadata = {
   metadataBase: METADATA_BASE,
-  title: 'About the Founder, Shreyash Srivastava',
-  description: 'I Hate Love PDF is built and owned by Shreyash Srivastava, a full stack and backend developer from India. Learn about our private in-browser PDF tools.',
+  title: 'About the Founder, Shreyash Srivastava | ihatelovepdf',
+  description: 'ihatelovepdf is built and owned by Shreyash Srivastava, a full stack and backend developer from India. Learn about our private in-browser PDF tools.',
   alternates: {
-    canonical: `${SITE_URL}/about/`,
+    canonical: `${SITE_URL}/about`,
   },
   icons: SHARED_ICONS,
   openGraph: {
-    ...SHARED_OPEN_GRAPH,
-    title: 'About I Hate Love PDF: Built & Owned by Shreyash Srivastava',
-    description: 'I Hate Love PDF is built and owned by Shreyash Srivastava, a full stack and backend developer from India. Learn about our private in-browser PDF tools.',
-    url: `${SITE_URL}/about/`,
+    siteName: 'ihatelovepdf',
+    title: 'About the Founder, Shreyash Srivastava | ihatelovepdf',
+    description: 'ihatelovepdf is built and owned by Shreyash Srivastava, a full stack and backend developer from India. Learn about our private in-browser PDF tools.',
+    url: `${SITE_URL}/about`,
+    type: 'website',
+    images: [{ url: `${SITE_URL}/og-images/og-image-en.png`, width: 1200, height: 630 }],
   },
-  twitter: SHARED_TWITTER,
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About the Founder, Shreyash Srivastava | ihatelovepdf',
+    description: 'ihatelovepdf is built and owned by Shreyash Srivastava, a full stack and backend developer from India. Learn about our private in-browser PDF tools.',
+    creator: '@YesShrey',
+    site: '@YesShrey',
+    images: [`${SITE_URL}/og-images/og-image-en.png`],
+  },
 };
 
 export default function AboutPage() {

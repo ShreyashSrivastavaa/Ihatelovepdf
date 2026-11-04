@@ -2,24 +2,33 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Script from 'next/script';
 import { ShieldCheck, CheckCircle2, ArrowRight, Lock, Zap, Sparkles } from 'lucide-react';
-import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER } from '../../../lib/metadata-shared';
+import { METADATA_BASE, SHARED_ICONS } from '../../../lib/metadata-shared';
 import { SITE_URL } from '../../../lib/site';
 
 export const metadata: Metadata = {
   metadataBase: METADATA_BASE,
-  title: 'Smallpdf Alternative, Free and No Limits',
-  description: 'Tired of Smallpdf daily limits and paywalls? Try I Hate Love PDF for unlimited, free client-side PDF processing without uploading documents.',
+  title: 'Smallpdf Alternative: Truly Free, Unlimited, No Paywall | ihatelovepdf',
+  description: 'Tired of Smallpdf daily limits and paywalls? Try ihatelovepdf for unlimited, free client-side PDF processing without uploading documents.',
   alternates: {
-    canonical: `${SITE_URL}/smallpdf-alternative/`,
+    canonical: `${SITE_URL}/smallpdf-alternative`,
   },
   icons: SHARED_ICONS,
   openGraph: {
-    ...SHARED_OPEN_GRAPH,
-    title: 'Smallpdf Alternative: Truly Free, Unlimited, No Paywall',
-    description: 'Tired of Smallpdf daily limits and paywalls? Try I Hate Love PDF for unlimited, free client-side PDF processing without uploading documents.',
-    url: `${SITE_URL}/smallpdf-alternative/`,
+    siteName: 'ihatelovepdf',
+    title: 'Smallpdf Alternative: Truly Free, Unlimited, No Paywall | ihatelovepdf',
+    description: 'Tired of Smallpdf daily limits and paywalls? Try ihatelovepdf for unlimited, free client-side PDF processing without uploading documents.',
+    url: `${SITE_URL}/smallpdf-alternative`,
+    type: 'website',
+    images: [{ url: `${SITE_URL}/og-images/og-image-en.png`, width: 1200, height: 630 }],
   },
-  twitter: SHARED_TWITTER,
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Smallpdf Alternative: Truly Free, Unlimited, No Paywall | ihatelovepdf',
+    description: 'Tired of Smallpdf daily limits and paywalls? Try ihatelovepdf for unlimited, free client-side PDF processing without uploading documents.',
+    creator: '@YesShrey',
+    site: '@YesShrey',
+    images: [`${SITE_URL}/og-images/og-image-en.png`],
+  },
 };
 
 const comparisonPoints = [

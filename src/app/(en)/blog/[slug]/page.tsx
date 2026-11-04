@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Script from 'next/script';
 import { Calendar, Clock, ArrowLeft, ArrowRight, ShieldCheck, HelpCircle, Sparkles } from 'lucide-react';
 import { BLOG_ARTICLES } from '../../../_data/blog-data';
-import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER } from '../../../../lib/metadata-shared';
+import { METADATA_BASE, SHARED_ICONS } from '../../../../lib/metadata-shared';
 import { SITE_URL } from '../../../../lib/site';
 
 interface ArticlePageProps {
@@ -25,11 +25,12 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
     return {};
   }
 
-  const canonicalUrl = `${SITE_URL}/blog/${article.slug}/`;
+  const canonicalUrl = `${SITE_URL}/blog/${article.slug}`;
+  const fullTitle = `${article.title} | ihatelovepdf`;
 
   return {
     metadataBase: METADATA_BASE,
-    title: article.title,
+    title: fullTitle,
     description: article.description,
     authors: [{ name: article.author, url: article.authorUrl }],
     alternates: {
@@ -37,15 +38,23 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
     },
     icons: SHARED_ICONS,
     openGraph: {
-      ...SHARED_OPEN_GRAPH,
-      title: `${article.title} | I Hate Love PDF`,
+      siteName: 'ihatelovepdf',
+      title: fullTitle,
       description: article.description,
       url: canonicalUrl,
       type: 'article',
       publishedTime: article.date,
       authors: [article.authorUrl],
+      images: [{ url: `${SITE_URL}/og-images/og-image-en.png`, width: 1200, height: 630 }],
     },
-    twitter: SHARED_TWITTER,
+    twitter: {
+      card: 'summary_large_image',
+      title: fullTitle,
+      description: article.description,
+      creator: '@YesShrey',
+      site: '@YesShrey',
+      images: [`${SITE_URL}/og-images/og-image-en.png`],
+    },
   };
 }
 
@@ -57,7 +66,7 @@ export default async function BlogDetailPage({ params }: ArticlePageProps) {
     notFound();
   }
 
-  const articleUrl = `${SITE_URL}/blog/${article.slug}/`;
+  const articleUrl = `${SITE_URL}/blog/${article.slug}`;
 
   const articleSchema = {
     '@context': 'https://schema.org',

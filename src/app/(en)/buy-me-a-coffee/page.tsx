@@ -2,25 +2,27 @@ import type { Metadata } from 'next';
 import { BuyMeACoffeePageContent } from '../../../components/BuyMeACoffeePageContent';
 
 export const metadata: Metadata = {
-  title: 'Buy Me a Coffee',
+  title: 'Buy Me a Coffee | ihatelovepdf',
   description:
-    'Support I Hate Love PDF, a free, private browser PDF suite built and maintained by Shreyash Srivastava. Tips keep it free and ad-light.',
+    'Support ihatelovepdf, a free, private browser PDF suite built and maintained by Shreyash Srivastava.',
   alternates: {
-    canonical: 'https://www.ihatelovepdf.com/buy-me-a-coffee/',
+    canonical: 'https://www.ihatelovepdf.com/buy-me-a-coffee',
   },
   openGraph: {
-    title: 'Buy Me a Coffee | I Hate Love PDF',
+    title: 'Buy Me a Coffee | ihatelovepdf',
     description:
-      'Support I Hate Love PDF, a free, private browser PDF suite built and maintained by Shreyash Srivastava. Tips keep it free and ad-light.',
-    url: 'https://www.ihatelovepdf.com/buy-me-a-coffee/',
-    siteName: 'I Hate Love PDF',
+      'Support ihatelovepdf, a free, private browser PDF suite built and maintained by Shreyash Srivastava.',
+    url: 'https://www.ihatelovepdf.com/buy-me-a-coffee',
+    siteName: 'ihatelovepdf',
     type: 'website',
+    images: [{ url: 'https://www.ihatelovepdf.com/og-images/og-image-en.png', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Buy Me a Coffee | I Hate Love PDF',
+    title: 'Buy Me a Coffee | ihatelovepdf',
     description:
-      'Support I Hate Love PDF, a free, private browser PDF suite built and maintained by Shreyash Srivastava. Tips keep it free and ad-light.',
+      'Support ihatelovepdf, a free, private browser PDF suite built and maintained by Shreyash Srivastava.',
+    images: ['https://www.ihatelovepdf.com/og-images/og-image-en.png'],
   },
 };
 

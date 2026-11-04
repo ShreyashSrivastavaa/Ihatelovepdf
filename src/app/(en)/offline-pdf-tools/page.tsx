@@ -2,24 +2,33 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Script from 'next/script';
 import { ArrowRight, WifiOff, Cpu, Lock } from 'lucide-react';
-import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER } from '../../../lib/metadata-shared';
+import { METADATA_BASE, SHARED_ICONS } from '../../../lib/metadata-shared';
 import { SITE_URL } from '../../../lib/site';
 
 export const metadata: Metadata = {
   metadataBase: METADATA_BASE,
-  title: 'PDF Tools That Work Offline in Browser',
+  title: 'Offline PDF Tools: Process PDFs in Browser Without Internet | ihatelovepdf',
   description: 'Process PDFs locally in your browser even without internet access. Client-side tools that work offline with zero server data transfer.',
   alternates: {
-    canonical: `${SITE_URL}/offline-pdf-tools/`,
+    canonical: `${SITE_URL}/offline-pdf-tools`,
   },
   icons: SHARED_ICONS,
   openGraph: {
-    ...SHARED_OPEN_GRAPH,
-    title: 'Offline PDF Tools: Process PDFs in Browser Without Internet',
+    siteName: 'ihatelovepdf',
+    title: 'Offline PDF Tools: Process PDFs in Browser Without Internet | ihatelovepdf',
     description: 'Process PDFs locally in your browser even without internet access. Client-side tools that work offline with zero server data transfer.',
-    url: `${SITE_URL}/offline-pdf-tools/`,
+    url: `${SITE_URL}/offline-pdf-tools`,
+    type: 'website',
+    images: [{ url: `${SITE_URL}/og-images/og-image-en.png`, width: 1200, height: 630 }],
   },
-  twitter: SHARED_TWITTER,
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Offline PDF Tools: Process PDFs in Browser Without Internet | ihatelovepdf',
+    description: 'Process PDFs locally in your browser even without internet access. Client-side tools that work offline with zero server data transfer.',
+    creator: '@YesShrey',
+    site: '@YesShrey',
+    images: [`${SITE_URL}/og-images/og-image-en.png`],
+  },
 };
 
 export default function OfflinePdfToolsPage() {

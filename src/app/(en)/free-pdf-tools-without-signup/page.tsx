@@ -2,24 +2,33 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Script from 'next/script';
 import { ShieldCheck, ArrowRight, Lock, Zap, FileText } from 'lucide-react';
-import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER } from '../../../lib/metadata-shared';
+import { METADATA_BASE, SHARED_ICONS } from '../../../lib/metadata-shared';
 import { SITE_URL } from '../../../lib/site';
 
 export const metadata: Metadata = {
   metadataBase: METADATA_BASE,
-  title: 'Free PDF Tools Without Signup',
+  title: 'Free PDF Tools Without Signup: No Email, No Watermark | ihatelovepdf',
   description: 'Use 35+ free PDF tools online without creating an account or entering your email. Merge, split, compress, sign, and edit PDFs with zero signup.',
   alternates: {
-    canonical: `${SITE_URL}/free-pdf-tools-without-signup/`,
+    canonical: `${SITE_URL}/free-pdf-tools-without-signup`,
   },
   icons: SHARED_ICONS,
   openGraph: {
-    ...SHARED_OPEN_GRAPH,
-    title: 'Free PDF Tools Without Signup: No Email, No Watermark',
+    siteName: 'ihatelovepdf',
+    title: 'Free PDF Tools Without Signup: No Email, No Watermark | ihatelovepdf',
     description: 'Use 35+ free PDF tools online without creating an account or entering your email. Merge, split, compress, sign, and edit PDFs with zero signup.',
-    url: `${SITE_URL}/free-pdf-tools-without-signup/`,
+    url: `${SITE_URL}/free-pdf-tools-without-signup`,
+    type: 'website',
+    images: [{ url: `${SITE_URL}/og-images/og-image-en.png`, width: 1200, height: 630 }],
   },
-  twitter: SHARED_TWITTER,
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Free PDF Tools Without Signup: No Email, No Watermark | ihatelovepdf',
+    description: 'Use 35+ free PDF tools online without creating an account or entering your email. Merge, split, compress, sign, and edit PDFs with zero signup.',
+    creator: '@YesShrey',
+    site: '@YesShrey',
+    images: [`${SITE_URL}/og-images/og-image-en.png`],
+  },
 };
 
 export default function FreePdfToolsWithoutSignupPage() {

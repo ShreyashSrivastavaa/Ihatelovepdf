@@ -13,7 +13,7 @@ import { WebVitalsReporter } from "../../components/analytics/WebVitalsReporter"
 import CookieBanner from "../../components/CookieBanner";
 import { SchemaOrg } from "../../components/SchemaOrg";
 
-import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER } from "../../lib/metadata-shared";
+import { METADATA_BASE, SHARED_ICONS, BRAND_NAME, getAlternateOgLocales } from "../../lib/metadata-shared";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -21,7 +21,7 @@ const LOCALE = "hu" as const;
 
 export const metadata = {
   metadataBase: METADATA_BASE,
-  title: "ihatelovepdf - PDF tömörítése, egyesítése, felosztása és konvertálása",
+  title: "ihatelovepdf | PDF tömörítése, egyesítése, felosztása és konvertálása",
   description: "Ingyenes online PDF-eszközök: tömörítés, egyesítés, felosztás, kinyerés és konvertálás. 100% privát, helyi feldolgozás a böngésződben.",
   icons: SHARED_ICONS,
   alternates: {
@@ -40,15 +40,23 @@ export const metadata = {
     },
   },
   openGraph: {
-    ...SHARED_OPEN_GRAPH,
-    images: [{ url: "https://www.ihatelovepdf.com/og-images/og-image-hu.png", width: 1409, height: 736, alt: "ihatelovepdf - Privát és ingyenes PDF-feldolgozás" }],
-    title: "ihatelovepdf - Ingyenes és privát PDF-eszközök a böngésződben",
-    description: "Egyesítsd, tömörítsd, oszd fel és konvertáld a PDF-eket szerverre feltöltés nélkül. Biztonságos és 100% privát.",
+    siteName: BRAND_NAME,
+    images: [{ url: "https://www.ihatelovepdf.com/og-images/og-image-hu.png", width: 1200, height: 630, alt: "ihatelovepdf | PDF tömörítése, egyesítése, felosztása és konvertálása" }],
+    title: "ihatelovepdf | PDF tömörítése, egyesítése, felosztása és konvertálása",
+    description: "Ingyenes online PDF-eszközök: tömörítés, egyesítés, felosztás, kinyerés és konvertálás. 100% privát, helyi feldolgozás a böngésződben.",
     url: "https://www.ihatelovepdf.com/hu",
     locale: "hu_HU",
+    alternateLocale: getAlternateOgLocales("hu"),
     type: "website",
   },
-  twitter: SHARED_TWITTER,
+  twitter: {
+    card: "summary_large_image",
+    title: "ihatelovepdf | PDF tömörítése, egyesítése, felosztása és konvertálása",
+    description: "Ingyenes online PDF-eszközök: tömörítés, egyesítés, felosztás, kinyerés és konvertálás. 100% privát, helyi feldolgozás a böngésződben.",
+    creator: "@YesShrey",
+    site: "@YesShrey",
+    images: ["https://www.ihatelovepdf.com/og-images/og-image-hu.png"],
+  },
 };
 
 import { ThemeScript } from "../../components/ThemeScript";

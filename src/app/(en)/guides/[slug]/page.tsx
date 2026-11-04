@@ -25,20 +25,31 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {};
   }
 
-  const canonicalUrl = `${SITE_URL}/guides/${guide.slug}/`;
+  const canonicalUrl = `${SITE_URL}/guides/${guide.slug}`;
+  const fullTitle = `${guide.title} | ihatelovepdf`;
 
   return {
     metadataBase: METADATA_BASE,
-    title: guide.title,
+    title: fullTitle,
     description: guide.description,
     alternates: {
       canonical: canonicalUrl,
     },
     openGraph: {
-      title: guide.title,
+      siteName: 'ihatelovepdf',
+      title: fullTitle,
       description: guide.description,
       url: canonicalUrl,
       type: 'article',
+      images: [{ url: `${SITE_URL}/og-images/og-image-en.png`, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: fullTitle,
+      description: guide.description,
+      creator: '@YesShrey',
+      site: '@YesShrey',
+      images: [`${SITE_URL}/og-images/og-image-en.png`],
     },
   };
 }

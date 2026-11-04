@@ -14,7 +14,7 @@ import CookieBanner from "../../components/CookieBanner";
 import { SchemaOrg } from "../../components/SchemaOrg";
 import { BreadcrumbSchema } from "../../components/seo/BreadcrumbSchema";
 
-import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER, SHARED_AUTHORS, SHARED_CREATOR, SHARED_PUBLISHER } from "../../lib/metadata-shared";
+import { METADATA_BASE, SHARED_ICONS, SHARED_AUTHORS, SHARED_CREATOR, SHARED_PUBLISHER, BRAND_NAME, getAlternateOgLocales } from "../../lib/metadata-shared";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeScript } from "../../components/ThemeScript";
@@ -29,8 +29,6 @@ export const metadata = {
   title: "ihatelovepdf | Herramientas PDF Privadas y Gratuitas en tu Navegador",
   description:
     "Herramientas PDF gratuitas en tu navegador: unir PDF, comprimir PDF, dividir PDF, extraer páginas, convertir PDF a imágenes o imágenes a PDF. 100% privado.",
-  keywords:
-    "unir pdf, comprimir pdf, dividir pdf, extraer paginas pdf, convertir pdf, pdf a imagen, imagen a pdf, reordenar pdf, herramienta pdf gratis",
   icons: SHARED_ICONS,
   alternates: {
     canonical: "https://www.ihatelovepdf.com/es",
@@ -48,16 +46,25 @@ export const metadata = {
     },
   },
   openGraph: {
-    ...SHARED_OPEN_GRAPH,
-    images: [{ url: "https://www.ihatelovepdf.com/og-images/og-image-es.png", width: 1409, height: 736, alt: "ihatelovepdf - Herramientas PDF privadas y gratuitas" }],
+    siteName: BRAND_NAME,
+    images: [{ url: "https://www.ihatelovepdf.com/og-images/og-image-es.png", width: 1200, height: 630, alt: "ihatelovepdf | Herramientas PDF Privadas y Gratuitas en tu Navegador" }],
     title: "ihatelovepdf | Herramientas PDF Privadas y Gratuitas en tu Navegador",
     description:
       "Unir, comprimir, dividir y convertir PDFs sin subir archivos. Procesamiento 100% privado en tu navegador.",
     url: "https://www.ihatelovepdf.com/es",
     locale: "es_ES",
+    alternateLocale: getAlternateOgLocales("es"),
     type: "website",
   },
-  twitter: SHARED_TWITTER,
+  twitter: {
+    card: "summary_large_image",
+    title: "ihatelovepdf | Herramientas PDF Privadas y Gratuitas en tu Navegador",
+    description:
+      "Unir, comprimir, dividir y convertir PDFs sin subir archivos. Procesamiento 100% privado en tu navegador.",
+    creator: "@YesShrey",
+    site: "@YesShrey",
+    images: ["https://www.ihatelovepdf.com/og-images/og-image-es.png"],
+  },
 };
 
 export default function EsLayout({ children }: { children: ReactNode }) {

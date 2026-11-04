@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: 'https://www.ihatelovepdf.com/buy-me-a-coffee/',
+    canonical: 'https://www.ihatelovepdf.com/buy-me-a-coffee',
   },
 };
 

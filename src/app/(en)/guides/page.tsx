@@ -4,11 +4,29 @@ import { ArrowRight, Clock, Calendar, BookOpen } from 'lucide-react';
 import { GUIDES_DATA } from '../../_data/guides-data';
 
 export const metadata: Metadata = {
-  title: 'PDF How-To Guides and Tutorials',
+  title: 'PDF How-To Guides and Tutorials | ihatelovepdf',
   description:
     'Step by step tutorials and practical guides for merging, compressing, splitting, redacting, and converting PDFs with private in-browser tools.',
   alternates: {
-    canonical: 'https://www.ihatelovepdf.com/guides/',
+    canonical: 'https://www.ihatelovepdf.com/guides',
+  },
+  openGraph: {
+    siteName: 'ihatelovepdf',
+    title: 'PDF How-To Guides and Tutorials | ihatelovepdf',
+    description:
+      'Step by step tutorials and practical guides for merging, compressing, splitting, redacting, and converting PDFs with private in-browser tools.',
+    url: 'https://www.ihatelovepdf.com/guides',
+    type: 'website',
+    images: [{ url: 'https://www.ihatelovepdf.com/og-images/og-image-en.png', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'PDF How-To Guides and Tutorials | ihatelovepdf',
+    description:
+      'Step by step tutorials and practical guides for merging, compressing, splitting, redacting, and converting PDFs with private in-browser tools.',
+    creator: '@YesShrey',
+    site: '@YesShrey',
+    images: ['https://www.ihatelovepdf.com/og-images/og-image-en.png'],
   },
 };
 

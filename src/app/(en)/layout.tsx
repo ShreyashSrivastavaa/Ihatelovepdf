@@ -35,23 +35,10 @@ export const metadata = {
     follow: true,
   },
   title: {
-    default: "I Hate Love PDF: Free and Private PDF Tools in Your Browser",
-    template: "%s | I Hate Love PDF",
+    default: "ihatelovepdf: Free and Private PDF Tools in Your Browser",
+    template: "%s | ihatelovepdf",
   },
   description: "Merge, compress, split, extract, edit, redact, and convert PDFs locally in your browser. 100% private, zero server uploads, free forever.",
-  keywords: [
-    "PDF tools",
-    "merge PDF",
-    "compress PDF",
-    "split PDF",
-    "convert PDF",
-    "edit PDF",
-    "redact PDF",
-    "local PDF processing",
-    "private PDF tools",
-    "free PDF editor",
-    "PDF security",
-  ],
   alternates: {
     canonical: "https://www.ihatelovepdf.com",
     languages: {

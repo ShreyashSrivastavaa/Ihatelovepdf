@@ -2,24 +2,33 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Calendar, Clock, ArrowRight, Sparkles, User } from 'lucide-react';
 import { BLOG_ARTICLES } from '../../_data/blog-data';
-import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER } from '../../../lib/metadata-shared';
+import { METADATA_BASE, SHARED_ICONS } from '../../../lib/metadata-shared';
 import { SITE_URL } from '../../../lib/site';
 
 export const metadata: Metadata = {
   metadataBase: METADATA_BASE,
-  title: 'PDF Guides and Tutorials Blog',
+  title: 'PDF Guides and Tutorials Blog | ihatelovepdf',
   description: 'In-depth, practical guides on merging, compressing, signing, redacting, and editing PDF files safely in your browser without software installations.',
   alternates: {
-    canonical: `${SITE_URL}/blog/`,
+    canonical: `${SITE_URL}/blog`,
   },
   icons: SHARED_ICONS,
   openGraph: {
-    ...SHARED_OPEN_GRAPH,
-    title: 'PDF Guides & Tutorials: Free In-Browser Workflows | I Hate Love PDF',
+    siteName: 'ihatelovepdf',
+    title: 'PDF Guides and Tutorials Blog | ihatelovepdf',
     description: 'In-depth, practical guides on merging, compressing, signing, redacting, and editing PDF files safely in your browser without software installations.',
-    url: `${SITE_URL}/blog/`,
+    url: `${SITE_URL}/blog`,
+    type: 'website',
+    images: [{ url: `${SITE_URL}/og-images/og-image-en.png`, width: 1200, height: 630 }],
   },
-  twitter: SHARED_TWITTER,
+  twitter: {
+    card: 'summary_large_image',
+    title: 'PDF Guides and Tutorials Blog | ihatelovepdf',
+    description: 'In-depth, practical guides on merging, compressing, signing, redacting, and editing PDF files safely in your browser without software installations.',
+    creator: '@YesShrey',
+    site: '@YesShrey',
+    images: [`${SITE_URL}/og-images/og-image-en.png`],
+  },
 };
 
 export default function BlogIndexPage() {

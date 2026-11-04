@@ -3,6 +3,7 @@ import { Locale, DEFAULT_LOCALE, localeLabels } from "../../i18n/config";
 import { getDictionary } from "../../i18n/get-dictionary";
 import { getLocalizedAlternateMap } from "../../i18n/routing";
 import { SITE_URL, GOOGLE_SITE_VERIFICATION } from "../../lib/site";
+import { getSocialMetadata } from "../../lib/metadata-shared";
 
 type StaticRouteKey = "home" | "faq" | "support";
 
@@ -33,12 +34,14 @@ export function createHomeMetadata(locale: Locale) {
     const homePath = dictionary.routes.home;
     const canonicalUrl = toAbsoluteUrl(baseUrl, homePath);
     const languages = buildLanguagesMap({ type: "static", key: "home" }, baseUrl);
+    const title = siteMeta.title;
+    const description = siteMeta.description;
+    const social = getSocialMetadata(locale, title, description, canonicalUrl);
 
     return {
       metadataBase: new URL(baseUrl),
-      title: locale === "en" ? { absolute: siteMeta.title } : siteMeta.title,
-      description: siteMeta.description,
-      keywords: siteMeta.keywords,
+      title: locale === "en" ? { absolute: title } : title,
+      description,
       verification: {
         ...(GOOGLE_SITE_VERIFICATION ? { google: GOOGLE_SITE_VERIFICATION } : {}),
         other: {
@@ -50,20 +53,7 @@ export function createHomeMetadata(locale: Locale) {
         canonical: canonicalUrl,
         languages,
       },
-      openGraph: {
-        title: siteMeta.openGraph.title,
-        description: siteMeta.openGraph.description,
-        url: canonicalUrl,
-        locale: siteMeta.openGraph.locale,
-        images: [
-          {
-            url: `${baseUrl}/og-images/og-image-${locale}.png`,
-            width: 1409,
-            height: 736,
-            alt: siteMeta.openGraph.imageAlt,
-          },
-        ],
-      },
+      ...social,
     };
   };
 }
@@ -76,12 +66,15 @@ export function createFaqMetadata(locale: Locale) {
     const faqPath = dictionary.routes.faq;
     const canonicalUrl = toAbsoluteUrl(baseUrl, faqPath);
     const languages = buildLanguagesMap({ type: "static", key: "faq" }, baseUrl);
+    const rawTitle = locale === "en" ? "Frequently Asked Questions" : faqMeta.title;
+    const title = rawTitle.includes("ihatelovepdf") ? rawTitle : `${rawTitle} | ihatelovepdf`;
+    const description = faqMeta.description;
+    const social = getSocialMetadata(locale, title, description, canonicalUrl);
 
     return {
       metadataBase: new URL(baseUrl),
-      title: locale === "en" ? "Frequently Asked Questions" : faqMeta.title,
-      description: faqMeta.description,
-      keywords: faqMeta.keywords,
+      title: { absolute: title },
+      description,
       verification: {
         ...(GOOGLE_SITE_VERIFICATION ? { google: GOOGLE_SITE_VERIFICATION } : {}),
         other: {
@@ -93,20 +86,7 @@ export function createFaqMetadata(locale: Locale) {
         canonical: canonicalUrl,
         languages,
       },
-      openGraph: {
-        title: faqMeta.title,
-        description: faqMeta.description,
-        url: canonicalUrl,
-        locale: dictionary.metadata.site.openGraph.locale,
-        images: [
-          {
-            url: `${baseUrl}/og-images/og-image-${locale}.png`,
-            width: 1409,
-            height: 736,
-            alt: faqMeta.title,
-          },
-        ],
-      },
+      ...social,
     };
   };
 }
@@ -124,7 +104,6 @@ export function createSupportMetadata(locale: Locale) {
       metadataBase: new URL(baseUrl),
       title: supportMeta.title,
       description: supportMeta.description,
-      keywords: supportMeta.keywords,
       verification: {
         ...(GOOGLE_SITE_VERIFICATION ? { google: GOOGLE_SITE_VERIFICATION } : {}),
         other: {

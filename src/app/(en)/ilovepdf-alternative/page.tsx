@@ -2,24 +2,33 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Script from 'next/script';
 import { ShieldCheck, CheckCircle2, ArrowRight, Lock, Zap, Sparkles } from 'lucide-react';
-import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER } from '../../../lib/metadata-shared';
+import { METADATA_BASE, SHARED_ICONS } from '../../../lib/metadata-shared';
 import { SITE_URL } from '../../../lib/site';
 
 export const metadata: Metadata = {
   metadataBase: METADATA_BASE,
-  title: 'iLovePDF Alternative, Free and Private',
-  description: 'Looking for an honest iLovePDF alternative? Discover why I Hate Love PDF is completely free, runs locally in your browser, and never uploads files.',
+  title: 'iLovePDF Alternative: 100% Free, Private, No Uploads | ihatelovepdf',
+  description: 'Looking for an honest iLovePDF alternative? Discover why ihatelovepdf is completely free, runs locally in your browser, and never uploads files.',
   alternates: {
-    canonical: `${SITE_URL}/ilovepdf-alternative/`,
+    canonical: `${SITE_URL}/ilovepdf-alternative`,
   },
   icons: SHARED_ICONS,
   openGraph: {
-    ...SHARED_OPEN_GRAPH,
-    title: 'iLovePDF Alternative: 100% Free, Private, No Uploads',
-    description: 'Looking for an honest iLovePDF alternative? Discover why I Hate Love PDF is completely free, runs locally in your browser, and never uploads files.',
-    url: `${SITE_URL}/ilovepdf-alternative/`,
+    siteName: 'ihatelovepdf',
+    title: 'iLovePDF Alternative: 100% Free, Private, No Uploads | ihatelovepdf',
+    description: 'Looking for an honest iLovePDF alternative? Discover why ihatelovepdf is completely free, runs locally in your browser, and never uploads files.',
+    url: `${SITE_URL}/ilovepdf-alternative`,
+    type: 'website',
+    images: [{ url: `${SITE_URL}/og-images/og-image-en.png`, width: 1200, height: 630 }],
   },
-  twitter: SHARED_TWITTER,
+  twitter: {
+    card: 'summary_large_image',
+    title: 'iLovePDF Alternative: 100% Free, Private, No Uploads | ihatelovepdf',
+    description: 'Looking for an honest iLovePDF alternative? Discover why ihatelovepdf is completely free, runs locally in your browser, and never uploads files.',
+    creator: '@YesShrey',
+    site: '@YesShrey',
+    images: [`${SITE_URL}/og-images/og-image-en.png`],
+  },
 };
 
 const comparisonPoints = [

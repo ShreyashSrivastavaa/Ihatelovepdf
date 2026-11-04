@@ -14,7 +14,7 @@ import CookieBanner from "../../components/CookieBanner";
 import { SchemaOrg } from "../../components/SchemaOrg";
 import { BreadcrumbSchema } from "../../components/seo/BreadcrumbSchema";
 
-import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER } from "../../lib/metadata-shared";
+import { METADATA_BASE, SHARED_ICONS, BRAND_NAME, getAlternateOgLocales } from "../../lib/metadata-shared";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -22,7 +22,7 @@ const LOCALE = "fr" as const;
 
 export const metadata = {
   metadataBase: METADATA_BASE,
-  title: "ihatelovepdf - Fusionner, Compresser, Diviser et Convertir des PDF",
+  title: "ihatelovepdf | Fusionner, Compresser, Diviser et Convertir des PDF",
   description: "Outils PDF gratuits en ligne pour fusionner, compresser, diviser, extraire et convertir. 100% privé, traitement local dans votre navigateur.",
   icons: SHARED_ICONS,
   alternates: {
@@ -41,15 +41,23 @@ export const metadata = {
     },
   },
   openGraph: {
-    ...SHARED_OPEN_GRAPH,
-    images: [{ url: "https://www.ihatelovepdf.com/og-images/og-image-fr.png", width: 1409, height: 736, alt: "ihatelovepdf - Traitement PDF privé et gratuit" }],
-    title: "ihatelovepdf - Outils PDF gratuits et privés dans votre navigateur",
-    description: "Fusionnez, compressez, divisez et convertissez des PDF sans télécharger de fichiers. Sécurisé et 100% privé.",
+    siteName: BRAND_NAME,
+    images: [{ url: "https://www.ihatelovepdf.com/og-images/og-image-fr.png", width: 1200, height: 630, alt: "ihatelovepdf | Fusionner, Compresser, Diviser et Convertir des PDF" }],
+    title: "ihatelovepdf | Fusionner, Compresser, Diviser et Convertir des PDF",
+    description: "Outils PDF gratuits en ligne pour fusionner, compresser, diviser, extraire et convertir. 100% privé, traitement local dans votre navigateur.",
     url: "https://www.ihatelovepdf.com/fr",
     locale: "fr_FR",
+    alternateLocale: getAlternateOgLocales("fr"),
     type: "website",
   },
-  twitter: SHARED_TWITTER,
+  twitter: {
+    card: "summary_large_image",
+    title: "ihatelovepdf | Fusionner, Compresser, Diviser et Convertir des PDF",
+    description: "Outils PDF gratuits en ligne pour fusionner, compresser, diviser, extraire et convertir. 100% privé, traitement local dans votre navigateur.",
+    creator: "@YesShrey",
+    site: "@YesShrey",
+    images: ["https://www.ihatelovepdf.com/og-images/og-image-fr.png"],
+  },
 };
 
 import { ThemeScript } from "../../components/ThemeScript";

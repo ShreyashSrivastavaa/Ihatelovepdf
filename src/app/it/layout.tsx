@@ -14,7 +14,7 @@ import CookieBanner from "../../components/CookieBanner";
 import { SchemaOrg } from "../../components/SchemaOrg";
 import { BreadcrumbSchema } from "../../components/seo/BreadcrumbSchema";
 
-import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER } from "../../lib/metadata-shared";
+import { METADATA_BASE, SHARED_ICONS, BRAND_NAME, getAlternateOgLocales } from "../../lib/metadata-shared";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -22,8 +22,8 @@ const LOCALE = "it" as const;
 
 export const metadata = {
   metadataBase: METADATA_BASE,
-  title: "ihatelovepdf - Merge, Compress, Split, and Convert PDFs Online",
-  description: "Free online PDF tools to merge, compress, split, extract, and convert PDFs. 100% private, local processing in your browser.",
+  title: "ihatelovepdf | Unisci, Comprimi, Dividi e Converti PDF Online",
+  description: "Strumenti PDF online gratuiti per unire, comprimere, dividere, estrarre e convertire PDF. 100% privato, elaborazione locale nel tuo browser.",
   icons: SHARED_ICONS,
   alternates: {
     canonical: "https://www.ihatelovepdf.com/it",
@@ -41,15 +41,23 @@ export const metadata = {
     },
   },
   openGraph: {
-    ...SHARED_OPEN_GRAPH,
-    images: [{ url: "https://www.ihatelovepdf.com/og-images/og-image-it.png", width: 1409, height: 736, alt: "ihatelovepdf - Elaborazione PDF gratuita e privata" }],
-    title: "ihatelovepdf - Strumenti PDF gratuiti e privati nel tuo browser",
-    description: "Unisci, comprimi, dividi e converti PDF senza dover caricare i file online. Elaborazione sicura e completamente privata.",
+    siteName: BRAND_NAME,
+    images: [{ url: "https://www.ihatelovepdf.com/og-images/og-image-it.png", width: 1200, height: 630, alt: "ihatelovepdf | Unisci, Comprimi, Dividi e Converti PDF Online" }],
+    title: "ihatelovepdf | Unisci, Comprimi, Dividi e Converti PDF Online",
+    description: "Strumenti PDF online gratuiti per unire, comprimere, dividere, estrarre e convertire PDF. 100% privato, elaborazione locale nel tuo browser.",
     url: "https://www.ihatelovepdf.com/it",
     locale: "it_IT",
+    alternateLocale: getAlternateOgLocales("it"),
     type: "website",
   },
-  twitter: SHARED_TWITTER,
+  twitter: {
+    card: "summary_large_image",
+    title: "ihatelovepdf | Unisci, Comprimi, Dividi e Converti PDF Online",
+    description: "Strumenti PDF online gratuiti per unire, comprimere, dividere, estrarre e convertire PDF. 100% privato, elaborazione locale nel tuo browser.",
+    creator: "@YesShrey",
+    site: "@YesShrey",
+    images: ["https://www.ihatelovepdf.com/og-images/og-image-it.png"],
+  },
 };
 
 import { ThemeScript } from "../../components/ThemeScript";

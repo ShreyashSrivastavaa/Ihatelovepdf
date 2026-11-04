@@ -13,7 +13,7 @@ import { WebVitalsReporter } from "../../components/analytics/WebVitalsReporter"
 import CookieBanner from "../../components/CookieBanner";
 import { SchemaOrg } from "../../components/SchemaOrg";
 
-import { METADATA_BASE, SHARED_ICONS, SHARED_OPEN_GRAPH, SHARED_TWITTER } from "../../lib/metadata-shared";
+import { METADATA_BASE, SHARED_ICONS, BRAND_NAME, getAlternateOgLocales } from "../../lib/metadata-shared";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -21,7 +21,7 @@ const LOCALE = "ro" as const;
 
 export const metadata = {
   metadataBase: METADATA_BASE,
-  title: "ihatelovepdf - Unește, Comprimă, Divide și Convertește PDF-uri",
+  title: "ihatelovepdf | Unește, Comprimă, Divide și Convertește PDF-uri",
   description: "Instrumente PDF gratuite, online, pentru a uni, comprima, divide, extrage și converti. 100% privat, procesare locală în browserul tău.",
   icons: SHARED_ICONS,
   alternates: {
@@ -40,15 +40,23 @@ export const metadata = {
     },
   },
   openGraph: {
-    ...SHARED_OPEN_GRAPH,
-    images: [{ url: "https://www.ihatelovepdf.com/og-images/og-image-ro.png", width: 1409, height: 736, alt: "ihatelovepdf - Procesare PDF privată și gratuită" }],
-    title: "ihatelovepdf - Instrumente PDF gratuite și private în browserul tău",
-    description: "Unește, comprimă, divide și convertește PDF-uri fără a încărca fișierele pe server. Securizat și 100% privat.",
+    siteName: BRAND_NAME,
+    images: [{ url: "https://www.ihatelovepdf.com/og-images/og-image-ro.png", width: 1200, height: 630, alt: "ihatelovepdf | Unește, Comprimă, Divide și Convertește PDF-uri" }],
+    title: "ihatelovepdf | Unește, Comprimă, Divide și Convertește PDF-uri",
+    description: "Instrumente PDF gratuite, online, pentru a uni, comprima, divide, extrage și converti. 100% privat, procesare locală în browserul tău.",
     url: "https://www.ihatelovepdf.com/ro",
     locale: "ro_RO",
+    alternateLocale: getAlternateOgLocales("ro"),
     type: "website",
   },
-  twitter: SHARED_TWITTER,
+  twitter: {
+    card: "summary_large_image",
+    title: "ihatelovepdf | Unește, Comprimă, Divide și Convertește PDF-uri",
+    description: "Instrumente PDF gratuite, online, pentru a uni, comprima, divide, extrage și converti. 100% privat, procesare locală în browserul tău.",
+    creator: "@YesShrey",
+    site: "@YesShrey",
+    images: ["https://www.ihatelovepdf.com/og-images/og-image-ro.png"],
+  },
 };
 
 import { ThemeScript } from "../../components/ThemeScript";
