@@ -6,6 +6,7 @@ import { GUIDES_DATA } from '../../../_data/guides-data';
 
 import { METADATA_BASE } from '../../../../lib/metadata-shared';
 import { SITE_URL } from '../../../../lib/site';
+import { TOTAL_TOOLS_COUNT } from '../../../../lib/tools-registry';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -212,7 +213,7 @@ export default async function GuideDetailPage({ params }: PageProps) {
             Private PDF Processing with No Server Uploads
           </h3>
           <p className="text-xs sm:text-sm text-[var(--text-muted)] max-w-lg mx-auto">
-            Try all 46 tools free with no file limits, no registration, and no tracking.
+            Try all {TOTAL_TOOLS_COUNT} tools free with no file limits, no registration, and no tracking.
           </p>
           <div className="pt-1">
             <Link

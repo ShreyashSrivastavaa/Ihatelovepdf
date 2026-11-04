@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ShieldCheck, Cpu, Lock, Award, CheckCircle2, FileCheck, Code2, ExternalLink, HelpCircle, User } from 'lucide-react';
 import { METADATA_BASE, SHARED_ICONS } from '../../../lib/metadata-shared';
 import { SITE_URL } from '../../../lib/site';
+import { TOTAL_TOOLS_COUNT } from '../../../lib/tools-registry';
 
 export const metadata: Metadata = {
   metadataBase: METADATA_BASE,
@@ -265,7 +266,7 @@ export default function AboutPage() {
             className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[var(--brand)] text-white hover:opacity-95 transition-opacity"
           >
             <CheckCircle2 className="h-3.5 w-3.5" />
-            <span>Explore All 35+ Tools</span>
+            <span>Explore All {TOTAL_TOOLS_COUNT} Tools</span>
           </Link>
           <Link
             href="/buy-me-a-coffee"
@@ -276,7 +277,6 @@ export default function AboutPage() {
         </section>
 
         <script
-          id="schema-about-graph"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchemaGraph) }}
         />

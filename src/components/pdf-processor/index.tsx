@@ -28,6 +28,7 @@ import {
 import * as PDFOps from '../../lib/pdf-operations';
 import { downloadBlob, openBlobInNewTab, isIOS } from '../../lib/download-helper';
 import { useDictionary } from '../../i18n/LocaleProvider';
+import { TOTAL_TOOLS_COUNT } from '../../lib/tools-registry';
 import CompressionPreviewCard, { PreviewStatus } from './CompressionPreviewCard';
 import CompressionSummaryCard from './CompressionSummaryCard';
 import type { OperationKey } from '../../types/operations';
@@ -2441,7 +2442,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
             href="/tools"
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-[var(--bg-subtle)] text-[var(--tx-2)] hover:text-[var(--tx)] hover:border-[var(--accent-border)] border border-[var(--border)] transition-all shadow-xs"
           >
-            <span>Change Tool (45+)</span>
+            <span>Change Tool ({TOTAL_TOOLS_COUNT})</span>
           </Link>
         </div>
 

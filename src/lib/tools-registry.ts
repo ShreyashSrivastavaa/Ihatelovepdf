@@ -1,6 +1,6 @@
 /**
  * Central Tools Registry & Categorization System
- * Single source of truth for all 38 tools across dashboard navigation,
+ * Single source of truth for all tools across dashboard navigation,
  * category groupings, metadata descriptions, visual accent themes, and localized routing.
  */
 
@@ -170,6 +170,11 @@ export const TOOL_CATEGORIES: ToolCategory[] = [
     toolKeys: ['gstInvoice', 'posBilling'],
   },
 ];
+
+export const TOTAL_UNIQUE_TOOL_KEYS: OperationKey[] = Array.from(
+  new Set(TOOL_CATEGORIES.flatMap((c) => c.toolKeys))
+);
+export const TOTAL_TOOLS_COUNT: number = TOTAL_UNIQUE_TOOL_KEYS.length;
 
 export const TOOL_NAMES: Record<OperationKey, string> = {
   merge: 'Merge PDF',

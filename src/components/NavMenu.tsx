@@ -20,6 +20,7 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
+import { TOTAL_TOOLS_COUNT } from '../lib/tools-registry';
 
 export default function NavMenu() {
   const pathname = usePathname();
@@ -452,7 +453,7 @@ export default function NavMenu() {
                         onClick={closeDropdowns}
                         className="inline-flex items-center gap-1 text-xs font-semibold text-brand hover:underline"
                       >
-                        <span>Explore all 36 tools</span>
+                        <span>Explore all {TOTAL_TOOLS_COUNT} tools</span>
                         <ArrowRight className="h-3 w-3" />
                       </Link>
                     </div>
@@ -696,7 +697,7 @@ export default function NavMenu() {
               onClick={closeDropdowns}
               className="flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold text-primary hover:bg-alt transition-colors"
             >
-              <span>Explore All 36 Tools</span>
+              <span>Explore All {TOTAL_TOOLS_COUNT} Tools</span>
               <ArrowRight className="h-4 w-4 text-secondary" />
             </Link>
             <Link

@@ -1,7 +1,7 @@
 /**
  * Edge-case and Corrupted PDF Resilience Test Fixtures & Benchmark Harness
  * Validates that client-side operations fail gracefully with descriptive
- * errors and produce best-in-class output fidelity across all 46 tools.
+ * errors and produce best-in-class output fidelity across all 37 tools.
  */
 
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';

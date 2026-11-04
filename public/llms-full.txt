@@ -50,7 +50,7 @@ Summary Documentation: https://www.ihatelovepdf.com/llms.txt
 
 ---
 
-## 4. Complete Tool Directory (36+ Browser-Based Tools)
+## 4. Complete Tool Directory (37 Browser-Based Tools)
 
 Below is the exhaustive catalog of every utility available on ihatelovepdf, including supported operations and localized URLs across 9 languages.
 

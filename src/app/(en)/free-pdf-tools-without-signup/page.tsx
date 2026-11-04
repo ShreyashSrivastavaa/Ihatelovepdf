@@ -3,11 +3,12 @@ import Link from 'next/link';
 import { ShieldCheck, ArrowRight, Lock, Zap, FileText } from 'lucide-react';
 import { METADATA_BASE, SHARED_ICONS } from '../../../lib/metadata-shared';
 import { SITE_URL } from '../../../lib/site';
+import { TOTAL_TOOLS_COUNT } from '../../../lib/tools-registry';
 
 export const metadata: Metadata = {
   metadataBase: METADATA_BASE,
   title: 'Free PDF Tools Without Signup: No Email, No Watermark | ihatelovepdf',
-  description: 'Use 35+ free PDF tools online without creating an account or entering your email. Merge, split, compress, sign, and edit PDFs with zero signup.',
+  description: `Use ${TOTAL_TOOLS_COUNT} free PDF tools online without creating an account or entering your email. Merge, split, compress, sign, and edit PDFs with zero signup.`,
   alternates: {
     canonical: `${SITE_URL}/free-pdf-tools-without-signup`,
   },
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     siteName: 'ihatelovepdf',
     title: 'Free PDF Tools Without Signup: No Email, No Watermark | ihatelovepdf',
-    description: 'Use 35+ free PDF tools online without creating an account or entering your email. Merge, split, compress, sign, and edit PDFs with zero signup.',
+    description: `Use ${TOTAL_TOOLS_COUNT} free PDF tools online without creating an account or entering your email. Merge, split, compress, sign, and edit PDFs with zero signup.`,
     url: `${SITE_URL}/free-pdf-tools-without-signup`,
     type: 'website',
     images: [{ url: `${SITE_URL}/og-images/og-image-en.png`, width: 1200, height: 630 }],
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Free PDF Tools Without Signup: No Email, No Watermark | ihatelovepdf',
-    description: 'Use 35+ free PDF tools online without creating an account or entering your email. Merge, split, compress, sign, and edit PDFs with zero signup.',
+    description: `Use ${TOTAL_TOOLS_COUNT} free PDF tools online without creating an account or entering your email. Merge, split, compress, sign, and edit PDFs with zero signup.`,
     creator: '@YesShrey',
     site: '@YesShrey',
     images: [`${SITE_URL}/og-images/og-image-en.png`],
@@ -48,7 +49,7 @@ export default function FreePdfToolsWithoutSignupPage() {
         name: 'Do I need to enter a credit card or start a trial?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'No. All 35+ tools on I Hate Love PDF are completely free and available to use without entering any payment or contact details.',
+          text: `No. All ${TOTAL_TOOLS_COUNT} tools on I Hate Love PDF are completely free and available to use without entering any payment or contact details.`,
         },
       },
       {
@@ -156,7 +157,7 @@ export default function FreePdfToolsWithoutSignupPage() {
               href="/tools"
               className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-lg bg-[var(--brand)] text-white font-medium text-xs sm:text-sm hover:opacity-95 transition-opacity"
             >
-              <span>View All 35+ Tools</span>
+              <span>View All {TOTAL_TOOLS_COUNT} Tools</span>
               <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>

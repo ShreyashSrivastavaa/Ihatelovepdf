@@ -9,7 +9,7 @@ export default function OperationToolSwitcherClient({ activeKey }: { activeKey: 
   const routes = dictionary.routes.operations as Record<string, string>;
   const ops = dictionary.components.footer.operations as Record<string, string>;
 
-  // Build complete list of all 45 tools across all categories
+  // Build complete list of all tools across all categories
   const tools: ToolLink[] = [];
   const seen = new Set<string>();
 

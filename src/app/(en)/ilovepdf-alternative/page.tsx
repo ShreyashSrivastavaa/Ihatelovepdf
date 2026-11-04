@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ShieldCheck, CheckCircle2, ArrowRight, Lock, Zap, Sparkles } from 'lucide-react';
 import { METADATA_BASE, SHARED_ICONS } from '../../../lib/metadata-shared';
 import { SITE_URL } from '../../../lib/site';
+import { TOTAL_TOOLS_COUNT } from '../../../lib/tools-registry';
 
 export const metadata: Metadata = {
   metadataBase: METADATA_BASE,
@@ -216,7 +217,7 @@ export default function ILovePdfAlternativePage() {
               href="/tools"
               className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-lg bg-[var(--brand)] text-white font-medium text-xs sm:text-sm hover:opacity-95 transition-opacity"
             >
-              <span>Explore All 35+ Tools</span>
+              <span>Explore All {TOTAL_TOOLS_COUNT} Tools</span>
               <ArrowRight className="h-3.5 w-3.5" />
             </Link>
             <Link

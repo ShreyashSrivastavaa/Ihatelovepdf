@@ -27,7 +27,7 @@ ihatelovepdf (I Hate Love PDF) is a free web-based PDF utility suite engineered 
 - [PDF to Images](https://www.ihatelovepdf.com/pdf-to-images): Render PDF pages to high-resolution PNG or JPG images.
 - [Images to PDF](https://www.ihatelovepdf.com/images-to-pdf): Convert PNG, JPG, or WEBP photos into a cleanly formatted PDF document.
 - [Fill PDF Form](https://www.ihatelovepdf.com/fill-pdf-form): Fill interactive AcroForm fields directly in the browser.
-- [All 36+ Tools Hub](https://www.ihatelovepdf.com/tools): Full interactive directory of all PDF utilities.
+- [All 37 Tools Hub](https://www.ihatelovepdf.com/tools): Full interactive directory of all PDF utilities.
 
 ## Multilingual Support
 ihatelovepdf is available natively across 9 languages with dedicated localized routes:

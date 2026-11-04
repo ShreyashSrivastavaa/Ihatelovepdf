@@ -18,6 +18,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { OperationKey } from '../types/operations';
+import { TOTAL_TOOLS_COUNT } from '../lib/tools-registry';
 import { ICON_MAP, TOOL_DESCRIPTIONS } from './ToolSwitcher';
 import { TOOL_NAMES } from '../lib/tools-registry';
 
@@ -198,7 +199,7 @@ export function CategoryHeroGrid({ routes, footerOperations }: CategoryHeroGridP
       <div className="flex items-center justify-between mb-3 px-1">
         <span className="text-xs font-semibold tracking-wider text-[var(--tx-3)] uppercase flex items-center gap-1.5">
           <Sparkles className="w-3.5 h-3.5 text-[var(--accent)]" />
-          Browse by Category • 38+ Private Tools
+          Browse by Category • {TOTAL_TOOLS_COUNT} Private Tools
         </span>
         <span className="hidden sm:inline text-xs text-[var(--tx-3)]">
           Hover to view tools &bull; Process 100% on device

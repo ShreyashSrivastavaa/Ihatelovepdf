@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { METADATA_BASE } from "../../lib/metadata-shared";
+import { TOTAL_TOOLS_COUNT } from "../../lib/tools-registry";
 
 export const metadata: Metadata = {
   metadataBase: METADATA_BASE,
@@ -78,7 +79,7 @@ export default function NotFound() {
           href="/tools"
           className="inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-main)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all shadow-sm"
         >
-          Browse All 36 Tools
+          Browse All {TOTAL_TOOLS_COUNT} Tools
         </Link>
       </div>
 
