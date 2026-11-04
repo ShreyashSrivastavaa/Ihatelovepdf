@@ -7,7 +7,7 @@ import { getOperationsRoutes, getOperationsFooterLabels, getOperationsModeLabels
 
 const locale = "pt" as const;
 const { label, nativeName, htmlLang, hrefLang } = localeLabels[locale];
-const siteUrl = "https://ihatelovepdf.com";
+const siteUrl = "https://www.ihatelovepdf.com";
 const homePath = getRoutePath(locale, "home");
 
 const operationRoutes = getOperationsRoutes(locale);
@@ -53,7 +53,7 @@ export const ptDictionary: Dictionary = {
         url: `${siteUrl}${homePath}`,
         locale: "pt_BR",
         type: "website",
-        imageUrl: "https://ihatelovepdf.com/og-images/og-image-pt.png",
+        imageUrl: "https://www.ihatelovepdf.com/og-images/og-image-pt.png",
         imageAlt: "ihatelovepdf - Processamento de PDFs privado e gratuito",
       },
     },

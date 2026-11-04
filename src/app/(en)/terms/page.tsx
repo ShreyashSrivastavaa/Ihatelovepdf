@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "Read the ihatelovepdf Terms of Service. Free personal and commercial license, browser execution terms, and intellectual property information.",
   alternates: {
-    canonical: "https://ihatelovepdf.com/terms",
+    canonical: "https://www.ihatelovepdf.com/terms",
   },
 };
 

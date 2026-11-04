@@ -15,7 +15,7 @@ interface ShareButtonProps {
 export function ShareButton({ url, variant = "inline", className = "" }: ShareButtonProps) {
   const [copied, setCopied] = useState(false);
   const [expanded, setExpanded] = useState(false);
-  const [shareUrl, setShareUrl] = useState(url ?? "https://ihatelovepdf.com");
+  const [shareUrl, setShareUrl] = useState(url ?? "https://www.ihatelovepdf.com");
   const dictionary = useDictionary();
   const sharePrompt = dictionary.components.pdfProcessor.statusDialog.sharePrompt;
 

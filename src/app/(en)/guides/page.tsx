@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     'Step by step tutorials and practical guides for merging, compressing, splitting, redacting, and converting PDFs with private in-browser tools.',
   alternates: {
-    canonical: 'https://ihatelovepdf.com/guides/',
+    canonical: 'https://www.ihatelovepdf.com/guides/',
   },
 };
 

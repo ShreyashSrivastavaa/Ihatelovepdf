@@ -46,16 +46,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
   const seen = new Set<string>();
 
+  // Helper to normalize paths without trailing slashes
+  const normalizePath = (rawPath: string) => {
+    const clean = rawPath === "/" ? "" : rawPath.replace(/\/$/, "");
+    return clean.startsWith("/") ? clean : `/${clean}`;
+  };
+
   // Helper to build hreflang alternates across all 9 locales + x-default
   const buildAlternates = (paths: Record<string, string>) => {
     const languages: Record<string, string> = {};
     for (const [loc, path] of Object.entries(paths)) {
-      const clean = path.startsWith("/") ? path : `/${path}`;
-      languages[loc] = `${BASE_URL}${clean}`;
+      const clean = normalizePath(path);
+      languages[loc] = `${BASE_URL}${clean === "/" ? "" : clean}`;
     }
     if (paths.en) {
-      const cleanEn = paths.en.startsWith("/") ? paths.en : `/${paths.en}`;
-      languages["x-default"] = `${BASE_URL}${cleanEn}`;
+      const cleanEn = normalizePath(paths.en);
+      languages["x-default"] = `${BASE_URL}${cleanEn === "/" ? "" : cleanEn}`;
     }
     return { languages };
   };
@@ -66,8 +72,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: number,
     alternates?: { languages: Record<string, string> }
   ) => {
-    const cleanPath = path.startsWith("/") ? path : `/${path}`;
-    const url = `${BASE_URL}${cleanPath}`;
+    const cleanPath = normalizePath(path);
+    const url = `${BASE_URL}${cleanPath === "/" ? "" : cleanPath}`;
     if (seen.has(url)) return;
 
     seen.add(url);

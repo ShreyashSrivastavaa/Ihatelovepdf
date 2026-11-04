@@ -18,13 +18,13 @@ export const metadata: Metadata = {
     'ihatelovepdf ecosystem',
   ],
   alternates: {
-    canonical: 'https://ihatelovepdf.com/products',
+    canonical: 'https://www.ihatelovepdf.com/products',
   },
   openGraph: {
     title: 'Support Our Other Products | GitFC, SnapDevCode & SystemDesign.website',
     description:
       'Explore developer platforms created by our team: GitFC, SnapDevCode, and SystemDesign.website.',
-    url: 'https://ihatelovepdf.com/products',
+    url: 'https://www.ihatelovepdf.com/products',
   },
 };
 

@@ -126,7 +126,7 @@ export function ProcessingStatusDialog({
 
   const handleShareClick = async () => {
     const currentLocale = window.location.pathname.split('/')[1] || 'en';
-    const shareUrl = `https://ihatelovepdf.com/${currentLocale}?utm_source=app&utm_medium=share&utm_campaign=user_referral_success`;
+    const shareUrl = `https://www.ihatelovepdf.com/${currentLocale}?utm_source=app&utm_medium=share&utm_campaign=user_referral_success`;
 
     const shareData = {
       title: 'ihatelovepdf - Free Private PDF Toolkit',

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "Contact the ihatelovepdf team for support, bug reports, feature requests, or privacy inquiries.",
   alternates: {
-    canonical: "https://ihatelovepdf.com/contact",
+    canonical: "https://www.ihatelovepdf.com/contact",
   },
 };
 

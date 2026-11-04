@@ -18,8 +18,9 @@ export function BreadcrumbSchema() {
     const breadcrumbJson = useMemo(() => {
         if (!pathname) return null;
 
-        const domain = "https://ihatelovepdf.com";
-        const fullUrl = `${domain}${pathname}`;
+        const domain = "https://www.ihatelovepdf.com";
+        const cleanPathname = pathname === "/" ? "" : pathname.replace(/\/$/, "");
+        const fullUrl = `${domain}${cleanPathname}`;
 
         const segments = pathname.split('/').filter(Boolean);
 

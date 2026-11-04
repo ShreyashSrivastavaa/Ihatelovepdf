@@ -6,12 +6,16 @@ import { SITE_URL, GOOGLE_SITE_VERIFICATION } from "../../lib/site";
 
 type StaticRouteKey = "home" | "faq" | "support";
 
+function toAbsoluteUrl(baseUrl: string, rawPath: string): string {
+  const cleanPath = rawPath === "/" ? "" : rawPath.replace(/\/$/, "");
+  return `${baseUrl}${cleanPath.startsWith("/") ? cleanPath : "/" + cleanPath}`;
+}
+
 function buildLanguagesMap(identifier: { type: "static"; key: StaticRouteKey }, baseUrl: string) {
   const alternatesMap = getLocalizedAlternateMap(identifier);
   const entries = (Object.entries(alternatesMap) as [Locale, string][]).map(([localeKey, path]) => {
     const hrefLang = localeLabels[localeKey].hrefLang;
-    const pathWithSlash = path.endsWith("/") ? path : `${path}/`;
-    const absoluteUrl = new URL(pathWithSlash, baseUrl).toString();
+    const absoluteUrl = toAbsoluteUrl(baseUrl, path);
     return [hrefLang, absoluteUrl] as const;
   });
 
@@ -27,8 +31,7 @@ export function createHomeMetadata(locale: Locale) {
     const siteMeta = dictionary.metadata.site;
     const baseUrl = SITE_URL;
     const homePath = dictionary.routes.home;
-    const homePathWithSlash = homePath.endsWith("/") ? homePath : `${homePath}/`;
-    const canonicalUrl = new URL(homePathWithSlash, baseUrl).toString();
+    const canonicalUrl = toAbsoluteUrl(baseUrl, homePath);
     const languages = buildLanguagesMap({ type: "static", key: "home" }, baseUrl);
 
     return {
@@ -71,8 +74,7 @@ export function createFaqMetadata(locale: Locale) {
     const faqMeta = dictionary.metadata.faq;
     const baseUrl = SITE_URL;
     const faqPath = dictionary.routes.faq;
-    const faqPathWithSlash = faqPath.endsWith("/") ? faqPath : `${faqPath}/`;
-    const canonicalUrl = new URL(faqPathWithSlash, baseUrl).toString();
+    const canonicalUrl = toAbsoluteUrl(baseUrl, faqPath);
     const languages = buildLanguagesMap({ type: "static", key: "faq" }, baseUrl);
 
     return {
@@ -115,8 +117,7 @@ export function createSupportMetadata(locale: Locale) {
     const supportMeta = dictionary.metadata.support;
     const baseUrl = SITE_URL;
     const supportPath = dictionary.routes.support;
-    const supportPathWithSlash = supportPath.endsWith("/") ? supportPath : `${supportPath}/`;
-    const canonicalUrl = new URL(supportPathWithSlash, baseUrl).toString();
+    const canonicalUrl = toAbsoluteUrl(baseUrl, supportPath);
     const languages = buildLanguagesMap({ type: "static", key: "support" }, baseUrl);
 
     return {

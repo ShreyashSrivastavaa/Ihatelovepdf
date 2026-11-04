@@ -7,7 +7,7 @@ import { getOperationsRoutes, getOperationsFooterLabels, getOperationsModeLabels
 
 const locale = "en" as const;
 const { label, nativeName, htmlLang, hrefLang } = localeLabels[locale];
-const siteUrl = "https://ihatelovepdf.com";
+const siteUrl = "https://www.ihatelovepdf.com";
 const homePath = getRoutePath(locale, "home");
 
 const operationsRoutes = getOperationsRoutes(locale);
@@ -57,7 +57,7 @@ export const enDictionary: Dictionary = {
         url: `${siteUrl}${homePath}`,
         locale: "en_US",
         type: "website",
-        imageUrl: "https://ihatelovepdf.com/og-images/og-image-en.png",
+        imageUrl: "https://www.ihatelovepdf.com/og-images/og-image-en.png",
         imageAlt: "ihatelovepdf - Private and free PDF processing toolkit",
       },
     },

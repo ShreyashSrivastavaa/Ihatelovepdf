@@ -9,6 +9,7 @@ const withBundleAnalyzer = bundleAnalyzer({
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   output: "export",
+  trailingSlash: false,
   poweredByHeader: false,
   compress: true,
   images: {

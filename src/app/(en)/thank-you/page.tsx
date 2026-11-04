@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Thank You | ihatelovepdf',
   description: 'Thank you for using ihatelovepdf. Your privacy is always protected with 100% local in-browser processing.',
   alternates: {
-    canonical: 'https://ihatelovepdf.com/thank-you',
+    canonical: 'https://www.ihatelovepdf.com/thank-you',
   },
 };
 

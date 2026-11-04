@@ -7,12 +7,16 @@ import type { OperationKey } from "../../types/operations";
 import { OperationPageContent } from "../../components/OperationPageContent";
 import { SITE_URL, GOOGLE_SITE_VERIFICATION } from "../../lib/site";
 
+function toAbsoluteUrl(baseUrl: string, rawPath: string): string {
+  const cleanPath = rawPath === "/" ? "" : rawPath.replace(/\/$/, "");
+  return `${baseUrl}${cleanPath.startsWith("/") ? cleanPath : "/" + cleanPath}`;
+}
+
 function buildLanguagesMap(operationKey: OperationKey, baseUrl: string) {
   const alternatesMap = getLocalizedAlternateMap({ type: "operation", key: operationKey });
   const entries = (Object.entries(alternatesMap) as [Locale, string][]).map(([localeKey, path]) => {
     const hrefLang = localeLabels[localeKey].hrefLang;
-    const pathWithSlash = path.endsWith("/") ? path : `${path}/`;
-    const absoluteUrl = new URL(pathWithSlash, baseUrl).toString();
+    const absoluteUrl = toAbsoluteUrl(baseUrl, path);
     return [hrefLang, absoluteUrl] as const;
   });
   const languages = Object.fromEntries(entries) as Record<string, string>;
@@ -27,8 +31,7 @@ export function buildOperationMetadata(locale: Locale, operationKey: OperationKe
     const operationMeta = dictionary.metadata.operations[operationKey];
     const baseUrl = SITE_URL;
     const canonicalPath = dictionary.routes.operations[operationKey];
-    const canonicalPathWithSlash = canonicalPath.endsWith("/") ? canonicalPath : `${canonicalPath}/`;
-    const canonicalUrl = new URL(canonicalPathWithSlash, baseUrl).toString();
+    const canonicalUrl = toAbsoluteUrl(baseUrl, canonicalPath);
     const languages = buildLanguagesMap(operationKey, baseUrl);
 
     return {

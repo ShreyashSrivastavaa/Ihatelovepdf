@@ -10,6 +10,8 @@ import OperationToolSwitcherClient from './OperationToolSwitcherClient';
 import RelatedToolsClient from './RelatedToolsClient';
 import FaqSection from './faq-section';
 import NetworkActivityMonitor from './NetworkActivityMonitor';
+import { useLocale } from '../i18n/LocaleProvider';
+import { getOperationPath } from '../i18n/routing';
 import { CheckCircle2, ShieldCheck, Sparkles, HelpCircle, Wrench, ChevronDown } from 'lucide-react';
 
 interface ToolPageLayoutProps {
@@ -36,7 +38,10 @@ export default function ToolPageLayout({ operation, children }: ToolPageLayoutPr
 
   const toolName = OPERATIONS_CATALOG[operation.key]?.label || operation.hero.title;
   const toolDescription = operation.meta.description || operation.hero.description;
-  const toolUrl = `https://www.ihatelovepdf.com/${operation.slug}`;
+  const locale = useLocale();
+  const relativeOpPath = getOperationPath(locale, operation.key);
+  const cleanOpPath = relativeOpPath === '/' ? '' : relativeOpPath.replace(/\/$/, '');
+  const toolUrl = `https://www.ihatelovepdf.com${cleanOpPath.startsWith('/') ? cleanOpPath : '/' + cleanOpPath}`;
 
   const breadcrumbStructuredData = {
     '@context': 'https://schema.org',
