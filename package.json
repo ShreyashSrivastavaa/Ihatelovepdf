@@ -17,7 +17,7 @@
     "bun": ">=1.0.0"
   },
   "scripts": {
-    "build": "next build",
+    "build": "cross-env NODE_OPTIONS=--max-old-space-size=4096 next build",
     "analyze": "cross-env ANALYZE=true next build",
     "dev": "cross-env NODE_OPTIONS=--max-old-space-size=4096 STRICT_LINT=true next dev",
     "lint": "cross-env STRICT_LINT=true next lint",

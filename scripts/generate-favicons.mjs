@@ -80,19 +80,7 @@ async function main() {
   fs.writeFileSync('public/favicon.ico', icoBuffer);
   console.log(`Generated public/favicon.ico (contains 16x16, 32x32, 48x48) - ${icoBuffer.length} bytes`);
 
-  // Also copy favicon.ico and apple-icon.png to src/app/
-  fs.writeFileSync('src/app/favicon.ico', icoBuffer);
-  console.log(`Copied favicon.ico to src/app/favicon.ico`);
-
-  const appleIconBuf = fs.readFileSync('public/apple-icon.png');
-  fs.writeFileSync('src/app/apple-icon.png', appleIconBuf);
-  console.log(`Copied apple-icon.png to src/app/apple-icon.png`);
-
-  const iconBuf = fs.readFileSync('public/icon.png');
-  fs.writeFileSync('src/app/icon.png', iconBuf);
-  console.log(`Copied icon.png to src/app/icon.png`);
-
-  console.log('All icons generated successfully!');
+  console.log('All icons generated successfully in public/ folder!');
 }
 
 main().catch(err => {
