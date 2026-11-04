@@ -26,9 +26,9 @@ export const deDictionary: Dictionary = {
   },
   metadata: {
     site: {
-      title: "ihatelovepdf: Kostenlose PDF-Tools im Browser",
+      title: "ihatelovepdf: Kostenlose PDF-Tools – Ohne Wasserzeichen, Ohne Registrierung",
       description:
-        "ihatelovepdf ist ein datenschutzfreundliches PDF-Toolkit zum Zusammenführen, Komprimieren, Teilen, Extrahieren, Neuordnen und Konvertieren von PDFs in Bilder oder wieder zurück - alles direkt im Browser auf deinem Gerät, ganz ohne Uploads.",
+        "Kostenlose, private PDF-Tools direkt im Browser. PDF zusammenfügen, komprimieren, trennen und konvertieren ohne Wasserzeichen, ohne Registrierung und ohne Server-Upload. Funktioniert offline mit unbegrenzten Aufgaben.",
       keywords: [
         "pdf zusammenführen",
         "pdf komprimieren",

@@ -26,9 +26,9 @@ export const frDictionary: Dictionary = {
   },
   metadata: {
     site: {
-      title: "ihatelovepdf: Outils PDF Gratuits sur Navigateur",
+      title: "ihatelovepdf: Outils PDF Gratuits – Sans Filigrane, Sans Inscription",
       description:
-        "ihatelovepdf est une boîte à outils axée sur la confidentialité qui fusionne, compresse, divise, extrait, pivote et convertit des PDF directement dans votre navigateur. Tout le traitement reste sur l'appareil.",
+        "Boîte à outils PDF gratuite et confidentielle dans votre navigateur. Fusionnez, compressez, divisez et convertissez des PDF sans filigrane, sans inscription et sans téléversement de fichier. Fonctionne hors ligne et en illimité.",
       keywords: [
         "fusionner pdf",
         "compresser pdf",

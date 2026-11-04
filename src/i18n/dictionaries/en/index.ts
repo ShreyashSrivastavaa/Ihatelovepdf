@@ -29,9 +29,9 @@ export const enDictionary: Dictionary = {
   },
   metadata: {
     site: {
-      title: "I Hate Love PDF: Free and Private Browser PDF Tools",
+      title: "I Hate Love PDF: Free PDF Tools - No Watermark, No Sign-Up",
       description:
-        "ihatelovepdf is a private, free web toolkit to merge, compress, split, extract, rotate, reorder, crop, and convert PDFs directly on your device. No file uploads, no tracking, and no accounts required.",
+        "Free, private PDF tools that run 100% locally in your browser. Merge, compress, split, and convert PDFs with no watermarks, no registration, and zero server uploads. Works offline with unlimited tasks.",
       keywords: [
         "merge pdf",
         "compress pdf",

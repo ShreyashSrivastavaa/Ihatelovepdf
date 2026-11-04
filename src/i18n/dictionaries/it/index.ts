@@ -26,9 +26,9 @@ export const itDictionary: Dictionary = {
   },
   metadata: {
     site: {
-      title: "ihatelovepdf: Strumenti PDF Gratuiti nel Browser",
+      title: "ihatelovepdf: Strumenti PDF Gratuiti – Senza Filigrana, Senza Registrazione",
       description:
-        "ihatelovepdf è un insieme di strumenti pensati per la privacy che ti permette di unire, comprimere, dividere, estrarre, riordinare e convertire PDF in immagini e viceversa direttamente nel browser. Tutto viene elaborato sul tuo dispositivo, quindi i tuoi file restano sempre sotto il tuo controllo.",
+        "Strumenti PDF gratuiti e riservati direttamente nel browser. Unisci, comprimi, dividi e converti PDF senza filigrana, senza registrazione e con zero upload su server esterni. Funziona offline e senza limiti.",
       keywords: [
         "unisci pdf",
         "comprimi pdf",

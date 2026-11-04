@@ -26,9 +26,9 @@ export const huDictionary: Dictionary = {
   },
   metadata: {
     site: {
-      title: "ihatelovepdf: Ingyenes PDF-eszközök a böngészőben",
+      title: "ihatelovepdf: Ingyenes PDF-eszközök – Vízjel nélkül, Regisztráció nélkül",
       description:
-        "A ihatelovepdf egy adatvédelemre összpontosító PDF-eszközkészlet, amely közvetlenül a böngészÅ‘dben összefÅ±zi, tömöríti, szétbontja, kinyeri, elforgatja és konvertálja a PDF-eket. Minden feldolgozás az eszközödön marad.",
+        "Ingyenes, privát PDF-eszközök közvetlenül a böngésződben. PDF egyesítés, tömörítés, felosztás és konvertálás vízjel nélkül, regisztráció nélkül és fájlfeltöltés nélkül. Offline is működik korlátlan használattal.",
       keywords: [
         "pdf tömörítés",
         "pdf compress",

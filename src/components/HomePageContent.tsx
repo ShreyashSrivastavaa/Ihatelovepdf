@@ -51,6 +51,18 @@ const TOOL_BADGES: Record<string, string> = {
   posBilling: 'RECEIPT',
 };
 
+const KEYWORD_PILLS_MAP: Record<string, string[]> = {
+  en: ['No Watermark', 'No Sign-Up', 'Zero Uploads', 'Works Offline', 'Unlimited'],
+  es: ['Sin Marcas de Agua', 'Sin Registro', 'Sin Subir Archivos', 'Funciona Sin Conexión', 'Ilimitado'],
+  pt: ['Sem Marca d\'Água', 'Sem Cadastro', 'Zero Uploads', 'Funciona Offline', 'Ilimitado'],
+  de: ['Ohne Wasserzeichen', 'Ohne Registrierung', 'Kein Server-Upload', 'Offline nutzbar', 'Unbegrenzt'],
+  fr: ['Sans Filigrane', 'Sans Inscription', 'Zéro Téléversement', 'Fonctionne Hors Ligne', 'Illimité'],
+  it: ['Senza Filigrana', 'Senza Registrazione', 'Zero Upload', 'Funziona Offline', 'Illimitato'],
+  ro: ['Fără Filigran', 'Fără Înregistrare', 'Fără Încărcare', 'Funcționează Offline', 'Nelimitat'],
+  ru: ['Без водяных знаков', 'Без регистрации', 'Без загрузки', 'Работает офлайн', 'Без ограничений'],
+  hu: ['Vízjel nélkül', 'Regisztráció nélkül', 'Feltöltés nélkül', 'Offline is működik', 'Korlátlan'],
+};
+
 export function HomePageContent({ dictionary }: HomePageContentProps) {
   const { routes, components } = dictionary;
 
@@ -109,11 +121,11 @@ export function HomePageContent({ dictionary }: HomePageContentProps) {
           </h1>
 
           <p className="text-secondary text-base md:text-lg max-w-xl mx-auto">
-            Free PDF tools that run entirely in your browser.
+            {dictionary.pages.home.hero.subtitle || "Free PDF tools that run entirely in your browser."}
           </p>
 
-          <p className="text-xs text-secondary/70 mt-2">
-            100% Client-Side · Zero Server Uploads · No Paywalls
+          <p className="text-xs text-secondary/80 mt-2 font-medium tracking-wide">
+            {(KEYWORD_PILLS_MAP[dictionary.locale] || KEYWORD_PILLS_MAP['en']).join(' · ')}
           </p>
         </section>
 

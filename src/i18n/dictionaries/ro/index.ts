@@ -26,9 +26,9 @@ export const roDictionary: Dictionary = {
   },
   metadata: {
     site: {
-      title: "ihatelovepdf: Instrumente PDF Gratuite în Browser",
+      title: "ihatelovepdf: Instrumente PDF Gratuite – Fără Filigran, Fără Înregistrare",
       description:
-        "ihatelovepdf este un set de instrumente axat pe confidențialitate care unește, comprimă, divide, extrage, rotește și convertește PDF-uri direct în browser. Toată procesarea rămâne pe dispozitivul tău.",
+        "Instrumente PDF gratuite și private direct în browser. Unește, comprimă, împarte și convertește fișiere PDF fără filigran, fără înregistrare și fără încărcare pe server. Funcționează offline cu utilizare nelimitată.",
       keywords: [
         "uneste pdf",
         "merge pdf",

@@ -26,9 +26,9 @@ export const ptDictionary: Dictionary = {
   },
   metadata: {
     site: {
-      title: "ihatelovepdf: Ferramentas PDF Grátis no Navegador",
+      title: "ihatelovepdf: Ferramentas PDF Grátis - Sem Marca d'Água, Sem Cadastro",
       description:
-        "ihatelovepdf é um kit de ferramentas focado em privacidade para juntar, comprimir, dividir, extrair, reorganizar e converter PDFs em imagens ou imagens em PDF direto no navegador. Todo o processamento acontece no seu dispositivo, sem uploads.",
+        "Ferramentas de PDF gratuitas e 100% privadas no seu navegador. Junte, comprima, divida e converta PDFs sem marca d'água, sem cadastro e com zero uploads para servidores. Funciona offline com tarefas ilimitadas.",
       keywords: [
         "juntar pdf",
         "comprimir pdf",
