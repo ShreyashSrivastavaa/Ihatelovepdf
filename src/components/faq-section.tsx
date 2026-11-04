@@ -51,26 +51,34 @@ export default function FaqSection() {
 
   return (
     <section className="my-10">
-      <h2 className="text-2xl font-bold mb-6 text-center">{labels.title}</h2>
+      <h2 className="text-2xl font-bold tracking-tight mb-6 text-center text-primary">{labels.title}</h2>
 
-      <div className="max-w-3xl mx-auto">
-        {faqs.map((faq, index) => (
-          <div key={`${faq.question}-${index}`} className="mb-4 border border-[var(--ui-2)] rounded-lg overflow-hidden">
-            <button
-              className="w-full text-left p-4 flex justify-between items-center font-medium hover:bg-[var(--ui)]/10 transition-colors"
-              onClick={() => toggleQuestion(index)}
+      <div className="max-w-3xl mx-auto space-y-3">
+        {faqs.map((faq, index) => {
+          const isOpen = openIndex === index;
+          return (
+            <div
+              key={`${faq.question}-${index}`}
+              className="border border-border rounded-[10px] bg-main overflow-hidden transition-colors"
             >
-              <span>{faq.question}</span>
-              <span className="text-xl">{openIndex === index ? "−" : "+"}</span>
-            </button>
+              <button
+                type="button"
+                aria-expanded={isOpen}
+                className="w-full text-left px-5 py-4 flex justify-between items-center text-sm font-semibold text-primary hover:bg-alt transition-colors cursor-pointer"
+                onClick={() => toggleQuestion(index)}
+              >
+                <span className="pr-4">{faq.question}</span>
+                <span className="text-base text-secondary font-mono">{isOpen ? "−" : "+"}</span>
+              </button>
 
-            {openIndex === index && (
-              <div className="p-4 pt-4 bg-[var(--bg-2)] text-[var(--tx-2)]">
-                <p>{faq.answer}</p>
-              </div>
-            )}
-          </div>
-        ))}
+              {isOpen && (
+                <div className="px-5 pb-5 pt-1 text-sm text-secondary leading-relaxed border-t border-border/50 bg-main">
+                  <p>{faq.answer}</p>
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
       <FaqSchema data={faqs} />
     </section>
