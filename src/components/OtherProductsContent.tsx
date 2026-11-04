@@ -91,85 +91,80 @@ export default function OtherProductsContent() {
   );
 
   return (
-    <div className="min-h-screen bg-[var(--bg)] text-[var(--tx)] transition-colors duration-200 py-10 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[var(--bg-main)] text-[var(--text-main)] transition-colors duration-150 py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto space-y-10">
         
         {/* Header Section */}
         <header className="text-center space-y-3 max-w-2xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--accent-soft)] border border-[var(--accent-border)] text-[11px] font-bold text-[var(--accent)] uppercase tracking-wider">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--brand-soft)] border border-[var(--brand)]/20 text-xs font-semibold text-[var(--brand)] uppercase tracking-wider">
             <Sparkles className="h-3 w-3" />
             <span>Developer Ecosystem Directory</span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[var(--tx)]">
+          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[var(--text-main)]">
             Our Products
           </h1>
 
-          <p className="text-sm text-[var(--tx-2)] leading-relaxed">
-            Developer platforms built by our team alongside <strong className="text-[var(--tx)]">ihatelovepdf</strong>.
+          <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+            Developer platforms built by our team alongside <strong className="text-[var(--text-main)]">ihatelovepdf</strong>.
           </p>
 
           {/* Search & Counter Bar */}
           <div className="pt-2 max-w-md mx-auto relative">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[var(--tx-3)] pointer-events-none" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[var(--text-muted)] pointer-events-none" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search products, keywords, or topics..."
-              className="w-full pl-10 pr-4 py-2 text-xs rounded-xl border border-[var(--border)] bg-[var(--bg-card)] text-[var(--tx)] placeholder:text-[var(--tx-3)] focus:outline-none focus:border-[var(--accent)] transition-colors shadow-xs"
+              className="w-full pl-9 pr-4 py-2 text-xs rounded-xl border border-[var(--border)] bg-[var(--card)] text-[var(--text-main)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-[var(--brand)] transition-colors"
             />
           </div>
         </header>
 
         {/* Matrix Grid: 3 Columns with Multiple Rows */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {filteredProducts.map((product) => {
             const Icon = product.icon;
             return (
               <div
                 key={product.id}
-                className={`surface-card rounded-2xl border border-[var(--border)] p-5 flex flex-col justify-between group transition-all duration-200 shadow-md ${product.borderHover} hover:shadow-lg relative overflow-hidden`}
+                className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 flex flex-col justify-between group transition-all duration-150 hover:border-[var(--brand)] relative overflow-hidden"
               >
-                {/* Background Glow */}
-                <div
-                  className={`absolute -right-12 -top-12 w-36 h-36 bg-gradient-to-br ${product.gradient} rounded-full blur-2xl pointer-events-none group-hover:scale-125 transition-transform`}
-                />
-
                 {/* Top Card Info */}
-                <div className="space-y-3.5 relative z-10">
+                <div className="space-y-3 relative z-10">
                   <div className="flex items-center justify-between gap-2">
                     <div className="flex items-center gap-2.5">
-                      <div className={`w-9 h-9 rounded-xl border flex items-center justify-center shrink-0 ${product.iconBg} ${product.iconColor}`}>
-                        <Icon className="h-4.5 w-4.5" />
+                      <div className={`w-8 h-8 rounded-lg border flex items-center justify-center shrink-0 ${product.iconBg} ${product.iconColor}`}>
+                        <Icon className="h-4 w-4" />
                       </div>
                       <div>
-                        <span className="text-[9px] font-mono font-bold tracking-wider text-[var(--tx-3)] uppercase block leading-none">
+                        <span className="text-[9px] font-mono font-semibold tracking-wider text-[var(--text-muted)] uppercase block leading-none">
                           {product.category}
                         </span>
-                        <h2 className="text-base font-bold text-[var(--tx)] group-hover:text-[var(--accent)] transition-colors">
+                        <h2 className="text-base font-bold text-[var(--text-main)] group-hover:text-[var(--brand)] transition-colors">
                           {product.name}
                         </h2>
                       </div>
                     </div>
 
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-[var(--bg-subtle)] border border-[var(--border)] text-[var(--tx-2)] font-semibold shrink-0">
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-[var(--subtle)] border border-[var(--border)] text-[var(--text-muted)] font-medium shrink-0">
                       {product.badge}
                     </span>
                   </div>
 
-                  <p className="text-xs text-[var(--tx-2)] line-clamp-3 leading-relaxed">
+                  <p className="text-xs text-[var(--text-muted)] line-clamp-3 leading-relaxed">
                     {product.description}
                   </p>
 
                   {/* Highlights Tags */}
-                  <div className="flex flex-wrap gap-1.5 pt-1">
+                  <div className="flex flex-wrap gap-1 pt-1">
                     {product.highlights.map((item) => (
                       <span
                         key={item}
-                        className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-[var(--bg)] border border-[var(--border)] text-[var(--tx-2)]"
+                        className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md bg-[var(--subtle)] border border-[var(--border)] text-[var(--text-muted)]"
                       >
-                        <CheckCircle2 className="h-2.5 w-2.5 text-emerald-500" />
+                        <CheckCircle2 className="h-2.5 w-2.5 text-emerald-600 dark:text-emerald-400" />
                         <span>{item}</span>
                       </span>
                     ))}
@@ -177,15 +172,15 @@ export default function OtherProductsContent() {
                 </div>
 
                 {/* Bottom CTA Launch Link */}
-                <div className="pt-4 mt-3 border-t border-[var(--border)] relative z-10">
+                <div className="pt-3.5 mt-3 border-t border-[var(--border)] relative z-10">
                   <a
                     href={product.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`w-full inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r ${product.ctaClass} font-bold text-xs shadow-sm active:scale-95 transition-all cursor-pointer`}
+                    className="w-full inline-flex items-center justify-center gap-2 px-3.5 py-1.5 rounded-lg border border-[var(--border)] bg-[var(--subtle)] hover:border-[var(--brand)] hover:text-[var(--brand)] font-semibold text-xs transition-colors cursor-pointer text-[var(--text-main)]"
                   >
                     <span>Visit {product.name.replace(/ ⚽/, '')}</span>
-                    <ExternalLink className="h-3.5 w-3.5 stroke-[2.5]" />
+                    <ExternalLink className="h-3 w-3" />
                   </a>
                 </div>
               </div>
@@ -194,20 +189,20 @@ export default function OtherProductsContent() {
         </div>
 
         {/* Bottom Philosophy & Return */}
-        <footer className="surface-card rounded-2xl p-6 border border-[var(--border)] text-center space-y-3 max-w-2xl mx-auto">
-          <div className="w-9 h-9 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-500 flex items-center justify-center mx-auto">
+        <footer className="rounded-xl p-6 border border-[var(--border)] bg-[var(--card)] text-center space-y-2.5 max-w-xl mx-auto">
+          <div className="w-8 h-8 rounded-lg bg-[var(--brand-soft)] border border-[var(--brand)]/20 text-[var(--brand)] flex items-center justify-center mx-auto">
             <Heart className="h-4 w-4 fill-current" />
           </div>
-          <h3 className="text-sm font-bold text-[var(--tx)]">
-            Privacy Focused Developer Tools
+          <h3 className="text-sm font-bold text-[var(--text-main)]">
+            Privacy-Focused Developer Tools
           </h3>
-          <p className="text-xs text-[var(--tx-2)] leading-relaxed max-w-lg mx-auto">
+          <p className="text-xs text-[var(--text-muted)] leading-relaxed max-w-md mx-auto">
             Built for developers, students, and engineers around the world with no trackers, fast performance, and local processing.
           </p>
           <div className="pt-1">
             <Link
               href="/"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--accent)] hover:underline"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--brand)] hover:underline"
             >
               <span>Back to ihatelovepdf tools</span>
               <ArrowRight className="h-3 w-3" />
