@@ -83,8 +83,16 @@ export default function RoLayout({ children }: { children: ReactNode }) {
           <Suspense fallback={null}>
             <GaPageViewTracker />
           </Suspense>
+          <a
+            href="#main-content"
+            className="sr-only z-[100] rounded-md bg-[var(--color-primary)] px-4 py-2 text-[var(--color-main)] focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:shadow-md font-medium text-sm border border-[var(--color-border)]"
+          >
+            Skip to main content
+          </a>
           <NavMenu />
-          <main>{children}</main>
+          <main id="main-content" tabIndex={-1} className="outline-none flex-grow">
+            {children}
+          </main>
 
           <Footer />
           <CookieBanner />
