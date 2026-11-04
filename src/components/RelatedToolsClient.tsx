@@ -82,15 +82,15 @@ export default function RelatedToolsClient({ currentMode }: { currentMode: strin
               href={href}
               prefetch={true}
               id={`related-tool-${key}`}
-              className="group surface-card p-4 space-y-2 hover:border-[var(--accent-border)] hover:shadow-sm transition-all duration-200 flex flex-col"
+              className="group rounded-xl border border-[var(--border)] bg-[var(--card)] p-4 space-y-2 hover:border-[var(--brand)] transition-all duration-150 flex flex-col"
             >
-              <span className="text-sm font-semibold text-[var(--tx)] group-hover:text-[var(--accent)] transition-colors leading-tight">
+              <span className="text-sm font-semibold text-[var(--text-main)] group-hover:text-[var(--brand)] transition-colors leading-tight">
                 {footerLabel}
               </span>
-              <p className="text-xs text-[var(--tx-3)] leading-relaxed line-clamp-2 flex-1">
+              <p className="text-xs text-[var(--text-muted)] leading-relaxed line-clamp-2 flex-1">
                 {op.hero.description}
               </p>
-              <span className="inline-flex items-center gap-1 text-xs font-medium text-[var(--accent)] opacity-0 group-hover:opacity-100 transition-opacity duration-150">
+              <span className="inline-flex items-center gap-1 text-xs font-medium text-[var(--brand)] opacity-0 group-hover:opacity-100 transition-opacity duration-150">
                 Open tool <ArrowRight className="h-3 w-3" />
               </span>
             </Link>
