@@ -78,72 +78,72 @@ export default function SmallpdfAlternativePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--bg)] text-[var(--tx)]">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16 space-y-12">
-        <div className="text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[var(--accent-border)] bg-[var(--accent-soft)] text-xs font-semibold text-[var(--accent)]">
-            <Sparkles className="h-4 w-4" />
+    <div className="min-h-screen bg-[var(--bg-main)] text-[var(--text-main)]">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16 space-y-10">
+        <div className="text-center space-y-3">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-[var(--brand)]/20 bg-[var(--brand-soft)] text-xs font-semibold text-[var(--brand)]">
+            <Sparkles className="h-3.5 w-3.5" />
             <span>Honest Comparison</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[var(--tx)] leading-tight">
+          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[var(--text-main)] leading-tight">
             The Truly Free Alternative to Smallpdf
           </h1>
-          <p className="text-base sm:text-lg text-[var(--tx-2)] max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base text-[var(--text-muted)] max-w-2xl mx-auto leading-relaxed">
             Hit Smallpdf daily task limit? I Hate Love PDF provides fast, private, and unlimited PDF utilities without subscription paywalls.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="surface-card p-6 space-y-3">
-            <div className="h-10 w-10 rounded-xl bg-[var(--accent-soft)] text-[var(--accent)] flex items-center justify-center">
-              <Zap className="h-5 w-5" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="p-5 rounded-xl border border-[var(--border)] bg-[var(--card)] space-y-2">
+            <div className="h-9 w-9 rounded-lg bg-[var(--brand-soft)] border border-[var(--brand)]/20 text-[var(--brand)] flex items-center justify-center">
+              <Zap className="h-4 w-4" />
             </div>
-            <h2 className="text-lg font-bold text-[var(--tx)]">No Daily Task Caps</h2>
-            <p className="text-sm text-[var(--tx-2)] leading-relaxed">
+            <h2 className="text-base font-bold text-[var(--text-main)]">No Daily Task Caps</h2>
+            <p className="text-xs text-[var(--text-muted)] leading-relaxed">
               Unlike Smallpdf one-task limit, you can merge, compress, rotate, and edit as many files as you need each day.
             </p>
           </div>
-          <div className="surface-card p-6 space-y-3">
-            <div className="h-10 w-10 rounded-xl bg-[var(--success-soft)] text-[var(--success)] flex items-center justify-center">
-              <Lock className="h-5 w-5" />
+          <div className="p-5 rounded-xl border border-[var(--border)] bg-[var(--card)] space-y-2">
+            <div className="h-9 w-9 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+              <Lock className="h-4 w-4" />
             </div>
-            <h2 className="text-lg font-bold text-[var(--tx)]">Private In-Browser Engine</h2>
-            <p className="text-sm text-[var(--tx-2)] leading-relaxed">
+            <h2 className="text-base font-bold text-[var(--text-main)]">Private In-Browser Engine</h2>
+            <p className="text-xs text-[var(--text-muted)] leading-relaxed">
               Your confidential contracts, tax returns, and bank statements are never transmitted to third-party cloud servers.
             </p>
           </div>
-          <div className="surface-card p-6 space-y-3">
-            <div className="h-10 w-10 rounded-xl bg-[var(--success-soft)] text-[var(--success)] flex items-center justify-center">
-              <ShieldCheck className="h-5 w-5" />
+          <div className="p-5 rounded-xl border border-[var(--border)] bg-[var(--card)] space-y-2">
+            <div className="h-9 w-9 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+              <ShieldCheck className="h-4 w-4" />
             </div>
-            <h2 className="text-lg font-bold text-[var(--tx)]">Zero Paywalls</h2>
-            <p className="text-sm text-[var(--tx-2)] leading-relaxed">
+            <h2 className="text-base font-bold text-[var(--text-main)]">Zero Paywalls</h2>
+            <p className="text-xs text-[var(--text-muted)] leading-relaxed">
               No countdown timers, deceptive trial traps, or unexpected credit card billing. The tool stays free forever.
             </p>
           </div>
         </div>
 
-        <section className="space-y-6">
-          <h2 className="text-2xl font-bold tracking-tight text-[var(--tx)] text-center">
+        <section className="space-y-4">
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-main)] text-center">
             Smallpdf vs I Hate Love PDF: Core Differences
           </h2>
-          <div className="overflow-x-auto rounded-2xl border border-[var(--border)] surface-card">
-            <table className="w-full text-left border-collapse text-sm">
+          <div className="overflow-x-auto rounded-xl border border-[var(--border)] bg-[var(--card)]">
+            <table className="w-full text-left border-collapse text-xs sm:text-sm">
               <thead>
-                <tr className="border-b border-[var(--border)] bg-[var(--bg-subtle)] text-[var(--tx)]">
-                  <th className="p-4 font-bold">Criteria</th>
-                  <th className="p-4 font-bold">Smallpdf</th>
-                  <th className="p-4 font-bold text-[var(--accent)]">I Hate Love PDF</th>
+                <tr className="border-b border-[var(--border)] bg-[var(--subtle)] text-[var(--text-main)]">
+                  <th className="p-3.5 font-semibold">Criteria</th>
+                  <th className="p-3.5 font-semibold">Smallpdf</th>
+                  <th className="p-3.5 font-semibold text-[var(--brand)]">I Hate Love PDF</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[var(--border)]">
                 {comparisonPoints.map((point) => (
-                  <tr key={point.feature} className="hover:bg-[var(--bg-card)] transition-colors">
-                    <td className="p-4 font-semibold text-[var(--tx)] align-top">{point.feature}</td>
-                    <td className="p-4 text-[var(--tx-2)] align-top">{point.smallpdf}</td>
-                    <td className="p-4 text-[var(--tx)] align-top font-medium">
+                  <tr key={point.feature} className="hover:bg-[var(--subtle)] transition-colors">
+                    <td className="p-3.5 font-medium text-[var(--text-main)] align-top">{point.feature}</td>
+                    <td className="p-3.5 text-[var(--text-muted)] align-top">{point.smallpdf}</td>
+                    <td className="p-3.5 text-[var(--text-main)] align-top font-medium">
                       <div className="flex items-start gap-2">
-                        <CheckCircle2 className="h-4 w-4 text-[var(--success)] shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
                         <span>{point.ourSite}</span>
                       </div>
                     </td>
@@ -154,8 +154,8 @@ export default function SmallpdfAlternativePage() {
           </div>
         </section>
 
-        <section className="surface-card p-6 sm:p-8 space-y-6 leading-relaxed text-[var(--tx-2)]">
-          <h2 className="text-2xl font-bold tracking-tight text-[var(--tx)]">
+        <section className="p-6 sm:p-7 rounded-xl border border-[var(--border)] bg-[var(--card)] space-y-4 leading-relaxed text-xs sm:text-sm text-[var(--text-muted)]">
+          <h2 className="text-lg sm:text-xl font-bold tracking-tight text-[var(--text-main)]">
             A Better Workflow for Students, Freelancers, and Small Teams
           </h2>
           <p>
@@ -164,17 +164,17 @@ export default function SmallpdfAlternativePage() {
           <p>
             I Hate Love PDF was engineered by Shreyash Srivastava to solve this exact problem: a fast, privacy-first alternative that respects your time and your data. It runs directly inside modern web browsers without server uploads, so you can finish your work in seconds.
           </p>
-          <div className="pt-4 flex flex-wrap gap-4">
+          <div className="pt-2 flex flex-wrap gap-3">
             <Link
               href="/compress"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--accent)] text-white font-semibold text-sm hover:opacity-95 transition-opacity"
+              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-lg bg-[var(--brand)] text-white font-medium text-xs sm:text-sm hover:opacity-95 transition-opacity"
             >
               <span>Compress PDF Without Limits</span>
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-3.5 w-3.5" />
             </Link>
             <Link
               href="/tools"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-[var(--border)] surface-card font-semibold text-sm text-[var(--tx)] hover:border-[var(--accent-border)] transition-colors"
+              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-lg border border-[var(--border)] bg-[var(--subtle)] font-medium text-xs sm:text-sm text-[var(--text-main)] hover:border-[var(--brand)] transition-colors"
             >
               <span>Browse All Tools</span>
             </Link>
