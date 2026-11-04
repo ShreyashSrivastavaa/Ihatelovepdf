@@ -32,20 +32,20 @@ export default function ToolFirstVisitBanner() {
     <div
       role="region"
       aria-label="Privacy notice"
-      className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-4 py-3 rounded-2xl border border-[var(--success-border)] bg-[var(--success-soft)] text-xs text-[var(--tx)] shadow-xs transition-all duration-300 animate-in fade-in slide-in-from-top-2"
+      className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-4 py-2.5 rounded-xl border border-emerald-500/20 bg-emerald-500/5 text-xs text-[var(--text-main)] transition-all duration-300 animate-in fade-in"
     >
       <div className="flex items-center gap-2.5">
-        <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-xl bg-[var(--success)] text-white shadow-xs">
-          <ShieldCheck className="h-4 w-4" />
+        <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+          <ShieldCheck className="h-3.5 w-3.5" />
         </div>
         <div>
-          <p className="font-bold text-[var(--tx)] flex items-center gap-1.5">
+          <p className="font-semibold text-[var(--text-main)] flex items-center gap-2">
             <span>Runs 100% locally in your browser</span>
-            <span className="inline-flex items-center gap-0.5 px-1.5 py-0.2 rounded-full bg-[var(--success)]/20 text-[var(--success)] text-[10px] font-extrabold uppercase tracking-wider">
+            <span className="inline-flex items-center px-1.5 py-0.2 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold uppercase tracking-wider">
               Private
             </span>
           </p>
-          <p className="text-[var(--tx-2)] text-[11px] leading-snug">
+          <p className="text-[var(--text-muted)] text-[11px] leading-snug">
             Your files are processed directly on your device inside your browser. No files are ever uploaded to remote servers.
           </p>
         </div>
@@ -56,7 +56,7 @@ export default function ToolFirstVisitBanner() {
           type="button"
           onClick={handleDismiss}
           aria-label="Dismiss privacy notice"
-          className="p-1 rounded-lg text-[var(--tx-3)] hover:text-[var(--tx)] hover:bg-[var(--bg-subtle)] transition-colors cursor-pointer"
+          className="p-1 rounded-lg text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--subtle)] transition-colors cursor-pointer"
         >
           <X className="h-4 w-4" />
         </button>
