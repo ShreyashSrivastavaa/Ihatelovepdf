@@ -2,12 +2,61 @@
 
 import { useMemo } from 'react';
 import Image from 'next/image';
-import { useDictionary } from '../i18n/LocaleProvider';
+import { useDictionary, useLocale } from '../i18n/LocaleProvider';
+import type { Locale } from '../i18n/config';
 import type { Dictionary } from '../i18n/dictionaries/dictionary-types';
 import HomeToolsExplorer, { type ToolExplorerItem } from './HomeToolsExplorer';
 import { TOOL_DESCRIPTIONS } from './ToolSwitcher';
 import { OPERATIONS_CATALOG } from '../i18n/operations-catalog';
 import FaqSection from './faq-section';
+
+const TOOLS_PAGE_STRINGS: Record<Locale, { title: string; subtitle: string; badge: string }> = {
+  en: {
+    title: 'All PDF Tools',
+    subtitle: 'Browse all 36 free PDF tools. Everything runs locally in your browser with zero server uploads.',
+    badge: '100% Client-Side · Private & Secure · Free Forever',
+  },
+  es: {
+    title: 'Todas las Herramientas PDF',
+    subtitle: 'Explora las 36 herramientas gratuitas. Todo se procesa localmente en tu navegador sin subir archivos.',
+    badge: '100% en el Navegador · Privado y Seguro · Siempre Gratis',
+  },
+  pt: {
+    title: 'Todas as Ferramentas de PDF',
+    subtitle: 'Navegue por todas as 36 ferramentas gratuitas. Tudo roda localmente no navegador sem envio de arquivos.',
+    badge: '100% no Navegador · Privado e Seguro · Sempre Grátis',
+  },
+  de: {
+    title: 'Alle PDF-Tools',
+    subtitle: 'Entdecken Sie alle 36 kostenlosen PDF-Tools. Alles läuft lokal im Browser ohne Server-Uploads.',
+    badge: '100% im Browser · Privat & Sicher · Für immer kostenlos',
+  },
+  it: {
+    title: 'Tutti gli Strumenti PDF',
+    subtitle: 'Esplora tutti i 36 strumenti PDF gratuiti. Tutto funziona localmente nel browser senza caricamenti.',
+    badge: '100% nel Browser · Privato e Sicuro · Sempre Gratuito',
+  },
+  fr: {
+    title: 'Tous les Outils PDF',
+    subtitle: 'Découvrez les 36 outils PDF gratuits. Tout s’exécute localement dans le navigateur sans téléversement.',
+    badge: '100% dans le Navigateur · Privé et Sécurisé · Gratuit pour toujours',
+  },
+  ro: {
+    title: 'Toate Instrumentele PDF',
+    subtitle: 'Descoperă toate cele 36 de instrumente PDF gratuite. Totul rulează local în browser fără încărcări.',
+    badge: '100% în Browser · Privat și Sigur · Gratuit pentru totdeauna',
+  },
+  ru: {
+    title: 'Все инструменты PDF',
+    subtitle: 'Ознакомьтесь со всеми 36 бесплатными инструментами PDF. Все работает локально в браузере без загрузок на сервер.',
+    badge: '100% в браузере · Конфиденциально и безопасно · Навсегда бесплатно',
+  },
+  hu: {
+    title: 'Minden PDF Eszköz',
+    subtitle: 'Böngésszen mind a 36 ingyenes PDF-eszköz között. Minden helyben fut a böngészőben szerverfeltöltés nélkül.',
+    badge: '100% a böngészőben · Privát és biztonságos · Örökké ingyenes',
+  },
+};
 
 const CATEGORY_MAP: Record<string, string[]> = {
   Organize: ['merge', 'split', 'compress', 'extract', 'crop', 'rotate', 'reorder', 'pdfToZip'],
@@ -50,8 +99,10 @@ const TOOL_BADGES: Record<string, string> = {
 
 export function ToolsPageContent({ dictionary: propDictionary }: { dictionary?: Dictionary } = {}) {
   const contextDictionary = useDictionary();
+  const currentLocale = useLocale();
   const dictionary = propDictionary || contextDictionary;
   const { routes, components } = dictionary;
+  const pageStrings = TOOLS_PAGE_STRINGS[currentLocale] || TOOLS_PAGE_STRINGS.en;
 
   const allTools: ToolExplorerItem[] = useMemo(() => {
     const operationKeys = Object.keys(routes.operations);
@@ -85,7 +136,7 @@ export function ToolsPageContent({ dictionary: propDictionary }: { dictionary?: 
         badge,
       };
     });
-  }, [routes.operations, components.footer.operations]);
+  }, [routes, components]);
 
   return (
     <div className="w-full">
@@ -105,15 +156,15 @@ export function ToolsPageContent({ dictionary: propDictionary }: { dictionary?: 
           </div>
 
           <h1 className="text-4xl md:text-5xl font-black text-primary tracking-tight mb-2">
-            All PDF Tools
+            {pageStrings.title}
           </h1>
 
           <p className="text-secondary text-base md:text-lg max-w-xl mx-auto">
-            Browse all 36 free PDF tools. Everything runs locally in your browser with zero server uploads.
+            {pageStrings.subtitle}
           </p>
 
           <p className="text-xs text-secondary/70 mt-2">
-            100% Client-Side · Private &amp; Secure · Free Forever
+            {pageStrings.badge}
           </p>
         </section>
 

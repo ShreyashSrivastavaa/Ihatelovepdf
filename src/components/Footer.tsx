@@ -3,15 +3,17 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useDictionary } from '../i18n/LocaleProvider';
+import { useDictionary, useLocale } from '../i18n/LocaleProvider';
 import ContactModal from './ContactModal';
 import { ShieldCheck, Coffee } from 'lucide-react';
 
 export default function Footer() {
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const locale = useLocale();
   const dictionary = useDictionary();
   const footer = dictionary.components.footer;
   const routes = dictionary.routes;
+  const toolsHref = locale === 'en' ? '/tools' : `/${locale}/tools`;
 
   return (
     <>
@@ -40,13 +42,13 @@ export default function Footer() {
 
           {/* Primary Navigation Links */}
           <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 text-xs sm:text-sm">
-            <Link href="/tools" prefetch={true} className="hover:text-primary transition-colors">
+            <Link href={toolsHref} prefetch={true} className="hover:text-primary transition-colors">
               All Tools
             </Link>
-            <Link href={routes.privacy || '/privacy'} prefetch={true} className="hover:text-primary transition-colors">
+            <Link href="/privacy" prefetch={true} className="hover:text-primary transition-colors">
               Privacy Policy
             </Link>
-            <Link href={routes.terms || '/terms'} prefetch={true} className="hover:text-primary transition-colors">
+            <Link href="/terms" prefetch={true} className="hover:text-primary transition-colors">
               Terms of Service
             </Link>
             <Link href="/guides" prefetch={true} className="hover:text-primary transition-colors">

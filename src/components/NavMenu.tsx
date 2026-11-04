@@ -2,10 +2,10 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
-import { useMemo, useState, useEffect, useRef, type ChangeEvent } from 'react';
+import { usePathname } from 'next/navigation';
+import { useMemo, useState, useEffect, useRef } from 'react';
 import { useDictionary, useLocale } from '../i18n/LocaleProvider';
-import { SUPPORTED_LOCALES, localeLabels, type Locale } from '../i18n/config';
+import { SUPPORTED_LOCALES, localeLabels } from '../i18n/config';
 import { getLocalizedAlternateMap, getRouteIdentifierForPath, getRoutePath } from '../i18n/routing';
 import ContactModal from './ContactModal';
 import {
@@ -23,20 +23,22 @@ import { useTheme } from './ThemeProvider';
 
 export default function NavMenu() {
   const pathname = usePathname();
-  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [isConvertOpen, setIsConvertOpen] = useState(false);
   const [isAllToolsOpen, setIsAllToolsOpen] = useState(false);
+  const [isLangOpen, setIsLangOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   const convertDropdownRef = useRef<HTMLDivElement>(null);
   const allToolsDropdownRef = useRef<HTMLDivElement>(null);
+  const langDropdownRef = useRef<HTMLDivElement>(null);
 
   const dictionary = useDictionary();
   const locale = useLocale();
   const { theme, toggleTheme } = useTheme();
   const { nav } = dictionary.components;
   const routes = dictionary.routes;
+  const toolsHref = locale === 'en' ? '/tools' : `/${locale}/tools`;
 
   const isActive = (path: string) => pathname === path;
 
@@ -55,12 +57,19 @@ export default function NavMenu() {
       ) {
         setIsAllToolsOpen(false);
       }
+      if (
+        langDropdownRef.current &&
+        !langDropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsLangOpen(false);
+      }
     }
 
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === 'Escape') {
         setIsConvertOpen(false);
         setIsAllToolsOpen(false);
+        setIsLangOpen(false);
         setIsOpen(false);
       }
     }
@@ -98,16 +107,10 @@ export default function NavMenu() {
     }));
   }, [routeIdentifier]);
 
-  const handleLocaleChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    const nextLocale = event.target.value as Locale;
-    const target = languageOptions.find((option) => option.locale === nextLocale)?.href;
-    setIsOpen(false);
-    router.push(target ?? getRoutePath(nextLocale, 'home'));
-  };
-
   const closeDropdowns = () => {
     setIsConvertOpen(false);
     setIsAllToolsOpen(false);
+    setIsLangOpen(false);
     setIsOpen(false);
   };
 
@@ -445,7 +448,7 @@ export default function NavMenu() {
                         Blog
                       </Link>
                       <Link
-                        href="/tools"
+                        href={toolsHref}
                         onClick={closeDropdowns}
                         className="inline-flex items-center gap-1 text-xs font-semibold text-brand hover:underline"
                       >
@@ -494,28 +497,67 @@ export default function NavMenu() {
                 <span className="hidden xl:inline">Coffee</span>
               </Link>
 
-              {/* Language Switcher */}
-              <div className="relative inline-flex items-center gap-1 rounded-lg border border-border bg-main px-2 py-1 text-xs text-secondary shadow-xs hover:border-hover">
-                <Globe className="h-3.5 w-3.5 text-secondary shrink-0" />
-                <label className="sr-only" htmlFor="nav-language-select-desktop">
-                  {nav.languageLabel}
-                </label>
-                <select
-                  id="nav-language-select-desktop"
-                  className="bg-transparent font-medium text-primary text-xs focus:outline-none cursor-pointer pr-1"
-                  value={locale}
-                  onChange={handleLocaleChange}
+              {/* Language Switcher (Crawlable & Accessible Dropdown) */}
+              <div ref={langDropdownRef} className="relative inline-flex items-center">
+                <button
+                  type="button"
+                  aria-label={nav.languageLabel}
+                  aria-expanded={isLangOpen}
+                  aria-haspopup="true"
+                  onClick={() => {
+                    setIsLangOpen(!isLangOpen);
+                    setIsConvertOpen(false);
+                    setIsAllToolsOpen(false);
+                  }}
+                  className={`inline-flex items-center gap-1.5 rounded-lg border border-border bg-main px-2.5 py-1.5 text-xs font-semibold text-secondary shadow-xs hover:border-hover hover:text-primary transition-colors cursor-pointer ${
+                    isLangOpen ? 'border-primary text-primary bg-alt' : ''
+                  }`}
                 >
-                  {languageOptions.map((option) => (
-                    <option
-                      key={option.locale}
-                      value={option.locale}
-                      className="bg-main text-primary"
-                    >
-                      {option.locale.toUpperCase()}
-                    </option>
-                  ))}
-                </select>
+                  <Globe className="h-3.5 w-3.5 text-secondary shrink-0" />
+                  <span className="uppercase tracking-wide">{locale}</span>
+                  <ChevronDown
+                    className={`h-3 w-3 text-secondary transition-transform duration-150 ${
+                      isLangOpen ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+
+                {isLangOpen && (
+                  <div
+                    role="menu"
+                    aria-label={nav.languageLabel}
+                    className="absolute right-0 top-full mt-1.5 w-48 rounded-xl border border-border bg-main p-1.5 shadow-xl z-50 animate-fade-in"
+                  >
+                    <div className="px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-secondary/70 border-b border-border mb-1">
+                      {nav.languageLabel}
+                    </div>
+                    <div className="max-h-72 overflow-y-auto space-y-0.5">
+                      {languageOptions.map((option) => (
+                        <Link
+                          key={option.locale}
+                          href={option.href}
+                          hrefLang={option.locale}
+                          lang={option.locale}
+                          role="menuitem"
+                          onClick={() => {
+                            setIsLangOpen(false);
+                            closeDropdowns();
+                          }}
+                          className={`flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors ${
+                            option.locale === locale
+                              ? 'bg-alt text-primary font-bold'
+                              : 'text-secondary hover:bg-alt hover:text-primary'
+                          }`}
+                        >
+                          <span className="truncate">{localeLabels[option.locale].nativeName}</span>
+                          <span className="text-[10px] font-mono uppercase text-secondary/60 ml-2 shrink-0">
+                            {option.locale}
+                          </span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* BoringPDF-Style Dark Mode Switch */}
@@ -650,7 +692,7 @@ export default function NavMenu() {
           {/* Site Navigation Links */}
           <div className="space-y-1 border-t border-border pt-4">
             <Link
-              href="/tools"
+              href={toolsHref}
               onClick={closeDropdowns}
               className="flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold text-primary hover:bg-alt transition-colors"
             >
@@ -706,23 +748,32 @@ export default function NavMenu() {
           </div>
         </div>
 
-        {/* Mobile Drawer Bottom: Language Selector */}
-        <div className="p-4 border-t border-border bg-alt flex items-center justify-between">
-          <span className="text-xs font-medium text-secondary">{nav.languageLabel}</span>
-          <div className="relative inline-flex items-center rounded-md border border-border bg-main px-2.5 py-1 text-xs text-primary shadow-xs">
-            <Globe className="h-3.5 w-3.5 text-secondary mr-1.5" />
-            <select
-              id="nav-language-select-mobile"
-              className="bg-transparent font-medium text-primary text-xs focus:outline-none cursor-pointer"
-              value={locale}
-              onChange={handleLocaleChange}
-            >
-              {languageOptions.map((option) => (
-                <option key={option.locale} value={option.locale} className="bg-main text-primary">
-                  {localeLabels[option.locale].nativeName} ({option.locale.toUpperCase()})
-                </option>
-              ))}
-            </select>
+        {/* Mobile Drawer Bottom: Language Selector with Crawlable Links */}
+        <div className="p-4 border-t border-border bg-alt space-y-2.5">
+          <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-secondary">
+            <span>{nav.languageLabel}</span>
+            <Globe className="h-3.5 w-3.5 text-secondary" />
+          </div>
+          <div className="grid grid-cols-3 gap-1.5">
+            {languageOptions.map((option) => (
+              <Link
+                key={option.locale}
+                href={option.href}
+                hrefLang={option.locale}
+                lang={option.locale}
+                onClick={closeDropdowns}
+                className={`flex flex-col items-center justify-center p-2 rounded-lg border text-center transition-colors ${
+                  option.locale === locale
+                    ? 'border-brand bg-main text-brand font-bold shadow-2xs'
+                    : 'border-border/60 bg-main/50 text-secondary hover:bg-main hover:text-primary hover:border-hover'
+                }`}
+              >
+                <span className="text-xs truncate w-full">{localeLabels[option.locale].nativeName}</span>
+                <span className="text-[10px] uppercase font-mono text-secondary/60 mt-0.5">
+                  {option.locale}
+                </span>
+              </Link>
+            ))}
           </div>
         </div>
       </div>

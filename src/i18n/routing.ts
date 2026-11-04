@@ -2,7 +2,7 @@ import routeMapJson from "../../content/i18n-route-map.json" assert { type: "jso
 import { Locale } from "./config";
 import { OperationKey } from "../types/operations";
 
-export type StaticRouteKey = "home" | "faq" | "support" | "privacy" | "terms" | "contact";
+export type StaticRouteKey = "home" | "faq" | "support" | "privacy" | "terms" | "contact" | "tools";
 
 export type RouteIdentifier =
   | { type: "static"; key: StaticRouteKey }
@@ -63,6 +63,9 @@ const normalizePath = (path: string) => {
 });
 
 export function getRoutePath(locale: Locale, key: StaticRouteKey): string {
+  if (key === "tools") {
+    return locale === "en" ? "/tools" : `/${locale}/tools`;
+  }
   return routeMap[key][locale];
 }
 
@@ -105,6 +108,10 @@ export function getRouteIdentifierForPath(locale: Locale, pathname: string): Rou
     return { type: "static", key: "contact" };
   }
 
+  if (normalised === "/tools" || /^\/(es|pt|de|it|fr|ro|ru|hu)\/tools$/.test(normalised)) {
+    return { type: "static", key: "tools" };
+  }
+
   const operationEntry = Object.entries(routeMap.operations).find(([, perLocale]) => {
     return normalizePath(perLocale[locale]) === normalised;
   }) as [OperationKey, Record<Locale, string>] | undefined;
@@ -118,6 +125,19 @@ export function getRouteIdentifierForPath(locale: Locale, pathname: string): Rou
 
 export function getLocalizedAlternateMap(identifier: RouteIdentifier): Record<Locale, string> {
   if (identifier.type === "static") {
+    if (identifier.key === "tools") {
+      return {
+        en: "/tools",
+        es: "/es/tools",
+        pt: "/pt/tools",
+        de: "/de/tools",
+        it: "/it/tools",
+        fr: "/fr/tools",
+        ro: "/ro/tools",
+        ru: "/ru/tools",
+        hu: "/hu/tools",
+      };
+    }
     const entry = routeMap[identifier.key];
     return { ...entry };
   }
