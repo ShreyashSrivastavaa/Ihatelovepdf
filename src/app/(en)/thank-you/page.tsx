@@ -50,7 +50,7 @@ export default function ThankYouPage() {
           <div className="space-y-1">
             <span className="font-semibold text-[var(--tx)] block">100% Private, Always</span>
             <p className="leading-normal">
-              Remember that all PDF tasks run entirely on your device with zero cloud uploads and zero telemetry tracking.
+              Remember that all PDF tasks run entirely on your device with zero cloud uploads and zero document tracking.
             </p>
           </div>
         </div>

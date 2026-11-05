@@ -117,7 +117,7 @@ export default function PrivacyPageContent() {
               <div className="flex items-start gap-2">
                 <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
                 <div>
-                  <strong className="text-[var(--text-main)]">Privacy-Preserving Web Analytics:</strong> We use privacy-first web analytics (such as Cloudflare Web Analytics) to measure aggregate, anonymized metrics including pageviews, device category, and referrer source. No document contents, filenames, or tracking cookies are ever used, and no third-party tracking scripts load on tool pages.
+                  <strong className="text-[var(--text-main)]">No Analytics or Advertising Trackers:</strong> We do not use Google Analytics, advertising trackers, session recording tools, or third-party telemetry scripts. There are zero third-party tracking scripts loaded on this website. No personal usage profiles, advertising identifiers, or browsing histories are created or collected.
                 </div>
               </div>
             </div>

@@ -462,9 +462,9 @@ export const deDictionary: Dictionary = {
       },
     },
     cookieBanner: {
-      message: "Wir verwenden Cookies, um den Verkehr zu analysieren und Ihre Erfahrung zu verbessern. Wir geben Ihre persönlichen Daten nicht weiter.",
+      message: "Diese Website verwendet nur lokalen Speicher für Ihre Einstellungen. Wir verwenden keine Tracking-Cookies, Analyseskripte oder Drittanbieter-Tracker.",
       accept: "Akzeptieren",
-      decline: "Ablehnen",
+      decline: "Schließen",
     },
   },
   pages: {

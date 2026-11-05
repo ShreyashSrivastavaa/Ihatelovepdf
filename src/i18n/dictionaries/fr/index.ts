@@ -465,9 +465,9 @@ export const frDictionary: Dictionary = {
       },
     },
     cookieBanner: {
-      message: "Nous utilisons des cookies pour analyser le trafic. Nous ne partageons pas vos données.",
+      message: "Ce site utilise uniquement le stockage local pour vos préférences. Nous n'utilisons aucun cookie de suivi, script d'analyse ni traqueur tiers.",
       accept: "Accepter",
-      decline: "Refuser",
+      decline: "Fermer",
     },
   },
   pages: {

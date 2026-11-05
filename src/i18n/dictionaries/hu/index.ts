@@ -472,9 +472,9 @@ export const huDictionary: Dictionary = {
       },
     },
     cookieBanner: {
-      message: "Sütiket használunk a forgalom elemzéséhez. Az adataidat nem osztjuk meg harmadik felekkel.",
+      message: "Ez az oldal csak helyi tárhelyet használ a beállításaidhoz. Nem használunk nyomkövető sütiket, elemző szkripteket vagy külső nyomkövetőket.",
       accept: "Elfogadás",
-      decline: "Elutasítás",
+      decline: "Bezárás",
     },
   },
   pages: {

@@ -473,9 +473,9 @@ export const roDictionary: Dictionary = {
       },
     },
     cookieBanner: {
-      message: "Folosim cookie-uri pentru a analiza traficul. Nu partajăm datele tale.",
+      message: "Acest site folosește doar stocare locală pentru preferințele tale. Nu folosim cookie-uri de urmărire, scripturi de analiză sau trackere terțe.",
       accept: "Acceptă",
-      decline: "Refuză",
+      decline: "Închide",
     },
   },
   pages: {

@@ -461,9 +461,9 @@ export const esDictionary: Dictionary = {
       },
     },
     cookieBanner: {
-      message: "Utilizamos cookies para analizar el tráfico y mejorar tu experiencia. No compartimos tus datos personales.",
+      message: "Este sitio solo utiliza almacenamiento local para tus preferencias. No usamos cookies de seguimiento, scripts de análisis ni rastreadores de terceros.",
       accept: "Aceptar",
-      decline: "Rechazar",
+      decline: "Cerrar",
     },
   },
   pages: {

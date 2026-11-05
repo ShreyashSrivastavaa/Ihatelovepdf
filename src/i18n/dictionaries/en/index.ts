@@ -465,9 +465,9 @@ export const enDictionary: Dictionary = {
       },
     },
     cookieBanner: {
-      message: "We use essential privacy friendly analytics to improve ihatelovepdf. We never sell or track personal data.",
+      message: "This website uses only essential local storage for your preferences. We do not use tracking cookies, analytics scripts, or third-party trackers.",
       accept: "Accept",
-      decline: "Decline",
+      decline: "Dismiss",
     },
   },
   pages: {

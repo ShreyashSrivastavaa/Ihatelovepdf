@@ -465,9 +465,9 @@ export const ptDictionary: Dictionary = {
       },
     },
     cookieBanner: {
-      message: "Usamos cookies para analisar o tráfego e melhorar sua experiência. Não compartilhamos seus dados pessoais.",
+      message: "Este site usa apenas armazenamento local para suas preferências. Não usamos cookies de rastreamento, scripts de análise ou rastreadores de terceiros.",
       accept: "Aceitar",
-      decline: "Recusar",
+      decline: "Fechar",
     },
   },
   pages: {

@@ -528,9 +528,9 @@ export const itDictionary: Dictionary = {
     },
     cookieBanner: {
       message:
-        "Usiamo i cookie per analizzare il traffico e migliorare la tua esperienza. Non condividiamo i tuoi dati personali.",
+        "Questo sito utilizza solo la memoria locale per le tue preferenze. Non utilizziamo cookie di tracciamento, script di analisi o tracker di terze parti.",
       accept: "Accetta",
-      decline: "Rifiuta",
+      decline: "Chiudi",
     },
     },
     pages: {

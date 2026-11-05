@@ -591,7 +591,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
           "answer": "Yes. The signing canvas is fully optimized for capacitive touchscreens, Apple Pencil, and Android styluses."
         }
       ],
-      "privacyNote": "Your signature and sensitive contracts are never stored in databases or cloud servers. Zero telemetry or document tracking.",
+      "privacyNote": "Your signature and sensitive contracts are never stored in databases or cloud servers. Zero document tracking.",
       "relatedTools": [
         {
           "slug": "fill-pdf-form",
@@ -614,7 +614,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
       ],
       "content": [
         "To sign a PDF online for free without uploading, open the ihatelovepdf Sign PDF tool, upload your document, draw your signature with your mouse or finger, type a styled signature, or insert a signature image, place it onto the document, and click \"Sign & Download\". Everything burns locally into the PDF without sending documents to cloud servers.",
-        "Your signature and sensitive contracts are never stored in databases or cloud servers. Zero telemetry or document tracking."
+        "Your signature and sensitive contracts are never stored in databases or cloud servers. Zero document tracking."
       ]
     },
     "how-to-edit-pdf-free": {
