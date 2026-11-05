@@ -26,6 +26,7 @@ import {
   type PdfToImagesArchiveResult,
 } from '../../lib/pdf-processor';
 import * as PDFOps from '../../lib/pdf-operations';
+import { pdfWorkerClient } from '../../lib/worker-client';
 import { downloadBlob, openBlobInNewTab, isIOS } from '../../lib/download-helper';
 import { useDictionary } from '../../i18n/LocaleProvider';
 import { TOTAL_TOOLS_COUNT } from '../../lib/tools-registry';
@@ -343,6 +344,7 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
     ];
     if (pdfOperations.includes(initialMode)) {
       PDFOps.preloadPdfEngine().catch(() => {});
+      pdfWorkerClient.warmup();
     }
 
     if (initialMode === 'extractText') {

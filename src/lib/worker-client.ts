@@ -58,6 +58,14 @@ class PDFWorkerClient {
     return this.worker;
   }
 
+  public warmup(): void {
+    if (typeof window === 'undefined') return;
+    try {
+      const worker = this.getWorker();
+      worker.postMessage({ id: 'warmup', mode: 'warmup' });
+    } catch {}
+  }
+
   public run(
     mode: PDFProcessingMode,
     files: File[],

@@ -17,6 +17,7 @@ import {
   pdfToZip,
   convertPdfToWord,
   convertWordToPdf,
+  preloadPdfEngine,
   ProcessingResult,
 } from '../lib/pdf-operations';
 
@@ -61,6 +62,12 @@ self.onmessage = async (e: MessageEvent) => {
     let result: unknown;
 
     switch (mode) {
+      case 'warmup':
+        try {
+          await preloadPdfEngine();
+        } catch {}
+        self.postMessage({ id, success: true });
+        return;
       case 'compress':
         result = await compressPDF(files[0], options);
         break;
