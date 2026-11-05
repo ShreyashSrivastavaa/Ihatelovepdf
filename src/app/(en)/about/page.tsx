@@ -202,7 +202,7 @@ export default function AboutPage() {
             </div>
             <h3 className="text-sm sm:text-base font-semibold text-[var(--text-main)]">Zero Server Uploads</h3>
             <p className="text-xs text-[var(--text-muted)] leading-relaxed">
-              Your files stay in your computer memory. If you disconnect your internet after the page opens, every tool still works offline.
+              Your files stay in your computer memory. Keeps working without an active internet connection once the page has loaded.
             </p>
           </div>
 
@@ -232,7 +232,7 @@ export default function AboutPage() {
             </div>
             <h3 className="text-sm sm:text-base font-semibold text-[var(--text-main)]">Built with Open Source</h3>
             <p className="text-xs text-[var(--text-muted)] leading-relaxed">
-              Built on reliable open source projects including <code className="text-[11px] bg-[var(--subtle)] px-1 py-0.5 rounded border border-[var(--border)]">pdf-lib</code>, <code className="text-[11px] bg-[var(--subtle)] px-1 py-0.5 rounded border border-[var(--border)]">PDF.js</code>, and <code className="text-[11px] bg-[var(--subtle)] px-1 py-0.5 rounded border border-[var(--border)]">JSZip</code>.
+              Built on reliable open source projects including <code className="text-[11px] bg-[var(--subtle)] px-1 py-0.5 rounded border border-[var(--border)]">pdf-lib</code>, <code className="text-[11px] bg-[var(--subtle)] px-1 py-0.5 rounded border border-[var(--border)]">PDF.js</code>, and <code className="text-[11px] bg-[var(--subtle)] px-1 py-0.5 rounded border border-[var(--border)]">JSZip</code>. The source code is publicly available on <a href="https://github.com/ShreyashSrivastavaa/Ihatelovepdf" target="_blank" rel="noopener noreferrer" className="text-[var(--brand)] underline font-medium">GitHub under the MIT License</a>.
             </p>
           </div>
         </section>

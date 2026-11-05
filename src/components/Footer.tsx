@@ -152,12 +152,12 @@ export default function Footer() {
               </a>
               <span>·</span>
               <a
-                href="https://github.com/ShreyashSrivastavaa"
+                href="https://github.com/ShreyashSrivastavaa/Ihatelovepdf"
                 target="_blank"
-                rel="me noopener noreferrer"
+                rel="noopener noreferrer"
                 className="hover:text-primary transition-colors"
               >
-                GitHub
+                GitHub (MIT)
               </a>
               <span>·</span>
               <a
