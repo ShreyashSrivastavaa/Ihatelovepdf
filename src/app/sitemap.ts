@@ -181,6 +181,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'edit-pdf-for-resume',
     'is-it-safe-to-merge-pdf-online',
     'privacy-architecture',
+    'offline-pdf-tools',
   ];
   for (const sSlug of searchIntentSlugs) {
     const sMap: Record<string, string> = {};
@@ -196,7 +197,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   addEntry("/ilovepdf-alternative", weekly, 0.8);
   addEntry("/smallpdf-alternative", weekly, 0.8);
   addEntry("/free-pdf-tools-without-signup", weekly, 0.8);
-  addEntry("/offline-pdf-tools", weekly, 0.8);
 
   // 6. Blog & Articles (English only)
   addEntry("/blog", weekly, 0.8);
