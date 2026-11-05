@@ -4,14 +4,6 @@ import { useState, useEffect } from 'react';
 import { useDictionary } from '../i18n/LocaleProvider';
 import { ShieldCheck } from 'lucide-react';
 
-interface WindowWithGtag extends Window {
-    gtag: (
-        command: 'consent' | 'config' | 'event' | 'js',
-        targetId: string,
-        config?: Record<string, unknown>
-    ) => void;
-}
-
 export default function CookieBanner() {
     const dictionary = useDictionary();
     const t = dictionary.components.cookieBanner;
@@ -21,30 +13,12 @@ export default function CookieBanner() {
         const consent = localStorage.getItem('cookie_consent');
         if (consent === null) {
             setIsVisible(true);
-        } else if (consent === 'true') {
-            if (typeof window !== 'undefined' && (window as unknown as WindowWithGtag).gtag) {
-                (window as unknown as WindowWithGtag).gtag('consent', 'update', {
-                    'ad_storage': 'granted',
-                    'analytics_storage': 'granted',
-                    'ad_user_data': 'granted',
-                    'ad_personalization': 'granted'
-                });
-            }
         }
     }, []);
 
     const handleAccept = () => {
         localStorage.setItem('cookie_consent', 'true');
         setIsVisible(false);
-
-        if (typeof window !== 'undefined' && (window as unknown as WindowWithGtag).gtag) {
-            (window as unknown as WindowWithGtag).gtag('consent', 'update', {
-                'ad_storage': 'granted',
-                'analytics_storage': 'granted',
-                'ad_user_data': 'granted',
-                'ad_personalization': 'granted'
-            });
-        }
     };
 
     const handleDecline = () => {
