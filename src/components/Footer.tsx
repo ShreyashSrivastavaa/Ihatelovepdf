@@ -129,6 +129,10 @@ export default function Footer() {
             <Link href="/is-it-safe-to-merge-pdf-online" className="hover:text-primary transition-colors">
               Is Online Merging Safe?
             </Link>
+            <span>·</span>
+            <Link href="/privacy-architecture" className="hover:text-primary transition-colors">
+              Privacy Architecture
+            </Link>
           </div>
 
           {/* Copyright, Author & One-line witty sign-off */}

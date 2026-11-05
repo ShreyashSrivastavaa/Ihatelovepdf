@@ -522,6 +522,36 @@ export function GuideDetailPageContent({ guide }: GuideDetailPageContentProps) {
           </section>
         )}
 
+        {/* Author Bio & E-E-A-T Attribution Card */}
+        <section className="p-4 sm:p-5 rounded-2xl border border-[var(--border)] bg-[var(--card)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="h-10 w-10 rounded-full bg-[var(--brand-soft)] border border-[var(--brand)]/30 flex items-center justify-center text-[var(--brand)] font-bold text-sm shrink-0">
+              SS
+            </div>
+            <div>
+              <div className="text-xs sm:text-sm font-bold text-[var(--text-main)] flex items-center gap-1.5">
+                <a
+                  href="https://github.com/shreyashsng"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[var(--brand)] transition-colors"
+                >
+                  Shreyash Srivastava
+                </a>
+                <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-600 font-semibold border border-emerald-500/20">
+                  Lead Software Engineer
+                </span>
+              </div>
+              <p className="text-[11px] sm:text-xs text-[var(--text-muted)] mt-0.5 leading-relaxed">
+                Software engineer advocating for in-browser client-side WebAssembly execution, zero server uploads, and independent document privacy.
+              </p>
+            </div>
+          </div>
+          <div className="text-[11px] text-[var(--text-muted)] shrink-0 self-end sm:self-center font-medium bg-[var(--bg-subtle)] px-2.5 py-1 rounded-md border border-[var(--border)]">
+            Last updated: November 2026
+          </div>
+        </section>
+
         {/* Structured Data JSON-LD Scripts */}
         <script
           type="application/ld+json"

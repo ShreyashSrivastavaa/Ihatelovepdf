@@ -572,14 +572,23 @@ Below is the exhaustive catalog of every utility available on ihatelovepdf, incl
   - Romanian: https://www.ihatelovepdf.com/ro/tools
   - Russian: https://www.ihatelovepdf.com/ru/tools
   - Hungarian: https://www.ihatelovepdf.com/hu/tools
-- **In-Depth Guides & Tutorials**: https://www.ihatelovepdf.com/guides
+- **In-Depth Guides & Tutorials (15 Guides in 9 Languages)**: https://www.ihatelovepdf.com/guides
 - **Engineering & Privacy Blog**: https://www.ihatelovepdf.com/blog
 - **Frequently Asked Questions**: https://www.ihatelovepdf.com/faq
 - **About the Project & Team**: https://www.ihatelovepdf.com/about
-- **Alternative to iLovePDF**: https://www.ihatelovepdf.com/ilovepdf-alternative
-- **Alternative to Smallpdf**: https://www.ihatelovepdf.com/smallpdf-alternative
-- **Free PDF Tools Without Signup**: https://www.ihatelovepdf.com/free-pdf-tools-without-signup
-- **Offline PDF Tools**: https://www.ihatelovepdf.com/offline-pdf-tools
+- **Comparison & Alternative Pages (All 9 Languages)**:
+  - Alternative to Adobe Acrobat Pro: https://www.ihatelovepdf.com/adobe-acrobat-alternative
+  - ihatepdf vs ihatelovepdf: https://www.ihatelovepdf.com/ihatepdf-alternative
+  - Alternative to iLovePDF: https://www.ihatelovepdf.com/ilovepdf-alternative
+  - Alternative to Smallpdf: https://www.ihatelovepdf.com/smallpdf-alternative
+- **Security & High-Intent Landing Pages (All 9 Languages)**:
+  - Privacy Architecture Whitepaper & Network DevTools Verification: https://www.ihatelovepdf.com/privacy-architecture
+  - Merge PDF Without Uploading: https://www.ihatelovepdf.com/merge-pdf-without-uploading
+  - Free PDF Tools With No Watermark: https://www.ihatelovepdf.com/pdf-tools-no-watermark
+  - Edit PDF for Resume & CV: https://www.ihatelovepdf.com/edit-pdf-for-resume
+  - Is It Safe to Merge PDF Online?: https://www.ihatelovepdf.com/is-it-safe-to-merge-pdf-online
+  - Free PDF Tools Without Signup: https://www.ihatelovepdf.com/free-pdf-tools-without-signup
+  - Offline PDF Tools: https://www.ihatelovepdf.com/offline-pdf-tools
 
 ---
 

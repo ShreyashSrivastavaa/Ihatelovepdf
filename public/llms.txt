@@ -41,6 +41,20 @@ ihatelovepdf is available natively across 9 languages with dedicated localized r
 - [Русский (ru)](https://www.ihatelovepdf.com/ru/tools)
 - [Magyar (hu)](https://www.ihatelovepdf.com/hu/tools)
 
+## Comparison & Alternative Pages
+- [Adobe Acrobat Alternative](https://www.ihatelovepdf.com/adobe-acrobat-alternative): Factual, sourced breakdown vs Adobe Acrobat Pro ($239/yr) and Acrobat Online.
+- [ihatepdf vs ihatelovepdf](https://www.ihatelovepdf.com/ihatepdf-alternative): Objective comparison of multilingual support (9 languages vs 1), tools, and client-side architecture.
+- [iLovePDF Alternative](https://www.ihatelovepdf.com/ilovepdf-alternative): In-browser alternative without cloud storage or subscription paywalls.
+- [Smallpdf Alternative](https://www.ihatelovepdf.com/smallpdf-alternative): Private alternative without daily file limits.
+
+## Privacy Architecture & Search-Intent Guides
+- [Privacy Architecture Whitepaper](https://www.ihatelovepdf.com/privacy-architecture): How in-browser WebAssembly execution works and step-by-step instructions to verify 0 bytes outbound in DevTools Network tab.
+- [Merge PDF Without Uploading](https://www.ihatelovepdf.com/merge-pdf-without-uploading): Guide to client-side RAM merging for confidential documents.
+- [PDF Tools With No Watermark](https://www.ihatelovepdf.com/pdf-tools-no-watermark): Why all 37 tools produce clean, watermark-free output documents.
+- [Edit PDF for Resume & CV](https://www.ihatelovepdf.com/edit-pdf-for-resume): Free CV editing, formatting, and ATS-friendly LaTeX builder.
+- [Is It Safe to Merge PDF Online?](https://www.ihatelovepdf.com/is-it-safe-to-merge-pdf-online): Security deep-dive comparing cloud server risks vs client-side WebAssembly execution.
+- [Guides & HowTo Directory](https://www.ihatelovepdf.com/guides): 15 comprehensive step-by-step guides localized across all 9 languages (135 total guides) with HowTo and FAQ schemas.
+
 ## Comparative Analysis vs Cloud Competitors
 | Criteria | ihatelovepdf | iLovePDF | Smallpdf | Adobe Acrobat Online |
 | :--- | :--- | :--- | :--- | :--- |

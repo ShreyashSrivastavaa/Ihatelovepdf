@@ -180,6 +180,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'pdf-tools-no-watermark',
     'edit-pdf-for-resume',
     'is-it-safe-to-merge-pdf-online',
+    'privacy-architecture',
   ];
   for (const sSlug of searchIntentSlugs) {
     const sMap: Record<string, string> = {};
