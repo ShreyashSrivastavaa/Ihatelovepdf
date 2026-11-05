@@ -33,9 +33,9 @@ export const faqsEn = {
   ],
   regional: [
     {
-      question: "Does ihatelovepdf comply with privacy regulations (GDPR, HIPAA, LGPD)?",
+      question: "Are my documents sent to any external server?",
       answer:
-        "Yes. Because no document data is ever collected, stored, or sent to external servers, ihatelovepdf keeps your information private according to GDPR, HIPAA, and LGPD standards.",
+        "No. Your documents are processed on your device and are never sent to our servers.",
     },
     {
       question: "Can I use ihatelovepdf on Windows, Mac, or Linux?",

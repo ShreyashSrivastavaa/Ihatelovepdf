@@ -28,9 +28,9 @@ export const faqsPt = {
   ],
   regional: [
     {
-      question: "O ihatelovepdf cumpre com as normas de privacidade como a LGPD e o GDPR?",
+      question: "Os meus documentos são enviados para algum servidor externo?",
       answer:
-        "Sim. Como nenhum dado de documento é coletado, armazenado ou enviado para servidores remotos, o ihatelovepdf atende nativamente à LGPD, GDPR e políticas corporativas de privacidade.",
+        "Não. Os seus documentos são processados no seu dispositivo e nunca são enviados para os nossos servidores.",
     },
     {
       question: "Funciona em Windows, Mac e Linux?",

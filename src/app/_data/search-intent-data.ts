@@ -46,7 +46,7 @@ export const SEARCH_INTENT_DATA: Record<SearchIntentSlug, Record<string, SearchI
           points: [
             'Documents can be intercepted during HTTP upload and download transit',
             'Unencrypted temporary file caches on cloud servers are vulnerable to security exploits',
-            'Corporate compliance violations under GDPR Article 28 and HIPAA data controller mandates',
+            'Exposure of confidential contracts, financial sheets, and sensitive personal files',
           ],
         },
         {
@@ -117,7 +117,7 @@ export const SEARCH_INTENT_DATA: Record<SearchIntentSlug, Record<string, SearchI
       sections: [
         {
           title: 'Sicherheitsrisiken herkömmlicher Cloud-Dienste',
-          description: 'Die meisten Online-PDF-Tools übertragen sensible Firmendokumente auf fremde Server. ihatelovepdf verarbeitet alles lokal auf Ihrem Computer gemäß DSGVO.',
+          description: 'Die meisten Online-PDF-Tools übertragen sensible Firmendokumente auf fremde Server. Bei ihatelovepdf werden Ihre Dokumente direkt auf Ihrem Gerät verarbeitet und niemals an unsere Server gesendet.',
         },
       ],
       faqs: [
@@ -711,7 +711,7 @@ export const SEARCH_INTENT_DATA: Record<SearchIntentSlug, Record<string, SearchI
         },
         {
           title: 'The Modern Safe Solution: Client-Side WebAssembly',
-          description: 'In contrast, ihatelovepdf never receives your files. The entire PDF engine is compiled to WebAssembly and downloaded to your browser once. Your own computer CPU does the work in local RAM, ensuring compliance with strict data protection frameworks including GDPR, CCPA, and HIPAA.',
+          description: 'In contrast, ihatelovepdf never receives your files. The entire PDF engine is compiled to WebAssembly and downloaded to your browser once. Your own computer CPU does the work in local RAM, ensuring your documents are processed on your device and are never sent to our servers.',
         },
       ],
       faqs: [
@@ -807,7 +807,7 @@ export const SEARCH_INTENT_DATA: Record<SearchIntentSlug, Record<string, SearchI
       sections: [
         {
           title: 'I pericoli dei caricamenti su server cloud',
-          description: 'Inviare documenti aziendali o bancari a server sconosciuti viola spesso i criteri di conformità GDPR. Elaborare in locale elimina questo rischio.',
+          description: 'Inviare documenti aziendali o bancari a server sconosciuti comporta rischi di riservatezza. I tuoi documenti vengono elaborati sul tuo dispositivo e non vengono mai inviati ai nostri server.',
         },
       ],
       faqs: [

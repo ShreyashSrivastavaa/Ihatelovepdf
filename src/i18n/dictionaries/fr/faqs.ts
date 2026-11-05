@@ -28,9 +28,9 @@ export const faqsFr = {
   ],
   regional: [
     {
-      question: "ihatelovepdf est-il conforme au RGPD et à la protection des données ?",
+      question: "Mes documents sont-ils envoyés à un serveur externe ?",
       answer:
-        "Oui. Étant donné qu'aucune donnée de document n'est collectée, stockée ou transmise vers des serveurs distants, ihatelovepdf respecte naturellement le RGPD et les politiques de confidentialité des entreprises.",
+        "Non. Vos documents sont traités sur votre appareil et ne sont jamais envoyés à nos serveurs.",
     },
     {
       question: "Fonctionne-t-il sur Windows, Mac et Linux ?",

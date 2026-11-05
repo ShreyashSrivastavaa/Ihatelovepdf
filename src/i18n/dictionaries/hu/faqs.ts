@@ -28,9 +28,9 @@ export const faqsHu = {
   ],
   regional: [
     {
-      question: "Segít a ihatelovepdf megfelelni a GDPR adatvédelmi elÅ‘írásoknak?",
+      question: "Elküldi az oldal a dokumentumaimat külső szerverre?",
       answer:
-        "Mivel a feldolgozás helyben történik, egyetlen személyes dokumentum sem hagyja el az eszközödet vagy a szervezetedet. Ez megkönnyíti a GDPR, az egészségügyi adatvédelmi szabályok, illetve a belsÅ‘ adatbiztonsági irányelveknek való megfelelést.",
+        "Nem. A dokumentumaid feldolgozása a saját eszközödön történik, és soha nem kerülnek elküldésre a szervereinkre.",
     },
     {
       question: "Használhatom a ihatelovepdf-t hivatalos dokumentumokhoz és számlákhoz?",

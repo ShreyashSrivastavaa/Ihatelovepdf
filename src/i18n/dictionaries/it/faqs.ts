@@ -28,9 +28,9 @@ export const faqsIt = {
   ],
   regional: [
     {
-      question: "ihatelovepdf rispetta il regolamento GDPR sulla protezione dei dati?",
+      question: "I miei documenti vengono inviati a server esterni?",
       answer:
-        "Sì. Poiché nessun documento lascia il tuo dispositivo, ihatelovepdf rispetta nativamente il GDPR e le policy di privacy aziendali e della pubblica amministrazione.",
+        "No. I tuoi documenti vengono elaborati direttamente sul tuo dispositivo e non vengono mai inviati ai nostri server.",
     },
     {
       question: "Funziona su Windows, Mac e Linux?",

@@ -25,7 +25,7 @@ export const faqsRo = {
     {
       question: "ihatelovepdf mă ajută să respect reglementările privind protecția datelor?",
       answer:
-        "Deoarece procesarea are loc local, nicio dată personală nu părăsește organizația ta. Acest lucru facilitează respectarea GDPR, HIPAA sau a oricărei politici interne de confidențialitate.",
+        "Documentele dumneavoastră sunt procesate pe dispozitivul dumneavoastră și nu sunt trimise niciodată către serverele noastre.",
     },
     {
       question: "Pot folosi ihatelovepdf pentru formulare oficiale sau facturi?",

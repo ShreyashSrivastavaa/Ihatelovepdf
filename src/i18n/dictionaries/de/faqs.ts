@@ -28,9 +28,9 @@ export const faqsDe = {
   ],
   regional: [
     {
-      question: "Erfüllt ihatelovepdf die Anforderungen der DSGVO?",
+      question: "Werden meine Dokumente an einen Server gesendet?",
       answer:
-        "Ja. Da keine Dokumentendaten gesammelt, gespeichert oder an externe Server übertragen werden, entspricht ihatelovepdf von Natur aus den strengen Vorgaben der DSGVO.",
+        "Nein. Ihre Dokumente werden direkt auf Ihrem Gerät verarbeitet und niemals an unsere Server gesendet.",
     },
     {
       question: "Funktioniert es auf Windows, Mac und Linux?",

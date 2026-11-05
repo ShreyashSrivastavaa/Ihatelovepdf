@@ -910,7 +910,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
       "keyTakeaways": [
         "Permanent redaction: underlying text is destroyed, not just covered with a black box.",
         "Redacted characters cannot be recovered by text selection, copy-paste, or PDF inspectors.",
-        "Essential for legal disclosures, medical records, financial statements, and GDPR compliance.",
+        "Your documents are processed on your device and are never sent to our servers.",
         "100% private in-browser processing: confidential files never leave your computer."
       ],
       "steps": [
@@ -3052,7 +3052,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
           "answer": "Não há limites fixos; documentos com centenas de páginas são processados tranquilamente."
         }
       ],
-      "privacyNote": "Zero uploads para a nuvem: tranquilidade e conformidade com a LGPD.",
+      "privacyNote": "Seus documentos são processados no seu dispositivo e nunca são enviados para nossos servidores.",
       "relatedTools": [
         {
           "slug": "pt/juntar",
@@ -3075,7 +3075,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
       ],
       "content": [
         "Para dividir páginas de PDF grátis sem fazer upload, use o Dividir PDF do ihatelovepdf, envie seu arquivo, selecione as miniaturas das páginas ou digite os intervalos (ex: 1-4, 7) e clique em \"Dividir PDF\". O novo documento é compilado localmente na memória e baixado na hora.",
-        "Zero uploads para a nuvem: tranquilidade e conformidade com a LGPD."
+        "Seus documentos são processados no seu dispositivo e nunca são enviados para nossos servidores."
       ]
     },
     "how-to-convert-pdf-to-word-free": {
@@ -3644,7 +3644,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
       "keyTakeaways": [
         "Censura permanente: o texto subjacente é apagado da estrutura do arquivo.",
         "Impossível de recuperar por cópia, inspeção de código ou leitores de PDF.",
-        "Essencial para processos judiciais, exames médicos e conformidade com a LGPD.",
+        "Seus documentos são processados no seu dispositivo e nunca são enviados para nossos servidores.",
         "100% seguro: seus documentos nunca saem do seu aparelho."
       ],
       "steps": [
@@ -4237,7 +4237,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
           "answer": "Nein. Ihre Dokumente bleiben vollkommen sauber und unberührt."
         }
       ],
-      "privacyNote": "DSGVO-konforme Datensicherheit: Überprüfen Sie im Netzwerk-Tab der Entwicklertools, dass kein einziges Byte Ihrer Dokumente Ihren Computer verlässt.",
+      "privacyNote": "Ihre Dokumente werden auf Ihrem Gerät verarbeitet und niemals an unsere Server gesendet.",
       "relatedTools": [
         {
           "slug": "de/teilen",
@@ -4260,7 +4260,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
       ],
       "content": [
         "Um PDF-Dateien ohne Server-Upload kostenlos zusammenzufügen, öffnen Sie das Tool \"PDF zusammenfügen\" auf ihatelovepdf, ziehen Sie zwei oder mehr Dokumente in den Browser, ordnen Sie die Seiten wie gewünscht an und klicken Sie auf \"PDF zusammenfügen\". Die Datei wird lokal im Arbeitsspeicher erstellt und sofort heruntergeladen.",
-        "DSGVO-konforme Datensicherheit: Überprüfen Sie im Netzwerk-Tab der Entwicklertools, dass kein einziges Byte Ihrer Dokumente Ihren Computer verlässt."
+        "Ihre Dokumente werden auf Ihrem Gerät verarbeitet und niemals an unsere Server gesendet."
       ]
     },
     "how-to-compress-pdf-without-losing-quality": {
@@ -4419,7 +4419,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
           "answer": "Nein, Ihr lokaler Arbeitsspeicher bestimmt die Kapazität."
         }
       ],
-      "privacyNote": "100% DSGVO-sicher: Ihre Dokumente verlassen zu keinem Zeitpunkt Ihr Gerät.",
+      "privacyNote": "Ihre Dokumente werden auf Ihrem Gerät verarbeitet und niemals an unsere Server gesendet.",
       "relatedTools": [
         {
           "slug": "de/zusammenfuehren",
@@ -4442,7 +4442,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
       ],
       "content": [
         "Um PDF-Seiten ohne Server-Upload kostenlos zu trennen, rufen Sie das Tool \"PDF teilen\" auf ihatelovepdf auf, laden Sie Ihr Dokument, markieren Sie die gewünschten Seitenvorschauen oder tippen Sie Bereiche (z. B. 1-3, 6) ein und klicken Sie auf \"PDF teilen\". Das Dokument wird im Browser-Arbeitsspeicher erstellt.",
-        "100% DSGVO-sicher: Ihre Dokumente verlassen zu keinem Zeitpunkt Ihr Gerät."
+        "Ihre Dokumente werden auf Ihrem Gerät verarbeitet und niemals an unsere Server gesendet."
       ]
     },
     "how-to-convert-pdf-to-word-free": {
@@ -4510,7 +4510,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
           "answer": "Nein, die Nutzung ist unbegrenzt und kostenlos."
         }
       ],
-      "privacyNote": "Datenschutz nach DSGVO: Keine Datenweitergabe an Drittanbieter oder Server.",
+      "privacyNote": "Ihre Dokumente werden auf Ihrem Gerät verarbeitet und niemals an unsere Server gesendet.",
       "relatedTools": [
         {
           "slug": "de/word-in-pdf",
@@ -4533,7 +4533,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
       ],
       "content": [
         "Um eine PDF-Datei ohne Server-Upload kostenlos in Word umzuwandeln, öffnen Sie \"PDF in Word\" auf ihatelovepdf, ziehen Sie Ihr PDF hinein und klicken Sie auf \"In Word umwandeln\". Die Erkennung von Textabsätzen und Bildern erfolgt lokal im Browser und erzeugt eine bearbeitbare .docx-Datei.",
-        "Datenschutz nach DSGVO: Keine Datenweitergabe an Drittanbieter oder Server."
+        "Ihre Dokumente werden auf Ihrem Gerät verarbeitet und niemals an unsere Server gesendet."
       ]
     },
     "how-to-convert-word-to-pdf": {
@@ -5011,7 +5011,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
       "keyTakeaways": [
         "Dauerhafte Schwärzung: Der Text wird aus der Dateistruktur physisch gelöscht.",
         "Geschwärzte Zeichen können weder kopiert noch extrahiert werden.",
-        "Wichtig für Gerichtsgutachten, medizinische Berichte und DSGVO-Konformität.",
+        "Ihre Dokumente werden auf Ihrem Gerät verarbeitet und niemals an unsere Server gesendet.",
         "100% Datenschutz: Ihre Akten verlassen zu keinem Zeitpunkt Ihr Gerät."
       ],
       "steps": [
@@ -5056,7 +5056,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
           "answer": "Nein, das Dokument bleibt vollkommen frei von Werbung."
         }
       ],
-      "privacyNote": "Höchster DSGVO-Datenschutz: Keine Übermittlung Ihrer vertraulichen Unterlagen an Server.",
+      "privacyNote": "Ihre Dokumente werden auf Ihrem Gerät verarbeitet und niemals an unsere Server gesendet.",
       "relatedTools": [
         {
           "slug": "de/pdf-bearbeiten",
@@ -5079,7 +5079,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
       ],
       "content": [
         "Um eine PDF-Datei ohne Server-Upload kostenlos zu schwärzen, öffnen Sie \"PDF schwärzen\" auf ihatelovepdf, fügen Sie Ihr Dokument ein, ziehen Sie schwarze Kästchen über vertrauliche Stellen und klicken Sie auf \"Schwärzung anwenden\". Der zugrundeliegende Text wird im Browser-Arbeitsspeicher unwiderruflich gelöscht.",
-        "Höchster DSGVO-Datenschutz: Keine Übermittlung Ihrer vertraulichen Unterlagen an Server."
+        "Ihre Dokumente werden auf Ihrem Gerät verarbeitet und niemals an unsere Server gesendet."
       ]
     },
     "how-to-crop-pdf-pages": {
@@ -5147,7 +5147,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
           "answer": "Nein, das Tool ist vollkommen kostenfrei und ohne Einschränkungen nutzbar."
         }
       ],
-      "privacyNote": "DSGVO-konforme Verarbeitung: Keine Übermittlung Ihrer Dateien an externe Server.",
+      "privacyNote": "Ihre Dokumente werden auf Ihrem Gerät verarbeitet und niemals an unsere Server gesendet.",
       "relatedTools": [
         {
           "slug": "de/drehen",
@@ -5170,7 +5170,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
       ],
       "content": [
         "Um PDF-Seiten ohne Server-Upload kostenlos zuzuschneiden, öffnen Sie \"PDF zuschneiden\" auf ihatelovepdf, fügen Sie Ihr Dokument ein, passen Sie den sichtbaren Schnittrahmen an und klicken Sie auf \"PDF zuschneiden\". Das Dokument wird im Browser-Arbeitsspeicher ohne Datenübertragung angepasst.",
-        "DSGVO-konforme Verarbeitung: Keine Übermittlung Ihrer Dateien an externe Server."
+        "Ihre Dokumente werden auf Ihrem Gerät verarbeitet und niemals an unsere Server gesendet."
       ]
     },
     "how-to-rotate-pdf-pages": {
@@ -5238,7 +5238,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
           "answer": "Nein, das Dokument bleibt vollkommen frei von Werbung."
         }
       ],
-      "privacyNote": "DSGVO-konforme Verarbeitung: Keine Übermittlung Ihrer Dateien an externe Server.",
+      "privacyNote": "Ihre Dokumente werden auf Ihrem Gerät verarbeitet und niemals an unsere Server gesendet.",
       "relatedTools": [
         {
           "slug": "de/zusammenfuehren",
@@ -5261,7 +5261,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
       ],
       "content": [
         "Um PDF-Seiten ohne Server-Upload kostenlos zu drehen, öffnen Sie \"PDF drehen\" auf ihatelovepdf, fügen Sie Ihr Dokument ein, klicken Sie auf das Drehsymbol der gewünschten Seiten und klicken Sie auf \"Speichern & Herunterladen\". Die Ausrichtung wird lokal im Browser-Arbeitsspeicher dauerhaft gespeichert.",
-        "DSGVO-konforme Verarbeitung: Keine Übermittlung Ihrer Dateien an externe Server."
+        "Ihre Dokumente werden auf Ihrem Gerät verarbeitet und niemals an unsere Server gesendet."
       ]
     },
     "how-to-add-watermark-to-pdf": {
@@ -5420,7 +5420,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
           "answer": "Nein, das Dokument bleibt vollkommen sauber."
         }
       ],
-      "privacyNote": "DSGVO-konforme Verarbeitung: Keine Übermittlung Ihrer Dateien an externe Server.",
+      "privacyNote": "Ihre Dokumente werden auf Ihrem Gerät verarbeitet und niemals an unsere Server gesendet.",
       "relatedTools": [
         {
           "slug": "de/zusammenfuehren",
@@ -5443,7 +5443,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
       ],
       "content": [
         "Um eine PDF-Datei ohne Server-Upload kostenlos durchzunummerieren, öffnen Sie \"Seitenzahlen\" auf ihatelovepdf, fügen Sie Ihr Dokument ein, wählen Sie das Format (z. B. \"Seite 1 von N\" oder einfache Ziffern), bestimmen Sie die Position und klicken Sie auf \"Seitenzahlen hinzufügen\". Die Nummern werden lokal im Browser gestempelt.",
-        "DSGVO-konforme Verarbeitung: Keine Übermittlung Ihrer Dateien an externe Server."
+        "Ihre Dokumente werden auf Ihrem Gerät verarbeitet und niemals an unsere Server gesendet."
       ]
     },
     "how-to-convert-pdf-to-excel": {
@@ -5511,7 +5511,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
           "answer": "Nein, das Tool ist vollkommen kostenfrei und ohne Einschränkungen nutzbar."
         }
       ],
-      "privacyNote": "DSGVO-konforme Verarbeitung: Keine Übermittlung Ihrer Geschäftsdaten an externe Server.",
+      "privacyNote": "Ihre Dokumente werden auf Ihrem Gerät verarbeitet und niemals an unsere Server gesendet.",
       "relatedTools": [
         {
           "slug": "de/pdf-zu-word",
@@ -5534,7 +5534,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
       ],
       "content": [
         "Um eine PDF-Datei ohne Server-Upload kostenlos in Excel umzuwandeln, öffnen Sie \"PDF in Excel\" auf ihatelovepdf, ziehen Sie Ihr Dokument hinein und klicken Sie auf \"In Excel umwandeln\". Die Tabellenerkennung rekonstruiert Zeilen und Spalten lokal im Browser in einer .xlsx-Arbeitsmappe.",
-        "DSGVO-konforme Verarbeitung: Keine Übermittlung Ihrer Geschäftsdaten an externe Server."
+        "Ihre Dokumente werden auf Ihrem Gerät verarbeitet und niemals an unsere Server gesendet."
       ]
     }
   },
@@ -6378,7 +6378,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
       "keyTakeaways": [
         "Caviardage définitif : le texte est supprimé physiquement du fichier PDF.",
         "Impossible à copier, coller ou récupérer via un lecteur de PDF.",
-        "Indispensable pour les pièces de justice, dossiers médicaux et conformité RGPD.",
+        "Vos documents sont traités sur votre appareil et ne sont jamais envoyés à nos serveurs.",
         "Confidentialité absolue : vos fichiers ne transitent sur aucun serveur."
       ],
       "steps": [
@@ -6971,7 +6971,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
           "answer": "No, i documenti rimangono identici all'originale senza alcun watermark."
         }
       ],
-      "privacyNote": "Massima conformità alla privacy e al GDPR: controlla la scheda Rete degli strumenti per sviluppatori per verificare zero byte inviati al server.",
+      "privacyNote": "I tuoi documenti vengono elaborati sul tuo dispositivo e non vengono mai inviati ai nostri server.",
       "relatedTools": [
         {
           "slug": "it/dividi",
@@ -6994,7 +6994,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
       ],
       "content": [
         "Per unire file PDF gratis senza inviare documenti a un server esterno, apri lo strumento Unisci PDF di ihatelovepdf, trascina due o più documenti nella finestra, riordina le miniature secondo le tue esigenze e fai clic su \"Unisci PDF\". L'elaborazione avviene nella memoria RAM locale.",
-        "Massima conformità alla privacy e al GDPR: controlla la scheda Rete degli strumenti per sviluppatori per verificare zero byte inviati al server."
+        "I tuoi documenti vengono elaborati sul tuo dispositivo e non vengono mai inviati ai nostri server."
       ]
     },
     "how-to-compress-pdf-without-losing-quality": {
@@ -7062,7 +7062,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
           "answer": "No, il servizio è gratuito, illimitato e non richiede alcun account."
         }
       ],
-      "privacyNote": "Conformità GDPR garantita: i tuoi contratti e dati bancari non lasciano mai il tuo browser.",
+      "privacyNote": "I tuoi documenti vengono elaborati sul tuo dispositivo e non vengono mai inviati ai nostri server.",
       "relatedTools": [
         {
           "slug": "it/unisci",
@@ -7085,7 +7085,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
       ],
       "content": [
         "Per comprimere un PDF senza perdere qualità, carica il tuo documento nello strumento Comprimi PDF di ihatelovepdf, scegli il livello Medio consigliato e clicca su \"Comprimi PDF\". I flussi interni vengono ottimizzati direttamente nella RAM del tuo browser senza alcun invio su server remoti.",
-        "Conformità GDPR garantita: i tuoi contratti e dati bancari non lasciano mai il tuo browser."
+        "I tuoi documenti vengono elaborati sul tuo dispositivo e non vengono mai inviati ai nostri server."
       ]
     },
     "how-to-split-pdf-pages": {
@@ -7244,7 +7244,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
           "answer": "Nessun limite artificiale, puoi convertire documenti di qualsiasi lunghezza."
         }
       ],
-      "privacyNote": "Privacy conforme alle normative europee: zero byte inviati al di fuori del browser.",
+      "privacyNote": "I tuoi documenti vengono elaborati sul tuo dispositivo e non vengono mai inviati ai nostri server.",
       "relatedTools": [
         {
           "slug": "it/da-word-a-pdf",
@@ -7267,7 +7267,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
       ],
       "content": [
         "Per convertire un PDF in Word gratis senza inviare documenti a server esterni, apri da PDF a Word su ihatelovepdf, trascina il file e clicca su \"Converti in Word\". L'algoritmo locale estrae paragrafi e immagini ricostruendo un documento .docx pronto per essere modificato.",
-        "Privacy conforme alle normative europee: zero byte inviati al di fuori del browser."
+        "I tuoi documenti vengono elaborati sul tuo dispositivo e non vengono mai inviati ai nostri server."
       ]
     },
     "how-to-convert-word-to-pdf": {
@@ -7699,7 +7699,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
           "answer": "No, i file esportati non contengono alcun watermark."
         }
       ],
-      "privacyNote": "Privacy conforme alle normative: nessun dato visuale viene trasmesso in rete.",
+      "privacyNote": "I tuoi documenti vengono elaborati sul tuo dispositivo e non vengono mai inviati ai nostri server.",
       "relatedTools": [
         {
           "slug": "it/da-immagini-a-pdf",
@@ -7722,7 +7722,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
       ],
       "content": [
         "Per convertire un PDF in immagini JPG gratis senza inviare documenti a server esterni, apri da PDF a Immagini su ihatelovepdf, carica il file, scegli il formato JPG o PNG, imposta la risoluzione desiderata e clicca su \"Converti in Immagini\". Il rendering avviene nella memoria locale del tuo browser.",
-        "Privacy conforme alle normative: nessun dato visuale viene trasmesso in rete."
+        "I tuoi documenti vengono elaborati sul tuo dispositivo e non vengono mai inviati ai nostri server."
       ]
     },
     "how-to-redact-pdf-free": {
@@ -7745,7 +7745,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
       "keyTakeaways": [
         "Censura permanente: il testo sottostante viene eliminato fisicamente.",
         "Impossibile recuperare i dati con seleziona-tutto o copia-incolla.",
-        "Essenziale per atti giudiziari, cartelle cliniche e conformità al GDPR.",
+        "I tuoi documenti vengono elaborati sul tuo dispositivo e non vengono mai inviati ai nostri server.",
         "100% privato: nessun documento lascia mai il tuo computer."
       ],
       "steps": [
@@ -7881,7 +7881,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
           "answer": "No, il servizio è completamente gratuito e senza watermark."
         }
       ],
-      "privacyNote": "Privacy conforme alle norme europee: nessun byte viene inviato in rete.",
+      "privacyNote": "I tuoi documenti vengono elaborati sul tuo dispositivo e non vengono mai inviati ai nostri server.",
       "relatedTools": [
         {
           "slug": "it/ruota",
@@ -7904,7 +7904,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
       ],
       "content": [
         "Per ritagliare pagine di un PDF gratis senza inviare documenti a server esterni, apri Ritaglia PDF su ihatelovepdf, inserisci il file, trascina i bordi dell'area di ritaglio sul contenuto e clicca su \"Ritaglia PDF\". La modifica viene applicata nella memoria locale del tuo browser.",
-        "Privacy conforme alle norme europee: nessun byte viene inviato in rete."
+        "I tuoi documenti vengono elaborati sul tuo dispositivo e non vengono mai inviati ai nostri server."
       ]
     },
     "how-to-rotate-pdf-pages": {
@@ -9112,7 +9112,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
       "keyTakeaways": [
         "Cenzură permanentă: textul de dedesubt este șters definitiv din fișier.",
         "Informațiile ascunse nu pot fi copiate sau recuperate prin inspectare.",
-        "Esențial pentru dosare judiciare, fise medicale și conformitate GDPR.",
+        "Documentele dumneavoastră sunt procesate pe dispozitivul dumneavoastră și nu sunt trimise niciodată către serverele noastre.",
         "100% confidențial: documentele tale nu ajung niciodată pe internet."
       ],
       "steps": [
@@ -11846,7 +11846,7 @@ export const LOCALIZED_GUIDES_DATA: Record<string, Record<string, LocalizedGuide
       "keyTakeaways": [
         "Végleges kitakarás: a letakart szöveg fizikailag törlődik a fájlból.",
         "Nem másolható ki és nem nyerhető vissza szövegkijelöléssel.",
-        "Nélkülözhetetlen bírósági iratokhoz, orvosi leletekhez és GDPR megfeleléshez.",
+        "A dokumentumaid feldolgozása a saját eszközödön történik, és soha nem kerülnek elküldésre a szervereinkre.",
         "100% privát: az iratok soha nem hagyják el az Ön számítógépét."
       ],
       "steps": [

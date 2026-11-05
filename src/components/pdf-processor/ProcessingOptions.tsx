@@ -1463,7 +1463,7 @@ export default function ProcessingOptions({
             Indian GST Invoice Form
           </h3>
           <p className="mt-1 text-xs text-[var(--tx-2)]">
-            Auto-calculates CGST/SGST/IGST and generates compliant tax invoice PDFs.
+            Auto-calculates CGST/SGST/IGST and generates standard tax invoice PDFs.
           </p>
         </div>
 

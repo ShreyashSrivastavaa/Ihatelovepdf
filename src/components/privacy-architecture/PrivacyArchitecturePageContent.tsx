@@ -123,10 +123,10 @@ export function PrivacyArchitecturePageContent({ locale }: PrivacyArchitecturePa
       },
       {
         '@type': 'Question',
-        name: 'Is ihatelovepdf compliant with GDPR and HIPAA?',
+        name: 'Are documents ever uploaded or sent to external servers?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Yes. Because ihatelovepdf never collects, transmits, or stores user document data, our infrastructure does not act as a Data Processor under GDPR Article 28, and no Business Associate Agreement (BAA) is triggered under HIPAA rules.',
+          text: 'No. Your documents are processed on your device and are never sent to our servers. All parsing, compression, merging, and rendering operations execute locally inside your browser via WebAssembly.',
         },
       },
     ],
@@ -312,29 +312,29 @@ export function PrivacyArchitecturePageContent({ locale }: PrivacyArchitecturePa
           </div>
         </section>
 
-        {/* Enterprise Compliance Matrix */}
+        {/* Document Isolation Architecture */}
         <section className="space-y-4">
           <h2 className="text-xl sm:text-2xl font-bold text-[var(--text-main)]">
-            3. Enterprise Compliance & Legal Ramifications
+            3. Document Isolation &amp; Infrastructure Architecture
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="p-5 rounded-xl border border-[var(--border)] bg-[var(--card)] space-y-2">
               <h3 className="font-bold text-sm text-[var(--text-main)] flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                <span>GDPR Article 28</span>
+                <span>Zero Server Ingestion</span>
               </h3>
               <p className="text-xs text-[var(--text-muted)] leading-relaxed">
-                Because ihatelovepdf never receives or processes personal data on servers, organizations do not need a Data Processing Agreement (DPA) to use our tools.
+                Your documents are processed on your device and are never sent to our servers. Because processing occurs strictly in client memory, no backend document processing servers exist.
               </p>
             </div>
 
             <div className="p-5 rounded-xl border border-[var(--border)] bg-[var(--card)] space-y-2">
               <h3 className="font-bold text-sm text-[var(--text-main)] flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                <span>HIPAA Non-Exposure</span>
+                <span>Local Device Perimeter</span>
               </h3>
               <p className="text-xs text-[var(--text-muted)] leading-relaxed">
-                Protected Health Information (PHI) stays strictly within the healthcare provider’s local device perimeter, eliminating third-party cloud exposure.
+                Document data stays entirely within your local device memory. Byte arrays are manipulated in RAM and exported directly to your browser download manager.
               </p>
             </div>
 
@@ -344,7 +344,7 @@ export function PrivacyArchitecturePageContent({ locale }: PrivacyArchitecturePa
                 <span>Zero AI Training</span>
               </h3>
               <p className="text-xs text-[var(--text-muted)] leading-relaxed">
-                We have zero access to your documents and zero data collection infrastructure. Your proprietary IP is never scraped or fed into AI models.
+                We have zero access to your documents and operate zero document ingestion pipelines. Your proprietary files and text are never accessed or used for model training.
               </p>
             </div>
           </div>
@@ -378,11 +378,11 @@ export function PrivacyArchitecturePageContent({ locale }: PrivacyArchitecturePa
 
             <details className="group rounded-xl border border-[var(--border)] bg-[var(--card)] p-4 open:bg-[var(--card)] transition-colors">
               <summary className="flex cursor-pointer items-center justify-between font-semibold text-sm sm:text-base text-[var(--text-main)] select-none">
-                <span>Is ihatelovepdf compliant with GDPR and HIPAA?</span>
+                <span>Are documents ever uploaded or sent to external servers?</span>
                 <ChevronDown className="h-4 w-4 shrink-0 text-[var(--text-muted)] transition-transform duration-200 group-open:rotate-180" />
               </summary>
               <p className="mt-3 text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
-                Yes. Because ihatelovepdf never collects, transmits, or stores user document data, our infrastructure does not act as a Data Processor under GDPR Article 28, and no Business Associate Agreement (BAA) is triggered under HIPAA rules.
+                No. Your documents are processed on your device and are never sent to our servers. All parsing, compression, merging, and rendering operations execute locally inside your browser via WebAssembly.
               </p>
             </details>
           </div>
@@ -394,7 +394,7 @@ export function PrivacyArchitecturePageContent({ locale }: PrivacyArchitecturePa
             Experience Private, In-Browser Processing
           </h3>
           <p className="text-xs sm:text-sm text-[var(--text-muted)] max-w-lg mx-auto">
-            Try any of our 37 free tools. No sign-up required, works offline, and your documents never leave your device.
+            Try any of our 37 free tools. No sign-up required, runs in your browser, and your documents never leave your device.
           </p>
           <div className="pt-2 flex flex-wrap justify-center gap-3">
             <Link

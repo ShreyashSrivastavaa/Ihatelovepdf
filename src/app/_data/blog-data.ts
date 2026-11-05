@@ -465,7 +465,7 @@ export const BLOG_ARTICLES: Record<string, BlogArticle> = {
         answer: 'Yes! Load the tool page, disconnect your Wi-Fi or turn on Airplane mode, and process your document. It will continue working smoothly.',
       },
       {
-        question: 'Are client-side tools compliant with GDPR and HIPAA?',
+        question: 'Are documents ever uploaded to remote servers?',
         answer: 'Yes. Because no personal data is transferred, processed, or stored by our servers, you maintain complete data sovereignty.',
       },
       {
@@ -818,7 +818,7 @@ export const BLOG_ARTICLES: Record<string, BlogArticle> = {
       {
         heading: 'Why In-Browser Redaction Is Critical for Legal Compliance',
         paragraphs: [
-          'Uploading confidential discovery materials or medical records to third-party cloud servers violates confidentiality obligations under HIPAA, GDPR, and attorney-client privilege. Because I Hate Love PDF executes redactions locally on your computer, your privileged materials never touch external networks.',
+          'Your documents are processed on your device and are never sent to our servers. Because ihatelovepdf executes all redactions locally on your computer, your private files never touch external networks.',
         ],
       },
       {

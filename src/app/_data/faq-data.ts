@@ -19,8 +19,8 @@ export const commonFaqs = [
 
 export const spainFaqs = [
   {
-    question: "¿ihatelovepdf cumple con el RGPD europeo?",
-    answer: "Sí, al procesar todos los documentos localmente en tu navegador, ihatelovepdf garantiza el cumplimiento del RGPD ya que no almacenamos ni tratamos tus PDFs en servidores externos."
+    question: "¿Mis documentos se envían a algún servidor externo?",
+    answer: "No. Tus documentos se procesan directamente en tu dispositivo y nunca se envían a nuestros servidores."
   },
   {
     question: "¿Puedo usar ihatelovepdf para documentos oficiales o facturas?",

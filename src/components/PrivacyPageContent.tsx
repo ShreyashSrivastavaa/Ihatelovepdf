@@ -46,7 +46,7 @@ export default function PrivacyPageContent() {
             <div className="w-8 h-8 rounded-lg bg-[var(--brand-soft)] text-[var(--brand)] border border-[var(--brand)]/20 flex items-center justify-center">
               <EyeOff className="h-4 w-4" />
             </div>
-            <h3 className="text-sm font-semibold text-[var(--text-main)]">No Tracking Cookies</h3>
+            <h3 className="text-sm font-semibold text-[var(--text-main)]">No Advertising Cookies</h3>
             <p className="text-xs text-[var(--text-muted)] leading-relaxed">
               We do not use advertising identifiers or invasive profiling cookies. Only essential user settings (like theme) are stored locally.
             </p>
@@ -117,7 +117,7 @@ export default function PrivacyPageContent() {
               <div className="flex items-start gap-2">
                 <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
                 <div>
-                  <strong className="text-[var(--text-main)]">Privacy-Preserving Analytics:</strong> Aggregate, anonymized usage pageviews (via Google Analytics 4) to ensure site health and performance optimization. No document contents or PII are logged.
+                  <strong className="text-[var(--text-main)]">Privacy-Preserving Web Analytics:</strong> We use privacy-first web analytics (such as Cloudflare Web Analytics) to measure aggregate, anonymized metrics including pageviews, device category, and referrer source. No document contents, filenames, or tracking cookies are ever used, and no third-party tracking scripts load on tool pages.
                 </div>
               </div>
             </div>
@@ -138,30 +138,11 @@ export default function PrivacyPageContent() {
 
           <section className="p-5 sm:p-6 rounded-xl border border-[var(--border)] bg-[var(--card)] space-y-2.5">
             <h2 className="text-base sm:text-lg font-bold text-[var(--text-main)] flex items-center gap-2">
-              <span className="text-[var(--brand)] font-mono text-sm font-semibold">6.</span> International Legal Compliance
+              <span className="text-[var(--brand)] font-mono text-sm font-semibold">6.</span> Document Privacy Architecture
             </h2>
-            <div className="space-y-3">
-              <div>
-                <h3 className="font-semibold text-xs sm:text-sm text-[var(--text-main)]">General Data Protection Regulation (GDPR)</h3>
-                <p className="text-xs text-[var(--text-muted)] leading-relaxed">
-                  Because no personal data or document content leaves your browser, ihatelovepdf complies with GDPR requirements for data minimization, storage limitation, and confidentiality by default.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="font-semibold text-xs sm:text-sm text-[var(--text-main)]">Health Insurance Portability &amp; Accountability Act (HIPAA)</h3>
-                <p className="text-xs text-[var(--text-muted)] leading-relaxed">
-                  Since Protected Health Information (PHI) is never uploaded, transmitted, or stored on third-party servers, ihatelovepdf can safely be utilized for document manipulation without risk of cloud PHI breaches.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="font-semibold text-xs sm:text-sm text-[var(--text-main)]">Lei Geral de Proteção de Dados (LGPD)</h3>
-                <p className="text-xs text-[var(--text-muted)] leading-relaxed">
-                  In compliance with Brazil&apos;s LGPD, we collect no personal data profiles and process zero personal information on remote database systems.
-                </p>
-              </div>
-            </div>
+            <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
+              Your documents are processed on your device and are never sent to our servers. Because all file operations run locally in your web browser via client-side WebAssembly, your documents and files remain strictly under your control at all times.
+            </p>
           </section>
 
           <section className="p-5 sm:p-6 rounded-xl border border-[var(--border)] bg-[var(--card)] space-y-2.5">

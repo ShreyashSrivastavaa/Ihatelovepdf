@@ -332,8 +332,8 @@ export const TOOL_FAQS: Record<OperationKey, ToolFaqItem[]> = {
       answer: 'No. Once you apply redaction and download the file, the erased text and image pixels are completely removed from the PDF structure.',
     },
     {
-      question: 'Is this redaction tool legally compliant for confidential documents?',
-      answer: 'Yes. Because underlying byte sequences and search indices are destroyed, the document meets standard digital redaction requirements for legal, medical, and financial filings.',
+      question: 'Does this redaction tool permanently erase confidential information?',
+      answer: 'Yes. Your documents are processed on your device and are never sent to our servers. Because underlying byte sequences and search indices are permanently erased, the redaction cannot be reversed or uncovered.',
     },
     {
       question: 'Can I redact both text and sensitive photos or signatures?',
@@ -783,7 +783,7 @@ export const TOOL_FAQS: Record<OperationKey, ToolFaqItem[]> = {
   gstInvoice: [
     {
       question: 'What is the GST Invoice Generator tool?',
-      answer: 'It is a specialized billing tool designed for Indian businesses to create professional, GST-compliant tax invoice PDFs with auto-calculated taxes.',
+      answer: 'It is a specialized billing tool designed for Indian businesses to create professional tax invoice PDFs with auto-calculated taxes.',
     },
     {
       question: 'Does it calculate CGST, SGST, and IGST automatically?',
@@ -794,7 +794,7 @@ export const TOOL_FAQS: Record<OperationKey, ToolFaqItem[]> = {
       answer: 'Yes. You can upload your business logo, enter your GSTIN, supplier and customer addresses, HSN codes, and bank account details for UPI/NEFT transfers.',
     },
     {
-      question: 'Is the generated invoice legally compliant with Indian GST rules?',
+      question: 'Does the generated invoice follow Indian GST invoice formats?',
       answer: 'Yes. The layout follows standard GST invoice requirements, including tax invoice titles, invoice numbering, dates, place of supply, and reverse charge declarations.',
     },
     {
