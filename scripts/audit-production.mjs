@@ -82,9 +82,11 @@ async function auditProduction() {
       } catch {}
 
       const postData = req.postData() || '';
-      const hasPdf = postData.includes('%PDF-') || postData.includes('small.pdf');
+      const postBuffer = req.postDataBuffer();
+      const hasPdfHeader = postBuffer ? postBuffer.includes(Buffer.from('%PDF-')) : false;
+      const hasPdf = hasPdfHeader || postData.includes('%PDF-') || postData.includes('small.pdf');
       if (hasPdf) {
-        docPayloadRequests.push({ url, method: req.method(), size: postData.length });
+        docPayloadRequests.push({ url, method: req.method(), size: postBuffer ? postBuffer.length : postData.length });
       }
 
       requests.push({ url, method: req.method(), isThirdParty, hasPdf });
