@@ -45,6 +45,9 @@ const BREADCRUMB_COMPARISONS_LABELS: Record<string, string> = {
   hu: 'Összehasonlítások',
 };
 
+// Set to a formatted date string (e.g. "November 5, 2026") once competitor claims have been manually re-verified
+const LAST_VERIFIED_DATE: string | null = null;
+
 export function ComparisonPageContent({ pageType, locale }: ComparisonPageContentProps) {
   const data = COMPARISONS_DATA[pageType][locale] || COMPARISONS_DATA[pageType]['en'];
   const homeLabel = BREADCRUMB_HOME_LABELS[locale] || 'Home';
@@ -161,12 +164,16 @@ export function ComparisonPageContent({ pageType, locale }: ComparisonPageConten
               <UserCheck className="w-3.5 h-3.5 text-[var(--brand)]" />
               <span>Written by Shreyash Srivastava</span>
             </div>
-            <span>•</span>
-            <span>Last updated: November 2026</span>
+            {LAST_VERIFIED_DATE && (
+              <>
+                <span>•</span>
+                <span>Last verified: {LAST_VERIFIED_DATE}</span>
+              </>
+            )}
             <span>•</span>
             <div className="inline-flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-medium">
               <ShieldCheck className="w-3.5 h-3.5" />
-              <span>Sourced & Verifiable Facts</span>
+              <span>Sourced &amp; Verifiable Facts</span>
             </div>
           </div>
         </header>
@@ -236,6 +243,50 @@ export function ComparisonPageContent({ pageType, locale }: ComparisonPageConten
               </tbody>
             </table>
           </div>
+
+          {/* Sources List for Manual Verification */}
+          <div className="p-4 rounded-xl border border-[var(--border)] bg-[var(--bg-subtle)] space-y-2 text-xs">
+            <div className="font-semibold text-[var(--text-main)]">
+              Competitor Verification Sources:
+            </div>
+            <ul className="space-y-1 text-[var(--text-muted)] list-disc list-inside">
+              {pageType === 'adobe-acrobat' ? (
+                <>
+                  <li>
+                    Adobe Acrobat Online Features:{' '}
+                    <a href="https://www.adobe.com/acrobat/online.html" target="_blank" rel="noopener noreferrer nofollow" className="text-[var(--brand)] underline">
+                      https://www.adobe.com/acrobat/online.html
+                    </a>
+                  </li>
+                  <li>
+                    Adobe Plans &amp; Pricing:{' '}
+                    <a href="https://www.adobe.com/pricing.html" target="_blank" rel="noopener noreferrer nofollow" className="text-[var(--brand)] underline">
+                      https://www.adobe.com/pricing.html
+                    </a>
+                  </li>
+                </>
+              ) : (
+                <li>
+                  ihatepdf Homepage &amp; Tool Catalog:{' '}
+                  <a href="https://ihatepdf.cv" target="_blank" rel="noopener noreferrer nofollow" className="text-[var(--brand)] underline">
+                    https://ihatepdf.cv
+                  </a>
+                </li>
+              )}
+              <li>
+                Reference: iLovePDF Pricing &amp; Task Limits:{' '}
+                <a href="https://www.ilovepdf.com/pricing" target="_blank" rel="noopener noreferrer nofollow" className="text-[var(--brand)] underline">
+                  https://www.ilovepdf.com/pricing
+                </a>
+              </li>
+              <li>
+                Reference: Smallpdf Pricing &amp; Document Limits:{' '}
+                <a href="https://smallpdf.com/pricing" target="_blank" rel="noopener noreferrer nofollow" className="text-[var(--brand)] underline">
+                  https://smallpdf.com/pricing
+                </a>
+              </li>
+            </ul>
+          </div>
         </section>
 
         {/* 5. PRIVACY PILLARS */}
@@ -302,7 +353,7 @@ export function ComparisonPageContent({ pageType, locale }: ComparisonPageConten
             Ready to process your PDF privately?
           </h3>
           <p className="text-xs sm:text-sm text-[var(--text-muted)] max-w-lg mx-auto">
-            Choose from 37 free tools. No sign-up required, works offline, and your files never leave your device.
+            Choose from 37 free tools. No sign-up required, runs in your browser, and your files never leave your device.
           </p>
           <div className="pt-2 flex flex-wrap justify-center gap-3">
             <Link
