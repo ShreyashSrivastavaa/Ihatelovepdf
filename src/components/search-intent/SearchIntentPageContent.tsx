@@ -46,15 +46,15 @@ const BREADCRUMB_SECURITY_LABELS: Record<string, string> = {
 };
 
 const KEYWORD_PILLS: Record<string, string[]> = {
-  en: ['No Watermark', 'No Sign-Up', 'Zero Uploads', 'Works Offline', 'Unlimited'],
-  es: ['Sin Marcas de Agua', 'Sin Registro', 'Sin Subir Archivos', 'Funciona Sin Conexión', 'Ilimitado'],
-  pt: ['Sem Marca d\'Água', 'Sem Cadastro', 'Zero Uploads', 'Funciona Offline', 'Ilimitado'],
-  de: ['Ohne Wasserzeichen', 'Ohne Registrierung', 'Kein Server-Upload', 'Offline nutzbar', 'Unbegrenzt'],
-  fr: ['Sans Filigrane', 'Sans Inscription', 'Zéro Téléversement', 'Fonctionne Hors Ligne', 'Illimité'],
-  it: ['Senza Filigrana', 'Senza Registrazione', 'Zero Upload', 'Funziona Offline', 'Illimitato'],
-  ro: ['Fără Filigran', 'Fără Înregistrare', 'Fără Încărcare', 'Funcționează Offline', 'Nelimitat'],
-  ru: ['Без водяных знаков', 'Без регистрации', 'Без загрузки', 'Работает офлайн', 'Без ограничений'],
-  hu: ['Vízjel nélkül', 'Regisztráció nélkül', 'Feltöltés nélkül', 'Offline is működik', 'Korlátlan'],
+  en: ['No Watermark', 'No Sign-Up', 'Zero Uploads', 'Runs in Browser', 'Unlimited'],
+  es: ['Sin Marcas de Agua', 'Sin Registro', 'Sin Subir Archivos', 'En tu Navegador', 'Ilimitado'],
+  pt: ['Sem Marca d\'Água', 'Sem Cadastro', 'Zero Uploads', 'No Navegador', 'Ilimitado'],
+  de: ['Ohne Wasserzeichen', 'Ohne Registrierung', 'Kein Server-Upload', 'Im Browser', 'Unbegrenzt'],
+  fr: ['Sans Filigrane', 'Sans Inscription', 'Zéro Téléversement', 'Dans le Navigateur', 'Illimité'],
+  it: ['Senza Filigrana', 'Senza Registrazione', 'Zero Upload', 'Nel Browser', 'Illimitato'],
+  ro: ['Fără Filigran', 'Fără Înregistrare', 'Fără Încărcare', 'În Browser', 'Nelimitat'],
+  ru: ['Без водяных знаков', 'Без регистрации', 'Без загрузки', 'В браузере', 'Без ограничений'],
+  hu: ['Vízjel nélkül', 'Regisztráció nélkül', 'Feltöltés nélkül', 'Böngészőben fut', 'Korlátlan'],
 };
 
 export function SearchIntentPageContent({ slug, locale }: SearchIntentPageContentProps) {
@@ -306,7 +306,7 @@ export function SearchIntentPageContent({ slug, locale }: SearchIntentPageConten
             Ready to process your files securely?
           </h3>
           <p className="text-xs sm:text-sm text-[var(--text-muted)] max-w-lg mx-auto">
-            Try the {data.primaryToolName} directly in your browser. No sign-up required, works offline, and your documents never leave your device.
+            Try the {data.primaryToolName} directly in your browser. No sign-up required, runs in your browser, and your documents never leave your device.
           </p>
           <div className="pt-2 flex flex-wrap justify-center gap-3">
             <Link

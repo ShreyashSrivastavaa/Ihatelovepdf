@@ -65,7 +65,7 @@ export const COMPARISONS_DATA: Record<ComparisonPageType, Record<string, Compari
         {
           feature: 'Offline Usability',
           competitor: 'Desktop Pro runs offline once licensed. Acrobat Online requires an active internet connection.',
-          ourSite: 'Works offline once cached as a Progressive Web App (PWA) with zero internet needed.',
+          ourSite: 'Runs entirely in your browser; keeps working without an active internet connection once the page has loaded.',
           status: 'VERIFIED',
           source: 'ihatelovepdf Service Worker & WebAssembly cache',
         },
@@ -221,7 +221,7 @@ export const COMPARISONS_DATA: Record<ComparisonPageType, Record<string, Compari
         {
           feature: 'Offline-Nutzung',
           competitor: 'Desktop-Version läuft offline nach Lizenzprüfung. Web-Version benötigt ständige Verbindung.',
-          ourSite: 'Funktioniert offline als Progressive Web App (PWA) im Browser-Cache.',
+          ourSite: 'Läuft vollständig in Ihrem Browser und funktioniert nach dem Laden der Seite auch ohne Internetverbindung.',
           status: 'VERIFIED',
           source: 'Service Worker Spezifikation von ihatelovepdf',
         },
@@ -293,7 +293,7 @@ export const COMPARISONS_DATA: Record<ComparisonPageType, Record<string, Compari
         {
           feature: 'Utilisation hors ligne',
           competitor: 'L’application de bureau fonctionne hors ligne après activation. La version web nécessite internet.',
-          ourSite: 'Fonctionne hors ligne une fois mise en cache comme Progressive Web App (PWA).',
+          ourSite: 'S’exécute entièrement dans votre navigateur et continue de fonctionner sans connexion une fois la page chargée.',
           status: 'VERIFIED',
           source: 'Mise en cache WebAssembly ihatelovepdf',
         },
@@ -365,7 +365,7 @@ export const COMPARISONS_DATA: Record<ComparisonPageType, Record<string, Compari
         {
           feature: 'Uso Offline',
           competitor: 'L’app desktop funziona offline una volta attivata. Il web richiede connessione.',
-          ourSite: 'Funziona offline se memorizzato nella cache PWA del browser.',
+          ourSite: 'Viene eseguito interamente nel browser e continua a funzionare senza connessione dopo il caricamento della pagina.',
           status: 'VERIFIED',
           source: 'Configurazione Service Worker ihatelovepdf',
         },
@@ -437,7 +437,7 @@ export const COMPARISONS_DATA: Record<ComparisonPageType, Record<string, Compari
         {
           feature: 'Uso Offline (Sem Internet)',
           competitor: 'O app desktop funciona offline após ativação. O Acrobat Online requer internet.',
-          ourSite: 'Funciona offline em cache como Progressive Web App (PWA).',
+          ourSite: 'Executa diretamente no seu navegador e continua funcionando sem conexão após a página ser carregada.',
           status: 'VERIFIED',
           source: 'Configuração WebAssembly ihatelovepdf',
         },
@@ -509,7 +509,7 @@ export const COMPARISONS_DATA: Record<ComparisonPageType, Record<string, Compari
         {
           feature: 'Utilizare Fără Conexiune (Offline)',
           competitor: 'Versiunea desktop funcționează offline după activare. Varianta online necesită internet permanent.',
-          ourSite: 'Funcționează offline salvat în memoria cache ca Progressive Web App (PWA).',
+          ourSite: 'Rulează direct în browser și continuă să funcționeze fără conexiune odată ce pagina a fost încărcată.',
           status: 'VERIFIED',
           source: 'Specificație cache WebAssembly ihatelovepdf',
         },
@@ -579,11 +579,11 @@ export const COMPARISONS_DATA: Record<ComparisonPageType, Record<string, Compari
           source: 'Системные требования Adobe Acrobat',
         },
         {
-          feature: 'Работа без интернета (Офлайн)',
+          feature: 'Зависимость от подключения к сети',
           competitor: 'Десктопное приложение работает офлайн после активации. Онлайн-версия требует постоянного интернета.',
-          ourSite: 'Работает офлайн благодаря кешированию в режиме Progressive Web App (PWA).',
+          ourSite: 'Работает прямо в браузере и продолжает функционировать без интернета после загрузки страницы.',
           status: 'VERIFIED',
-          source: 'Кеш WebAssembly в Service Worker ihatelovepdf',
+          source: 'Клиентский движок WebAssembly ihatelovepdf',
         },
         {
           feature: 'Водяные знаки на готовых документах',
@@ -653,7 +653,7 @@ export const COMPARISONS_DATA: Record<ComparisonPageType, Record<string, Compari
         {
           feature: 'Offline használat',
           competitor: 'Az asztali verzió aktiválás után működik offline. Az online felülethez folyamatos internet kell.',
-          ourSite: 'Offline is működik a böngésző gyorsítótárából mint Progressive Web App (PWA).',
+          ourSite: 'Közvetlenül a böngészőben fut, és az oldal betöltése után internetkapcsolat nélkül is működik.',
           status: 'VERIFIED',
           source: 'ihatelovepdf Service Worker specifikáció',
         },

@@ -11,10 +11,10 @@ ihatelovepdf (I Hate Love PDF) is a free web-based PDF utility suite engineered 
 
 ### Core Guarantees
 - **Zero Server Uploads**: 0 bytes of document data leave the user's computer or phone. Verifiable via the browser's Network DevTools tab.
-- **Privacy by Design**: HIPAA, GDPR, and confidentiality-compliant by physics—no servers receive, store, or process files.
+- **Document Isolation**: Your documents are processed on your device and are never sent to our servers.
 - **100% Free**: No subscriptions, no task counters, no artificial daily paywalls, and no account registration.
 - **Unlimited File Size & Batches**: Constrained solely by available client device RAM.
-- **Offline Capable**: Works offline or with unstable internet connections once loaded.
+- **Runs in Browser**: Keeps working without an internet connection once the page has loaded.
 
 ## Primary Tools (English)
 - [Merge PDF](https://www.ihatelovepdf.com/merge): Combine multiple PDF documents into a single organized file.

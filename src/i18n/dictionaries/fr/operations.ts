@@ -51,7 +51,7 @@ const operationsFrContent: Partial<Record<OperationKey, OperationContent>> = {
       {
         title: "Confidentialité dès la conception",
         description:
-          "Évitez les téléchargements sur serveur et les fuites de données afin de vous conformer aux politiques de confidentialité internes sans effort.",
+          "Vos documents sont traités sur votre appareil et ne sont jamais envoyés à nos serveurs.",
       },
     ],
     howTo: {

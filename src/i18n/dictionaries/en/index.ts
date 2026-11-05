@@ -31,7 +31,7 @@ export const enDictionary: Dictionary = {
     site: {
       title: "I Hate Love PDF: Free PDF Tools - No Watermark, No Sign-Up",
       description:
-        "Free, private PDF tools that run 100% locally in your browser. Merge, compress, split, and convert PDFs with no watermarks, no registration, and zero server uploads. Works offline with unlimited tasks.",
+        "Free, private PDF tools that run 100% locally in your browser. Merge, compress, split, and convert PDFs with no watermarks, no registration, and zero server uploads. Runs in your browser with unlimited tasks.",
       keywords: [
         "merge pdf",
         "compress pdf",

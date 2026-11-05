@@ -52,15 +52,15 @@ const TOOL_BADGES: Record<string, string> = {
 };
 
 const KEYWORD_PILLS_MAP: Record<string, string[]> = {
-  en: ['No Watermark', 'No Sign-Up', 'Zero Uploads', 'Works Offline', 'Unlimited'],
-  es: ['Sin Marcas de Agua', 'Sin Registro', 'Sin Subir Archivos', 'Funciona Sin Conexión', 'Ilimitado'],
-  pt: ['Sem Marca d\'Água', 'Sem Cadastro', 'Zero Uploads', 'Funciona Offline', 'Ilimitado'],
-  de: ['Ohne Wasserzeichen', 'Ohne Registrierung', 'Kein Server-Upload', 'Offline nutzbar', 'Unbegrenzt'],
-  fr: ['Sans Filigrane', 'Sans Inscription', 'Zéro Téléversement', 'Fonctionne Hors Ligne', 'Illimité'],
-  it: ['Senza Filigrana', 'Senza Registrazione', 'Zero Upload', 'Funziona Offline', 'Illimitato'],
-  ro: ['Fără Filigran', 'Fără Înregistrare', 'Fără Încărcare', 'Funcționează Offline', 'Nelimitat'],
-  ru: ['Без водяных знаков', 'Без регистрации', 'Без загрузки', 'Работает офлайн', 'Без ограничений'],
-  hu: ['Vízjel nélkül', 'Regisztráció nélkül', 'Feltöltés nélkül', 'Offline is működik', 'Korlátlan'],
+  en: ['No Watermark', 'No Sign-Up', 'Zero Uploads', 'Runs in Browser', 'Unlimited'],
+  es: ['Sin Marcas de Agua', 'Sin Registro', 'Sin Subir Archivos', 'En tu Navegador', 'Ilimitado'],
+  pt: ['Sem Marca d\'Água', 'Sem Cadastro', 'Zero Uploads', 'No Navegador', 'Ilimitado'],
+  de: ['Ohne Wasserzeichen', 'Ohne Registrierung', 'Kein Server-Upload', 'Im Browser', 'Unbegrenzt'],
+  fr: ['Sans Filigrane', 'Sans Inscription', 'Zéro Téléversement', 'Dans le Navigateur', 'Illimité'],
+  it: ['Senza Filigrana', 'Senza Registrazione', 'Zero Upload', 'Nel Browser', 'Illimitato'],
+  ro: ['Fără Filigran', 'Fără Înregistrare', 'Fără Încărcare', 'În Browser', 'Nelimitat'],
+  ru: ['Без водяных знаков', 'Без регистрации', 'Без загрузки', 'В браузере', 'Без ограничений'],
+  hu: ['Vízjel nélkül', 'Regisztráció nélkül', 'Feltöltés nélkül', 'Böngészőben fut', 'Korlátlan'],
 };
 
 export function HomePageContent({ dictionary }: HomePageContentProps) {
@@ -192,9 +192,9 @@ export function HomePageContent({ dictionary }: HomePageContentProps) {
               <div className="w-8 h-8 rounded-lg bg-alt border border-border flex items-center justify-center text-primary mb-3">
                 <ShieldCheck className="w-4 h-4 text-success" />
               </div>
-              <h3 className="text-sm font-bold text-primary mb-1">Instant & Works Offline</h3>
+              <h3 className="text-sm font-bold text-primary mb-1">Instant &amp; In-Browser</h3>
               <p className="text-xs sm:text-sm text-secondary leading-relaxed">
-                No waiting in upload queues. Once cached, the tools work even on flaky internet connections.
+                No waiting in upload queues. Keeps working without an internet connection once the page has loaded.
               </p>
             </div>
           </div>

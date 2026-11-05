@@ -9,11 +9,11 @@ interface QuickAnswerBoxProps {
 
 const QUICK_ANSWERS_EN: Record<string, string> = {
   merge:
-    "To merge PDF files for free with no watermark, no sign-up, and zero server uploads, select or drag your PDFs into the tool above, reorder the pages or files to your desired sequence, and click 'Merge PDF'. Your files are combined instantly inside your browser RAM using client-side WebAssembly—it works offline and nothing is ever uploaded to a remote server.",
+    "To merge PDF files for free with no watermark, no sign-up, and zero server uploads, select or drag your PDFs into the tool above, reorder the pages or files to your desired sequence, and click 'Merge PDF'. Your files are combined instantly inside your browser RAM using client-side WebAssembly—it keeps working without an active internet connection once loaded and nothing is ever uploaded to a remote server.",
   compress:
     "To compress a PDF without losing quality, with no watermark and zero server uploads, upload your document, choose your preferred compression level (Recommended, Extreme, or Low), and download your reduced file. ihatelovepdf optimizes embedded images and stream structures entirely in your local browser memory with unlimited tasks and complete privacy.",
   split:
-    "To split a PDF online for free with no watermark and no registration, load your document, specify the page ranges or select individual pages you wish to extract, and click 'Split PDF'. The new documents are generated directly on your device with no daily task limits, offline capability, and zero cloud uploads.",
+    "To split a PDF online for free with no watermark and no registration, load your document, specify the page ranges or select individual pages you wish to extract, and click 'Split PDF'. The new documents are generated directly on your device with no daily task limits, runs entirely in your browser, and zero cloud uploads.",
   redact:
     "To permanently redact confidential information in a PDF for free with no watermark, draw black-out rectangles over sensitive text, numbers, or images, then click 'Apply Redaction'. Unlike simple highlight overlays, ihatelovepdf permanently flattens the pixels and erases the underlying vector text in your local browser with no sign-up required.",
   signPdf:
@@ -32,35 +32,35 @@ const QUICK_ANSWERS_EN: Record<string, string> = {
 
 const DEFAULT_ANSWER_TEMPLATE: Record<string, (tool: string) => string> = {
   en: (tool: string) =>
-    `To use ${tool} for free with no watermark, no sign-up, and zero server uploads, load your document above and follow the step-by-step instructions. ihatelovepdf executes all processing locally in your browser memory using WebAssembly, meaning it works offline, provides unlimited tasks, and keeps your files 100% private.`,
+    `To use ${tool} for free with no watermark, no sign-up, and zero server uploads, load your document above and follow the step-by-step instructions. ihatelovepdf executes all processing locally in your browser memory using WebAssembly, meaning it runs in your browser, provides unlimited tasks, and keeps your files 100% private.`,
   es: (tool: string) =>
-    `Para usar ${tool} gratis sin marcas de agua, sin registro y sin subir archivos a servidores, carga tu documento arriba y sigue las instrucciones paso a paso. ihatelovepdf procesa todo localmente en la memoria de tu navegador con WebAssembly: funciona sin conexión, ofrece tareas ilimitadas y garantiza privacidad total.`,
+    `Para usar ${tool} gratis sin marcas de agua, sin registro y sin subir archivos a servidores, carga tu documento arriba y sigue las instrucciones paso a paso. ihatelovepdf procesa todo localmente en la memoria de tu navegador con WebAssembly: funciona en tu navegador, ofrece tareas ilimitadas y garantiza privacidad total.`,
   pt: (tool: string) =>
-    `Para usar ${tool} gratuitamente sem marca d'água, sem cadastro e sem enviar arquivos para servidores, carregue seu documento acima e siga as instruções. O ihatelovepdf processa tudo na memória do seu navegador com WebAssembly: funciona offline, oferece tarefas ilimitadas e garante privacidade absoluta.`,
+    `Para usar ${tool} gratuitamente sem marca d'água, sem cadastro e sem enviar arquivos para servidores, carregue seu documento acima e siga as instruções. O ihatelovepdf processa tudo na memória do seu navegador com WebAssembly: roda no seu navegador, oferece tarefas ilimitadas e garante privacidade absoluta.`,
   de: (tool: string) =>
-    `Um ${tool} kostenlos ohne Wasserzeichen, ohne Registrierung und ohne Server-Upload zu nutzen, laden Sie Ihr Dokument oben hoch und folgen Sie der Anleitung. ihatelovepdf verarbeitet alles lokal im Browserspeicher mit WebAssembly – funktioniert offline, bietet unbegrenzte Aufgaben und schützt Ihre Daten zu 100%.`,
+    `Um ${tool} kostenlos ohne Wasserzeichen, ohne Registrierung und ohne Server-Upload zu nutzen, laden Sie Ihr Dokument oben hoch und folgen Sie der Anleitung. ihatelovepdf verarbeitet alles lokal im Browserspeicher mit WebAssembly – läuft direkt im Browser, bietet unbegrenzte Aufgaben und schützt Ihre Daten zu 100%.`,
   fr: (tool: string) =>
-    `Pour utiliser ${tool} gratuitement, sans filigrane, sans inscription et sans téléversement sur un serveur, déposez votre document ci-dessus et suivez les étapes. ihatelovepdf exécute tout le traitement localement dans la mémoire de votre navigateur via WebAssembly : fonctionne hors ligne, avec des tâches illimitées et une confidentialité absolue.`,
+    `Pour utiliser ${tool} gratuitement, sans filigrane, sans inscription et sans téléversement sur un serveur, déposez votre document ci-dessus et suivez les étapes. ihatelovepdf exécute tout le traitement localement dans la mémoire de votre navigateur via WebAssembly : s'exécute dans votre navigateur, avec des tâches illimitées et une confidentialité absolue.`,
   it: (tool: string) =>
-    `Per utilizzare ${tool} gratuitamente senza filigrana, senza registrazione e senza caricare file su server esterni, carica il tuo documento qui sopra e segui le istruzioni. ihatelovepdf elabora tutto localmente nella memoria del browser con WebAssembly: funziona offline, include conversioni illimitate e garantisce privacy al 100%.`,
+    `Per utilizzare ${tool} gratuitamente senza filigrana, senza registrazione e senza caricare file su server esterni, carica il tuo documento qui sopra e segui le istruzioni. ihatelovepdf elabora tutto localmente nella memoria del browser con WebAssembly: viene eseguito nel browser, include conversioni illimitate e garantisce privacy al 100%.`,
   ro: (tool: string) =>
-    `Pentru a utiliza ${tool} gratuit, fără filigran, fără înregistrare și fără încărcare pe server, adaugă documentul mai sus și urmează pașii. ihatelovepdf procesează totul local în memoria browserului prin WebAssembly: funcționează offline, oferă utilizare nelimitată și confidențialitate deplină.`,
+    `Pentru a utiliza ${tool} gratuit, fără filigran, fără înregistrare și fără încărcare pe server, adaugă documentul mai sus și urmează pașii. ihatelovepdf procesează totul local în memoria browserului prin WebAssembly: rulează în browserul tău, oferă utilizare nelimitată și confidențialitate deplină.`,
   ru: (tool: string) =>
-    `Чтобы бесплатно использовать ${tool} без водяных знаков, без регистрации и без отправки файлов на сервер, добавьте документ выше и следуйте инструкциям. ihatelovepdf выполняет обработку локально в оперативной памяти браузера через WebAssembly: работает офлайн, обеспечивает неограниченное число задач и полную приватность.`,
+    `Чтобы бесплатно использовать ${tool} без водяных знаков, без регистрации и без отправки файлов на сервер, добавьте документ выше и следуйте инструкциям. ihatelovepdf выполняет обработку локально в оперативной памяти браузера через WebAssembly: работает прямо в браузере, обеспечивает неограниченное число задач и полную приватность.`,
   hu: (tool: string) =>
-    `A ${tool} ingyenes használatához vízjel nélkül, regisztráció nélkül és fájlfeltöltés nélkül, töltsd fel a dokumentumot fent és kövesd az utasításokat. Az ihatelovepdf a böngésző memóriájában dolgozza fel a fájlokat WebAssembly-vel: offline is működik, korlátlan feladatot és teljes adatvédelmet nyújt.`,
+    `A ${tool} ingyenes használatához vízjel nélkül, regisztráció nélkül és fájlfeltöltés nélkül, töltsd fel a dokumentumot fent és kövesd az utasításokat. Az ihatelovepdf a böngésző memóriájában dolgozza fel a fájlokat WebAssembly-vel: a böngésződben fut, korlátlan feladatot és teljes adatvédelmet nyújt.`,
 };
 
 const KEYWORD_PILLS: Record<string, string[]> = {
-  en: ['No Watermark', 'No Sign-Up', 'Zero Uploads', 'Works Offline', 'Unlimited'],
-  es: ['Sin Marcas de Agua', 'Sin Registro', 'Sin Subir Archivos', 'Funciona Sin Conexión', 'Ilimitado'],
-  pt: ['Sem Marca d\'Água', 'Sem Cadastro', 'Zero Uploads', 'Funciona Offline', 'Ilimitado'],
-  de: ['Ohne Wasserzeichen', 'Ohne Registrierung', 'Kein Server-Upload', 'Offline nutzbar', 'Unbegrenzt'],
-  fr: ['Sans Filigrane', 'Sans Inscription', 'Zéro Téléversement', 'Fonctionne Hors Ligne', 'Illimité'],
-  it: ['Senza Filigrana', 'Senza Registrazione', 'Zero Upload', 'Funziona Offline', 'Illimitato'],
-  ro: ['Fără Filigran', 'Fără Înregistrare', 'Fără Încărcare', 'Funcționează Offline', 'Nelimitat'],
-  ru: ['Без водяных знаков', 'Без регистрации', 'Без загрузки', 'Работает офлайн', 'Без ограничений'],
-  hu: ['Vízjel nélkül', 'Regisztráció nélkül', 'Feltöltés nélkül', 'Offline is működik', 'Korlátlan'],
+  en: ['No Watermark', 'No Sign-Up', 'Zero Uploads', 'Runs in Browser', 'Unlimited'],
+  es: ['Sin Marcas de Agua', 'Sin Registro', 'Sin Subir Archivos', 'En tu Navegador', 'Ilimitado'],
+  pt: ['Sem Marca d\'Água', 'Sem Cadastro', 'Zero Uploads', 'No Navegador', 'Ilimitado'],
+  de: ['Ohne Wasserzeichen', 'Ohne Registrierung', 'Kein Server-Upload', 'Im Browser', 'Unbegrenzt'],
+  fr: ['Sans Filigrane', 'Sans Inscription', 'Zéro Téléversement', 'Dans le Navigateur', 'Illimité'],
+  it: ['Senza Filigrana', 'Senza Registrazione', 'Zero Upload', 'Nel Browser', 'Illimitato'],
+  ro: ['Fără Filigran', 'Fără Înregistrare', 'Fără Încărcare', 'În Browser', 'Nelimitat'],
+  ru: ['Без водяных знаков', 'Без регистрации', 'Без загрузки', 'В браузере', 'Без ограничений'],
+  hu: ['Vízjel nélkül', 'Regisztráció nélkül', 'Feltöltés nélkül', 'Böngészőben fut', 'Korlátlan'],
 };
 
 export function QuickAnswerBox({ operationKey, toolName, locale }: QuickAnswerBoxProps) {

@@ -6,24 +6,24 @@ import { SITE_URL } from '../../../lib/site';
 
 export const metadata: Metadata = {
   metadataBase: METADATA_BASE,
-  title: 'Offline PDF Tools: Process PDFs in Browser Without Internet | ihatelovepdf',
-  description: 'Process PDFs locally in your browser even without internet access. Client-side tools that work offline with zero server data transfer.',
+  title: 'Offline PDF Tools: Process PDFs in Browser Without Internet Once Loaded | ihatelovepdf',
+  description: 'Process PDFs locally in your browser without an active connection once loaded. Client-side tools that process documents on your device with zero server uploads.',
   alternates: {
     canonical: `${SITE_URL}/offline-pdf-tools`,
   },
   icons: SHARED_ICONS,
   openGraph: {
     siteName: 'ihatelovepdf',
-    title: 'Offline PDF Tools: Process PDFs in Browser Without Internet | ihatelovepdf',
-    description: 'Process PDFs locally in your browser even without internet access. Client-side tools that work offline with zero server data transfer.',
+    title: 'Offline PDF Tools: Process PDFs in Browser Without Internet Once Loaded | ihatelovepdf',
+    description: 'Process PDFs locally in your browser without an active connection once loaded. Client-side tools that process documents on your device with zero server uploads.',
     url: `${SITE_URL}/offline-pdf-tools`,
     type: 'website',
     images: [{ url: `${SITE_URL}/og-images/og-image-en.png`, width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Offline PDF Tools: Process PDFs in Browser Without Internet | ihatelovepdf',
-    description: 'Process PDFs locally in your browser even without internet access. Client-side tools that work offline with zero server data transfer.',
+    title: 'Offline PDF Tools: Process PDFs in Browser Without Internet Once Loaded | ihatelovepdf',
+    description: 'Process PDFs locally in your browser without an active connection once loaded. Client-side tools that process documents on your device with zero server uploads.',
     creator: '@YesShrey',
     site: '@YesShrey',
     images: [`${SITE_URL}/og-images/og-image-en.png`],
@@ -56,7 +56,7 @@ export default function OfflinePdfToolsPage() {
         name: 'Why is offline processing safer for corporate compliance?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Because files never travel over the network, offline client-side processing eliminates data-in-transit interception, third-party cloud data leaks, and compliance violations under GDPR and HIPAA.',
+          text: 'Because files never travel over the network, client-side processing keeps your documents on your device, eliminating data-in-transit interception and third-party cloud exposure.',
         },
       },
     ],
@@ -71,7 +71,7 @@ export default function OfflinePdfToolsPage() {
             <span>Zero Network Reliance</span>
           </div>
           <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[var(--text-main)] leading-tight">
-            PDF Tools That Work Offline in Your Browser
+            PDF Tools That Run in Your Browser Without an Active Connection
           </h1>
           <p className="text-sm sm:text-base text-[var(--text-muted)] max-w-2xl mx-auto leading-relaxed">
             Discover how client-side technology allows you to merge, compress, split, and edit PDF documents without uploading a single byte to the internet.
@@ -126,14 +126,14 @@ export default function OfflinePdfToolsPage() {
               href="/merge"
               className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-lg bg-[var(--brand)] text-white font-medium text-xs sm:text-sm hover:opacity-95 transition-opacity"
             >
-              <span>Test Merge PDF Offline</span>
+              <span>Test Merge PDF Locally</span>
               <ArrowRight className="h-3.5 w-3.5" />
             </Link>
             <Link
               href="/tools"
               className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-lg border border-[var(--border)] bg-[var(--subtle)] font-medium text-xs sm:text-sm text-[var(--text-main)] hover:border-[var(--brand)] transition-colors"
             >
-              <span>Browse All Offline Tools</span>
+              <span>Browse All Browser Tools</span>
             </Link>
           </div>
         </section>

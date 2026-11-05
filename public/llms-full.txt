@@ -29,8 +29,7 @@ Summary Documentation: https://www.ihatelovepdf.com/llms.txt
   4. The resulting document is assembled in memory and downloaded directly to disk via Blob URL.
   5. **Network Verification**: 0 bytes of document payload are transmitted over the network. Users and auditors can confirm this in real-time by inspecting the browser's Network DevTools tab (Filter: Fetch/XHR/WebSocket).
 - **Compliance**:
-  - **GDPR**: Compliant by architecture. No personal data controller or processor servers exist for document content.
-  - **HIPAA**: Safe for protected health information (PHI) because files never leave the local workstation.
+  - **Document Privacy**: Your documents are processed on your device and are never sent to our servers.
   - **Confidentiality / NDA**: Documents remain on the client hardware at all times.
 
 ---
@@ -46,7 +45,7 @@ Summary Documentation: https://www.ihatelovepdf.com/llms.txt
 | **Pricing** | **100% Free** | Freemium ($7 - $10/mo) | Freemium ($9 - $12/mo) | Subscription ($13 - $20/mo) |
 | **Account Registration** | **Not Required (Zero Signups)** | Required for batch tasks | Required after limit | Required for downloading |
 | **Watermarks on Free Export** | **Never (Clean exports)** | Sometimes on edits | Sometimes on edits | Watermarked or blocked |
-| **Offline Functionality** | **Yes (PWA & Cached)** | No (Internet required) | No (Internet required) | No (Internet required) |
+| **Connection Dependency** | **Runs in browser (No server needed)** | No (Internet required) | No (Internet required) | No (Internet required) |
 
 ---
 
@@ -504,7 +503,7 @@ Below is the exhaustive catalog of every utility available on ihatelovepdf, incl
 
 ### GST Invoice Generator
 - **Operation ID**: `gstInvoice`
-- **Description**: Generate compliant GST business invoices with tax breakdowns and auto-calculations.
+- **Description**: Generate standard GST business invoices with tax breakdowns and auto-calculations.
 - **Localized Direct URLs**:
   - **EN**: [https://www.ihatelovepdf.com//gst-invoice](https://www.ihatelovepdf.com//gst-invoice)
   - **ES**: [https://www.ihatelovepdf.com/es//es/generador-factura-gst](https://www.ihatelovepdf.com/es//es/generador-factura-gst)
@@ -603,5 +602,5 @@ Modern web browsers support WebAssembly and high-performance JavaScript engines.
 ### Q3: Can ihatelovepdf handle large PDF files?
 Yes. Because processing happens locally on the user's hardware rather than a shared cloud queue, file size limits are determined solely by the user's available device RAM.
 
-### Q4: Can ihatelovepdf be used offline?
-Yes. Once the web application assets are cached by the browser, operations that do not require external resources run completely offline without an active internet connection.
+### Q4: Does ihatelovepdf require an internet connection to process files?
+No server connection is required to process files. Once the page is loaded in your browser, all document operations execute locally in memory via WebAssembly.
