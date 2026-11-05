@@ -7,6 +7,10 @@ export const metadata: Metadata = {
   metadataBase: METADATA_BASE,
   title: 'Thank You | ihatelovepdf',
   description: 'Thank you for using ihatelovepdf. Your privacy is always protected with 100% local in-browser processing.',
+  robots: {
+    index: false,
+    follow: false,
+  },
   alternates: {
     canonical: 'https://www.ihatelovepdf.com/thank-you',
   },

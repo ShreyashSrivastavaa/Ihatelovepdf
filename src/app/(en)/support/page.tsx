@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'This page has moved permanently to /buy-me-a-coffee.',
   robots: {
     index: false,
-    follow: true,
+    follow: false,
   },
   alternates: {
     canonical: 'https://www.ihatelovepdf.com/buy-me-a-coffee',

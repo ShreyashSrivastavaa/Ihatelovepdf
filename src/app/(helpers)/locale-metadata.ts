@@ -98,7 +98,6 @@ export function createSupportMetadata(locale: Locale) {
     const baseUrl = SITE_URL;
     const supportPath = dictionary.routes.support;
     const canonicalUrl = toAbsoluteUrl(baseUrl, supportPath);
-    const languages = buildLanguagesMap({ type: "static", key: "support" }, baseUrl);
 
     return {
       metadataBase: new URL(baseUrl),
@@ -117,7 +116,6 @@ export function createSupportMetadata(locale: Locale) {
       },
       alternates: {
         canonical: canonicalUrl,
-        languages,
       },
     };
   };
