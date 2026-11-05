@@ -331,6 +331,37 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
     filesRef.current = files;
   }, [files]);
 
+  // Warm up tool-specific dynamic imports and PDF engine while online on page load
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const pdfOperations: ProcessingMode[] = [
+      'compress', 'merge', 'split', 'extract', 'crop', 'rotate', 'reorder',
+      'pdfToImages', 'watermark', 'pageNumbers', 'headersFooters', 'extractText',
+      'invertColors', 'redact', 'compare', 'pdfToZip', 'editPdf', 'pdfToExcel',
+      'pdfToWord', 'pdfToPowerpoint', 'pdfToHtml', 'pdfToEpub', 'signPdf', 'fillPdfForm'
+    ];
+    if (pdfOperations.includes(initialMode)) {
+      PDFOps.preloadPdfEngine().catch(() => {});
+    }
+
+    if (initialMode === 'extractText') {
+      import('./TextExtractionViewer').catch(() => {});
+    } else if (initialMode === 'redact') {
+      import('./PdfRedactionEditor').catch(() => {});
+    } else if (initialMode === 'compare') {
+      import('./PdfCompareViewer').catch(() => {});
+    } else if (initialMode === 'editPdf') {
+      import('./PdfEditorInterface').catch(() => {});
+    } else if (initialMode === 'signPdf') {
+      import('./SignPdfInterface').catch(() => {});
+    } else if (initialMode === 'fillPdfForm') {
+      import('./PdfFormFillerInterface').catch(() => {});
+    } else if (initialMode === 'latexResume') {
+      import('./LatexResumeInterface').catch(() => {});
+    }
+  }, [initialMode]);
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [mode, setMode] = useState<ProcessingMode>(initialMode);
   const [isProcessing, setIsProcessing] = useState(false);

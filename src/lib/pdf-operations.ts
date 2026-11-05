@@ -1184,6 +1184,16 @@ const PAGE_SIZE_MAP: Record<'a4' | 'letter', { width: number; height: number }> 
   letter: { width: 612, height: 792 },
 };
 
+export async function preloadPdfEngine(): Promise<void> {
+  if (typeof window === 'undefined') return;
+  try {
+    await getPdfJsLib();
+    if (typeof fetch !== 'undefined') {
+      fetch('/pdf.worker.min.mjs', { priority: 'low' }).catch(() => {});
+    }
+  } catch {}
+}
+
 async function getPdfJsLib(): Promise<PdfJsModule> {
   if (!pdfjsLibPromise) {
     pdfjsLibPromise = import('pdfjs-dist/legacy/build/pdf.mjs').then((module) => {
