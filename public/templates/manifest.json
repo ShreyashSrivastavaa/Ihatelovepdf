@@ -32,7 +32,7 @@
       "id": "resume-02-ats-modern",
       "name": "ATS Modern Streamline",
       "category": "ats-friendly",
-      "description": "Clean sans-serif layout with clear visual hierarchy, 100% compliant with modern corporate ATS parsers.",
+      "description": "Clean single-column layout designed to be readable by most ATS software.",
       "file": "templates/resume-02-ats-modern.tex",
       "thumbnail": "templates/thumbnails/resume-02-ats-modern.webp",
       "colorAccent": "#262626",
