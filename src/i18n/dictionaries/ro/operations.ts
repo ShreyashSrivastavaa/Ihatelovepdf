@@ -615,6 +615,38 @@ const operationsRoContent: Partial<Record<OperationKey, OperationContent>> = {
       "Documenteză fluxurile de lucru pentru revizuiri care necesită capturi de ecran ale paginilor.",
     ],
   },
+  wordToPdf: {
+    key: "wordToPdf",
+    slug: "word-in-pdf",
+    mode: "wordToPdf",
+    meta: {
+      title: "Convertește Word în PDF Gratuit - DOCX în PDF Online",
+      description: "Convertește fișiere Word (.docx) în PDF gratuit, fără filigran și fără creare de cont. Procesare privată în browserul tău.",
+      keywords: ["word in pdf", "converteste word in pdf", "docx in pdf", "word in pdf online"],
+      ogTitle: "Convertește Word în PDF Gratuit | ihatelovepdf",
+      ogDescription: "Transformă documente Word în PDF direct pe dispozitivul tău, fără încărcare pe servere.",
+      ogImageAlt: "Convertor Word în PDF",
+    },
+    hero: {
+      title: "Convertește Word în PDF Gratuit",
+      description: "Transformă documentele Microsoft Word în fișiere PDF fiabile și ușor de partajat, direct în browser.",
+      bulletPoints: ["✅ Fără filigran", "✅ Fără cont necesar", "✅ 100% privat pe dispozitivul tău", "✅ Conversii nelimitate"],
+      imageAlt: "Flux Word în PDF",
+    },
+    benefitsTitle: "De ce să convertești Word în PDF cu ihatelovepdf",
+    benefits: [
+      { title: "Compatibilitate Universală", description: "Documentele PDF pot fi deschise identic pe orice calculator sau telefon." },
+      { title: "Păstrează Conținutul", description: "Păstrează structura paragrafelor, tabelelor, listelor și imaginilor din Word." },
+      { title: "Confidențialitate Totală", description: "Fișierele tale nu părăsesc niciodată memoria dispozitivului tău." }
+    ],
+    howTo: {
+      title: "Cum să convertești Word în PDF",
+      steps: ["Selectează sau trage documentul Word (.docx).", "Apasă pe Convertește în PDF.", "Descarcă fișierul PDF rezultat."],
+      note: "Conversia rulează exclusiv în browser fără transmisie pe servere."
+    },
+    useCasesTitle: "Utilizări comune pentru Word în PDF",
+    useCases: ["Fixarea formatului pentru CV-uri și scrisori de intenție", "Trimiterea de oferte și contracte neschimbate", "Pregătirea referatelor și proiectelor pentru tipar"]
+  },
 };
 
 export const operationsRo: Record<OperationKey, OperationContent> = getOperationsLocalized("ro", operationsRoContent);

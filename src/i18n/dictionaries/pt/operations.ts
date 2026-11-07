@@ -610,6 +610,38 @@ const operationsPtContent: Partial<Record<OperationKey, OperationContent>> = {
       "Enviar relatórios fotográficos ou inspeções sem anexar dezenas de arquivos.",
     ],
   },
+  wordToPdf: {
+    key: "wordToPdf",
+    slug: "word-para-pdf",
+    mode: "wordToPdf",
+    meta: {
+      title: "Converter Word para PDF Grátis - DOCX para PDF Online",
+      description: "Converta documentos Word (.docx) em PDF grátis, sem marca d'água e sem cadastro. Processamento seguro e privado diretamente no seu navegador.",
+      keywords: ["word para pdf", "converter word para pdf", "docx para pdf", "transformar word em pdf"],
+      ogTitle: "Converter Word para PDF Grátis | ihatelovepdf",
+      ogDescription: "Transforme arquivos DOCX em PDF rapidamente no seu navegador sem enviar arquivos para a nuvem.",
+      ogImageAlt: "Conversor de Word para PDF",
+    },
+    hero: {
+      title: "Converter Word para PDF Grátis",
+      description: "Converta arquivos Microsoft Word em documentos PDF confiáveis sem precisar instalar programas nem criar contas.",
+      bulletPoints: ["✅ Sem marca d'água", "✅ Sem cadastro", "✅ 100% privado no dispositivo", "✅ Conversões ilimitadas"],
+      imageAlt: "Fluxo de Word para PDF",
+    },
+    benefitsTitle: "Por que converter Word para PDF no ihatelovepdf",
+    benefits: [
+      { title: "Compatibilidade Universal", description: "Garante que seu arquivo seja lido perfeitamente em qualquer computador ou celular." },
+      { title: "Preserva o Conteúdo", description: "Mantém parágrafos, listas, tabelas e imagens presentes no documento original." },
+      { title: "Privacidade Absoluta", description: "Seus arquivos confidenciais nunca saem do seu computador ou celular." }
+    ],
+    howTo: {
+      title: "Como converter Word para PDF",
+      steps: ["Selecione ou arraste seu documento Word (.docx).", "Clique em Converter para PDF.", "Baixe seu arquivo PDF final na hora."],
+      note: "A conversão acontece totalmente em memória no seu navegador."
+    },
+    useCasesTitle: "Casos de uso para Word para PDF",
+    useCases: ["Travar formatação de currículos e cartas de apresentação", "Compartilhar contratos e propostas comerciais", "Preparar trabalhos acadêmicos para impressão"]
+  },
 };
 
 export const operationsPt: Record<OperationKey, OperationContent> = getOperationsLocalized("pt", operationsPtContent);
