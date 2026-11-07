@@ -584,6 +584,38 @@ const operationsItContent: Partial<Record<OperationKey, OperationContent>> = {
       "Revisioni.",
     ],
   },
+  wordToPdf: {
+    key: "wordToPdf",
+    slug: "word-in-pdf",
+    mode: "wordToPdf",
+    meta: {
+      title: "Convertire Word in PDF Gratis - DOCX in PDF Online",
+      description: "Converti documenti Word (.docx) in PDF gratis senza filigrane né registrazione. Elaborazione locale e sicura direttamente nel tuo browser.",
+      keywords: ["word in pdf", "convertire word in pdf", "docx in pdf", "da word a pdf online"],
+      ogTitle: "Convertire Word in PDF Gratis | ihatelovepdf",
+      ogDescription: "Trasforma file DOCX in PDF in pochi secondi senza caricare i tuoi file su server remoti.",
+      ogImageAlt: "Convertitore Word in PDF",
+    },
+    hero: {
+      title: "Convertire Word in PDF Gratis",
+      description: "Converti file Microsoft Word in documenti PDF standard senza installare programmi e senza registrazione.",
+      bulletPoints: ["✅ Senza filigrana", "✅ Senza registrazione", "✅ Elaborazione locale privata", "✅ Conversioni illimitate"],
+      imageAlt: "Flusso Word in PDF",
+    },
+    benefitsTitle: "Perché convertire Word in PDF con ihatelovepdf",
+    benefits: [
+      { title: "Compatibilità Universale", description: "Rende i tuoi file Word visualizzabili fedelmente su qualsiasi dispositivo e sistema." },
+      { title: "Preserva il Contenuto", description: "Mantiene la disposizione di testi, elenchi, tabelle e immagini del documento Word." },
+      { title: "Massima Riservatezza", description: "I tuoi documenti personali non lasciano mai la memoria del tuo dispositivo." }
+    ],
+    howTo: {
+      title: "Come convertire Word in PDF",
+      steps: ["Seleziona o trascina il tuo file Word (.docx).", "Fai clic su Converti in PDF.", "Scarica subito il tuo nuovo file PDF."],
+      note: "L'elaborazione avviene interamente nel tuo browser senza upload."
+    },
+    useCasesTitle: "Casi d'uso per Word in PDF",
+    useCases: ["Proteggere il layout di CV e lettere di presentazione", "Inviare preventivi e contratti definitivi", "Preparare tesi e tesine per la stampa"]
+  },
 };
 
 export const operationsIt: Record<OperationKey, OperationContent> = getOperationsLocalized("it", operationsItContent);

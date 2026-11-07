@@ -624,6 +624,38 @@ const operationsHuContent: Partial<Record<OperationKey, OperationContent>> = {
       "Helyszíni ellenÅ‘rzési fotójelentés összeállítása egyetlen dokumentumban a megrendelÅ‘ számára.",
     ],
   },
+  wordToPdf: {
+    key: "wordToPdf",
+    slug: "word-bol-pdf",
+    mode: "wordToPdf",
+    meta: {
+      title: "Word PDF-be Konvertálás Ingyen - DOCX-ből PDF Online",
+      description: "Alakíts át Word dokumentumokat (.docx) PDF formátumba ingyen, vízjel és regisztráció nélkül. Biztonságos helyi feldolgozás a böngésződben.",
+      keywords: ["word ből pdf", "word pdf konvertálás", "docx ből pdf", "word dokumentum pdf be"],
+      ogTitle: "Word PDF-be Konvertálás Ingyen | ihatelovepdf",
+      ogDescription: "Konvertálj Word dokumentumokat PDF-be közvetlenül a saját eszközödön, szerverre feltöltés nélkül.",
+      ogImageAlt: "Wordből PDF konvertáló",
+    },
+    hero: {
+      title: "Word PDF-be Konvertálás Ingyen",
+      description: "Alakítsd át Microsoft Word dokumentumaidat megbízható PDF fájlokká közvetlenül a böngésződben.",
+      bulletPoints: ["✅ Vízjel nélkül", "✅ Regisztráció nélkül", "✅ 100% privát helyi feldolgozás", "✅ Korlátlan konverzió"],
+      imageAlt: "Wordből PDF folyamat",
+    },
+    benefitsTitle: "Miért konvertálj Wordöt PDF-be a ihatelovepdf-szel?",
+    benefits: [
+      { title: "Univerzális Kompatibilitás", description: "Bármilyen számítógépen és telefonon egyformán megnyitható dokumentumok." },
+      { title: "Tartalom Megőrzése", description: "Megőrzi a bekezdéseket, táblázatokat, listákat és képeket az eredeti Word fájlból." },
+      { title: "Teljes Adatvédelem", description: "A bizalmas dokumentumaid soha nem kerülnek feltöltésre semmilyen felhőszerverre." }
+    ],
+    howTo: {
+      title: "Hogyan konvertálj Wordöt PDF-be?",
+      steps: ["Válaszd ki vagy húzd be a Word (.docx) fájlt.", "Kattints a Konvertálás PDF-be gombra.", "Töltsd le azonnal a kész PDF dokumentumot."],
+      note: "A feldolgozás teljes mértékben a böngésző memóriájában fut."
+    },
+    useCasesTitle: "Gyakori használati esetek",
+    useCases: ["Önéletrajzok és kísérőlevelek formázásának rögzítése", "Árajánlatok és szerződések küldése", "Dolgozatok és esszék előkészítése nyomtatáshoz"]
+  },
 };
 
 export const operationsHu: Record<OperationKey, OperationContent> = getOperationsLocalized("hu", operationsHuContent);
