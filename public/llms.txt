@@ -23,6 +23,7 @@ ihatelovepdf (I Hate Love PDF) is a free web-based PDF utility suite engineered 
 - [Redact PDF](https://www.ihatelovepdf.com/redact): Permanently black out sensitive PII, SSNs, financial figures, and confidential metadata.
 - [Sign PDF](https://www.ihatelovepdf.com/sign-pdf): Draw, type, or upload verifiable digital signatures onto PDF agreements.
 - [PDF to Word](https://www.ihatelovepdf.com/pdf-to-word): Convert PDF documents into editable Microsoft Word (.docx) files.
+- [Word to PDF](https://www.ihatelovepdf.com/word-to-pdf): Convert Microsoft Word (.docx) documents into PDF with selectable text.
 - [PDF to Excel](https://www.ihatelovepdf.com/pdf-to-excel): Extract tabular PDF data into editable Excel spreadsheets (.xlsx).
 - [PDF to Images](https://www.ihatelovepdf.com/pdf-to-images): Render PDF pages to high-resolution PNG or JPG images.
 - [Images to PDF](https://www.ihatelovepdf.com/images-to-pdf): Convert PNG, JPG, or WEBP photos into a cleanly formatted PDF document.

@@ -407,15 +407,29 @@ Below is the exhaustive catalog of every utility available on ihatelovepdf, incl
 - **Operation ID**: `pdfToWord`
 - **Description**: Convert PDF documents into editable Microsoft Word (.docx) files without formatting loss.
 - **Localized Direct URLs**:
-  - **EN**: [https://www.ihatelovepdf.com//pdf-to-word](https://www.ihatelovepdf.com//pdf-to-word)
-  - **ES**: [https://www.ihatelovepdf.com/es//es/pdf-a-word](https://www.ihatelovepdf.com/es//es/pdf-a-word)
-  - **PT**: [https://www.ihatelovepdf.com/pt//pt/pdf-para-word](https://www.ihatelovepdf.com/pt//pt/pdf-para-word)
-  - **DE**: [https://www.ihatelovepdf.com/de//de/pdf-zu-word](https://www.ihatelovepdf.com/de//de/pdf-zu-word)
-  - **FR**: [https://www.ihatelovepdf.com/fr//fr/pdf-en-word](https://www.ihatelovepdf.com/fr//fr/pdf-en-word)
-  - **IT**: [https://www.ihatelovepdf.com/it//it/da-pdf-a-word](https://www.ihatelovepdf.com/it//it/da-pdf-a-word)
-  - **RO**: [https://www.ihatelovepdf.com/ro//ro/pdf-in-word](https://www.ihatelovepdf.com/ro//ro/pdf-in-word)
-  - **RU**: [https://www.ihatelovepdf.com/ru//ru/pdf-v-word](https://www.ihatelovepdf.com/ru//ru/pdf-v-word)
-  - **HU**: [https://www.ihatelovepdf.com/hu//hu/pdf-bol-word](https://www.ihatelovepdf.com/hu//hu/pdf-bol-word)
+  - **EN**: [https://www.ihatelovepdf.com/pdf-to-word](https://www.ihatelovepdf.com/pdf-to-word)
+  - **ES**: [https://www.ihatelovepdf.com/es/pdf-a-word](https://www.ihatelovepdf.com/es/pdf-a-word)
+  - **PT**: [https://www.ihatelovepdf.com/pt/pdf-para-word](https://www.ihatelovepdf.com/pt/pdf-para-word)
+  - **DE**: [https://www.ihatelovepdf.com/de/pdf-zu-word](https://www.ihatelovepdf.com/de/pdf-zu-word)
+  - **FR**: [https://www.ihatelovepdf.com/fr/pdf-en-word](https://www.ihatelovepdf.com/fr/pdf-en-word)
+  - **IT**: [https://www.ihatelovepdf.com/it/da-pdf-a-word](https://www.ihatelovepdf.com/it/da-pdf-a-word)
+  - **RO**: [https://www.ihatelovepdf.com/ro/pdf-in-word](https://www.ihatelovepdf.com/ro/pdf-in-word)
+  - **RU**: [https://www.ihatelovepdf.com/ru/pdf-v-word](https://www.ihatelovepdf.com/ru/pdf-v-word)
+  - **HU**: [https://www.ihatelovepdf.com/hu/pdf-bol-word](https://www.ihatelovepdf.com/hu/pdf-bol-word)
+
+### Word to PDF (.docx)
+- **Operation ID**: `wordToPdf`
+- **Description**: Convert Microsoft Word (.docx) documents into clean, selectable PDF files directly in the browser.
+- **Localized Direct URLs**:
+  - **EN**: [https://www.ihatelovepdf.com/word-to-pdf](https://www.ihatelovepdf.com/word-to-pdf)
+  - **ES**: [https://www.ihatelovepdf.com/es/word-a-pdf](https://www.ihatelovepdf.com/es/word-a-pdf)
+  - **PT**: [https://www.ihatelovepdf.com/pt/word-para-pdf](https://www.ihatelovepdf.com/pt/word-para-pdf)
+  - **DE**: [https://www.ihatelovepdf.com/de/word-zu-pdf](https://www.ihatelovepdf.com/de/word-zu-pdf)
+  - **FR**: [https://www.ihatelovepdf.com/fr/word-en-pdf](https://www.ihatelovepdf.com/fr/word-en-pdf)
+  - **IT**: [https://www.ihatelovepdf.com/it/word-in-pdf](https://www.ihatelovepdf.com/it/word-in-pdf)
+  - **RO**: [https://www.ihatelovepdf.com/ro/word-in-pdf](https://www.ihatelovepdf.com/ro/word-in-pdf)
+  - **RU**: [https://www.ihatelovepdf.com/ru/word-v-pdf](https://www.ihatelovepdf.com/ru/word-v-pdf)
+  - **HU**: [https://www.ihatelovepdf.com/hu/word-bol-pdf](https://www.ihatelovepdf.com/hu/word-bol-pdf)
 
 ### PowerPoint to PDF (.pptx)
 - **Operation ID**: `powerpointToPdf`
