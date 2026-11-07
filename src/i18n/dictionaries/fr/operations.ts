@@ -613,6 +613,38 @@ const operationsFrContent: Partial<Record<OperationKey, OperationContent>> = {
       "Documentez des flux de travail de révision qui nécessitent des captures d'écran.",
     ],
   },
+  wordToPdf: {
+    key: "wordToPdf",
+    slug: "word-en-pdf",
+    mode: "wordToPdf",
+    meta: {
+      title: "Convertir Word en PDF Gratuit - DOCX en PDF",
+      description: "Convertissez vos fichiers Word (.docx) en PDF gratuitement, sans filigrane ni inscription. Traitement local et sécurisé dans votre navigateur.",
+      keywords: ["word en pdf", "convertir word en pdf", "docx en pdf", "word en pdf gratuit"],
+      ogTitle: "Convertir Word en PDF Gratuit | ihatelovepdf",
+      ogDescription: "Transformez vos documents DOCX en PDF directement sur votre appareil sans téléversement sur serveur.",
+      ogImageAlt: "Convertisseur Word en PDF",
+    },
+    hero: {
+      title: "Convertir Word en PDF Gratuit",
+      description: "Convertissez vos documents Microsoft Word en fichiers PDF prêts à partager, sans logiciel à installer.",
+      bulletPoints: ["✅ Sans filigrane", "✅ Sans inscription", "✅ 100% privé sur votre appareil", "✅ Conversions illimitées"],
+      imageAlt: "Flux Word en PDF",
+    },
+    benefitsTitle: "Pourquoi convertir Word en PDF avec ihatelovepdf",
+    benefits: [
+      { title: "Compatibilité Universelle", description: "Ouvrez et partagez vos documents sur n'importe quel ordinateur ou smartphone." },
+      { title: "Préservation du Contenu", description: "Conserve la mise en page, les listes, les tableaux et les images de votre document Word." },
+      { title: "Confidentialité Totale", description: "Vos fichiers restent sur votre machine et ne sont jamais envoyés dans le cloud." }
+    ],
+    howTo: {
+      title: "Comment convertir Word en PDF",
+      steps: ["Glissez ou sélectionnez votre document .docx.", "Cliquez sur Convertir en PDF.", "Téléchargez immédiatement votre fichier PDF."],
+      note: "Le traitement s'effectue intégralement en mémoire dans votre navigateur."
+    },
+    useCasesTitle: "Utilisations courantes de Word en PDF",
+    useCases: ["Figer la mise en page de CV et lettres de motivation", "Diffuser des devis et contrats signés", "Préparer des mémoires ou rapports pour l'impression"]
+  },
 };
 
 export const operationsFr: Record<OperationKey, OperationContent> = getOperationsLocalized("fr", operationsFrContent);

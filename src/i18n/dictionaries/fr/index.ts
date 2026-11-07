@@ -28,7 +28,7 @@ export const frDictionary: Dictionary = {
     site: {
       title: "ihatelovepdf: Outils PDF Gratuits – Sans Filigrane, Sans Inscription",
       description:
-        "Boîte à outils PDF gratuite et confidentielle dans votre navigateur. Fusionnez, compressez, divisez et convertissez des PDF sans filigrane, sans inscription et sans téléversement de fichier. Fonctionne hors ligne et en illimité.",
+        "Boîte à outils PDF gratuite et confidentielle dans votre navigateur. Fusionnez, compressez, divisez et convertissez des PDF sans filigrane, sans inscription et sans téléversement de fichier. Continue de fonctionner sans connexion une fois la page chargée.",
       keywords: [
         "fusionner pdf",
         "compresser pdf",
