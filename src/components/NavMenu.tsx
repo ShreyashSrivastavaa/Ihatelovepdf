@@ -2,10 +2,10 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useMemo, useState, useEffect, useRef } from 'react';
-import { useDictionary, useLocale } from '../i18n/LocaleProvider';
-import { SUPPORTED_LOCALES, localeLabels } from '../i18n/config';
+import { useDictionary, useLocale, LOCALE_STORAGE_KEY } from '../i18n/LocaleProvider';
+import { SUPPORTED_LOCALES, localeLabels, Locale } from '../i18n/config';
 import { getLocalizedAlternateMap, getRouteIdentifierForPath, getRoutePath } from '../i18n/routing';
 import ContactModal from './ContactModal';
 import {
@@ -17,13 +17,27 @@ import {
   ChevronDown,
   Coffee,
   ArrowRight,
+  ArrowLeft,
   ShieldCheck,
 } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 import { TOTAL_TOOLS_COUNT } from '../lib/tools-registry';
 
+const BACK_BUTTON_LABELS: Record<Locale, string> = {
+  en: 'Back',
+  es: 'Volver',
+  pt: 'Voltar',
+  de: 'Zurück',
+  fr: 'Retour',
+  it: 'Indietro',
+  ro: 'Înapoi',
+  ru: 'Назад',
+  hu: 'Vissza',
+};
+
 export default function NavMenu() {
   const pathname = usePathname();
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [isConvertOpen, setIsConvertOpen] = useState(false);
   const [isAllToolsOpen, setIsAllToolsOpen] = useState(false);
@@ -40,6 +54,48 @@ export default function NavMenu() {
   const { nav } = dictionary.components;
   const routes = dictionary.routes;
   const toolsHref = locale === 'en' ? '/tools' : `/${locale}/tools`;
+  const guidesHref = locale === 'en' ? '/guides' : `/${locale}/guides`;
+
+  const isHome = useMemo(() => {
+    if (!pathname) return true;
+    const clean = pathname.replace(/\/$/, '') || '/';
+    if (clean === '/') return true;
+    const segments = clean.split('/').filter(Boolean);
+    return segments.length === 1 && (SUPPORTED_LOCALES as readonly string[]).includes(segments[0]);
+  }, [pathname]);
+
+  const backLabel = BACK_BUTTON_LABELS[locale] || 'Back';
+
+  const handleBack = () => {
+    closeDropdowns();
+    if (typeof window !== 'undefined' && window.history.length > 1) {
+      router.back();
+    } else {
+      router.push(routes.home);
+    }
+  };
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    closeDropdowns();
+    if (isHome) {
+      e.preventDefault();
+      if (typeof window !== 'undefined') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+  };
+
+  const handleLanguageSelect = (targetLocale: Locale) => {
+    try {
+      if (typeof window !== 'undefined') {
+        localStorage.setItem(LOCALE_STORAGE_KEY, targetLocale);
+      }
+    } catch {
+      // Ignore localStorage errors
+    }
+    setIsLangOpen(false);
+    closeDropdowns();
+  };
 
   const isActive = (path: string) => pathname === path;
 
@@ -120,13 +176,24 @@ export default function NavMenu() {
       <header className="sticky top-0 z-40 w-full border-b border-[var(--color-border)] bg-[var(--color-main)] transition-colors duration-150">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-8 h-14 flex items-center justify-between gap-2">
           
-          {/* LEFT: Logo & Wordmark */}
-          <div className="flex shrink-0 items-center gap-3">
+          {/* LEFT: Back Button + Logo & Wordmark */}
+          <div className="flex shrink-0 items-center gap-1.5 sm:gap-2.5">
+            {!isHome && (
+              <button
+                type="button"
+                onClick={handleBack}
+                aria-label="Go back"
+                className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-1.5 rounded-lg px-2 sm:px-2.5 py-2 text-xs sm:text-sm font-medium text-secondary hover:bg-alt hover:text-primary transition-colors cursor-pointer border border-border/60 hover:border-border shrink-0 focus-visible:outline-2 focus-visible:outline-brand"
+              >
+                <ArrowLeft className="h-4 w-4 shrink-0" />
+                <span className="hidden sm:inline font-semibold">{backLabel}</span>
+              </button>
+            )}
             <Link
               href={routes.home}
-              onClick={closeDropdowns}
+              onClick={handleLogoClick}
               aria-label="ihatelovepdf home"
-              className="flex shrink-0 items-center gap-2 text-base sm:text-lg font-bold text-primary tracking-tight"
+              className="flex shrink-0 items-center gap-2 text-base sm:text-lg font-bold text-primary tracking-tight py-1"
             >
               <div className="relative flex h-7 w-7 items-center justify-center">
                 <Image
@@ -435,7 +502,7 @@ export default function NavMenu() {
 
                     <div className="pt-2.5 flex items-center justify-between px-2">
                       <Link
-                        href="/guides"
+                        href={guidesHref}
                         onClick={closeDropdowns}
                         className="text-xs text-secondary hover:text-primary transition-colors"
                       >
@@ -464,9 +531,9 @@ export default function NavMenu() {
               {/* Direct links for Guides & Blog on wide desktop */}
               <div className="hidden xl:flex items-center">
                 <Link
-                  href="/guides"
+                  href={guidesHref}
                   className={`inline-flex min-h-10 shrink-0 items-center gap-1.5 rounded-lg px-2 sm:px-3 text-[13px] font-medium transition-colors ${
-                    isActive('/guides')
+                    isActive(guidesHref)
                       ? 'bg-alt text-primary font-semibold'
                       : 'text-secondary hover:bg-alt hover:text-primary'
                   }`}
@@ -541,8 +608,7 @@ export default function NavMenu() {
                           lang={option.locale}
                           role="menuitem"
                           onClick={() => {
-                            setIsLangOpen(false);
-                            closeDropdowns();
+                            handleLanguageSelect(option.locale);
                           }}
                           className={`flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors ${
                             option.locale === locale
@@ -701,7 +767,7 @@ export default function NavMenu() {
               <ArrowRight className="h-4 w-4 text-secondary" />
             </Link>
             <Link
-              href="/guides"
+              href={guidesHref}
               onClick={closeDropdowns}
               className="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-secondary hover:text-primary hover:bg-alt transition-colors"
             >
@@ -770,7 +836,9 @@ export default function NavMenu() {
                 href={option.href}
                 hrefLang={option.locale}
                 lang={option.locale}
-                onClick={closeDropdowns}
+                onClick={() => {
+                  handleLanguageSelect(option.locale);
+                }}
                 className={`flex flex-col items-center justify-center p-2 rounded-lg border text-center transition-colors ${
                   option.locale === locale
                     ? 'border-brand bg-main text-brand font-bold shadow-2xs'

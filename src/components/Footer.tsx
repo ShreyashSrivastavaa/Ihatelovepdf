@@ -14,6 +14,18 @@ export default function Footer() {
   const footer = dictionary.components.footer;
   const routes = dictionary.routes;
   const toolsHref = locale === 'en' ? '/tools' : `/${locale}/tools`;
+  const guidesHref = locale === 'en' ? '/guides' : `/${locale}/guides`;
+
+  const getLocalizedPath = (subpath: string) => {
+    return locale === 'en' ? subpath : `/${locale}${subpath}`;
+  };
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (typeof window !== 'undefined' && (window.location.pathname === routes.home || window.location.pathname === `${routes.home}/`)) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   return (
     <>
@@ -22,7 +34,11 @@ export default function Footer() {
           
           {/* Brand & Privacy Pill */}
           <div className="flex flex-col sm:flex-row items-center gap-3">
-            <Link href={routes.home} className="flex items-center gap-2 text-primary font-bold tracking-tight">
+            <Link
+              href={routes.home}
+              onClick={handleLogoClick}
+              className="flex items-center gap-2 text-primary font-bold tracking-tight"
+            >
               <Image
                 src="/images/stickers/ihatelove.png"
                 alt="ihatelovepdf"
@@ -51,7 +67,7 @@ export default function Footer() {
             <Link href="/terms" prefetch={true} className="hover:text-primary transition-colors">
               Terms of Service
             </Link>
-            <Link href="/guides" prefetch={true} className="hover:text-primary transition-colors">
+            <Link href={guidesHref} prefetch={true} className="hover:text-primary transition-colors">
               Guides
             </Link>
             <Link href="/blog" prefetch={true} className="hover:text-primary transition-colors">
@@ -94,11 +110,11 @@ export default function Footer() {
           {/* Alternatives & Comparisons */}
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs text-secondary/70 border-t border-border/60 pt-4 w-full">
             <span className="font-semibold text-secondary">Alternatives:</span>
-            <Link href="/adobe-acrobat-alternative" className="hover:text-primary transition-colors">
+            <Link href={getLocalizedPath('/adobe-acrobat-alternative')} className="hover:text-primary transition-colors">
               Adobe Acrobat Alternative
             </Link>
             <span>·</span>
-            <Link href="/ihatepdf-alternative" className="hover:text-primary transition-colors">
+            <Link href={getLocalizedPath('/ihatepdf-alternative')} className="hover:text-primary transition-colors">
               ihatepdf vs ihatelovepdf
             </Link>
             <span>·</span>
@@ -114,7 +130,7 @@ export default function Footer() {
               Free Tools (No Signup)
             </Link>
             <span>·</span>
-            <Link href="/offline-pdf-tools" className="hover:text-primary transition-colors">
+            <Link href={getLocalizedPath('/offline-pdf-tools')} className="hover:text-primary transition-colors">
               Offline PDF Tools
             </Link>
           </div>
@@ -122,23 +138,23 @@ export default function Footer() {
           {/* Privacy & High-Intent Search Guides */}
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs text-secondary/70 border-t border-border/40 pt-3 w-full">
             <span className="font-semibold text-secondary">Privacy Guides:</span>
-            <Link href="/merge-pdf-without-uploading" className="hover:text-primary transition-colors">
+            <Link href={getLocalizedPath('/merge-pdf-without-uploading')} className="hover:text-primary transition-colors">
               Merge PDF Without Uploading
             </Link>
             <span>·</span>
-            <Link href="/pdf-tools-no-watermark" className="hover:text-primary transition-colors">
+            <Link href={getLocalizedPath('/pdf-tools-no-watermark')} className="hover:text-primary transition-colors">
               PDF Tools No Watermark
             </Link>
             <span>·</span>
-            <Link href="/edit-pdf-for-resume" className="hover:text-primary transition-colors">
+            <Link href={getLocalizedPath('/edit-pdf-for-resume')} className="hover:text-primary transition-colors">
               Edit Resume PDF
             </Link>
             <span>·</span>
-            <Link href="/is-it-safe-to-merge-pdf-online" className="hover:text-primary transition-colors">
+            <Link href={getLocalizedPath('/is-it-safe-to-merge-pdf-online')} className="hover:text-primary transition-colors">
               Is Online Merging Safe?
             </Link>
             <span>·</span>
-            <Link href="/privacy-architecture" className="hover:text-primary transition-colors">
+            <Link href={getLocalizedPath('/privacy-architecture')} className="hover:text-primary transition-colors">
               Privacy Architecture
             </Link>
           </div>
