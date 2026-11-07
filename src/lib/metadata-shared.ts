@@ -26,7 +26,7 @@ export function getAlternateOgLocales(locale: Locale): string[] {
 }
 
 export function getLocalizedOgImageUrl(locale: Locale): string {
-  return `${SITE_URL}/og-images/og-image-${locale}.png`;
+  return `${SITE_URL}/ihatelovepdf-v2-banner.png`;
 }
 
 export const SHARED_ICONS: Metadata["icons"] = {
@@ -50,10 +50,10 @@ export const SHARED_OPEN_GRAPH: Metadata["openGraph"] = {
   alternateLocale: getAlternateOgLocales("en"),
   images: [
     {
-      url: getLocalizedOgImageUrl("en"),
+      url: `${SITE_URL}/ihatelovepdf-v2-banner.png`,
       width: 1200,
       height: 630,
-      alt: "ihatelovepdf: Free and Private PDF Tools in Your Browser",
+      alt: "I Hate Love PDF - Free PDF Tools",
     },
   ],
 };
@@ -62,7 +62,7 @@ export const SHARED_TWITTER: Metadata["twitter"] = {
   card: "summary_large_image",
   creator: "@YesShrey",
   site: "@YesShrey",
-  images: [getLocalizedOgImageUrl("en")],
+  images: [`${SITE_URL}/ihatelovepdf-v2-banner.png`],
 };
 
 export function getSocialMetadata(locale: Locale, title: string, description: string, url: string): {
