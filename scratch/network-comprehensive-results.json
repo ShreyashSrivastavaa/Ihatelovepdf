@@ -1,0 +1,147 @@
+{
+  "totalThirdParty": 0,
+  "totalDocLeaks": 0,
+  "totalFailedRequests": 0,
+  "auditResults": [
+    {
+      "page": "Tool: Merge",
+      "path": "/merge",
+      "totalRequests": 50,
+      "thirdPartyCount": 0,
+      "docLeaksCount": 0,
+      "failedRequestsCount": 0,
+      "failedRequests": [],
+      "consoleErrorsCount": 1
+    },
+    {
+      "page": "Tool: Compress",
+      "path": "/compress",
+      "totalRequests": 49,
+      "thirdPartyCount": 0,
+      "docLeaksCount": 0,
+      "failedRequestsCount": 0,
+      "failedRequests": [],
+      "consoleErrorsCount": 1
+    },
+    {
+      "page": "Tool: Split",
+      "path": "/split",
+      "totalRequests": 49,
+      "thirdPartyCount": 0,
+      "docLeaksCount": 0,
+      "failedRequestsCount": 0,
+      "failedRequests": [],
+      "consoleErrorsCount": 1
+    },
+    {
+      "page": "Tool: Rotate",
+      "path": "/rotate",
+      "totalRequests": 50,
+      "thirdPartyCount": 0,
+      "docLeaksCount": 0,
+      "failedRequestsCount": 0,
+      "failedRequests": [],
+      "consoleErrorsCount": 1
+    },
+    {
+      "page": "Tool: Extract",
+      "path": "/extract",
+      "totalRequests": 50,
+      "thirdPartyCount": 0,
+      "docLeaksCount": 0,
+      "failedRequestsCount": 0,
+      "failedRequests": [],
+      "consoleErrorsCount": 1
+    },
+    {
+      "page": "Tool: Watermark",
+      "path": "/watermark",
+      "totalRequests": 50,
+      "thirdPartyCount": 0,
+      "docLeaksCount": 0,
+      "failedRequestsCount": 0,
+      "failedRequests": [],
+      "consoleErrorsCount": 1
+    },
+    {
+      "page": "Tool: Crop",
+      "path": "/crop",
+      "totalRequests": 50,
+      "thirdPartyCount": 0,
+      "docLeaksCount": 0,
+      "failedRequestsCount": 0,
+      "failedRequests": [],
+      "consoleErrorsCount": 1
+    },
+    {
+      "page": "Tool: Reorder",
+      "path": "/reorder",
+      "totalRequests": 50,
+      "thirdPartyCount": 0,
+      "docLeaksCount": 0,
+      "failedRequestsCount": 0,
+      "failedRequests": [],
+      "consoleErrorsCount": 1
+    },
+    {
+      "page": "Tool: PDF to Images",
+      "path": "/pdf-to-images",
+      "totalRequests": 50,
+      "thirdPartyCount": 0,
+      "docLeaksCount": 0,
+      "failedRequestsCount": 0,
+      "failedRequests": [],
+      "consoleErrorsCount": 1
+    },
+    {
+      "page": "Tool: Images to PDF",
+      "path": "/images-to-pdf",
+      "totalRequests": 41,
+      "thirdPartyCount": 0,
+      "docLeaksCount": 0,
+      "failedRequestsCount": 0,
+      "failedRequests": [],
+      "consoleErrorsCount": 0
+    },
+    {
+      "page": "Homepage (English)",
+      "path": "/",
+      "totalRequests": 44,
+      "thirdPartyCount": 0,
+      "docLeaksCount": 0,
+      "failedRequestsCount": 0,
+      "failedRequests": [],
+      "consoleErrorsCount": 0
+    },
+    {
+      "page": "Localized Homepage (German)",
+      "path": "/de",
+      "totalRequests": 42,
+      "thirdPartyCount": 0,
+      "docLeaksCount": 0,
+      "failedRequestsCount": 0,
+      "failedRequests": [],
+      "consoleErrorsCount": 0
+    },
+    {
+      "page": "Localized Tool (Spanish Unir)",
+      "path": "/es/unir",
+      "totalRequests": 55,
+      "thirdPartyCount": 0,
+      "docLeaksCount": 0,
+      "failedRequestsCount": 0,
+      "failedRequests": [],
+      "consoleErrorsCount": 1
+    },
+    {
+      "page": "Guide Page (How to Merge)",
+      "path": "/guides/how-to-merge-pdf-files",
+      "totalRequests": 30,
+      "thirdPartyCount": 0,
+      "docLeaksCount": 0,
+      "failedRequestsCount": 0,
+      "failedRequests": [],
+      "consoleErrorsCount": 0
+    }
+  ]
+}
