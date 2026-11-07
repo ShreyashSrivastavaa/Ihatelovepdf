@@ -1,0 +1,242 @@
+[
+  {
+    "tool": "Merge",
+    "url": "https://www.ihatelovepdf.com/merge",
+    "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://www.ihatelovepdf.com/merge\", waiting until \"networkidle\"\u001b[22m\n"
+  },
+  {
+    "tool": "Compress",
+    "url": "https://www.ihatelovepdf.com/compress",
+    "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://www.ihatelovepdf.com/compress\", waiting until \"networkidle\"\u001b[22m\n"
+  },
+  {
+    "tool": "Split",
+    "url": "https://www.ihatelovepdf.com/split",
+    "totalRequestsCount": 56,
+    "thirdPartyRequests": [
+      {
+        "url": "https://www.googletagmanager.com/gtag/js?id=G-ZHEM8GFQYG",
+        "method": "GET",
+        "resourceType": "script",
+        "isThirdParty": true,
+        "postDataSize": 0,
+        "hasPdfData": false
+      },
+      {
+        "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-ZHEM8GFQYG&gtm=45je6b31v9260092772za200zd9260092772xf1&_p=1793884701101&gcs=G101&gcd=13p3t3p3p5l1&npa=1&dma_cps=-&dma=0&_eu=AAAAAAQ&are=1&cid=249338481.1793884671&frm=0&ngs=1&ni=1&pscdl=denied&rcb=11&sr=1280x720&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uam=&uamb=0&uap=Windows&uapv=10.0&uaw=0&ul=en-gb&tag_exp=115938465~115938468~118897920~118897930~120213116~120385422~120412528~120420416~120469145~120469153~121246026~121246034~123814183&sid=1793884670&sct=1&seg=0&dl=https%3A%2F%2Fwww.ihatelovepdf.com%2Fsplit&dt=Split%20PDF%20Pages%20Online%2C%20Free%20and%20Private%20%7C%20I%20Hate%20Love%20PDF&_s=1&tfd=18993",
+        "method": "POST",
+        "resourceType": "fetch",
+        "isThirdParty": true,
+        "postDataSize": 163,
+        "hasPdfData": false
+      },
+      {
+        "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-ZHEM8GFQYG&gtm=45je6b31v9260092772za200zd9260092772xf1&_p=1793884701101&gcs=G101&gcd=13p3t3p3p5l1&npa=1&dma_cps=-&dma=0&_eu=AAAAAAQ&are=1&cid=249338481.1793884671&frm=0&ngs=1&pscdl=denied&rcb=11&sr=1280x720&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uam=&uamb=0&uap=Windows&uapv=10.0&uaw=0&ul=en-gb&tag_exp=115938465~115938468~118897920~118897930~120213116~120385422~120412528~120420416~120469145~120469153~121246026~121246034~123814183&sid=1793884670&sct=1&seg=0&dl=https%3A%2F%2Fwww.ihatelovepdf.com%2Fsplit&dt=Split%20PDF%20Pages%20Online%2C%20Free%20and%20Private%20%7C%20I%20Hate%20Love%20PDF&_s=2&tfd=20668",
+        "method": "POST",
+        "resourceType": "fetch",
+        "isThirdParty": true,
+        "postDataSize": 367,
+        "hasPdfData": false
+      }
+    ],
+    "documentUploadsCount": 0,
+    "processed": true
+  },
+  {
+    "tool": "Rotate",
+    "url": "https://www.ihatelovepdf.com/rotate",
+    "totalRequestsCount": 56,
+    "thirdPartyRequests": [
+      {
+        "url": "https://www.googletagmanager.com/gtag/js?id=G-ZHEM8GFQYG",
+        "method": "GET",
+        "resourceType": "script",
+        "isThirdParty": true,
+        "postDataSize": 0,
+        "hasPdfData": false
+      },
+      {
+        "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-ZHEM8GFQYG&gtm=45je6b31v9260092772za200zd9260092772xf1&_p=1793884708366&gcs=G101&gcd=13p3t3p3p5l1&npa=1&dma_cps=-&dma=0&_eu=AAAAAAQ&are=1&cid=249338481.1793884671&frm=0&ngs=1&ni=1&pscdl=denied&rcb=12&sr=1280x720&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uam=&uamb=0&uap=Windows&uapv=10.0&uaw=0&ul=en-gb&tag_exp=115938465~115938468~118897920~118897930~120213116~120385423~120412528~120420414~120469145~120469153~121246026~121246034~123814185&sid=1793884670&sct=1&seg=0&dl=https%3A%2F%2Fwww.ihatelovepdf.com%2Frotate&dt=Rotate%20PDF%20Pages%20Online%20Free%20%7C%20I%20Hate%20Love%20PDF&_s=1&tfd=1744",
+        "method": "POST",
+        "resourceType": "fetch",
+        "isThirdParty": true,
+        "postDataSize": 158,
+        "hasPdfData": false
+      },
+      {
+        "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-ZHEM8GFQYG&gtm=45je6b31v9260092772za200zd9260092772xf1&_p=1793884708366&gcs=G101&gcd=13p3t3p3p5l1&npa=1&dma_cps=-&dma=0&_eu=AAAAAAQ&are=1&cid=249338481.1793884671&frm=0&ngs=1&pscdl=denied&rcb=12&sr=1280x720&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uam=&uamb=0&uap=Windows&uapv=10.0&uaw=0&ul=en-gb&tag_exp=115938465~115938468~118897920~118897930~120213116~120385423~120412528~120420414~120469145~120469153~121246026~121246034~123814185&sid=1793884670&sct=1&seg=0&dl=https%3A%2F%2Fwww.ihatelovepdf.com%2Frotate&dt=Rotate%20PDF%20Pages%20Online%20Free%20%7C%20I%20Hate%20Love%20PDF&_s=2&tfd=3364",
+        "method": "POST",
+        "resourceType": "fetch",
+        "isThirdParty": true,
+        "postDataSize": 368,
+        "hasPdfData": false
+      }
+    ],
+    "documentUploadsCount": 0,
+    "processed": true
+  },
+  {
+    "tool": "Extract",
+    "url": "https://www.ihatelovepdf.com/extract",
+    "totalRequestsCount": 56,
+    "thirdPartyRequests": [
+      {
+        "url": "https://www.googletagmanager.com/gtag/js?id=G-ZHEM8GFQYG",
+        "method": "GET",
+        "resourceType": "script",
+        "isThirdParty": true,
+        "postDataSize": 0,
+        "hasPdfData": false
+      },
+      {
+        "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-ZHEM8GFQYG&gtm=45je6b31v9260092772za200zd9260092772xf1&_p=1793884714857&gcs=G101&gcd=13p3t3p3p5l1&npa=1&dma_cps=-&dma=0&_eu=AAAAAAQ&are=1&cid=249338481.1793884671&frm=0&ngs=1&ni=1&pscdl=denied&rcb=9&sr=1280x720&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uam=&uamb=0&uap=Windows&uapv=10.0&uaw=0&ul=en-gb&tag_exp=115616986~115938465~115938468~118897920~118897930~120213116~120385422~120412528~120420416~120469145~120469153~121246026~121246034~123814183&sid=1793884670&sct=1&seg=0&dl=https%3A%2F%2Fwww.ihatelovepdf.com%2Fextract&dt=Extract%20Pages%20from%20PDF%20Online%20Free%20%7C%20I%20Hate%20Love%20PDF&_s=1&tfd=1788",
+        "method": "POST",
+        "resourceType": "fetch",
+        "isThirdParty": true,
+        "postDataSize": 158,
+        "hasPdfData": false
+      },
+      {
+        "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-ZHEM8GFQYG&gtm=45je6b31v9260092772za200zd9260092772xf1&_p=1793884714857&gcs=G101&gcd=13p3t3p3p5l1&npa=1&dma_cps=-&dma=0&_eu=AAAAAAQ&are=1&cid=249338481.1793884671&frm=0&ngs=1&pscdl=denied&rcb=9&sr=1280x720&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uam=&uamb=0&uap=Windows&uapv=10.0&uaw=0&ul=en-gb&tag_exp=115616986~115938465~115938468~118897920~118897930~120213116~120385422~120412528~120420416~120469145~120469153~121246026~121246034~123814183&sid=1793884670&sct=1&seg=0&dl=https%3A%2F%2Fwww.ihatelovepdf.com%2Fextract&dt=Extract%20Pages%20from%20PDF%20Online%20Free%20%7C%20I%20Hate%20Love%20PDF&_s=2&tfd=3403",
+        "method": "POST",
+        "resourceType": "fetch",
+        "isThirdParty": true,
+        "postDataSize": 370,
+        "hasPdfData": false
+      }
+    ],
+    "documentUploadsCount": 0,
+    "processed": true
+  },
+  {
+    "tool": "Watermark",
+    "url": "https://www.ihatelovepdf.com/watermark",
+    "totalRequestsCount": 56,
+    "thirdPartyRequests": [
+      {
+        "url": "https://www.googletagmanager.com/gtag/js?id=G-ZHEM8GFQYG",
+        "method": "GET",
+        "resourceType": "script",
+        "isThirdParty": true,
+        "postDataSize": 0,
+        "hasPdfData": false
+      },
+      {
+        "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-ZHEM8GFQYG&gtm=45je6b31v9260092772za200zd9260092772xf1&_p=1793884721202&gcs=G101&gcd=13p3t3p3p5l1&npa=1&dma_cps=-&dma=0&_eu=AAAAAAQ&are=1&cid=249338481.1793884671&frm=0&ngs=1&ni=1&pscdl=denied&rcb=13&sr=1280x720&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uam=&uamb=0&uap=Windows&uapv=10.0&uaw=0&ul=en-gb&tag_exp=115938466~115938468~118897920~118897930~120213116~120385423~120412528~120420414~120469145~120469153~121246026~121246034~123814185~123820800&sid=1793884670&sct=1&seg=0&dl=https%3A%2F%2Fwww.ihatelovepdf.com%2Fwatermark&dt=Add%20Watermark%20to%20PDF%20Online%20Free%20%7C%20I%20Hate%20Love%20PDF&_s=1&tfd=1485",
+        "method": "POST",
+        "resourceType": "fetch",
+        "isThirdParty": true,
+        "postDataSize": 158,
+        "hasPdfData": false
+      },
+      {
+        "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-ZHEM8GFQYG&gtm=45je6b31v9260092772za200zd9260092772xf1&_p=1793884721202&gcs=G101&gcd=13p3t3p3p5l1&npa=1&dma_cps=-&dma=0&_eu=AAAAAAQ&are=1&cid=249338481.1793884671&frm=0&ngs=1&pscdl=denied&rcb=13&sr=1280x720&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uam=&uamb=0&uap=Windows&uapv=10.0&uaw=0&ul=en-gb&tag_exp=115938466~115938468~118897920~118897930~120213116~120385423~120412528~120420414~120469145~120469153~121246026~121246034~123814185~123820800&sid=1793884670&sct=1&seg=0&dl=https%3A%2F%2Fwww.ihatelovepdf.com%2Fwatermark&dt=Add%20Watermark%20to%20PDF%20Online%20Free%20%7C%20I%20Hate%20Love%20PDF&_s=2&tfd=3110",
+        "method": "POST",
+        "resourceType": "fetch",
+        "isThirdParty": true,
+        "postDataSize": 374,
+        "hasPdfData": false
+      }
+    ],
+    "documentUploadsCount": 0,
+    "processed": true
+  },
+  {
+    "tool": "Crop",
+    "url": "https://www.ihatelovepdf.com/crop",
+    "totalRequestsCount": 57,
+    "thirdPartyRequests": [
+      {
+        "url": "https://www.googletagmanager.com/gtag/js?id=G-ZHEM8GFQYG",
+        "method": "GET",
+        "resourceType": "script",
+        "isThirdParty": true,
+        "postDataSize": 0,
+        "hasPdfData": false
+      },
+      {
+        "url": "https://www.googletagmanager.com/a?v=3&t=l&pid=622263170&rv=6b31&tag_exp=115938466~115938469~118897920~118897930~120213116~120385422~120412526~120420416~120469145~120469153~121246026~121246034~123814185&u=AAAAAIAAAAAAACCAAAEAAAAYAAAAAAAAEA&ut=AAAI&h=Ag&gtm=45je6b31v9260092772za200zd9260092772xf1&ccid=260092772&cid=G-ZHEM8GFQYG&l=L603.S8.Y53.E150.I347.TC18.HTC0.F524.C0~gtm.init_consent.S3.V2.E51~gtm.init.S0.V0.TS5ogtautoevents.TI6.TE0.TS5ogt1pdatav2.TI8.TE2.TS5ccdgafirst.TI21.TE0.TS5setproductsettings.TI20.TE0.TS5ccdgaregscope.TI19.TE0.TS5ccdemdownload.TI18.TE0.TS5ccdemform.TI17.TE0.TS5ccdemoutboundclick.TI16.TE0.TS5ccdempageview.TI15.TE0.TS5ccdemscroll.TI14.TE0.TS5ccdemsitesearch.TI13.TE0.TS5ccdemvideo.TI12.TE0.TS5ccdconversionmarking.TI11.TE0.TS5ccdautoredact.TI10.TE0.TS5ccdgalast.TI9.TE0~gtm.js.S0.V0.TS5gct.TI4.TE0~*.S0.V0.TS5destga.TI1.TE2~*.S0.V0.E33~*.S0.V0.E35~*.S0.V0.TS5destga.TI1.TE0~gtm.dom.S0.V0.E150~gtm.load.S0.V0.E149~GA116.119",
+        "method": "GET",
+        "resourceType": "image",
+        "isThirdParty": true,
+        "postDataSize": 0,
+        "hasPdfData": false
+      },
+      {
+        "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-ZHEM8GFQYG&gtm=45je6b31v9260092772za200zd9260092772xf1&_p=1793884727399&gcs=G101&gcd=13p3t3p3p5l1&npa=1&dma_cps=-&dma=0&_eu=AAAAAAQ&are=1&cid=249338481.1793884671&frm=0&ngs=1&ni=1&pscdl=denied&rcb=16&sr=1280x720&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uam=&uamb=0&uap=Windows&uapv=10.0&uaw=0&ul=en-gb&tag_exp=115938466~115938469~118897920~118897930~120213116~120385422~120412526~120420416~120469145~120469153~121246026~121246034~123814185&sid=1793884670&sct=1&seg=0&dl=https%3A%2F%2Fwww.ihatelovepdf.com%2Fcrop&dt=Crop%20and%20Resize%20PDF%20Online%20Free%20%7C%20I%20Hate%20Love%20PDF&_s=1&tfd=1500",
+        "method": "POST",
+        "resourceType": "fetch",
+        "isThirdParty": true,
+        "postDataSize": 158,
+        "hasPdfData": false
+      },
+      {
+        "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-ZHEM8GFQYG&gtm=45je6b31v9260092772za200zd9260092772xf1&_p=1793884727399&gcs=G101&gcd=13p3t3p3p5l1&npa=1&dma_cps=-&dma=0&_eu=AAAAAAQ&are=1&cid=249338481.1793884671&frm=0&ngs=1&pscdl=denied&rcb=16&sr=1280x720&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uam=&uamb=0&uap=Windows&uapv=10.0&uaw=0&ul=en-gb&tag_exp=115938466~115938469~118897920~118897930~120213116~120385422~120412526~120420416~120469145~120469153~121246026~121246034~123814185&sid=1793884670&sct=1&seg=0&dl=https%3A%2F%2Fwww.ihatelovepdf.com%2Fcrop&dt=Crop%20and%20Resize%20PDF%20Online%20Free%20%7C%20I%20Hate%20Love%20PDF&_s=2&tfd=3119",
+        "method": "POST",
+        "resourceType": "fetch",
+        "isThirdParty": true,
+        "postDataSize": 364,
+        "hasPdfData": false
+      }
+    ],
+    "documentUploadsCount": 0,
+    "processed": true
+  },
+  {
+    "tool": "Reorder / Organize",
+    "url": "https://www.ihatelovepdf.com/organize",
+    "totalRequestsCount": 5,
+    "thirdPartyRequests": [],
+    "documentUploadsCount": 0,
+    "processed": false
+  },
+  {
+    "tool": "PDF to JPG",
+    "url": "https://www.ihatelovepdf.com/pdf-to-jpg",
+    "totalRequestsCount": 77,
+    "thirdPartyRequests": [
+      {
+        "url": "https://www.googletagmanager.com/gtag/js?id=G-ZHEM8GFQYG",
+        "method": "GET",
+        "resourceType": "script",
+        "isThirdParty": true,
+        "postDataSize": 0,
+        "hasPdfData": false
+      },
+      {
+        "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-ZHEM8GFQYG&gtm=45je6b31v9260092772za200zd9260092772xf1&_p=1793884734528&gcs=G101&gcd=13p3t3p3p5l1&npa=1&dma_cps=-&dma=0&_eu=AAAAAAQ&are=1&cid=249338481.1793884671&frm=0&ngs=1&ni=1&pscdl=denied&rcb=19&sr=1280x720&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uam=&uamb=0&uap=Windows&uapv=10.0&uaw=0&ul=en-gb&tag_exp=115616986~115938465~115938468~118897920~118897930~120213116~120385422~120412528~120420414~120469145~120469153~121246026~121246034~123814185&sid=1793884670&sct=1&seg=0&dl=https%3A%2F%2Fwww.ihatelovepdf.com%2Fpdf-to-images&dt=PDF%20to%20JPG%20and%20Images%2C%20Free%20Converter%20%7C%20I%20Hate%20Love%20PDF&_s=1&tfd=1506",
+        "method": "POST",
+        "resourceType": "fetch",
+        "isThirdParty": true,
+        "postDataSize": 158,
+        "hasPdfData": false
+      },
+      {
+        "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-ZHEM8GFQYG&gtm=45je6b31v9260092772za200zd9260092772xf1&_p=1793884734528&gcs=G101&gcd=13p3t3p3p5l1&npa=1&dma_cps=-&dma=0&_eu=AAAAAAQ&are=1&cid=249338481.1793884671&frm=0&ngs=1&pscdl=denied&rcb=19&sr=1280x720&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uam=&uamb=0&uap=Windows&uapv=10.0&uaw=0&ul=en-gb&tag_exp=115616986~115938465~115938468~118897920~118897930~120213116~120385422~120412528~120420414~120469145~120469153~121246026~121246034~123814185&sid=1793884670&sct=1&seg=0&dl=https%3A%2F%2Fwww.ihatelovepdf.com%2Fpdf-to-images&dt=PDF%20to%20JPG%20and%20Images%2C%20Free%20Converter%20%7C%20I%20Hate%20Love%20PDF&_s=2&tfd=3121",
+        "method": "POST",
+        "resourceType": "fetch",
+        "isThirdParty": true,
+        "postDataSize": 378,
+        "hasPdfData": false
+      },
+      {
+        "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-ZHEM8GFQYG&gtm=45je6b31v9260092772za200zd9260092772xf1&_p=1793884734528&gcs=G101&gcd=13p3t3p3p5l1&npa=1&dma_cps=-&dma=0&_eu=AEAAAAQ&ae=a&are=1&cid=249338481.1793884671&frm=0&ngs=1&pscdl=denied&rcb=19&sr=1280x720&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B99.0.0.0%7CHeadlessChrome%3B151.0.7922.34%7CChromium%3B151.0.7922.34&uam=&uamb=0&uap=Windows&uapv=10.0&uaw=0&ul=en-gb&_s=3&tag_exp=115616986~115938465~115938468~118897920~118897930~120213116~120385422~120412528~120420414~120469145~120469153~121246026~121246034~123814185&sid=1793884670&sct=1&seg=0&dl=https%3A%2F%2Fwww.ihatelovepdf.com%2Fpdf-to-images&dt=PDF%20to%20JPG%20and%20Images%2C%20Free%20Converter%20%7C%20I%20Hate%20Love%20PDF&en=scroll&epn.percent_scrolled=90&_et=1601&tfd=3132",
+        "method": "POST",
+        "resourceType": "fetch",
+        "isThirdParty": true,
+        "postDataSize": 0,
+        "hasPdfData": false
+      }
+    ],
+    "documentUploadsCount": 0,
+    "processed": true
+  },
+  {
+    "tool": "Protect",
+    "url": "https://www.ihatelovepdf.com/protect",
+    "totalRequestsCount": 5,
+    "thirdPartyRequests": [],
+    "documentUploadsCount": 0,
+    "processed": false
+  }
+]
