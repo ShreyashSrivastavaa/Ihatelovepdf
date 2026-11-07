@@ -10,8 +10,6 @@ import { getLocalizedAlternateMap, getRouteIdentifierForPath, getRoutePath } fro
 import ContactModal from './ContactModal';
 import {
   Globe,
-  Menu,
-  X,
   Sun,
   Moon,
   ChevronDown,
@@ -19,6 +17,10 @@ import {
   ArrowRight,
   ArrowLeft,
   ShieldCheck,
+  FileText,
+  HelpCircle,
+  Package,
+  Sparkles,
 } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 import { TOTAL_TOOLS_COUNT } from '../lib/tools-registry';
@@ -34,6 +36,17 @@ const BACK_BUTTON_LABELS: Record<Locale, string> = {
   ru: 'Назад',
   hu: 'Vissza',
 };
+
+interface MobileNavItem {
+  id: string;
+  label: string;
+  href?: string;
+  onClick?: () => void;
+  icon?: React.ComponentType<{ className?: string }>;
+  description?: string;
+  badge?: string;
+  highlight?: boolean;
+}
 
 export default function NavMenu() {
   const pathname = usePathname();
@@ -66,6 +79,13 @@ export default function NavMenu() {
 
   const backLabel = BACK_BUTTON_LABELS[locale] || 'Back';
 
+  const closeDropdowns = () => {
+    setIsConvertOpen(false);
+    setIsAllToolsOpen(false);
+    setIsLangOpen(false);
+    setIsOpen(false);
+  };
+
   const handleBack = () => {
     closeDropdowns();
     if (typeof window !== 'undefined' && window.history.length > 1) {
@@ -93,11 +113,18 @@ export default function NavMenu() {
     } catch {
       // Ignore localStorage errors
     }
-    setIsLangOpen(false);
     closeDropdowns();
   };
 
   const isActive = (path: string) => pathname === path;
+
+  // Auto-close menu and dropdowns on route changes
+  useEffect(() => {
+    setIsOpen(false);
+    setIsConvertOpen(false);
+    setIsAllToolsOpen(false);
+    setIsLangOpen(false);
+  }, [pathname]);
 
   // Close dropdowns on outside click or escape key
   useEffect(() => {
@@ -142,13 +169,14 @@ export default function NavMenu() {
   // Lock body scroll when mobile drawer is open
   useEffect(() => {
     if (isOpen) {
+      const originalOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
     } else {
       document.body.style.overflow = '';
     }
-    return () => {
-      document.body.style.overflow = '';
-    };
   }, [isOpen]);
 
   const routeIdentifier = useMemo(
@@ -164,19 +192,64 @@ export default function NavMenu() {
     }));
   }, [routeIdentifier]);
 
-  const closeDropdowns = () => {
-    setIsConvertOpen(false);
-    setIsAllToolsOpen(false);
-    setIsLangOpen(false);
-    setIsOpen(false);
-  };
+  // Extensible list of navigation links for the mobile drawer
+  const mobileNavItems: MobileNavItem[] = useMemo(() => [
+    {
+      id: 'all-tools',
+      label: `Explore All ${TOTAL_TOOLS_COUNT} Tools`,
+      href: toolsHref,
+      icon: Sparkles,
+      badge: `${TOTAL_TOOLS_COUNT} Tools`,
+      highlight: true,
+    },
+    {
+      id: 'guides',
+      label: 'Guides & Documentation',
+      href: guidesHref,
+      icon: FileText,
+    },
+    {
+      id: 'blog',
+      label: 'Blog & Articles',
+      href: '/blog',
+      icon: FileText,
+    },
+    {
+      id: 'faq',
+      label: nav.faq,
+      href: routes.faq,
+      icon: HelpCircle,
+    },
+    {
+      id: 'products',
+      label: 'Our Products',
+      href: '/products',
+      icon: Package,
+    },
+    {
+      id: 'coffee',
+      label: 'Buy Me a Coffee',
+      href: '/buy-me-a-coffee',
+      icon: Coffee,
+      description: 'International cards / PayPal',
+    },
+    {
+      id: 'contact',
+      label: 'Contact Us',
+      onClick: () => {
+        closeDropdowns();
+        setIsContactOpen(true);
+      },
+      icon: HelpCircle,
+    },
+  ], [toolsHref, guidesHref, nav.faq, routes.faq]);
 
   return (
     <>
       <header className="sticky top-0 z-40 w-full border-b border-[var(--color-border)] bg-[var(--color-main)] transition-colors duration-150">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-8 h-14 flex items-center justify-between gap-2">
           
-          {/* LEFT: Back Button + Logo & Wordmark */}
+          {/* LEFT: Back Button (inner pages only) + Logo & Wordmark */}
           <div className="flex shrink-0 items-center gap-1.5 sm:gap-2.5">
             {!isHome && (
               <button
@@ -209,11 +282,11 @@ export default function NavMenu() {
             </Link>
           </div>
 
-          {/* CENTER / DESKTOP NAV */}
-          <div className="flex min-w-0 items-center gap-1">
+          {/* DESKTOP NAV & CONTROLS (>= 768px / md:flex) */}
+          <div className="hidden md:flex min-w-0 items-center gap-1">
             <nav aria-label="Main navigation" className="flex min-w-0 shrink-0 items-center gap-1">
               {/* Quick links: Merge, Split, Compress */}
-              <div className="hidden items-center lg:flex">
+              <div className="hidden lg:flex items-center">
                 <Link
                   href={routes.operations.merge || '/merge'}
                   className={`inline-flex min-h-10 shrink-0 items-center gap-1.5 rounded-lg px-2 sm:px-3 text-[13px] font-medium transition-colors ${
@@ -247,7 +320,7 @@ export default function NavMenu() {
               </div>
 
               {/* "Convert" Dropdown */}
-              <div ref={convertDropdownRef} className="relative hidden md:block">
+              <div ref={convertDropdownRef} className="relative">
                 <button
                   type="button"
                   aria-label="Convert PDF"
@@ -391,8 +464,7 @@ export default function NavMenu() {
                       : 'text-secondary hover:bg-alt hover:text-primary'
                   }`}
                 >
-                  <span className="sm:hidden">Tools</span>
-                  <span className="hidden sm:inline">All tools</span>
+                  <span>All tools</span>
                   <ChevronDown
                     className={`h-3.5 w-3.5 transition-transform duration-150 ${
                       isAllToolsOpen ? 'rotate-180' : ''
@@ -553,16 +625,16 @@ export default function NavMenu() {
               </div>
             </nav>
 
-            {/* RIGHT CONTROLS: Coffee, Language, Theme Switch */}
+            {/* RIGHT CONTROLS: Buy Me a Chai (UPI), Language, Theme Switch */}
             <div className="flex items-center gap-1.5 sm:gap-2 ml-2 pl-2 border-l border-border">
-              {/* Buy Me a Coffee */}
+              {/* Buy Me a Chai (UPI) */}
               <Link
-                href="/buy-me-a-coffee"
-                className="hidden sm:inline-flex items-center gap-1.5 rounded-lg px-2 sm:px-2.5 py-1.5 text-[13px] font-medium text-secondary hover:bg-alt hover:text-accent transition-colors"
-                title="Support this project"
+                href="/buy-me-a-chai"
+                className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-amber-600 dark:text-amber-400 hover:bg-amber-500/10 transition-colors"
+                title="Support via UPI on Buy Me a Chai"
               >
-                <Coffee className="h-3.5 w-3.5 text-accent" />
-                <span className="hidden xl:inline">Coffee</span>
+                <Coffee className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400 shrink-0" />
+                <span>Buy Me a Chai (UPI)</span>
               </Link>
 
               {/* Language Switcher (Crawlable & Accessible Dropdown) */}
@@ -627,7 +699,7 @@ export default function NavMenu() {
                 )}
               </div>
 
-              {/* BoringPDF-Style Dark Mode Switch */}
+              {/* Dark Mode Switch */}
               <button
                 type="button"
                 role="switch"
@@ -648,17 +720,38 @@ export default function NavMenu() {
                   </span>
                 </span>
               </button>
-
-              {/* Mobile Hamburger Toggle (< lg) */}
-              <button
-                type="button"
-                className="lg:hidden flex h-10 w-10 items-center justify-center rounded-lg text-secondary hover:bg-alt hover:text-primary transition-colors focus:outline-none"
-                onClick={() => setIsOpen((prev) => !prev)}
-                aria-label={nav.menuLabel}
-              >
-                {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-              </button>
             </div>
+          </div>
+
+          {/* MOBILE HAMBURGER TOGGLE (< 768px / md:hidden) */}
+          <div className="flex md:hidden items-center">
+            <button
+              type="button"
+              id="mobile-nav-toggle"
+              aria-controls="mobile-nav-menu"
+              aria-expanded={isOpen}
+              aria-label={isOpen ? 'Close menu' : 'Toggle menu'}
+              onClick={() => setIsOpen((prev) => !prev)}
+              className="inline-flex min-h-[44px] min-w-[44px] h-11 w-11 items-center justify-center rounded-lg text-secondary hover:bg-alt hover:text-primary transition-colors focus-visible:outline-2 focus-visible:outline-brand cursor-pointer"
+            >
+              <div className="relative w-5 h-4 flex flex-col justify-between items-center pointer-events-none" aria-hidden="true">
+                <span
+                  className={`block h-0.5 w-5 bg-current rounded-full transition-all duration-300 ease-in-out ${
+                    isOpen ? 'translate-y-[7px] rotate-45' : ''
+                  }`}
+                />
+                <span
+                  className={`block h-0.5 w-5 bg-current rounded-full transition-all duration-200 ease-in-out ${
+                    isOpen ? 'opacity-0 scale-x-0' : 'opacity-100'
+                  }`}
+                />
+                <span
+                  className={`block h-0.5 w-5 bg-current rounded-full transition-all duration-300 ease-in-out ${
+                    isOpen ? '-translate-y-[7px] -rotate-45' : ''
+                  }`}
+                />
+              </div>
+            </button>
           </div>
         </div>
       </header>
@@ -666,7 +759,7 @@ export default function NavMenu() {
       {/* MOBILE BACKDROP OVERLAY */}
       {isOpen && (
         <div
-          className="fixed inset-0 top-14 z-40 bg-black/50 backdrop-blur-xs lg:hidden"
+          className="fixed inset-0 top-14 z-40 bg-black/50 backdrop-blur-xs md:hidden"
           onClick={() => setIsOpen(false)}
           aria-hidden="true"
         />
@@ -674,22 +767,74 @@ export default function NavMenu() {
 
       {/* MOBILE SLIDE-DOWN / DRAWER MENU */}
       <div
-        className={`fixed top-14 left-0 right-0 bottom-0 z-50 bg-main border-b border-border shadow-2xl transition-transform duration-200 ease-in-out lg:hidden flex flex-col justify-between overflow-y-auto ${
-          isOpen ? 'translate-y-0' : '-translate-y-full'
+        id="mobile-nav-menu"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Navigation menu"
+        className={`fixed top-14 left-0 right-0 bottom-0 z-50 bg-[var(--color-main)] border-b border-border shadow-2xl transition-all duration-300 ease-in-out md:hidden flex flex-col justify-between overflow-y-auto ${
+          isOpen
+            ? 'opacity-100 translate-y-0 pointer-events-auto visible'
+            : 'opacity-0 -translate-y-4 pointer-events-none invisible'
         }`}
       >
-        <div className="p-4 sm:p-6 space-y-6">
+        <div className="p-4 sm:p-6 space-y-5">
+          {/* Top Status & Dark Mode Switcher Row */}
           <div className="flex items-center justify-between pb-3 border-b border-border">
-            <span className="text-xs font-bold uppercase tracking-wider text-secondary">
-              PDF Toolkit
-            </span>
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-border bg-alt text-[11px] font-medium text-secondary">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-border bg-alt text-[11px] font-medium text-secondary">
               <ShieldCheck className="h-3.5 w-3.5 text-success shrink-0" />
               <span>100% Private · Runs in Browser</span>
             </div>
+
+            {/* Dark Mode Switch in Mobile Menu */}
+            <button
+              type="button"
+              role="switch"
+              aria-checked={theme === 'dark'}
+              aria-label="Dark mode"
+              title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              onClick={toggleTheme}
+              className="inline-flex items-center gap-2 rounded-lg px-2 py-1 text-xs font-medium text-secondary hover:bg-alt hover:text-primary transition-colors cursor-pointer"
+            >
+              <span className="flex h-6 w-11 items-center rounded-full border border-border bg-alt p-[2px] transition-colors dark:border-primary dark:bg-primary">
+                <span
+                  className={`flex h-4 w-4 items-center justify-center rounded-full bg-main text-primary shadow-xs transition-transform duration-200 ${
+                    theme === 'dark' ? 'translate-x-5' : 'translate-x-0'
+                  }`}
+                >
+                  <Sun className="h-2.5 w-2.5 dark:hidden" />
+                  <Moon className="h-2.5 w-2.5 hidden dark:block" />
+                </span>
+              </span>
+              <span className="text-xs">{theme === 'dark' ? 'Dark' : 'Light'}</span>
+            </button>
           </div>
 
-          {/* Quick Tools */}
+          {/* 1. PREMIER CTA: Buy Me a Chai (UPI) */}
+          <Link
+            href="/buy-me-a-chai"
+            onClick={closeDropdowns}
+            className="flex items-center justify-between p-3.5 rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-400 hover:bg-amber-500/20 transition-all shadow-xs"
+          >
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-500/20 text-amber-600 dark:text-amber-400">
+                <Coffee className="h-5 w-5" />
+              </div>
+              <div className="min-w-0">
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-bold tracking-tight">Buy Me a Chai (UPI)</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-700 dark:text-amber-300">
+                    UPI / QR
+                  </span>
+                </div>
+                <p className="text-xs text-amber-700/80 dark:text-amber-300/80 truncate">
+                  Support this free project via UPI, RuPay or Cards
+                </p>
+              </div>
+            </div>
+            <ArrowRight className="h-4 w-4 shrink-0 text-amber-600 dark:text-amber-400 ml-2" />
+          </Link>
+
+          {/* 2. Quick Popular Tools */}
           <div className="space-y-1">
             <p className="text-[11px] font-bold uppercase tracking-wider text-secondary/70 px-1 mb-1">
               Popular Tools
@@ -698,28 +843,28 @@ export default function NavMenu() {
               <Link
                 href={routes.operations.merge || '/merge'}
                 onClick={closeDropdowns}
-                className="flex flex-col items-center justify-center p-3 rounded-lg border border-border bg-alt text-xs font-medium text-primary hover:border-hover transition-colors"
+                className="flex flex-col items-center justify-center p-3 rounded-lg border border-border bg-alt text-xs font-semibold text-primary hover:border-hover transition-colors"
               >
                 <span>Merge</span>
               </Link>
               <Link
                 href={routes.operations.split || '/split'}
                 onClick={closeDropdowns}
-                className="flex flex-col items-center justify-center p-3 rounded-lg border border-border bg-alt text-xs font-medium text-primary hover:border-hover transition-colors"
+                className="flex flex-col items-center justify-center p-3 rounded-lg border border-border bg-alt text-xs font-semibold text-primary hover:border-hover transition-colors"
               >
                 <span>Split</span>
               </Link>
               <Link
                 href={routes.operations.compress || '/compress'}
                 onClick={closeDropdowns}
-                className="flex flex-col items-center justify-center p-3 rounded-lg border border-border bg-alt text-xs font-medium text-primary hover:border-hover transition-colors"
+                className="flex flex-col items-center justify-center p-3 rounded-lg border border-border bg-alt text-xs font-semibold text-primary hover:border-hover transition-colors"
               >
                 <span>Compress</span>
               </Link>
             </div>
           </div>
 
-          {/* Conversion Links */}
+          {/* 3. Quick Conversions */}
           <div className="space-y-1">
             <p className="text-[11px] font-bold uppercase tracking-wider text-secondary/70 px-1 mb-1">
               Conversions
@@ -728,102 +873,90 @@ export default function NavMenu() {
               <Link
                 href={routes.operations.pdfToWord || '/pdf-to-word'}
                 onClick={closeDropdowns}
-                className="p-2.5 rounded-lg border border-border bg-main text-secondary hover:text-primary hover:border-hover transition-colors"
+                className="p-2.5 rounded-lg border border-border bg-main text-secondary hover:text-primary hover:border-hover transition-colors font-medium"
               >
                 PDF to Word
               </Link>
               <Link
                 href={routes.operations.wordToPdf || '/word-to-pdf'}
                 onClick={closeDropdowns}
-                className="p-2.5 rounded-lg border border-border bg-main text-secondary hover:text-primary hover:border-hover transition-colors"
+                className="p-2.5 rounded-lg border border-border bg-main text-secondary hover:text-primary hover:border-hover transition-colors font-medium"
               >
                 Word to PDF
               </Link>
               <Link
                 href={routes.operations.pdfToImages || '/pdf-to-images'}
                 onClick={closeDropdowns}
-                className="p-2.5 rounded-lg border border-border bg-main text-secondary hover:text-primary hover:border-hover transition-colors"
+                className="p-2.5 rounded-lg border border-border bg-main text-secondary hover:text-primary hover:border-hover transition-colors font-medium"
               >
                 PDF to JPG/PNG
               </Link>
               <Link
                 href={routes.operations.imagesToPdf || '/images-to-pdf'}
                 onClick={closeDropdowns}
-                className="p-2.5 rounded-lg border border-border bg-main text-secondary hover:text-primary hover:border-hover transition-colors"
+                className="p-2.5 rounded-lg border border-border bg-main text-secondary hover:text-primary hover:border-hover transition-colors font-medium"
               >
                 JPG/PNG to PDF
               </Link>
             </div>
           </div>
 
-          {/* Site Navigation Links */}
+          {/* 4. Extensible Menu Links List (Array-driven) */}
           <div className="space-y-1 border-t border-border pt-4">
-            <Link
-              href={toolsHref}
-              onClick={closeDropdowns}
-              className="flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold text-primary hover:bg-alt transition-colors"
-            >
-              <span>Explore All {TOTAL_TOOLS_COUNT} Tools</span>
-              <ArrowRight className="h-4 w-4 text-secondary" />
-            </Link>
-            <Link
-              href={guidesHref}
-              onClick={closeDropdowns}
-              className="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-secondary hover:text-primary hover:bg-alt transition-colors"
-            >
-              <span>Guides & Documentation</span>
-            </Link>
-            <Link
-              href="/blog"
-              onClick={closeDropdowns}
-              className="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-secondary hover:text-primary hover:bg-alt transition-colors"
-            >
-              <span>Blog & Articles</span>
-            </Link>
-            <Link
-              href={routes.faq}
-              onClick={closeDropdowns}
-              className="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-secondary hover:text-primary hover:bg-alt transition-colors"
-            >
-              <span>{nav.faq}</span>
-            </Link>
-            <Link
-              href="/products"
-              onClick={closeDropdowns}
-              className="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-secondary hover:text-primary hover:bg-alt transition-colors"
-            >
-              <span>Our Products</span>
-            </Link>
-            <Link
-              href="/buy-me-a-coffee"
-              onClick={closeDropdowns}
-              className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-accent hover:bg-alt transition-colors"
-            >
-              <Coffee className="h-4 w-4" />
-              <span>Buy Me a Coffee</span>
-            </Link>
-            <Link
-              href="/buy-me-a-chai"
-              onClick={closeDropdowns}
-              className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-amber-600 dark:text-amber-400 hover:bg-alt transition-colors"
-            >
-              <Coffee className="h-4 w-4" />
-              <span>Buy Me a Chai (UPI)</span>
-            </Link>
-            <button
-              type="button"
-              onClick={() => {
-                setIsOpen(false);
-                setIsContactOpen(true);
-              }}
-              className="w-full text-left px-3 py-2 rounded-lg text-sm text-secondary hover:text-primary hover:bg-alt transition-colors cursor-pointer"
-            >
-              Contact Us
-            </button>
+            <p className="text-[11px] font-bold uppercase tracking-wider text-secondary/70 px-1 mb-1">
+              Navigation
+            </p>
+            <div className="space-y-0.5">
+              {mobileNavItems.map((item) => {
+                const IconComponent = item.icon;
+                if (item.href) {
+                  return (
+                    <Link
+                      key={item.id}
+                      href={item.href}
+                      onClick={closeDropdowns}
+                      className={`flex items-center justify-between px-3 py-2.5 rounded-lg text-sm transition-colors ${
+                        item.highlight
+                          ? 'font-bold text-primary bg-alt/60 hover:bg-alt'
+                          : 'text-secondary hover:text-primary hover:bg-alt'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        {IconComponent && <IconComponent className="h-4 w-4 shrink-0 text-secondary" />}
+                        <span className="truncate">{item.label}</span>
+                      </div>
+                      {item.badge && (
+                        <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-brand/10 text-brand shrink-0">
+                          {item.badge}
+                        </span>
+                      )}
+                      {item.description && !item.badge && (
+                        <span className="text-[11px] text-secondary/60 shrink-0">
+                          {item.description}
+                        </span>
+                      )}
+                    </Link>
+                  );
+                }
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={item.onClick}
+                    className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm text-secondary hover:text-primary hover:bg-alt transition-colors cursor-pointer text-left"
+                  >
+                    <div className="flex items-center gap-2.5">
+                      {IconComponent && <IconComponent className="h-4 w-4 shrink-0 text-secondary" />}
+                      <span>{item.label}</span>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
 
-        {/* Mobile Drawer Bottom: Language Selector with Crawlable Links */}
+        {/* Mobile Drawer Bottom: Language Selector */}
         <div className="p-4 border-t border-border bg-alt space-y-2.5">
           <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-secondary">
             <span>{nav.languageLabel}</span>

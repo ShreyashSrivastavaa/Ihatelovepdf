@@ -111,20 +111,20 @@ export function HomePageContent({ dictionary }: HomePageContentProps) {
               alt="ihatelovepdf"
               width={48}
               height={48}
-              className="object-contain w-10 h-10 sm:w-12 sm:h-12"
+              className="object-contain w-9 h-9 sm:w-12 sm:h-12"
               unoptimized
             />
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-black text-primary tracking-tight mb-2">
+          <h1 className="text-[clamp(1.85rem,6vw,3.25rem)] font-black text-primary tracking-tight mb-2 leading-tight px-4">
             ihatelovepdf
           </h1>
 
-          <p className="text-secondary text-base md:text-lg max-w-xl mx-auto">
+          <p className="text-secondary text-[clamp(0.95rem,2.5vw,1.125rem)] max-w-xl mx-auto px-4 leading-relaxed">
             {dictionary.pages.home.hero.subtitle || "Free PDF tools that run entirely in your browser."}
           </p>
 
-          <p className="text-xs text-secondary/80 mt-2 font-medium tracking-wide">
+          <p className="text-xs text-secondary/80 mt-2 font-medium tracking-wide px-4">
             {(KEYWORD_PILLS_MAP[dictionary.locale] || KEYWORD_PILLS_MAP['en']).join(' · ')}
           </p>
         </section>
