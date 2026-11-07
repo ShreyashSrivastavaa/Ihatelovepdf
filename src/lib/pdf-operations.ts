@@ -1207,26 +1207,77 @@ const MINIMAL_WARMUP_PDF = new Uint8Array([
   0x66, 0x0a, 0x31, 0x39, 0x35, 0x0a, 0x25, 0x25, 0x45, 0x4f, 0x46, 0x0a
 ]);
 
+let workerBlobUrl: string | null = null;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let sharedPdfWorker: any = null;
+
 export async function preloadPdfEngine(): Promise<void> {
   if (typeof window === 'undefined') return;
   try {
     const pdfjsLib = await getPdfJsLib();
+
+    // 1. Fetch worker script and create memory blob URL to bypass offline network failure
+    if (!workerBlobUrl) {
+      try {
+        const res = await fetch('/pdf.worker.min.mjs');
+        if (res.ok) {
+          const text = await res.text();
+          const blob = new Blob([text], { type: 'application/javascript' });
+          workerBlobUrl = URL.createObjectURL(blob);
+          pdfjsLib.GlobalWorkerOptions.workerSrc = workerBlobUrl;
+        }
+      } catch (err) {
+        console.warn('Worker blob url preload error:', err);
+      }
+    }
+
+    // 2. Instantiate and warm up shared PDFWorker
+    if (!sharedPdfWorker) {
+      try {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const PDFWorkerClass = (pdfjsLib as any).PDFWorker;
+        if (typeof PDFWorkerClass === 'function') {
+          sharedPdfWorker = new PDFWorkerClass({
+            name: 'pdfjs-shared-worker'
+          });
+        }
+      } catch (err) {
+        console.warn('PDFWorker instantiation error:', err);
+      }
+    }
+
+    // 3. Preload standard fonts so subsequent complex rendering does not need network
+    const standardFonts = ['LiberationSans-Regular.ttf', 'FoxitSerif.pfb', 'FoxitFixed.pfb'];
+    for (const font of standardFonts) {
+      if (typeof fetch !== 'undefined') {
+        fetch(`/standard_fonts/${font}`, { priority: 'low' }).catch(() => {});
+      }
+    }
+
+    // 4. Warm up with minimal valid PDF
     const task = pdfjsLib.getDocument({
       data: MINIMAL_WARMUP_PDF,
+      worker: sharedPdfWorker || undefined,
       cMapUrl: '/cmaps/',
       cMapPacked: true,
       standardFontDataUrl: '/standard_fonts/',
     });
     const doc = await task.promise;
     await doc.destroy();
-  } catch {}
+  } catch (err) {
+    console.warn('preloadPdfEngine execution error:', err);
+  }
 }
 
 async function getPdfJsLib(): Promise<PdfJsModule> {
   if (!pdfjsLibPromise) {
     pdfjsLibPromise = import('pdfjs-dist/legacy/build/pdf.mjs').then((module) => {
-      if (typeof window !== 'undefined' && !module.GlobalWorkerOptions.workerSrc) {
-        module.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
+      if (typeof window !== 'undefined') {
+        if (workerBlobUrl) {
+          module.GlobalWorkerOptions.workerSrc = workerBlobUrl;
+        } else if (!module.GlobalWorkerOptions.workerSrc) {
+          module.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
+        }
       }
       return module;
     });
@@ -1247,6 +1298,7 @@ async function getCachedPdfDocument(fileOrData: File | ArrayBuffer | Uint8Array)
       const isInWorker = typeof (globalThis as any).importScripts === 'function';
       const loadingTask = pdfjsLib.getDocument({
         data,
+        worker: sharedPdfWorker || undefined,
         cMapUrl: `${baseUrl}/cmaps/`,
         cMapPacked: true,
         standardFontDataUrl: `${baseUrl}/standard_fonts/`,

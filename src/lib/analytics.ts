@@ -15,5 +15,6 @@ type TrackEventOptions = {
 export const isAnalyticsEnabled = () => false;
 
 export function trackEvent(_options?: TrackEventOptions): void {
+  void _options;
   // No-op: No external telemetry pings
 }
