@@ -461,6 +461,17 @@
       "ro": "/ro/completeaza-formular-pdf",
       "ru": "/ru/zapolnit-formu-pdf",
       "hu": "/hu/pdf-urlap-kitoltese"
+    },
+    "wordToPdf": {
+      "en": "/word-to-pdf",
+      "es": "/es/word-a-pdf",
+      "pt": "/pt/word-para-pdf",
+      "de": "/de/word-zu-pdf",
+      "it": "/it/word-in-pdf",
+      "fr": "/fr/word-en-pdf",
+      "ro": "/ro/word-in-pdf",
+      "ru": "/ru/word-v-pdf",
+      "hu": "/hu/word-bol-pdf"
     }
   }
 }
