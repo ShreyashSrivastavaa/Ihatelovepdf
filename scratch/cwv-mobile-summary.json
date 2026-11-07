@@ -1,0 +1,18 @@
+{
+  "homepage": {
+    "ttfb": 8,
+    "domContentLoaded": 43,
+    "load": 286,
+    "fcp": 252,
+    "lcp": 252,
+    "cls": 0
+  },
+  "merge": {
+    "ttfb": 4,
+    "domContentLoaded": 32,
+    "load": 250,
+    "fcp": 172,
+    "lcp": 172,
+    "cls": 0
+  }
+}
