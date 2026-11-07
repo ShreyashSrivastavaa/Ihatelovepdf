@@ -41,6 +41,7 @@ export const ALL_OPERATION_KEYS: OperationKey[] = [
   'posBilling',
   'signPdf',
   'fillPdfForm',
+  'wordToPdf',
 ];
 
 export interface OperationCatalogItem {
