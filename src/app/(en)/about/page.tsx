@@ -272,7 +272,13 @@ export default function AboutPage() {
             href="/buy-me-a-coffee"
             className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-[var(--border)] bg-[var(--card)] text-[var(--text-main)] hover:border-[var(--brand)] transition-colors"
           >
-            <span>Support via Buy Me a Coffee</span>
+            <span>Support via Coffee</span>
+          </Link>
+          <Link
+            href="/buy-me-a-chai"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-orange-500/30 bg-orange-500/10 text-orange-600 dark:text-orange-400 hover:bg-orange-500/20 transition-colors"
+          >
+            <span>Support via Chai (UPI)</span>
           </Link>
         </section>
 
