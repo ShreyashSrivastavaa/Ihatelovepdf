@@ -87,15 +87,14 @@ export default function SignPdfInterface({
   onDone,
   isProcessing: externalProcessing = false,
 }: SignPdfInterfaceProps) {
-  // Load Google Fonts for handwriting styles
+  // Load local self-hosted fonts for handwriting styles
   useEffect(() => {
-    const linkId = 'google-fonts-signatures';
+    const linkId = 'local-fonts-signatures';
     if (!document.getElementById(linkId)) {
       const link = document.createElement('link');
       link.id = linkId;
       link.rel = 'stylesheet';
-      link.href =
-        'https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Dancing+Script:wght@600&family=Great+Vibes&family=Pacifico&family=Sacramento&display=swap';
+      link.href = '/fonts/signatures.css';
       document.head.appendChild(link);
     }
   }, []);

@@ -372,15 +372,27 @@ export default function ResultPanel({
           </span>
           <span>Found this useful? Tips keep this tool free, private, and ad-light.</span>
         </div>
-        <a
-          href="https://buymeacoffee.com/shreyashsrivastavaa"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 font-semibold text-amber-600 dark:text-amber-400 hover:underline transition-colors shrink-0"
-        >
-          <span>Buy me a coffee</span>
-          <span>&rarr;</span>
-        </a>
+        <div className="flex items-center gap-2 font-semibold text-xs shrink-0">
+          <a
+            href="https://buymeacoffee.com/shreyashsrivastavaa"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-amber-600 dark:text-amber-400 hover:underline transition-colors"
+          >
+            <span>Coffee</span>
+            <span>&rarr;</span>
+          </a>
+          <span className="text-[var(--text-muted)]">·</span>
+          <a
+            href="https://buymeachai.in/shreyashsrivastava"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-orange-600 dark:text-orange-400 hover:underline transition-colors"
+          >
+            <span>Chai (UPI)</span>
+            <span>&rarr;</span>
+          </a>
+        </div>
       </div>
     </div>
   );
