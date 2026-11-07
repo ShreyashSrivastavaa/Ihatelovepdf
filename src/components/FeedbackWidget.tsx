@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useDictionary } from '../i18n/LocaleProvider';
 
-export function FeedbackWidget({ operation: _operation }: { operation?: string }) {
+export function FeedbackWidget({}: { operation?: string } = {}) {
     const dictionary = useDictionary();
     // Fallback if translation is missing (safety check)
     const t = dictionary.components?.feedback || {

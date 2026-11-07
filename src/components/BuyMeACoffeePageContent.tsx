@@ -37,6 +37,15 @@ export function BuyMeACoffeePageContent() {
             </a>
 
             <Link
+              href="/buy-me-a-chai"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-orange-500/30 bg-orange-500/10 hover:bg-orange-500/20 text-orange-600 dark:text-orange-400 font-semibold text-xs sm:text-sm transition-colors"
+            >
+              <Coffee className="h-4 w-4" />
+              <span>Support via UPI / Buy Me a Chai</span>
+              <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+
+            <Link
               href="/tools"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-[var(--border)] bg-[var(--card)] hover:border-[var(--brand)] text-[var(--text-main)] font-semibold text-xs sm:text-sm transition-colors"
             >
@@ -163,6 +172,14 @@ export function BuyMeACoffeePageContent() {
                 No account is required. You can support the project using credit card, debit card, Apple Pay, Google Pay, or local payment methods in seconds.
               </p>
             </details>
+            <details className="p-4 rounded-xl border border-[var(--border)] bg-[var(--card)]">
+              <summary className="cursor-pointer text-xs sm:text-sm font-semibold text-[var(--text-main)]">
+                Can I tip using UPI (Google Pay, PhonePe, Paytm)?
+              </summary>
+              <p className="mt-2 text-xs text-[var(--text-muted)] leading-relaxed">
+                Yes! If you prefer using UPI or Indian payment methods, you can support via our <Link href="/buy-me-a-chai" className="text-[var(--brand)] underline">Buy Me a Chai</Link> page directly at <a href="https://buymeachai.in/shreyashsrivastava" target="_blank" rel="noopener noreferrer" className="text-[var(--brand)] underline">buymeachai.in/shreyashsrivastava</a>.
+              </p>
+            </details>
           </div>
         </section>
 
@@ -171,15 +188,26 @@ export function BuyMeACoffeePageContent() {
           <h2 className="text-base sm:text-lg font-bold text-[var(--text-main)]">
             Ready to show your appreciation?
           </h2>
-          <a
-            href="https://buymeacoffee.com/shreyashsrivastavaa"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#FFDD00] hover:bg-[#ffea40] text-neutral-900 font-bold text-xs sm:text-sm shadow-sm transition-all cursor-pointer"
-          >
-            <Coffee className="h-4 w-4 text-neutral-900" />
-            <span>Support Shreyash on Buy Me a Coffee</span>
-          </a>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <a
+              href="https://buymeacoffee.com/shreyashsrivastavaa"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#FFDD00] hover:bg-[#ffea40] text-neutral-900 font-bold text-xs sm:text-sm shadow-sm transition-all cursor-pointer"
+            >
+              <Coffee className="h-4 w-4 text-neutral-900" />
+              <span>Support on Buy Me a Coffee</span>
+            </a>
+            <a
+              href="https://buymeachai.in/shreyashsrivastava"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold text-xs sm:text-sm shadow-sm transition-all cursor-pointer"
+            >
+              <Coffee className="h-4 w-4 text-white" />
+              <span>Support on Buy Me a Chai (UPI)</span>
+            </a>
+          </div>
         </section>
       </div>
     </div>
