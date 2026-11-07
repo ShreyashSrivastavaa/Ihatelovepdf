@@ -1,0 +1,49 @@
+{
+  "Legal/Compliance": [
+    "src/app/_data/localized-guides-data.ts:        \"Escolha entre compressão Baixa, Média ou Forte conforme sua necessidade.\",",
+    "src/components/pdf-processor/ProcessingOptions.tsx:                256-bit encryption compliant with ISO 32000-2 (PDF 2.0). Supported by all modern PDF viewers.",
+    "src/i18n/dictionaries/pt/index.ts:          split: \"Cada PDF será dividido conforme as opções escolhidas no próximo passo.\",",
+    "src/i18n/dictionaries/pt/operations.ts:          \"O novo PDF preserva qualidade e metadados conforme as opções escolhidas.\",",
+    "src/lib/operations/pdf-to-word.ts: * and docx (MIT) for standards-compliant Word document generation.",
+    "src/lib/pdf-engine/test-fixtures.ts:    page.drawText('ISO 19005-1 Compliant PDF/A Archival Document', { x: 50, y: 800, size: 14, font: boldFont });",
+    "src/styles/globals.css:   Contrast: WCAG AA & AAA compliant"
+  ],
+  "Offline Claims": [
+    "Binary file public/og-image.png matches",
+    "Binary file public/og-images/og-image-de.png matches",
+    "Binary file public/og-images/og-image-en.png matches",
+    "Binary file public/og-images/og-image-es.png matches",
+    "Binary file public/og-images/og-image-fr.png matches",
+    "Binary file public/og-images/og-image-hu.png matches",
+    "Binary file public/og-images/og-image-it.png matches",
+    "Binary file public/og-images/og-image-pt.png matches",
+    "Binary file public/og-images/og-image-ro.png matches",
+    "Binary file public/og-images/og-image-ru.png matches",
+    "src/app/_data/comparisons-data.ts:          ourSite: 'Funciona sin conexión tras guardarse en caché como aplicación web progresiva (PWA).',",
+    "src/app/_data/comparisons-data.ts:          feature: 'Utilisation hors ligne',",
+    "src/app/_data/comparisons-data.ts:          competitor: 'L’application de bureau fonctionne hors ligne après activation. La version web nécessite internet.',",
+    "src/app/_data/comparisons-data.ts:          ourSite: 'Работает прямо в браузере и продолжает функционировать без интернета после загрузки страницы.',",
+    "src/app/_data/search-intent-data.ts:          question: 'Puis-je fusionner mes PDF hors ligne ?',",
+    "src/app/_data/search-intent-data.ts:          question: 'Можно ли объединять PDF оффлайн без интернета?',",
+    "src/app/fr/offline-pdf-tools/page.tsx:  title: \"Outils PDF Hors Ligne dans Navigateur | ihatelovepdf\",",
+    "src/app/fr/offline-pdf-tools/page.tsx:    title: \"Outils PDF Hors Ligne dans Navigateur | ihatelovepdf\",",
+    "src/app/fr/offline-pdf-tools/page.tsx:    title: \"Outils PDF Hors Ligne dans Navigateur | ihatelovepdf\",",
+    "src/components/offline-tools/OfflineToolsPageContent.tsx:    title: 'Outils PDF Hors Ligne dans Navigateur | ihatelovepdf',",
+    "src/components/offline-tools/OfflineToolsPageContent.tsx:    noticeTitle: 'Remarque importante sur le fonctionnement hors ligne',",
+    "src/components/offline-tools/OfflineToolsPageContent.tsx:    noticeText: 'Ces outils continuent de fonctionner sans connexion Internet une fois la page entièrement chargée dans votre navigateur. Cependant, recharger la page ou ouvrir un nouvel onglet hors ligne ne les ouvrira pas. Gardez votre onglet ouvert pour continuer à travailler sans interruption.',",
+    "src/components/offline-tools/OfflineToolsPageContent.tsx:        q: 'Pourquoi le rechargement échoue-t-il hors ligne ?',",
+    "src/components/offline-tools/OfflineToolsPageContent.tsx:        q: 'Могу ли я использовать ihatelovepdf без интернета?',",
+    "src/components/offline-tools/OfflineToolsPageContent.tsx:        q: 'Почему перезагрузка не работает без интернета?',",
+    "src/i18n/dictionaries/es/index.ts:        \"Herramientas PDF gratuitas y 100% privadas en tu navegador. Une, comprime, divide y convierte archivos PDF sin marcas de agua, sin registros y sin subir archivos a servidores. Funciona sin conexión con tareas ilimitadas.\",",
+    "src/i18n/dictionaries/fr/index.ts:        \"Boîte à outils PDF gratuite et confidentielle dans votre navigateur. Fusionnez, compressez, divisez et convertissez des PDF sans filigrane, sans inscription et sans téléversement de fichier. Fonctionne hors ligne et en illimité.\",",
+    "src/i18n/dictionaries/fr/index.ts:        \"modifier pdf hors ligne\","
+  ],
+  "Zero Tracking Claims": [
+    "src/components/dashboard/DashboardSection.tsx:                      <span className=\"inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold font-mono tracking-wider uppercase bg-[var(--accent-soft)] text-[var(--accent)] border border-[var(--accent-border)]\">",
+    "src/lib/latex/resume-types.ts:        'Benchmarked throughput reaching 85,000 requests/sec with sub-5ms commit latency under simulated network partitions.',"
+  ],
+  "Old Trackers": [
+    "src/components/analytics/PagePulseScript.tsx:export function PagePulseScript() {",
+    "src/lib/analytics.ts: * All third-party trackers (GA4, PagePulse) have been permanently removed."
+  ]
+}
