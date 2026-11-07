@@ -1,0 +1,13 @@
+SIL OPEN FONT LICENSE Version 1.1
+This license covers the following self-hosted fonts used for digital signatures:
+- Caveat (Designed by Pablo Impallari)
+- Dancing Script (Designed by Pablo Impallari)
+- Great Vibes (Designed by TypeSETIT)
+- Pacifico (Designed by Vernon Adams)
+- Sacramento (Designed by Brian J. Bonislawsky)
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of the Font Software, to use, study, copy, merge, embed, modify,
+redistribute, and sell modified and unmodified copies of the Font Software,
+subject to the conditions of the SIL Open Font License v1.1.
+Full license text available at: http://scripts.sil.org/OFL
