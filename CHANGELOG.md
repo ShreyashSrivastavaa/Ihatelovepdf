@@ -2,6 +2,70 @@
 
 All notable changes to **PDFhelp** will be documented in this file.
 
+## [1.1.0](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/compare/v1.0.0...v1.1.0) (2026-11-07)
+
+
+### Features
+
+* **about:** redesign About page with founder mission card, 4 core pillars, and FAQs ([dcaf568](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/dcaf5688f9afede559f110721b57376d27a16fed))
+* add comprehensive PDF operations library and multilingual tool support ([c07b088](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/c07b08835860fb655a8fe213105967d495af25b4))
+* add Footer, NavMenu, and LocaleProvider components ([08a3794](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/08a379435e2ba426e234e1036341a209fc1c7c92))
+* add localized Open Graph images and banner assets ([fe499a2](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/fe499a2dd51ccdc152e70469927c5c41754471f6))
+* add mobile responsiveness test script, homepage content, and navigation menu components ([28655fa](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/28655fafe400ffb85109d54a197ffbe1996dab8c))
+* add shared site configuration and metadata utilities ([f7e54bb](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/f7e54bb28740dcd1630f54d5036164b7339c58c2))
+* **blog:** redesign Blog index and article pages with editorial layout and tool launch CTAs ([b225d94](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/b225d94c661513f5d1e16caba5c171e3e1cc5b44))
+* **branding:** add open-source GitHub repository link to About page and Footer ([b910c3a](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/b910c3ad9c325cb693d5e68ee452027892bc0350))
+* **ci:** add post-deploy production audit script scripts/audit-production.mjs ([abc177b](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/abc177b2ee5a09fa736eee585a537b747c91051e))
+* **contact:** redesign Contact page and modal with rose & golden theme tokens ([3e7f8e9](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/3e7f8e9559ece13a3d507c224eb6895dd157d32e))
+* **faq:** redesign FaqSection accordion and FaqPageContent with theme tokens ([7acf85b](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/7acf85bef97b1fa50c9e3305316c7d11e172aa25))
+* **footer:** redesign Footer with structured category columns and dry-witty signoff ([a8c9bd2](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/a8c9bd273b57ceb30216156f7bcc2bfa3b2f2033))
+* **geo:** privacy architecture whitepaper in 9 languages, E-E-A-T author attribution, and synchronized llms.txt ([8bfd29e](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/8bfd29e79632ad52ef8cb229a6f7206542a5e972))
+* **geo:** robots.ts AI crawler allowances, llms.txt, and complete llms-full.txt catalog ([efa86e3](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/efa86e3c56cb68b251827b4392157ae4156083c1))
+* **guides:** redesign Guides index and detail pages with quick-step cards ([d73fb33](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/d73fb3343ac9d4b8d4240be12089aee2b1c276eb))
+* **home:** build HomeToolsExplorer with category filters, badge system, and '/' search shortcut ([336b168](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/336b168c7b10b892346ca223f38e9f861687a045))
+* **home:** redesign HomePageContent with utilitarian text-first layout and live RAM badge ([f40e37e](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/f40e37ec164174fb0983913d0742d42b9ced698b))
+* implement core PDF operations, processing workers, and tool audit documentation ([89a4b33](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/89a4b3367ae058c5e04365409d807b8c00ab0ed4))
+* **legal:** redesign Privacy and Terms policy pages with clean utilitarian typography ([199bdd1](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/199bdd13a6ff48919f19022174036b941997f0ac))
+* **monitor:** restyle NetworkActivityMonitor with WCAG AA compliant emerald indicators ([324510b](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/324510b85e47c12ee29cb6798197bf44ee6430a8))
+* **nav:** redesign slim top navigation bar with quick access tools and dropdowns ([deb0d25](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/deb0d25e4b59e4fd1f2b0e8dda77cb110c5b222e))
+* **offline:** scaffold /offline-pdf-tools in 9 languages with &lt;= 60 char titles and reality check disclaimer ([0afb359](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/0afb359e81b4c5742800a81e3cfa50cd9d9eb4ca))
+* **related-tools:** update RelatedToolsClient with uniform tool cards matching homepage pattern ([b55029e](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/b55029e80fa84c5176fcbe46ef2005f252822455))
+* **seo:** 15 comprehensive multilingual guides across all 9 languages with HowTo and FAQ schemas ([3bb99ea](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/3bb99ea9744ae1255d1983df2638f985031280d2))
+* **seo:** 4 high-intent search landing pages across all 9 languages with internal linking and JSON-LD schemas ([42a7597](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/42a75974474f849754958208bb9b8bd4d48ad8c3))
+* **seo:** add competitor verification sources card to comparison pages ([3cc5049](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/3cc5049232e001d0996e2a05a401fe3b3bfcbfcf))
+* **seo:** add random IndexNow key file and batch submission script ([9c533a8](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/9c533a862407eec14264b9ab98230d7395dc05e6))
+* **seo:** add sourced Adobe Acrobat and ihatepdf comparison pages across all 9 languages with Article, Breadcrumb and FAQ schemas ([07c65d3](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/07c65d3be996c70e9142626758dfcccd466180b9))
+* **seo:** answer-first definition boxes, factual architecture comparison table, and Russian font stack ([0addcbd](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/0addcbde7ae09aab07c3973065c18fb651a07c80))
+* **seo:** crawlable language selector dropdown and localized /tools hub pages across 9 languages ([6c23ba1](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/6c23ba12f1a05e4d21165ba642a4e954319e0305))
+* **seo:** keyword hooks across all 9 languages and programmatic zero-watermark verification ([5a1e512](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/5a1e5129b5c8efe17520299af4a48fadda7957fd))
+* **seo:** localized JSON-LD schemas, native script tags for static export, visible breadcrumbs, and contextual guide links ([c91f2be](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/c91f2be7db0611d7ae5c346dbccadba53c9be0c8))
+* **seo:** metadata cleanup, title/og:title/twitter:title unification, image sync, og:locale alternates, and multilingual sitemap ([6ec5d50](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/6ec5d505dbe6d631cfd93c29475f63fb0bd1a3a1))
+* **seo:** redesign SEO comparison pages for iLovePDF, Smallpdf, and offline tools ([830bb48](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/830bb48c60fd6bcf705d6e331506dfbb735bc8ae))
+* **seo:** server-rendered crawlable FAQs using semantic details and summary elements ([f17cb1d](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/f17cb1dc332806e60c3890ddfe83219dd1363e96))
+* **support:** redesign BuyMeACoffee, Support, and OtherProducts ecosystem pages ([cba91e5](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/cba91e564f0d9775ba7d8f8053cb9755d0658028))
+* **theme:** enhance ThemeScript and ThemeProvider for smooth dark/light switching without FOUC ([ad92c27](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/ad92c273ad32daf8f912751487a7d35068be0a99))
+* **tool-layout:** redesign ToolPageLayout with streamlined headers, step guides, and why-use grid ([0db7c17](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/0db7c174a359ed5262b97f4fc34ecb931f9297f2))
+* **tool-switcher:** update ToolSwitcher with category chips and searchable dropdown ([933fcd7](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/933fcd70d24be581e5de61c60642e2e85c69719e))
+* **tools:** update ToolsPageContent with category pills, live counts, and uniform tool cards ([46c4f00](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/46c4f0007c77af6e756c46da6db34e1e2630818a))
+
+
+### Bug Fixes
+
+* **consistency:** unify tool count to dynamic TOTAL_TOOLS_COUNT (37) from tools-registry across all pages, schemas, and docs ([f6d1d9b](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/f6d1d9bb151e44b484592131a0c56865553c8ae4))
+* **i18n:** fix Romanian double-encoded Mojibake across dictionaries, config, and layout ([ff8cd8c](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/ff8cd8c0d3a262f88ea775501de2d196697a1f4b))
+* **metadata:** remove unused locale parameter to satisfy ESLint rule ([0025788](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/002578859cb120ceb63a80d2be7f3cb25dc6bcc2))
+* **privacy:** remove GA4 and PagePulse trackers entirely, clean CSP, and stub analytics ([d55da8f](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/d55da8fdcead343e4b8f2b57d79dc04973f000a1))
+* **routing:** remove duplicate app icons and migrate 404 to localized root layout ([69bfd51](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/69bfd51bfa81df2d15c189416e537ec406d86ccb))
+* **seo:** enforce noindex, nofollow and isolate hreflangs on 10 support donation routes ([9458041](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/945804151ab8d24cbb2c89851d17360543180e30))
+* **seo:** standardize canonicals, domain to www, and non-trailing slash across all layouts, schemas, and sitemap ([cd21a53](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/cd21a53528b78d5ebf88a76879e5780de24f95c7))
+* **templates:** replace ATS parser claims with modest verifiable wording ([916441c](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/916441cb9f401fc05be9e13b349a7deb4217620b))
+
+
+### Performance Improvements
+
+* **engine:** warm up active tool dependencies and PDF engine on initial page load ([0b77615](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/0b7761565a6b8744837374e78c8edf20e537c370))
+* **worker:** wire up worker client warmup and engine preloading on page mount ([8d21e3b](https://github.com/ShreyashSrivastavaa/Ihatelovepdf/commit/8d21e3bc22f5c0cbd941ae7fce42687550b09ac5))
+
 ## 1.0.0 (2026-10-29)
 
 
