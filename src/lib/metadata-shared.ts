@@ -25,7 +25,7 @@ export function getAlternateOgLocales(locale: Locale): string[] {
   return ALL_OG_LOCALES.filter((loc) => loc !== currentOg);
 }
 
-export function getLocalizedOgImageUrl(locale: Locale): string {
+export function getLocalizedOgImageUrl(): string {
   return `${SITE_URL}/ihatelovepdf-v2-banner.png`;
 }
 
@@ -69,7 +69,7 @@ export function getSocialMetadata(locale: Locale, title: string, description: st
   openGraph: NonNullable<Metadata["openGraph"]>;
   twitter: NonNullable<Metadata["twitter"]>;
 } {
-  const imageUrl = getLocalizedOgImageUrl(locale);
+  const imageUrl = getLocalizedOgImageUrl();
   return {
     openGraph: {
       siteName: BRAND_NAME,
