@@ -1,0 +1,557 @@
+[
+  {
+    "key": "compress",
+    "slug": "/compress",
+    "isPdfTool": true,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=-RV4BE8D92onuiVU, http://localhost:8773/word-to-pdf.txt?_rsc=-RV4BE8D92onuiVU, http://localhost:8773/excel-to-pdf.txt?_rsc=-RV4BE8D92onuiVU, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=-RV4BE8D92onuiVU, http://localhost:8773/html-to-pdf.txt?_rsc=-RV4BE8D92onuiVU, http://localhost:8773/markdown-to-pdf.txt?_rsc=-RV4BE8D92onuiVU, http://localhost:8773/pdf-to-word.txt?_rsc=-RV4BE8D92onuiVU, http://localhost:8773/pdf-to-images.txt?_rsc=-RV4BE8D92onuiVU, http://localhost:8773/pdf-to-excel.txt?_rsc=-RV4BE8D92onuiVU, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=-RV4BE8D92onuiVU, http://localhost:8773/pdf-to-html.txt?_rsc=-RV4BE8D92onuiVU, http://localhost:8773/pdf-to-epub.txt?_rsc=-RV4BE8D92onuiVU",
+      "note": "Blocked offline requests: 12"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=-RV4BE8D92onuiVU, http://localhost:8773/word-to-pdf.txt?_rsc=-RV4BE8D92onuiVU, http://localhost:8773/excel-to-pdf.txt?_rsc=-RV4BE8D92onuiVU, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=-RV4BE8D92onuiVU, http://localhost:8773/html-to-pdf.txt?_rsc=-RV4BE8D92onuiVU, http://localhost:8773/markdown-to-pdf.txt?_rsc=-RV4BE8D92onuiVU, http://localhost:8773/pdf-to-word.txt?_rsc=-RV4BE8D92onuiVU, http://localhost:8773/pdf-to-images.txt?_rsc=-RV4BE8D92onuiVU, http://localhost:8773/pdf-to-excel.txt?_rsc=-RV4BE8D92onuiVU, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=-RV4BE8D92onuiVU, http://localhost:8773/pdf-to-html.txt?_rsc=-RV4BE8D92onuiVU, http://localhost:8773/pdf-to-epub.txt?_rsc=-RV4BE8D92onuiVU",
+      "note": "Blocked offline requests: 12"
+    }
+  },
+  {
+    "key": "merge",
+    "slug": "/merge",
+    "isPdfTool": true,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=rNVI1kbIAkzz7Seb, http://localhost:8773/word-to-pdf.txt?_rsc=rNVI1kbIAkzz7Seb, http://localhost:8773/excel-to-pdf.txt?_rsc=rNVI1kbIAkzz7Seb, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=rNVI1kbIAkzz7Seb, http://localhost:8773/html-to-pdf.txt?_rsc=rNVI1kbIAkzz7Seb, http://localhost:8773/markdown-to-pdf.txt?_rsc=rNVI1kbIAkzz7Seb, http://localhost:8773/pdf-to-word.txt?_rsc=rNVI1kbIAkzz7Seb, http://localhost:8773/pdf-to-images.txt?_rsc=rNVI1kbIAkzz7Seb, http://localhost:8773/pdf-to-excel.txt?_rsc=rNVI1kbIAkzz7Seb, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=rNVI1kbIAkzz7Seb, http://localhost:8773/pdf-to-html.txt?_rsc=rNVI1kbIAkzz7Seb, http://localhost:8773/pdf-to-epub.txt?_rsc=rNVI1kbIAkzz7Seb",
+      "note": "Blocked offline requests: 12"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=rNVI1kbIAkzz7Seb, http://localhost:8773/word-to-pdf.txt?_rsc=rNVI1kbIAkzz7Seb, http://localhost:8773/excel-to-pdf.txt?_rsc=rNVI1kbIAkzz7Seb, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=rNVI1kbIAkzz7Seb, http://localhost:8773/html-to-pdf.txt?_rsc=rNVI1kbIAkzz7Seb, http://localhost:8773/markdown-to-pdf.txt?_rsc=rNVI1kbIAkzz7Seb, http://localhost:8773/pdf-to-word.txt?_rsc=rNVI1kbIAkzz7Seb, http://localhost:8773/pdf-to-images.txt?_rsc=rNVI1kbIAkzz7Seb, http://localhost:8773/pdf-to-excel.txt?_rsc=rNVI1kbIAkzz7Seb, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=rNVI1kbIAkzz7Seb, http://localhost:8773/pdf-to-html.txt?_rsc=rNVI1kbIAkzz7Seb, http://localhost:8773/pdf-to-epub.txt?_rsc=rNVI1kbIAkzz7Seb",
+      "note": "Blocked offline requests: 12"
+    }
+  },
+  {
+    "key": "split",
+    "slug": "/split",
+    "isPdfTool": true,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=9Tb1Z5caR6laTThB, http://localhost:8773/word-to-pdf.txt?_rsc=9Tb1Z5caR6laTThB, http://localhost:8773/excel-to-pdf.txt?_rsc=9Tb1Z5caR6laTThB, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=9Tb1Z5caR6laTThB, http://localhost:8773/html-to-pdf.txt?_rsc=9Tb1Z5caR6laTThB, http://localhost:8773/markdown-to-pdf.txt?_rsc=9Tb1Z5caR6laTThB, http://localhost:8773/pdf-to-word.txt?_rsc=9Tb1Z5caR6laTThB, http://localhost:8773/pdf-to-images.txt?_rsc=9Tb1Z5caR6laTThB, http://localhost:8773/pdf-to-excel.txt?_rsc=9Tb1Z5caR6laTThB, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=9Tb1Z5caR6laTThB, http://localhost:8773/pdf-to-html.txt?_rsc=9Tb1Z5caR6laTThB, http://localhost:8773/pdf-to-epub.txt?_rsc=9Tb1Z5caR6laTThB",
+      "note": "Blocked offline requests: 12"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=9Tb1Z5caR6laTThB, http://localhost:8773/word-to-pdf.txt?_rsc=9Tb1Z5caR6laTThB, http://localhost:8773/excel-to-pdf.txt?_rsc=9Tb1Z5caR6laTThB, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=9Tb1Z5caR6laTThB, http://localhost:8773/html-to-pdf.txt?_rsc=9Tb1Z5caR6laTThB, http://localhost:8773/markdown-to-pdf.txt?_rsc=9Tb1Z5caR6laTThB, http://localhost:8773/pdf-to-word.txt?_rsc=9Tb1Z5caR6laTThB, http://localhost:8773/pdf-to-images.txt?_rsc=9Tb1Z5caR6laTThB, http://localhost:8773/pdf-to-excel.txt?_rsc=9Tb1Z5caR6laTThB, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=9Tb1Z5caR6laTThB, http://localhost:8773/pdf-to-html.txt?_rsc=9Tb1Z5caR6laTThB, http://localhost:8773/pdf-to-epub.txt?_rsc=9Tb1Z5caR6laTThB",
+      "note": "Blocked offline requests: 12"
+    }
+  },
+  {
+    "key": "extract",
+    "slug": "/extract",
+    "isPdfTool": true,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=aXkN030PYTdgbHOQ, http://localhost:8773/word-to-pdf.txt?_rsc=aXkN030PYTdgbHOQ, http://localhost:8773/excel-to-pdf.txt?_rsc=aXkN030PYTdgbHOQ, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=aXkN030PYTdgbHOQ, http://localhost:8773/html-to-pdf.txt?_rsc=aXkN030PYTdgbHOQ, http://localhost:8773/markdown-to-pdf.txt?_rsc=aXkN030PYTdgbHOQ, http://localhost:8773/pdf-to-word.txt?_rsc=aXkN030PYTdgbHOQ, http://localhost:8773/pdf-to-images.txt?_rsc=aXkN030PYTdgbHOQ, http://localhost:8773/pdf-to-excel.txt?_rsc=aXkN030PYTdgbHOQ, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=aXkN030PYTdgbHOQ, http://localhost:8773/pdf-to-html.txt?_rsc=aXkN030PYTdgbHOQ, http://localhost:8773/pdf-to-epub.txt?_rsc=aXkN030PYTdgbHOQ",
+      "note": "Blocked offline requests: 12"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=aXkN030PYTdgbHOQ, http://localhost:8773/word-to-pdf.txt?_rsc=aXkN030PYTdgbHOQ, http://localhost:8773/excel-to-pdf.txt?_rsc=aXkN030PYTdgbHOQ, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=aXkN030PYTdgbHOQ, http://localhost:8773/html-to-pdf.txt?_rsc=aXkN030PYTdgbHOQ, http://localhost:8773/markdown-to-pdf.txt?_rsc=aXkN030PYTdgbHOQ, http://localhost:8773/pdf-to-word.txt?_rsc=aXkN030PYTdgbHOQ, http://localhost:8773/pdf-to-images.txt?_rsc=aXkN030PYTdgbHOQ, http://localhost:8773/pdf-to-excel.txt?_rsc=aXkN030PYTdgbHOQ, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=aXkN030PYTdgbHOQ, http://localhost:8773/pdf-to-html.txt?_rsc=aXkN030PYTdgbHOQ, http://localhost:8773/pdf-to-epub.txt?_rsc=aXkN030PYTdgbHOQ",
+      "note": "Blocked offline requests: 12"
+    }
+  },
+  {
+    "key": "crop",
+    "slug": "/crop",
+    "isPdfTool": true,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=CvxTfyejOJ6Tsqcw, http://localhost:8773/word-to-pdf.txt?_rsc=CvxTfyejOJ6Tsqcw, http://localhost:8773/excel-to-pdf.txt?_rsc=CvxTfyejOJ6Tsqcw, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=CvxTfyejOJ6Tsqcw, http://localhost:8773/html-to-pdf.txt?_rsc=CvxTfyejOJ6Tsqcw, http://localhost:8773/markdown-to-pdf.txt?_rsc=CvxTfyejOJ6Tsqcw, http://localhost:8773/pdf-to-word.txt?_rsc=CvxTfyejOJ6Tsqcw, http://localhost:8773/pdf-to-images.txt?_rsc=CvxTfyejOJ6Tsqcw, http://localhost:8773/pdf-to-excel.txt?_rsc=CvxTfyejOJ6Tsqcw, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=CvxTfyejOJ6Tsqcw, http://localhost:8773/pdf-to-html.txt?_rsc=CvxTfyejOJ6Tsqcw, http://localhost:8773/pdf-to-epub.txt?_rsc=CvxTfyejOJ6Tsqcw",
+      "note": "Blocked offline requests: 12"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=CvxTfyejOJ6Tsqcw, http://localhost:8773/word-to-pdf.txt?_rsc=CvxTfyejOJ6Tsqcw, http://localhost:8773/excel-to-pdf.txt?_rsc=CvxTfyejOJ6Tsqcw, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=CvxTfyejOJ6Tsqcw, http://localhost:8773/html-to-pdf.txt?_rsc=CvxTfyejOJ6Tsqcw, http://localhost:8773/markdown-to-pdf.txt?_rsc=CvxTfyejOJ6Tsqcw, http://localhost:8773/pdf-to-word.txt?_rsc=CvxTfyejOJ6Tsqcw, http://localhost:8773/pdf-to-images.txt?_rsc=CvxTfyejOJ6Tsqcw, http://localhost:8773/pdf-to-excel.txt?_rsc=CvxTfyejOJ6Tsqcw, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=CvxTfyejOJ6Tsqcw, http://localhost:8773/pdf-to-html.txt?_rsc=CvxTfyejOJ6Tsqcw, http://localhost:8773/pdf-to-epub.txt?_rsc=CvxTfyejOJ6Tsqcw",
+      "note": "Blocked offline requests: 12"
+    }
+  },
+  {
+    "key": "rotate",
+    "slug": "/rotate",
+    "isPdfTool": true,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=FxfpEGZD95vQEN9s, http://localhost:8773/word-to-pdf.txt?_rsc=FxfpEGZD95vQEN9s, http://localhost:8773/excel-to-pdf.txt?_rsc=FxfpEGZD95vQEN9s, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=FxfpEGZD95vQEN9s, http://localhost:8773/html-to-pdf.txt?_rsc=FxfpEGZD95vQEN9s, http://localhost:8773/markdown-to-pdf.txt?_rsc=FxfpEGZD95vQEN9s, http://localhost:8773/pdf-to-word.txt?_rsc=FxfpEGZD95vQEN9s, http://localhost:8773/pdf-to-images.txt?_rsc=FxfpEGZD95vQEN9s, http://localhost:8773/pdf-to-excel.txt?_rsc=FxfpEGZD95vQEN9s, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=FxfpEGZD95vQEN9s, http://localhost:8773/pdf-to-html.txt?_rsc=FxfpEGZD95vQEN9s, http://localhost:8773/pdf-to-epub.txt?_rsc=FxfpEGZD95vQEN9s",
+      "note": "Blocked offline requests: 12"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=FxfpEGZD95vQEN9s, http://localhost:8773/word-to-pdf.txt?_rsc=FxfpEGZD95vQEN9s, http://localhost:8773/excel-to-pdf.txt?_rsc=FxfpEGZD95vQEN9s, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=FxfpEGZD95vQEN9s, http://localhost:8773/html-to-pdf.txt?_rsc=FxfpEGZD95vQEN9s, http://localhost:8773/markdown-to-pdf.txt?_rsc=FxfpEGZD95vQEN9s, http://localhost:8773/pdf-to-word.txt?_rsc=FxfpEGZD95vQEN9s, http://localhost:8773/pdf-to-images.txt?_rsc=FxfpEGZD95vQEN9s, http://localhost:8773/pdf-to-excel.txt?_rsc=FxfpEGZD95vQEN9s, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=FxfpEGZD95vQEN9s, http://localhost:8773/pdf-to-html.txt?_rsc=FxfpEGZD95vQEN9s, http://localhost:8773/pdf-to-epub.txt?_rsc=FxfpEGZD95vQEN9s",
+      "note": "Blocked offline requests: 12"
+    }
+  },
+  {
+    "key": "reorder",
+    "slug": "/reorder",
+    "isPdfTool": true,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=Q9LMYRJko5FM-_4y, http://localhost:8773/word-to-pdf.txt?_rsc=Q9LMYRJko5FM-_4y, http://localhost:8773/excel-to-pdf.txt?_rsc=Q9LMYRJko5FM-_4y, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=Q9LMYRJko5FM-_4y, http://localhost:8773/html-to-pdf.txt?_rsc=Q9LMYRJko5FM-_4y, http://localhost:8773/markdown-to-pdf.txt?_rsc=Q9LMYRJko5FM-_4y, http://localhost:8773/pdf-to-word.txt?_rsc=Q9LMYRJko5FM-_4y, http://localhost:8773/pdf-to-images.txt?_rsc=Q9LMYRJko5FM-_4y, http://localhost:8773/pdf-to-excel.txt?_rsc=Q9LMYRJko5FM-_4y, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=Q9LMYRJko5FM-_4y, http://localhost:8773/pdf-to-html.txt?_rsc=Q9LMYRJko5FM-_4y, http://localhost:8773/pdf-to-epub.txt?_rsc=Q9LMYRJko5FM-_4y",
+      "note": "Blocked offline requests: 12"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=Q9LMYRJko5FM-_4y, http://localhost:8773/word-to-pdf.txt?_rsc=Q9LMYRJko5FM-_4y, http://localhost:8773/excel-to-pdf.txt?_rsc=Q9LMYRJko5FM-_4y, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=Q9LMYRJko5FM-_4y, http://localhost:8773/html-to-pdf.txt?_rsc=Q9LMYRJko5FM-_4y, http://localhost:8773/markdown-to-pdf.txt?_rsc=Q9LMYRJko5FM-_4y, http://localhost:8773/pdf-to-word.txt?_rsc=Q9LMYRJko5FM-_4y, http://localhost:8773/pdf-to-images.txt?_rsc=Q9LMYRJko5FM-_4y, http://localhost:8773/pdf-to-excel.txt?_rsc=Q9LMYRJko5FM-_4y, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=Q9LMYRJko5FM-_4y, http://localhost:8773/pdf-to-html.txt?_rsc=Q9LMYRJko5FM-_4y, http://localhost:8773/pdf-to-epub.txt?_rsc=Q9LMYRJko5FM-_4y",
+      "note": "Blocked offline requests: 12"
+    }
+  },
+  {
+    "key": "pdfToImages",
+    "slug": "/pdf-to-images",
+    "isPdfTool": true,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=fRE5i9xJoAP_WYKl, http://localhost:8773/word-to-pdf.txt?_rsc=fRE5i9xJoAP_WYKl, http://localhost:8773/excel-to-pdf.txt?_rsc=fRE5i9xJoAP_WYKl, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=fRE5i9xJoAP_WYKl, http://localhost:8773/html-to-pdf.txt?_rsc=fRE5i9xJoAP_WYKl, http://localhost:8773/markdown-to-pdf.txt?_rsc=fRE5i9xJoAP_WYKl, http://localhost:8773/pdf-to-word.txt?_rsc=fRE5i9xJoAP_WYKl, http://localhost:8773/pdf-to-excel.txt?_rsc=fRE5i9xJoAP_WYKl, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=fRE5i9xJoAP_WYKl, http://localhost:8773/pdf-to-html.txt?_rsc=fRE5i9xJoAP_WYKl, http://localhost:8773/pdf-to-epub.txt?_rsc=fRE5i9xJoAP_WYKl",
+      "note": "Blocked offline requests: 11"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=fRE5i9xJoAP_WYKl, http://localhost:8773/word-to-pdf.txt?_rsc=fRE5i9xJoAP_WYKl, http://localhost:8773/excel-to-pdf.txt?_rsc=fRE5i9xJoAP_WYKl, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=fRE5i9xJoAP_WYKl, http://localhost:8773/html-to-pdf.txt?_rsc=fRE5i9xJoAP_WYKl, http://localhost:8773/markdown-to-pdf.txt?_rsc=fRE5i9xJoAP_WYKl, http://localhost:8773/pdf-to-word.txt?_rsc=fRE5i9xJoAP_WYKl, http://localhost:8773/pdf-to-excel.txt?_rsc=fRE5i9xJoAP_WYKl, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=fRE5i9xJoAP_WYKl, http://localhost:8773/pdf-to-html.txt?_rsc=fRE5i9xJoAP_WYKl, http://localhost:8773/pdf-to-epub.txt?_rsc=fRE5i9xJoAP_WYKl",
+      "note": "Blocked offline requests: 11"
+    }
+  },
+  {
+    "key": "imagesToPdf",
+    "slug": "/images-to-pdf",
+    "isPdfTool": false,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "blob:http://localhost:8773/f4e2dd71-d6bb-42b7-9e32-635fbd8f0b28, http://localhost:8773/word-to-pdf.txt?_rsc=rNvOxgXWQcjryhJK, http://localhost:8773/excel-to-pdf.txt?_rsc=rNvOxgXWQcjryhJK, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=rNvOxgXWQcjryhJK, http://localhost:8773/html-to-pdf.txt?_rsc=rNvOxgXWQcjryhJK, http://localhost:8773/markdown-to-pdf.txt?_rsc=rNvOxgXWQcjryhJK, http://localhost:8773/pdf-to-word.txt?_rsc=rNvOxgXWQcjryhJK, http://localhost:8773/pdf-to-images.txt?_rsc=rNvOxgXWQcjryhJK, http://localhost:8773/pdf-to-excel.txt?_rsc=rNvOxgXWQcjryhJK, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=rNvOxgXWQcjryhJK, http://localhost:8773/pdf-to-html.txt?_rsc=rNvOxgXWQcjryhJK, http://localhost:8773/pdf-to-epub.txt?_rsc=rNvOxgXWQcjryhJK",
+      "note": "Blocked offline requests: 12"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "blob:http://localhost:8773/f4e2dd71-d6bb-42b7-9e32-635fbd8f0b28, http://localhost:8773/word-to-pdf.txt?_rsc=rNvOxgXWQcjryhJK, http://localhost:8773/excel-to-pdf.txt?_rsc=rNvOxgXWQcjryhJK, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=rNvOxgXWQcjryhJK, http://localhost:8773/html-to-pdf.txt?_rsc=rNvOxgXWQcjryhJK, http://localhost:8773/markdown-to-pdf.txt?_rsc=rNvOxgXWQcjryhJK, http://localhost:8773/pdf-to-word.txt?_rsc=rNvOxgXWQcjryhJK, http://localhost:8773/pdf-to-images.txt?_rsc=rNvOxgXWQcjryhJK, http://localhost:8773/pdf-to-excel.txt?_rsc=rNvOxgXWQcjryhJK, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=rNvOxgXWQcjryhJK, http://localhost:8773/pdf-to-html.txt?_rsc=rNvOxgXWQcjryhJK, http://localhost:8773/pdf-to-epub.txt?_rsc=rNvOxgXWQcjryhJK",
+      "note": "Blocked offline requests: 12"
+    }
+  },
+  {
+    "key": "watermark",
+    "slug": "/watermark",
+    "isPdfTool": true,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=Ep1-swjfZqJEOyO5, http://localhost:8773/word-to-pdf.txt?_rsc=Ep1-swjfZqJEOyO5, http://localhost:8773/excel-to-pdf.txt?_rsc=Ep1-swjfZqJEOyO5, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=Ep1-swjfZqJEOyO5, http://localhost:8773/html-to-pdf.txt?_rsc=Ep1-swjfZqJEOyO5, http://localhost:8773/markdown-to-pdf.txt?_rsc=Ep1-swjfZqJEOyO5, http://localhost:8773/pdf-to-word.txt?_rsc=Ep1-swjfZqJEOyO5, http://localhost:8773/pdf-to-images.txt?_rsc=Ep1-swjfZqJEOyO5, http://localhost:8773/pdf-to-excel.txt?_rsc=Ep1-swjfZqJEOyO5, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=Ep1-swjfZqJEOyO5, http://localhost:8773/pdf-to-html.txt?_rsc=Ep1-swjfZqJEOyO5, http://localhost:8773/pdf-to-epub.txt?_rsc=Ep1-swjfZqJEOyO5",
+      "note": "Blocked offline requests: 12"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=Ep1-swjfZqJEOyO5, http://localhost:8773/word-to-pdf.txt?_rsc=Ep1-swjfZqJEOyO5, http://localhost:8773/excel-to-pdf.txt?_rsc=Ep1-swjfZqJEOyO5, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=Ep1-swjfZqJEOyO5, http://localhost:8773/html-to-pdf.txt?_rsc=Ep1-swjfZqJEOyO5, http://localhost:8773/markdown-to-pdf.txt?_rsc=Ep1-swjfZqJEOyO5, http://localhost:8773/pdf-to-word.txt?_rsc=Ep1-swjfZqJEOyO5, http://localhost:8773/pdf-to-images.txt?_rsc=Ep1-swjfZqJEOyO5, http://localhost:8773/pdf-to-excel.txt?_rsc=Ep1-swjfZqJEOyO5, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=Ep1-swjfZqJEOyO5, http://localhost:8773/pdf-to-html.txt?_rsc=Ep1-swjfZqJEOyO5, http://localhost:8773/pdf-to-epub.txt?_rsc=Ep1-swjfZqJEOyO5",
+      "note": "Blocked offline requests: 12"
+    }
+  },
+  {
+    "key": "pageNumbers",
+    "slug": "/page-numbers",
+    "isPdfTool": true,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=9h6DEsxb60ZQnJbL, http://localhost:8773/word-to-pdf.txt?_rsc=9h6DEsxb60ZQnJbL, http://localhost:8773/excel-to-pdf.txt?_rsc=9h6DEsxb60ZQnJbL, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=9h6DEsxb60ZQnJbL, http://localhost:8773/html-to-pdf.txt?_rsc=9h6DEsxb60ZQnJbL, http://localhost:8773/markdown-to-pdf.txt?_rsc=9h6DEsxb60ZQnJbL, http://localhost:8773/pdf-to-word.txt?_rsc=9h6DEsxb60ZQnJbL, http://localhost:8773/pdf-to-images.txt?_rsc=9h6DEsxb60ZQnJbL, http://localhost:8773/pdf-to-excel.txt?_rsc=9h6DEsxb60ZQnJbL, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=9h6DEsxb60ZQnJbL, http://localhost:8773/pdf-to-html.txt?_rsc=9h6DEsxb60ZQnJbL, http://localhost:8773/pdf-to-epub.txt?_rsc=9h6DEsxb60ZQnJbL",
+      "note": "Blocked offline requests: 12"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=9h6DEsxb60ZQnJbL, http://localhost:8773/word-to-pdf.txt?_rsc=9h6DEsxb60ZQnJbL, http://localhost:8773/excel-to-pdf.txt?_rsc=9h6DEsxb60ZQnJbL, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=9h6DEsxb60ZQnJbL, http://localhost:8773/html-to-pdf.txt?_rsc=9h6DEsxb60ZQnJbL, http://localhost:8773/markdown-to-pdf.txt?_rsc=9h6DEsxb60ZQnJbL, http://localhost:8773/pdf-to-word.txt?_rsc=9h6DEsxb60ZQnJbL, http://localhost:8773/pdf-to-images.txt?_rsc=9h6DEsxb60ZQnJbL, http://localhost:8773/pdf-to-excel.txt?_rsc=9h6DEsxb60ZQnJbL, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=9h6DEsxb60ZQnJbL, http://localhost:8773/pdf-to-html.txt?_rsc=9h6DEsxb60ZQnJbL, http://localhost:8773/pdf-to-epub.txt?_rsc=9h6DEsxb60ZQnJbL",
+      "note": "Blocked offline requests: 12"
+    }
+  },
+  {
+    "key": "headersFooters",
+    "slug": "/headers-footers",
+    "isPdfTool": true,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=OS7Eurrun6jr945B, http://localhost:8773/word-to-pdf.txt?_rsc=OS7Eurrun6jr945B, http://localhost:8773/excel-to-pdf.txt?_rsc=OS7Eurrun6jr945B, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=OS7Eurrun6jr945B, http://localhost:8773/html-to-pdf.txt?_rsc=OS7Eurrun6jr945B, http://localhost:8773/markdown-to-pdf.txt?_rsc=OS7Eurrun6jr945B, http://localhost:8773/pdf-to-word.txt?_rsc=OS7Eurrun6jr945B, http://localhost:8773/pdf-to-images.txt?_rsc=OS7Eurrun6jr945B, http://localhost:8773/pdf-to-excel.txt?_rsc=OS7Eurrun6jr945B, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=OS7Eurrun6jr945B, http://localhost:8773/pdf-to-html.txt?_rsc=OS7Eurrun6jr945B, http://localhost:8773/pdf-to-epub.txt?_rsc=OS7Eurrun6jr945B",
+      "note": "Blocked offline requests: 12"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=OS7Eurrun6jr945B, http://localhost:8773/word-to-pdf.txt?_rsc=OS7Eurrun6jr945B, http://localhost:8773/excel-to-pdf.txt?_rsc=OS7Eurrun6jr945B, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=OS7Eurrun6jr945B, http://localhost:8773/html-to-pdf.txt?_rsc=OS7Eurrun6jr945B, http://localhost:8773/markdown-to-pdf.txt?_rsc=OS7Eurrun6jr945B, http://localhost:8773/pdf-to-word.txt?_rsc=OS7Eurrun6jr945B, http://localhost:8773/pdf-to-images.txt?_rsc=OS7Eurrun6jr945B, http://localhost:8773/pdf-to-excel.txt?_rsc=OS7Eurrun6jr945B, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=OS7Eurrun6jr945B, http://localhost:8773/pdf-to-html.txt?_rsc=OS7Eurrun6jr945B, http://localhost:8773/pdf-to-epub.txt?_rsc=OS7Eurrun6jr945B",
+      "note": "Blocked offline requests: 12"
+    }
+  },
+  {
+    "key": "extractText",
+    "slug": "/extract-text",
+    "isPdfTool": true,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "blob:http://localhost:8773/9dd2017e-d204-441a-b9f1-b3da3c67df38, http://localhost:8773/images-to-pdf.txt?_rsc=FzK4_0CGJ01SNI3t, http://localhost:8773/word-to-pdf.txt?_rsc=FzK4_0CGJ01SNI3t, http://localhost:8773/excel-to-pdf.txt?_rsc=FzK4_0CGJ01SNI3t, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=FzK4_0CGJ01SNI3t, http://localhost:8773/html-to-pdf.txt?_rsc=FzK4_0CGJ01SNI3t, http://localhost:8773/markdown-to-pdf.txt?_rsc=FzK4_0CGJ01SNI3t, http://localhost:8773/pdf-to-word.txt?_rsc=FzK4_0CGJ01SNI3t, http://localhost:8773/pdf-to-images.txt?_rsc=FzK4_0CGJ01SNI3t, http://localhost:8773/pdf-to-excel.txt?_rsc=FzK4_0CGJ01SNI3t, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=FzK4_0CGJ01SNI3t, http://localhost:8773/pdf-to-html.txt?_rsc=FzK4_0CGJ01SNI3t, http://localhost:8773/pdf-to-epub.txt?_rsc=FzK4_0CGJ01SNI3t",
+      "note": "Blocked offline requests: 13"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "blob:http://localhost:8773/339b4c22-4c58-4926-9b4e-8872c93a90c9, http://localhost:8773/images-to-pdf.txt?_rsc=FzK4_0CGJ01SNI3t, http://localhost:8773/word-to-pdf.txt?_rsc=FzK4_0CGJ01SNI3t, http://localhost:8773/excel-to-pdf.txt?_rsc=FzK4_0CGJ01SNI3t, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=FzK4_0CGJ01SNI3t, http://localhost:8773/html-to-pdf.txt?_rsc=FzK4_0CGJ01SNI3t, http://localhost:8773/markdown-to-pdf.txt?_rsc=FzK4_0CGJ01SNI3t, http://localhost:8773/pdf-to-word.txt?_rsc=FzK4_0CGJ01SNI3t, http://localhost:8773/pdf-to-images.txt?_rsc=FzK4_0CGJ01SNI3t, http://localhost:8773/pdf-to-excel.txt?_rsc=FzK4_0CGJ01SNI3t, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=FzK4_0CGJ01SNI3t, http://localhost:8773/pdf-to-html.txt?_rsc=FzK4_0CGJ01SNI3t, http://localhost:8773/pdf-to-epub.txt?_rsc=FzK4_0CGJ01SNI3t",
+      "note": "Blocked offline requests: 13"
+    }
+  },
+  {
+    "key": "invertColors",
+    "slug": "/invert-colors",
+    "isPdfTool": true,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=OHEfyk5Vut4TgbEH, http://localhost:8773/word-to-pdf.txt?_rsc=OHEfyk5Vut4TgbEH, http://localhost:8773/excel-to-pdf.txt?_rsc=OHEfyk5Vut4TgbEH, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=OHEfyk5Vut4TgbEH, http://localhost:8773/html-to-pdf.txt?_rsc=OHEfyk5Vut4TgbEH, http://localhost:8773/markdown-to-pdf.txt?_rsc=OHEfyk5Vut4TgbEH, http://localhost:8773/pdf-to-word.txt?_rsc=OHEfyk5Vut4TgbEH, http://localhost:8773/pdf-to-images.txt?_rsc=OHEfyk5Vut4TgbEH, http://localhost:8773/pdf-to-excel.txt?_rsc=OHEfyk5Vut4TgbEH, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=OHEfyk5Vut4TgbEH, http://localhost:8773/pdf-to-html.txt?_rsc=OHEfyk5Vut4TgbEH, http://localhost:8773/pdf-to-epub.txt?_rsc=OHEfyk5Vut4TgbEH",
+      "note": "Blocked offline requests: 12"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=OHEfyk5Vut4TgbEH, http://localhost:8773/word-to-pdf.txt?_rsc=OHEfyk5Vut4TgbEH, http://localhost:8773/excel-to-pdf.txt?_rsc=OHEfyk5Vut4TgbEH, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=OHEfyk5Vut4TgbEH, http://localhost:8773/html-to-pdf.txt?_rsc=OHEfyk5Vut4TgbEH, http://localhost:8773/markdown-to-pdf.txt?_rsc=OHEfyk5Vut4TgbEH, http://localhost:8773/pdf-to-word.txt?_rsc=OHEfyk5Vut4TgbEH, http://localhost:8773/pdf-to-images.txt?_rsc=OHEfyk5Vut4TgbEH, http://localhost:8773/pdf-to-excel.txt?_rsc=OHEfyk5Vut4TgbEH, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=OHEfyk5Vut4TgbEH, http://localhost:8773/pdf-to-html.txt?_rsc=OHEfyk5Vut4TgbEH, http://localhost:8773/pdf-to-epub.txt?_rsc=OHEfyk5Vut4TgbEH",
+      "note": "Blocked offline requests: 12"
+    }
+  },
+  {
+    "key": "redact",
+    "slug": "/redact",
+    "isPdfTool": true,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "blob:http://localhost:8773/6d078842-d102-4ff1-b125-d4ca26cca936, http://localhost:8773/images-to-pdf.txt?_rsc=MPQoc1DK4ZK9ISTG, http://localhost:8773/word-to-pdf.txt?_rsc=MPQoc1DK4ZK9ISTG, http://localhost:8773/excel-to-pdf.txt?_rsc=MPQoc1DK4ZK9ISTG, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=MPQoc1DK4ZK9ISTG, http://localhost:8773/html-to-pdf.txt?_rsc=MPQoc1DK4ZK9ISTG, http://localhost:8773/markdown-to-pdf.txt?_rsc=MPQoc1DK4ZK9ISTG, http://localhost:8773/pdf-to-word.txt?_rsc=MPQoc1DK4ZK9ISTG, http://localhost:8773/pdf-to-images.txt?_rsc=MPQoc1DK4ZK9ISTG, http://localhost:8773/pdf-to-excel.txt?_rsc=MPQoc1DK4ZK9ISTG, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=MPQoc1DK4ZK9ISTG, http://localhost:8773/pdf-to-html.txt?_rsc=MPQoc1DK4ZK9ISTG, http://localhost:8773/pdf-to-epub.txt?_rsc=MPQoc1DK4ZK9ISTG",
+      "note": "Blocked offline requests: 13"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "blob:http://localhost:8773/e6e0c963-a24f-4d0c-a068-5bdf73fc3380, http://localhost:8773/images-to-pdf.txt?_rsc=MPQoc1DK4ZK9ISTG, http://localhost:8773/word-to-pdf.txt?_rsc=MPQoc1DK4ZK9ISTG, http://localhost:8773/excel-to-pdf.txt?_rsc=MPQoc1DK4ZK9ISTG, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=MPQoc1DK4ZK9ISTG, http://localhost:8773/html-to-pdf.txt?_rsc=MPQoc1DK4ZK9ISTG, http://localhost:8773/markdown-to-pdf.txt?_rsc=MPQoc1DK4ZK9ISTG, http://localhost:8773/pdf-to-word.txt?_rsc=MPQoc1DK4ZK9ISTG, http://localhost:8773/pdf-to-images.txt?_rsc=MPQoc1DK4ZK9ISTG, http://localhost:8773/pdf-to-excel.txt?_rsc=MPQoc1DK4ZK9ISTG, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=MPQoc1DK4ZK9ISTG, http://localhost:8773/pdf-to-html.txt?_rsc=MPQoc1DK4ZK9ISTG, http://localhost:8773/pdf-to-epub.txt?_rsc=MPQoc1DK4ZK9ISTG",
+      "note": "Blocked offline requests: 13"
+    }
+  },
+  {
+    "key": "compare",
+    "slug": "/compare",
+    "isPdfTool": true,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "blob:http://localhost:8773/c916d633-34a3-44e0-8a05-cb3aff47c110, http://localhost:8773/images-to-pdf.txt?_rsc=QE2XcUoDXsvGrhFa, http://localhost:8773/word-to-pdf.txt?_rsc=QE2XcUoDXsvGrhFa, http://localhost:8773/excel-to-pdf.txt?_rsc=QE2XcUoDXsvGrhFa, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=QE2XcUoDXsvGrhFa, http://localhost:8773/html-to-pdf.txt?_rsc=QE2XcUoDXsvGrhFa, http://localhost:8773/markdown-to-pdf.txt?_rsc=QE2XcUoDXsvGrhFa, http://localhost:8773/pdf-to-word.txt?_rsc=QE2XcUoDXsvGrhFa, http://localhost:8773/pdf-to-images.txt?_rsc=QE2XcUoDXsvGrhFa, http://localhost:8773/pdf-to-excel.txt?_rsc=QE2XcUoDXsvGrhFa, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=QE2XcUoDXsvGrhFa, http://localhost:8773/pdf-to-html.txt?_rsc=QE2XcUoDXsvGrhFa, http://localhost:8773/pdf-to-epub.txt?_rsc=QE2XcUoDXsvGrhFa",
+      "note": "Blocked offline requests: 13"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "blob:http://localhost:8773/866a6551-5b8c-4296-94b6-cdaadd51b4c8, http://localhost:8773/images-to-pdf.txt?_rsc=QE2XcUoDXsvGrhFa, http://localhost:8773/word-to-pdf.txt?_rsc=QE2XcUoDXsvGrhFa, http://localhost:8773/excel-to-pdf.txt?_rsc=QE2XcUoDXsvGrhFa, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=QE2XcUoDXsvGrhFa, http://localhost:8773/html-to-pdf.txt?_rsc=QE2XcUoDXsvGrhFa, http://localhost:8773/markdown-to-pdf.txt?_rsc=QE2XcUoDXsvGrhFa, http://localhost:8773/pdf-to-word.txt?_rsc=QE2XcUoDXsvGrhFa, http://localhost:8773/pdf-to-images.txt?_rsc=QE2XcUoDXsvGrhFa, http://localhost:8773/pdf-to-excel.txt?_rsc=QE2XcUoDXsvGrhFa, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=QE2XcUoDXsvGrhFa, http://localhost:8773/pdf-to-html.txt?_rsc=QE2XcUoDXsvGrhFa, http://localhost:8773/pdf-to-epub.txt?_rsc=QE2XcUoDXsvGrhFa",
+      "note": "Blocked offline requests: 13"
+    }
+  },
+  {
+    "key": "pdfToZip",
+    "slug": "/pdf-to-zip",
+    "isPdfTool": true,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=HDD-Z72cvpq7-WGc, http://localhost:8773/word-to-pdf.txt?_rsc=HDD-Z72cvpq7-WGc, http://localhost:8773/excel-to-pdf.txt?_rsc=HDD-Z72cvpq7-WGc, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=HDD-Z72cvpq7-WGc, http://localhost:8773/html-to-pdf.txt?_rsc=HDD-Z72cvpq7-WGc, http://localhost:8773/markdown-to-pdf.txt?_rsc=HDD-Z72cvpq7-WGc, http://localhost:8773/pdf-to-word.txt?_rsc=HDD-Z72cvpq7-WGc, http://localhost:8773/pdf-to-images.txt?_rsc=HDD-Z72cvpq7-WGc, http://localhost:8773/pdf-to-excel.txt?_rsc=HDD-Z72cvpq7-WGc, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=HDD-Z72cvpq7-WGc, http://localhost:8773/pdf-to-html.txt?_rsc=HDD-Z72cvpq7-WGc, http://localhost:8773/pdf-to-epub.txt?_rsc=HDD-Z72cvpq7-WGc",
+      "note": "Blocked offline requests: 12"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=HDD-Z72cvpq7-WGc, http://localhost:8773/word-to-pdf.txt?_rsc=HDD-Z72cvpq7-WGc, http://localhost:8773/excel-to-pdf.txt?_rsc=HDD-Z72cvpq7-WGc, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=HDD-Z72cvpq7-WGc, http://localhost:8773/html-to-pdf.txt?_rsc=HDD-Z72cvpq7-WGc, http://localhost:8773/markdown-to-pdf.txt?_rsc=HDD-Z72cvpq7-WGc, http://localhost:8773/pdf-to-word.txt?_rsc=HDD-Z72cvpq7-WGc, http://localhost:8773/pdf-to-images.txt?_rsc=HDD-Z72cvpq7-WGc, http://localhost:8773/pdf-to-excel.txt?_rsc=HDD-Z72cvpq7-WGc, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=HDD-Z72cvpq7-WGc, http://localhost:8773/pdf-to-html.txt?_rsc=HDD-Z72cvpq7-WGc, http://localhost:8773/pdf-to-epub.txt?_rsc=HDD-Z72cvpq7-WGc",
+      "note": "Blocked offline requests: 12"
+    }
+  },
+  {
+    "key": "editPdf",
+    "slug": "/edit-pdf",
+    "isPdfTool": true,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "blob:http://localhost:8773/3256c011-9bbd-4dd9-b2e0-3d8b172ceecb, blob:http://localhost:8773/3256c011-9bbd-4dd9-b2e0-3d8b172ceecb, http://localhost:8773/images-to-pdf.txt?_rsc=hOaBLXvP40Yq7zEB, http://localhost:8773/word-to-pdf.txt?_rsc=hOaBLXvP40Yq7zEB, http://localhost:8773/excel-to-pdf.txt?_rsc=hOaBLXvP40Yq7zEB, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=hOaBLXvP40Yq7zEB, http://localhost:8773/html-to-pdf.txt?_rsc=hOaBLXvP40Yq7zEB, http://localhost:8773/markdown-to-pdf.txt?_rsc=hOaBLXvP40Yq7zEB, http://localhost:8773/pdf-to-word.txt?_rsc=hOaBLXvP40Yq7zEB, http://localhost:8773/pdf-to-images.txt?_rsc=hOaBLXvP40Yq7zEB, http://localhost:8773/pdf-to-excel.txt?_rsc=hOaBLXvP40Yq7zEB, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=hOaBLXvP40Yq7zEB, http://localhost:8773/pdf-to-html.txt?_rsc=hOaBLXvP40Yq7zEB, http://localhost:8773/pdf-to-epub.txt?_rsc=hOaBLXvP40Yq7zEB",
+      "note": "Blocked offline requests: 14"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "blob:http://localhost:8773/d5c19e1d-49de-44da-bb39-9f50da8c77f6, blob:http://localhost:8773/d5c19e1d-49de-44da-bb39-9f50da8c77f6, http://localhost:8773/images-to-pdf.txt?_rsc=hOaBLXvP40Yq7zEB, http://localhost:8773/word-to-pdf.txt?_rsc=hOaBLXvP40Yq7zEB, http://localhost:8773/excel-to-pdf.txt?_rsc=hOaBLXvP40Yq7zEB, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=hOaBLXvP40Yq7zEB, http://localhost:8773/html-to-pdf.txt?_rsc=hOaBLXvP40Yq7zEB, http://localhost:8773/markdown-to-pdf.txt?_rsc=hOaBLXvP40Yq7zEB, http://localhost:8773/pdf-to-word.txt?_rsc=hOaBLXvP40Yq7zEB, http://localhost:8773/pdf-to-images.txt?_rsc=hOaBLXvP40Yq7zEB, http://localhost:8773/pdf-to-excel.txt?_rsc=hOaBLXvP40Yq7zEB, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=hOaBLXvP40Yq7zEB, http://localhost:8773/pdf-to-html.txt?_rsc=hOaBLXvP40Yq7zEB, http://localhost:8773/pdf-to-epub.txt?_rsc=hOaBLXvP40Yq7zEB",
+      "note": "Blocked offline requests: 14"
+    }
+  },
+  {
+    "key": "scanToPdf",
+    "slug": "/scan-to-pdf",
+    "isPdfTool": false,
+    "simplePdf": {
+      "passed": true,
+      "failingRequest": "none",
+      "note": "100% offline success"
+    },
+    "complexPdf": {
+      "passed": true,
+      "failingRequest": "none",
+      "note": "100% offline success"
+    }
+  },
+  {
+    "key": "markdownToPdf",
+    "slug": "/markdown-to-pdf",
+    "isPdfTool": false,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=rk1JVSwU8hqakRj9, http://localhost:8773/word-to-pdf.txt?_rsc=rk1JVSwU8hqakRj9, http://localhost:8773/excel-to-pdf.txt?_rsc=rk1JVSwU8hqakRj9, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=rk1JVSwU8hqakRj9, http://localhost:8773/html-to-pdf.txt?_rsc=rk1JVSwU8hqakRj9, http://localhost:8773/pdf-to-word.txt?_rsc=rk1JVSwU8hqakRj9, http://localhost:8773/pdf-to-images.txt?_rsc=rk1JVSwU8hqakRj9, http://localhost:8773/pdf-to-excel.txt?_rsc=rk1JVSwU8hqakRj9, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=rk1JVSwU8hqakRj9, http://localhost:8773/pdf-to-html.txt?_rsc=rk1JVSwU8hqakRj9, http://localhost:8773/pdf-to-epub.txt?_rsc=rk1JVSwU8hqakRj9",
+      "note": "Blocked offline requests: 11"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=rk1JVSwU8hqakRj9, http://localhost:8773/word-to-pdf.txt?_rsc=rk1JVSwU8hqakRj9, http://localhost:8773/excel-to-pdf.txt?_rsc=rk1JVSwU8hqakRj9, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=rk1JVSwU8hqakRj9, http://localhost:8773/html-to-pdf.txt?_rsc=rk1JVSwU8hqakRj9, http://localhost:8773/pdf-to-word.txt?_rsc=rk1JVSwU8hqakRj9, http://localhost:8773/pdf-to-images.txt?_rsc=rk1JVSwU8hqakRj9, http://localhost:8773/pdf-to-excel.txt?_rsc=rk1JVSwU8hqakRj9, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=rk1JVSwU8hqakRj9, http://localhost:8773/pdf-to-html.txt?_rsc=rk1JVSwU8hqakRj9, http://localhost:8773/pdf-to-epub.txt?_rsc=rk1JVSwU8hqakRj9",
+      "note": "Blocked offline requests: 11"
+    }
+  },
+  {
+    "key": "htmlToPdf",
+    "slug": "/html-to-pdf",
+    "isPdfTool": false,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=_5u8TPCy_M98PYUg, http://localhost:8773/word-to-pdf.txt?_rsc=_5u8TPCy_M98PYUg, http://localhost:8773/excel-to-pdf.txt?_rsc=_5u8TPCy_M98PYUg, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=_5u8TPCy_M98PYUg, http://localhost:8773/markdown-to-pdf.txt?_rsc=_5u8TPCy_M98PYUg, http://localhost:8773/pdf-to-word.txt?_rsc=_5u8TPCy_M98PYUg, http://localhost:8773/pdf-to-images.txt?_rsc=_5u8TPCy_M98PYUg, http://localhost:8773/pdf-to-excel.txt?_rsc=_5u8TPCy_M98PYUg, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=_5u8TPCy_M98PYUg, http://localhost:8773/pdf-to-html.txt?_rsc=_5u8TPCy_M98PYUg, http://localhost:8773/pdf-to-epub.txt?_rsc=_5u8TPCy_M98PYUg",
+      "note": "Blocked offline requests: 11"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=_5u8TPCy_M98PYUg, http://localhost:8773/word-to-pdf.txt?_rsc=_5u8TPCy_M98PYUg, http://localhost:8773/excel-to-pdf.txt?_rsc=_5u8TPCy_M98PYUg, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=_5u8TPCy_M98PYUg, http://localhost:8773/markdown-to-pdf.txt?_rsc=_5u8TPCy_M98PYUg, http://localhost:8773/pdf-to-word.txt?_rsc=_5u8TPCy_M98PYUg, http://localhost:8773/pdf-to-images.txt?_rsc=_5u8TPCy_M98PYUg, http://localhost:8773/pdf-to-excel.txt?_rsc=_5u8TPCy_M98PYUg, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=_5u8TPCy_M98PYUg, http://localhost:8773/pdf-to-html.txt?_rsc=_5u8TPCy_M98PYUg, http://localhost:8773/pdf-to-epub.txt?_rsc=_5u8TPCy_M98PYUg",
+      "note": "Blocked offline requests: 11"
+    }
+  },
+  {
+    "key": "csvToPdf",
+    "slug": "/csv-to-pdf",
+    "isPdfTool": false,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=-fn2nlShnMmfLktR, http://localhost:8773/word-to-pdf.txt?_rsc=-fn2nlShnMmfLktR, http://localhost:8773/excel-to-pdf.txt?_rsc=-fn2nlShnMmfLktR, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=-fn2nlShnMmfLktR, http://localhost:8773/html-to-pdf.txt?_rsc=-fn2nlShnMmfLktR, http://localhost:8773/markdown-to-pdf.txt?_rsc=-fn2nlShnMmfLktR, http://localhost:8773/pdf-to-word.txt?_rsc=-fn2nlShnMmfLktR, http://localhost:8773/pdf-to-images.txt?_rsc=-fn2nlShnMmfLktR, http://localhost:8773/pdf-to-excel.txt?_rsc=-fn2nlShnMmfLktR, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=-fn2nlShnMmfLktR, http://localhost:8773/pdf-to-html.txt?_rsc=-fn2nlShnMmfLktR, http://localhost:8773/pdf-to-epub.txt?_rsc=-fn2nlShnMmfLktR",
+      "note": "Blocked offline requests: 12"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=-fn2nlShnMmfLktR, http://localhost:8773/word-to-pdf.txt?_rsc=-fn2nlShnMmfLktR, http://localhost:8773/excel-to-pdf.txt?_rsc=-fn2nlShnMmfLktR, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=-fn2nlShnMmfLktR, http://localhost:8773/html-to-pdf.txt?_rsc=-fn2nlShnMmfLktR, http://localhost:8773/markdown-to-pdf.txt?_rsc=-fn2nlShnMmfLktR, http://localhost:8773/pdf-to-word.txt?_rsc=-fn2nlShnMmfLktR, http://localhost:8773/pdf-to-images.txt?_rsc=-fn2nlShnMmfLktR, http://localhost:8773/pdf-to-excel.txt?_rsc=-fn2nlShnMmfLktR, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=-fn2nlShnMmfLktR, http://localhost:8773/pdf-to-html.txt?_rsc=-fn2nlShnMmfLktR, http://localhost:8773/pdf-to-epub.txt?_rsc=-fn2nlShnMmfLktR",
+      "note": "Blocked offline requests: 12"
+    }
+  },
+  {
+    "key": "createPdf",
+    "slug": "/create-pdf",
+    "isPdfTool": false,
+    "simplePdf": {
+      "passed": true,
+      "failingRequest": "none",
+      "note": "100% offline success"
+    },
+    "complexPdf": {
+      "passed": true,
+      "failingRequest": "none",
+      "note": "100% offline success"
+    }
+  },
+  {
+    "key": "excelToPdf",
+    "slug": "/excel-to-pdf",
+    "isPdfTool": false,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=vbZxKiLa3fE9S1BO, http://localhost:8773/word-to-pdf.txt?_rsc=vbZxKiLa3fE9S1BO, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=vbZxKiLa3fE9S1BO, http://localhost:8773/html-to-pdf.txt?_rsc=vbZxKiLa3fE9S1BO, http://localhost:8773/markdown-to-pdf.txt?_rsc=vbZxKiLa3fE9S1BO, http://localhost:8773/pdf-to-word.txt?_rsc=vbZxKiLa3fE9S1BO, http://localhost:8773/pdf-to-images.txt?_rsc=vbZxKiLa3fE9S1BO, http://localhost:8773/pdf-to-excel.txt?_rsc=vbZxKiLa3fE9S1BO, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=vbZxKiLa3fE9S1BO, http://localhost:8773/pdf-to-html.txt?_rsc=vbZxKiLa3fE9S1BO, http://localhost:8773/pdf-to-epub.txt?_rsc=vbZxKiLa3fE9S1BO",
+      "note": "Blocked offline requests: 11"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=vbZxKiLa3fE9S1BO, http://localhost:8773/word-to-pdf.txt?_rsc=vbZxKiLa3fE9S1BO, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=vbZxKiLa3fE9S1BO, http://localhost:8773/html-to-pdf.txt?_rsc=vbZxKiLa3fE9S1BO, http://localhost:8773/markdown-to-pdf.txt?_rsc=vbZxKiLa3fE9S1BO, http://localhost:8773/pdf-to-word.txt?_rsc=vbZxKiLa3fE9S1BO, http://localhost:8773/pdf-to-images.txt?_rsc=vbZxKiLa3fE9S1BO, http://localhost:8773/pdf-to-excel.txt?_rsc=vbZxKiLa3fE9S1BO, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=vbZxKiLa3fE9S1BO, http://localhost:8773/pdf-to-html.txt?_rsc=vbZxKiLa3fE9S1BO, http://localhost:8773/pdf-to-epub.txt?_rsc=vbZxKiLa3fE9S1BO",
+      "note": "Blocked offline requests: 11"
+    }
+  },
+  {
+    "key": "pdfToExcel",
+    "slug": "/pdf-to-excel",
+    "isPdfTool": true,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=TCJ0_kfM6Pn9cYWk, http://localhost:8773/word-to-pdf.txt?_rsc=TCJ0_kfM6Pn9cYWk, http://localhost:8773/excel-to-pdf.txt?_rsc=TCJ0_kfM6Pn9cYWk, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=TCJ0_kfM6Pn9cYWk, http://localhost:8773/html-to-pdf.txt?_rsc=TCJ0_kfM6Pn9cYWk, http://localhost:8773/markdown-to-pdf.txt?_rsc=TCJ0_kfM6Pn9cYWk, http://localhost:8773/pdf-to-word.txt?_rsc=TCJ0_kfM6Pn9cYWk, http://localhost:8773/pdf-to-images.txt?_rsc=TCJ0_kfM6Pn9cYWk, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=TCJ0_kfM6Pn9cYWk, http://localhost:8773/pdf-to-html.txt?_rsc=TCJ0_kfM6Pn9cYWk, http://localhost:8773/pdf-to-epub.txt?_rsc=TCJ0_kfM6Pn9cYWk",
+      "note": "Blocked offline requests: 11"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=TCJ0_kfM6Pn9cYWk, http://localhost:8773/word-to-pdf.txt?_rsc=TCJ0_kfM6Pn9cYWk, http://localhost:8773/excel-to-pdf.txt?_rsc=TCJ0_kfM6Pn9cYWk, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=TCJ0_kfM6Pn9cYWk, http://localhost:8773/html-to-pdf.txt?_rsc=TCJ0_kfM6Pn9cYWk, http://localhost:8773/markdown-to-pdf.txt?_rsc=TCJ0_kfM6Pn9cYWk, http://localhost:8773/pdf-to-word.txt?_rsc=TCJ0_kfM6Pn9cYWk, http://localhost:8773/pdf-to-images.txt?_rsc=TCJ0_kfM6Pn9cYWk, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=TCJ0_kfM6Pn9cYWk, http://localhost:8773/pdf-to-html.txt?_rsc=TCJ0_kfM6Pn9cYWk, http://localhost:8773/pdf-to-epub.txt?_rsc=TCJ0_kfM6Pn9cYWk",
+      "note": "Blocked offline requests: 11"
+    }
+  },
+  {
+    "key": "pdfToWord",
+    "slug": "/pdf-to-word",
+    "isPdfTool": true,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=WIj65HH9LK-tUNpp, http://localhost:8773/word-to-pdf.txt?_rsc=WIj65HH9LK-tUNpp, http://localhost:8773/excel-to-pdf.txt?_rsc=WIj65HH9LK-tUNpp, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=WIj65HH9LK-tUNpp, http://localhost:8773/html-to-pdf.txt?_rsc=WIj65HH9LK-tUNpp, http://localhost:8773/markdown-to-pdf.txt?_rsc=WIj65HH9LK-tUNpp, http://localhost:8773/pdf-to-images.txt?_rsc=WIj65HH9LK-tUNpp, http://localhost:8773/pdf-to-excel.txt?_rsc=WIj65HH9LK-tUNpp, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=WIj65HH9LK-tUNpp, http://localhost:8773/pdf-to-html.txt?_rsc=WIj65HH9LK-tUNpp, http://localhost:8773/pdf-to-epub.txt?_rsc=WIj65HH9LK-tUNpp",
+      "note": "Blocked offline requests: 11"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=WIj65HH9LK-tUNpp, http://localhost:8773/word-to-pdf.txt?_rsc=WIj65HH9LK-tUNpp, http://localhost:8773/excel-to-pdf.txt?_rsc=WIj65HH9LK-tUNpp, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=WIj65HH9LK-tUNpp, http://localhost:8773/html-to-pdf.txt?_rsc=WIj65HH9LK-tUNpp, http://localhost:8773/markdown-to-pdf.txt?_rsc=WIj65HH9LK-tUNpp, http://localhost:8773/pdf-to-images.txt?_rsc=WIj65HH9LK-tUNpp, http://localhost:8773/pdf-to-excel.txt?_rsc=WIj65HH9LK-tUNpp, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=WIj65HH9LK-tUNpp, http://localhost:8773/pdf-to-html.txt?_rsc=WIj65HH9LK-tUNpp, http://localhost:8773/pdf-to-epub.txt?_rsc=WIj65HH9LK-tUNpp",
+      "note": "Blocked offline requests: 11"
+    }
+  },
+  {
+    "key": "powerpointToPdf",
+    "slug": "/powerpoint-to-pdf",
+    "isPdfTool": false,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=sQ4g5V4aBAyLxB7K, http://localhost:8773/word-to-pdf.txt?_rsc=sQ4g5V4aBAyLxB7K, http://localhost:8773/excel-to-pdf.txt?_rsc=sQ4g5V4aBAyLxB7K, http://localhost:8773/html-to-pdf.txt?_rsc=sQ4g5V4aBAyLxB7K, http://localhost:8773/markdown-to-pdf.txt?_rsc=sQ4g5V4aBAyLxB7K, http://localhost:8773/pdf-to-word.txt?_rsc=sQ4g5V4aBAyLxB7K, http://localhost:8773/pdf-to-images.txt?_rsc=sQ4g5V4aBAyLxB7K, http://localhost:8773/pdf-to-excel.txt?_rsc=sQ4g5V4aBAyLxB7K, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=sQ4g5V4aBAyLxB7K, http://localhost:8773/pdf-to-html.txt?_rsc=sQ4g5V4aBAyLxB7K, http://localhost:8773/pdf-to-epub.txt?_rsc=sQ4g5V4aBAyLxB7K",
+      "note": "Blocked offline requests: 11"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=sQ4g5V4aBAyLxB7K, http://localhost:8773/word-to-pdf.txt?_rsc=sQ4g5V4aBAyLxB7K, http://localhost:8773/excel-to-pdf.txt?_rsc=sQ4g5V4aBAyLxB7K, http://localhost:8773/html-to-pdf.txt?_rsc=sQ4g5V4aBAyLxB7K, http://localhost:8773/markdown-to-pdf.txt?_rsc=sQ4g5V4aBAyLxB7K, http://localhost:8773/pdf-to-word.txt?_rsc=sQ4g5V4aBAyLxB7K, http://localhost:8773/pdf-to-images.txt?_rsc=sQ4g5V4aBAyLxB7K, http://localhost:8773/pdf-to-excel.txt?_rsc=sQ4g5V4aBAyLxB7K, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=sQ4g5V4aBAyLxB7K, http://localhost:8773/pdf-to-html.txt?_rsc=sQ4g5V4aBAyLxB7K, http://localhost:8773/pdf-to-epub.txt?_rsc=sQ4g5V4aBAyLxB7K",
+      "note": "Blocked offline requests: 11"
+    }
+  },
+  {
+    "key": "pdfToPowerpoint",
+    "slug": "/pdf-to-powerpoint",
+    "isPdfTool": true,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=A9YbmeUSTk1Zoasf, http://localhost:8773/word-to-pdf.txt?_rsc=A9YbmeUSTk1Zoasf, http://localhost:8773/excel-to-pdf.txt?_rsc=A9YbmeUSTk1Zoasf, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=A9YbmeUSTk1Zoasf, http://localhost:8773/html-to-pdf.txt?_rsc=A9YbmeUSTk1Zoasf, http://localhost:8773/markdown-to-pdf.txt?_rsc=A9YbmeUSTk1Zoasf, http://localhost:8773/pdf-to-word.txt?_rsc=A9YbmeUSTk1Zoasf, http://localhost:8773/pdf-to-images.txt?_rsc=A9YbmeUSTk1Zoasf, http://localhost:8773/pdf-to-excel.txt?_rsc=A9YbmeUSTk1Zoasf, http://localhost:8773/pdf-to-html.txt?_rsc=A9YbmeUSTk1Zoasf, http://localhost:8773/pdf-to-epub.txt?_rsc=A9YbmeUSTk1Zoasf",
+      "note": "Blocked offline requests: 11"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=A9YbmeUSTk1Zoasf, http://localhost:8773/word-to-pdf.txt?_rsc=A9YbmeUSTk1Zoasf, http://localhost:8773/excel-to-pdf.txt?_rsc=A9YbmeUSTk1Zoasf, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=A9YbmeUSTk1Zoasf, http://localhost:8773/html-to-pdf.txt?_rsc=A9YbmeUSTk1Zoasf, http://localhost:8773/markdown-to-pdf.txt?_rsc=A9YbmeUSTk1Zoasf, http://localhost:8773/pdf-to-word.txt?_rsc=A9YbmeUSTk1Zoasf, http://localhost:8773/pdf-to-images.txt?_rsc=A9YbmeUSTk1Zoasf, http://localhost:8773/pdf-to-excel.txt?_rsc=A9YbmeUSTk1Zoasf, http://localhost:8773/pdf-to-html.txt?_rsc=A9YbmeUSTk1Zoasf, http://localhost:8773/pdf-to-epub.txt?_rsc=A9YbmeUSTk1Zoasf",
+      "note": "Blocked offline requests: 11"
+    }
+  },
+  {
+    "key": "pdfToHtml",
+    "slug": "/pdf-to-html",
+    "isPdfTool": true,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=-rl_9aGU-7vW9gbQ, http://localhost:8773/word-to-pdf.txt?_rsc=-rl_9aGU-7vW9gbQ, http://localhost:8773/excel-to-pdf.txt?_rsc=-rl_9aGU-7vW9gbQ, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=-rl_9aGU-7vW9gbQ, http://localhost:8773/html-to-pdf.txt?_rsc=-rl_9aGU-7vW9gbQ, http://localhost:8773/markdown-to-pdf.txt?_rsc=-rl_9aGU-7vW9gbQ, http://localhost:8773/pdf-to-word.txt?_rsc=-rl_9aGU-7vW9gbQ, http://localhost:8773/pdf-to-images.txt?_rsc=-rl_9aGU-7vW9gbQ, http://localhost:8773/pdf-to-excel.txt?_rsc=-rl_9aGU-7vW9gbQ, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=-rl_9aGU-7vW9gbQ, http://localhost:8773/pdf-to-epub.txt?_rsc=-rl_9aGU-7vW9gbQ",
+      "note": "Blocked offline requests: 11"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=-rl_9aGU-7vW9gbQ, http://localhost:8773/word-to-pdf.txt?_rsc=-rl_9aGU-7vW9gbQ, http://localhost:8773/excel-to-pdf.txt?_rsc=-rl_9aGU-7vW9gbQ, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=-rl_9aGU-7vW9gbQ, http://localhost:8773/html-to-pdf.txt?_rsc=-rl_9aGU-7vW9gbQ, http://localhost:8773/markdown-to-pdf.txt?_rsc=-rl_9aGU-7vW9gbQ, http://localhost:8773/pdf-to-word.txt?_rsc=-rl_9aGU-7vW9gbQ, http://localhost:8773/pdf-to-images.txt?_rsc=-rl_9aGU-7vW9gbQ, http://localhost:8773/pdf-to-excel.txt?_rsc=-rl_9aGU-7vW9gbQ, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=-rl_9aGU-7vW9gbQ, http://localhost:8773/pdf-to-epub.txt?_rsc=-rl_9aGU-7vW9gbQ",
+      "note": "Blocked offline requests: 11"
+    }
+  },
+  {
+    "key": "pdfToEpub",
+    "slug": "/pdf-to-epub",
+    "isPdfTool": true,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=FhgYwC7NnECN6cKk, http://localhost:8773/word-to-pdf.txt?_rsc=FhgYwC7NnECN6cKk, http://localhost:8773/excel-to-pdf.txt?_rsc=FhgYwC7NnECN6cKk, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=FhgYwC7NnECN6cKk, http://localhost:8773/html-to-pdf.txt?_rsc=FhgYwC7NnECN6cKk, http://localhost:8773/markdown-to-pdf.txt?_rsc=FhgYwC7NnECN6cKk, http://localhost:8773/pdf-to-word.txt?_rsc=FhgYwC7NnECN6cKk, http://localhost:8773/pdf-to-images.txt?_rsc=FhgYwC7NnECN6cKk, http://localhost:8773/pdf-to-excel.txt?_rsc=FhgYwC7NnECN6cKk, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=FhgYwC7NnECN6cKk, http://localhost:8773/pdf-to-html.txt?_rsc=FhgYwC7NnECN6cKk",
+      "note": "Blocked offline requests: 11"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=FhgYwC7NnECN6cKk, http://localhost:8773/word-to-pdf.txt?_rsc=FhgYwC7NnECN6cKk, http://localhost:8773/excel-to-pdf.txt?_rsc=FhgYwC7NnECN6cKk, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=FhgYwC7NnECN6cKk, http://localhost:8773/html-to-pdf.txt?_rsc=FhgYwC7NnECN6cKk, http://localhost:8773/markdown-to-pdf.txt?_rsc=FhgYwC7NnECN6cKk, http://localhost:8773/pdf-to-word.txt?_rsc=FhgYwC7NnECN6cKk, http://localhost:8773/pdf-to-images.txt?_rsc=FhgYwC7NnECN6cKk, http://localhost:8773/pdf-to-excel.txt?_rsc=FhgYwC7NnECN6cKk, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=FhgYwC7NnECN6cKk, http://localhost:8773/pdf-to-html.txt?_rsc=FhgYwC7NnECN6cKk",
+      "note": "Blocked offline requests: 11"
+    }
+  },
+  {
+    "key": "ebookToPdf",
+    "slug": "/ebook-to-pdf",
+    "isPdfTool": false,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=Tmlhsha1GbrhaSZZ, http://localhost:8773/word-to-pdf.txt?_rsc=Tmlhsha1GbrhaSZZ, http://localhost:8773/excel-to-pdf.txt?_rsc=Tmlhsha1GbrhaSZZ, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=Tmlhsha1GbrhaSZZ, http://localhost:8773/html-to-pdf.txt?_rsc=Tmlhsha1GbrhaSZZ, http://localhost:8773/markdown-to-pdf.txt?_rsc=Tmlhsha1GbrhaSZZ, http://localhost:8773/pdf-to-word.txt?_rsc=Tmlhsha1GbrhaSZZ, http://localhost:8773/pdf-to-images.txt?_rsc=Tmlhsha1GbrhaSZZ, http://localhost:8773/pdf-to-excel.txt?_rsc=Tmlhsha1GbrhaSZZ, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=Tmlhsha1GbrhaSZZ, http://localhost:8773/pdf-to-html.txt?_rsc=Tmlhsha1GbrhaSZZ, http://localhost:8773/pdf-to-epub.txt?_rsc=Tmlhsha1GbrhaSZZ",
+      "note": "Blocked offline requests: 12"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "http://localhost:8773/images-to-pdf.txt?_rsc=Tmlhsha1GbrhaSZZ, http://localhost:8773/word-to-pdf.txt?_rsc=Tmlhsha1GbrhaSZZ, http://localhost:8773/excel-to-pdf.txt?_rsc=Tmlhsha1GbrhaSZZ, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=Tmlhsha1GbrhaSZZ, http://localhost:8773/html-to-pdf.txt?_rsc=Tmlhsha1GbrhaSZZ, http://localhost:8773/markdown-to-pdf.txt?_rsc=Tmlhsha1GbrhaSZZ, http://localhost:8773/pdf-to-word.txt?_rsc=Tmlhsha1GbrhaSZZ, http://localhost:8773/pdf-to-images.txt?_rsc=Tmlhsha1GbrhaSZZ, http://localhost:8773/pdf-to-excel.txt?_rsc=Tmlhsha1GbrhaSZZ, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=Tmlhsha1GbrhaSZZ, http://localhost:8773/pdf-to-html.txt?_rsc=Tmlhsha1GbrhaSZZ, http://localhost:8773/pdf-to-epub.txt?_rsc=Tmlhsha1GbrhaSZZ",
+      "note": "Blocked offline requests: 12"
+    }
+  },
+  {
+    "key": "whiteboard",
+    "slug": "/whiteboard",
+    "isPdfTool": false,
+    "simplePdf": {
+      "passed": true,
+      "failingRequest": "none",
+      "note": "100% offline success"
+    },
+    "complexPdf": {
+      "passed": true,
+      "failingRequest": "none",
+      "note": "100% offline success"
+    }
+  },
+  {
+    "key": "gstInvoice",
+    "slug": "/gst-invoice",
+    "isPdfTool": false,
+    "simplePdf": {
+      "passed": true,
+      "failingRequest": "none",
+      "note": "100% offline success"
+    },
+    "complexPdf": {
+      "passed": true,
+      "failingRequest": "none",
+      "note": "100% offline success"
+    }
+  },
+  {
+    "key": "posBilling",
+    "slug": "/pos-billing",
+    "isPdfTool": false,
+    "simplePdf": {
+      "passed": true,
+      "failingRequest": "none",
+      "note": "100% offline success"
+    },
+    "complexPdf": {
+      "passed": true,
+      "failingRequest": "none",
+      "note": "100% offline success"
+    }
+  },
+  {
+    "key": "signPdf",
+    "slug": "/sign-pdf",
+    "isPdfTool": true,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Dancing+Script:wght@600&family=Great+Vibes&family=Pacifico&family=Sacramento&display=swap, blob:http://localhost:8773/d36c39d6-e661-4729-90de-244f09d46acd, http://localhost:8773/images-to-pdf.txt?_rsc=b82VF_S_462xEDqB, http://localhost:8773/word-to-pdf.txt?_rsc=b82VF_S_462xEDqB, http://localhost:8773/excel-to-pdf.txt?_rsc=b82VF_S_462xEDqB, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=b82VF_S_462xEDqB, http://localhost:8773/html-to-pdf.txt?_rsc=b82VF_S_462xEDqB, http://localhost:8773/markdown-to-pdf.txt?_rsc=b82VF_S_462xEDqB, http://localhost:8773/pdf-to-word.txt?_rsc=b82VF_S_462xEDqB, http://localhost:8773/pdf-to-images.txt?_rsc=b82VF_S_462xEDqB, http://localhost:8773/pdf-to-excel.txt?_rsc=b82VF_S_462xEDqB, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=b82VF_S_462xEDqB, http://localhost:8773/pdf-to-html.txt?_rsc=b82VF_S_462xEDqB, http://localhost:8773/pdf-to-epub.txt?_rsc=b82VF_S_462xEDqB",
+      "note": "Blocked offline requests: 14"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Dancing+Script:wght@600&family=Great+Vibes&family=Pacifico&family=Sacramento&display=swap, blob:http://localhost:8773/f1de7315-0544-4df2-aacf-bb8f8e6f5947, http://localhost:8773/images-to-pdf.txt?_rsc=b82VF_S_462xEDqB, http://localhost:8773/word-to-pdf.txt?_rsc=b82VF_S_462xEDqB, http://localhost:8773/excel-to-pdf.txt?_rsc=b82VF_S_462xEDqB, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=b82VF_S_462xEDqB, http://localhost:8773/html-to-pdf.txt?_rsc=b82VF_S_462xEDqB, http://localhost:8773/markdown-to-pdf.txt?_rsc=b82VF_S_462xEDqB, http://localhost:8773/pdf-to-word.txt?_rsc=b82VF_S_462xEDqB, http://localhost:8773/pdf-to-images.txt?_rsc=b82VF_S_462xEDqB, http://localhost:8773/pdf-to-excel.txt?_rsc=b82VF_S_462xEDqB, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=b82VF_S_462xEDqB, http://localhost:8773/pdf-to-html.txt?_rsc=b82VF_S_462xEDqB, http://localhost:8773/pdf-to-epub.txt?_rsc=b82VF_S_462xEDqB",
+      "note": "Blocked offline requests: 14"
+    }
+  },
+  {
+    "key": "fillPdfForm",
+    "slug": "/fill-pdf-form",
+    "isPdfTool": true,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "blob:http://localhost:8773/10fc4730-e520-4b20-bcfc-5b419930d254, http://localhost:8773/images-to-pdf.txt?_rsc=irNpvUezVSaEil3L, http://localhost:8773/word-to-pdf.txt?_rsc=irNpvUezVSaEil3L, http://localhost:8773/excel-to-pdf.txt?_rsc=irNpvUezVSaEil3L, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=irNpvUezVSaEil3L, http://localhost:8773/html-to-pdf.txt?_rsc=irNpvUezVSaEil3L, http://localhost:8773/markdown-to-pdf.txt?_rsc=irNpvUezVSaEil3L, http://localhost:8773/pdf-to-word.txt?_rsc=irNpvUezVSaEil3L, http://localhost:8773/pdf-to-images.txt?_rsc=irNpvUezVSaEil3L, http://localhost:8773/pdf-to-excel.txt?_rsc=irNpvUezVSaEil3L, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=irNpvUezVSaEil3L, http://localhost:8773/pdf-to-html.txt?_rsc=irNpvUezVSaEil3L, http://localhost:8773/pdf-to-epub.txt?_rsc=irNpvUezVSaEil3L",
+      "note": "Blocked offline requests: 13"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "blob:http://localhost:8773/d95d6647-e177-466f-9784-2211e091fd73, http://localhost:8773/images-to-pdf.txt?_rsc=irNpvUezVSaEil3L, http://localhost:8773/word-to-pdf.txt?_rsc=irNpvUezVSaEil3L, http://localhost:8773/excel-to-pdf.txt?_rsc=irNpvUezVSaEil3L, http://localhost:8773/powerpoint-to-pdf.txt?_rsc=irNpvUezVSaEil3L, http://localhost:8773/html-to-pdf.txt?_rsc=irNpvUezVSaEil3L, http://localhost:8773/markdown-to-pdf.txt?_rsc=irNpvUezVSaEil3L, http://localhost:8773/pdf-to-word.txt?_rsc=irNpvUezVSaEil3L, http://localhost:8773/pdf-to-images.txt?_rsc=irNpvUezVSaEil3L, http://localhost:8773/pdf-to-excel.txt?_rsc=irNpvUezVSaEil3L, http://localhost:8773/pdf-to-powerpoint.txt?_rsc=irNpvUezVSaEil3L, http://localhost:8773/pdf-to-html.txt?_rsc=irNpvUezVSaEil3L, http://localhost:8773/pdf-to-epub.txt?_rsc=irNpvUezVSaEil3L",
+      "note": "Blocked offline requests: 13"
+    }
+  },
+  {
+    "key": "wordToPdf",
+    "slug": "/word-to-pdf",
+    "isPdfTool": false,
+    "simplePdf": {
+      "passed": false,
+      "failingRequest": "HTTP 404 on /word-to-pdf",
+      "note": "Page load failed with 404"
+    },
+    "complexPdf": {
+      "passed": false,
+      "failingRequest": "HTTP 404 on /word-to-pdf",
+      "note": "Page load failed with 404"
+    }
+  }
+]
