@@ -60,28 +60,39 @@ export function SupportPageContent() {
           </div>
         </section>
 
-        {/* Buy Me a Coffee section */}
+        {/* Buy Me a Coffee & Buy Me a Chai section */}
         <section className="text-center rounded-2xl border border-[var(--border)] p-6 sm:p-10 space-y-4 bg-[var(--card)]">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-xs font-semibold text-amber-600 dark:text-amber-400">
             <Coffee className="h-3.5 w-3.5" />
             <span>Support The Project</span>
           </div>
           <h2 className="text-xl sm:text-2xl font-extrabold text-[var(--text-main)]">
-            Buy Me a Coffee
+            Support Independent Development
           </h2>
           <p className="text-xs sm:text-sm text-[var(--text-muted)] max-w-lg mx-auto leading-relaxed">
-            I Hate Love PDF is 100% free, private, and runs directly inside your web browser. Built and maintained by Shreyash Srivastava. Tips and coffees keep the platform free, fast, and ad-light.
+            I Hate Love PDF is 100% free, private, and runs directly inside your web browser. Built and maintained by Shreyash Srivastava. Your support keeps the platform free, fast, and accessible to everyone worldwide.
           </p>
-          <div className="pt-1">
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
               href="https://buymeacoffee.com/shreyashsrivastavaa"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl bg-[#FFDD00] hover:bg-[#ffea40] text-neutral-900 font-bold text-sm shadow-sm transition-all cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl bg-[#FFDD00] hover:bg-[#ffea40] text-neutral-900 font-bold text-sm shadow-sm transition-all cursor-pointer"
             >
               <Coffee className="h-4.5 w-4.5 text-neutral-900 stroke-[2.2]" />
               <span>Buy me a coffee</span>
               <ExternalLink className="h-3.5 w-3.5 text-neutral-800" />
+            </a>
+
+            <a
+              href="https://buymeachai.in/shreyashsrivastava"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold text-sm shadow-sm transition-all cursor-pointer"
+            >
+              <Coffee className="h-4.5 w-4.5 text-white stroke-[2.2]" />
+              <span>Buy me a chai (UPI / Cards)</span>
+              <ExternalLink className="h-3.5 w-3.5 text-white/90" />
             </a>
           </div>
         </section>
