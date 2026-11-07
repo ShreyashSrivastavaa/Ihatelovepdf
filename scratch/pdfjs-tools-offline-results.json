@@ -1,0 +1,286 @@
+{
+  "results5s": [
+    {
+      "key": "compress",
+      "slug": "/compress",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "merge",
+      "slug": "/merge",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs, http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 2
+    },
+    {
+      "key": "split",
+      "slug": "/split",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "extract",
+      "slug": "/extract",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "crop",
+      "slug": "/crop",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "rotate",
+      "slug": "/rotate",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "reorder",
+      "slug": "/reorder",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "pdfToImages",
+      "slug": "/pdf-to-images",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "watermark",
+      "slug": "/watermark",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "pageNumbers",
+      "slug": "/page-numbers",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "headersFooters",
+      "slug": "/headers-footers",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "extractText",
+      "slug": "/extract-text",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs, http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 2
+    },
+    {
+      "key": "invertColors",
+      "slug": "/invert-colors",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "compare",
+      "slug": "/compare",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "pdfToZip",
+      "slug": "/pdf-to-zip",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "pdfToExcel",
+      "slug": "/pdf-to-excel",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "pdfToWord",
+      "slug": "/pdf-to-word",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "pdfToPowerpoint",
+      "slug": "/pdf-to-powerpoint",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "pdfToHtml",
+      "slug": "/pdf-to-html",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "pdfToEpub",
+      "slug": "/pdf-to-epub",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    }
+  ],
+  "results1s": [
+    {
+      "key": "compress",
+      "slug": "/compress",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "merge",
+      "slug": "/merge",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs, http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 2
+    },
+    {
+      "key": "split",
+      "slug": "/split",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "extract",
+      "slug": "/extract",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "crop",
+      "slug": "/crop",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "rotate",
+      "slug": "/rotate",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "reorder",
+      "slug": "/reorder",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "pdfToImages",
+      "slug": "/pdf-to-images",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "watermark",
+      "slug": "/watermark",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "pageNumbers",
+      "slug": "/page-numbers",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "headersFooters",
+      "slug": "/headers-footers",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "extractText",
+      "slug": "/extract-text",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs, http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 2
+    },
+    {
+      "key": "invertColors",
+      "slug": "/invert-colors",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "compare",
+      "slug": "/compare",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "pdfToZip",
+      "slug": "/pdf-to-zip",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "pdfToExcel",
+      "slug": "/pdf-to-excel",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "pdfToWord",
+      "slug": "/pdf-to-word",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "pdfToPowerpoint",
+      "slug": "/pdf-to-powerpoint",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "pdfToHtml",
+      "slug": "/pdf-to-html",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    },
+    {
+      "key": "pdfToEpub",
+      "slug": "/pdf-to-epub",
+      "passed": false,
+      "note": "Blocked offline requests: http://localhost:8770/pdf.worker.min.mjs",
+      "offlineRequestsCount": 1
+    }
+  ]
+}
