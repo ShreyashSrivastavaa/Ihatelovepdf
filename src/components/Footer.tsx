@@ -74,6 +74,14 @@ export default function Footer() {
               <Coffee className="h-3.5 w-3.5" />
               <span>Buy Me a Coffee</span>
             </Link>
+            <Link
+              href="/buy-me-a-chai"
+              prefetch={true}
+              className="inline-flex items-center gap-1 text-amber-600 dark:text-amber-400 hover:opacity-85 font-medium transition-opacity"
+            >
+              <Coffee className="h-3.5 w-3.5" />
+              <span>Buy Me a Chai</span>
+            </Link>
             <button
               type="button"
               onClick={() => setIsContactOpen(true)}

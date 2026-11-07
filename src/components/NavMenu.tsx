@@ -736,6 +736,14 @@ export default function NavMenu() {
               <Coffee className="h-4 w-4" />
               <span>Buy Me a Coffee</span>
             </Link>
+            <Link
+              href="/buy-me-a-chai"
+              onClick={closeDropdowns}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-amber-600 dark:text-amber-400 hover:bg-alt transition-colors"
+            >
+              <Coffee className="h-4 w-4" />
+              <span>Buy Me a Chai (UPI)</span>
+            </Link>
             <button
               type="button"
               onClick={() => {
