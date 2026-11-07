@@ -125,10 +125,13 @@ export default function TermsPageContent() {
 
           <section className="p-5 sm:p-6 rounded-xl border border-[var(--border)] bg-[var(--card)] space-y-2.5">
             <h2 className="text-base sm:text-lg font-bold text-[var(--text-main)] flex items-center gap-2">
-              <span className="text-[var(--brand)] font-mono text-sm font-semibold">6.</span> Intellectual Property &amp; Open Source
+              <span className="text-[var(--brand)] font-mono text-sm font-semibold">6.</span> Intellectual Property &amp; Open Source License
             </h2>
             <p>
-              ihatelovepdf is built upon established open source software libraries, including PDF-lib (MIT License), PDF.js (Apache License 2.0), and Next.js (MIT License). All trademarks, service marks, and brand names are the property of their respective owners.
+              ihatelovepdf is created and owned by <strong>Shreyash Srivastava</strong> and distributed under the <strong>MIT License</strong>. Permission is hereby granted to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software in accordance with the MIT License terms.
+            </p>
+            <p className="text-xs sm:text-sm text-[var(--text-muted)]">
+              The project is built upon established open source software libraries, including PDF-lib (MIT License), PDF.js (Apache License 2.0), and Next.js (MIT License). All trademarks, service marks, and brand names are the property of their respective owners.
             </p>
           </section>
 

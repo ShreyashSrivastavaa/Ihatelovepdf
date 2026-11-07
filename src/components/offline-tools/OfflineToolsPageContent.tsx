@@ -2,8 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, WifiOff, Cpu, Lock, AlertTriangle, ShieldCheck } from 'lucide-react';
-import { SITE_URL } from '../../lib/site';
+import { ArrowRight, WifiOff, Cpu, Lock, AlertTriangle } from 'lucide-react';
 
 interface OfflineToolsPageContentProps {
   locale: string;
@@ -280,8 +279,6 @@ const OFFLINE_DATA: Record<string, {
 
 export function OfflineToolsPageContent({ locale }: OfflineToolsPageContentProps) {
   const content = OFFLINE_DATA[locale] || OFFLINE_DATA.en;
-  const canonicalPath = locale === 'en' ? '/offline-pdf-tools' : `/${locale}/offline-pdf-tools`;
-  const canonicalUrl = `${SITE_URL}${canonicalPath}`;
 
   const faqSchema = {
     '@context': 'https://schema.org',
