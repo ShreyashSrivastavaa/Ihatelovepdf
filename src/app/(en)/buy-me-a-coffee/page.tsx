@@ -1,13 +1,16 @@
 import type { Metadata } from 'next';
 import { BuyMeACoffeePageContent } from '../../../components/BuyMeACoffeePageContent';
+import { METADATA_BASE, SHARED_ICONS } from '../../../lib/metadata-shared';
 
 export const metadata: Metadata = {
-  title: 'Buy Me a Coffee | ihatelovepdf',
+  metadataBase: METADATA_BASE,
+  title: 'Buy Me a Coffee',
   description:
     'Support ihatelovepdf, a free, private browser PDF suite built and maintained by Shreyash Srivastava.',
   alternates: {
     canonical: 'https://www.ihatelovepdf.com/buy-me-a-coffee',
   },
+  icons: SHARED_ICONS,
   openGraph: {
     title: 'Buy Me a Coffee | ihatelovepdf',
     description:

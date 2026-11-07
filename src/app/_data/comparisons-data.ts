@@ -145,9 +145,9 @@ export const COMPARISONS_DATA: Record<ComparisonPageType, Record<string, Compari
         {
           feature: 'Uso Sin Conexión (Offline)',
           competitor: 'La app de escritorio funciona offline tras activarse. La web requiere conexión permanente.',
-          ourSite: 'Funciona sin conexión tras guardarse en caché como aplicación web progresiva (PWA).',
+          ourSite: 'Sigue funcionando sin conexión una vez que la página se ha cargado en tu navegador.',
           status: 'VERIFIED',
-          source: 'Caché WebAssembly de ihatelovepdf',
+          source: 'Ejecución local en navegador en ihatelovepdf',
         },
         {
           feature: 'Marcas de Agua en Descargas',
