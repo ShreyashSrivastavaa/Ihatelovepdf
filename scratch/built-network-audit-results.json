@@ -1,0 +1,75 @@
+{
+  "totalThirdPartyCount": 0,
+  "auditReport": [
+    {
+      "tool": "Merge",
+      "path": "/merge",
+      "totalRequests": 22,
+      "thirdPartyCount": 0,
+      "thirdPartyRequests": []
+    },
+    {
+      "tool": "Compress",
+      "path": "/compress",
+      "totalRequests": 22,
+      "thirdPartyCount": 0,
+      "thirdPartyRequests": []
+    },
+    {
+      "tool": "Split",
+      "path": "/split",
+      "totalRequests": 22,
+      "thirdPartyCount": 0,
+      "thirdPartyRequests": []
+    },
+    {
+      "tool": "Rotate",
+      "path": "/rotate",
+      "totalRequests": 22,
+      "thirdPartyCount": 0,
+      "thirdPartyRequests": []
+    },
+    {
+      "tool": "Extract",
+      "path": "/extract",
+      "totalRequests": 22,
+      "thirdPartyCount": 0,
+      "thirdPartyRequests": []
+    },
+    {
+      "tool": "Watermark",
+      "path": "/watermark",
+      "totalRequests": 22,
+      "thirdPartyCount": 0,
+      "thirdPartyRequests": []
+    },
+    {
+      "tool": "Crop",
+      "path": "/crop",
+      "totalRequests": 22,
+      "thirdPartyCount": 0,
+      "thirdPartyRequests": []
+    },
+    {
+      "tool": "Reorder / Organize",
+      "path": "/organize",
+      "totalRequests": 1,
+      "thirdPartyCount": 0,
+      "thirdPartyRequests": []
+    },
+    {
+      "tool": "PDF to JPG",
+      "path": "/pdf-to-images",
+      "totalRequests": 22,
+      "thirdPartyCount": 0,
+      "thirdPartyRequests": []
+    },
+    {
+      "tool": "Protect",
+      "path": "/protect",
+      "totalRequests": 1,
+      "thirdPartyCount": 0,
+      "thirdPartyRequests": []
+    }
+  ]
+}
