@@ -610,6 +610,38 @@ const operationsEsContent: Partial<Record<OperationKey, OperationContent>> = {
       "Enviar reportes fotográficos o inspecciones sin adjuntar decenas de archivos.",
     ],
   },
+  wordToPdf: {
+    key: "wordToPdf",
+    slug: "word-a-pdf",
+    mode: "wordToPdf",
+    meta: {
+      title: "Convertir Word a PDF Gratis - DOCX a PDF Online",
+      description: "Convierte documentos Word (.docx) a PDF gratis sin marcas de agua ni registro. Procesamiento seguro directamente en tu navegador.",
+      keywords: ["word a pdf", "convertir word a pdf", "docx a pdf", "pasar word a pdf"],
+      ogTitle: "Convertir Word a PDF Gratis | ihatelovepdf",
+      ogDescription: "Convierte archivos DOCX a PDF en segundos en tu dispositivo sin subir tus archivos a servidores externos.",
+      ogImageAlt: "Convertidor de Word a PDF",
+    },
+    hero: {
+      title: "Convertir Word a PDF Gratis",
+      description: "Transforma tus documentos de Microsoft Word en archivos PDF estándar sin registrarte ni instalar software.",
+      bulletPoints: ["✅ Sin marcas de agua", "✅ Sin registro", "✅ Procesamiento en tu dispositivo", "✅ Conversiones ilimitadas"],
+      imageAlt: "Flujo de Word a PDF",
+    },
+    benefitsTitle: "Por qué convertir Word a PDF con ihatelovepdf",
+    benefits: [
+      { title: "Compatibilidad Universal", description: "Asegura que tu documento se vea idéntico en cualquier dispositivo y pantalla." },
+      { title: "Conserva el Contenido", description: "Mantiene la estructura de párrafos, listas, tablas e imágenes del archivo Word original." },
+      { title: "Privacidad Garantizada", description: "Tus contratos y cartas personales nunca se envían a la nube ni a servidores de terceros." }
+    ],
+    howTo: {
+      title: "Cómo convertir Word a PDF",
+      steps: ["Selecciona o arrastra tu archivo Word (.docx).", "Haz clic en Convertir a PDF.", "Descarga tu nuevo archivo PDF al instante."],
+      note: "Todo el proceso ocurre localmente en la memoria de tu navegador."
+    },
+    useCasesTitle: "Usos comunes de Word a PDF",
+    useCases: ["Enviar currículums profesionales sin riesgo de cambios de formato", "Compartir presupuestos y contratos cerrados", "Preparar tesis y proyectos académicos para su entrega"]
+  },
 };
 
 export const operationsEs: Record<OperationKey, OperationContent> = getOperationsLocalized("es", operationsEsContent);

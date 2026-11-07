@@ -26,7 +26,7 @@ export const esDictionary: Dictionary = {
     site: {
       title: "ihatelovepdf: Herramientas PDF Gratis - Sin Marca de Agua, Sin Registro",
       description:
-        "Herramientas PDF gratuitas y 100% privadas en tu navegador. Une, comprime, divide y convierte archivos PDF sin marcas de agua, sin registros y sin subir archivos a servidores. Funciona sin conexión con tareas ilimitadas.",
+        "Herramientas PDF gratuitas y 100% privadas en tu navegador. Une, comprime, divide y convierte archivos PDF sin marcas de agua, sin registros y sin subir archivos a servidores. Sigue funcionando sin conexión una vez que la página se ha cargado.",
       keywords: [
         "unir pdf",
         "comprimir pdf",
