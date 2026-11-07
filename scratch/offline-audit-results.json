@@ -1,0 +1,44 @@
+{
+  "swRegistrations": {
+    "supported": true,
+    "count": 0,
+    "registrations": []
+  },
+  "toolResults": [
+    {
+      "tool": "Merge",
+      "url": "https://www.ihatelovepdf.com/merge",
+      "offlineInteractionWorked": true,
+      "offlineReloadWorked": false,
+      "errorMsg": null
+    },
+    {
+      "tool": "Compress",
+      "url": "https://www.ihatelovepdf.com/compress",
+      "offlineInteractionWorked": true,
+      "offlineReloadWorked": false,
+      "errorMsg": null
+    },
+    {
+      "tool": "Split",
+      "url": "https://www.ihatelovepdf.com/split",
+      "offlineInteractionWorked": true,
+      "offlineReloadWorked": false,
+      "errorMsg": null
+    },
+    {
+      "tool": "Rotate",
+      "url": "https://www.ihatelovepdf.com/rotate",
+      "offlineInteractionWorked": true,
+      "offlineReloadWorked": false,
+      "errorMsg": null
+    },
+    {
+      "tool": "Watermark",
+      "url": "https://www.ihatelovepdf.com/watermark",
+      "offlineInteractionWorked": true,
+      "offlineReloadWorked": false,
+      "errorMsg": null
+    }
+  ]
+}
