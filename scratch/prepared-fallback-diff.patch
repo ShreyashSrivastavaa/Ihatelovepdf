@@ -1,0 +1,51 @@
+diff --git a/src/app/sitemap.ts b/src/app/sitemap.ts
+index f9c5845..7a220a2 100644
+--- a/src/app/sitemap.ts
++++ b/src/app/sitemap.ts
+@@ -181,7 +181,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
+     'edit-pdf-for-resume',
+     'is-it-safe-to-merge-pdf-online',
+     'privacy-architecture',
+-    'offline-pdf-tools',
+   ];
+ 
+diff --git a/src/components/QuickAnswerBox.tsx b/src/components/QuickAnswerBox.tsx
+index 3a921d4..8c71b02 100644
+--- a/src/components/QuickAnswerBox.tsx
++++ b/src/components/QuickAnswerBox.tsx
+@@ -48,7 +48,7 @@ export function QuickAnswerBox({ answer, steps, toolSlug, toolName, locale }: Qu
+-          <span>Runs in your browser &amp; keeps working without a connection once loaded</span>
++          <span>Runs in your browser with zero server uploads &amp; 100% private memory processing</span>
+
+diff --git a/src/app/_data/comparisons-data.ts b/src/app/_data/comparisons-data.ts
+index 5e11b22..9a8f231 100644
+--- a/src/app/_data/comparisons-data.ts
++++ b/src/app/_data/comparisons-data.ts
+@@ -102,7 +102,7 @@ export const COMPARISONS_DATA: Record<ComparisonSlug, Record<string, ComparisonP
+-          us: 'Runs in your browser without a connection once loaded',
++          us: 'Runs in your browser with zero server uploads',
+
+diff --git a/src/components/HomePageContent.tsx b/src/components/HomePageContent.tsx
+index 1b24cd5..6f3a18e 100644
+--- a/src/components/HomePageContent.tsx
++++ b/src/components/HomePageContent.tsx
+@@ -140,7 +140,7 @@ export default function HomePageContent() {
+-          <span>Runs in your browser once loaded</span>
++          <span>Runs 100% in your browser</span>
+
+diff --git a/public/llms.txt b/public/llms.txt
+index 7c2a11b..2e9a5bc 100644
+--- a/public/llms.txt
++++ b/public/llms.txt
+@@ -25,7 +25,7 @@
+-- Offline execution: Tools keep working without an active connection once loaded.
++- In-browser execution: Tools process all documents locally with zero cloud uploads.
+
+diff --git a/public/llms-full.txt b/public/llms-full.txt
+index 4b91ac3..8d1f2e5 100644
+--- a/public/llms-full.txt
++++ b/public/llms-full.txt
+@@ -38,7 +38,7 @@
+-- Keeps working without an active internet connection once loaded in the browser.
++- Processes all documents in your device memory with zero server uploads.
+
