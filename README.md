@@ -146,13 +146,13 @@ All contributors are expected to uphold our [**Code of Conduct**](CODE_OF_CONDUC
 
 ## 📜 License
 
-Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for more information.
+Distributed under the **MIT License**. Copyright (c) 2026 **Shreyash Srivastava**. See [`LICENSE`](LICENSE) for more information.
 
 ---
 
 <div align="center">
 
-Crafted with ❤️ by **[Shreyash Srivastava](https://shreyashsrivastava.vercel.app/)**  
-[GitHub](https://github.com/ShreyashSrivastavaa) · [LinkedIn](https://linkedin.com/in/shreyashsrivastavaa) · [Twitter / X](https://x.com/YesShrey) · [Buy Me a Coffee](https://buymeacoffee.com/shreyashsrivastavaa)
+Crafted with ❤️ by **[Shreyash Srivastava](https://www.shreyashsrivastava.in/)**  
+[GitHub](https://github.com/ShreyashSrivastavaa) · [LinkedIn](https://linkedin.com/in/shreyashsrivastavaa) · [Twitter / X](https://x.com/YesShrey) · [Buy Me a Coffee](https://buymeacoffee.com/shreyashsrivastavaa) · [Buy Me a Chai](https://buymeachai.in/shreyashsrivastava)
 
 </div>
