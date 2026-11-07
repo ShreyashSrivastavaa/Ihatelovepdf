@@ -38,28 +38,13 @@ async function getOrInitWasmEngine(): Promise<unknown> {
 
   initPromise = (async () => {
     try {
-      // 1. Check if PdfTeXEngine is globally available or in worker scope
+      // Check if PdfTeXEngine is globally available in worker scope
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const globalScope = self as any;
       if (typeof globalScope.PdfTeXEngine !== 'undefined') {
         wasmEngine = new globalScope.PdfTeXEngine();
         return wasmEngine;
       }
-
-      // 2. Try loading SwiftLaTeX from CDN or local bundle
-      const CDN_URL = 'https://cdn.jsdelivr.net/npm/swiftlatex-pdftex@1.0.1/dist/pdftex.js';
-      try {
-        if (typeof globalScope.importScripts === 'function') {
-          globalScope.importScripts(CDN_URL);
-          if (typeof globalScope.PdfTeXEngine !== 'undefined') {
-            wasmEngine = new globalScope.PdfTeXEngine();
-            return wasmEngine;
-          }
-        }
-      } catch (scriptErr) {
-        console.warn('SwiftLaTeX CDN script load skipped or failed:', scriptErr);
-      }
-
       return null;
     } catch (err) {
       console.warn('WASM engine init fallback active:', err);

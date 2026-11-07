@@ -73,6 +73,7 @@ test.describe('Site-Wide QA & SEO Audit', () => {
       '/ilovepdf-alternative',
       '/smallpdf-alternative',
       '/buy-me-a-coffee',
+      '/buy-me-a-chai',
     ];
 
     for (const route of staticRoutes) {
