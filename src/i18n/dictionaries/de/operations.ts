@@ -610,6 +610,38 @@ const operationsDeContent: Partial<Record<OperationKey, OperationContent>> = {
       "Fotodokumentationen oder Inspektionsberichte für Stakeholder zusammenstellen.",
     ],
   },
+  wordToPdf: {
+    key: "wordToPdf",
+    slug: "word-zu-pdf",
+    mode: "wordToPdf",
+    meta: {
+      title: "Word in PDF Umwandeln Kostenlos - DOCX zu PDF",
+      description: "Word-Dokumente (.docx) kostenlos online in PDF umwandeln. Keine Registrierung, kein Wasserzeichen, direkte lokale Verarbeitung im Browser.",
+      keywords: ["word in pdf", "docx zu pdf", "word in pdf umwandeln", "word datei als pdf speichern"],
+      ogTitle: "Word in PDF Umwandeln Kostenlos | ihatelovepdf",
+      ogDescription: "Konvertiere DOCX-Dokumente direkt im Browser in PDF - sicher und ohne Server-Uploads.",
+      ogImageAlt: "Word zu PDF Konverter",
+    },
+    hero: {
+      title: "Word in PDF Umwandeln Kostenlos",
+      description: "Wandle Microsoft Word-Dokumente (.docx) schnell und sicher in PDF-Dateien um. Alles läuft lokal in deinem Browser ab.",
+      bulletPoints: ["✅ Kein Wasserzeichen", "✅ Keine Anmeldung erforderlich", "✅ 100% private lokale Verarbeitung", "✅ Unbegrenzte Umwandlungen"],
+      imageAlt: "Word zu PDF Ablauf",
+    },
+    benefitsTitle: "Warum Word mit ihatelovepdf in PDF umwandeln",
+    benefits: [
+      { title: "Universelle Kompatibilität", description: "Macht Word-Dokumente auf jedem Betriebssystem und Smartphone zuverlässig lesbar." },
+      { title: "Dokumentstruktur erhalten", description: "Behält Textabsätze, Tabellen, Aufzählungen und Grafiken bei der Konvertierung bei." },
+      { title: "Volle Privatsphäre", description: "Deine vertraulichen Berichte und Dokumente werden niemals auf fremde Server hochgeladen." }
+    ],
+    howTo: {
+      title: "So wandelst du Word in PDF um",
+      steps: ["Wähle deine .docx-Datei aus oder ziehe sie in den Bereich.", "Klicke auf In PDF umwandeln.", "Lade dein fertiges PDF-Dokument direkt herunter."],
+      note: "Die Verarbeitung erfolgt vollständig im Browser. Keine Dateiübertragung an externe Server."
+    },
+    useCasesTitle: "Typische Einsätze für Word zu PDF",
+    useCases: ["Bewerbungen und Lebensläufe vor dem Versenden schützen", "Verträge und Angebote in ein festes Format übertragen", "Berichte und Hausarbeiten für den Druck vorbereiten"]
+  },
 };
 
 export const operationsDe: Record<OperationKey, OperationContent> = getOperationsLocalized("de", operationsDeContent);

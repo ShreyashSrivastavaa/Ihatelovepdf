@@ -332,35 +332,62 @@ export default function PDFProcessor({ initialMode = 'merge' }: { initialMode?: 
     filesRef.current = files;
   }, [files]);
 
-  // Warm up tool-specific dynamic imports and PDF engine while online on page load
+  // Warm up tool-specific dynamic imports and PDF engine during browser idle time after load
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    const pdfOperations: ProcessingMode[] = [
-      'compress', 'merge', 'split', 'extract', 'crop', 'rotate', 'reorder',
-      'pdfToImages', 'watermark', 'pageNumbers', 'headersFooters', 'extractText',
-      'invertColors', 'redact', 'compare', 'pdfToZip', 'editPdf', 'pdfToExcel',
-      'pdfToWord', 'pdfToPowerpoint', 'pdfToHtml', 'pdfToEpub', 'signPdf', 'fillPdfForm'
-    ];
-    if (pdfOperations.includes(initialMode)) {
-      PDFOps.preloadPdfEngine().catch(() => {});
-      pdfWorkerClient.warmup();
-    }
+    const runWarmup = () => {
+      const pdfOperations: ProcessingMode[] = [
+        'compress', 'merge', 'split', 'extract', 'crop', 'rotate', 'reorder',
+        'pdfToImages', 'watermark', 'pageNumbers', 'headersFooters', 'extractText',
+        'invertColors', 'redact', 'compare', 'pdfToZip', 'editPdf', 'pdfToExcel',
+        'pdfToWord', 'pdfToPowerpoint', 'pdfToHtml', 'pdfToEpub', 'signPdf', 'fillPdfForm',
+        'wordToPdf'
+      ];
+      if (pdfOperations.includes(initialMode)) {
+        PDFOps.preloadPdfEngine().catch(() => {});
+        pdfWorkerClient.warmup();
+      }
 
-    if (initialMode === 'extractText') {
-      import('./TextExtractionViewer').catch(() => {});
-    } else if (initialMode === 'redact') {
-      import('./PdfRedactionEditor').catch(() => {});
-    } else if (initialMode === 'compare') {
-      import('./PdfCompareViewer').catch(() => {});
-    } else if (initialMode === 'editPdf') {
-      import('./PdfEditorInterface').catch(() => {});
-    } else if (initialMode === 'signPdf') {
-      import('./SignPdfInterface').catch(() => {});
-    } else if (initialMode === 'fillPdfForm') {
-      import('./PdfFormFillerInterface').catch(() => {});
-    } else if (initialMode === 'latexResume') {
-      import('./LatexResumeInterface').catch(() => {});
+      if (initialMode === 'extractText') {
+        import('./TextExtractionViewer').catch(() => {});
+      } else if (initialMode === 'redact') {
+        import('./PdfRedactionEditor').catch(() => {});
+      } else if (initialMode === 'compare') {
+        import('./PdfCompareViewer').catch(() => {});
+      } else if (initialMode === 'editPdf') {
+        import('./PdfEditorInterface').catch(() => {});
+      } else if (initialMode === 'signPdf') {
+        const linkId = 'local-fonts-signatures';
+        if (!document.getElementById(linkId)) {
+          const link = document.createElement('link');
+          link.id = linkId;
+          link.rel = 'stylesheet';
+          link.href = '/fonts/signatures.css';
+          document.head.appendChild(link);
+        }
+        if ('fonts' in document) {
+          ['Caveat', 'Dancing Script', 'Great Vibes', 'Pacifico', 'Sacramento'].forEach((f) => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (document as any).fonts.load(`16px "${f}"`).catch(() => {});
+          });
+        }
+        import('./SignPdfInterface').catch(() => {});
+      } else if (initialMode === 'fillPdfForm') {
+        import('./PdfFormFillerInterface').catch(() => {});
+      } else if (initialMode === 'latexResume') {
+        import('./LatexResumeInterface').catch(() => {});
+      }
+    };
+
+    if ('requestIdleCallback' in window) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const handle = (window as any).requestIdleCallback(runWarmup, { timeout: 2500 });
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      return () => (window as any).cancelIdleCallback(handle);
+    } else {
+      const timer = setTimeout(runWarmup, 800);
+      return () => clearTimeout(timer);
     }
   }, [initialMode]);
 
